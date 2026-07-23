@@ -5,9 +5,9 @@
 | Atualizado em | 2026-07-23 |
 | Repositório | `lujhe4ever/jogopokemoncnx` |
 | Branch principal | `main` |
-| Branch desta entrega | `agent/fase-2-runtime-local` |
-| Fase | Fase 2 — runtime e infraestrutura local mínimos |
-| Status | **concluída na branch — PR #3 aguardando revisão** |
+| Branch desta entrega | `agent/fase-3-autenticacao` |
+| Fase | Fase 3 — autenticação, perfil e sessão |
+| Status | **reservada — preparação do PR em andamento** |
 
 ## 1. Resumo
 

@@ -453,3 +453,33 @@ Comprovar a comunicação vazia entre navegador, servidor e PostgreSQL.
 ### Próximo passo
 
 Revisar o PR #3 e os checks remotos antes de iniciar a Fase 3.
+
+## 2026-07-23 — Integração da Fase 2 e reserva da Fase 3
+
+### Objetivo da sessão
+
+Integrar o runtime validado e reservar autenticação, perfil e sessão.
+
+### Alterações realizadas
+
+- PR #3 integrado à `main` no commit
+  `2770e5a70ce35b9758f8fe76392f1743269347a5`;
+- branch `agent/fase-3-autenticacao` criada;
+- reservado cadastro, login, Argon2id, sessão opaca, perfil, ticket WebSocket,
+  rate limiting e testes de autorização.
+
+### Testes e verificações
+
+- PostgreSQL, migração e `pnpm check` aprovados na CI do PR #3;
+- `main` sincronizada por fast-forward;
+- nenhum deploy executado.
+
+### Problemas e riscos
+
+- recuperação de senha e verificação de e-mail não serão expostas sem fluxo completo;
+- cookies seguros exigem configuração diferente em desenvolvimento;
+- dados pessoais devem permanecer mínimos.
+
+### Próximo passo
+
+Publicar a reserva da Fase 3 em PR rascunho antes de implementar autenticação.
