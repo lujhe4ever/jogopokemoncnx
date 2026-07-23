@@ -2,5 +2,14 @@
   "name": "@lt/server",
   "version": "0.0.0",
   "private": true,
-  "type": "module"
+  "type": "module",
+  "dependencies": {
+    "@fastify/websocket": "11.3.0",
+    "@prisma/client": "6.19.0",
+    "fastify": "5.10.0",
+    "zod": "4.4.3"
+  },
+  "devDependencies": {
+    "prisma": "6.19.0"
+  }
 }

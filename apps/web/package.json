@@ -2,5 +2,8 @@
   "name": "@lt/web",
   "version": "0.0.0",
   "private": true,
-  "type": "module"
+  "type": "module",
+  "devDependencies": {
+    "vite": "8.1.5"
+  }
 }
