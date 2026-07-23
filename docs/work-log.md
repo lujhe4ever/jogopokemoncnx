@@ -895,3 +895,27 @@ Publicar o PR de reserva da Fase 10 antes de implementar o domínio.
 
 Revisar e integrar o PR #11 após a CI aprovada e reservar a Fase 11 sem executar
 deploy público.
+
+## 2026-07-23 — Integração da Fase 10 e reserva da Fase 11
+
+### Contexto
+
+O PR #11 passou na CI e foi integrado à `main` no commit
+`1310bc64b678db4439cdc98ff36637ee27edb2dc`.
+
+### Escopo reservado
+
+- sala social separada do fluxo de exploração;
+- capacidade autoritativa de até 20 presenças;
+- entrada, saída, posição e reconexão;
+- múltiplas salas sem vazamento;
+- snapshots iniciais e deltas de presença;
+- instrumentação de tick, backpressure e benchmark de 20 avatares.
+
+### Fora do escopo
+
+Chat, emotes, convites, PvP, telões, administração e deploy público.
+
+### Próximo passo
+
+Publicar o PR rascunho da Fase 11 antes de iniciar a implementação.

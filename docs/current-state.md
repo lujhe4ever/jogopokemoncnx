@@ -5,14 +5,14 @@
 | Atualizado em | 2026-07-23 |
 | Repositório | `lujhe4ever/jogopokemoncnx` |
 | Branch principal | `main` |
-| Branch desta entrega | `agent/fase-10-missoes-persistencia` |
-| Fase | Fase 10 — missões e persistência integrada |
-| Status | **implementada — aguardando CI e integração** |
+| Branch desta entrega | `agent/fase-11-arena-presenca` |
+| Fase | Fase 11 — arena multiplayer e presença |
+| Status | **reservada — implementação em andamento** |
 
 ## 1. Resumo
 
-As Fases 0B a 9 foram integradas à `main`. A Fase 10 está implementada na branch
-`agent/fase-10-missoes-persistencia` e reservada no PR #11.
+As Fases 0B a 10 foram integradas à `main`. A Fase 11 está reservada na branch
+`agent/fase-11-arena-presenca`.
 
 O projeto possui workspace TypeScript, servidor Fastify, cliente Vite/Phaser,
 PostgreSQL, Prisma, WebSocket versionado, autenticação e a primeira fatia jogável da
@@ -129,8 +129,8 @@ continuam com o status registrado em `docs/decisions.md`.
 
 ## 9. Próxima tarefa recomendada
 
-Integrar o PR #11 após a CI aprovada e reservar exclusivamente a Fase 11: arena
-multiplayer, presença, capacidade autoritativa, reconexão e benchmark de 20 avatares.
+Implementar exclusivamente a Fase 11: arena multiplayer, presença, capacidade
+autoritativa, salas isoladas, reconexão, deltas e benchmark de 20 avatares.
 
 ## 10. Instruções para reproduzir
 
