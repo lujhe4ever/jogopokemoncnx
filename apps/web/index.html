@@ -98,6 +98,43 @@
             </div>
           </div>
         </div>
+        <section class="arena-social" aria-labelledby="arena-chat-title">
+          <div>
+            <h3 id="arena-chat-title">Conversa</h3>
+            <ol id="arena-chat-log" aria-live="polite"></ol>
+            <form id="arena-chat-form">
+              <label for="arena-chat-input">Mensagem</label>
+              <div class="arena-chat-compose">
+                <input
+                  id="arena-chat-input"
+                  name="message"
+                  maxlength="160"
+                  autocomplete="off"
+                />
+                <button type="submit">Enviar</button>
+              </div>
+            </form>
+          </div>
+          <div>
+            <h3>Emotes</h3>
+            <div class="arena-emotes" aria-label="Emotes disponíveis">
+              <button type="button" data-social-emote="wave">Acenar</button>
+              <button type="button" data-social-emote="cheer">Comemorar</button>
+              <button type="button" data-social-emote="surprised">
+                Surpresa
+              </button>
+            </div>
+            <h3>Convidar</h3>
+            <div class="arena-invite-compose">
+              <label for="arena-invite-target">Jogador</label>
+              <select id="arena-invite-target"></select>
+              <button type="button" id="send-arena-invite">
+                Enviar desafio
+              </button>
+            </div>
+            <div id="arena-invitations" aria-live="assertive"></div>
+          </div>
+        </section>
       </section>
       <section
         id="quest-panel"

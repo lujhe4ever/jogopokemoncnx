@@ -30,6 +30,7 @@ describe("architecture boundaries", () => {
           "encounter-domain",
           "quest-domain",
           "arena-domain",
+          "social-domain",
         ].map((name) => sourceFiles(`packages/${name}/src`)),
       )
     ).flat();

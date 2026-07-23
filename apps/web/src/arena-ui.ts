@@ -30,6 +30,44 @@ type ArenaMessage =
       playerId: string;
     };
 
+type SocialMessage =
+  | {
+      type: "social_chat";
+      id: string;
+      author: { playerId: string; displayName: string };
+      text: string;
+      sentAt: string;
+    }
+  | {
+      type: "social_emote";
+      id: string;
+      playerId: string;
+      emoteId: "wave" | "cheer" | "surprised";
+      expiresAt: string;
+    }
+  | {
+      type: "social_invite";
+      inviteId: string;
+      from: { playerId: string; displayName: string };
+      expiresAt: string;
+    }
+  | {
+      type: "social_invite_sent";
+      inviteId: string;
+      targetPlayerId: string;
+    }
+  | {
+      type: "social_challenge_ready";
+      inviteId: string;
+      participants: string[];
+      acceptedAt: string;
+    }
+  | {
+      type: "social_error";
+      code: string;
+      retryAfterMs?: number;
+    };
+
 const gamePanel = document.querySelector<HTMLElement>("#game-panel");
 const arenaPanel = document.querySelector<HTMLElement>("#arena-panel");
 const arenaStage = document.querySelector<HTMLElement>("#arena-stage");
@@ -38,7 +76,17 @@ const presenceList = document.querySelector<HTMLUListElement>(
 );
 const status = document.querySelector<HTMLElement>("#arena-status");
 const leaveButton = document.querySelector<HTMLButtonElement>("#leave-arena");
+const chatForm = document.querySelector<HTMLFormElement>("#arena-chat-form");
+const chatInput = document.querySelector<HTMLInputElement>("#arena-chat-input");
+const chatLog = document.querySelector<HTMLOListElement>("#arena-chat-log");
+const inviteTarget = document.querySelector<HTMLSelectElement>(
+  "#arena-invite-target",
+);
+const sendInvite =
+  document.querySelector<HTMLButtonElement>("#send-arena-invite");
+const invitations = document.querySelector<HTMLElement>("#arena-invitations");
 const players = new Map<string, ArenaPresence>();
+const mutedPlayers = new Set<string>();
 const movement = { up: false, down: false, left: false, right: false };
 let socket: WebSocket | undefined;
 let selfId = "";
@@ -91,6 +139,25 @@ function render(): void {
         return item;
       }),
   );
+  if (inviteTarget) {
+    const selected = inviteTarget.value;
+    inviteTarget.replaceChildren(
+      ...[...players.values()]
+        .filter(({ playerId }) => playerId !== selfId)
+        .sort((left, right) =>
+          left.displayName.localeCompare(right.displayName, "pt-BR"),
+        )
+        .map((player) => {
+          const option = document.createElement("option");
+          option.value = player.playerId;
+          option.textContent = player.displayName;
+          return option;
+        }),
+    );
+    if ([...inviteTarget.options].some(({ value }) => value === selected))
+      inviteTarget.value = selected;
+    if (sendInvite) sendInvite.disabled = inviteTarget.options.length === 0;
+  }
 }
 
 function receive(message: ArenaMessage): void {
@@ -175,6 +242,192 @@ function isArenaMessage(value: unknown): value is ArenaMessage {
   return false;
 }
 
+function isSocialMessage(value: unknown): value is SocialMessage {
+  if (
+    typeof value !== "object" ||
+    value === null ||
+    !("type" in value) ||
+    typeof value.type !== "string"
+  )
+    return false;
+  if (value.type === "social_chat")
+    return (
+      "id" in value &&
+      typeof value.id === "string" &&
+      "text" in value &&
+      typeof value.text === "string" &&
+      "sentAt" in value &&
+      typeof value.sentAt === "string" &&
+      "author" in value &&
+      typeof value.author === "object" &&
+      value.author !== null &&
+      "playerId" in value.author &&
+      typeof value.author.playerId === "string" &&
+      "displayName" in value.author &&
+      typeof value.author.displayName === "string"
+    );
+  if (value.type === "social_emote")
+    return (
+      "id" in value &&
+      typeof value.id === "string" &&
+      "playerId" in value &&
+      typeof value.playerId === "string" &&
+      "emoteId" in value &&
+      ["wave", "cheer", "surprised"].includes(String(value.emoteId)) &&
+      "expiresAt" in value &&
+      typeof value.expiresAt === "string"
+    );
+  if (value.type === "social_invite")
+    return (
+      "inviteId" in value &&
+      typeof value.inviteId === "string" &&
+      "expiresAt" in value &&
+      typeof value.expiresAt === "string" &&
+      "from" in value &&
+      typeof value.from === "object" &&
+      value.from !== null &&
+      "playerId" in value.from &&
+      typeof value.from.playerId === "string" &&
+      "displayName" in value.from &&
+      typeof value.from.displayName === "string"
+    );
+  if (value.type === "social_invite_sent")
+    return (
+      "inviteId" in value &&
+      typeof value.inviteId === "string" &&
+      "targetPlayerId" in value &&
+      typeof value.targetPlayerId === "string"
+    );
+  if (value.type === "social_challenge_ready")
+    return (
+      "inviteId" in value &&
+      typeof value.inviteId === "string" &&
+      "acceptedAt" in value &&
+      typeof value.acceptedAt === "string" &&
+      "participants" in value &&
+      Array.isArray(value.participants) &&
+      value.participants.every((participant) => typeof participant === "string")
+    );
+  return (
+    value.type === "social_error" &&
+    "code" in value &&
+    typeof value.code === "string"
+  );
+}
+
+function showBubble(playerId: string, message: string): void {
+  if (mutedPlayers.has(playerId)) return;
+  const avatar = arenaStage?.querySelector<HTMLElement>(
+    `[data-player-id="${CSS.escape(playerId)}"]`,
+  );
+  if (!avatar) return;
+  avatar.querySelector(".arena-bubble")?.remove();
+  const bubble = document.createElement("div");
+  bubble.className = "arena-bubble";
+  bubble.textContent = message;
+  avatar.append(bubble);
+  window.setTimeout(() => {
+    bubble.remove();
+  }, 4_000);
+}
+
+function appendChat(message: Extract<SocialMessage, { type: "social_chat" }>) {
+  if (!chatLog || mutedPlayers.has(message.author.playerId)) return;
+  const item = document.createElement("li");
+  item.dataset.authorId = message.author.playerId;
+  const author = document.createElement("strong");
+  author.textContent = `${message.author.displayName}: `;
+  item.append(author, document.createTextNode(message.text));
+  if (message.author.playerId !== selfId) {
+    const mute = document.createElement("button");
+    mute.type = "button";
+    mute.textContent = `Silenciar ${message.author.displayName}`;
+    mute.addEventListener("click", () => {
+      mutedPlayers.add(message.author.playerId);
+      for (const entry of chatLog.querySelectorAll<HTMLElement>(
+        `[data-author-id="${CSS.escape(message.author.playerId)}"]`,
+      ))
+        entry.remove();
+      arenaStage
+        ?.querySelector(
+          `[data-player-id="${CSS.escape(message.author.playerId)}"] .arena-bubble`,
+        )
+        ?.remove();
+      setStatus(`${message.author.displayName} foi silenciado localmente.`);
+    });
+    item.append(mute);
+  }
+  chatLog.append(item);
+  while (chatLog.children.length > 50) chatLog.firstElementChild?.remove();
+  chatLog.scrollTop = chatLog.scrollHeight;
+  showBubble(message.author.playerId, message.text);
+}
+
+function receiveSocial(message: SocialMessage): void {
+  if (message.type === "social_chat") {
+    appendChat(message);
+    return;
+  }
+  if (message.type === "social_emote") {
+    const labels = {
+      wave: "👋",
+      cheer: "🎉",
+      surprised: "!",
+    } as const;
+    showBubble(message.playerId, labels[message.emoteId]);
+    return;
+  }
+  if (message.type === "social_invite") {
+    if (!invitations) return;
+    const card = document.createElement("article");
+    const text = document.createElement("p");
+    text.textContent = `${message.from.displayName} enviou um desafio.`;
+    const accept = document.createElement("button");
+    accept.type = "button";
+    accept.textContent = "Aceitar desafio";
+    accept.addEventListener("click", () => {
+      sendSocial({
+        type: "social_invite_accept",
+        requestId: crypto.randomUUID(),
+        inviteId: message.inviteId,
+      });
+      accept.disabled = true;
+    });
+    card.append(text, accept);
+    invitations.append(card);
+    const expiresIn = Math.max(
+      0,
+      new Date(message.expiresAt).getTime() - Date.now(),
+    );
+    window.setTimeout(() => {
+      card.remove();
+    }, expiresIn);
+    return;
+  }
+  if (message.type === "social_invite_sent") {
+    setStatus("Desafio enviado.");
+    return;
+  }
+  if (message.type === "social_challenge_ready") {
+    if (invitations) invitations.replaceChildren();
+    setStatus("Desafio aceito pelos dois jogadores.");
+    return;
+  }
+  const errorLabels: Record<string, string> = {
+    rate_limited: "Aguarde antes de enviar outra ação.",
+    invalid_message: "Mensagem vazia, longa ou com conteúdo não permitido.",
+    unknown_emote: "Emote desconhecido.",
+    target_unavailable: "O jogador não está disponível nesta sala.",
+    invite_unavailable: "O convite expirou ou já foi usado.",
+  };
+  setStatus(errorLabels[message.code] ?? "Ação social rejeitada.");
+}
+
+function sendSocial(payload: object): void {
+  if (socket?.readyState === WebSocket.OPEN)
+    socket.send(JSON.stringify(payload));
+}
+
 async function ticket(): Promise<string> {
   const response = await fetch("/api/auth/ws-ticket", {
     method: "POST",
@@ -203,6 +456,7 @@ async function connect(): Promise<void> {
   current.addEventListener("message", (event) => {
     const value: unknown = JSON.parse(String(event.data));
     if (isArenaMessage(value)) receive(value);
+    else if (isSocialMessage(value)) receiveSocial(value);
   });
   current.addEventListener("close", (event) => {
     if (socket !== current || manualClose) return;
@@ -235,6 +489,9 @@ function closeArena(): void {
   socket?.close(1000, "leaving_arena");
   socket = undefined;
   players.clear();
+  mutedPlayers.clear();
+  chatLog?.replaceChildren();
+  invitations?.replaceChildren();
   render();
   if (arenaPanel) arenaPanel.hidden = true;
   if (gamePanel) gamePanel.hidden = false;
@@ -260,6 +517,39 @@ export async function openArena(roomId: string): Promise<void> {
 }
 
 leaveButton?.addEventListener("click", closeArena);
+
+chatForm?.addEventListener("submit", (event) => {
+  event.preventDefault();
+  const text = chatInput?.value ?? "";
+  sendSocial({
+    type: "social_chat",
+    requestId: crypto.randomUUID(),
+    text,
+  });
+  if (chatInput) chatInput.value = "";
+});
+
+document
+  .querySelectorAll<HTMLButtonElement>("[data-social-emote]")
+  .forEach((button) => {
+    button.addEventListener("click", () => {
+      sendSocial({
+        type: "social_emote",
+        requestId: crypto.randomUUID(),
+        emoteId: button.dataset.socialEmote,
+      });
+    });
+  });
+
+sendInvite?.addEventListener("click", () => {
+  const targetPlayerId = inviteTarget?.value;
+  if (!targetPlayerId) return;
+  sendSocial({
+    type: "social_invite",
+    requestId: crypto.randomUUID(),
+    targetPlayerId,
+  });
+});
 
 window.addEventListener("keydown", (event) => {
   if (arenaPanel?.hidden) return;

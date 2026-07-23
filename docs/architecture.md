@@ -309,10 +309,11 @@ Arena é um módulo social, não o motor de batalha.
 - uma janela de 30 segundos restaura posição em reconexão e IDs públicos efêmeros não
   revelam a chave interna da conta;
 - chat tem tamanho, frequência, autoria e timestamp validados;
+- chat é efêmero, deduplicado por request ID e rejeita URL/caractere de controle;
 - mensagens aparecem sobre personagens por tempo limitado e podem alimentar painel
   acessível;
-- emotes são IDs do catálogo;
-- convites expiram, são de uso único e revalidam lotação;
+- emotes são IDs de uma allowlist de catálogo;
+- convites expiram em 30 segundos, são de uso único e revalidam presença/lotação;
 - telões assinam uma `BattleProjection` pública somente leitura;
 - competidores e vencedor são identificados por dados sanitizados;
 - escolhas secretas ou dados privados nunca entram na projeção.
