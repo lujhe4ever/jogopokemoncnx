@@ -2,14 +2,14 @@
 
 | Campo | Valor |
 | --- | --- |
-| Status do projeto | **Fase 17 — concluída na branch, aguardando revisão** |
+| Status do projeto | **Roadmap 0B–17 concluído** |
 | Atualizado em | 2026-07-23 |
-| Implementação existente | Nenhuma |
+| Implementação existente | Fases 1–17 integradas à `main` |
 
 ## 1. Regras do roadmap
 
-- Nenhuma fase de implementação foi iniciada.
-- A documentação da Fase 0B não aprova automaticamente as decisões D-001 a D-010.
+- O ciclo 0B–17 foi concluído; mudanças futuras exigem novo escopo e novo gate.
+- O histórico de decisões permanece canônico em `docs/decisions.md`.
 - Cada fase exige proposta, autorização explícita, execução, verificação e revisão.
 - Uma fase só é concluída quando todos os critérios possuem evidência.
 - Datas e estimativas serão discutidas somente após o escopo da fase ser aprovado.
@@ -752,11 +752,13 @@ Validar o ciclo completo com usuários autorizados e conteúdo permitido.
 - defeitos de progressão persistente;
 - telemetria excessiva.
 
-**Status:** **concluído na branch**, aguardando revisão no PR #19. O ensaio permaneceu
-interno, sem deploy, convidados ou coleta real.
+**Status:** **concluído** e integrado pelo PR #19 no commit
+`375dca531e1abda09aa50a469a645a861a6485b6`. O ensaio permaneceu interno, sem
+deploy, convidados ou coleta real.
 
 ## 4. Gate para a próxima tarefa
 
-A única próxima tarefa recomendada é revisar e integrar o PR #19 após a CI aprovada.
-Qualquer etapa posterior exige uma nova decisão de produto e infraestrutura; não há
-deploy implicitamente autorizado.
+Não existe fase seguinte autorizada. A próxima decisão deve escolher entre ampliar o
+produto, preparar infraestrutura privada real ou manter o projeto somente local.
+Qualquer opção exige novo escopo, revisão dos riscos residuais e autorização
+específica; deploy continua desautorizado.

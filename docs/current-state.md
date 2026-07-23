@@ -5,15 +5,15 @@
 | Atualizado em | 2026-07-23 |
 | Repositório | `lujhe4ever/jogopokemoncnx` |
 | Branch principal | `main` |
-| Branch desta entrega | `agent/fase-17-alpha-estabilizacao` |
-| Fase | Fase 17 — alpha privado e estabilização |
-| Status | **concluída na branch — aguardando revisão no PR #19** |
+| Branch desta entrega | `main` |
+| Fase | Roadmap 0B–17 |
+| Status | **concluído e integrado** |
 
 ## 1. Resumo
 
-As Fases 0B a 16 foram integradas à `main`. A Fase 17 foi concluída na branch
-`agent/fase-17-alpha-estabilizacao` e aguarda CI/revisão no PR #19, sem deploy ou
-participantes externos.
+As Fases 0B a 17 foram integradas à `main`. A Fase 17 passou na CI #54 e foi
+integrada pelo PR #19 no commit `375dca531e1abda09aa50a469a645a861a6485b6`,
+sem deploy ou participantes externos.
 
 O projeto possui workspace TypeScript, servidor Fastify, cliente Vite/Phaser,
 PostgreSQL, Prisma, WebSocket versionado, autenticação e a primeira fatia jogável da
@@ -155,7 +155,7 @@ completos sejam definidos.
 | Telões e espectadores | concluídos |
 | Administração | concluída |
 | Hardening e operação | concluído e integrado |
-| Alpha privado e estabilização | concluído na branch |
+| Alpha privado e estabilização | concluído e integrado |
 | Arena e presença | concluídas na branch |
 | Chat, emotes e convites | concluídos na branch |
 | Empacotamento de produção | concluído, não implantado |
@@ -206,8 +206,8 @@ continuam com o status registrado em `docs/decisions.md`.
 
 ## 9. Próxima tarefa recomendada
 
-Revisar e integrar o PR #19 após a CI aprovada. Depois disso, decidir separadamente
-se haverá nova etapa; nenhum deploy está autorizado.
+Definir separadamente se haverá novo ciclo de produto ou preparação de infraestrutura.
+Nenhuma implementação adicional ou deploy está autorizado pelo roadmap concluído.
 
 ## 10. Instruções para reproduzir
 
