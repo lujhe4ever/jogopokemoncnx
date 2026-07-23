@@ -5,14 +5,14 @@
 | Atualizado em | 2026-07-23 |
 | Repositório | `lujhe4ever/jogopokemoncnx` |
 | Branch principal | `main` |
-| Branch desta entrega | `agent/fase-7-criaturas-progressao` |
-| Fase | Fase 7 — fundação de criaturas, treinamento e progressão |
-| Status | **concluída na branch — PR #8 aguardando revisão** |
+| Branch desta entrega | `agent/fase-8-batalha-npc` |
+| Fase | Fase 8 — batalha contra NPCs |
+| Status | **concluída na branch — PR #9 aguardando revisão** |
 
 ## 1. Resumo
 
-As Fases 0B a 6 foram integradas à `main`. A Fase 7 está implementada na branch
-`agent/fase-7-criaturas-progressao` e reservada no PR #8.
+As Fases 0B a 7 foram integradas à `main`. A Fase 8 está implementada na branch
+`agent/fase-8-batalha-npc` e reservada no PR #9.
 
 O projeto possui workspace TypeScript, servidor Fastify, cliente Vite/Phaser,
 PostgreSQL, Prisma, WebSocket versionado, autenticação e a primeira fatia jogável da
@@ -43,6 +43,11 @@ casa, clareira original, transições autoritativas e o primeiro ciclo de intera
 - coleção e equipe de até seis criaturas com ownership;
 - experiência/evolução idempotentes em transação serializável;
 - saves com IDs e versões estáveis de definição e catálogo.
+- máquina pura de batalha por turno com RNG por seed;
+- comandos sequenciados, política NPC e replay determinístico;
+- timeout, abandono e desconexão com resultado explícito;
+- resultado persistente aplicado uma única vez;
+- UI acessível de batalha carregada sob demanda e retorno ao mundo.
 
 Verificação e recuperação de e-mail permanecem fora do escopo até que seus fluxos
 completos sejam definidos.
@@ -71,7 +76,8 @@ completos sejam definidos.
 | NPCs, diálogos, itens e baús | concluído na branch |
 | Missões | não iniciado |
 | Fundação de criaturas e progressão | concluída na branch |
-| Batalhas | não iniciado |
+| Batalha contra NPCs | concluída na branch |
+| Outras batalhas | não iniciado |
 | Arena e recursos sociais | não iniciado |
 | Administração e deploy | não iniciado |
 
@@ -89,7 +95,7 @@ pnpm check
 ## 6. Verificações atuais
 
 - formatação, lint e TypeScript estrito;
-- 8 arquivos de teste e 21 testes automatizados;
+- 10 arquivos de teste e 27 testes automatizados;
 - build do servidor e cliente;
 - validação do schema Prisma;
 - migrações aplicadas em PostgreSQL vazio pela CI;
@@ -106,13 +112,13 @@ pnpm check
 
 ## 8. Decisões vigentes
 
-D-001 a D-008, D-011 e D-012 estão aceitas. As demais decisões técnicas
+D-001 a D-008 e D-011 a D-013 estão aceitas. As demais decisões técnicas
 continuam com o status registrado em `docs/decisions.md`.
 
 ## 9. Próxima tarefa recomendada
 
-Revisar e integrar o PR #8. Depois, iniciar exclusivamente a Fase 8: batalha contra
-NPCs.
+Revisar e integrar o PR #9. Depois, iniciar exclusivamente a Fase 9: encontros e
+captura.
 
 ## 10. Instruções para reproduzir
 

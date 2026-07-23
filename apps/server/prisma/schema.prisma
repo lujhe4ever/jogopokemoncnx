@@ -25,6 +25,21 @@ model Account {
   claims       InteractionClaim[]
   creatures    Creature[]
   progression  CreatureProgressionEvent[]
+  battles      BattleRecord[]
+}
+
+model BattleRecord {
+  id               String    @id
+  seed             Int
+  outcome          String?
+  winner           String?
+  experienceReward Int       @default(0)
+  startedAt        DateTime  @default(now())
+  finishedAt       DateTime?
+  ownerId          String
+  owner            Account   @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+
+  @@index([ownerId])
 }
 
 model Creature {

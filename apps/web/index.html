@@ -55,6 +55,7 @@
         <p id="interaction-feedback" role="status" aria-live="polite">
           Aproxime-se de uma pessoa ou objeto e use E ou Interagir.
         </p>
+        <button type="button" id="start-battle">Batalhar com treinador</button>
         <div id="touch-pad" aria-label="Controles de movimento">
           <button data-direction="up">▲</button>
           <div>
@@ -63,6 +64,28 @@
             ><button data-direction="right">▶</button>
           </div>
           <button type="button" id="interact">Interagir</button>
+        </div>
+      </section>
+      <section id="battle-panel" hidden aria-labelledby="battle-title">
+        <h2 id="battle-title">Batalha de treinamento</h2>
+        <p id="battle-status" role="status" aria-live="assertive"></p>
+        <div class="battle-combatants">
+          <div>
+            <strong id="battle-player-name">Jogador</strong>
+            <progress id="battle-player-health" max="1" value="1"></progress>
+          </div>
+          <div>
+            <strong id="battle-npc-name">Adversário</strong>
+            <progress id="battle-npc-health" max="1" value="1"></progress>
+          </div>
+        </div>
+        <div class="battle-actions" aria-label="Ações de batalha">
+          <button type="button" data-battle-action="strike">Atacar</button>
+          <button type="button" data-battle-action="guard">Defender</button>
+          <button type="button" id="abandon-battle">Abandonar</button>
+          <button type="button" id="return-world" hidden>
+            Retornar ao mundo
+          </button>
         </div>
       </section>
     </main>

@@ -401,7 +401,7 @@ Criar uma batalha por turno isolada do mundo.
 - batalha presa em estado sem saída;
 - aplicação duplicada de recompensa.
 
-**Status:** **não iniciado**.
+**Status:** **concluído na branch**, aguardando revisão no PR #9.
 
 ### Fase 9 — Encontros e captura
 

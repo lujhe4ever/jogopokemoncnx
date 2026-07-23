@@ -743,3 +743,53 @@ Publicar o PR de reserva da Fase 7 antes de implementar o domínio.
 ### Próximo passo
 
 Revisar e integrar o PR #8 após a CI aprovada.
+
+## 2026-07-23 — Integração da Fase 7 e reserva da Fase 8
+
+### Contexto
+
+O PR #8 passou no CI e foi integrado à `main` no commit
+`356d2f56cf9fcf27d82e9900db849b1344803adb`.
+
+### Escopo reservado
+
+- máquina de estados pura e isolada do mundo;
+- comandos/eventos e turnos validados;
+- adversário por política e RNG determinístico;
+- UI de seleção de ações;
+- resultado idempotente, timeout, abandono e retorno ao mundo.
+
+### Fora do escopo
+
+Encontros aleatórios, captura, missões, PvP, arena e deploy público.
+
+### Próximo passo
+
+Publicar o PR de reserva da Fase 8 antes de implementar a batalha.
+
+## 2026-07-23 — Batalha contra NPCs da Fase 8
+
+### Resultado
+
+- novo pacote puro `@lt/battle-domain`;
+- máquina de estados com comandos/eventos, ações atacar/defender e turnos;
+- RNG determinístico por seed e política NPC reproduzível;
+- comandos fora de sequência ou após encerramento rejeitados;
+- serviço de sessão com timeout de 30 segundos e uma batalha ativa por conta;
+- abandono e desconexão produzem derrota explícita;
+- resultado persistido condicionalmente uma única vez;
+- UI acessível com barras rotuladas, região `aria-live` e retorno ao mundo.
+
+### Testes e verificações
+
+- `pnpm check`: 10 arquivos e 27 testes aprovados;
+- replay com mesma seed e comandos produz estado idêntico;
+- duplicidade e comando fora de turno são rejeitados;
+- timeout e desconexão possuem resultados testados;
+- resultado repetido não é aplicado novamente;
+- teste arquitetural impede o mundo de importar internals de batalha;
+- schema Prisma válido e migração preparada para CI.
+
+### Próximo passo
+
+Revisar e integrar o PR #9 após a CI aprovada.

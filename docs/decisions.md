@@ -3,7 +3,7 @@
 | Campo | Valor |
 | --- | --- |
 | Atualizado em | 2026-07-23 |
-| Implementação existente | Nenhuma |
+| Implementação existente | Fases 1–8 |
 | Referência de IDs técnicos | [`../architecture.md`](../architecture.md) |
 
 ## 1. Regras
@@ -47,10 +47,13 @@ Ao aceitar ou mudar uma decisão:
 | D-004 | Phaser restrito ao adaptador cliente | Aceita |
 | D-005 | Prisma restrito à infraestrutura | Aceita |
 | D-006 | Protocolo runtime validado e versionado | Aceita |
-| D-007 | Packs de conteúdo e catálogo de assets substituíveis | Proposta |
+| D-007 | Packs de conteúdo e catálogo de assets substituíveis | Aceita |
 | D-008 | Sessão opaca e ticket WebSocket efêmero | Aceita |
 | D-009 | Redis, broker e microserviços adiados até haver gatilho | Proposta |
 | D-010 | Conteúdo somente original ou comprovadamente licenciado | Proposta |
+| D-011 | Inventário limitado e recompensas idempotentes | Aceita |
+| D-012 | Progressão por catálogo versionado | Aceita |
+| D-013 | Batalha NPC determinística e isolada | Aceita |
 
 ## 3. Registro cronológico
 
@@ -361,6 +364,23 @@ Ao aceitar ou mudar uma decisão:
   preservar definição e versão já gravadas.
 - **Evidência de aprovação:** Fase 7 testa ownership, equipe, atributos, curva,
   evolução e substituição integral do catálogo sem alterar o domínio.
+
+### D-013 — Batalha NPC determinística e isolada
+
+- **Data:** 2026-07-23
+- **Status:** Aceita para a primeira batalha
+- **Contexto:** turnos, política adversária, timeout e resultado precisam ser
+  reproduzíveis e independentes do loop do mundo.
+- **Decisão:** `@lt/battle-domain` é uma máquina pura com RNG LCG por seed, comandos
+  sequenciados e eventos explícitos. Uma criatura atua por lado, com ações `strike` e
+  `guard`, timeout de 30 segundos e limite de 100 turnos.
+- **Política:** NPC ataca por padrão e pode defender com vida baixa conforme RNG.
+- **Integridade:** resultado durável usa atualização condicional por `battleId`;
+  timeout, abandono e desconexão são derrotas explícitas.
+- **Consequências:** habilidades, efeitos e PvP exigirão expansão versionada posterior;
+  o mundo não pode importar internals de batalha.
+- **Evidência de aprovação:** testes cobrem replay, seed, sequência, idempotência,
+  timeout, desconexão e fronteira arquitetural.
 
 ## 4. Próximas decisões a revisar
 

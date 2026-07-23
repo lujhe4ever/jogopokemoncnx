@@ -20,8 +20,14 @@ async function sourceFiles(directory: string): Promise<string[]> {
 }
 
 describe("architecture boundaries", () => {
-  it("keeps engine-core independent from frameworks and Node APIs", async () => {
-    const files = await sourceFiles("packages/engine-core/src");
+  it("keeps pure domains independent from frameworks and Node APIs", async () => {
+    const files = (
+      await Promise.all(
+        ["engine-core", "battle-domain", "creature-domain"].map((name) =>
+          sourceFiles(`packages/${name}/src`),
+        ),
+      )
+    ).flat();
     const violations: string[] = [];
 
     for (const file of files) {
@@ -37,5 +43,19 @@ describe("architecture boundaries", () => {
     }
 
     expect(violations).toEqual([]);
+  });
+
+  it("keeps world simulation independent from battle internals", async () => {
+    const files = await sourceFiles("apps/server/src/world");
+    const contents = await Promise.all(
+      files.map((file) => readFile(file, "utf8")),
+    );
+    expect(
+      contents.some(
+        (content) =>
+          content.includes("@lt/battle-domain") ||
+          content.includes("../battles/"),
+      ),
+    ).toBe(false);
   });
 });
