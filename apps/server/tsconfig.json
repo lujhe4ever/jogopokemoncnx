@@ -12,6 +12,7 @@
     { "path": "../../packages/quest-domain" },
     { "path": "../../packages/arena-domain" },
     { "path": "../../packages/social-domain" },
-    { "path": "../../packages/pvp-domain" }
+    { "path": "../../packages/pvp-domain" },
+    { "path": "../../packages/broadcast-domain" }
   ]
 }

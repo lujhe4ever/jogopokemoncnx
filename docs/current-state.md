@@ -5,14 +5,14 @@
 | Atualizado em | 2026-07-23 |
 | Repositório | `lujhe4ever/jogopokemoncnx` |
 | Branch principal | `main` |
-| Branch desta entrega | `agent/fase-13-batalhas-pvp` |
-| Fase | Fase 13 — batalhas entre jogadores |
-| Status | **concluída — aguardando integração do PR #14** |
+| Branch desta entrega | `agent/fase-14-teloes-transmissao` |
+| Fase | Fase 14 — telões e transmissão de batalhas |
+| Status | **concluída — aguardando integração do PR #15** |
 
 ## 1. Resumo
 
-As Fases 0B a 12 foram integradas à `main`. A Fase 13 foi concluída na branch
-`agent/fase-13-batalhas-pvp` e aguarda integração pelo PR #14.
+As Fases 0B a 13 foram integradas à `main`. A Fase 14 foi concluída na branch
+`agent/fase-14-teloes-transmissao` e aguarda integração pelo PR #15.
 
 O projeto possui workspace TypeScript, servidor Fastify, cliente Vite/Phaser,
 PostgreSQL, Prisma, WebSocket versionado, autenticação e a primeira fatia jogável da
@@ -81,6 +81,14 @@ casa, clareira original, transições autoritativas e o primeiro ciclo de intera
 - timeout de 30 segundos, abandono e desconexão produzem derrota explícita;
 - resultado e vencedor são persistidos uma única vez por atualização condicional;
 - projeção do duelo omite escolhas e IDs internos, e a UI retorna com segurança à arena.
+- `@lt/broadcast-domain` constrói a projeção de telão por allowlist explícita;
+- cada sala mantém revisão, histórico limitado a 64 deltas e até 20 batalhas visíveis;
+- lacuna recuperável recebe replay; lacuna antiga ou reconexão recebe snapshot atual;
+- início, turno resolvido e fim confirmado são distribuídos aos presentes na arena;
+- vencedor só é publicado depois da persistência idempotente do resultado PvP;
+- comandos de batalha enviados por espectador recebem `spectator_read_only`;
+- backpressure isola socket lento e métricas contam atualizações e entregas do fan-out;
+- telões acessíveis exibem competidores, criaturas, vida, turno e vencedor sem ações.
 
 Verificação e recuperação de e-mail permanecem fora do escopo até que seus fluxos
 completos sejam definidos.
@@ -111,7 +119,8 @@ completos sejam definidos.
 | Fundação de criaturas e progressão | concluída na branch |
 | Batalha contra NPCs | concluída na branch |
 | Encontros e captura | concluídos na branch |
-| Batalhas PvP | concluídas na branch |
+| Batalhas PvP | concluídas |
+| Telões e espectadores | concluídos na branch |
 | Arena e presença | concluídas na branch |
 | Chat, emotes e convites | concluídos na branch |
 | Administração e deploy | não iniciado |
@@ -130,7 +139,7 @@ pnpm check
 ## 6. Verificações atuais
 
 - formatação, lint e TypeScript estrito;
-- 19 arquivos de teste e 55 testes automatizados;
+- 20 arquivos de teste e 58 testes automatizados;
 - build do servidor e cliente;
 - validação do schema Prisma;
 - migrações aplicadas em PostgreSQL vazio pela CI;
@@ -147,14 +156,13 @@ pnpm check
 
 ## 8. Decisões vigentes
 
-D-001 a D-008 e D-011 a D-018 estão aceitas. As demais decisões técnicas
+D-001 a D-008 e D-011 a D-019 estão aceitas. As demais decisões técnicas
 continuam com o status registrado em `docs/decisions.md`.
 
 ## 9. Próxima tarefa recomendada
 
-Revisar e integrar o PR #14 e então reservar exclusivamente a Fase 14: projeção
-pública somente leitura, retomada sequenciada, anúncio confirmado e fan-out seguro
-para os telões da arena.
+Revisar e integrar o PR #15 e então reservar exclusivamente a Fase 15: painel
+administrativo auditável com autorização forte e sem acesso direto ao estado interno.
 
 ## 10. Instruções para reproduzir
 

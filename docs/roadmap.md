@@ -2,7 +2,7 @@
 
 | Campo | Valor |
 | --- | --- |
-| Status do projeto | **Fase 13 — concluída, aguardando integração** |
+| Status do projeto | **Fase 14 — concluída, aguardando integração** |
 | Atualizado em | 2026-07-23 |
 | Implementação existente | Nenhuma |
 
@@ -44,7 +44,7 @@ Status permitidos:
 | 11 | Arena multiplayer e presença | concluído |
 | 12 | Chat, emotes e convites | concluído |
 | 13 | Batalhas entre jogadores | concluído |
-| 14 | Telões e transmissão de batalhas | não iniciado |
+| 14 | Telões e transmissão de batalhas | concluído |
 | 15 | Painel administrativo | não iniciado |
 | 16 | Segurança, performance, testes e deploy | não iniciado |
 | 17 | Alpha privado e estabilização | não iniciado |
@@ -591,8 +591,8 @@ Reutilizar o núcleo de batalha em desafios PvP autorizados pela arena.
 - vantagem por desconexão;
 - balanceamento virar bloqueio arquitetural.
 
-**Status:** **concluído** na branch `agent/fase-13-batalhas-pvp` e aguardando
-integração pelo PR #14.
+**Status:** **concluído** e integrado pelo PR #14 no commit
+`5ca0c3a1149884988d10f24e43cf59da700e7f48`.
 
 ### Fase 14 — Telões e transmissão de batalhas
 
@@ -630,7 +630,8 @@ Exibir batalhas ao vivo na arena por eventos públicos sanitizados.
 - sobrecarga de broadcast;
 - atraso ou inconsistência visual.
 
-**Status:** **não iniciado**.
+**Status:** **concluído** na branch `agent/fase-14-teloes-transmissao` e
+aguardando integração pelo PR #15.
 
 ### Fase 15 — Painel administrativo
 

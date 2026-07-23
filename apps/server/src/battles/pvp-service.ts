@@ -30,6 +30,11 @@ export interface PvpChallengeParticipant {
 }
 
 export type PvpDeliver = (accountId: string, payload: object) => void;
+export type PvpBroadcastEvent = "started" | "turn_resolved" | "finished";
+export type PvpBroadcast = (
+  event: PvpBroadcastEvent,
+  projection: ReturnType<typeof publicPvpProjection>,
+) => void;
 
 interface ActivePvpBattle {
   state: PvpBattleState;
@@ -37,6 +42,7 @@ interface ActivePvpBattle {
   playerByAccount: Readonly<Record<string, string>>;
   accountByPlayer: Readonly<Record<string, string>>;
   deliver: PvpDeliver;
+  broadcast: PvpBroadcast;
   timer: NodeJS.Timeout | undefined;
 }
 
@@ -57,6 +63,7 @@ export class PvpService {
     first: PvpChallengeParticipant,
     second: PvpChallengeParticipant,
     deliver: PvpDeliver,
+    broadcast: PvpBroadcast = () => {},
   ): Promise<boolean> {
     if (
       first.accountId === second.accountId ||
@@ -118,6 +125,7 @@ export class PvpService {
         [second.playerId]: second.accountId,
       },
       deliver,
+      broadcast,
       timer: undefined,
     };
     battle.timer = this.timeout(battle);
@@ -125,12 +133,23 @@ export class PvpService {
     this.battleByAccount.set(first.accountId, battleId);
     this.battleByAccount.set(second.accountId, battleId);
     this.deliverState(battle, "pvp_started");
+    battle.broadcast("started", publicPvpProjection(battle.state));
     return true;
   }
 
   handle(raw: unknown, accountId: string): boolean {
     const parsed = commandSchema.safeParse(raw);
     if (!parsed.success) return false;
+    const requestedBattle = this.activeById.get(parsed.data.battleId);
+    if (requestedBattle && !requestedBattle.accounts.includes(accountId)) {
+      requestedBattle.deliver(accountId, {
+        protocolVersion: 1,
+        type: "pvp_error",
+        code: "spectator_read_only",
+        battleId: requestedBattle.state.id,
+      });
+      return true;
+    }
     const battleId = this.battleByAccount.get(accountId);
     const battle = battleId ? this.activeById.get(battleId) : undefined;
     if (!battle || battle.state.id !== parsed.data.battleId) return true;
@@ -174,6 +193,7 @@ export class PvpService {
     else {
       battle.timer = this.timeout(battle);
       this.deliverState(battle, "pvp_turn_resolved");
+      battle.broadcast("turn_resolved", publicPvpProjection(battle.state));
     }
     return true;
   }
@@ -236,7 +256,10 @@ export class PvpService {
         finishedAt: new Date(),
       },
     });
-    if (updated.count === 1) this.deliverState(battle, "pvp_finished");
+    if (updated.count === 1) {
+      this.deliverState(battle, "pvp_finished");
+      battle.broadcast("finished", publicPvpProjection(battle.state));
+    }
     this.activeById.delete(battle.state.id);
     for (const accountId of battle.accounts)
       this.battleByAccount.delete(accountId);

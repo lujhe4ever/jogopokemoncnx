@@ -179,6 +179,46 @@ button:hover {
   touch-action: none;
   user-select: none;
 }
+.arena-broadcasts {
+  margin-top: 18px;
+  border: 1px solid #7b66b3;
+  border-radius: 14px;
+  padding: 16px;
+  background: #101b15;
+}
+.arena-screen-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+.arena-screen-heading h3,
+.arena-screen-heading p {
+  margin-top: 0;
+}
+#arena-broadcast-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.arena-broadcast-card {
+  padding: 14px;
+  border: 1px solid #53705d;
+  border-radius: 12px;
+  background: #0d1610;
+}
+.arena-broadcast-card h4 {
+  margin: 0 0 10px;
+}
+.arena-broadcast-card p {
+  margin: 6px 0;
+}
+.arena-broadcast-card progress {
+  width: 100%;
+}
 .arena-social {
   display: grid;
   grid-template-columns: minmax(0, 1.5fr) minmax(220px, 1fr);

@@ -3,7 +3,7 @@
 | Campo | Valor |
 | --- | --- |
 | Atualizado em | 2026-07-23 |
-| Implementação existente | Fases 1–13 |
+| Implementação existente | Fases 1–14 |
 | Referência de IDs técnicos | [`../architecture.md`](../architecture.md) |
 
 ## 1. Regras
@@ -59,6 +59,7 @@ Ao aceitar ou mudar uma decisão:
 | D-016 | Arena em memória com salas autoritativas e isoladas | Aceita |
 | D-017 | Interações sociais efêmeras, limitadas e deduplicadas | Aceita |
 | D-018 | PvP autorizado com escolhas privadas e resultado idempotente | Aceita |
+| D-019 | Transmissão por allowlist, revisão e fan-out limitado | Aceita |
 
 ## 3. Registro cronológico
 
@@ -484,6 +485,25 @@ Ao aceitar ou mudar uma decisão:
 - **Progressão:** o primeiro PvP não concede recompensa, ranking nem perda de item.
 - **Evidência de aprovação:** testes cobrem propriedade, isolamento da primeira
   escolha, sequência, projeção pública, timeout/abandono e persistência única.
+
+### D-019 — Transmissão por allowlist, revisão e fan-out limitado
+
+- **Data:** 2026-07-23
+- **Status:** Aceita para os primeiros telões da arena
+- **Contexto:** espectadores precisam acompanhar batalhas ao vivo sem receber escolhas,
+  comandos, IDs internos ou poder alterar a instância.
+- **Projeção:** `@lt/broadcast-domain` copia somente identidade pública, criatura, vida,
+  turno, fase, desfecho, motivo e vencedor permitidos.
+- **Retomada:** cada sala mantém revisão própria, 64 deltas e 20 projeções visíveis;
+  lacuna contígua recebe replay e lacuna antiga recebe snapshot.
+- **Integridade:** `finished` nasce apenas após a primeira persistência confirmada do
+  resultado. Não participante recebe `spectator_read_only` ao tentar ação PvP.
+- **Fan-out:** transmissão reutiliza backpressure de 64 KiB da arena, contabiliza
+  atualizações/entregas e não executa I/O externo dentro do tick.
+- **Atraso:** não há atraso artificial enquanto escolhas continuarem ausentes da
+  projeção; novos efeitos públicos exigem reavaliação.
+- **Evidência de aprovação:** testes cobrem allowlist, replay, fallback para snapshot,
+  rejeição de espectador e 100 atualizações para 20 sockets dentro do orçamento local.
 
 ## 4. Próximas decisões a revisar
 
