@@ -38,4 +38,13 @@ jobs:
       - run: pnpm --filter @lt/server db:migrate
       - run: pnpm check
       - run: pnpm audit --prod --audit-level critical
-      - run: bash ops/scripts/verify-backup.sh
+      - name: Verify backup and isolated restore with matching PostgreSQL tools
+        run: >-
+          docker run --rm
+          --add-host host.docker.internal:host-gateway
+          --env DATABASE_URL=postgresql://projeto_lt:projeto_lt@host.docker.internal:5432/projeto_lt
+          --volume "$PWD:/workspace"
+          --workdir /workspace
+          postgres:17.5-alpine
+          sh -c "apk add --no-cache bash coreutils >/dev/null &&
+          bash ops/scripts/verify-backup.sh"

@@ -1237,6 +1237,9 @@ credenciais reais ou deploy.
 - schema Prisma, JSON operacional, scans de segredos e licenças: aprovados;
 - Docker e Bash indisponíveis neste computador; a CI Linux executará migração,
   restauração e builds de imagem.
+- a CI #50 confirmou todos os checks e falhou somente porque o runner oferecia
+  `pg_dump` 16 para PostgreSQL 17; a prova foi isolada na imagem 17.5 para eliminar
+  incompatibilidade entre cliente e servidor.
 
 ### Riscos residuais
 
