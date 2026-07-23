@@ -1136,3 +1136,41 @@ de inventário/progresso, deleção definitiva de conta e deploy público.
 ### Próximo passo
 
 Publicar o PR rascunho da Fase 15 antes de iniciar a implementação.
+
+## 2026-07-23 — Painel administrativo da Fase 15
+
+### Resultado
+
+- novo `@lt/admin-domain` define três papéis, permissões e validação de manifesto;
+- `apps/admin` é cliente Vite separado e não é exposto pelo jogo;
+- módulo permanece 404 sem segredo de elevação seguro configurado;
+- sessão e segundo fator são conferidos em cada caso de uso;
+- consulta de suporte retorna somente progresso agregado e referência HMAC;
+- revogação recuperável exige motivo e `REVOKE_SESSIONS`;
+- publicação exige `PUBLISH_CONTENT`, licença original/CC0 e versão sem conflito;
+- auditoria persiste sucesso, negação, request ID e alvo pseudonimizado;
+- comando local `admin:grant` concede o primeiro papel e registra o bootstrap.
+
+### Testes e verificações
+
+- 22 arquivos e 64 testes automatizados;
+- matriz RBAC separa suporte, conteúdo e proprietário;
+- segredo inválido é auditado e nunca aparece no registro;
+- resposta de suporte não contém e-mail nem ID interno;
+- referência adulterada e confirmação ausente são rejeitadas;
+- manifesto com traversal, script ou ID duplicado não valida;
+- versão publicada é idempotente para mesmo checksum e conflitante para outro;
+- sem configuração administrativa, `/api/admin/me` retorna 404;
+- QA confirmou cliente separado, área oculta, segundo fator protegido, confirmações,
+  regiões acessíveis e ausência de overflow horizontal em 1280 × 720.
+
+### Operação local inicial
+
+Definir temporariamente `ADMIN_GRANT_ACCOUNT_ID` e `ADMIN_GRANT_ROLE`, manter
+`ADMIN_STEP_UP_SECRET` fora do repositório e executar
+`pnpm --filter @lt/server admin:grant`. Remover as variáveis de concessão após o uso.
+
+### Próximo passo
+
+Revisar e integrar o PR #16 após a CI aprovada e reservar a Fase 16 sem executar
+deploy público.

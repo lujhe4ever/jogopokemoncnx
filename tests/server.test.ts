@@ -26,6 +26,11 @@ describe("runtime server", () => {
     const app = await buildApp({ database, logger: false });
     const response = await app.inject({ method: "GET", url: "/ready" });
     expect(response.statusCode).toBe(503);
+    const adminResponse = await app.inject({
+      method: "GET",
+      url: "/api/admin/me",
+    });
+    expect(adminResponse.statusCode).toBe(404);
     await app.close();
   });
 });

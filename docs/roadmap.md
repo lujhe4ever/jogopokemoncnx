@@ -2,7 +2,7 @@
 
 | Campo | Valor |
 | --- | --- |
-| Status do projeto | **Fase 15 — em andamento** |
+| Status do projeto | **Fase 15 — concluída, aguardando integração** |
 | Atualizado em | 2026-07-23 |
 | Implementação existente | Nenhuma |
 
@@ -45,7 +45,7 @@ Status permitidos:
 | 12 | Chat, emotes e convites | concluído |
 | 13 | Batalhas entre jogadores | concluído |
 | 14 | Telões e transmissão de batalhas | concluído |
-| 15 | Painel administrativo | em andamento |
+| 15 | Painel administrativo | concluído |
 | 16 | Segurança, performance, testes e deploy | não iniciado |
 | 17 | Alpha privado e estabilização | não iniciado |
 
@@ -669,7 +669,8 @@ Operar usuários e conteúdo sem acesso manual irrestrito ao banco.
 - alterações irreversíveis;
 - excesso de dados pessoais.
 
-**Status:** **em andamento** na branch `agent/fase-15-painel-administrativo`.
+**Status:** **concluído** na branch `agent/fase-15-painel-administrativo` e
+aguardando integração pelo PR #16.
 
 ### Fase 16 — Testes, segurança, otimização e deploy
 

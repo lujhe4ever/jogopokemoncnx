@@ -3,7 +3,7 @@
 | Campo | Valor |
 | --- | --- |
 | Atualizado em | 2026-07-23 |
-| Implementação existente | Fases 1–14 |
+| Implementação existente | Fases 1–15 |
 | Referência de IDs técnicos | [`../architecture.md`](../architecture.md) |
 
 ## 1. Regras
@@ -60,6 +60,7 @@ Ao aceitar ou mudar uma decisão:
 | D-017 | Interações sociais efêmeras, limitadas e deduplicadas | Aceita |
 | D-018 | PvP autorizado com escolhas privadas e resultado idempotente | Aceita |
 | D-019 | Transmissão por allowlist, revisão e fan-out limitado | Aceita |
+| D-020 | Administração separada, elevada, autorizada e auditada | Aceita |
 
 ## 3. Registro cronológico
 
@@ -504,6 +505,29 @@ Ao aceitar ou mudar uma decisão:
   projeção; novos efeitos públicos exigem reavaliação.
 - **Evidência de aprovação:** testes cobrem allowlist, replay, fallback para snapshot,
   rejeição de espectador e 100 atualizações para 20 sockets dentro do orçamento local.
+
+### D-020 — Administração separada, elevada, autorizada e auditada
+
+- **Data:** 2026-07-23
+- **Status:** Aceita para operação local, sem exposição externa
+- **Contexto:** suporte e conteúdo precisam de casos de uso limitados sem SQL genérico,
+  escalada por cliente ou excesso de dados pessoais.
+- **Autenticação:** sessão opaca válida mais segredo de elevação de no mínimo 32
+  caracteres em memória; sem configuração, as rotas nem são registradas.
+- **RBAC:** `SUPPORT`, `CONTENT_EDITOR` e `OWNER` recebem permissões explícitas em
+  `@lt/admin-domain`; toda rota reautoriza no servidor.
+- **Minimização:** suporte busca nome público e recebe referência HMAC; e-mail, senha,
+  token e ID interno não aparecem na resposta.
+- **Ações:** revogação de sessões exige referência, motivo e frase de confirmação e é
+  recuperável por novo login. Publicação aceita apenas manifesto declarativo original
+  ou CC0 validado e versionado.
+- **Auditoria:** autorização negada, leitura, revogação, validação, publicação e
+  bootstrap registram request ID, ação, resultado e alvo pseudonimizado.
+- **Exposição:** o segredo compartilhado é apenas baseline local. Antes de exposição
+  externa, substituir por MFA individual resistente a phishing e política de
+  recuperação aprovada.
+- **Evidência de aprovação:** testes cobrem matriz RBAC, segredo inválido, minimização,
+  referência assinada, confirmação, validação, idempotência, conflito e auditoria.
 
 ## 4. Próximas decisões a revisar
 

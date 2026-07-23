@@ -3,6 +3,7 @@
   "references": [
     { "path": "./apps/web" },
     { "path": "./apps/server" },
+    { "path": "./apps/admin" },
     { "path": "./packages/engine-core" },
     { "path": "./packages/game-simulation" },
     { "path": "./packages/creature-domain" },
@@ -12,6 +13,7 @@
     { "path": "./packages/arena-domain" },
     { "path": "./packages/social-domain" },
     { "path": "./packages/pvp-domain" },
-    { "path": "./packages/broadcast-domain" }
+    { "path": "./packages/broadcast-domain" },
+    { "path": "./packages/admin-domain" }
   ]
 }

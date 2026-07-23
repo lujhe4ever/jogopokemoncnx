@@ -13,6 +13,8 @@ import { registerQuestRoutes } from "./quests/routes.js";
 import type { QuestService } from "./quests/quest-service.js";
 import type { ArenaRegistry } from "./arena/arena-room.js";
 import type { ArenaProfileStore } from "./arena/profile-store.js";
+import { registerAdminRoutes } from "./admin/routes.js";
+import type { AdminService } from "./admin/service.js";
 
 export interface AppDependencies {
   database: DatabaseProbe;
@@ -25,6 +27,7 @@ export interface AppDependencies {
   quests?: QuestService;
   arena?: ArenaRegistry;
   arenaProfiles?: ArenaProfileStore;
+  admin?: AdminService;
 }
 
 export async function buildApp({
@@ -38,6 +41,7 @@ export async function buildApp({
   quests,
   arena,
   arenaProfiles,
+  admin,
 }: AppDependencies) {
   const app = Fastify({
     logger,
@@ -51,6 +55,7 @@ export async function buildApp({
   if (auth && encounters && world)
     registerEncounterRoutes(app, auth, encounters, world);
   if (auth && quests) registerQuestRoutes(app, auth, quests);
+  if (auth && admin) registerAdminRoutes(app, auth, admin);
 
   app.get("/health", (request) => ({
     status: "ok",

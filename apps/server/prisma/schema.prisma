@@ -7,6 +7,12 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum AdminRole {
+  SUPPORT
+  CONTENT_EDITOR
+  OWNER
+}
+
 model RuntimeMarker {
   id        Int      @id @default(autoincrement())
   createdAt DateTime @default(now())
@@ -17,6 +23,7 @@ model Account {
   email        String    @unique
   passwordHash String
   createdAt    DateTime  @default(now())
+  adminRole    AdminRole?
   profile      Profile?
   sessions     Session[]
   tickets      WebSocketTicket[]
@@ -33,6 +40,42 @@ model Account {
   pvpAsFirst    PvpBattleRecord[] @relation("PvpFirst")
   pvpAsSecond   PvpBattleRecord[] @relation("PvpSecond")
   pvpWins       PvpBattleRecord[] @relation("PvpWinner")
+  adminAudits   AdminAudit[] @relation("AdminActor")
+  contentReleases ContentRelease[] @relation("ContentPublisher")
+}
+
+model AdminAudit {
+  id         String   @id @default(cuid())
+  action     String
+  permission String
+  outcome    String
+  requestId  String
+  targetType String?
+  targetRef  String?
+  reason     String?
+  metadata   Json?
+  createdAt  DateTime @default(now())
+  actorId    String?
+  actor      Account? @relation("AdminActor", fields: [actorId], references: [id], onDelete: SetNull)
+
+  @@index([actorId, createdAt])
+  @@index([action, createdAt])
+}
+
+model ContentRelease {
+  id          String    @id @default(cuid())
+  packId      String
+  version     String
+  checksum    String
+  license     String
+  manifest    Json
+  status      String    @default("published")
+  publishedAt DateTime  @default(now())
+  publisherId String
+  publisher   Account   @relation("ContentPublisher", fields: [publisherId], references: [id], onDelete: Restrict)
+
+  @@unique([packId, version])
+  @@index([publishedAt])
 }
 
 model PvpBattleRecord {
