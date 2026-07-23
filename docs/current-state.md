@@ -5,9 +5,9 @@
 | Atualizado em | 2026-07-23 |
 | Repositório | `lujhe4ever/jogopokemoncnx` |
 | Branch principal | `main` |
-| Branch desta entrega | `agent/fase-4-casa-movimento` |
-| Fase | Fase 4 — casa, movimentação e colisão |
-| Status | **concluída na branch — PR #5 aguardando revisão** |
+| Branch desta entrega | `agent/fase-5-mapas-transicoes` |
+| Fase | Fase 5 — mapas, zonas e transições |
+| Status | **reservada — implementação em andamento** |
 
 ## 1. Resumo
 
@@ -94,8 +94,8 @@ continuam com o status registrado em `docs/decisions.md`.
 
 ## 9. Próxima tarefa recomendada
 
-Revisar e integrar o PR #5. Depois, iniciar exclusivamente a Fase 5: mapas, zonas e
-transições.
+Implementar exclusivamente a Fase 5: contratos de mapa, zonas, transições
+autorizadas, checkpoints por zona, carregamento sob demanda e área de interesse.
 
 ## 10. Instruções para reproduzir
 

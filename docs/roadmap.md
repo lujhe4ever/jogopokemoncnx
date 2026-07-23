@@ -290,7 +290,7 @@ Expandir a casa para um mundo dividido em zonas carregadas sob demanda.
 - formato de autoria difícil de manter;
 - transição concorrente ou reconexão no meio da troca.
 
-**Status:** **não iniciado**.
+**Status:** **em andamento** na branch `agent/fase-5-mapas-transicoes`.
 
 ### Fase 6 — NPCs, diálogos, itens e baús
 
