@@ -363,7 +363,7 @@ captura nesta fase.
 - fórmulas específicas vazarem para infraestrutura;
 - mudança de conteúdo invalidar saves.
 
-**Status:** **não iniciado**.
+**Status:** **concluído na branch**, aguardando revisão no PR #8.
 
 ### Fase 8 — Batalha contra NPCs
 

@@ -694,3 +694,52 @@ Publicar o PR de reserva da Fase 6 antes de implementar o ciclo de interação.
 ### Próximo passo
 
 Revisar e integrar o PR #7 após a CI aprovada.
+
+## 2026-07-23 — Integração da Fase 6 e reserva da Fase 7
+
+### Contexto
+
+O PR #7 passou no CI e foi integrado à `main` no commit
+`f84df62311404ba6fa0ca3bce7778bc4d47e267e`.
+
+### Escopo reservado
+
+- definição e instância de criatura separadas;
+- catálogo placeholder original e versionado;
+- equipe e coleção com ownership;
+- experiência, treinamento e evolução idempotentes;
+- persistência transacional.
+
+### Fora do escopo
+
+Encontros, captura, batalha, missões, arena e deploy público.
+
+### Próximo passo
+
+Publicar o PR de reserva da Fase 7 antes de implementar o domínio.
+
+## 2026-07-23 — Fundação de criaturas e progressão da Fase 7
+
+### Resultado
+
+- novo pacote puro `@lt/creature-domain`;
+- definição de conteúdo separada da instância pertencente ao jogador;
+- catálogo original versionado com duas formas e evolução por nível;
+- modelo persistente para coleção, equipe e eventos de progressão;
+- equipe limitada a seis criaturas do mesmo proprietário;
+- experiência e evolução atualizadas atomicamente com `requestId` idempotente;
+- IDs e versões de catálogo/definição preservados no save.
+
+### Testes e verificações
+
+- `pnpm check`: 8 arquivos e 21 testes aprovados;
+- atributos fora de 1–255 rejeitados;
+- grants inválidos rejeitados e nível limitado a 50;
+- ownership, duplicidade e tamanho da equipe verificados;
+- evolução ocorre pelo catálogo e não pela infraestrutura;
+- catálogo substituto funciona sem alterar engine ou domínio;
+- schema Prisma válido e migração preparada para CI.
+
+### Próximo passo
+
+Revisar e integrar o PR #8 após a CI aprovada.

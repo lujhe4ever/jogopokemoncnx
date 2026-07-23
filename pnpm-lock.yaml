@@ -46,6 +46,9 @@ importers:
       "@fastify/websocket":
         specifier: 11.3.0
         version: 11.3.0
+      "@lt/creature-domain":
+        specifier: workspace:*
+        version: link:../../packages/creature-domain
       "@lt/engine-core":
         specifier: workspace:*
         version: link:../../packages/engine-core
@@ -87,6 +90,8 @@ importers:
       vite:
         specifier: 8.1.5
         version: 8.1.5(@types/node@24.10.1)(jiti@2.7.0)(yaml@2.9.0)
+
+  packages/creature-domain: {}
 
   packages/engine-core: {}
 

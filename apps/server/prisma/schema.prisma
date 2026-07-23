@@ -23,6 +23,40 @@ model Account {
   checkpoint   PlayerCheckpoint?
   inventory    InventoryStack[]
   claims       InteractionClaim[]
+  creatures    Creature[]
+  progression  CreatureProgressionEvent[]
+}
+
+model Creature {
+  id                String   @id @default(cuid())
+  definitionId      String
+  definitionVersion Int
+  catalogVersion    Int
+  experience        Int      @default(0)
+  level             Int      @default(1)
+  teamSlot          Int?
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+  ownerId           String
+  owner             Account  @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+  progression       CreatureProgressionEvent[]
+
+  @@unique([ownerId, teamSlot])
+  @@index([ownerId])
+}
+
+model CreatureProgressionEvent {
+  id         String   @id @default(cuid())
+  requestId  String
+  amount     Int
+  createdAt  DateTime @default(now())
+  ownerId    String
+  creatureId String
+  owner      Account  @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+  creature   Creature @relation(fields: [creatureId], references: [id], onDelete: Cascade)
+
+  @@unique([ownerId, requestId])
+  @@index([creatureId])
 }
 
 model InventoryStack {
