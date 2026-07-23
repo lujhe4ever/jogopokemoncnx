@@ -15,6 +15,8 @@ As métricas cobrem:
 - mensagens descartadas por backpressure;
 - maior duração de tick observada;
 - broadcasts e entregas de telão.
+- eventos allowlist do alpha, agregados sem identificador, somente quando coleta e
+  consentimento estão explicitamente habilitados.
 
 O dashboard de referência está em `ops/grafana/dashboard.json`. Os alertas em
 `ops/prometheus/alerts.yml` cobrem indisponibilidade, taxa de erro, memória,

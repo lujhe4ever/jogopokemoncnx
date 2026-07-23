@@ -5,14 +5,15 @@
 | Atualizado em | 2026-07-23 |
 | Repositório | `lujhe4ever/jogopokemoncnx` |
 | Branch principal | `main` |
-| Branch desta entrega | `agent/fase-16-hardening-operacional` |
-| Fase | Fase 16 — hardening e preparação operacional |
-| Status | **concluída na branch — aguardando revisão no PR #18** |
+| Branch desta entrega | `agent/fase-17-alpha-estabilizacao` |
+| Fase | Fase 17 — alpha privado e estabilização |
+| Status | **concluída na branch — aguardando revisão no PR #19** |
 
 ## 1. Resumo
 
-As Fases 0B a 15 foram integradas à `main`. A Fase 16 foi concluída na branch
-`agent/fase-16-hardening-operacional` e aguarda CI/revisão no PR #18.
+As Fases 0B a 16 foram integradas à `main`. A Fase 17 foi concluída na branch
+`agent/fase-17-alpha-estabilizacao` e aguarda CI/revisão no PR #19, sem deploy ou
+participantes externos.
 
 O projeto possui workspace TypeScript, servidor Fastify, cliente Vite/Phaser,
 PostgreSQL, Prisma, WebSocket versionado, autenticação e a primeira fatia jogável da
@@ -109,6 +110,11 @@ casa, clareira original, transições autoritativas e o primeiro ciclo de intera
 - backup com checksum, restauração isolada e rollback exigem confirmação explícita;
 - dashboard, alertas, modelo de ameaças e runbook registram a operação prevista;
 - workflow manual valida um candidato e constrói imagens sem publicar ou implantar.
+- telemetria do alpha fica desabilitada por padrão, exige sessão/consentimento e
+  agrega somente eventos allowlist em memória;
+- readiness executável liga seis checkpoints da jornada às evidências automatizadas;
+- roteiro de teste, matriz de severidade e inventário de conteúdo fecham o gate;
+- ALPHA-001 removeu e bloqueou a regressão de credenciais de demonstração preenchidas.
 
 Verificação e recuperação de e-mail permanecem fora do escopo até que seus fluxos
 completos sejam definidos.
@@ -125,6 +131,9 @@ completos sejam definidos.
 - `.github/workflows/release-candidate.yml`: candidato manual sem push ou deploy;
 - `ops`: imagens, proxy, budgets, observabilidade e scripts operacionais;
 - `docs/runbooks/operations.md`: preparação, backup, restauração e rollback.
+- `ops/alpha/readiness.json`: checkpoints, defeitos e autorizações negativas;
+- `docs/alpha-test-plan.md`: jornada, privacidade, triagem e gate de saída;
+- `docs/content-inventory.md`: procedência do conteúdo permitido.
 
 ## 4. Estado por área
 
@@ -145,7 +154,8 @@ completos sejam definidos.
 | Batalhas PvP | concluídas |
 | Telões e espectadores | concluídos |
 | Administração | concluída |
-| Hardening e operação | concluído na branch |
+| Hardening e operação | concluído e integrado |
+| Alpha privado e estabilização | concluído na branch |
 | Arena e presença | concluídas na branch |
 | Chat, emotes e convites | concluídos na branch |
 | Empacotamento de produção | concluído, não implantado |
@@ -161,15 +171,16 @@ pnpm dev
 pnpm --filter @lt/admin dev
 pnpm check
 pnpm audit --prod --audit-level high
+pnpm alpha:readiness
 ```
 
 ## 6. Verificações atuais
 
 - formatação, lint e TypeScript estrito;
-- 23 arquivos de teste e 67 testes automatizados;
+- 24 arquivos de teste e 69 testes automatizados;
 - build do servidor e cliente;
 - builds independentes do jogo e da administração;
-- budgets: web 1.247.996/1.400.000 bytes, admin 9.335/100.000 bytes e maior asset
+- budgets: web 1.248.145/1.400.000 bytes, admin 9.335/100.000 bytes e maior asset
   1.022/2.000.000 bytes;
 - auditoria de dependências sem vulnerabilidades conhecidas;
 - scans de segredo e licenças aprovados;
@@ -190,13 +201,13 @@ pnpm audit --prod --audit-level high
 
 ## 8. Decisões vigentes
 
-D-001 a D-008 e D-011 a D-021 estão aceitas. As demais decisões técnicas
+D-001 a D-008 e D-011 a D-022 estão aceitas. As demais decisões técnicas
 continuam com o status registrado em `docs/decisions.md`.
 
 ## 9. Próxima tarefa recomendada
 
-Revisar e integrar o PR #18 após a CI aprovada; então reservar a Fase 17 sem realizar
-deploy.
+Revisar e integrar o PR #19 após a CI aprovada. Depois disso, decidir separadamente
+se haverá nova etapa; nenhum deploy está autorizado.
 
 ## 10. Instruções para reproduzir
 

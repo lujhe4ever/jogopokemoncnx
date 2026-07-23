@@ -1249,3 +1249,57 @@ não selecionada impedem exposição externa. Nenhum deploy foi realizado.
 ### Próximo passo
 
 Revisar e integrar o PR #18 após a CI aprovada; depois reservar a Fase 17.
+
+## 2026-07-23 — Integração da Fase 16 e reserva da Fase 17
+
+### Contexto
+
+A CI #51 aprovou qualidade, auditoria e restauração isolada. O PR #18 foi integrado à
+`main` no commit `1cef026c3c6635a604fc6470e87ef94abde24b61`.
+
+### Escopo reservado
+
+- jornada interna integrada do cadastro ao ciclo jogável e arena;
+- roteiro reproduzível de alpha privado, sem convidados nesta execução;
+- telemetria mínima com privacidade e consentimento explícitos;
+- matriz de severidade, triagem e verificação de defeitos;
+- inventário final de licenças/procedência;
+- critérios objetivos para encerrar o alpha e decidir a próxima etapa.
+
+### Fora do escopo
+
+Deploy, VPS, DNS, certificados, segredos reais, convite de usuários, coleta real de
+telemetria e expansão de conteúdo.
+
+### Próximo passo
+
+Publicar o PR rascunho da Fase 17 e iniciar o ensaio integrado.
+
+## 2026-07-23 — Implementação e ensaio interno da Fase 17
+
+### Alterações
+
+- telemetria agregada em memória, desabilitada por padrão, autenticada e condicionada
+  a consentimento explícito;
+- dez eventos allowlist sem IDs, e-mail, IP, texto livre, chat ou perfil;
+- seis checkpoints da jornada ligados a testes existentes por gate executável;
+- roteiro privado, matriz P0–P3, critérios de saída e inventário de conteúdo;
+- ALPHA-001 removeu valores padrão de e-mail/senha da tela e ganhou gate de regressão.
+
+### Verificações
+
+- `pnpm check`: aprovado, 24 arquivos e 69 testes;
+- `pnpm alpha:readiness`: seis checkpoints, zero P0/P1 aberto e deploy desautorizado;
+- budgets, scans e builds permaneceram aprovados;
+- QA visual local em 1280 × 720 confirmou título, labels, campos de credencial vazios,
+  botões acessíveis e ausência de overflow horizontal.
+
+### Privacidade e operação
+
+Nenhum participante externo, dado real, telemetria real, servidor público ou deploy
+foi usado. Os riscos residuais da Fase 16 continuam bloqueando exposição.
+
+### Próximo passo
+
+Revisar e integrar o PR #19 após a CI aprovada. Qualquer etapa posterior exige nova
+decisão explícita.

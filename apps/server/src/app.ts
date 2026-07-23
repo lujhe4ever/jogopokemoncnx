@@ -16,6 +16,8 @@ import type { ArenaProfileStore } from "./arena/profile-store.js";
 import { registerAdminRoutes } from "./admin/routes.js";
 import type { AdminService } from "./admin/service.js";
 import { createHash, timingSafeEqual } from "node:crypto";
+import { registerAlphaRoutes } from "./alpha/routes.js";
+import type { AlphaTelemetry } from "./alpha/telemetry.js";
 
 export interface AppDependencies {
   database: DatabaseProbe;
@@ -31,6 +33,7 @@ export interface AppDependencies {
   admin?: AdminService;
   allowedOrigin?: string;
   metricsToken?: string;
+  alphaTelemetry?: AlphaTelemetry;
 }
 
 export async function buildApp({
@@ -47,6 +50,7 @@ export async function buildApp({
   admin,
   allowedOrigin,
   metricsToken,
+  alphaTelemetry,
 }: AppDependencies) {
   const app = Fastify({
     logger,
@@ -89,6 +93,7 @@ export async function buildApp({
     done();
   });
   if (auth) await registerAuthRoutes(app, auth, cookieSecure);
+  if (auth && alphaTelemetry) registerAlphaRoutes(app, auth, alphaTelemetry);
   if (auth && battles) registerBattleRoutes(app, auth, battles);
   if (auth && encounters && world)
     registerEncounterRoutes(app, auth, encounters, world);
@@ -182,6 +187,12 @@ export async function buildApp({
             battleBroadcastDeliveries: 0,
             maxTickDurationMs: 0,
           };
+      const alphaMetrics = alphaTelemetry
+        ? Object.entries(alphaTelemetry.snapshot()).map(
+            ([event, count]) =>
+              `lt_alpha_events_total{event="${event}"} ${String(count)}`,
+          )
+        : [];
       return reply
         .type("text/plain; version=0.0.4")
         .send(
@@ -196,6 +207,7 @@ export async function buildApp({
             `lt_arena_max_tick_duration_ms ${String(metrics.maxTickDurationMs)}`,
             `lt_battle_broadcasts_total ${String(metrics.battleBroadcasts)}`,
             `lt_battle_broadcast_deliveries_total ${String(metrics.battleBroadcastDeliveries)}`,
+            ...alphaMetrics,
             "",
           ].join("\n"),
         );

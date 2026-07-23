@@ -62,6 +62,7 @@ Ao aceitar ou mudar uma decisão:
 | D-019 | Transmissão por allowlist, revisão e fan-out limitado | Aceita |
 | D-020 | Administração separada, elevada, autorizada e auditada | Aceita |
 | D-021 | Candidato operacional reproduzível sem deploy automático | Aceita |
+| D-022 | Alpha interno com telemetria anônima, consentida e opt-in | Aceita |
 
 ## 3. Registro cronológico
 
@@ -551,6 +552,25 @@ Ao aceitar ou mudar uma decisão:
   da infraestrutura ainda não autorizada.
 - **Evidência de aprovação:** 67 testes, builds e budgets passam; auditoria, scan de
   segredos/licenças e schema passam; CI Linux demonstra migração e restauração.
+
+### D-022 — Alpha interno com telemetria anônima, consentida e opt-in
+
+- **Data:** 2026-07-23
+- **Status:** Aceita para ensaio interno, sem participantes externos
+- **Contexto:** a jornada completa precisa de evidência e triagem antes de qualquer
+  teste com pessoas, sem introduzir coleta excessiva.
+- **Coleta:** desabilitada por padrão; habilitação exige configuração explícita,
+  sessão e `consent: true`.
+- **Minimização:** somente dez nomes allowlist são aceitos. Não existe texto livre,
+  ID, e-mail, IP, chat, perfil ou sequência individual.
+- **Retenção:** contagens agregadas ficam apenas em memória e aparecem somente na rota
+  protegida de métricas; reiniciar o processo remove os valores.
+- **Gate:** o checklist executável exige seis checkpoints com evidência, zero P0/P1
+  aberto, procedência completa e flags de deploy/participantes desativadas.
+- **Defeito estabilizado:** ALPHA-001 removeu credenciais de demonstração preenchidas
+  na tela e adicionou verificação contra regressão.
+- **Evidência de aprovação:** 69 testes, jornada documentada, inventário de conteúdo,
+  gate de readiness e QA visual local.
 
 ## 4. Próximas decisões a revisar
 
