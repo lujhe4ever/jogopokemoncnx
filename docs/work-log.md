@@ -387,3 +387,33 @@ Criar um workspace TypeScript mínimo e reproduzível, sem gameplay.
 ### Próximo passo
 
 Revisar o PR #2 e seus checks; não iniciar a Fase 2 antes dessa revisão.
+
+## 2026-07-23 — Integração da Fase 1 e reserva da Fase 2
+
+### Objetivo da sessão
+
+Integrar a fundação aprovada e reservar o runtime local mínimo.
+
+### Alterações realizadas
+
+- PR #2 integrado à `main` no commit
+  `30ff816587740abffc0b537686cce5b74b11f12c`;
+- branch `agent/fase-2-runtime-local` criada;
+- reservado o escopo de cliente placeholder, health/readiness, WebSocket versionado,
+  PostgreSQL, Prisma, configuração validada e logs estruturados.
+
+### Testes e verificações
+
+- CI do PR #2 concluída com sucesso;
+- PR sem comentários ou threads pendentes;
+- `main` sincronizada por fast-forward.
+
+### Problemas e riscos
+
+- D-005 e D-006 ainda precisam ser registradas como aceitas;
+- Docker local ainda não foi verificado;
+- nenhum deploy está autorizado.
+
+### Próximo passo
+
+Publicar a reserva em PR rascunho antes de implementar o runtime.

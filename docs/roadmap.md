@@ -171,7 +171,8 @@ Comprovar a comunicação vazia entre navegador, servidor e PostgreSQL.
 - divergência entre ambiente local e VPS;
 - colocar acesso a Prisma ou transporte em pacotes puros.
 
-**Status:** **não iniciado**.
+**Status:** **em andamento** — reservado na branch
+`agent/fase-2-runtime-local`; runtime ainda não criado neste snapshot.
 
 ### Fase 3 — Autenticação, perfil e sessão
 
