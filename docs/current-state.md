@@ -5,14 +5,14 @@
 | Atualizado em | 2026-07-23 |
 | Repositório | `lujhe4ever/jogopokemoncnx` |
 | Branch principal | `main` |
-| Branch desta entrega | `agent/fase-10-missoes-persistencia` |
-| Fase | Fase 10 — missões e persistência integrada |
+| Branch desta entrega | `agent/fase-11-arena-presenca` |
+| Fase | Fase 11 — arena multiplayer e presença |
 | Status | **implementada — aguardando CI e integração** |
 
 ## 1. Resumo
 
-As Fases 0B a 9 foram integradas à `main`. A Fase 10 está implementada na branch
-`agent/fase-10-missoes-persistencia` e reservada no PR #11.
+As Fases 0B a 10 foram integradas à `main`. A Fase 11 está implementada na branch
+`agent/fase-11-arena-presenca` e reservada no PR #12.
 
 O projeto possui workspace TypeScript, servidor Fastify, cliente Vite/Phaser,
 PostgreSQL, Prisma, WebSocket versionado, autenticação e a primeira fatia jogável da
@@ -59,6 +59,13 @@ casa, clareira original, transições autoritativas e o primeiro ciclo de intera
 - recompensa aplicada uma vez na mesma transação serializável do progresso;
 - diário de missões acessível e carregado sob demanda;
 - política explícita que rejeita version drift sem migração declarada.
+- arena social separada da exploração por endpoint e ciclo de conexão próprios;
+- registro em memória com múltiplas salas isoladas e limite de 20 presenças cada;
+- movimento autoritativo a 20 Hz, snapshots de entrada e deltas de posição;
+- reconexão por 30 segundos, substituição de sessão e remoção explícita de presença;
+- backpressure limita sockets lentos e métricas agregam tick, salas e descartes;
+- IDs públicos efêmeros impedem exposição de IDs internos de conta;
+- UI social acessível com palco visual, lista de presenças e controles por teclado/toque.
 
 Verificação e recuperação de e-mail permanecem fora do escopo até que seus fluxos
 completos sejam definidos.
@@ -90,7 +97,8 @@ completos sejam definidos.
 | Batalha contra NPCs | concluída na branch |
 | Encontros e captura | concluídos na branch |
 | Outras batalhas | não iniciado |
-| Arena e recursos sociais | não iniciado |
+| Arena e presença | concluídas na branch |
+| Chat, emotes e convites | não iniciado |
 | Administração e deploy | não iniciado |
 
 ## 5. Comandos
@@ -107,7 +115,7 @@ pnpm check
 ## 6. Verificações atuais
 
 - formatação, lint e TypeScript estrito;
-- 13 arquivos de teste e 37 testes automatizados;
+- 15 arquivos de teste e 43 testes automatizados;
 - build do servidor e cliente;
 - validação do schema Prisma;
 - migrações aplicadas em PostgreSQL vazio pela CI;
@@ -124,13 +132,13 @@ pnpm check
 
 ## 8. Decisões vigentes
 
-D-001 a D-008 e D-011 a D-015 estão aceitas. As demais decisões técnicas
+D-001 a D-008 e D-011 a D-016 estão aceitas. As demais decisões técnicas
 continuam com o status registrado em `docs/decisions.md`.
 
 ## 9. Próxima tarefa recomendada
 
-Integrar o PR #11 após a CI aprovada e reservar exclusivamente a Fase 11: arena
-multiplayer, presença, capacidade autoritativa, reconexão e benchmark de 20 avatares.
+Integrar o PR #12 após a CI aprovada e reservar exclusivamente a Fase 12: chat,
+emotes, convites, moderação mínima, expiração e revalidação de capacidade.
 
 ## 10. Instruções para reproduzir
 

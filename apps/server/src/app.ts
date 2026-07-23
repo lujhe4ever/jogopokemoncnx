@@ -11,6 +11,8 @@ import type { EncounterService } from "./encounters/encounter-service.js";
 import type { HouseRoom } from "./world/house-room.js";
 import { registerQuestRoutes } from "./quests/routes.js";
 import type { QuestService } from "./quests/quest-service.js";
+import type { ArenaRegistry } from "./arena/arena-room.js";
+import type { ArenaProfileStore } from "./arena/profile-store.js";
 
 export interface AppDependencies {
   database: DatabaseProbe;
@@ -21,6 +23,8 @@ export interface AppDependencies {
   battles?: BattleService;
   encounters?: EncounterService;
   quests?: QuestService;
+  arena?: ArenaRegistry;
+  arenaProfiles?: ArenaProfileStore;
 }
 
 export async function buildApp({
@@ -32,6 +36,8 @@ export async function buildApp({
   battles,
   encounters,
   quests,
+  arena,
+  arenaProfiles,
 }: AppDependencies) {
   const app = Fastify({
     logger,
@@ -82,7 +88,39 @@ export async function buildApp({
       });
     })();
   });
+  app.get("/arena", { websocket: true }, (socket, request) => {
+    const query = z
+      .object({
+        ticket: z.string().min(1),
+        roomId: z.string().regex(/^arena-[1-9][0-9]?$/),
+      })
+      .safeParse(request.query);
+    void (async () => {
+      const accountId =
+        query.success && auth
+          ? await auth.consumeWebSocketTicket(query.data.ticket)
+          : null;
+      const displayName =
+        accountId && arenaProfiles
+          ? await arenaProfiles.displayName(accountId)
+          : null;
+      if (!query.success || !accountId || !displayName || !arena) {
+        socket.close(1008, "invalid_arena_session");
+        return;
+      }
+      arena.connect(query.data.roomId, socket, accountId, displayName);
+    })();
+  });
+  app.get("/arena-metrics", () =>
+    arena
+      ? arena.metrics()
+      : { rooms: 0, players: 0, droppedMessages: 0, maxTickDurationMs: 0 },
+  );
   app.addHook("onClose", async () => database.close());
   if (world) app.addHook("onClose", async () => world.close());
+  if (arena)
+    app.addHook("onClose", () => {
+      arena.close();
+    });
   return app;
 }

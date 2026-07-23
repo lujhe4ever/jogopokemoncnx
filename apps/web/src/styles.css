@@ -75,12 +75,94 @@ button:hover {
   box-shadow: 0 24px 80px #0008;
 }
 #start-battle,
-#quest-journal-button {
+#quest-journal-button,
+#enter-arena {
   display: block;
   margin: 0 auto 14px;
 }
-#quest-journal-button {
+#quest-journal-button,
+#enter-arena {
   background: #6b5725;
+}
+#arena-panel {
+  max-width: 760px;
+  margin: 3vh auto;
+  padding: 24px;
+  border: 1px solid #806c38;
+  border-radius: 18px;
+  background: #17251d;
+  box-shadow: 0 24px 80px #0008;
+}
+#arena-stage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 8 / 5;
+  overflow: hidden;
+  border: 2px solid #6f8d72;
+  border-radius: 16px;
+  background:
+    radial-gradient(circle at center, #638854 0 7%, transparent 7%),
+    linear-gradient(135deg, #385d45, #263d31);
+}
+.arena-avatar {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  translate: -50% -50%;
+  border: 3px solid #f5e5a4;
+  border-radius: 50%;
+  background: #6e5ac8;
+  box-shadow: 0 4px 12px #0008;
+  transition:
+    left 80ms linear,
+    top 80ms linear;
+}
+.arena-avatar[data-self="true"] {
+  background: #d07145;
+}
+.arena-avatar span {
+  position: absolute;
+  top: 25px;
+  left: 50%;
+  width: max-content;
+  max-width: 120px;
+  translate: -50% 0;
+  overflow: hidden;
+  color: #fff;
+  font-size: 11px;
+  text-overflow: ellipsis;
+  text-shadow: 0 1px 3px #000;
+  white-space: nowrap;
+}
+.arena-footer {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 18px;
+  align-items: start;
+}
+#arena-presence-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 4px 18px;
+  padding-left: 20px;
+}
+#arena-touch-pad {
+  display: grid;
+  justify-content: center;
+  gap: 4px;
+  padding-top: 16px;
+}
+#arena-touch-pad > button {
+  width: 58px;
+  margin: auto;
+}
+#arena-touch-pad div {
+  display: flex;
+  gap: 4px;
+}
+#arena-touch-pad button {
+  touch-action: none;
+  user-select: none;
 }
 #quest-panel {
   max-width: 680px;
@@ -199,7 +281,8 @@ button:hover {
   user-select: none;
 }
 @media (min-width: 760px) {
-  #touch-pad {
+  #touch-pad,
+  #arena-touch-pad {
     display: none;
   }
 }
@@ -207,5 +290,11 @@ button:hover {
   .panel-heading {
     align-items: stretch;
     flex-direction: column;
+  }
+  #arena-panel {
+    padding: 16px;
+  }
+  .arena-footer {
+    grid-template-columns: 1fr;
   }
 }

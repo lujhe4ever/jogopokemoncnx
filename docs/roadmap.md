@@ -2,7 +2,7 @@
 
 | Campo | Valor |
 | --- | --- |
-| Status do projeto | **Fase 10 — concluída na branch** |
+| Status do projeto | **Fase 11 — concluída na branch** |
 | Atualizado em | 2026-07-23 |
 | Implementação existente | Nenhuma |
 
@@ -40,8 +40,8 @@ Status permitidos:
 | 7 | Fundação de criaturas, treinamento e progressão | concluído |
 | 8 | Batalha contra NPCs | concluído |
 | 9 | Encontros e captura | concluído |
-| 10 | Missões e persistência integrada | concluído na branch |
-| 11 | Arena multiplayer e presença | não iniciado |
+| 10 | Missões e persistência integrada | concluído |
+| 11 | Arena multiplayer e presença | concluído na branch |
 | 12 | Chat, emotes e convites | não iniciado |
 | 13 | Batalhas entre jogadores | não iniciado |
 | 14 | Telões e transmissão de batalhas | não iniciado |
@@ -476,7 +476,8 @@ Conectar exploração, NPCs, captura e batalha em objetivos persistentes.
 - conteúdo novo invalidar progresso;
 - eventos excessivamente genéricos.
 
-**Status:** **concluído na branch**, aguardando CI e integração no PR #11.
+**Status:** **concluído** e integrado pelo PR #11 no commit
+`1310bc64b678db4439cdc98ff36637ee27edb2dc`.
 
 ### Fase 11 — Arena multiplayer e presença
 
@@ -515,7 +516,7 @@ Validar uma sala social separada da exploração para até 20 jogadores.
 - abuso de presença;
 - medição em hardware não representativo.
 
-**Status:** **não iniciado**.
+**Status:** **concluído na branch**, aguardando CI e integração no PR #12.
 
 ### Fase 12 — Chat, emotes e convites
 
