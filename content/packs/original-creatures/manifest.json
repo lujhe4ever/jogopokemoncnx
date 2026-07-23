@@ -1,0 +1,34 @@
+{
+  "id": "original-creatures",
+  "version": 1,
+  "author": "Projeto LT",
+  "license": "Original project content",
+  "definitions": [
+    {
+      "id": "creature:emberbud",
+      "version": 1,
+      "name": "Broto Âmbar",
+      "baseAttributes": {
+        "vitality": 18,
+        "strength": 12,
+        "guard": 14,
+        "agility": 10
+      },
+      "evolution": {
+        "minimumLevel": 5,
+        "targetDefinitionId": "creature:amberbloom"
+      }
+    },
+    {
+      "id": "creature:amberbloom",
+      "version": 1,
+      "name": "Flor Âmbar",
+      "baseAttributes": {
+        "vitality": 30,
+        "strength": 22,
+        "guard": 24,
+        "agility": 17
+      }
+    }
+  ]
+}

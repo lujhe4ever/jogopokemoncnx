@@ -344,6 +344,24 @@ Ao aceitar ou mudar uma decisão:
 - **Evidência de aprovação:** testes da Fase 6 cobrem distância, retry, capacidade de
   slots e limite de stack; a migração adiciona restrições únicas e `CHECK`.
 
+### D-012 — Progressão de criaturas orientada por catálogo versionado
+
+- **Data:** 2026-07-23
+- **Status:** Aceita para a fundação
+- **Contexto:** instâncias persistidas precisam evoluir sem incorporar espécies ou
+  fórmulas específicas à infraestrutura.
+- **Decisão:** definições vivem em catálogo substituível; instâncias guardam IDs e
+  versões estáveis. Nível inicial é 1, limite 50, experiência usa curva quadrática
+  simples e grants são limitados a 100.000 por evento. Evolução é uma regra do
+  catálogo por nível mínimo.
+- **Equipe:** até seis instâncias pertencentes à mesma conta, sem duplicidade.
+- **Idempotência:** cada grant usa `requestId` único por proprietário e atualiza
+  evento/instância na mesma transação serializável.
+- **Consequências:** balanceamento pode mudar por versão de catálogo; migrações devem
+  preservar definição e versão já gravadas.
+- **Evidência de aprovação:** Fase 7 testa ownership, equipe, atributos, curva,
+  evolução e substituição integral do catálogo sem alterar o domínio.
+
 ## 4. Próximas decisões a revisar
 
 A Fase 1 depende primeiro de D-001 e D-002. A revisão deve:

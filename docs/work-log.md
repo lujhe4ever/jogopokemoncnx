@@ -717,3 +717,29 @@ Encontros, captura, batalha, missões, arena e deploy público.
 ### Próximo passo
 
 Publicar o PR de reserva da Fase 7 antes de implementar o domínio.
+
+## 2026-07-23 — Fundação de criaturas e progressão da Fase 7
+
+### Resultado
+
+- novo pacote puro `@lt/creature-domain`;
+- definição de conteúdo separada da instância pertencente ao jogador;
+- catálogo original versionado com duas formas e evolução por nível;
+- modelo persistente para coleção, equipe e eventos de progressão;
+- equipe limitada a seis criaturas do mesmo proprietário;
+- experiência e evolução atualizadas atomicamente com `requestId` idempotente;
+- IDs e versões de catálogo/definição preservados no save.
+
+### Testes e verificações
+
+- `pnpm check`: 8 arquivos e 21 testes aprovados;
+- atributos fora de 1–255 rejeitados;
+- grants inválidos rejeitados e nível limitado a 50;
+- ownership, duplicidade e tamanho da equipe verificados;
+- evolução ocorre pelo catálogo e não pela infraestrutura;
+- catálogo substituto funciona sem alterar engine ou domínio;
+- schema Prisma válido e migração preparada para CI.
+
+### Próximo passo
+
+Revisar e integrar o PR #8 após a CI aprovada.
