@@ -7,16 +7,16 @@
 | Branch principal | `main` |
 | Branch desta entrega | `agent/fase-4-casa-movimento` |
 | Fase | Fase 4 — casa, movimentação e colisão |
-| Status | **reservada — preparação do PR em andamento** |
+| Status | **concluída na branch — PR #5 aguardando revisão** |
 
 ## 1. Resumo
 
 As Fases 0B, 1 e 2 foram integradas à `main`. A Fase 3 está implementada na branch
 `agent/fase-3-autenticacao` e reservada no PR #4.
 
-O projeto possui workspace TypeScript, servidor Fastify, cliente Vite, PostgreSQL,
-Prisma, WebSocket versionado e autenticação por e-mail/senha. Ainda não existe
-gameplay.
+O projeto possui workspace TypeScript, servidor Fastify, cliente Vite/Phaser,
+PostgreSQL, Prisma, WebSocket versionado, autenticação e a primeira fatia jogável da
+casa.
 
 ## 2. Entrega atual
 
@@ -52,7 +52,7 @@ completos sejam definidos.
 | PostgreSQL/Prisma | concluído para a fundação |
 | Autenticação, perfil e sessão | concluído na branch |
 | Recuperação/verificação de e-mail | não iniciado |
-| Casa, movimento e colisão | não iniciado |
+| Casa, movimento e colisão | concluído na branch |
 | Mapas, NPCs, itens e missões | não iniciado |
 | Criaturas e batalhas | não iniciado |
 | Arena e recursos sociais | não iniciado |
@@ -89,13 +89,13 @@ pnpm check
 
 ## 8. Decisões vigentes
 
-D-001, D-002, D-005, D-006 e D-008 estão aceitas. As demais decisões técnicas
+D-001 a D-006 e D-008 estão aceitas. As demais decisões técnicas
 continuam com o status registrado em `docs/decisions.md`.
 
 ## 9. Próxima tarefa recomendada
 
-Revisar e integrar o PR #4. Depois, iniciar exclusivamente a Fase 4: protótipo local
-da casa, movimentação e colisão.
+Revisar e integrar o PR #5. Depois, iniciar exclusivamente a Fase 5: mapas, zonas e
+transições.
 
 ## 10. Instruções para reproduzir
 

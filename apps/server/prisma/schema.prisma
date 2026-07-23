@@ -20,6 +20,16 @@ model Account {
   profile      Profile?
   sessions     Session[]
   tickets      WebSocketTicket[]
+  checkpoint   PlayerCheckpoint?
+}
+
+model PlayerCheckpoint {
+  id        String   @id @default(cuid())
+  x         Float
+  y         Float
+  updatedAt DateTime @updatedAt
+  accountId String   @unique
+  account   Account  @relation(fields: [accountId], references: [id], onDelete: Cascade)
 }
 
 model Profile {

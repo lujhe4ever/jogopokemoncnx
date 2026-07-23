@@ -3,6 +3,7 @@
   "references": [
     { "path": "./apps/web" },
     { "path": "./apps/server" },
-    { "path": "./packages/engine-core" }
+    { "path": "./packages/engine-core" },
+    { "path": "./packages/game-simulation" }
   ]
 }

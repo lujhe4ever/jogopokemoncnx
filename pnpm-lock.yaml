@@ -46,6 +46,12 @@ importers:
       "@fastify/websocket":
         specifier: 11.3.0
         version: 11.3.0
+      "@lt/engine-core":
+        specifier: workspace:*
+        version: link:../../packages/engine-core
+      "@lt/game-simulation":
+        specifier: workspace:*
+        version: link:../../packages/game-simulation
       "@prisma/client":
         specifier: 6.19.0
         version: 6.19.0(prisma@6.19.0(typescript@6.0.3))(typescript@6.0.3)
@@ -67,12 +73,28 @@ importers:
         version: 6.19.0(typescript@6.0.3)
 
   apps/web:
+    dependencies:
+      "@lt/engine-core":
+        specifier: workspace:*
+        version: link:../../packages/engine-core
+      "@lt/game-simulation":
+        specifier: workspace:*
+        version: link:../../packages/game-simulation
+      phaser:
+        specifier: 3.90.0
+        version: 3.90.0
     devDependencies:
       vite:
         specifier: 8.1.5
         version: 8.1.5(@types/node@24.10.1)(jiti@2.7.0)(yaml@2.9.0)
 
   packages/engine-core: {}
+
+  packages/game-simulation:
+    dependencies:
+      "@lt/engine-core":
+        specifier: workspace:*
+        version: link:../engine-core
 
 packages:
   "@emnapi/core@1.11.1":
@@ -1024,6 +1046,12 @@ packages:
       }
     engines: { node: ">=0.10.0" }
 
+  eventemitter3@5.0.4:
+    resolution:
+      {
+        integrity: sha512-mlsTRyGaPBjPedk6Bvw+aqbsXDtoAyAzm5MO7JgU+yVRyMQ5O8bD4Kcci7BS85f93veegeCPkL8R4GLClnjLFw==,
+      }
+
   expect-type@1.4.0:
     resolution:
       {
@@ -1553,6 +1581,12 @@ packages:
     resolution:
       {
         integrity: sha512-xCy9V055GLEqoFaHoC1SoLIaLmWctgCUaBaWxDZ7/Zx4CTyX7cJQLJOok/orfjZAh9kEYpjJa4d0KcJmCbctZA==,
+      }
+
+  phaser@3.90.0:
+    resolution:
+      {
+        integrity: sha512-/cziz/5ZIn02uDkC9RzN8VF9x3Gs3XdFFf9nkiMEQT3p7hQlWuyjy4QWosU802qqno2YSLn2BfqwOKLv/sSVfQ==,
       }
 
   picocolors@1.1.1:
@@ -2674,6 +2708,8 @@ snapshots:
 
   esutils@2.0.3: {}
 
+  eventemitter3@5.0.4: {}
+
   expect-type@1.4.0: {}
 
   exsolve@1.1.0: {}
@@ -2943,6 +2979,10 @@ snapshots:
   pathe@2.0.3: {}
 
   perfect-debounce@1.0.0: {}
+
+  phaser@3.90.0:
+    dependencies:
+      eventemitter3: 5.0.4
 
   picocolors@1.1.1: {}
 

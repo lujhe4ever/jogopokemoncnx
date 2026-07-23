@@ -4,12 +4,14 @@ import { z } from "zod";
 import { registerAuthRoutes } from "./auth/routes.js";
 import type { AuthService } from "./auth/service.js";
 import type { DatabaseProbe } from "./database.js";
+import type { HouseRoom } from "./world/house-room.js";
 
 export interface AppDependencies {
   database: DatabaseProbe;
   auth?: AuthService;
   cookieSecure?: boolean;
   logger?: boolean;
+  world?: HouseRoom;
 }
 
 export async function buildApp({
@@ -17,6 +19,7 @@ export async function buildApp({
   auth,
   cookieSecure = false,
   logger = true,
+  world,
 }: AppDependencies) {
   const app = Fastify({
     logger,
@@ -57,11 +60,13 @@ export async function buildApp({
           serverTime: Date.now(),
         }),
       );
+      if (world) await world.connect(socket, accountId);
       socket.on("message", () => {
-        socket.send("pong");
+        if (!world) socket.send("pong");
       });
     })();
   });
   app.addHook("onClose", async () => database.close());
+  if (world) app.addHook("onClose", async () => world.close());
   return app;
 }
