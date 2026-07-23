@@ -2,7 +2,7 @@
 
 | Campo | Valor |
 | --- | --- |
-| Status do projeto | **Fase 0B — em andamento** |
+| Status do projeto | **Fase 10 — concluída na branch** |
 | Atualizado em | 2026-07-23 |
 | Implementação existente | Nenhuma |
 
@@ -30,17 +30,17 @@ Status permitidos:
 
 | Fase | Resultado | Status |
 | --- | --- | --- |
-| 0B | Arquitetura e governança colaborativa | em andamento |
-| 1 | Fundação e configuração reproduzível | não iniciado |
-| 2 | Runtime local mínimo integrado | não iniciado |
-| 3 | Autenticação, perfil e sessão | não iniciado |
-| 4 | Casa, movimentação e colisão | não iniciado |
-| 5 | Mapas e transições | não iniciado |
-| 6 | NPCs, diálogos, itens e baús | não iniciado |
-| 7 | Fundação de criaturas, treinamento e progressão | não iniciado |
-| 8 | Batalha contra NPCs | não iniciado |
-| 9 | Encontros e captura | não iniciado |
-| 10 | Missões e persistência integrada | não iniciado |
+| 0B | Arquitetura e governança colaborativa | concluído |
+| 1 | Fundação e configuração reproduzível | concluído |
+| 2 | Runtime local mínimo integrado | concluído |
+| 3 | Autenticação, perfil e sessão | concluído |
+| 4 | Casa, movimentação e colisão | concluído |
+| 5 | Mapas e transições | concluído |
+| 6 | NPCs, diálogos, itens e baús | concluído |
+| 7 | Fundação de criaturas, treinamento e progressão | concluído |
+| 8 | Batalha contra NPCs | concluído |
+| 9 | Encontros e captura | concluído |
+| 10 | Missões e persistência integrada | concluído na branch |
 | 11 | Arena multiplayer e presença | não iniciado |
 | 12 | Chat, emotes e convites | não iniciado |
 | 13 | Batalhas entre jogadores | não iniciado |
@@ -476,7 +476,7 @@ Conectar exploração, NPCs, captura e batalha em objetivos persistentes.
 - conteúdo novo invalidar progresso;
 - eventos excessivamente genéricos.
 
-**Status:** **não iniciado**.
+**Status:** **concluído na branch**, aguardando CI e integração no PR #11.
 
 ### Fase 11 — Arena multiplayer e presença
 

@@ -5,14 +5,14 @@
 | Atualizado em | 2026-07-23 |
 | Repositório | `lujhe4ever/jogopokemoncnx` |
 | Branch principal | `main` |
-| Branch desta entrega | `agent/fase-9-encontros-captura` |
-| Fase | Fase 9 — encontros e captura |
-| Status | **concluída na branch — PR #10 aguardando revisão** |
+| Branch desta entrega | `agent/fase-10-missoes-persistencia` |
+| Fase | Fase 10 — missões e persistência integrada |
+| Status | **implementada — aguardando CI e integração** |
 
 ## 1. Resumo
 
-As Fases 0B a 8 foram integradas à `main`. A Fase 9 está implementada na branch
-`agent/fase-9-encontros-captura` e reservada no PR #10.
+As Fases 0B a 9 foram integradas à `main`. A Fase 10 está implementada na branch
+`agent/fase-10-missoes-persistencia` e reservada no PR #11.
 
 O projeto possui workspace TypeScript, servidor Fastify, cliente Vite/Phaser,
 PostgreSQL, Prisma, WebSocket versionado, autenticação e a primeira fatia jogável da
@@ -53,6 +53,12 @@ casa, clareira original, transições autoritativas e o primeiro ciclo de intera
 - captura pós-vitória com RNG por seed e chance controlável;
 - consumo do Orbe e criação da criatura na mesma transação;
 - retry idempotente e retorno seguro em todos os encerramentos.
+- domínio puro de missões com definições, estados e versões explícitas;
+- progresso por eventos públicos de zona, interação, batalha e captura;
+- recibos persistentes que deduplicam eventos por conta e ID;
+- recompensa aplicada uma vez na mesma transação serializável do progresso;
+- diário de missões acessível e carregado sob demanda;
+- política explícita que rejeita version drift sem migração declarada.
 
 Verificação e recuperação de e-mail permanecem fora do escopo até que seus fluxos
 completos sejam definidos.
@@ -79,7 +85,7 @@ completos sejam definidos.
 | Casa, movimento e colisão | concluído na branch |
 | Mapas e transições | concluído na branch |
 | NPCs, diálogos, itens e baús | concluído na branch |
-| Missões | não iniciado |
+| Missões | concluídas na branch |
 | Fundação de criaturas e progressão | concluída na branch |
 | Batalha contra NPCs | concluída na branch |
 | Encontros e captura | concluídos na branch |
@@ -101,7 +107,7 @@ pnpm check
 ## 6. Verificações atuais
 
 - formatação, lint e TypeScript estrito;
-- 11 arquivos de teste e 32 testes automatizados;
+- 13 arquivos de teste e 37 testes automatizados;
 - build do servidor e cliente;
 - validação do schema Prisma;
 - migrações aplicadas em PostgreSQL vazio pela CI;
@@ -118,13 +124,13 @@ pnpm check
 
 ## 8. Decisões vigentes
 
-D-001 a D-008 e D-011 a D-014 estão aceitas. As demais decisões técnicas
+D-001 a D-008 e D-011 a D-015 estão aceitas. As demais decisões técnicas
 continuam com o status registrado em `docs/decisions.md`.
 
 ## 9. Próxima tarefa recomendada
 
-Revisar e integrar o PR #10. Depois, iniciar exclusivamente a Fase 10: missões e
-persistência integrada.
+Integrar o PR #11 após a CI aprovada e reservar exclusivamente a Fase 11: arena
+multiplayer, presença, capacidade autoritativa, reconexão e benchmark de 20 avatares.
 
 ## 10. Instruções para reproduzir
 

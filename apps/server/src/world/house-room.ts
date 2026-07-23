@@ -9,6 +9,10 @@ import type { PrismaClient } from "@prisma/client";
 import { randomUUID } from "node:crypto";
 import { z } from "zod";
 import type { InteractionStore } from "./interaction-store.js";
+import {
+  noopGameplayEvents,
+  type GameplayEventSink,
+} from "../events/gameplay-events.js";
 
 const messageSchema = z.discriminatedUnion("type", [
   z.object({
@@ -90,6 +94,7 @@ export class HouseRoom {
     private readonly checkpoints: CheckpointStore,
     autoStart = true,
     private readonly interactions?: InteractionStore,
+    private readonly events: GameplayEventSink = noopGameplayEvents,
   ) {
     this.timer = setInterval(
       () => {
@@ -127,7 +132,7 @@ export class HouseRoom {
       const player = this.players.get(accountId);
       if (!message.success || !player) return;
       if (message.data.type === "transition") {
-        this.transition(accountId, message.data.portalId);
+        void this.transition(accountId, message.data.portalId);
       } else if (message.data.type === "interact") {
         const { requestId, interactionId } = message.data;
         void this.interact(accountId, requestId, interactionId).catch(() => {
@@ -149,6 +154,12 @@ export class HouseRoom {
     });
     socket.once("close", () => void this.disconnect(accountId));
     this.sendSnapshot(accountId);
+    void this.publish(
+      accountId,
+      `zone-visited:${state.zoneId}`,
+      "world.zone_entered",
+      { zoneId: state.zoneId },
+    );
   }
 
   step(): void {
@@ -200,7 +211,7 @@ export class HouseRoom {
       : null;
   }
 
-  private transition(accountId: string, portalId: string): void {
+  private async transition(accountId: string, portalId: string): Promise<void> {
     const player = this.players.get(accountId);
     if (!player) return;
     const previousZoneId = player.state.zoneId;
@@ -212,7 +223,6 @@ export class HouseRoom {
       lastProcessedSequence: player.state.lastProcessedSequence,
     };
     player.inputs.length = 0;
-    void this.checkpoints.save(accountId, player.state);
     for (const [id, connected] of this.players) {
       if (
         connected.state.zoneId === previousZoneId ||
@@ -221,6 +231,13 @@ export class HouseRoom {
         this.sendSnapshot(id, id === accountId);
       }
     }
+    await this.checkpoints.save(accountId, player.state);
+    await this.publish(
+      accountId,
+      `zone-visited:${player.state.zoneId}`,
+      "world.zone_entered",
+      { zoneId: player.state.zoneId },
+    );
   }
 
   private sendSnapshot(accountId: string, transitioned = false): void {
@@ -270,6 +287,12 @@ export class HouseRoom {
           dialogue: interaction.dialogue,
         }),
       );
+      void this.publish(
+        accountId,
+        `interaction:${requestId}`,
+        "interaction.completed",
+        { interactionId },
+      );
       return;
     }
     if (interaction.capability === "encounter") {
@@ -289,6 +312,12 @@ export class HouseRoom {
           authorization,
           definitionId: interaction.definitionId,
         }),
+      );
+      void this.publish(
+        accountId,
+        `interaction:${requestId}`,
+        "interaction.completed",
+        { interactionId },
       );
       return;
     }
@@ -310,6 +339,32 @@ export class HouseRoom {
         ...result,
       }),
     );
+    if (result.status === "granted")
+      void this.publish(
+        accountId,
+        `interaction:${requestId}`,
+        "interaction.completed",
+        { interactionId },
+      );
+  }
+
+  private async publish(
+    ownerId: string,
+    id: string,
+    type: "world.zone_entered" | "interaction.completed",
+    attributes: Record<string, string>,
+  ): Promise<void> {
+    try {
+      await this.events.publish(ownerId, {
+        id,
+        type,
+        occurredAt: new Date().toISOString(),
+        attributes,
+      });
+    } catch {
+      // The gameplay action remains authoritative. Deterministic event IDs
+      // allow a later reconnect or command retry to repair quest progress.
+    }
   }
 
   private sendInteraction(

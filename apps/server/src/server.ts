@@ -11,22 +11,32 @@ import { createDatabaseProbe } from "./database.js";
 import { EncounterService } from "./encounters/encounter-service.js";
 import { HouseRoom, PrismaCheckpointStore } from "./world/house-room.js";
 import { PrismaInteractionStore } from "./world/interaction-store.js";
+import { QuestService } from "./quests/quest-service.js";
 
 const config = loadConfig(process.env);
 const prisma = new PrismaClient();
+const quests = new QuestService(prisma);
 const world = new HouseRoom(
   new PrismaCheckpointStore(prisma),
   true,
   new PrismaInteractionStore(prisma),
+  quests,
 );
-const battles = new BattleService(new PrismaBattleResultStore(prisma));
+const battles = new BattleService(new PrismaBattleResultStore(prisma, quests));
 const app = await buildApp({
   database: createDatabaseProbe(prisma),
   auth: new AuthService(new PrismaAuthRepository(prisma)),
   cookieSecure: config.NODE_ENV === "production",
   world,
   battles,
-  encounters: new EncounterService(prisma, battles),
+  encounters: new EncounterService(
+    prisma,
+    battles,
+    undefined,
+    undefined,
+    quests,
+  ),
+  quests,
 });
 
 const shutdown = () => {

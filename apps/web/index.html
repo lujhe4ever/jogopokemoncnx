@@ -56,6 +56,9 @@
           Aproxime-se de uma pessoa ou objeto e use E ou Interagir.
         </p>
         <button type="button" id="start-battle">Batalhar com treinador</button>
+        <button type="button" id="quest-journal-button">
+          Diário de missões
+        </button>
         <div id="touch-pad" aria-label="Controles de movimento">
           <button data-direction="up">▲</button>
           <div>
@@ -65,6 +68,24 @@
           </div>
           <button type="button" id="interact">Interagir</button>
         </div>
+      </section>
+      <section
+        id="quest-panel"
+        hidden
+        aria-labelledby="quest-journal-title"
+        aria-busy="false"
+      >
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow">JORNADA</p>
+            <h2 id="quest-journal-title">Diário de missões</h2>
+          </div>
+          <button type="button" id="close-quest-journal">
+            Voltar ao mundo
+          </button>
+        </div>
+        <p id="quest-status" role="status" aria-live="polite"></p>
+        <div id="quest-list"></div>
       </section>
       <section id="battle-panel" hidden aria-labelledby="battle-title">
         <h2 id="battle-title">Batalha de treinamento</h2>

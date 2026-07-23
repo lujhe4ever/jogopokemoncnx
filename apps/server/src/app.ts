@@ -9,6 +9,8 @@ import type { DatabaseProbe } from "./database.js";
 import { registerEncounterRoutes } from "./encounters/routes.js";
 import type { EncounterService } from "./encounters/encounter-service.js";
 import type { HouseRoom } from "./world/house-room.js";
+import { registerQuestRoutes } from "./quests/routes.js";
+import type { QuestService } from "./quests/quest-service.js";
 
 export interface AppDependencies {
   database: DatabaseProbe;
@@ -18,6 +20,7 @@ export interface AppDependencies {
   world?: HouseRoom;
   battles?: BattleService;
   encounters?: EncounterService;
+  quests?: QuestService;
 }
 
 export async function buildApp({
@@ -28,6 +31,7 @@ export async function buildApp({
   world,
   battles,
   encounters,
+  quests,
 }: AppDependencies) {
   const app = Fastify({
     logger,
@@ -40,6 +44,7 @@ export async function buildApp({
   if (auth && battles) registerBattleRoutes(app, auth, battles);
   if (auth && encounters && world)
     registerEncounterRoutes(app, auth, encounters, world);
+  if (auth && quests) registerQuestRoutes(app, auth, quests);
 
   app.get("/health", (request) => ({
     status: "ok",

@@ -11,6 +11,9 @@ const authPanel = document.querySelector<HTMLElement>("#auth-panel");
 const gamePanel = document.querySelector<HTMLElement>("#game-panel");
 const startBattleButton =
   document.querySelector<HTMLButtonElement>("#start-battle");
+const questJournalButton = document.querySelector<HTMLButtonElement>(
+  "#quest-journal-button",
+);
 
 function values() {
   if (!form) throw new Error("Formulário indisponível");
@@ -94,6 +97,12 @@ startBattleButton?.addEventListener("click", () => {
   void import("./battle-ui.js").then(({ startBattle }) => {
     return startBattle();
   });
+});
+
+questJournalButton?.addEventListener("click", () => {
+  void import("./quest-ui.js").then(({ openQuestJournal }) =>
+    openQuestJournal(),
+  );
 });
 
 window.addEventListener("lt:encounter", (event) => {
