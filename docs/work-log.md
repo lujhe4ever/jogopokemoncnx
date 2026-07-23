@@ -1249,3 +1249,28 @@ não selecionada impedem exposição externa. Nenhum deploy foi realizado.
 ### Próximo passo
 
 Revisar e integrar o PR #18 após a CI aprovada; depois reservar a Fase 17.
+
+## 2026-07-23 — Integração da Fase 16 e reserva da Fase 17
+
+### Contexto
+
+A CI #51 aprovou qualidade, auditoria e restauração isolada. O PR #18 foi integrado à
+`main` no commit `1cef026c3c6635a604fc6470e87ef94abde24b61`.
+
+### Escopo reservado
+
+- jornada interna integrada do cadastro ao ciclo jogável e arena;
+- roteiro reproduzível de alpha privado, sem convidados nesta execução;
+- telemetria mínima com privacidade e consentimento explícitos;
+- matriz de severidade, triagem e verificação de defeitos;
+- inventário final de licenças/procedência;
+- critérios objetivos para encerrar o alpha e decidir a próxima etapa.
+
+### Fora do escopo
+
+Deploy, VPS, DNS, certificados, segredos reais, convite de usuários, coleta real de
+telemetria e expansão de conteúdo.
+
+### Próximo passo
+
+Publicar o PR rascunho da Fase 17 e iniciar o ensaio integrado.

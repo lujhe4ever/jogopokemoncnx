@@ -2,7 +2,7 @@
 
 | Campo | Valor |
 | --- | --- |
-| Status do projeto | **Fase 16 — concluída na branch, aguardando revisão** |
+| Status do projeto | **Fase 17 — em andamento** |
 | Atualizado em | 2026-07-23 |
 | Implementação existente | Nenhuma |
 
@@ -47,7 +47,7 @@ Status permitidos:
 | 14 | Telões e transmissão de batalhas | concluído |
 | 15 | Painel administrativo | concluído |
 | 16 | Segurança, performance, testes e deploy | concluído |
-| 17 | Alpha privado e estabilização | não iniciado |
+| 17 | Alpha privado e estabilização | em andamento |
 
 ## 3. Fases
 
@@ -713,8 +713,9 @@ Validar requisitos não funcionais e preparar operação privada em VPS.
 - backup não restaurável;
 - dispositivo de teste não representativo.
 
-**Status:** **concluído na branch**, aguardando revisão no PR #18. O pacote de
-operação foi validado sem executar deploy.
+**Status:** **concluído** e integrado pelo PR #18 no commit
+`1cef026c3c6635a604fc6470e87ef94abde24b61`. O pacote de operação foi validado sem
+executar deploy.
 
 ### Fase 17 — Alpha privado e estabilização
 
@@ -751,10 +752,10 @@ Validar o ciclo completo com usuários autorizados e conteúdo permitido.
 - defeitos de progressão persistente;
 - telemetria excessiva.
 
-**Status:** **não iniciado**.
+**Status:** **em andamento** na branch `agent/fase-17-alpha-estabilizacao`, sem
+deploy ou usuários externos.
 
 ## 4. Gate para a próxima tarefa
 
-A única próxima tarefa recomendada é revisar e integrar o PR #18 após a CI aprovada.
-Depois da integração, reservar a Fase 17 sem executar deploy nem iniciar tráfego
-privado.
+A única próxima tarefa recomendada é concluir a jornada integrada, checklist de
+alpha, triagem e evidências da Fase 17, sem executar deploy nem convidar usuários.
