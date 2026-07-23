@@ -34,5 +34,6 @@ jobs:
           node-version: 24.14.0
           cache: pnpm
       - run: pnpm install --frozen-lockfile
+      - run: pnpm --filter @lt/server prisma:generate
       - run: pnpm --filter @lt/server db:migrate
       - run: pnpm check
