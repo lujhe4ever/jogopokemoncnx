@@ -639,3 +639,26 @@ Publicar o PR de reserva da Fase 5 antes de iniciar a implementação.
 ### Próximo passo
 
 Revisar e integrar o PR #6 após a CI aprovada.
+
+## 2026-07-23 — Integração da Fase 5 e reserva da Fase 6
+
+### Contexto
+
+O PR #6 passou no CI e foi integrado à `main` no commit
+`db2a7377f3c97abe29351d4501a5edf3f316c58b`.
+
+### Escopo reservado
+
+- interação contextual validada por proximidade;
+- NPC e diálogo declarativos;
+- itens, pickups e baús idempotentes;
+- inventário transacional com limites;
+- feedback visual acessível.
+
+### Fora do escopo
+
+Criaturas, progressão, batalha, missões completas, arena e deploy público.
+
+### Próximo passo
+
+Publicar o PR de reserva da Fase 6 antes de implementar o ciclo de interação.

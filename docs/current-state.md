@@ -5,9 +5,9 @@
 | Atualizado em | 2026-07-23 |
 | Repositório | `lujhe4ever/jogopokemoncnx` |
 | Branch principal | `main` |
-| Branch desta entrega | `agent/fase-5-mapas-transicoes` |
-| Fase | Fase 5 — mapas, zonas e transições |
-| Status | **concluída na branch — PR #6 aguardando revisão** |
+| Branch desta entrega | `agent/fase-6-npcs-itens` |
+| Fase | Fase 6 — NPCs, diálogos, itens e baús |
+| Status | **reservada — implementação em andamento** |
 
 ## 1. Resumo
 
@@ -100,8 +100,8 @@ continuam com o status registrado em `docs/decisions.md`.
 
 ## 9. Próxima tarefa recomendada
 
-Revisar e integrar o PR #6. Depois, iniciar exclusivamente a Fase 6: NPCs,
-diálogos, itens e baús.
+Implementar exclusivamente a Fase 6: interação por proximidade, NPCs orientados a
+capacidades, diálogo declarativo, pickups, baús e inventário transacional.
 
 ## 10. Instruções para reproduzir
 
