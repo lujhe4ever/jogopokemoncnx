@@ -191,6 +191,16 @@ O domínio usa IDs neutros. Nenhum nome ou sprite específico é requisito da en
 - **[P]** Item consumido e criatura criada pertencem à mesma operação atômica.
 - **[A]** Fórmula, condições e recursos consumidos na captura.
 
+Baseline aprovada para a Fase 9:
+
+- captura exige vitória na batalha vinculada ao encontro;
+- cada tentativa consome um `item:capture-orb`;
+- chance base de 35%, acrescida de até 50 pontos percentuais conforme o alvo é
+  enfraquecido, limitada a 85%;
+- a seed do encontro decide a tentativa no servidor;
+- item, resultado e eventual criatura são persistidos na mesma transação;
+- falha, timeout, abandono ou desconexão encerram o encontro com retorno seguro.
+
 ### 8.3 Treinamento, progressão e evolução
 
 - **[R]** Criaturas podem ser treinadas e evoluir.

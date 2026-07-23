@@ -54,6 +54,7 @@ Ao aceitar ou mudar uma decisão:
 | D-011 | Inventário limitado e recompensas idempotentes | Aceita |
 | D-012 | Progressão por catálogo versionado | Aceita |
 | D-013 | Batalha NPC determinística e isolada | Aceita |
+| D-014 | Captura pós-batalha atômica e determinística | Aceita |
 
 ## 3. Registro cronológico
 
@@ -381,6 +382,25 @@ Ao aceitar ou mudar uma decisão:
   o mundo não pode importar internals de batalha.
 - **Evidência de aprovação:** testes cobrem replay, seed, sequência, idempotência,
   timeout, desconexão e fronteira arquitetural.
+
+### D-014 — Captura pós-batalha atômica e determinística
+
+- **Data:** 2026-07-23
+- **Status:** Aceita para o primeiro fluxo de captura
+- **Contexto:** encontro, batalha, item e criação da criatura não podem divergir nem
+  duplicar em retry ou concorrência.
+- **Decisão:** o mundo emite autorização efêmera e descartável após validar
+  proximidade. Captura exige vitória na batalha vinculada, Orbe de Captura e seed
+  persistida. Chance = 35% + bônus de enfraquecimento de até 50%, limitada a 85%.
+- **Atomicidade:** consumo do item, resultado do encontro e criação da criatura
+  pertencem à mesma transação serializável; `captureRequestId`, `battleId` e criatura
+  capturada possuem restrições únicas.
+- **Retorno seguro:** falha, timeout, abandono, desconexão ou opção de não capturar
+  encerram o encontro como `escaped`.
+- **Consequências:** outros itens, condições e fórmulas exigirão catálogo/regra
+  versionada; o mundo não importa internals de captura.
+- **Evidência de aprovação:** testes cobrem elegibilidade, seed, chance, consumo único,
+  criação única e autorização descartável; CI aplica as restrições no PostgreSQL.
 
 ## 4. Próximas decisões a revisar
 

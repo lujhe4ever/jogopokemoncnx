@@ -6,6 +6,7 @@
     { "path": "./packages/engine-core" },
     { "path": "./packages/game-simulation" },
     { "path": "./packages/creature-domain" },
-    { "path": "./packages/battle-domain" }
+    { "path": "./packages/battle-domain" },
+    { "path": "./packages/encounter-domain" }
   ]
 }

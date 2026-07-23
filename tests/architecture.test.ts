@@ -23,9 +23,12 @@ describe("architecture boundaries", () => {
   it("keeps pure domains independent from frameworks and Node APIs", async () => {
     const files = (
       await Promise.all(
-        ["engine-core", "battle-domain", "creature-domain"].map((name) =>
-          sourceFiles(`packages/${name}/src`),
-        ),
+        [
+          "engine-core",
+          "battle-domain",
+          "creature-domain",
+          "encounter-domain",
+        ].map((name) => sourceFiles(`packages/${name}/src`)),
       )
     ).flat();
     const violations: string[] = [];

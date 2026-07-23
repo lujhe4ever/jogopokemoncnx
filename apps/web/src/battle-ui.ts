@@ -1,6 +1,6 @@
 type BattleAction = "strike" | "guard";
 
-interface BattleState {
+export interface BattleState {
   id: string;
   turn: number;
   expectedSequence: number;
@@ -33,6 +33,8 @@ const actionButtons = [
 ];
 let active: BattleState | undefined;
 let timeout: number | undefined;
+let onFinished: ((state: BattleState) => void) | undefined;
+let finishedNotified = false;
 
 async function post(path: string, body?: object) {
   const init: RequestInit = {
@@ -45,6 +47,12 @@ async function post(path: string, body?: object) {
   }
   const response = await fetch(`/api${path}`, init);
   if (!response.ok) throw new Error("Falha ao comunicar com a batalha");
+  return response.json() as Promise<unknown>;
+}
+
+async function get(path: string) {
+  const response = await fetch(`/api${path}`, { credentials: "include" });
+  if (!response.ok) throw new Error("Falha ao carregar a batalha");
   return response.json() as Promise<unknown>;
 }
 
@@ -105,6 +113,10 @@ function render(state: BattleState, message?: string) {
     timeout = window.setTimeout(() => {
       void choose("strike");
     }, 30_100);
+  else if (!finishedNotified) {
+    finishedNotified = true;
+    onFinished?.(state);
+  }
 }
 
 async function choose(action: BattleAction) {
@@ -127,8 +139,18 @@ async function abandon() {
   render(stateFrom(value));
 }
 
-export async function startBattle() {
-  const state = stateFrom(await post("/battles"));
+export async function startBattle(
+  battleId?: string,
+  finished?: (state: BattleState) => void,
+) {
+  onFinished = finished;
+  finishedNotified = false;
+  const capture =
+    document.querySelector<HTMLButtonElement>("#capture-creature");
+  if (capture) capture.hidden = true;
+  const state = stateFrom(
+    battleId ? await get(`/battles/${battleId}`) : await post("/battles"),
+  );
   if (gamePanel) gamePanel.hidden = true;
   if (battlePanel) battlePanel.hidden = false;
   render(state);

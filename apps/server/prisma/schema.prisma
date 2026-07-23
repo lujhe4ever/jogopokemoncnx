@@ -26,6 +26,7 @@ model Account {
   creatures    Creature[]
   progression  CreatureProgressionEvent[]
   battles      BattleRecord[]
+  encounters   EncounterRecord[]
 }
 
 model BattleRecord {
@@ -38,8 +39,32 @@ model BattleRecord {
   finishedAt       DateTime?
   ownerId          String
   owner            Account   @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+  encounter        EncounterRecord?
 
   @@index([ownerId])
+}
+
+model EncounterRecord {
+  id                 String    @id
+  zoneId             String
+  definitionId       String
+  definitionVersion  Int
+  catalogVersion     Int
+  seed               Int
+  status             String    @default("battling")
+  captureRequestId   String?
+  captureSucceeded   Boolean?
+  createdAt          DateTime  @default(now())
+  completedAt        DateTime?
+  ownerId            String
+  battleId           String    @unique
+  capturedCreatureId String?   @unique
+  owner              Account   @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+  battle             BattleRecord @relation(fields: [battleId], references: [id], onDelete: Cascade)
+  capturedCreature   Creature? @relation("CapturedCreature", fields: [capturedCreatureId], references: [id], onDelete: SetNull)
+
+  @@unique([ownerId, captureRequestId])
+  @@index([ownerId, status])
 }
 
 model Creature {
@@ -55,6 +80,7 @@ model Creature {
   ownerId           String
   owner             Account  @relation(fields: [ownerId], references: [id], onDelete: Cascade)
   progression       CreatureProgressionEvent[]
+  capturedFrom      EncounterRecord? @relation("CapturedCreature")
 
   @@unique([ownerId, teamSlot])
   @@index([ownerId])

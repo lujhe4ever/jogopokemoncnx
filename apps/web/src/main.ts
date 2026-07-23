@@ -95,3 +95,19 @@ startBattleButton?.addEventListener("click", () => {
     return startBattle();
   });
 });
+
+window.addEventListener("lt:encounter", (event) => {
+  const detail =
+    event instanceof CustomEvent ? (event.detail as unknown) : undefined;
+  if (
+    typeof detail !== "object" ||
+    detail === null ||
+    !("authorization" in detail) ||
+    typeof detail.authorization !== "string"
+  )
+    return;
+  const authorization = detail.authorization;
+  void import("./encounter-ui.js").then(({ startEncounter }) =>
+    startEncounter(authorization),
+  );
+});

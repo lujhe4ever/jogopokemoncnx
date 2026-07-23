@@ -793,3 +793,54 @@ Publicar o PR de reserva da Fase 8 antes de implementar a batalha.
 ### Próximo passo
 
 Revisar e integrar o PR #9 após a CI aprovada.
+
+## 2026-07-23 — Integração da Fase 8 e reserva da Fase 9
+
+### Contexto
+
+O PR #9 passou no CI e foi integrado à `main` no commit
+`91bbb1b1f80c5e0cf0110f6324625e1cfe114da9`.
+
+### Escopo reservado
+
+- encontro gerado e validado pelo servidor;
+- transição explícita entre mundo, batalha e captura;
+- elegibilidade e RNG de captura controláveis;
+- consumo de item e criação da criatura em operação atômica;
+- resultado idempotente e retorno seguro.
+
+### Fora do escopo
+
+Missões, arena, PvP, chat, administração e deploy público.
+
+### Próximo passo
+
+Publicar o PR de reserva da Fase 9 antes de implementar o fluxo.
+
+## 2026-07-23 — Encontros e captura da Fase 9
+
+### Resultado
+
+- encontro selvagem original adicionado à clareira;
+- servidor valida proximidade antes de emitir autorização efêmera de 15 segundos;
+- autorização é descartável e vincula o encontro à zona e à conta;
+- encontro cria e referencia uma batalha explícita;
+- captura exige vitória, Orbe de Captura e RNG derivado da seed persistida;
+- item, resultado e eventual criatura são gravados atomicamente;
+- retries retornam o resultado anterior sem novo consumo ou criatura;
+- falha, timeout, abandono, desconexão e recusa retornam ao mundo com estado seguro;
+- UI de encontro/captura permanece carregada sob demanda.
+
+### Testes e verificações
+
+- `pnpm check`: 11 arquivos e 32 testes aprovados;
+- captura antes da vitória ou com item incorreto é rejeitada;
+- chance aumenta com enfraquecimento e respeita teto de 85%;
+- seed reproduz tentativa equivalente;
+- planejamento de retry não consome item nem cria segunda criatura;
+- autorização de proximidade funciona uma vez;
+- schema Prisma válido e migração preparada para CI.
+
+### Próximo passo
+
+Revisar e integrar o PR #10 após a CI aprovada.

@@ -6,6 +6,8 @@ import type { AuthService } from "./auth/service.js";
 import { registerBattleRoutes } from "./battles/routes.js";
 import type { BattleService } from "./battles/battle-service.js";
 import type { DatabaseProbe } from "./database.js";
+import { registerEncounterRoutes } from "./encounters/routes.js";
+import type { EncounterService } from "./encounters/encounter-service.js";
 import type { HouseRoom } from "./world/house-room.js";
 
 export interface AppDependencies {
@@ -15,6 +17,7 @@ export interface AppDependencies {
   logger?: boolean;
   world?: HouseRoom;
   battles?: BattleService;
+  encounters?: EncounterService;
 }
 
 export async function buildApp({
@@ -24,6 +27,7 @@ export async function buildApp({
   logger = true,
   world,
   battles,
+  encounters,
 }: AppDependencies) {
   const app = Fastify({
     logger,
@@ -34,6 +38,8 @@ export async function buildApp({
   await app.register(websocket);
   if (auth) await registerAuthRoutes(app, auth, cookieSecure);
   if (auth && battles) registerBattleRoutes(app, auth, battles);
+  if (auth && encounters && world)
+    registerEncounterRoutes(app, auth, encounters, world);
 
   app.get("/health", (request) => ({
     status: "ok",

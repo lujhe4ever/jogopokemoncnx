@@ -143,4 +143,34 @@ describe("contextual interactions", () => {
     expect(canAddReward(null, 0, 100)).toBe(false);
     expect(canAddReward(null, 0, 0)).toBe(false);
   });
+
+  it("issues a short-lived encounter authorization only from proximity", async () => {
+    const socket = new FakeSocket();
+    const room = new HouseRoom(
+      new MemoryCheckpoints(state("meadow", 540, 130)),
+      false,
+    );
+    await room.connect(socket, "player");
+    socket.input({
+      type: "interact",
+      requestId: "encounter-1",
+      interactionId: "encounter:nightleaf-01",
+    });
+    await new Promise((resolve) => setImmediate(resolve));
+    const result = JSON.parse(socket.sent.at(-1) ?? "{}") as {
+      status?: string;
+      authorization?: string;
+    };
+    expect(result.status).toBe("encounter_available");
+    expect(result.authorization).toMatch(
+      /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/u,
+    );
+    expect(
+      room.consumeEncounterAuthorization("player", result.authorization ?? ""),
+    ).toBe("meadow");
+    expect(
+      room.consumeEncounterAuthorization("player", result.authorization ?? ""),
+    ).toBeNull();
+    await room.close();
+  });
 });

@@ -52,6 +52,9 @@ importers:
       "@lt/creature-domain":
         specifier: workspace:*
         version: link:../../packages/creature-domain
+      "@lt/encounter-domain":
+        specifier: workspace:*
+        version: link:../../packages/encounter-domain
       "@lt/engine-core":
         specifier: workspace:*
         version: link:../../packages/engine-core
@@ -97,6 +100,8 @@ importers:
   packages/battle-domain: {}
 
   packages/creature-domain: {}
+
+  packages/encounter-domain: {}
 
   packages/engine-core: {}
 
