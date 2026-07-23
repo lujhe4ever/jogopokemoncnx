@@ -1127,7 +1127,14 @@ Durante a conclusão do catálogo, o PR #13 foi integrado à `main` no commit
 - branch `codex/pokemon-canonical-full` atualizada por merge, sem force-push;
 - histórico completo das Fases 11 e 12 preservado;
 - documentação do catálogo atualizada para o novo estado compartilhado;
-- validação integral do catálogo será repetida sobre a base combinada.
+- validação integral do catálogo repetida sobre a base combinada.
+
+### Testes e verificações
+
+- `pnpm check`: aprovado;
+- 18 arquivos de teste e 53 testes aprovados;
+- lint, TypeScript e builds do servidor/cliente aprovados;
+- aviso não bloqueante: chunk `game` do Vite acima de 500 kB.
 
 ### Próximo passo
 
