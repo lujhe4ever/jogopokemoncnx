@@ -633,14 +633,30 @@ backup, migração e rollback precede o primeiro deploy externo.
 
 ## 19. Roadmap por fatias autorizáveis
 
-Cada fase termina com demonstração, evidências e pausa.
+Cada fase termina com demonstração, evidências e pausa. Esta seção preserva o
+roadmap macro da baseline. O detalhamento executável, a numeração operacional e o
+status corrente pertencem a `docs/roadmap.md`; esse detalhamento pode dividir uma
+macrofase em fatias menores, mas não pode alterar os limites arquiteturais daqui sem
+registrar a decisão correspondente.
 
-### Fase 0 — Baseline arquitetural
+### Fase 0A — Baseline arquitetural
 
 - conectar o repositório;
 - confirmar o estado existente;
 - criar somente `architecture.md`;
-- revisar e aprovar decisões antes de scaffold.
+- registrar D-001 a D-010 como propostas antes de qualquer scaffold.
+
+Essa entrega foi concluída isoladamente no primeiro commit do repositório.
+
+### Fase 0B — Governança e continuidade colaborativa
+
+- criar `AGENTS.md` e a documentação operacional em `docs/`;
+- separar baseline normativa, roadmap detalhado, design, decisões, estado e histórico;
+- definir o handoff entre duas pessoas e duas IAs;
+- revisar as propostas técnicas exigidas pela Fase 1 antes de qualquer scaffold.
+
+Fase 0B amplia a governança documental; não reabre nem invalida o critério histórico
+de que a Fase 0A continha somente `architecture.md`.
 
 ### Fase 1 — Fundação do monorepo
 
@@ -747,6 +763,8 @@ análise de alternativas ganharão ADRs em suas fases de implementação.
 
 ## 23. Critérios de aceite da Fase 0
 
+### 23.1 Fase 0A — baseline arquitetural
+
 - O primeiro commit contém somente `architecture.md`.
 - Nenhum scaffold, dependência, asset ou código funcional foi criado.
 - Objetivos, não objetivos, limites e dependências permitidas estão documentados.
@@ -759,4 +777,14 @@ análise de alternativas ganharão ADRs em suas fases de implementação.
   privado.
 - A próxima fase permanece bloqueada até revisão e autorização explícita.
 
+### 23.2 Fase 0B — governança colaborativa
 
+- `AGENTS.md` e os documentos obrigatórios em `docs/` existem e têm responsabilidades
+  não conflitantes.
+- O roadmap detalhado distingue requisito, proposta, status e critério de aceite.
+- `docs/current-state.md` e `docs/work-log.md` permitem retomar o projeto apenas pelo
+  estado publicado no GitHub.
+- D-001 a D-010 permanecem propostas até aprovação explícita do proprietário.
+- Nenhum scaffold, dependência, asset ou código funcional é criado.
+- Merge da documentação e início da Fase 1 continuam bloqueados até revisão e
+  autorização explícita.
