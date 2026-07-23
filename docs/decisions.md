@@ -505,16 +505,17 @@ Ao aceitar ou mudar uma decisão:
 - **Evidência de aprovação:** testes cobrem allowlist, replay, fallback para snapshot,
   rejeição de espectador e 100 atualizações para 20 sockets dentro do orçamento local.
 
-### D-020 — Publicação excepcional dos sprites frontais com direitos duvidosos
+### D-020 — Publicação excepcional dos sprites de batalha com direitos duvidosos
 
 - **Data:** 2026-07-23
 - **Status:** Aceita por instrução explícita do proprietário
-- **Contexto:** o pack possui 1.025 sprites frontais reais obtidos da revisão fixa do
+- **Contexto:** o pack possui 4.100 sprites reais obtidos da revisão fixa do
   repositório `PokeAPI/sprites`. A fonte aplica CC0, mas também atribui os direitos
   das imagens à The Pokémon Company e não demonstra autoridade clara para
   relicenciar esse conteúdo.
-- **Decisão:** publicar exatamente um PNG frontal padrão por espécie, mantendo a
-  fonte, revisão, créditos, SHA-256, dimensões e estado `doubtful` em cada inventário.
+- **Decisão:** publicar frente normal, frente shiny, costas normal e costas shiny de
+  cada espécie, mantendo fonte, revisão, créditos, SHA-256, dimensões e estado
+  `doubtful` em cada inventário.
 - **Limite:** a decisão do proprietário autoriza a inclusão no repositório, mas não
   é tratada como licença dos titulares nem muda qualquer asset para `approved`.
 - **Integração:** os arquivos permanecem desacoplados da engine e não são carregados

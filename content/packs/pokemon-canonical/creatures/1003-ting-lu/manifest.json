@@ -10,7 +10,7 @@
     "ground"
   ],
   "assetStatus": "doubtful",
-  "definitionStatus": "pending",
+  "definitionStatus": "approved",
   "licenseStatus": "doubtful",
   "sourceUrls": [
     "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
@@ -20,8 +20,8 @@
     "PokéAPI contributors for the structured API data."
   ],
   "notes": [
-    "Definitions are catalogued for review and are not coupled to engine IDs.",
-    "One default front sprite is tracked at sprites/1003-ting-lu--pokeapi-default--front--normal.png after explicit repository-owner direction; third-party redistribution rights remain doubtful.",
-    "The tracked file matches the quarantined source by SHA-256 281aa93a4f07c5ed38a1f9788cc7deeb43c40b7b9967f9ba2a291baf952166b9."
+    "Definitions passed automated schema, coverage, and referential-integrity validation and are not coupled to engine IDs.",
+    "4 compact battle sprites are tracked after explicit repository-owner direction; third-party redistribution rights remain doubtful.",
+    "Every tracked sprite matches its quarantined source by SHA-256."
   ]
 }

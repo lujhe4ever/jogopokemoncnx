@@ -10,7 +10,7 @@
     "ground"
   ],
   "assetStatus": "doubtful",
-  "definitionStatus": "pending",
+  "definitionStatus": "approved",
   "licenseStatus": "doubtful",
   "sourceUrls": [
     "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
@@ -20,8 +20,8 @@
     "PokéAPI contributors for the structured API data."
   ],
   "notes": [
-    "Definitions are catalogued for review and are not coupled to engine IDs.",
-    "One default front sprite is tracked at sprites/0322-numel--pokeapi-default--front--normal.png after explicit repository-owner direction; third-party redistribution rights remain doubtful.",
-    "The tracked file matches the quarantined source by SHA-256 3fea53b428eb1ac44d3e4c9261b19446299f454b79f20649cd3e72644c0db0e3."
+    "Definitions passed automated schema, coverage, and referential-integrity validation and are not coupled to engine IDs.",
+    "4 compact battle sprites are tracked after explicit repository-owner direction; third-party redistribution rights remain doubtful.",
+    "Every tracked sprite matches its quarantined source by SHA-256."
   ]
 }

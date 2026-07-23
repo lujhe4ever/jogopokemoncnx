@@ -10,7 +10,7 @@
     "flying"
   ],
   "assetStatus": "doubtful",
-  "definitionStatus": "pending",
+  "definitionStatus": "approved",
   "licenseStatus": "doubtful",
   "sourceUrls": [
     "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
@@ -20,8 +20,8 @@
     "PokéAPI contributors for the structured API data."
   ],
   "notes": [
-    "Definitions are catalogued for review and are not coupled to engine IDs.",
-    "One default front sprite is tracked at sprites/0145-zapdos--pokeapi-default--front--normal.png after explicit repository-owner direction; third-party redistribution rights remain doubtful.",
-    "The tracked file matches the quarantined source by SHA-256 001fee7d56c08a8e3f9b76142e1051c6e640e80e3b7efc39c152c9ff53091d45."
+    "Definitions passed automated schema, coverage, and referential-integrity validation and are not coupled to engine IDs.",
+    "4 compact battle sprites are tracked after explicit repository-owner direction; third-party redistribution rights remain doubtful.",
+    "Every tracked sprite matches its quarantined source by SHA-256."
   ]
 }

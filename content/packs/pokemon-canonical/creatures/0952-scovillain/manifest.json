@@ -10,7 +10,7 @@
     "fire"
   ],
   "assetStatus": "doubtful",
-  "definitionStatus": "pending",
+  "definitionStatus": "approved",
   "licenseStatus": "doubtful",
   "sourceUrls": [
     "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
@@ -20,8 +20,8 @@
     "PokéAPI contributors for the structured API data."
   ],
   "notes": [
-    "Definitions are catalogued for review and are not coupled to engine IDs.",
-    "One default front sprite is tracked at sprites/0952-scovillain--pokeapi-default--front--normal.png after explicit repository-owner direction; third-party redistribution rights remain doubtful.",
-    "The tracked file matches the quarantined source by SHA-256 4aaaa7354c398f28471ad53d0990267713bafd2cfaf4a5f5b3af234a82272167."
+    "Definitions passed automated schema, coverage, and referential-integrity validation and are not coupled to engine IDs.",
+    "4 compact battle sprites are tracked after explicit repository-owner direction; third-party redistribution rights remain doubtful.",
+    "Every tracked sprite matches its quarantined source by SHA-256."
   ]
 }

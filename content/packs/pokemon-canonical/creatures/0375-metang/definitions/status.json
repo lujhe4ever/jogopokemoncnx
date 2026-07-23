@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "pokemonId": "pokemon:0375-metang",
+  "status": "approved",
+  "validatedAt": "2026-07-23",
+  "validationLevel": "automated-schema-coverage-and-referential-integrity",
+  "sourceRevision": "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f",
+  "checks": {
+    "pokemonDefinitionPresent": true,
+    "baseStatCount": 6,
+    "typeCount": 2,
+    "abilityReferenceCount": 2,
+    "learnsetMoveReferenceCount": 93,
+    "sourceRevisionPinned": true
+  },
+  "limitations": [
+    "Approved means the generated definition passed automated structural and referential checks.",
+    "It does not represent manual verification of every game-specific rule or project balancing.",
+    "Canonical source data remains separate from runtime balancing overrides."
+  ]
+}

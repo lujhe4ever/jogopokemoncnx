@@ -13,7 +13,7 @@
 
 As Fases 0B a 14 foram integradas à `main`. Esta branch adiciona um catálogo separado
 para metadados canônicos de Pokémon e inventário de assets. O proprietário autorizou
-expressamente a publicação dos 1.025 sprites frontais mantidos em quarentena local;
+expressamente a publicação de 4.100 sprites compactos mantidos em quarentena local;
 a incerteza sobre os direitos de redistribuição permanece registrada.
 
 O projeto possui workspace TypeScript, servidor Fastify, cliente Vite/Phaser,
@@ -71,8 +71,9 @@ casa, clareira original, transições autoritativas e o primeiro ciclo de intera
 - catálogo canônico separado com 1.025 espécies, 937 golpes e 373 habilidades;
 - learnsets por versão, método, nível e máquina, ligados a catálogos normalizados;
 - 43.383 sprites e 10.421 animações inventariados com revisão de origem fixa;
-- 1.025 sprites frontais reais verificados em quarentena local ignorada pelo Git;
-- nenhum binário de terceiros incluído ou carregado pela engine.
+- 4.100 sprites de batalha verificados e publicados, quatro por espécie;
+- 1.025 definições com status `approved` por validação automatizada;
+- nenhum sprite carregado pela engine.
 - chat efêmero com autoria, timestamp e ID gerados pelo servidor;
 - mensagens normalizadas, limitadas a 160 caracteres, sem URL/controle e com rate limit;
 - requisições deduplicadas e histórico apenas em memória/DOM limitado a 50 itens;
@@ -155,7 +156,7 @@ pnpm check
 - validação do schema Prisma;
 - migrações aplicadas em PostgreSQL vazio pela CI;
 - nenhum segredo incluído;
-- 1.025 sprites frontais de terceiros incluídos por instrução explícita do
+- 4.100 sprites de terceiros incluídos por instrução explícita do
   proprietário, todos marcados com direitos `doubtful`.
 
 ## 7. Limitações e riscos
@@ -165,7 +166,7 @@ pnpm check
 - parâmetros Argon2id precisam ser reavaliados em hardware de produção;
 - não existe envio de e-mail, recuperação de senha ou MFA;
 - o repositório permanece público;
-- 1.025 sprites frontais foram publicados no pack e preservados também em
+- 4.100 sprites de batalha foram publicados no pack e preservados também em
   `.private/`;
 - nenhuma coleção de sprites está aprovada para redistribuição;
 - nenhum deploy foi realizado.
@@ -177,8 +178,8 @@ continuam com o status registrado em `docs/decisions.md`.
 
 ## 9. Próxima tarefa recomendada
 
-Revisar a expansão do catálogo Pokémon canônico e a publicação explicitamente
-autorizada dos 1.025 sprites frontais, sem ligar os assets ao runtime nesta etapa.
+Revisar a expansão do catálogo Pokémon canônico, os 4.100 sprites publicados e o
+status automatizado das 1.025 definições, sem ligar os assets ao runtime.
 
 ## 10. Instruções para reproduzir
 
@@ -280,3 +281,33 @@ Risco aceito:
 - a autorização do proprietário do repositório não é apresentada como licença da
   Nintendo, Game Freak ou The Pokémon Company;
 - os arquivos não foram ligados ao runtime nesta etapa.
+
+## 14. Atualização 2026-07-23 - Coleção compacta e status das definições
+
+Escopo concluído:
+
+- coleção uniforme ampliada de 1 para 4 sprites por espécie;
+- frente normal, frente shiny, costas normal e costas shiny para todos os 1.025
+  Pokémon;
+- 4.100 PNGs publicados, totalizando 4.010.860 bytes;
+- 4.100 arquivos comparados com a quarentena e seus SHA-256, com zero erros;
+- `definitions/status.json` criado para cada espécie;
+- 1.025 definições marcadas como `approved` após validação automatizada de schema,
+  cobertura e referências;
+- manifesto do pack registra `approvedDefinitionCount: 1025`;
+- gerador reproduzível atualizado para `--publish-battle-sprites`.
+
+Limites:
+
+- `approved` não significa revisão manual de toda regra de cada jogo;
+- dados de balanceamento do projeto continuam separados dos dados canônicos;
+- sprites permanecem `doubtful` e desacoplados do runtime;
+- animações, sons e variantes específicas de jogos continuam somente inventariados.
+
+Verificações:
+
+- 4.100 sprites, quatro variantes por espécie, zero ausências ou divergências;
+- 1.025 arquivos de status coerentes com os manifests;
+- teste específico do catálogo: 4 testes aprovados;
+- `pnpm check`: 21 arquivos de teste e 62 testes aprovados;
+- formatação, lint, TypeScript e builds aprovados.

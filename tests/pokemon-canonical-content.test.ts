@@ -34,6 +34,7 @@ interface PackManifest {
     animationCandidateCount: number;
     localPrivateSpriteCount: number;
     mediaImportedCount: number;
+    approvedDefinitionCount: number;
   };
   creatures: PokemonSummary[];
 }
@@ -102,6 +103,24 @@ interface PokemonDefinition {
   abilities: Array<{ slug: string; slot: number; isHidden: boolean }>;
 }
 
+interface DefinitionStatus {
+  schemaVersion: number;
+  pokemonId: string;
+  status: ApprovalStatus;
+  validatedAt: string;
+  validationLevel: string;
+  sourceRevision: string;
+  checks: {
+    pokemonDefinitionPresent: boolean;
+    baseStatCount: number;
+    typeCount: number;
+    abilityReferenceCount: number;
+    learnsetMoveReferenceCount: number;
+    sourceRevisionPinned: boolean;
+  };
+  limitations: string[];
+}
+
 interface MediaInventory {
   mediaImportedCount: number;
   statusSummary: Record<ApprovalStatus, number>;
@@ -121,6 +140,7 @@ interface MediaInventory {
       height: number;
     };
     repositoryAsset?: {
+      variantId: string;
       repositoryPath: string;
       sha256: string;
       bytes: number;
@@ -142,12 +162,20 @@ interface GenerationReport {
   animationCandidateCount: number;
   privateSpriteCount: number;
   mediaFilesTracked: number;
+  approvedDefinitionCount: number;
 }
 
 const packDirectory = path.join("content", "packs", "pokemon-canonical");
 const expectedSpeciesCount = 1025;
 const expectedMoveCount = 937;
 const expectedAbilityCount = 373;
+const expectedPublishedSpriteCount = expectedSpeciesCount * 4;
+const expectedDefinitionFiles = [
+  "abilities.json",
+  "moves.json",
+  "pokemon.json",
+  "status.json",
+];
 const expectedCreatureFiles = [
   "README.md",
   "animations",
@@ -193,7 +221,9 @@ describe("pokemon canonical catalog", () => {
     );
 
     expect(manifest.schemaVersion).toBe(2);
-    expect(manifest.completionStatus).toBe("complete-metadata-front-sprites");
+    expect(manifest.completionStatus).toBe(
+      "complete-definitions-battle-sprites",
+    );
     expect(manifest.licenseStatus).toBe("doubtful");
     expect(manifest.source.sourceRevision).toMatch(/^[0-9a-f]{40}$/);
     expect(manifest.spriteSource.sourceRevision).toMatch(/^[0-9a-f]{40}$/);
@@ -206,8 +236,13 @@ describe("pokemon canonical catalog", () => {
     expect(manifest.scope.speciesCount).toBe(expectedSpeciesCount);
     expect(manifest.scope.moveCount).toBe(expectedMoveCount);
     expect(manifest.scope.abilityCount).toBe(expectedAbilityCount);
-    expect(manifest.scope.localPrivateSpriteCount).toBe(expectedSpeciesCount);
-    expect(manifest.scope.mediaImportedCount).toBe(expectedSpeciesCount);
+    expect(manifest.scope.localPrivateSpriteCount).toBe(
+      expectedPublishedSpriteCount,
+    );
+    expect(manifest.scope.mediaImportedCount).toBe(
+      expectedPublishedSpriteCount,
+    );
+    expect(manifest.scope.approvedDefinitionCount).toBe(expectedSpeciesCount);
     expect(manifest.scope.spriteCandidateCount).toBeGreaterThan(40_000);
     expect(manifest.scope.animationCandidateCount).toBeGreaterThan(10_000);
 
@@ -240,8 +275,9 @@ describe("pokemon canonical catalog", () => {
       speciesCount: expectedSpeciesCount,
       moveCount: expectedMoveCount,
       abilityCount: expectedAbilityCount,
-      privateSpriteCount: expectedSpeciesCount,
-      mediaFilesTracked: expectedSpeciesCount,
+      privateSpriteCount: expectedPublishedSpriteCount,
+      mediaFilesTracked: expectedPublishedSpriteCount,
+      approvedDefinitionCount: expectedSpeciesCount,
     });
   });
 
@@ -267,10 +303,31 @@ describe("pokemon canonical catalog", () => {
         `pokemon:${String(creature.nationalDexNumber).padStart(4, "0")}-${creature.slug}`,
       );
       expect(creature.assetStatus).toBe("doubtful");
-      expect(creature.definitionStatus).toBe("pending");
+      expect(creature.definitionStatus).toBe("approved");
       expect(creature.licenseStatus).toBe("doubtful");
       expect(creature.localQuarantineVerified).toBe(true);
       expect(creature.spriteCandidates).toBeGreaterThan(0);
+
+      const definitionDirectory = path.join(creatureDirectory, "definitions");
+      expect((await readdir(definitionDirectory)).sort()).toEqual(
+        expectedDefinitionFiles,
+      );
+      const definitionStatus = await readJson<DefinitionStatus>(
+        path.join(definitionDirectory, "status.json"),
+      );
+      expect(definitionStatus).toMatchObject({
+        schemaVersion: 1,
+        pokemonId: creature.id,
+        status: "approved",
+        validationLevel: "automated-schema-coverage-and-referential-integrity",
+        sourceRevision: manifest.source.sourceRevision,
+        checks: {
+          pokemonDefinitionPresent: true,
+          baseStatCount: 6,
+          sourceRevisionPinned: true,
+        },
+      });
+      expect(definitionStatus.limitations.length).toBeGreaterThan(0);
     }
   });
 
@@ -347,7 +404,7 @@ describe("pokemon canonical catalog", () => {
     }
   });
 
-  it("publishes one owner-directed front sprite per species with audited hashes", async () => {
+  it("publishes four owner-directed battle sprites per species with audited hashes", async () => {
     const manifest = await readJson<PackManifest>(
       path.join(packDirectory, "manifest.json"),
     );
@@ -355,7 +412,7 @@ describe("pokemon canonical catalog", () => {
 
     expect(gitignore).toContain(".private/");
     const mediaFiles = await findMediaFiles(packDirectory);
-    expect(mediaFiles).toHaveLength(expectedSpeciesCount);
+    expect(mediaFiles).toHaveLength(expectedPublishedSpriteCount);
     expect(
       mediaFiles.every(
         (filePath) =>
@@ -375,9 +432,11 @@ describe("pokemon canonical catalog", () => {
       const animations = await readJson<MediaInventory>(
         path.join(packDirectory, creature.path, "animations", "inventory.json"),
       );
-      const published = sprites.entries.find((entry) => entry.repositoryAsset);
+      const published = sprites.entries.filter(
+        (entry) => entry.repositoryAsset,
+      );
 
-      expect(sprites.mediaImportedCount).toBe(1);
+      expect(sprites.mediaImportedCount).toBe(4);
       expect(animations.mediaImportedCount).toBe(0);
       expect(sprites.statusSummary.approved).toBe(0);
       expect(animations.statusSummary.approved).toBe(0);
@@ -390,30 +449,37 @@ describe("pokemon canonical catalog", () => {
             ["pending", "doubtful", "quarantined"].includes(entry.status),
         ),
       ).toBe(true);
-      expect(published?.status).toBe("doubtful");
-      expect(published?.localQuarantine?.localOnly).toBe(true);
-      expect(typeof published?.localQuarantine?.bytes).toBe("number");
-      expect(typeof published?.localQuarantine?.width).toBe("number");
-      expect(typeof published?.localQuarantine?.height).toBe("number");
-      expect(published?.localQuarantine?.relativePrivatePath).toMatch(
-        /^\.private\/pokemon-canonical\//,
-      );
-      expect(published?.localQuarantine?.sha256).toMatch(/^[0-9a-f]{64}$/);
-      expect(published?.repositoryAsset?.rightsStatus).toBe("doubtful");
-      expect(published?.repositoryAsset?.repositoryPath).toMatch(
-        /^sprites\/\d{4}-[a-z0-9-]+--pokeapi-default--front--normal\.png$/,
-      );
+      expect(published).toHaveLength(4);
+      expect(
+        published.map((entry) => entry.repositoryAsset?.variantId).sort(),
+      ).toEqual(["back-normal", "back-shiny", "front-normal", "front-shiny"]);
 
-      const repositoryFile = await readFile(
-        path.join(
-          packDirectory,
-          creature.path,
-          published?.repositoryAsset?.repositoryPath ?? "",
-        ),
-      );
-      expect(createHash("sha256").update(repositoryFile).digest("hex")).toBe(
-        published?.repositoryAsset?.sha256,
-      );
+      for (const entry of published) {
+        expect(entry.status).toBe("doubtful");
+        expect(entry.localQuarantine?.localOnly).toBe(true);
+        expect(typeof entry.localQuarantine?.bytes).toBe("number");
+        expect(typeof entry.localQuarantine?.width).toBe("number");
+        expect(typeof entry.localQuarantine?.height).toBe("number");
+        expect(entry.localQuarantine?.relativePrivatePath).toMatch(
+          /^\.private\/pokemon-canonical\//,
+        );
+        expect(entry.localQuarantine?.sha256).toMatch(/^[0-9a-f]{64}$/);
+        expect(entry.repositoryAsset?.rightsStatus).toBe("doubtful");
+        expect(entry.repositoryAsset?.repositoryPath).toMatch(
+          /^sprites\/\d{4}-[a-z0-9-]+--pokeapi-default--(front|back)--(normal|shiny)\.png$/,
+        );
+
+        const repositoryFile = await readFile(
+          path.join(
+            packDirectory,
+            creature.path,
+            entry.repositoryAsset?.repositoryPath ?? "",
+          ),
+        );
+        expect(createHash("sha256").update(repositoryFile).digest("hex")).toBe(
+          entry.repositoryAsset?.sha256,
+        );
+      }
     }
   });
 });

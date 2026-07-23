@@ -18,9 +18,13 @@ pokemon-canonical/
 │       ├── definitions/
 │       │   ├── abilities.json
 │       │   ├── moves.json
-│       │   └── pokemon.json
+│       │   ├── pokemon.json
+│       │   └── status.json
 │       ├── sprites/
+│       │   ├── 0001-bulbasaur--pokeapi-default--back--normal.png
+│       │   ├── 0001-bulbasaur--pokeapi-default--back--shiny.png
 │       │   ├── 0001-bulbasaur--pokeapi-default--front--normal.png
+│       │   ├── 0001-bulbasaur--pokeapi-default--front--shiny.png
 │       │   └── inventory.json
 │       ├── animations/inventory.json
 │       ├── sounds/inventory.json
@@ -41,6 +45,11 @@ As habilidades possíveis e seus efeitos em inglês permanecem expandidos em cad
 Pokémon. O inglês é preservado como texto auditável da fonte; traduções futuras
 devem ser dados derivados do projeto e não substituir o conteúdo coletado.
 
+Cada pasta `definitions/` possui um `status.json`. O estado `approved` confirma
+validação automatizada de schema, cobertura e integridade referencial. Ele não
+declara revisão manual de cada regra específica de cada jogo nem aprovação de
+balanceamento para o runtime.
+
 ## Sprites reais
 
 O inventário foi criado a partir da revisão exata do repositório
@@ -48,10 +57,11 @@ O inventário foi criado a partir da revisão exata do repositório
 costas, shiny, gêneros, jogos, arte oficial, HOME, Showdown e animações quando
 existentes.
 
-Um sprite frontal real de cada uma das 1.025 espécies foi baixado, inspecionado e
-publicado na respectiva pasta `sprites/` por instrução explícita do proprietário do
-repositório. A cópia original continua em `.private/pokemon-canonical/`, ignorada
-pelo Git, e cada inventário registra os dois caminhos, SHA-256, tamanho e dimensões.
+Quatro sprites compactos de batalha de cada uma das 1.025 espécies foram baixados,
+inspecionados e publicados: frente normal, frente shiny, costas normal e costas
+shiny. As cópias originais continuam em `.private/pokemon-canonical/`, ignorada pelo
+Git, e cada inventário registra os dois caminhos, variante, SHA-256, tamanho e
+dimensões.
 
 A publicação não altera o estado jurídico para `approved`. A licença do repositório
 de origem declara simultaneamente CC0 e copyright da The Pokémon Company, portanto
@@ -64,21 +74,21 @@ marcados como `doubtful`, com créditos e limitações centralizados em
 ```text
 pnpm content:pokemon
 pnpm content:pokemon -- --with-private-sprites
-pnpm content:pokemon -- --with-private-sprites --publish-front-sprites \
+pnpm content:pokemon -- --with-private-sprites --publish-battle-sprites \
   --pokeapi-revision=<sha> --sprites-revision=<sha>
 ```
 
 O primeiro comando regenera definições e inventários usando cache local. O segundo
-também mantém a quarentena privada. A terceira forma publica os sprites frontais e
+também mantém a quarentena privada. A terceira forma publica os sprites de batalha e
 deve sempre receber as revisões auditadas. `--refresh` atualiza caches e deve ser
 usado somente em uma tarefa autorizada de atualização de fonte.
 
 ## Estado de aprovação
 
-- definições: `pending`, até revisão de conteúdo e decisão de uso;
-- sprites frontais publicados: `doubtful`;
+- definições: `approved` por validação automatizada, com limitações em `status.json`;
+- sprites de batalha publicados: `doubtful`;
 - demais sprites/animações: `pending`, `doubtful` ou `quarantined`;
 - sons: pendentes e reservados para tarefa futura;
-- mídia importada no pack público: 1.025 PNGs.
+- mídia importada no pack público: 4.100 PNGs.
 
 Estados diferentes de `approved` não autorizam a engine a carregar o conteúdo.

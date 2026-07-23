@@ -43,11 +43,13 @@ camada derivada e revisada.
 - 60.113 arquivos de imagem encontrados na árvore de origem;
 - 43.383 candidatos estáticos associados às espécies canônicas;
 - 10.421 candidatos animados associados às espécies canônicas;
-- 1.025 sprites frontais reais baixados e inspecionados;
-- 1.025 PNGs, totalizando aproximadamente 1,02 MiB, publicados por instrução
-  explícita do proprietário do repositório;
+- 4.100 sprites compactos de batalha baixados e inspecionados;
+- quatro variantes por espécie: frente normal, frente shiny, costas normal e costas
+  shiny;
+- 4.100 PNGs, totalizando 4.010.860 bytes, publicados por instrução explícita do
+  proprietário do repositório;
 - cópias originais preservadas na quarentena local ignorada pelo Git;
-- 1.025 hashes SHA-256, tamanhos, dimensões e caminhos públicos registrados;
+- 4.100 hashes SHA-256, tamanhos, dimensões, variantes e caminhos registrados;
 - zero GIF, SVG, áudio ou vídeo adicionado ao repositório.
 
 Os candidatos incluem materiais oficiais extraídos e materiais feitos por fãs. Essa
@@ -64,11 +66,19 @@ creatures/0383-groudon/
 creatures/1025-pecharunt/
 ```
 
-Sprites frontais publicados:
+Sprites compactos publicados:
+
+```text
+0383-groudon--pokeapi-default--back--normal.png
+0383-groudon--pokeapi-default--back--shiny.png
+0383-groudon--pokeapi-default--front--normal.png
+0383-groudon--pokeapi-default--front--shiny.png
+```
+
+O mesmo conjunto existe para todas as espécies. Por exemplo:
 
 ```text
 0001-bulbasaur--pokeapi-default--front--normal.png
-0383-groudon--pokeapi-default--front--normal.png
 1025-pecharunt--pokeapi-default--front--normal.png
 ```
 
@@ -78,14 +88,15 @@ Outros candidatos ainda não publicados:
 0001-bulbasaur--generation-v-black-white--back--shiny--<hash>.png
 ```
 
-O sprite frontal padrão usa nome estável porque existe apenas um por espécie nessa
-coleção. Outros jogos e variantes mantêm o sufixo curto de hash proposto para evitar
-colisões. O SHA-256 completo permanece registrado no inventário.
+As quatro variantes compactas usam nomes sem hash porque cada combinação de
+perspectiva e variação é única por espécie. Outros jogos e variantes mantêm o sufixo
+curto de hash proposto para evitar colisões. O SHA-256 completo permanece registrado
+no inventário.
 
 ## Decisão registrada
 
-Em 2026-07-23, o proprietário instruiu explicitamente a publicação de todos os 1.025
-sprites frontais disponíveis. Essa decisão autoriza a inclusão no projeto, mas não
+Em 2026-07-23, o proprietário instruiu explicitamente a publicação da coleção
+compacta de 4.100 sprites. Essa decisão autoriza a inclusão no projeto, mas não
 representa licença concedida pelos titulares das imagens. Por isso:
 
 - a fonte e a revisão permanecem fixas e auditáveis;

@@ -375,6 +375,53 @@
         }
       ]
     },
+    "definitionValidationStatus": {
+      "type": "object",
+      "required": [
+        "schemaVersion",
+        "pokemonId",
+        "status",
+        "validatedAt",
+        "validationLevel",
+        "sourceRevision",
+        "checks",
+        "limitations"
+      ],
+      "properties": {
+        "schemaVersion": {
+          "const": 1
+        },
+        "pokemonId": {
+          "type": "string",
+          "pattern": "^pokemon:\\d{4}-[a-z0-9-]+$"
+        },
+        "status": {
+          "const": "approved"
+        },
+        "validatedAt": {
+          "type": "string",
+          "format": "date"
+        },
+        "validationLevel": {
+          "const": "automated-schema-coverage-and-referential-integrity"
+        },
+        "sourceRevision": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{40}$"
+        },
+        "checks": {
+          "type": "object"
+        },
+        "limitations": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
     "mediaInventory": {
       "type": "object",
       "required": [

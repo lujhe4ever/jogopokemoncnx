@@ -1347,3 +1347,69 @@ a Fase 15.
 ### Próximo passo
 
 Revisar o commit dos sprites e o PR desta branch sem fazer merge automático.
+
+## 2026-07-23 — Coleção compacta de batalha e status das definições
+
+### Objetivo da sessão
+
+Ampliar a mídia para mais de um sprite por Pokémon e tornar explícito o estado de
+validação das definições de cada espécie.
+
+### Estado anterior
+
+O PR #17 continha um sprite frontal normal por espécie e manifests com
+`definitionStatus: pending`.
+
+### Alterações realizadas
+
+- coleção ampliada para frente normal, frente shiny, costas normal e costas shiny;
+- 4.100 PNGs publicados, quatro por cada uma das 1.025 espécies;
+- gerador atualizado com `--publish-battle-sprites` e alias retrocompatível;
+- `definitions/status.json` criado para todas as espécies;
+- `definitionStatus` alterado para `approved` após validação automatizada;
+- schema, manifesto global, manifests por espécie, relatório e testes atualizados;
+- D-020 e documentação de fontes atualizadas.
+
+### Arquivos alterados
+
+- `content/packs/pokemon-canonical/`;
+- `scripts/generate-pokemon-canonical.mjs`;
+- `tests/pokemon-canonical-content.test.ts`;
+- `docs/current-state.md`;
+- `docs/work-log.md`;
+- `docs/decisions.md`;
+- `docs/pokemon-content-sources.md`.
+
+### Testes e verificações
+
+- revisão de origem: quatro variantes disponíveis para todas as 1.025 espécies;
+- auditoria integral: 4.100 sprites, 4.010.860 bytes e zero erros de hash;
+- 1.025 definições com status e IDs coerentes;
+- teste específico do catálogo: 1 arquivo e 4 testes aprovados;
+- `pnpm check`: 21 arquivos e 62 testes aprovados;
+- formatação, lint, TypeScript e builds aprovados.
+
+### Decisões tomadas
+
+- limitar a coleção a quatro variantes uniformes e úteis para batalha;
+- não incluir sprites por jogo, arte oficial, HOME ou animações neste recorte;
+- usar `approved` somente para validação automatizada das definições;
+- manter sprites e licença visual como `doubtful`;
+- manter a engine desacoplada dos caminhos Pokémon.
+
+### Pendências ou riscos
+
+- definições ainda não receberam revisão manual regra a regra;
+- direitos de redistribuição dos sprites permanecem incertos;
+- o PR #16 continua em trabalho paralelo com sobreposição apenas documental.
+
+### Próxima tarefa recomendada
+
+Definir o contrato neutro de seleção de sprite no runtime, incluindo fallback por
+perspectiva e variação, sem codificar nomes Pokémon na engine.
+
+### Instrução para a próxima IA
+
+Ler a D-020, este registro, o README do pack e uma amostra de `status.json`; preservar
+as quatro variantes, o significado restrito de `approved` e o estado visual
+`doubtful`.

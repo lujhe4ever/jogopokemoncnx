@@ -2,8 +2,8 @@
 
 Dados canônicos e inventários auditáveis de `swanna`.
 
-- `definitions/`: espécie, habilidades e learnset por jogo/geração.
-- `sprites/`: inventário e sprite frontal `0581-swanna--pokeapi-default--front--normal.png` versionado por decisão do proprietário.
+- `definitions/`: espécie, habilidades, learnset e status de validação.
+- `sprites/`: inventário e 4 sprites compactos de batalha versionados por decisão do proprietário.
 - `animations/`: candidatos animados; nenhum binário é versionado.
 - `sounds/`: reservado para uma tarefa futura.
 
