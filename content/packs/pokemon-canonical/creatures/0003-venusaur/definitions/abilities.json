@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "pokemonId": "pokemon:0003-venusaur",
+  "abilities": [
+    {
+      "slug": "overgrow",
+      "canonicalName": "Overgrow",
+      "slot": 1,
+      "isHidden": false,
+      "effect": "When this Pokemon has 1/3 or less of its HP remaining, its Grass-type moves inflict 1.5 as much regular damage.",
+      "shortEffect": "Strengthens Grass moves to inflict 1.5 damage at 1/3 max HP or less.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/65/"
+    },
+    {
+      "slug": "chlorophyll",
+      "canonicalName": "Chlorophyll",
+      "slot": 3,
+      "isHidden": true,
+      "effect": "This Pokemon's Speed is doubled during strong sunlight. This bonus does not count as a stat modifier.",
+      "shortEffect": "Doubles Speed during strong sunlight.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/34/"
+    }
+  ],
+  "source": {
+    "retrievedAt": "2026-07-23",
+    "sourceUrls": [
+      "https://pokeapi.co/api/v2/pokemon/3/",
+      "https://pokeapi.co/api/v2/pokemon-species/3/",
+      "https://pokeapi.co/",
+      "https://github.com/PokeAPI/pokeapi/blob/master/LICENSE.md"
+    ],
+    "licenseStatus": "pending",
+    "requiredCredits": [
+      "PokeAPI contributors for structured API/data where applicable."
+    ],
+    "notes": [
+      "Pokemon names, character names, and related franchise data require owner review before publication or public use.",
+      "This pilot records metadata only and does not import sprites, sounds, animations, logos, or other media files."
+    ]
+  }
+}

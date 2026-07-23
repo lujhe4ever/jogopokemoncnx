@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "id": "pokemon:0002-ivysaur",
+  "nationalDexNumber": 2,
+  "canonicalName": "Ivysaur",
+  "slug": "ivysaur",
+  "generationIntroduced": 1,
+  "types": ["grass", "poison"],
+  "assetStatus": "pending",
+  "definitionStatus": "pending",
+  "licenseStatus": "pending",
+  "sourceUrls": [
+    "https://pokeapi.co/api/v2/pokemon/2/",
+    "https://pokeapi.co/api/v2/pokemon-species/2/",
+    "https://pokeapi.co/",
+    "https://github.com/PokeAPI/pokeapi/blob/master/LICENSE.md"
+  ],
+  "requiredCredits": [
+    "PokeAPI contributors for structured API/data where applicable."
+  ],
+  "notes": [
+    "Pokemon names, character names, and related franchise data require owner review before publication or public use.",
+    "This pilot records metadata only and does not import sprites, sounds, animations, logos, or other media files."
+  ]
+}

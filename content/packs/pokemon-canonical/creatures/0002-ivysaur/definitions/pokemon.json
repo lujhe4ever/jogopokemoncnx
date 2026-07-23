@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "id": "pokemon:0002-ivysaur",
+  "nationalDexNumber": 2,
+  "canonicalName": "Ivysaur",
+  "slug": "ivysaur",
+  "generationIntroduced": 1,
+  "generationSource": "generation-i",
+  "types": ["grass", "poison"],
+  "heightDecimeters": 10,
+  "weightHectograms": 130,
+  "baseExperience": 142,
+  "baseStats": {
+    "hp": {
+      "base": 60,
+      "effort": 0
+    },
+    "attack": {
+      "base": 62,
+      "effort": 0
+    },
+    "defense": {
+      "base": 63,
+      "effort": 0
+    },
+    "special-attack": {
+      "base": 80,
+      "effort": 1
+    },
+    "special-defense": {
+      "base": 80,
+      "effort": 1
+    },
+    "speed": {
+      "base": 60,
+      "effort": 0
+    }
+  },
+  "abilities": [
+    {
+      "slug": "overgrow",
+      "slot": 1,
+      "isHidden": false
+    },
+    {
+      "slug": "chlorophyll",
+      "slot": 3,
+      "isHidden": true
+    }
+  ],
+  "evolution": {
+    "minimumLevel": 32,
+    "targetId": "pokemon:0003-venusaur",
+    "targetSlug": "venusaur"
+  },
+  "source": {
+    "retrievedAt": "2026-07-23",
+    "sourceUrls": [
+      "https://pokeapi.co/api/v2/pokemon/2/",
+      "https://pokeapi.co/api/v2/pokemon-species/2/",
+      "https://pokeapi.co/",
+      "https://github.com/PokeAPI/pokeapi/blob/master/LICENSE.md"
+    ],
+    "licenseStatus": "pending",
+    "requiredCredits": [
+      "PokeAPI contributors for structured API/data where applicable."
+    ],
+    "notes": [
+      "Pokemon names, character names, and related franchise data require owner review before publication or public use.",
+      "This pilot records metadata only and does not import sprites, sounds, animations, logos, or other media files."
+    ]
+  }
+}

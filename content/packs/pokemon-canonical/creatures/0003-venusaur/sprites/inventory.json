@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "pokemonId": "pokemon:0003-venusaur",
+  "statusSummary": {
+    "approved": 0,
+    "pending": 1,
+    "doubtful": 0,
+    "rejected": 0,
+    "quarantined": 0
+  },
+  "entries": [
+    {
+      "id": "pokemon:0003-venusaur:sprite-reference:pokemondb",
+      "status": "pending",
+      "category": "sprites",
+      "sourceUrl": "https://pokemondb.net/sprites/venusaur",
+      "site": "Pokemon Database",
+      "mediaImported": false,
+      "proposedUse": "reference-only",
+      "limitations": [
+        "Do not hotlink.",
+        "Do not publish media files in this public repository until license/authorization is explicitly approved.",
+        "Pokemon names and images are attributed by Pokemon Database to Nintendo/Game Freak."
+      ],
+      "requiredCredits": [],
+      "notes": ["Candidate reference page only; no sprite file was downloaded."]
+    }
+  ]
+}
