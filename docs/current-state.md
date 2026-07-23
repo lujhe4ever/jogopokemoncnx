@@ -5,9 +5,9 @@
 | Atualizado em | 2026-07-23 |
 | Repositório | `lujhe4ever/jogopokemoncnx` |
 | Branch principal | `main` |
-| Branch desta entrega | `agent/fase-6-npcs-itens` |
-| Fase | Fase 6 — NPCs, diálogos, itens e baús |
-| Status | **concluída na branch — PR #7 aguardando revisão** |
+| Branch desta entrega | `agent/fase-7-criaturas-progressao` |
+| Fase | Fase 7 — fundação de criaturas, treinamento e progressão |
+| Status | **reservada — implementação em andamento** |
 
 ## 1. Resumo
 
@@ -105,8 +105,8 @@ continuam com o status registrado em `docs/decisions.md`.
 
 ## 9. Próxima tarefa recomendada
 
-Revisar e integrar o PR #7. Depois, iniciar exclusivamente a Fase 7: fundação de
-criaturas, treinamento e progressão.
+Implementar exclusivamente a Fase 7: definições e instâncias de criatura, catálogo
+original, equipe, coleção, experiência, evolução e persistência transacional.
 
 ## 10. Instruções para reproduzir
 

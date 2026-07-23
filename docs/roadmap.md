@@ -363,7 +363,7 @@ captura nesta fase.
 - fórmulas específicas vazarem para infraestrutura;
 - mudança de conteúdo invalidar saves.
 
-**Status:** **não iniciado**.
+**Status:** **em andamento** na branch `agent/fase-7-criaturas-progressao`.
 
 ### Fase 8 — Batalha contra NPCs
 

@@ -694,3 +694,26 @@ Publicar o PR de reserva da Fase 6 antes de implementar o ciclo de interação.
 ### Próximo passo
 
 Revisar e integrar o PR #7 após a CI aprovada.
+
+## 2026-07-23 — Integração da Fase 6 e reserva da Fase 7
+
+### Contexto
+
+O PR #7 passou no CI e foi integrado à `main` no commit
+`f84df62311404ba6fa0ca3bce7778bc4d47e267e`.
+
+### Escopo reservado
+
+- definição e instância de criatura separadas;
+- catálogo placeholder original e versionado;
+- equipe e coleção com ownership;
+- experiência, treinamento e evolução idempotentes;
+- persistência transacional.
+
+### Fora do escopo
+
+Encontros, captura, batalha, missões, arena e deploy público.
+
+### Próximo passo
+
+Publicar o PR de reserva da Fase 7 antes de implementar o domínio.
