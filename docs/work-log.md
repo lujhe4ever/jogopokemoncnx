@@ -1080,3 +1080,32 @@ administração e deploy público.
 ### Próximo passo
 
 Publicar o PR rascunho da Fase 14 antes de iniciar a implementação.
+
+## 2026-07-23 — Telões e transmissão da Fase 14
+
+### Resultado
+
+- novo pacote puro `@lt/broadcast-domain` cria a projeção pública por allowlist;
+- canais isolados por arena mantêm revisão, 64 deltas e 20 batalhas visíveis;
+- entrada/reconexão recebe snapshot e lacunas recebem replay ou novo snapshot;
+- PvP publica início, turno resolvido e encerramento confirmado;
+- escolha, comando e identificador interno não fazem parte da projeção;
+- ação de não participante é rejeitada como `spectator_read_only`;
+- fan-out reutiliza backpressure e adiciona métricas de atualizações e entregas;
+- telões acessíveis mostram competidores, criaturas, vida, turno e vencedor.
+
+### Testes e verificações
+
+- `pnpm typecheck` e `pnpm lint` aprovados;
+- 20 arquivos e 58 testes automatizados após a nova cobertura;
+- allowlist testada contra campos extras de conta e escolha;
+- replay contíguo e fallback para snapshot cobertos;
+- 100 atualizações para 20 sockets ficaram abaixo de 250 ms no teste local;
+- socket lento foi isolado sem bloquear as outras 19 entregas;
+- QA no navegador confirmou região, status, lista, barras rotuladas, ausência de
+  controles de batalha e de overflow horizontal em 1280 × 720.
+
+### Próximo passo
+
+Revisar e integrar o PR #15 após a CI aprovada e reservar a Fase 15 sem executar
+deploy público.

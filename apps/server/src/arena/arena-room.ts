@@ -4,6 +4,11 @@ import {
   type ArenaMovementInput,
   type ArenaPosition,
 } from "@lt/arena-domain";
+import {
+  BattleBroadcastChannel,
+  type BattleBroadcastEvent,
+  type BattleBroadcastSource,
+} from "@lt/broadcast-domain";
 import { performance } from "node:perf_hooks";
 import { randomUUID } from "node:crypto";
 import { z } from "zod";
@@ -15,6 +20,11 @@ const inputSchema = z.object({
   sequence: z.number().int().positive(),
   x: z.number().min(-1).max(1),
   y: z.number().min(-1).max(1),
+});
+
+const broadcastResumeSchema = z.object({
+  type: z.literal("battle_broadcast_resume"),
+  afterRevision: z.number().int().min(-1),
 });
 
 const MAX_PLAYERS = 20;
@@ -50,6 +60,8 @@ interface RecentPresence {
 export interface ArenaMetrics {
   ticks: number;
   droppedMessages: number;
+  battleBroadcasts: number;
+  battleBroadcastDeliveries: number;
   lastTickDurationMs: number;
   maxTickDurationMs: number;
 }
@@ -59,10 +71,13 @@ export class ArenaRoom {
   private readonly recent = new Map<string, RecentPresence>();
   private readonly timer: NodeJS.Timeout;
   private readonly social: ArenaSocialService;
+  private readonly battleBroadcasts: BattleBroadcastChannel;
   private revision = 0;
   private metricsState: ArenaMetrics = {
     ticks: 0,
     droppedMessages: 0,
+    battleBroadcasts: 0,
+    battleBroadcastDeliveries: 0,
     lastTickDurationMs: 0,
     maxTickDurationMs: 0,
   };
@@ -75,6 +90,7 @@ export class ArenaRoom {
     private readonly publicId: () => string = randomUUID,
     private readonly pvp?: PvpService,
   ) {
+    this.battleBroadcasts = new BattleBroadcastChannel(id);
     this.social = new ArenaSocialService(
       id,
       clock,
@@ -85,19 +101,23 @@ export class ArenaRoom {
           const player = this.players.get(accountId);
           if (player) this.send(player.socket, payload);
         };
-        void this.pvp.start(id, first, second, deliver).then((started) => {
-          if (started) return;
-          deliver(first.accountId, {
-            protocolVersion: 1,
-            type: "pvp_error",
-            code: "pvp_unavailable",
+        void this.pvp
+          .start(id, first, second, deliver, (event, projection) => {
+            this.publishBattle(event, projection);
+          })
+          .then((started) => {
+            if (started) return;
+            deliver(first.accountId, {
+              protocolVersion: 1,
+              type: "pvp_error",
+              code: "pvp_unavailable",
+            });
+            deliver(second.accountId, {
+              protocolVersion: 1,
+              type: "pvp_error",
+              code: "pvp_unavailable",
+            });
           });
-          deliver(second.accountId, {
-            protocolVersion: 1,
-            type: "pvp_error",
-            code: "pvp_unavailable",
-          });
-        });
       },
     );
     this.timer = setInterval(
@@ -147,6 +167,11 @@ export class ArenaRoom {
         connected.inputs.push(input.data);
         return;
       }
+      const resume = broadcastResumeSchema.safeParse(value);
+      if (resume.success) {
+        this.sendBattleResume(socket, resume.data.afterRevision);
+        return;
+      }
       if (this.pvp?.handle(value, accountId)) return;
       this.social.handle(
         value,
@@ -176,6 +201,7 @@ export class ArenaRoom {
       selfId: presence.playerId,
       players: this.snapshot(),
     });
+    this.sendBattleResume(socket, -1);
     this.broadcast(
       {
         protocolVersion: 1,
@@ -278,20 +304,60 @@ export class ArenaRoom {
       this.onIdle();
   }
 
-  private broadcast(payload: object, excludedId?: string): void {
-    for (const [id, player] of this.players)
-      if (id !== excludedId) this.send(player.socket, payload);
+  private publishBattle(
+    event: BattleBroadcastEvent,
+    projection: BattleBroadcastSource,
+  ): void {
+    const update = this.battleBroadcasts.publish(event, projection);
+    const delivered = this.broadcast({
+      protocolVersion: 1,
+      type: "battle_broadcast",
+      roomId: this.id,
+      ...update,
+    });
+    this.metricsState = {
+      ...this.metricsState,
+      battleBroadcasts: this.metricsState.battleBroadcasts + 1,
+      battleBroadcastDeliveries:
+        this.metricsState.battleBroadcastDeliveries + delivered,
+    };
   }
 
-  private send(socket: ArenaSocket, payload: object): void {
+  private sendBattleResume(socket: ArenaSocket, afterRevision: number): void {
+    const resume = this.battleBroadcasts.resume(afterRevision);
+    if (resume.mode === "snapshot") {
+      this.send(socket, {
+        protocolVersion: 1,
+        type: "battle_broadcast_snapshot",
+        ...resume,
+      });
+      return;
+    }
+    this.send(socket, {
+      protocolVersion: 1,
+      type: "battle_broadcast_replay",
+      ...resume,
+    });
+  }
+
+  private broadcast(payload: object, excludedId?: string): number {
+    let delivered = 0;
+    for (const [id, player] of this.players)
+      if (id !== excludedId && this.send(player.socket, payload))
+        delivered += 1;
+    return delivered;
+  }
+
+  private send(socket: ArenaSocket, payload: object): boolean {
     if (socket.readyState !== 1 || socket.bufferedAmount > MAX_BUFFERED_BYTES) {
       this.metricsState = {
         ...this.metricsState,
         droppedMessages: this.metricsState.droppedMessages + 1,
       };
-      return;
+      return false;
     }
     socket.send(JSON.stringify(payload));
+    return true;
   }
 }
 
@@ -342,6 +408,14 @@ export class ArenaRegistry {
       ),
       droppedMessages: [...this.rooms.values()].reduce(
         (total, room) => total + room.metrics().droppedMessages,
+        0,
+      ),
+      battleBroadcasts: [...this.rooms.values()].reduce(
+        (total, room) => total + room.metrics().battleBroadcasts,
+        0,
+      ),
+      battleBroadcastDeliveries: [...this.rooms.values()].reduce(
+        (total, room) => total + room.metrics().battleBroadcastDeliveries,
         0,
       ),
       maxTickDurationMs: Math.max(

@@ -44,6 +44,60 @@ class FakeSocket implements ArenaSocket {
   }
 }
 
+class FakePvpService {
+  broadcast?: (
+    event: "started" | "turn_resolved" | "finished",
+    projection: {
+      id: string;
+      turn: number;
+      phase: "choosing" | "finished";
+      participants: Array<{
+        playerId: string;
+        displayName: string;
+        combatant: { name: string; health: number; maxHealth: number };
+      }>;
+      winnerPlayerId?: string;
+      outcome?: "win" | "draw" | "abandoned";
+    },
+  ) => void;
+
+  start(
+    _roomId: string,
+    _first: object,
+    _second: object,
+    _deliver: (accountId: string, payload: object) => void,
+    broadcast: NonNullable<FakePvpService["broadcast"]>,
+  ): Promise<boolean> {
+    this.broadcast = broadcast;
+    return Promise.resolve(true);
+  }
+  handle(): boolean {
+    return false;
+  }
+  disconnect(): void {}
+  close(): void {}
+}
+
+function broadcastProjection(turn: number) {
+  return {
+    id: "battle-live",
+    turn,
+    phase: "choosing" as const,
+    participants: [
+      {
+        playerId: "public-a",
+        displayName: "Ana",
+        combatant: { name: "Broto-lume", health: 40, maxHealth: 50 },
+      },
+      {
+        playerId: "public-b",
+        displayName: "Beto",
+        combatant: { name: "Casco-pedra", health: 30, maxHealth: 50 },
+      },
+    ],
+  };
+}
+
 describe("authoritative arena room", () => {
   it("caps capacity at 20 and emits movement deltas", () => {
     const room = new ArenaRoom("arena-1", false);
@@ -166,6 +220,74 @@ describe("authoritative arena room", () => {
       author: { displayName: "Sender" },
       text: "Olá!",
       sentAt: "1970-01-01T00:00:10.000Z",
+    });
+    room.close();
+  });
+
+  it("fans out read-only battle projections and resumes missed revisions", () => {
+    const pvp = new FakePvpService();
+    const room = new ArenaRoom(
+      "arena-1",
+      false,
+      Date.now,
+      () => {},
+      () => crypto.randomUUID(),
+      pvp as never,
+    );
+    const sockets = Array.from({ length: 20 }, () => new FakeSocket());
+    sockets.forEach((socket, index) =>
+      room.connect(
+        socket,
+        `account-${String(index)}`,
+        `Player ${String(index)}`,
+      ),
+    );
+    const targetId = sockets[1]?.messages("arena_snapshot").at(-1)
+      ?.selfId as string;
+    sockets[0]?.input({
+      type: "social_invite",
+      requestId: "broadcast-invite",
+      targetPlayerId: targetId,
+    });
+    const inviteId = sockets[1]?.messages("social_invite").at(-1)
+      ?.inviteId as string;
+    sockets[1]?.input({
+      type: "social_invite_accept",
+      requestId: "broadcast-accept",
+      inviteId,
+    });
+    expect(pvp.broadcast).toBeTypeOf("function");
+
+    const slow = sockets.at(-1);
+    if (!slow) throw new Error("missing_slow_socket");
+    slow.bufferedAmount = 70_000;
+    const startedAt = performance.now();
+    for (let turn = 1; turn <= 100; turn += 1)
+      pvp.broadcast?.(
+        turn === 1 ? "started" : "turn_resolved",
+        broadcastProjection(turn),
+      );
+    const elapsed = performance.now() - startedAt;
+
+    expect(elapsed).toBeLessThan(250);
+    expect(sockets[2]?.messages("battle_broadcast")).toHaveLength(100);
+    expect(sockets[19]?.messages("battle_broadcast")).toHaveLength(0);
+    expect(room.metrics()).toMatchObject({
+      battleBroadcasts: 100,
+      battleBroadcastDeliveries: 1_900,
+      droppedMessages: 100,
+    });
+
+    sockets[2]?.input({
+      type: "battle_broadcast_resume",
+      afterRevision: 98,
+    });
+    expect(
+      sockets[2]?.messages("battle_broadcast_replay").at(-1),
+    ).toMatchObject({
+      roomId: "arena-1",
+      revision: 100,
+      updates: [{ revision: 99 }, { revision: 100 }],
     });
     room.close();
   });

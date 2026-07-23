@@ -106,6 +106,49 @@ type PvpMessage =
     }
   | { type: "pvp_error"; code: string; battleId?: string };
 
+interface BattleBroadcastProjection {
+  battleId: string;
+  turn: number;
+  phase: "choosing" | "finished";
+  competitors: Array<{
+    playerId: string;
+    displayName: string;
+    creatureName: string;
+    health: number;
+    maxHealth: number;
+  }>;
+  winnerPlayerId?: string;
+  outcome?: "win" | "draw" | "abandoned";
+  finishReason?: string;
+}
+
+interface BattleBroadcastUpdate {
+  revision: number;
+  event: "started" | "turn_resolved" | "finished";
+  battle: BattleBroadcastProjection;
+}
+
+type BattleBroadcastMessage =
+  | {
+      type: "battle_broadcast_snapshot";
+      roomId: string;
+      revision: number;
+      battles: BattleBroadcastProjection[];
+    }
+  | {
+      type: "battle_broadcast";
+      roomId: string;
+      revision: number;
+      event: BattleBroadcastUpdate["event"];
+      battle: BattleBroadcastProjection;
+    }
+  | {
+      type: "battle_broadcast_replay";
+      roomId: string;
+      revision: number;
+      updates: BattleBroadcastUpdate[];
+    };
+
 const gamePanel = document.querySelector<HTMLElement>("#game-panel");
 const arenaPanel = document.querySelector<HTMLElement>("#arena-panel");
 const arenaStage = document.querySelector<HTMLElement>("#arena-stage");
@@ -123,6 +166,12 @@ const inviteTarget = document.querySelector<HTMLSelectElement>(
 const sendInvite =
   document.querySelector<HTMLButtonElement>("#send-arena-invite");
 const invitations = document.querySelector<HTMLElement>("#arena-invitations");
+const broadcastStatus = document.querySelector<HTMLElement>(
+  "#arena-screen-status",
+);
+const broadcastList = document.querySelector<HTMLOListElement>(
+  "#arena-broadcast-list",
+);
 const pvpPanel = document.querySelector<HTMLElement>("#pvp-panel");
 const pvpStatus = document.querySelector<HTMLElement>("#pvp-status");
 const returnArena = document.querySelector<HTMLButtonElement>("#return-arena");
@@ -131,6 +180,7 @@ const pvpActionButtons = [
 ];
 const players = new Map<string, ArenaPresence>();
 const mutedPlayers = new Set<string>();
+const broadcasts = new Map<string, BattleBroadcastProjection>();
 const movement = { up: false, down: false, left: false, right: false };
 let socket: WebSocket | undefined;
 let selfId = "";
@@ -142,6 +192,7 @@ let reconnectAttempts = 0;
 let activePvp: PvpProjection | undefined;
 let pvpSelfId = "";
 let pvpExpectedSequence = 1;
+let broadcastRevision = -1;
 
 function setStatus(message: string): void {
   if (status) status.textContent = message;
@@ -396,6 +447,176 @@ function isPvpMessage(value: unknown): value is PvpMessage {
   );
 }
 
+function isBroadcastProjection(
+  value: unknown,
+): value is BattleBroadcastProjection {
+  return (
+    typeof value === "object" &&
+    value !== null &&
+    "battleId" in value &&
+    typeof value.battleId === "string" &&
+    "turn" in value &&
+    typeof value.turn === "number" &&
+    "phase" in value &&
+    (value.phase === "choosing" || value.phase === "finished") &&
+    "competitors" in value &&
+    Array.isArray(value.competitors) &&
+    value.competitors.length === 2 &&
+    value.competitors.every(
+      (competitor: unknown) =>
+        typeof competitor === "object" &&
+        competitor !== null &&
+        "playerId" in competitor &&
+        typeof competitor.playerId === "string" &&
+        "displayName" in competitor &&
+        typeof competitor.displayName === "string" &&
+        "creatureName" in competitor &&
+        typeof competitor.creatureName === "string" &&
+        "health" in competitor &&
+        typeof competitor.health === "number" &&
+        "maxHealth" in competitor &&
+        typeof competitor.maxHealth === "number",
+    )
+  );
+}
+
+function isBroadcastUpdate(value: unknown): value is BattleBroadcastUpdate {
+  return (
+    typeof value === "object" &&
+    value !== null &&
+    "revision" in value &&
+    typeof value.revision === "number" &&
+    "event" in value &&
+    (value.event === "started" ||
+      value.event === "turn_resolved" ||
+      value.event === "finished") &&
+    "battle" in value &&
+    isBroadcastProjection(value.battle)
+  );
+}
+
+function isBattleBroadcastMessage(
+  value: unknown,
+): value is BattleBroadcastMessage {
+  if (
+    typeof value !== "object" ||
+    value === null ||
+    !("type" in value) ||
+    !("roomId" in value) ||
+    typeof value.roomId !== "string" ||
+    !("revision" in value) ||
+    typeof value.revision !== "number"
+  )
+    return false;
+  if (value.type === "battle_broadcast_snapshot")
+    return (
+      "battles" in value &&
+      Array.isArray(value.battles) &&
+      value.battles.every(isBroadcastProjection)
+    );
+  if (value.type === "battle_broadcast") return isBroadcastUpdate(value);
+  return (
+    value.type === "battle_broadcast_replay" &&
+    "updates" in value &&
+    Array.isArray(value.updates) &&
+    value.updates.every(isBroadcastUpdate)
+  );
+}
+
+function renderBroadcasts(): void {
+  if (!broadcastList || !broadcastStatus) return;
+  const visible = [...broadcasts.values()].slice(-20).reverse();
+  broadcastStatus.textContent =
+    visible.length === 0
+      ? "Nenhuma batalha em transmissão."
+      : `${String(visible.length)} batalha(s) disponível(is).`;
+  broadcastList.replaceChildren(
+    ...visible.map((battle) => {
+      const item = document.createElement("li");
+      const article = document.createElement("article");
+      article.className = "arena-broadcast-card";
+      article.dataset.battleId = battle.battleId;
+      const [first, second] = battle.competitors;
+      const title = document.createElement("h4");
+      title.textContent = `${first?.displayName ?? "Jogador"} × ${
+        second?.displayName ?? "Jogador"
+      }`;
+      article.append(title);
+      for (const competitor of battle.competitors) {
+        const label = document.createElement("p");
+        label.textContent = `${competitor.displayName} — ${competitor.creatureName}`;
+        const health = document.createElement("progress");
+        health.max = competitor.maxHealth;
+        health.value = competitor.health;
+        health.setAttribute(
+          "aria-label",
+          `Vida de ${competitor.displayName}: ${String(competitor.health)} de ${String(competitor.maxHealth)}`,
+        );
+        article.append(label, health);
+      }
+      const state = document.createElement("p");
+      if (battle.phase === "choosing")
+        state.textContent = `Turno ${String(battle.turn)} em andamento.`;
+      else if (battle.outcome === "draw")
+        state.textContent = "Empate confirmado.";
+      else {
+        const winner = battle.competitors.find(
+          ({ playerId }) => playerId === battle.winnerPlayerId,
+        );
+        state.textContent = winner
+          ? `Vencedor confirmado: ${winner.displayName}.`
+          : "Batalha encerrada.";
+      }
+      article.append(state);
+      item.append(article);
+      return item;
+    }),
+  );
+}
+
+function requestBroadcastResume(): void {
+  sendSocial({
+    type: "battle_broadcast_resume",
+    afterRevision: broadcastRevision,
+  });
+}
+
+function receiveBattleBroadcast(message: BattleBroadcastMessage): void {
+  if (message.type === "battle_broadcast_snapshot") {
+    broadcasts.clear();
+    for (const battle of message.battles)
+      broadcasts.set(battle.battleId, battle);
+    broadcastRevision = message.revision;
+    renderBroadcasts();
+    return;
+  }
+  const updates =
+    message.type === "battle_broadcast_replay"
+      ? message.updates
+      : [
+          {
+            revision: message.revision,
+            event: message.event,
+            battle: message.battle,
+          },
+        ];
+  for (const update of updates) {
+    if (update.revision <= broadcastRevision) continue;
+    if (update.revision !== broadcastRevision + 1) {
+      requestBroadcastResume();
+      return;
+    }
+    broadcasts.delete(update.battle.battleId);
+    broadcasts.set(update.battle.battleId, update.battle);
+    broadcastRevision = update.revision;
+  }
+  if (message.revision > broadcastRevision) {
+    requestBroadcastResume();
+    return;
+  }
+  renderBroadcasts();
+}
+
 function renderPvp(
   message: Extract<
     PvpMessage,
@@ -619,6 +840,7 @@ async function connect(): Promise<void> {
     if (isArenaMessage(value)) receive(value);
     else if (isSocialMessage(value)) receiveSocial(value);
     else if (isPvpMessage(value)) receivePvp(value);
+    else if (isBattleBroadcastMessage(value)) receiveBattleBroadcast(value);
   });
   current.addEventListener("close", (event) => {
     if (socket !== current || manualClose) return;
@@ -654,6 +876,9 @@ function closeArena(): void {
   mutedPlayers.clear();
   chatLog?.replaceChildren();
   invitations?.replaceChildren();
+  broadcasts.clear();
+  broadcastRevision = -1;
+  renderBroadcasts();
   render();
   if (arenaPanel) arenaPanel.hidden = true;
   if (gamePanel) gamePanel.hidden = false;
@@ -666,6 +891,7 @@ export async function openArena(roomId: string): Promise<void> {
   manualClose = false;
   reconnectAttempts = 0;
   revision = -1;
+  broadcastRevision = -1;
   sequence = 0;
   if (gamePanel) gamePanel.hidden = true;
   if (arenaPanel) arenaPanel.hidden = false;

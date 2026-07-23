@@ -78,6 +78,10 @@ describe("PvP application service", () => {
       accountId: string;
       payload: Record<string, unknown>;
     }> = [];
+    const broadcasts: Array<{
+      event: string;
+      projection: Record<string, unknown>;
+    }> = [];
     const service = new PvpService(
       database as never,
       () => "pvp-1",
@@ -90,7 +94,18 @@ describe("PvP application service", () => {
       });
     };
     expect(
-      await service.start("arena-1", participants[0], participants[1], deliver),
+      await service.start(
+        "arena-1",
+        participants[0],
+        participants[1],
+        deliver,
+        (event, projection) => {
+          broadcasts.push({
+            event,
+            projection,
+          });
+        },
+      ),
     ).toBe(true);
     expect(
       delivered.filter(({ payload }) => payload.type === "pvp_started"),
@@ -98,6 +113,19 @@ describe("PvP application service", () => {
     expect(
       JSON.stringify(delivered.map(({ payload }) => payload)),
     ).not.toContain('"accountId"');
+    service.handle(
+      {
+        type: "pvp_choice",
+        battleId: "pvp-1",
+        sequence: 1,
+        action: "strike",
+      },
+      "spectator-account",
+    );
+    expect(delivered.at(-1)).toMatchObject({
+      accountId: "spectator-account",
+      payload: { type: "pvp_error", code: "spectator_read_only" },
+    });
 
     service.disconnect("account-a");
     await new Promise((resolve) => setImmediate(resolve));
@@ -108,8 +136,16 @@ describe("PvP application service", () => {
     expect(
       delivered.filter(({ payload }) => payload.type === "pvp_finished"),
     ).toHaveLength(2);
+    expect(broadcasts).toMatchObject([
+      { event: "started" },
+      {
+        event: "finished",
+        projection: { winnerPlayerId: "public-b" },
+      },
+    ]);
     service.disconnect("account-a");
     expect(database.records.size).toBe(1);
+    expect(broadcasts).toHaveLength(2);
     service.close();
   });
 

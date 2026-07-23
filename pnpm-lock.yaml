@@ -52,6 +52,9 @@ importers:
       "@lt/battle-domain":
         specifier: workspace:*
         version: link:../../packages/battle-domain
+      "@lt/broadcast-domain":
+        specifier: workspace:*
+        version: link:../../packages/broadcast-domain
       "@lt/creature-domain":
         specifier: workspace:*
         version: link:../../packages/creature-domain
@@ -112,6 +115,8 @@ importers:
   packages/arena-domain: {}
 
   packages/battle-domain: {}
+
+  packages/broadcast-domain: {}
 
   packages/creature-domain: {}
 
