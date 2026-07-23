@@ -1,6 +1,7 @@
 {
   "id": "original:map:starter-house",
   "version": 1,
+  "zoneId": "house",
   "author": "Projeto LT",
   "license": "Original project content",
   "description": "Geometria e paleta originais para o protótipo da casa.",

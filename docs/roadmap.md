@@ -290,7 +290,7 @@ Expandir a casa para um mundo dividido em zonas carregadas sob demanda.
 - formato de autoria difícil de manter;
 - transição concorrente ou reconexão no meio da troca.
 
-**Status:** **não iniciado**.
+**Status:** **concluído na branch**, aguardando revisão no PR #6.
 
 ### Fase 6 — NPCs, diálogos, itens e baús
 

@@ -21,6 +21,84 @@ export const SAFE_SPAWN: PlayerState = {
   lastProcessedSequence: 0,
 };
 
+export interface ZoneDefinition {
+  id: string;
+  packId: string;
+  collision: WorldCollision;
+  spawn: PlayerState;
+  portals: readonly {
+    id: string;
+    targetZoneId: string;
+    targetSpawn: PlayerState;
+    trigger: { x: number; y: number; width: number; height: number };
+  }[];
+}
+
+const MEADOW_COLLISION: WorldCollision = {
+  bounds: { x: 24, y: 24, width: 592, height: 352 },
+  obstacles: [
+    { x: 120, y: 90, width: 80, height: 52 },
+    { x: 430, y: 220, width: 92, height: 64 },
+  ],
+};
+
+export const ZONES: Readonly<Record<string, ZoneDefinition>> = {
+  house: {
+    id: "house",
+    packId: "original-house",
+    collision: HOUSE_COLLISION,
+    spawn: SAFE_SPAWN,
+    portals: [
+      {
+        id: "front-door",
+        targetZoneId: "meadow",
+        targetSpawn: { x: 320, y: 72, lastProcessedSequence: 0 },
+        trigger: { x: 290, y: 342, width: 60, height: 34 },
+      },
+    ],
+  },
+  meadow: {
+    id: "meadow",
+    packId: "original-meadow",
+    collision: MEADOW_COLLISION,
+    spawn: { x: 320, y: 72, lastProcessedSequence: 0 },
+    portals: [
+      {
+        id: "house-door",
+        targetZoneId: "house",
+        targetSpawn: { x: 320, y: 320, lastProcessedSequence: 0 },
+        trigger: { x: 290, y: 24, width: 60, height: 58 },
+      },
+    ],
+  },
+};
+
+export function getZone(zoneId: string): ZoneDefinition | undefined {
+  return ZONES[zoneId];
+}
+
+export function simulateZoneMovement(
+  zoneId: string,
+  state: PlayerState,
+  input: MovementInput,
+  deltaSeconds: number,
+): PlayerState {
+  const zone = getZone(zoneId);
+  return zone
+    ? simulateMovement(state, input, deltaSeconds, zone.collision)
+    : state;
+}
+
+export function findAvailablePortal(zoneId: string, state: PlayerState) {
+  return getZone(zoneId)?.portals.find(
+    ({ trigger }) =>
+      state.x >= trigger.x &&
+      state.x <= trigger.x + trigger.width &&
+      state.y >= trigger.y &&
+      state.y <= trigger.y + trigger.height,
+  );
+}
+
 export function simulateHouseMovement(
   state: PlayerState,
   input: MovementInput,

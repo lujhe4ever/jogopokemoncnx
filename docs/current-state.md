@@ -5,18 +5,18 @@
 | Atualizado em | 2026-07-23 |
 | Repositório | `lujhe4ever/jogopokemoncnx` |
 | Branch principal | `main` |
-| Branch desta entrega | `agent/fase-4-casa-movimento` |
-| Fase | Fase 4 — casa, movimentação e colisão |
-| Status | **concluída na branch — PR #5 aguardando revisão** |
+| Branch desta entrega | `agent/fase-5-mapas-transicoes` |
+| Fase | Fase 5 — mapas, zonas e transições |
+| Status | **concluída na branch — PR #6 aguardando revisão** |
 
 ## 1. Resumo
 
-As Fases 0B, 1 e 2 foram integradas à `main`. A Fase 3 está implementada na branch
-`agent/fase-3-autenticacao` e reservada no PR #4.
+As Fases 0B a 4 foram integradas à `main`. A Fase 5 está implementada na branch
+`agent/fase-5-mapas-transicoes` e reservada no PR #6.
 
 O projeto possui workspace TypeScript, servidor Fastify, cliente Vite/Phaser,
 PostgreSQL, Prisma, WebSocket versionado, autenticação e a primeira fatia jogável da
-casa.
+casa, uma clareira original e transições autoritativas entre zonas.
 
 ## 2. Entrega atual
 
@@ -29,6 +29,11 @@ casa.
 - rate limiting para cadastro e login;
 - auditoria de sucesso/falha sem registrar credenciais;
 - testes de sessão, falha de login, Argon2id e ticket descartável.
+- contrato declarativo para zonas, colisões, spawns e portais;
+- checkpoint persistente com `zoneId`;
+- transição validada por proximidade e ID no servidor;
+- snapshots restritos à área de interesse da zona atual;
+- manifests versionados e seleção do pack autorizado por snapshot.
 
 Verificação e recuperação de e-mail permanecem fora do escopo até que seus fluxos
 completos sejam definidos.
@@ -53,7 +58,8 @@ completos sejam definidos.
 | Autenticação, perfil e sessão | concluído na branch |
 | Recuperação/verificação de e-mail | não iniciado |
 | Casa, movimento e colisão | concluído na branch |
-| Mapas, NPCs, itens e missões | não iniciado |
+| Mapas e transições | concluído na branch |
+| NPCs, itens e missões | não iniciado |
 | Criaturas e batalhas | não iniciado |
 | Arena e recursos sociais | não iniciado |
 | Administração e deploy | não iniciado |
@@ -72,7 +78,7 @@ pnpm check
 ## 6. Verificações atuais
 
 - formatação, lint e TypeScript estrito;
-- seis testes antes do teste Argon2id adicional;
+- 6 arquivos de teste e 14 testes automatizados;
 - build do servidor e cliente;
 - validação do schema Prisma;
 - migrações aplicadas em PostgreSQL vazio pela CI;
@@ -89,13 +95,13 @@ pnpm check
 
 ## 8. Decisões vigentes
 
-D-001 a D-006 e D-008 estão aceitas. As demais decisões técnicas
+D-001 a D-008 estão aceitas. As demais decisões técnicas
 continuam com o status registrado em `docs/decisions.md`.
 
 ## 9. Próxima tarefa recomendada
 
-Revisar e integrar o PR #5. Depois, iniciar exclusivamente a Fase 5: mapas, zonas e
-transições.
+Revisar e integrar o PR #6. Depois, iniciar exclusivamente a Fase 6: NPCs,
+diálogos, itens e baús.
 
 ## 10. Instruções para reproduzir
 

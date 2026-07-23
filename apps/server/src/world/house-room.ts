@@ -1,22 +1,29 @@
 import type { MovementInput, PlayerState } from "@lt/engine-core";
 import {
-  SAFE_SPAWN,
-  isSafeHousePosition,
-  simulateHouseMovement,
+  findAvailablePortal,
+  getZone,
+  simulateZoneMovement,
 } from "@lt/game-simulation";
 import type { PrismaClient } from "@prisma/client";
 import { z } from "zod";
 
-const inputSchema = z.object({
-  type: z.literal("input"),
-  sequence: z.number().int().positive(),
-  x: z.number().min(-1).max(1),
-  y: z.number().min(-1).max(1),
-});
+const messageSchema = z.discriminatedUnion("type", [
+  z.object({
+    type: z.literal("input"),
+    sequence: z.number().int().positive(),
+    x: z.number().min(-1).max(1),
+    y: z.number().min(-1).max(1),
+  }),
+  z.object({ type: z.literal("transition"), portalId: z.string().min(1) }),
+]);
+
+export interface ZonePlayerState extends PlayerState {
+  zoneId: string;
+}
 
 export interface CheckpointStore {
-  load(accountId: string): Promise<PlayerState | null>;
-  save(accountId: string, state: PlayerState): Promise<void>;
+  load(accountId: string): Promise<ZonePlayerState | PlayerState | null>;
+  save(accountId: string, state: ZonePlayerState): Promise<void>;
 }
 
 export interface WorldSocket {
@@ -34,22 +41,32 @@ export class PrismaCheckpointStore implements CheckpointStore {
       where: { accountId },
     });
     return checkpoint
-      ? { x: checkpoint.x, y: checkpoint.y, lastProcessedSequence: 0 }
+      ? {
+          x: checkpoint.x,
+          y: checkpoint.y,
+          zoneId: checkpoint.zoneId,
+          lastProcessedSequence: 0,
+        }
       : null;
   }
 
-  async save(accountId: string, state: PlayerState) {
+  async save(accountId: string, state: ZonePlayerState) {
     await this.prisma.playerCheckpoint.upsert({
       where: { accountId },
-      create: { accountId, x: state.x, y: state.y },
-      update: { x: state.x, y: state.y },
+      create: {
+        accountId,
+        x: state.x,
+        y: state.y,
+        zoneId: state.zoneId,
+      },
+      update: { x: state.x, y: state.y, zoneId: state.zoneId },
     });
   }
 }
 
 interface ConnectedPlayer {
   socket: WorldSocket;
-  state: PlayerState;
+  state: ZonePlayerState;
   inputs: MovementInput[];
 }
 
@@ -72,69 +89,117 @@ export class HouseRoom {
 
   async connect(socket: WorldSocket, accountId: string): Promise<void> {
     const checkpoint = await this.checkpoints.load(accountId);
-    const state =
-      checkpoint && isSafeHousePosition(checkpoint)
-        ? checkpoint
-        : { ...SAFE_SPAWN };
+    const requestedZone =
+      checkpoint && "zoneId" in checkpoint ? checkpoint.zoneId : "house";
+    const zone = getZone(requestedZone) ?? getZone("house");
+    if (!zone) throw new Error("default_zone_missing");
+    const safe =
+      checkpoint &&
+      checkpoint.x >= zone.collision.bounds.x &&
+      checkpoint.y >= zone.collision.bounds.y;
+    const state: ZonePlayerState = {
+      ...(safe ? checkpoint : zone.spawn),
+      zoneId: zone.id,
+      lastProcessedSequence: 0,
+    };
     this.players.set(accountId, { socket, state, inputs: [] });
     socket.on("message", (data) => {
-      const raw: unknown = JSON.parse(data.toString());
-      const input = inputSchema.safeParse(raw);
+      let raw: unknown;
+      try {
+        raw = JSON.parse(data.toString());
+      } catch {
+        return;
+      }
+      const message = messageSchema.safeParse(raw);
       const player = this.players.get(accountId);
-      if (
-        input.success &&
-        player &&
-        input.data.sequence > player.state.lastProcessedSequence &&
+      if (!message.success || !player) return;
+      if (message.data.type === "transition") {
+        this.transition(accountId, message.data.portalId);
+      } else if (
+        message.data.sequence > player.state.lastProcessedSequence &&
         player.inputs.length < 20
       ) {
-        player.inputs.push(input.data);
+        player.inputs.push(message.data);
       }
     });
-    socket.once("close", () => {
-      void this.disconnect(accountId);
-    });
-    this.broadcast();
+    socket.once("close", () => void this.disconnect(accountId));
+    this.sendSnapshot(accountId);
   }
 
   step(): void {
     for (const player of this.players.values()) {
-      const inputs = player.inputs.splice(0, 10);
-      for (const input of inputs) {
-        player.state = simulateHouseMovement(player.state, input, 0.05);
+      for (const input of player.inputs.splice(0, 10)) {
+        player.state = {
+          ...simulateZoneMovement(
+            player.state.zoneId,
+            player.state,
+            input,
+            0.05,
+          ),
+          zoneId: player.state.zoneId,
+        };
       }
     }
-    this.broadcast();
+    for (const accountId of this.players.keys()) this.sendSnapshot(accountId);
   }
 
-  snapshot(): Record<string, PlayerState> {
+  snapshot(zoneId?: string): Record<string, ZonePlayerState> {
     return Object.fromEntries(
-      [...this.players.entries()].map(([accountId, player]) => [
-        accountId,
-        { ...player.state },
-      ]),
+      [...this.players.entries()]
+        .filter(([, player]) => !zoneId || player.state.zoneId === zoneId)
+        .map(([id, player]) => [id, { ...player.state }]),
     );
   }
 
   async close(): Promise<void> {
     clearInterval(this.timer);
     await Promise.all(
-      [...this.players.entries()].map(([accountId, player]) =>
-        this.checkpoints.save(accountId, player.state),
+      [...this.players].map(([id, player]) =>
+        this.checkpoints.save(id, player.state),
       ),
     );
     this.players.clear();
   }
 
-  private broadcast(): void {
-    const payload = JSON.stringify({
-      protocolVersion: 1,
-      type: "world_snapshot",
-      serverTime: Date.now(),
-      players: this.snapshot(),
-    });
-    for (const player of this.players.values()) {
-      if (player.socket.readyState === 1) player.socket.send(payload);
+  private transition(accountId: string, portalId: string): void {
+    const player = this.players.get(accountId);
+    if (!player) return;
+    const previousZoneId = player.state.zoneId;
+    const portal = findAvailablePortal(player.state.zoneId, player.state);
+    if (!portal || portal.id !== portalId) return;
+    player.state = {
+      ...portal.targetSpawn,
+      zoneId: portal.targetZoneId,
+      lastProcessedSequence: player.state.lastProcessedSequence,
+    };
+    player.inputs.length = 0;
+    void this.checkpoints.save(accountId, player.state);
+    for (const [id, connected] of this.players) {
+      if (
+        connected.state.zoneId === previousZoneId ||
+        connected.state.zoneId === player.state.zoneId
+      ) {
+        this.sendSnapshot(id, id === accountId);
+      }
     }
+  }
+
+  private sendSnapshot(accountId: string, transitioned = false): void {
+    const player = this.players.get(accountId);
+    if (!player || player.socket.readyState !== 1) return;
+    const zone = getZone(player.state.zoneId);
+    if (!zone) return;
+    player.socket.send(
+      JSON.stringify({
+        protocolVersion: 1,
+        type: "world_snapshot",
+        serverTime: Date.now(),
+        zoneId: zone.id,
+        packId: zone.packId,
+        transitioned,
+        players: this.snapshot(zone.id),
+      }),
+    );
   }
 
   private async disconnect(accountId: string): Promise<void> {
@@ -142,6 +207,5 @@ export class HouseRoom {
     if (!player) return;
     this.players.delete(accountId);
     await this.checkpoints.save(accountId, player.state);
-    this.broadcast();
   }
 }

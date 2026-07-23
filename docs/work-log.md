@@ -591,3 +591,51 @@ Entregar a primeira fatia jogável autoritativa.
 ### Próximo passo
 
 Revisar e integrar o PR #5 após a CI aprovada.
+
+## 2026-07-23 — Integração da Fase 4 e reserva da Fase 5
+
+### Contexto
+
+O PR #5 passou no CI e foi integrado à `main` no commit
+`861d4a68681c3c76279aad354dcc6b2112d42a8e`.
+
+### Escopo reservado
+
+- contrato declarativo de mapa e zonas;
+- portais e transições validados pelo servidor;
+- spawn e checkpoint por zona;
+- carregamento e descarte de packs sob demanda;
+- área de interesse sem vazamento de estado entre zonas.
+
+### Fora do escopo
+
+NPCs, itens, inventário, criaturas, batalha, arena e deploy público.
+
+### Próximo passo
+
+Publicar o PR de reserva da Fase 5 antes de iniciar a implementação.
+
+## 2026-07-23 — Mapas, zonas e transições da Fase 5
+
+### Resultado
+
+- casa e clareira descritas por contrato declarativo;
+- portais bidirecionais com spawn de destino;
+- servidor rejeita transição fora do gatilho ou com ID incorreto;
+- checkpoint passa a preservar `zoneId`;
+- snapshots incluem somente jogadores da mesma zona;
+- cliente troca a geometria ativa e descarta os objetos visuais anteriores;
+- manifests originais identificam packs versionados sem assets externos.
+
+### Testes e verificações
+
+- `pnpm check`: 6 arquivos e 14 testes aprovados;
+- transição inválida rejeitada;
+- transição válida não duplica avatar e persiste o destino;
+- jogadores em zonas diferentes não aparecem no mesmo snapshot;
+- build inicial permanece separado do chunk Phaser;
+- schema e migração Prisma validados localmente e pela CI do PR.
+
+### Próximo passo
+
+Revisar e integrar o PR #6 após a CI aprovada.
