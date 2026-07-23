@@ -5,14 +5,14 @@
 | Atualizado em | 2026-07-23 |
 | Repositório | `lujhe4ever/jogopokemoncnx` |
 | Branch principal | `main` |
-| Branch desta entrega | `agent/fase-14-teloes-transmissao` |
-| Fase | Fase 14 — telões e transmissão de batalhas |
-| Status | **concluída — aguardando integração do PR #15** |
+| Branch desta entrega | `agent/fase-15-painel-administrativo` |
+| Fase | Fase 15 — painel administrativo |
+| Status | **reservada — implementação em andamento** |
 
 ## 1. Resumo
 
-As Fases 0B a 13 foram integradas à `main`. A Fase 14 foi concluída na branch
-`agent/fase-14-teloes-transmissao` e aguarda integração pelo PR #15.
+As Fases 0B a 14 foram integradas à `main`. A Fase 15 está reservada na branch
+`agent/fase-15-painel-administrativo`.
 
 O projeto possui workspace TypeScript, servidor Fastify, cliente Vite/Phaser,
 PostgreSQL, Prisma, WebSocket versionado, autenticação e a primeira fatia jogável da
@@ -120,7 +120,8 @@ completos sejam definidos.
 | Batalha contra NPCs | concluída na branch |
 | Encontros e captura | concluídos na branch |
 | Batalhas PvP | concluídas |
-| Telões e espectadores | concluídos na branch |
+| Telões e espectadores | concluídos |
+| Administração | em andamento na branch |
 | Arena e presença | concluídas na branch |
 | Chat, emotes e convites | concluídos na branch |
 | Administração e deploy | não iniciado |
@@ -161,8 +162,8 @@ continuam com o status registrado em `docs/decisions.md`.
 
 ## 9. Próxima tarefa recomendada
 
-Revisar e integrar o PR #15 e então reservar exclusivamente a Fase 15: painel
-administrativo auditável com autorização forte e sem acesso direto ao estado interno.
+Implementar exclusivamente a Fase 15: painel administrativo auditável com RBAC,
+confirmação reforçada, dados minimizados e sem acesso direto ao estado interno.
 
 ## 10. Instruções para reproduzir
 

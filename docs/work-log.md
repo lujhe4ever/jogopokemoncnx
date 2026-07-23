@@ -1109,3 +1109,30 @@ Publicar o PR rascunho da Fase 14 antes de iniciar a implementação.
 
 Revisar e integrar o PR #15 após a CI aprovada e reservar a Fase 15 sem executar
 deploy público.
+
+## 2026-07-23 — Integração da Fase 14 e reserva da Fase 15
+
+### Contexto
+
+O PR #15 passou na CI e foi integrado à `main` no commit
+`88420a4481ac1ea04fa3562c0d729c84ba583f34`.
+
+### Escopo reservado
+
+- autenticação administrativa como elevação da sessão existente;
+- segundo fator obrigatório e módulo desabilitado sem configuração segura;
+- RBAC para suporte, conteúdo e proprietário;
+- auditoria de sucesso e negação sem segredo ou PII desnecessária;
+- consulta minimizada de perfil/progresso por caso de uso;
+- revogação recuperável de sessões com confirmação e motivo;
+- validação/publicação de manifesto declarativo original ou CC0;
+- cliente administrativo separado do jogo.
+
+### Fora do escopo
+
+Exposição pública, gestão de infraestrutura, acesso SQL pela UI, alteração arbitrária
+de inventário/progresso, deleção definitiva de conta e deploy público.
+
+### Próximo passo
+
+Publicar o PR rascunho da Fase 15 antes de iniciar a implementação.
