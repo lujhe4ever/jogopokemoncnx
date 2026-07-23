@@ -2,7 +2,7 @@
 
 | Campo | Valor |
 | --- | --- |
-| Status do projeto | **Fase 12 — concluída na branch** |
+| Status do projeto | **Fase 13 — em andamento** |
 | Atualizado em | 2026-07-23 |
 | Implementação existente | Nenhuma |
 
@@ -42,8 +42,8 @@ Status permitidos:
 | 9 | Encontros e captura | concluído |
 | 10 | Missões e persistência integrada | concluído |
 | 11 | Arena multiplayer e presença | concluído |
-| 12 | Chat, emotes e convites | concluído na branch |
-| 13 | Batalhas entre jogadores | não iniciado |
+| 12 | Chat, emotes e convites | concluído |
+| 13 | Batalhas entre jogadores | em andamento |
 | 14 | Telões e transmissão de batalhas | não iniciado |
 | 15 | Painel administrativo | não iniciado |
 | 16 | Segurança, performance, testes e deploy | não iniciado |
@@ -553,7 +553,8 @@ Adicionar comunicação e desafios sociais com segurança.
 - retenção inadequada;
 - overlay de chat ilegível em mobile.
 
-**Status:** **concluído na branch**, aguardando CI e integração no PR #13.
+**Status:** **concluído** e integrado pelo PR #13 no commit
+`87ced88cc2a72505d9eea563214be0cbc059a891`.
 
 ### Fase 13 — Batalhas entre jogadores
 
@@ -590,7 +591,7 @@ Reutilizar o núcleo de batalha em desafios PvP autorizados pela arena.
 - vantagem por desconexão;
 - balanceamento virar bloqueio arquitetural.
 
-**Status:** **não iniciado**.
+**Status:** **em andamento** na branch `agent/fase-13-batalhas-pvp`.
 
 ### Fase 14 — Telões e transmissão de batalhas
 

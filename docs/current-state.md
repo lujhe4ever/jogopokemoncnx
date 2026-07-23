@@ -5,14 +5,14 @@
 | Atualizado em | 2026-07-23 |
 | Repositório | `lujhe4ever/jogopokemoncnx` |
 | Branch principal | `main` |
-| Branch desta entrega | `agent/fase-12-chat-emotes-convites` |
-| Fase | Fase 12 — chat, emotes e convites |
-| Status | **implementada — aguardando CI e integração** |
+| Branch desta entrega | `agent/fase-13-batalhas-pvp` |
+| Fase | Fase 13 — batalhas entre jogadores |
+| Status | **reservada — implementação em andamento** |
 
 ## 1. Resumo
 
-As Fases 0B a 11 foram integradas à `main`. A Fase 12 está implementada na branch
-`agent/fase-12-chat-emotes-convites` e reservada no PR #13.
+As Fases 0B a 12 foram integradas à `main`. A Fase 13 está reservada na branch
+`agent/fase-13-batalhas-pvp`.
 
 O projeto possui workspace TypeScript, servidor Fastify, cliente Vite/Phaser,
 PostgreSQL, Prisma, WebSocket versionado, autenticação e a primeira fatia jogável da
@@ -144,8 +144,8 @@ continuam com o status registrado em `docs/decisions.md`.
 
 ## 9. Próxima tarefa recomendada
 
-Integrar o PR #13 após a CI aprovada e reservar exclusivamente a Fase 13: desafios
-PvP com aceite mútuo, validação de participantes, turnos, timeout e resultado único.
+Implementar exclusivamente a Fase 13: desafios PvP com aceite mútuo, validação de
+participantes, escolhas privadas, turnos, timeout, abandono e resultado único.
 
 ## 10. Instruções para reproduzir
 

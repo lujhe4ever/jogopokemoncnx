@@ -1003,3 +1003,27 @@ Publicar o PR rascunho da Fase 12 antes de iniciar a implementação.
 
 Revisar e integrar o PR #13 após a CI aprovada e reservar a Fase 13 sem executar
 deploy público.
+
+## 2026-07-23 — Integração da Fase 12 e reserva da Fase 13
+
+### Contexto
+
+O PR #13 passou na CI e foi integrado à `main` no commit
+`87ced88cc2a72505d9eea563214be0cbc059a891`.
+
+### Escopo reservado
+
+- converter desafio social aceito em batalha PvP autorizada;
+- validar ownership dos dois participantes e impedir comandos do oponente;
+- coletar escolhas privadas e resolver cada turno de modo determinístico;
+- timeout, abandono e desconexão com resultado explícito;
+- resultado persistido uma única vez;
+- retorno seguro à arena.
+
+### Fora do escopo
+
+Espectadores, telões, ranking, matchmaking, administração e deploy público.
+
+### Próximo passo
+
+Publicar o PR rascunho da Fase 13 antes de iniciar a implementação.
