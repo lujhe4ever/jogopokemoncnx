@@ -14,6 +14,11 @@
       "id": "item:field-tonic",
       "label": "Tônico de campo",
       "maxStack": 99
+    },
+    {
+      "id": "item:capture-orb",
+      "label": "Orbe de captura",
+      "maxStack": 99
     }
   ]
 }

@@ -29,6 +29,17 @@
         "guard": 24,
         "agility": 17
       }
+    },
+    {
+      "id": "creature:nightleaf",
+      "version": 1,
+      "name": "Folha Noturna",
+      "baseAttributes": {
+        "vitality": 24,
+        "strength": 13,
+        "guard": 9,
+        "agility": 9
+      }
     }
   ]
 }

@@ -6,6 +6,7 @@ import {
   simulateZoneMovement,
 } from "@lt/game-simulation";
 import type { PrismaClient } from "@prisma/client";
+import { randomUUID } from "node:crypto";
 import { z } from "zod";
 import type { InteractionStore } from "./interaction-store.js";
 
@@ -79,6 +80,10 @@ interface ConnectedPlayer {
 
 export class HouseRoom {
   private readonly players = new Map<string, ConnectedPlayer>();
+  private readonly encounterAuthorizations = new Map<
+    string,
+    { token: string; zoneId: string; expiresAt: number }
+  >();
   private readonly timer: NodeJS.Timeout;
 
   constructor(
@@ -179,6 +184,20 @@ export class HouseRoom {
       ),
     );
     this.players.clear();
+    this.encounterAuthorizations.clear();
+  }
+
+  consumeEncounterAuthorization(
+    accountId: string,
+    token: string,
+  ): string | null {
+    const authorization = this.encounterAuthorizations.get(accountId);
+    this.encounterAuthorizations.delete(accountId);
+    return authorization &&
+      authorization.token === token &&
+      authorization.expiresAt >= Date.now()
+      ? authorization.zoneId
+      : null;
   }
 
   private transition(accountId: string, portalId: string): void {
@@ -249,6 +268,26 @@ export class HouseRoom {
           status: "dialogue",
           label: interaction.label,
           dialogue: interaction.dialogue,
+        }),
+      );
+      return;
+    }
+    if (interaction.capability === "encounter") {
+      const authorization = randomUUID();
+      this.encounterAuthorizations.set(accountId, {
+        token: authorization,
+        zoneId: player.state.zoneId,
+        expiresAt: Date.now() + 15_000,
+      });
+      player.socket.send(
+        JSON.stringify({
+          protocolVersion: 1,
+          type: "interaction_result",
+          requestId,
+          interactionId,
+          status: "encounter_available",
+          authorization,
+          definitionId: interaction.definitionId,
         }),
       );
       return;

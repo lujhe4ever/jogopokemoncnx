@@ -816,3 +816,31 @@ Missões, arena, PvP, chat, administração e deploy público.
 ### Próximo passo
 
 Publicar o PR de reserva da Fase 9 antes de implementar o fluxo.
+
+## 2026-07-23 — Encontros e captura da Fase 9
+
+### Resultado
+
+- encontro selvagem original adicionado à clareira;
+- servidor valida proximidade antes de emitir autorização efêmera de 15 segundos;
+- autorização é descartável e vincula o encontro à zona e à conta;
+- encontro cria e referencia uma batalha explícita;
+- captura exige vitória, Orbe de Captura e RNG derivado da seed persistida;
+- item, resultado e eventual criatura são gravados atomicamente;
+- retries retornam o resultado anterior sem novo consumo ou criatura;
+- falha, timeout, abandono, desconexão e recusa retornam ao mundo com estado seguro;
+- UI de encontro/captura permanece carregada sob demanda.
+
+### Testes e verificações
+
+- `pnpm check`: 11 arquivos e 32 testes aprovados;
+- captura antes da vitória ou com item incorreto é rejeitada;
+- chance aumenta com enfraquecimento e respeita teto de 85%;
+- seed reproduz tentativa equivalente;
+- planejamento de retry não consome item nem cria segunda criatura;
+- autorização de proximidade funciona uma vez;
+- schema Prisma válido e migração preparada para CI.
+
+### Próximo passo
+
+Revisar e integrar o PR #10 após a CI aprovada.

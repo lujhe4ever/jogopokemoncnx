@@ -56,6 +56,16 @@ export type InteractionDefinition =
       capability: "reward";
       reward: { itemId: string; quantity: number };
       once: true;
+    }
+  | {
+      id: string;
+      kind: "encounter";
+      x: number;
+      y: number;
+      radius: number;
+      label: string;
+      capability: "encounter";
+      definitionId: string;
     };
 
 const MEADOW_COLLISION: WorldCollision = {
@@ -122,6 +132,17 @@ export const ZONES: Readonly<Record<string, ZoneDefinition>> = {
         once: true,
       },
       {
+        id: "pickup:capture-orb-01",
+        kind: "pickup",
+        x: 320,
+        y: 210,
+        radius: 44,
+        label: "Orbe de captura",
+        capability: "reward",
+        reward: { itemId: "item:capture-orb", quantity: 2 },
+        once: true,
+      },
+      {
         id: "chest:meadow-01",
         kind: "chest",
         x: 370,
@@ -131,6 +152,16 @@ export const ZONES: Readonly<Record<string, ZoneDefinition>> = {
         capability: "reward",
         reward: { itemId: "item:field-tonic", quantity: 2 },
         once: true,
+      },
+      {
+        id: "encounter:nightleaf-01",
+        kind: "encounter",
+        x: 540,
+        y: 130,
+        radius: 50,
+        label: "Folha Noturna selvagem",
+        capability: "encounter",
+        definitionId: "creature:nightleaf",
       },
     ],
   },

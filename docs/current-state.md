@@ -7,12 +7,12 @@
 | Branch principal | `main` |
 | Branch desta entrega | `agent/fase-9-encontros-captura` |
 | Fase | Fase 9 — encontros e captura |
-| Status | **reservada — implementação em andamento** |
+| Status | **concluída na branch — PR #10 aguardando revisão** |
 
 ## 1. Resumo
 
-As Fases 0B a 7 foram integradas à `main`. A Fase 8 está implementada na branch
-`agent/fase-8-batalha-npc` e reservada no PR #9.
+As Fases 0B a 8 foram integradas à `main`. A Fase 9 está implementada na branch
+`agent/fase-9-encontros-captura` e reservada no PR #10.
 
 O projeto possui workspace TypeScript, servidor Fastify, cliente Vite/Phaser,
 PostgreSQL, Prisma, WebSocket versionado, autenticação e a primeira fatia jogável da
@@ -48,6 +48,11 @@ casa, clareira original, transições autoritativas e o primeiro ciclo de intera
 - timeout, abandono e desconexão com resultado explícito;
 - resultado persistente aplicado uma única vez;
 - UI acessível de batalha carregada sob demanda e retorno ao mundo.
+- encontro selvagem original gerado por interação e proximidade;
+- autorização efêmera descartável para iniciar o encontro;
+- captura pós-vitória com RNG por seed e chance controlável;
+- consumo do Orbe e criação da criatura na mesma transação;
+- retry idempotente e retorno seguro em todos os encerramentos.
 
 Verificação e recuperação de e-mail permanecem fora do escopo até que seus fluxos
 completos sejam definidos.
@@ -77,6 +82,7 @@ completos sejam definidos.
 | Missões | não iniciado |
 | Fundação de criaturas e progressão | concluída na branch |
 | Batalha contra NPCs | concluída na branch |
+| Encontros e captura | concluídos na branch |
 | Outras batalhas | não iniciado |
 | Arena e recursos sociais | não iniciado |
 | Administração e deploy | não iniciado |
@@ -95,7 +101,7 @@ pnpm check
 ## 6. Verificações atuais
 
 - formatação, lint e TypeScript estrito;
-- 10 arquivos de teste e 27 testes automatizados;
+- 11 arquivos de teste e 32 testes automatizados;
 - build do servidor e cliente;
 - validação do schema Prisma;
 - migrações aplicadas em PostgreSQL vazio pela CI;
@@ -112,13 +118,13 @@ pnpm check
 
 ## 8. Decisões vigentes
 
-D-001 a D-008 e D-011 a D-013 estão aceitas. As demais decisões técnicas
+D-001 a D-008 e D-011 a D-014 estão aceitas. As demais decisões técnicas
 continuam com o status registrado em `docs/decisions.md`.
 
 ## 9. Próxima tarefa recomendada
 
-Implementar exclusivamente a Fase 9: geração de encontro, transição para batalha,
-elegibilidade/tentativa de captura, operação atômica e retorno seguro ao mundo.
+Revisar e integrar o PR #10. Depois, iniciar exclusivamente a Fase 10: missões e
+persistência integrada.
 
 ## 10. Instruções para reproduzir
 

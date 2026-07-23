@@ -8,6 +8,7 @@ import {
   PrismaBattleResultStore,
 } from "./battles/battle-service.js";
 import { createDatabaseProbe } from "./database.js";
+import { EncounterService } from "./encounters/encounter-service.js";
 import { HouseRoom, PrismaCheckpointStore } from "./world/house-room.js";
 import { PrismaInteractionStore } from "./world/interaction-store.js";
 
@@ -18,12 +19,14 @@ const world = new HouseRoom(
   true,
   new PrismaInteractionStore(prisma),
 );
+const battles = new BattleService(new PrismaBattleResultStore(prisma));
 const app = await buildApp({
   database: createDatabaseProbe(prisma),
   auth: new AuthService(new PrismaAuthRepository(prisma)),
   cookieSecure: config.NODE_ENV === "production",
   world,
-  battles: new BattleService(new PrismaBattleResultStore(prisma)),
+  battles,
+  encounters: new EncounterService(prisma, battles),
 });
 
 const shutdown = () => {

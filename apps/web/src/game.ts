@@ -23,11 +23,14 @@ interface InteractionResult {
     | "granted"
     | "already_claimed"
     | "inventory_full"
-    | "unavailable";
+    | "unavailable"
+    | "encounter_available";
   label?: string;
   dialogue?: readonly string[];
   itemId?: string;
   quantity?: number;
+  authorization?: string;
+  definitionId?: string;
 }
 
 function isSnapshot(value: unknown): value is Snapshot {
@@ -213,7 +216,9 @@ class HouseScene extends Phaser.Scene {
           ? 0x784fc5
           : interaction.kind === "chest"
             ? 0xc58a32
-            : 0x59a953;
+            : interaction.kind === "encounter"
+              ? 0x9b3f5d
+              : 0x59a953;
       graphics.fillStyle(color).fillCircle(interaction.x, interaction.y, 12);
       this.add.text(interaction.x - 34, interaction.y - 28, interaction.label, {
         color: "#1d271d",
@@ -266,7 +271,17 @@ class HouseScene extends Phaser.Scene {
       this.setFeedback("Este recurso já foi coletado.");
     else if (result.status === "inventory_full")
       this.setFeedback("Inventário cheio. Libere espaço antes de coletar.");
-    else this.setFeedback("A interação não está disponível nesta posição.");
+    else if (result.status === "encounter_available" && result.authorization) {
+      this.setFeedback("Encontro selvagem iniciado.");
+      window.dispatchEvent(
+        new CustomEvent("lt:encounter", {
+          detail: {
+            authorization: result.authorization,
+            definitionId: result.definitionId,
+          },
+        }),
+      );
+    } else this.setFeedback("A interação não está disponível nesta posição.");
   }
 
   private setFeedback(message: string) {
