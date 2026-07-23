@@ -1,13 +1,16 @@
 import type { MovementInput, PlayerState } from "@lt/engine-core";
 import {
-  HOUSE_COLLISION,
   SAFE_SPAWN,
-  simulateHouseMovement,
+  findAvailablePortal,
+  getZone,
+  simulateZoneMovement,
 } from "@lt/game-simulation";
 import Phaser from "phaser";
 
 interface Snapshot {
   type: "world_snapshot";
+  zoneId: string;
+  packId: string;
   players: Record<string, PlayerState>;
 }
 
@@ -34,6 +37,8 @@ class HouseScene extends Phaser.Scene {
   };
   private socket?: WebSocket;
   private local: PlayerState = { ...SAFE_SPAWN };
+  private zoneId = "house";
+  private requestedPortal: string | undefined;
   private sequence = 0;
   private accumulator = 0;
   private cursors: Phaser.Types.Input.Keyboard.CursorKeys | undefined;
@@ -48,24 +53,7 @@ class HouseScene extends Phaser.Scene {
   }
 
   create() {
-    this.cameras.main.setBackgroundColor("#c9b98a");
-    const graphics = this.add.graphics();
-    graphics.lineStyle(4, 0x3e4a3d).strokeRect(24, 24, 592, 352);
-    for (const obstacle of HOUSE_COLLISION.obstacles) {
-      graphics
-        .fillStyle(0x76533a)
-        .fillRoundedRect(
-          obstacle.x,
-          obstacle.y,
-          obstacle.width,
-          obstacle.height,
-          8,
-        );
-    }
-    this.add.text(40, 340, "Casa original • WASD/setas ou controles de toque", {
-      color: "#263126",
-      fontSize: "14px",
-    });
+    this.renderZone();
     this.cursors = this.input.keyboard?.createCursorKeys();
     this.keys = this.input.keyboard?.addKeys("W,A,S,D") as Record<
       "W" | "A" | "S" | "D",
@@ -81,8 +69,15 @@ class HouseScene extends Phaser.Scene {
       this.accumulator -= 50;
       const input = this.readInput();
       this.pending.push(input);
-      this.local = simulateHouseMovement(this.local, input, 0.05);
+      this.local = simulateZoneMovement(this.zoneId, this.local, input, 0.05);
       this.socket?.send(JSON.stringify({ type: "input", ...input }));
+      const portal = findAvailablePortal(this.zoneId, this.local);
+      if (portal && portal.id !== this.requestedPortal) {
+        this.requestedPortal = portal.id;
+        this.socket?.send(
+          JSON.stringify({ type: "transition", portalId: portal.id }),
+        );
+      } else if (!portal) this.requestedPortal = undefined;
     }
     this.renderAvatar(this.accountId, this.local, 0x2d69c4);
   }
@@ -114,6 +109,12 @@ class HouseScene extends Phaser.Scene {
     this.socket.addEventListener("message", (event) => {
       const value: unknown = JSON.parse(String(event.data));
       if (!isSnapshot(value)) return;
+      if (value.zoneId !== this.zoneId) {
+        this.zoneId = value.zoneId;
+        this.pending.length = 0;
+        this.requestedPortal = undefined;
+        this.renderZone();
+      }
       const authoritative = value.players[this.accountId];
       if (authoritative) {
         this.local = authoritative;
@@ -121,12 +122,59 @@ class HouseScene extends Phaser.Scene {
         while (this.pending[0] && this.pending[0].sequence <= confirmed)
           this.pending.shift();
         for (const input of this.pending)
-          this.local = simulateHouseMovement(this.local, input, 0.05);
+          this.local = simulateZoneMovement(
+            this.zoneId,
+            this.local,
+            input,
+            0.05,
+          );
       }
       for (const [id, state] of Object.entries(value.players)) {
         if (id !== this.accountId) this.renderAvatar(id, state, 0xb94a48);
       }
     });
+  }
+
+  private renderZone() {
+    const zone = getZone(this.zoneId);
+    if (!zone) return;
+    this.children.removeAll();
+    this.avatars.clear();
+    this.cameras.main.setBackgroundColor(
+      this.zoneId === "house" ? "#c9b98a" : "#91bd72",
+    );
+    const graphics = this.add.graphics();
+    const bounds = zone.collision.bounds;
+    graphics
+      .lineStyle(4, 0x3e4a3d)
+      .strokeRect(bounds.x, bounds.y, bounds.width, bounds.height);
+    for (const obstacle of zone.collision.obstacles) {
+      graphics
+        .fillStyle(this.zoneId === "house" ? 0x76533a : 0x477044)
+        .fillRoundedRect(
+          obstacle.x,
+          obstacle.y,
+          obstacle.width,
+          obstacle.height,
+          8,
+        );
+    }
+    for (const portal of zone.portals) {
+      graphics
+        .fillStyle(0xe7d26c, 0.7)
+        .fillRect(
+          portal.trigger.x,
+          portal.trigger.y,
+          portal.trigger.width,
+          portal.trigger.height,
+        );
+    }
+    this.add.text(
+      40,
+      340,
+      `${this.zoneId === "house" ? "Casa" : "Clareira"} original • WASD/setas ou toque`,
+      { color: "#263126", fontSize: "14px" },
+    );
   }
 
   private renderAvatar(id: string, target: PlayerState, color: number) {

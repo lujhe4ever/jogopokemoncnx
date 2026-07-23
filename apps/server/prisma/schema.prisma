@@ -27,6 +27,7 @@ model PlayerCheckpoint {
   id        String   @id @default(cuid())
   x         Float
   y         Float
+  zoneId    String   @default("house")
   updatedAt DateTime @updatedAt
   accountId String   @unique
   account   Account  @relation(fields: [accountId], references: [id], onDelete: Cascade)

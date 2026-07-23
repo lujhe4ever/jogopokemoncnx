@@ -241,7 +241,7 @@ Ao aceitar ou mudar uma decisão:
 ### D-007 — Packs de conteúdo e catálogo de assets substituíveis
 
 - **Data:** 2026-07-23
-- **Status:** Proposta
+- **Status:** Aceita
 - **Contexto:** engine não pode depender de criaturas, mapas ou assets específicos.
 - **Alternativas consideradas:**
   - conteúdo embutido no código;
@@ -257,7 +257,9 @@ Ao aceitar ou mudar uma decisão:
   evoluir com compatibilidade.
 - **Validação antes de aceitar:** substituir integralmente o pack placeholder sem mudar
   engine/domínio.
-- **Evidência de aprovação:** nenhuma.
+- **Evidência de aprovação:** Fase 5 implementa manifests originais versionados por
+  zona; snapshots informam somente o `packId` autorizado e nenhum asset de zona
+  futura entra no boot inicial.
 
 ### D-008 — Sessão opaca e ticket WebSocket efêmero
 
