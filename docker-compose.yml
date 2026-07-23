@@ -1,0 +1,19 @@
+services:
+  postgres:
+    image: postgres:17.5-alpine
+    environment:
+      POSTGRES_DB: projeto_lt
+      POSTGRES_PASSWORD: projeto_lt
+      POSTGRES_USER: projeto_lt
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U projeto_lt"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+
+volumes:
+  postgres-data:

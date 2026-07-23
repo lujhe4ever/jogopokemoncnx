@@ -9,12 +9,13 @@
   },
   "scripts": {
     "prepare": "husky",
+    "dev": "pnpm --parallel --filter @lt/server --filter @lt/web dev",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "lint": "eslint .",
     "typecheck": "tsc -b --pretty false",
     "test": "vitest run",
-    "build": "tsc -b",
+    "build": "tsc -b && pnpm --filter @lt/web build",
     "check": "pnpm format:check && pnpm lint && pnpm typecheck && pnpm test && pnpm build"
   },
   "devDependencies": {

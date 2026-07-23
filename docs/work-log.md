@@ -387,3 +387,69 @@ Criar um workspace TypeScript mínimo e reproduzível, sem gameplay.
 ### Próximo passo
 
 Revisar o PR #2 e seus checks; não iniciar a Fase 2 antes dessa revisão.
+
+## 2026-07-23 — Integração da Fase 1 e reserva da Fase 2
+
+### Objetivo da sessão
+
+Integrar a fundação aprovada e reservar o runtime local mínimo.
+
+### Alterações realizadas
+
+- PR #2 integrado à `main` no commit
+  `30ff816587740abffc0b537686cce5b74b11f12c`;
+- branch `agent/fase-2-runtime-local` criada;
+- reservado o escopo de cliente placeholder, health/readiness, WebSocket versionado,
+  PostgreSQL, Prisma, configuração validada e logs estruturados.
+
+### Testes e verificações
+
+- CI do PR #2 concluída com sucesso;
+- PR sem comentários ou threads pendentes;
+- `main` sincronizada por fast-forward.
+
+### Problemas e riscos
+
+- D-005 e D-006 ainda precisam ser registradas como aceitas;
+- Docker local ainda não foi verificado;
+- nenhum deploy está autorizado.
+
+### Próximo passo
+
+Publicar a reserva em PR rascunho antes de implementar o runtime.
+
+## 2026-07-23 — Runtime local mínimo da Fase 2
+
+### Objetivo da sessão
+
+Comprovar a comunicação vazia entre navegador, servidor e PostgreSQL.
+
+### Alterações realizadas
+
+- servidor Fastify com health, readiness, correlação e encerramento gracioso;
+- handshake WebSocket versionado;
+- cliente Vite placeholder com HTTP e WebSocket;
+- Prisma isolado no servidor, schema e migração inicial;
+- PostgreSQL em Docker Compose;
+- configuração validada por Zod e logs estruturados;
+- CI com PostgreSQL e aplicação da migração;
+- D-005 e D-006 registradas como aceitas.
+
+### Testes e verificações
+
+- `pnpm check`: aprovado;
+- 2 arquivos de teste e 3 testes aprovados;
+- build Vite aprovado;
+- `prisma validate`: aprovado;
+- diff da migração desde banco vazio gerado com sucesso;
+- Docker local não executado porque o binário não está instalado.
+
+### Problemas e riscos
+
+- Compose e migração real dependem da CI do PR #3;
+- nenhum deploy foi realizado;
+- autenticação e gameplay permanecem fora do escopo.
+
+### Próximo passo
+
+Revisar o PR #3 e os checks remotos antes de iniciar a Fase 3.

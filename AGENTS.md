@@ -185,7 +185,7 @@ verificações inexistentes.
 | Finalidade | Comando atual |
 | --- | --- |
 | Instalação | `pnpm install --frozen-lockfile` |
-| Desenvolvimento | não disponível até a Fase 2 |
+| Desenvolvimento | `docker compose up -d postgres`, `pnpm --filter @lt/server db:migrate`, `pnpm dev` |
 | Formatação | `pnpm format` / `pnpm format:check` |
 | Lint | `pnpm lint` |
 | Verificação de tipos | `pnpm typecheck` |
@@ -193,8 +193,8 @@ verificações inexistentes.
 | Testes de integração | não disponível até a Fase 1 |
 | Testes E2E | não disponível até a Fase 1 |
 | Build | `pnpm build` |
-| Docker | não disponível até a Fase 1 |
-| Migrações | não disponível até a Fase 1 |
+| Docker | `docker compose up -d postgres` / `docker compose down` |
+| Migrações | `pnpm --filter @lt/server db:migrate` |
 
 Quando a Fase 1 definir comandos, atualizar esta tabela no mesmo PR que os introduzir.
 

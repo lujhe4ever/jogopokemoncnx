@@ -8,6 +8,22 @@ on:
 jobs:
   quality:
     runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:17.5-alpine
+        env:
+          POSTGRES_DB: projeto_lt
+          POSTGRES_PASSWORD: projeto_lt
+          POSTGRES_USER: projeto_lt
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U projeto_lt"
+          --health-interval 5s
+          --health-timeout 3s
+          --health-retries 10
+    env:
+      DATABASE_URL: postgresql://projeto_lt:projeto_lt@localhost:5432/projeto_lt
     steps:
       - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v4
@@ -18,4 +34,6 @@ jobs:
           node-version: 24.14.0
           cache: pnpm
       - run: pnpm install --frozen-lockfile
+      - run: pnpm --filter @lt/server prisma:generate
+      - run: pnpm --filter @lt/server db:migrate
       - run: pnpm check
