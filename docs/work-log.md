@@ -793,3 +793,26 @@ Publicar o PR de reserva da Fase 8 antes de implementar a batalha.
 ### Próximo passo
 
 Revisar e integrar o PR #9 após a CI aprovada.
+
+## 2026-07-23 — Integração da Fase 8 e reserva da Fase 9
+
+### Contexto
+
+O PR #9 passou no CI e foi integrado à `main` no commit
+`91bbb1b1f80c5e0cf0110f6324625e1cfe114da9`.
+
+### Escopo reservado
+
+- encontro gerado e validado pelo servidor;
+- transição explícita entre mundo, batalha e captura;
+- elegibilidade e RNG de captura controláveis;
+- consumo de item e criação da criatura em operação atômica;
+- resultado idempotente e retorno seguro.
+
+### Fora do escopo
+
+Missões, arena, PvP, chat, administração e deploy público.
+
+### Próximo passo
+
+Publicar o PR de reserva da Fase 9 antes de implementar o fluxo.

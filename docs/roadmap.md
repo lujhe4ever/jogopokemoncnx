@@ -440,7 +440,7 @@ servidor.
 - encontro e batalha ficarem acoplados ao mundo;
 - resultado parcial entre item, criatura e progresso.
 
-**Status:** **não iniciado**.
+**Status:** **em andamento** na branch `agent/fase-9-encontros-captura`.
 
 ### Fase 10 — Missões e persistência integrada
 

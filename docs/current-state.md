@@ -5,9 +5,9 @@
 | Atualizado em | 2026-07-23 |
 | Repositório | `lujhe4ever/jogopokemoncnx` |
 | Branch principal | `main` |
-| Branch desta entrega | `agent/fase-8-batalha-npc` |
-| Fase | Fase 8 — batalha contra NPCs |
-| Status | **concluída na branch — PR #9 aguardando revisão** |
+| Branch desta entrega | `agent/fase-9-encontros-captura` |
+| Fase | Fase 9 — encontros e captura |
+| Status | **reservada — implementação em andamento** |
 
 ## 1. Resumo
 
@@ -117,8 +117,8 @@ continuam com o status registrado em `docs/decisions.md`.
 
 ## 9. Próxima tarefa recomendada
 
-Revisar e integrar o PR #9. Depois, iniciar exclusivamente a Fase 9: encontros e
-captura.
+Implementar exclusivamente a Fase 9: geração de encontro, transição para batalha,
+elegibilidade/tentativa de captura, operação atômica e retorno seguro ao mundo.
 
 ## 10. Instruções para reproduzir
 
