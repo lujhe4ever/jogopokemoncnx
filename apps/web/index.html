@@ -3,12 +3,64 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Projeto LT</title>
+    <meta name="theme-color" content="#16231c" />
+    <title>Projeto LT — Casa</title>
+    <link rel="stylesheet" href="/src/styles.css" />
   </head>
   <body>
     <main>
-      <h1>Projeto LT</h1>
-      <p id="status">Verificando serviços...</p>
+      <section id="auth-panel">
+        <p class="eyebrow">PROJETO LT</p>
+        <h1>Entre na sua casa</h1>
+        <p>Protótipo original de movimento e colisão.</p>
+        <form id="auth-form">
+          <label
+            >Nome público
+            <input
+              name="displayName"
+              minlength="2"
+              maxlength="40"
+              value="Explorador"
+          /></label>
+          <label
+            >E-mail
+            <input
+              name="email"
+              type="email"
+              required
+              value="player@example.com"
+          /></label>
+          <label
+            >Senha
+            <input
+              name="password"
+              type="password"
+              minlength="12"
+              required
+              value="local-password"
+          /></label>
+          <div class="actions">
+            <button type="button" id="register">Criar conta</button>
+            <button type="submit">Entrar</button>
+          </div>
+        </form>
+        <p id="status" role="status"></p>
+      </section>
+      <section id="game-panel" hidden>
+        <header>
+          <strong>Casa do Explorador</strong
+          ><span id="connection">conectando...</span>
+        </header>
+        <div id="game"></div>
+        <div id="touch-pad" aria-label="Controles de movimento">
+          <button data-direction="up">▲</button>
+          <div>
+            <button data-direction="left">◀</button
+            ><button data-direction="down">▼</button
+            ><button data-direction="right">▶</button>
+          </div>
+        </div>
+      </section>
     </main>
     <script type="module" src="/src/main.ts"></script>
   </body>

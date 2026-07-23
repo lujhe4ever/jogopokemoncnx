@@ -43,8 +43,8 @@ Ao aceitar ou mudar uma decisão:
 | COL-002 | Trabalho por gates de autorização e handoff | Aceita |
 | D-001 | Monorepo TypeScript com `pnpm` workspaces | Aceita |
 | D-002 | Monólito modular Fastify em uma VPS | Aceita |
-| D-003 | Servidor autoritativo e simulação de passo fixo | Proposta |
-| D-004 | Phaser restrito ao adaptador cliente | Proposta |
+| D-003 | Servidor autoritativo e simulação de passo fixo | Aceita |
+| D-004 | Phaser restrito ao adaptador cliente | Aceita |
 | D-005 | Prisma restrito à infraestrutura | Aceita |
 | D-006 | Protocolo runtime validado e versionado | Aceita |
 | D-007 | Packs de conteúdo e catálogo de assets substituíveis | Proposta |
@@ -155,7 +155,7 @@ Ao aceitar ou mudar uma decisão:
 ### D-003 — Servidor autoritativo e simulação de passo fixo
 
 - **Data:** 2026-07-23
-- **Status:** Proposta
+- **Status:** Aceita
 - **Contexto:** movimento e ações multiplayer não podem confiar no cliente.
 - **Alternativas consideradas:**
   - cliente autoritativo;
@@ -177,7 +177,7 @@ Ao aceitar ou mudar uma decisão:
 ### D-004 — Phaser restrito ao adaptador cliente
 
 - **Data:** 2026-07-23
-- **Status:** Proposta
+- **Status:** Aceita
 - **Contexto:** Phaser oferece runtime 2D, mas o servidor e regras não executam DOM ou
   renderer.
 - **Alternativas consideradas:**

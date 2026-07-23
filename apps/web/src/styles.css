@@ -1,0 +1,113 @@
+:root {
+  color: #f5f0df;
+  background: #101712;
+  font-family: Inter, system-ui, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: radial-gradient(circle at top, #294535, #101712 62%);
+}
+main {
+  width: min(100%, 760px);
+  margin: auto;
+  padding: 24px;
+}
+#auth-panel {
+  max-width: 440px;
+  margin: 8vh auto;
+  padding: 32px;
+  border: 1px solid #53705d;
+  border-radius: 18px;
+  background: #17251dcc;
+  box-shadow: 0 24px 80px #0008;
+}
+.eyebrow {
+  color: #d3b66c;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+}
+h1 {
+  margin: 4px 0 8px;
+  font-size: clamp(30px, 6vw, 48px);
+}
+form,
+label {
+  display: grid;
+  gap: 8px;
+}
+form {
+  gap: 16px;
+  margin-top: 24px;
+}
+input {
+  width: 100%;
+  border: 1px solid #53705d;
+  border-radius: 9px;
+  padding: 12px;
+  color: inherit;
+  background: #0d1610;
+}
+.actions {
+  display: flex;
+  gap: 10px;
+}
+button {
+  border: 1px solid #8ba878;
+  border-radius: 10px;
+  padding: 11px 16px;
+  color: inherit;
+  background: #294535;
+  font-weight: 700;
+}
+button:hover {
+  background: #365a44;
+}
+#game-panel {
+  overflow: hidden;
+  border: 1px solid #53705d;
+  border-radius: 18px;
+  background: #17251d;
+  box-shadow: 0 24px 80px #0008;
+}
+#game-panel header {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 18px;
+}
+#connection {
+  color: #b9d49f;
+}
+#game canvas {
+  display: block;
+  width: 100%;
+  height: auto;
+  image-rendering: pixelated;
+}
+#touch-pad {
+  display: grid;
+  justify-content: center;
+  gap: 4px;
+  padding: 12px;
+}
+#touch-pad > button {
+  width: 58px;
+  margin: auto;
+}
+#touch-pad div {
+  display: flex;
+  gap: 4px;
+}
+#touch-pad button {
+  touch-action: none;
+  user-select: none;
+}
+@media (min-width: 760px) {
+  #touch-pad {
+    display: none;
+  }
+}

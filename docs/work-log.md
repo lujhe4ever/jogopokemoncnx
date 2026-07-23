@@ -523,3 +523,71 @@ Permitir login seguro por e-mail/senha e carregar um perfil mínimo.
 ### Próximo passo
 
 Revisar o PR #4 e integrar somente após a CI aprovada.
+
+## 2026-07-23 — Integração da Fase 3 e reserva da Fase 4
+
+### Objetivo da sessão
+
+Integrar autenticação e reservar a primeira fatia jogável da casa.
+
+### Alterações realizadas
+
+- PR #4 integrado à `main` no commit
+  `62545d2d0fcaa59617fe6b2260508ce1c1a12b39`;
+- branch `agent/fase-4-casa-movimento` criada;
+- reservado engine-core, Phaser, casa original, input, simulação autoritativa,
+  reconciliação e checkpoint.
+
+### Testes e verificações
+
+- migração de autenticação e sete testes aprovados na CI;
+- `main` sincronizada por fast-forward;
+- nenhum deploy executado.
+
+### Problemas e riscos
+
+- latência precisa ser simulada em testes;
+- o servidor não pode realizar I/O no tick;
+- o placeholder deve permanecer original e orientado a dados.
+
+### Próximo passo
+
+Publicar a reserva da Fase 4 antes de implementar gameplay.
+
+## 2026-07-23 — Casa, movimentação e colisão da Fase 4
+
+### Objetivo da sessão
+
+Entregar a primeira fatia jogável autoritativa.
+
+### Alterações realizadas
+
+- engine-core puro com movimento, normalização e colisão;
+- pacote game-simulation com mapa da casa e spawn seguro;
+- pack placeholder original sem assets externos;
+- cliente Phaser carregado sob demanda após login;
+- teclado, setas e controles de toque;
+- previsão local, snapshots, interpolação e reconciliação;
+- sala autoritativa com tick de 20 Hz e limite de inputs;
+- checkpoint carregado na conexão e persistido fora do tick;
+- D-003 e D-004 registradas como aceitas.
+
+### Testes e verificações
+
+- `pnpm check`: 5 arquivos de teste e 12 testes aprovados;
+- movimento adulterado limitado pelo servidor;
+- colisão e limites verificados headless;
+- dois clientes falsos recebem snapshot consistente;
+- checkpoint inseguro volta ao spawn e não há I/O no tick;
+- bundle inicial separado do chunk Phaser;
+- formulário verificado visualmente em 390 x 844 sem overflow.
+
+### Problemas e riscos
+
+- chunk Phaser é grande, mas carregado apenas depois do login;
+- Docker local indisponível; migração será validada pela CI;
+- desempenho mobile do canvas requer medição em dispositivo físico futuro.
+
+### Próximo passo
+
+Revisar e integrar o PR #5 após a CI aprovada.

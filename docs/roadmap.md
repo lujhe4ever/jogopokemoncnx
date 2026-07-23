@@ -253,7 +253,8 @@ reconexão.
 - escrita excessiva de posição;
 - pack placeholder contaminar regras.
 
-**Status:** **não iniciado**.
+**Status:** **concluído na branch, aguardando revisão** — casa original, simulação
+headless, Phaser, autoridade do servidor, reconciliação e checkpoint no PR #5.
 
 ### Fase 5 — Mapas, zonas e transições
 
