@@ -67,6 +67,11 @@ casa, clareira original, transições autoritativas e o primeiro ciclo de intera
 - backpressure limita sockets lentos e métricas agregam tick, salas e descartes;
 - IDs públicos efêmeros impedem exposição de IDs internos de conta;
 - UI social acessível com palco visual, lista de presenças e controles por teclado/toque.
+- catálogo canônico separado com 1.025 espécies, 937 golpes e 373 habilidades;
+- learnsets por versão, método, nível e máquina, ligados a catálogos normalizados;
+- 43.383 sprites e 10.421 animações inventariados com revisão de origem fixa;
+- 1.025 sprites frontais reais verificados em quarentena local ignorada pelo Git;
+- nenhum binário de terceiros incluído ou carregado pela engine.
 
 Verificação e recuperação de e-mail permanecem fora do escopo até que seus fluxos
 completos sejam definidos.
@@ -77,6 +82,8 @@ completos sejam definidos.
 - `apps/server`: servidor, configuração, autenticação e adaptadores Prisma;
 - `apps/server/prisma`: schema e migrações;
 - `packages/engine-core`: núcleo puro ainda mínimo;
+- `content/packs/pokemon-canonical`: definições e inventários Pokémon desacoplados;
+- `scripts/generate-pokemon-canonical.mjs`: gerador reproduzível do catálogo;
 - `tests`: testes arquiteturais, de runtime e autenticação;
 - `docker-compose.yml`: PostgreSQL local;
 - `.github/workflows/ci.yml`: instalação, migração e qualidade.
@@ -99,6 +106,7 @@ completos sejam definidos.
 | Encontros e captura | concluídos na branch |
 | Outras batalhas | não iniciado |
 | Arena e presença | concluídas na branch |
+| Catálogo Pokémon e inventário de sprites | concluído na branch; aprovação pendente |
 | Chat, emotes e convites | não iniciado |
 | Administração e deploy | não iniciado |
 
@@ -110,13 +118,14 @@ docker compose up -d postgres
 pnpm --filter @lt/server prisma:generate
 pnpm --filter @lt/server db:migrate
 pnpm dev
+pnpm content:pokemon -- --with-private-sprites
 pnpm check
 ```
 
 ## 6. Verificações atuais
 
 - formatação, lint e TypeScript estrito;
-- 15 arquivos de teste e 43 testes automatizados;
+- 16 arquivos de teste e 47 testes automatizados;
 - build do servidor e cliente;
 - validação do schema Prisma;
 - migrações aplicadas em PostgreSQL vazio pela CI;
@@ -129,6 +138,8 @@ pnpm check
 - parâmetros Argon2id precisam ser reavaliados em hardware de produção;
 - não existe envio de e-mail, recuperação de senha ou MFA;
 - o repositório permanece público;
+- sprites reais permanecem somente em `.private/`, sem sincronização pelo GitHub;
+- nenhuma coleção de sprites está aprovada para redistribuição;
 - nenhum deploy foi realizado.
 
 ## 8. Decisões vigentes
@@ -176,3 +187,32 @@ Verificacao executada nesta branch:
 Nenhum sprite, animacao, som, logo ou outro arquivo de midia foi baixado,
 convertido, otimizado, renomeado ou publicado nesta etapa. As referencias visuais
 permanecem pendentes ate revisao explicita de licenca/autorizacao pelo proprietario.
+
+## 12. Atualização 2026-07-23 - Catálogo Pokémon completo
+
+Estado do GitHub verificado antes da conclusão:
+
+- `main` em `80f8b534580203eb83cae0c9d7f7cb2c01ab5f4c`, com o PR #12 integrado;
+- PR #13 aberto em rascunho para chat, emotes e convites;
+- branch desta entrega: `codex/pokemon-canonical-full`;
+- branch atualizada por merge de `origin/main`, sem force-push.
+
+Escopo concluído:
+
+- 1.025 pastas, de `0001-bulbasaur` a `1025-pecharunt`;
+- definições de espécie, atributos, tipos, habilidades e evoluções;
+- 937 golpes com tipo, categoria, poder, precisão, PP, prioridade e efeitos;
+- learnsets com grupo de versão, geração, método, nível, ordem, maestria e TM/HM/TR;
+- 43.383 candidatos estáticos e 10.421 animados inventariados;
+- 1.025 sprites reais frontais verificados em quarentena local;
+- schema v2, gerador reproduzível, catálogos normalizados e teste integral;
+- análise de fontes em `docs/pokemon-content-sources.md`.
+
+Limites:
+
+- nenhuma mídia de terceiros foi publicada;
+- sons não foram pesquisados ou preenchidos;
+- formas alternativas são inventariadas como assets, mas não possuem pasta de
+  criatura própria nesta versão;
+- todos os estados de definição e licença continuam pendentes de decisão do
+  proprietário.

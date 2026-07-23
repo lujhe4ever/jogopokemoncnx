@@ -989,3 +989,74 @@ Publicar o PR rascunho da Fase 11 antes de iniciar a implementação.
 
 Revisar e integrar o PR #12 após a CI aprovada e reservar a Fase 12 sem executar
 deploy público.
+
+## 2026-07-23 — Catálogo Pokémon canônico completo
+
+### Objetivo da sessão
+
+Expandir o piloto para todas as espécies canônicas, preencher definições auditáveis
+e preparar sprites reais para uso futuro sem publicar mídia de licença incerta.
+
+### Estado anterior
+
+O pack continha apenas Bulbasaur, Ivysaur e Venusaur. A branch foi sincronizada com
+o `main` após a integração das Fases 10 e 11.
+
+### Alterações realizadas
+
+- 1.025 pastas canônicas, numeradas e nomeadas por slug;
+- catálogos globais de 937 golpes, 373 habilidades, métodos e grupos de versões;
+- definições por espécie com atributos, tipos, habilidades, evolução e learnsets;
+- métodos por nível, máquina, tutor, ovo e equivalentes preservados por jogo/geração;
+- inventário de 43.383 sprites estáticos e 10.421 animações;
+- 1.025 sprites frontais reais em `.private/`, com SHA-256 e dimensões públicas;
+- gerador pinado às revisões das fontes, schema v2 e documentação de direitos;
+- nenhum binário de mídia versionado.
+
+### Arquivos alterados
+
+- `content/packs/pokemon-canonical/`;
+- `scripts/generate-pokemon-canonical.mjs`;
+- `tests/pokemon-canonical-content.test.ts`;
+- `.gitignore`, `.prettierignore` e `package.json`;
+- `docs/current-state.md`, `docs/work-log.md` e
+  `docs/pokemon-content-sources.md`.
+
+### Testes e verificações
+
+- `pnpm install --frozen-lockfile`: aprovado;
+- `pnpm --filter @lt/server prisma:generate`: aprovado;
+- `pnpm check`: aprovado após a sincronização final;
+- 16 arquivos de teste e 47 testes aprovados;
+- build do servidor e cliente aprovado;
+- aviso não bloqueante: chunk `game` do Vite acima de 500 kB;
+- verificação explícita de zero mídia rastreada.
+
+### Decisões tomadas
+
+- dados repetidos de golpes foram normalizados para impedir divergência e reduzir o
+  pack de 354 MB para cerca de 52 MB;
+- imagens com direitos incertos ficam em quarentena privada;
+- a engine não recebe nomes ou caminhos de Pokémon nesta entrega;
+- textos funcionais da fonte permanecem em inglês e traduções serão derivadas.
+
+### Pendências ou riscos
+
+- nenhuma coleção de sprites está juridicamente aprovada;
+- arquivos privados não são recuperados pelo GitHub em outro computador;
+- sons e importação de animações permanecem fora do escopo;
+- formas alternativas ainda não possuem diretórios próprios;
+- Node local `24.16.0` difere do `24.14.0` fixado pelo projeto.
+
+### Próxima tarefa recomendada
+
+Revisar e aprovar uma única política de sprites, preferencialmente uma coleção
+comunitária com autorização e créditos verificáveis, antes de integrar qualquer
+imagem ao runtime.
+
+### Instrução para a próxima IA
+
+Ler primeiro `AGENTS.md`, `architecture.md`, `docs/current-state.md`,
+`docs/pokemon-content-sources.md`, o fim de `docs/work-log.md` e
+`content/packs/pokemon-canonical/README.md`; sincronizar `main` e não publicar a
+pasta `.private/`.
