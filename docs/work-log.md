@@ -1336,6 +1336,14 @@ a Fase 15.
 - históricos da Fase 14 e do catálogo preservados integralmente;
 - nenhuma alteração da Fase 15 incorporada ou sobrescrita.
 
+### Testes e verificações
+
+- `pnpm check`: 21 arquivos de teste e 62 testes aprovados;
+- formatação, lint, TypeScript e builds do servidor/cliente aprovados;
+- comparação com o PR #16: dois caminhos em comum, exclusivamente
+  `docs/current-state.md` e `docs/work-log.md`;
+- nenhum caminho de código, pack Pokémon, schema ou teste em comum com a Fase 15.
+
 ### Próximo passo
 
 Revisar o commit dos sprites e o PR desta branch sem fazer merge automático.

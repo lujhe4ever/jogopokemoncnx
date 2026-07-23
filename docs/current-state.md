@@ -150,7 +150,7 @@ pnpm check
 ## 6. Verificações atuais
 
 - formatação, lint e TypeScript estrito;
-- 20 arquivos de teste e 59 testes automatizados;
+- 21 arquivos de teste e 62 testes automatizados;
 - build do servidor e cliente;
 - validação do schema Prisma;
 - migrações aplicadas em PostgreSQL vazio pela CI;
@@ -270,7 +270,7 @@ Escopo concluído:
 Verificação executada:
 
 - `pnpm check`: aprovado;
-- 20 arquivos de teste e 59 testes aprovados;
+- 21 arquivos de teste e 62 testes aprovados;
 - lint, TypeScript e builds do servidor/cliente aprovados;
 - aviso não bloqueante: chunk `game` do Vite acima de 500 kB.
 
