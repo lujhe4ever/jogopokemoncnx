@@ -1,0 +1,19 @@
+{
+  "id": "original-items",
+  "version": 1,
+  "author": "Projeto LT",
+  "license": "Original project content",
+  "description": "Catálogo original mínimo para o ciclo de exploração.",
+  "items": [
+    {
+      "id": "item:bright-herb",
+      "label": "Erva luminosa",
+      "maxStack": 99
+    },
+    {
+      "id": "item:field-tonic",
+      "label": "Tônico de campo",
+      "maxStack": 99
+    }
+  ]
+}

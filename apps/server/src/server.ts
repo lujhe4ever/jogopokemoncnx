@@ -5,10 +5,15 @@ import { AuthService } from "./auth/service.js";
 import { loadConfig } from "./config.js";
 import { createDatabaseProbe } from "./database.js";
 import { HouseRoom, PrismaCheckpointStore } from "./world/house-room.js";
+import { PrismaInteractionStore } from "./world/interaction-store.js";
 
 const config = loadConfig(process.env);
 const prisma = new PrismaClient();
-const world = new HouseRoom(new PrismaCheckpointStore(prisma));
+const world = new HouseRoom(
+  new PrismaCheckpointStore(prisma),
+  true,
+  new PrismaInteractionStore(prisma),
+);
 const app = await buildApp({
   database: createDatabaseProbe(prisma),
   auth: new AuthService(new PrismaAuthRepository(prisma)),

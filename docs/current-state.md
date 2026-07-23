@@ -7,16 +7,16 @@
 | Branch principal | `main` |
 | Branch desta entrega | `agent/fase-6-npcs-itens` |
 | Fase | Fase 6 — NPCs, diálogos, itens e baús |
-| Status | **reservada — implementação em andamento** |
+| Status | **concluída na branch — PR #7 aguardando revisão** |
 
 ## 1. Resumo
 
-As Fases 0B a 4 foram integradas à `main`. A Fase 5 está implementada na branch
-`agent/fase-5-mapas-transicoes` e reservada no PR #6.
+As Fases 0B a 5 foram integradas à `main`. A Fase 6 está implementada na branch
+`agent/fase-6-npcs-itens` e reservada no PR #7.
 
 O projeto possui workspace TypeScript, servidor Fastify, cliente Vite/Phaser,
 PostgreSQL, Prisma, WebSocket versionado, autenticação e a primeira fatia jogável da
-casa, uma clareira original e transições autoritativas entre zonas.
+casa, clareira original, transições autoritativas e o primeiro ciclo de interação.
 
 ## 2. Entrega atual
 
@@ -34,6 +34,10 @@ casa, uma clareira original e transições autoritativas entre zonas.
 - transição validada por proximidade e ID no servidor;
 - snapshots restritos à área de interesse da zona atual;
 - manifests versionados e seleção do pack autorizado por snapshot.
+- NPC declarativo com capacidade de diálogo;
+- pickup e baú originais com validação de proximidade;
+- inventário de 20 slots, stacks de 99 e recompensa transacional idempotente;
+- feedback visual e `aria-live`, com ação por teclado ou toque.
 
 Verificação e recuperação de e-mail permanecem fora do escopo até que seus fluxos
 completos sejam definidos.
@@ -59,7 +63,8 @@ completos sejam definidos.
 | Recuperação/verificação de e-mail | não iniciado |
 | Casa, movimento e colisão | concluído na branch |
 | Mapas e transições | concluído na branch |
-| NPCs, itens e missões | não iniciado |
+| NPCs, diálogos, itens e baús | concluído na branch |
+| Missões | não iniciado |
 | Criaturas e batalhas | não iniciado |
 | Arena e recursos sociais | não iniciado |
 | Administração e deploy | não iniciado |
@@ -78,7 +83,7 @@ pnpm check
 ## 6. Verificações atuais
 
 - formatação, lint e TypeScript estrito;
-- 6 arquivos de teste e 14 testes automatizados;
+- 7 arquivos de teste e 17 testes automatizados;
 - build do servidor e cliente;
 - validação do schema Prisma;
 - migrações aplicadas em PostgreSQL vazio pela CI;
@@ -95,13 +100,13 @@ pnpm check
 
 ## 8. Decisões vigentes
 
-D-001 a D-008 estão aceitas. As demais decisões técnicas
+D-001 a D-008 e D-011 estão aceitas. As demais decisões técnicas
 continuam com o status registrado em `docs/decisions.md`.
 
 ## 9. Próxima tarefa recomendada
 
-Implementar exclusivamente a Fase 6: interação por proximidade, NPCs orientados a
-capacidades, diálogo declarativo, pickups, baús e inventário transacional.
+Revisar e integrar o PR #7. Depois, iniciar exclusivamente a Fase 7: fundação de
+criaturas, treinamento e progressão.
 
 ## 10. Instruções para reproduzir
 

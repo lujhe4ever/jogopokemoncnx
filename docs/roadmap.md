@@ -327,7 +327,7 @@ Formar o primeiro ciclo de exploração e interação.
 - duplicação por concorrência;
 - diálogo acoplado ao renderer.
 
-**Status:** **em andamento** na branch `agent/fase-6-npcs-itens`.
+**Status:** **concluído na branch**, aguardando revisão no PR #7.
 
 ### Fase 7 — Fundação de criaturas, treinamento e progressão
 
