@@ -5,14 +5,14 @@
 | Atualizado em | 2026-07-23 |
 | Repositório | `lujhe4ever/jogopokemoncnx` |
 | Branch principal | `main` |
-| Branch desta entrega | `agent/fase-11-arena-presenca` |
-| Fase | Fase 11 — arena multiplayer e presença |
-| Status | **implementada — aguardando CI e integração** |
+| Branch desta entrega | `agent/fase-12-chat-emotes-convites` |
+| Fase | Fase 12 — chat, emotes e convites |
+| Status | **reservada — implementação em andamento** |
 
 ## 1. Resumo
 
-As Fases 0B a 10 foram integradas à `main`. A Fase 11 está implementada na branch
-`agent/fase-11-arena-presenca` e reservada no PR #12.
+As Fases 0B a 11 foram integradas à `main`. A Fase 12 está reservada na branch
+`agent/fase-12-chat-emotes-convites`.
 
 O projeto possui workspace TypeScript, servidor Fastify, cliente Vite/Phaser,
 PostgreSQL, Prisma, WebSocket versionado, autenticação e a primeira fatia jogável da
@@ -137,8 +137,8 @@ continuam com o status registrado em `docs/decisions.md`.
 
 ## 9. Próxima tarefa recomendada
 
-Integrar o PR #12 após a CI aprovada e reservar exclusivamente a Fase 12: chat,
-emotes, convites, moderação mínima, expiração e revalidação de capacidade.
+Implementar exclusivamente a Fase 12: chat efêmero, emotes catalogados, convites
+descartáveis, moderação mínima, expiração e revalidação de capacidade.
 
 ## 10. Instruções para reproduzir
 

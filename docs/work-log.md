@@ -949,3 +949,27 @@ Publicar o PR rascunho da Fase 11 antes de iniciar a implementação.
 
 Revisar e integrar o PR #12 após a CI aprovada e reservar a Fase 12 sem executar
 deploy público.
+
+## 2026-07-23 — Integração da Fase 11 e reserva da Fase 12
+
+### Contexto
+
+O PR #12 passou na CI e foi integrado à `main` no commit
+`80f8b534580203eb83cae0c9d7f7cb2c01ab5f4c`.
+
+### Escopo reservado
+
+- chat efêmero com autoria e timestamp do servidor;
+- tamanho, frequência e conteúdo básico validados;
+- emotes por allowlist de catálogo;
+- convites direcionados, expirados e de uso único;
+- revalidação de presença e capacidade ao aceitar;
+- painel textual acessível além da apresentação sobre o avatar.
+
+### Fora do escopo
+
+Persistência de chat, denúncia avançada, PvP, telões, administração e deploy público.
+
+### Próximo passo
+
+Publicar o PR rascunho da Fase 12 antes de iniciar a implementação.
