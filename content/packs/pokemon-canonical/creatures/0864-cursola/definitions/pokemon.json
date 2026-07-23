@@ -1,0 +1,96 @@
+{
+  "schemaVersion": 2,
+  "id": "pokemon:0864-cursola",
+  "nationalDexNumber": 864,
+  "canonicalName": "Cursola",
+  "slug": "cursola",
+  "genus": "Coral Pokémon",
+  "generationIntroduced": 8,
+  "generationSource": "generation-viii",
+  "types": [
+    "ghost"
+  ],
+  "physical": {
+    "heightDecimeters": 10,
+    "weightHectograms": 4
+  },
+  "baseExperience": 179,
+  "baseStats": {
+    "hp": {
+      "value": 60,
+      "effortYield": 0
+    },
+    "attack": {
+      "value": 95,
+      "effortYield": 0
+    },
+    "defense": {
+      "value": 50,
+      "effortYield": 0
+    },
+    "special-attack": {
+      "value": 145,
+      "effortYield": 2
+    },
+    "special-defense": {
+      "value": 130,
+      "effortYield": 0
+    },
+    "speed": {
+      "value": 30,
+      "effortYield": 0
+    }
+  },
+  "biologyAndTraining": {
+    "color": "white",
+    "shape": "arms",
+    "habitat": null,
+    "genderRate": 6,
+    "captureRate": 30,
+    "baseHappiness": 50,
+    "hatchCounter": 20,
+    "hasGenderDifferences": false,
+    "growthRate": "fast",
+    "eggGroups": [
+      "water1",
+      "water3"
+    ],
+    "isBaby": false,
+    "isLegendary": false,
+    "isMythical": false
+  },
+  "abilities": [
+    {
+      "slug": "weak-armor",
+      "slot": 1,
+      "isHidden": false
+    },
+    {
+      "slug": "perish-body",
+      "slot": 3,
+      "isHidden": true
+    }
+  ],
+  "evolution": {
+    "chainId": 113,
+    "evolvesFromSpeciesId": 222,
+    "evolvesTo": []
+  },
+  "source": {
+    "retrievedAt": "2026-07-23",
+    "sourceRevision": "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f",
+    "sourceUrls": [
+      "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
+      "https://github.com/PokeAPI/pokeapi/blob/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/LICENSE.md"
+    ],
+    "licenseStatus": "pending",
+    "requiredCredits": [
+      "PokéAPI contributors for the structured API data."
+    ],
+    "notes": [
+      "Structured data is sourced from PokéAPI under its BSD-3-Clause terms.",
+      "Pokémon names and character data remain subject to owner review and applicable trademark or copyright rights.",
+      "English source prose is preserved to avoid inventing translations of gameplay behavior."
+    ]
+  }
+}

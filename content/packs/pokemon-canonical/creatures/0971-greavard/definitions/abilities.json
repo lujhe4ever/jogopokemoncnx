@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 2,
+  "pokemonId": "pokemon:0971-greavard",
+  "abilities": [
+    {
+      "abilityId": 53,
+      "slot": 1,
+      "isHidden": false,
+      "slug": "pickup",
+      "canonicalName": "Pickup",
+      "shortEffect": "Picks up other Pokémon's used and Flung held items.  May also pick up an item after battle.",
+      "effect": "At the end of each turn, if another Pokémon consumed or Flung a held item that turn, this Pokémon picks up the item if it is not already holding one.  After each battle, this Pokémon has a 10% chance of picking up an item if it is not already holding one.\n\nThe Air Balloon and Eject Button cannot be picked up.\n\nThe items that may be found vary by game, and, since Pokémon Emerald, by the Pokémon's level.  This ability is checked after the battle ends, at which point any temporary ability changes have worn off.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/53/"
+    },
+    {
+      "abilityId": 218,
+      "slot": 3,
+      "isHidden": true,
+      "slug": "fluffy",
+      "canonicalName": "Fluffy",
+      "shortEffect": "Damage from contact moves is halved.  Damage from Fire moves is doubled.",
+      "effect": "Damage from contact moves is halved.  Damage from Fire moves is doubled.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/218/"
+    }
+  ],
+  "source": {
+    "retrievedAt": "2026-07-23",
+    "sourceRevision": "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f",
+    "sourceUrls": [
+      "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
+      "https://github.com/PokeAPI/pokeapi/blob/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/LICENSE.md"
+    ],
+    "licenseStatus": "pending",
+    "requiredCredits": [
+      "PokéAPI contributors for the structured API data."
+    ],
+    "notes": [
+      "Structured data is sourced from PokéAPI under its BSD-3-Clause terms.",
+      "Pokémon names and character data remain subject to owner review and applicable trademark or copyright rights.",
+      "English source prose is preserved to avoid inventing translations of gameplay behavior."
+    ]
+  }
+}

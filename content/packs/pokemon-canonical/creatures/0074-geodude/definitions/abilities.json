@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 2,
+  "pokemonId": "pokemon:0074-geodude",
+  "abilities": [
+    {
+      "abilityId": 69,
+      "slot": 1,
+      "isHidden": false,
+      "slug": "rock-head",
+      "canonicalName": "Rock Head",
+      "shortEffect": "Protects against recoil damage.",
+      "effect": "This Pokémon does not receive recoil damage from its recoil moves.\n\nStruggle's recoil is unaffected.  This ability does not prevent crash damage from missing with Jump Kick or High Jump Kick.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/69/"
+    },
+    {
+      "abilityId": 5,
+      "slot": 2,
+      "isHidden": false,
+      "slug": "sturdy",
+      "canonicalName": "Sturdy",
+      "shortEffect": "Prevents being KOed from full HP, leaving 1 HP instead.  Protects against the one-hit KO moves regardless of HP.",
+      "effect": "When this Pokémon is at full HP, any hit that would knock it out will instead leave it with 1 HP.  Regardless of its current HP, it is also immune to the one-hit KO moves: Fissure, Guillotine, Horn Drill, and Sheer Cold.\n\nIf this Pokémon is holding a Focus Sash, this ability takes precedence and the item will not be consumed.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/5/"
+    },
+    {
+      "abilityId": 8,
+      "slot": 3,
+      "isHidden": true,
+      "slug": "sand-veil",
+      "canonicalName": "Sand Veil",
+      "shortEffect": "Increases evasion to 1.25× during a sandstorm.  Protects against sandstorm damage.",
+      "effect": "During a sandstorm, this Pokémon has 1.25× its evasion, and it does not take sandstorm damage regardless of type.\n\nThe evasion bonus does not count as a stat modifier.\n\nOverworld: If the lead Pokémon has this ability, the wild encounter rate is halved in a sandstorm.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/8/"
+    }
+  ],
+  "source": {
+    "retrievedAt": "2026-07-23",
+    "sourceRevision": "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f",
+    "sourceUrls": [
+      "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
+      "https://github.com/PokeAPI/pokeapi/blob/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/LICENSE.md"
+    ],
+    "licenseStatus": "pending",
+    "requiredCredits": [
+      "PokéAPI contributors for the structured API data."
+    ],
+    "notes": [
+      "Structured data is sourced from PokéAPI under its BSD-3-Clause terms.",
+      "Pokémon names and character data remain subject to owner review and applicable trademark or copyright rights.",
+      "English source prose is preserved to avoid inventing translations of gameplay behavior."
+    ]
+  }
+}

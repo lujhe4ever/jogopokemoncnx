@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 2,
+  "id": "pokemon:0660-diggersby",
+  "nationalDexNumber": 660,
+  "canonicalName": "Diggersby",
+  "slug": "diggersby",
+  "genus": "Digging Pokémon",
+  "generationIntroduced": 6,
+  "generationSource": "generation-vi",
+  "types": [
+    "normal",
+    "ground"
+  ],
+  "physical": {
+    "heightDecimeters": 10,
+    "weightHectograms": 424
+  },
+  "baseExperience": 148,
+  "baseStats": {
+    "hp": {
+      "value": 85,
+      "effortYield": 2
+    },
+    "attack": {
+      "value": 56,
+      "effortYield": 0
+    },
+    "defense": {
+      "value": 77,
+      "effortYield": 0
+    },
+    "special-attack": {
+      "value": 50,
+      "effortYield": 0
+    },
+    "special-defense": {
+      "value": 77,
+      "effortYield": 0
+    },
+    "speed": {
+      "value": 78,
+      "effortYield": 0
+    }
+  },
+  "biologyAndTraining": {
+    "color": "brown",
+    "shape": "upright",
+    "habitat": null,
+    "genderRate": 4,
+    "captureRate": 127,
+    "baseHappiness": 70,
+    "hatchCounter": 15,
+    "hasGenderDifferences": false,
+    "growthRate": "medium",
+    "eggGroups": [
+      "ground"
+    ],
+    "isBaby": false,
+    "isLegendary": false,
+    "isMythical": false
+  },
+  "abilities": [
+    {
+      "slug": "pickup",
+      "slot": 1,
+      "isHidden": false
+    },
+    {
+      "slug": "cheek-pouch",
+      "slot": 2,
+      "isHidden": false
+    },
+    {
+      "slug": "huge-power",
+      "slot": 3,
+      "isHidden": true
+    }
+  ],
+  "evolution": {
+    "chainId": 340,
+    "evolvesFromSpeciesId": 659,
+    "evolvesTo": []
+  },
+  "source": {
+    "retrievedAt": "2026-07-23",
+    "sourceRevision": "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f",
+    "sourceUrls": [
+      "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
+      "https://github.com/PokeAPI/pokeapi/blob/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/LICENSE.md"
+    ],
+    "licenseStatus": "pending",
+    "requiredCredits": [
+      "PokéAPI contributors for the structured API data."
+    ],
+    "notes": [
+      "Structured data is sourced from PokéAPI under its BSD-3-Clause terms.",
+      "Pokémon names and character data remain subject to owner review and applicable trademark or copyright rights.",
+      "English source prose is preserved to avoid inventing translations of gameplay behavior."
+    ]
+  }
+}

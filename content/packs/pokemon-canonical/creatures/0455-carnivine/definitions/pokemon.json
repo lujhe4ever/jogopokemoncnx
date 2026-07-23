@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 2,
+  "id": "pokemon:0455-carnivine",
+  "nationalDexNumber": 455,
+  "canonicalName": "Carnivine",
+  "slug": "carnivine",
+  "genus": "Bug Catcher Pokémon",
+  "generationIntroduced": 4,
+  "generationSource": "generation-iv",
+  "types": [
+    "grass"
+  ],
+  "physical": {
+    "heightDecimeters": 14,
+    "weightHectograms": 270
+  },
+  "baseExperience": 159,
+  "baseStats": {
+    "hp": {
+      "value": 74,
+      "effortYield": 0
+    },
+    "attack": {
+      "value": 100,
+      "effortYield": 2
+    },
+    "defense": {
+      "value": 72,
+      "effortYield": 0
+    },
+    "special-attack": {
+      "value": 90,
+      "effortYield": 0
+    },
+    "special-defense": {
+      "value": 72,
+      "effortYield": 0
+    },
+    "speed": {
+      "value": 46,
+      "effortYield": 0
+    }
+  },
+  "biologyAndTraining": {
+    "color": "green",
+    "shape": "tentacles",
+    "habitat": null,
+    "genderRate": 4,
+    "captureRate": 200,
+    "baseHappiness": 70,
+    "hatchCounter": 25,
+    "hasGenderDifferences": false,
+    "growthRate": "slow",
+    "eggGroups": [
+      "plant"
+    ],
+    "isBaby": false,
+    "isLegendary": false,
+    "isMythical": false
+  },
+  "abilities": [
+    {
+      "slug": "levitate",
+      "slot": 1,
+      "isHidden": false
+    }
+  ],
+  "evolution": {
+    "chainId": 236,
+    "evolvesFromSpeciesId": null,
+    "evolvesTo": []
+  },
+  "source": {
+    "retrievedAt": "2026-07-23",
+    "sourceRevision": "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f",
+    "sourceUrls": [
+      "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
+      "https://github.com/PokeAPI/pokeapi/blob/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/LICENSE.md"
+    ],
+    "licenseStatus": "pending",
+    "requiredCredits": [
+      "PokéAPI contributors for the structured API data."
+    ],
+    "notes": [
+      "Structured data is sourced from PokéAPI under its BSD-3-Clause terms.",
+      "Pokémon names and character data remain subject to owner review and applicable trademark or copyright rights.",
+      "English source prose is preserved to avoid inventing translations of gameplay behavior."
+    ]
+  }
+}

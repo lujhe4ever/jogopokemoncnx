@@ -1,0 +1,96 @@
+{
+  "schemaVersion": 2,
+  "id": "pokemon:0308-medicham",
+  "nationalDexNumber": 308,
+  "canonicalName": "Medicham",
+  "slug": "medicham",
+  "genus": "Meditate Pokémon",
+  "generationIntroduced": 3,
+  "generationSource": "generation-iii",
+  "types": [
+    "fighting",
+    "psychic"
+  ],
+  "physical": {
+    "heightDecimeters": 13,
+    "weightHectograms": 315
+  },
+  "baseExperience": 144,
+  "baseStats": {
+    "hp": {
+      "value": 60,
+      "effortYield": 0
+    },
+    "attack": {
+      "value": 60,
+      "effortYield": 0
+    },
+    "defense": {
+      "value": 75,
+      "effortYield": 0
+    },
+    "special-attack": {
+      "value": 60,
+      "effortYield": 0
+    },
+    "special-defense": {
+      "value": 75,
+      "effortYield": 0
+    },
+    "speed": {
+      "value": 80,
+      "effortYield": 2
+    }
+  },
+  "biologyAndTraining": {
+    "color": "red",
+    "shape": "humanoid",
+    "habitat": "mountain",
+    "genderRate": 4,
+    "captureRate": 90,
+    "baseHappiness": 70,
+    "hatchCounter": 20,
+    "hasGenderDifferences": true,
+    "growthRate": "medium",
+    "eggGroups": [
+      "humanshape"
+    ],
+    "isBaby": false,
+    "isLegendary": false,
+    "isMythical": false
+  },
+  "abilities": [
+    {
+      "slug": "pure-power",
+      "slot": 1,
+      "isHidden": false
+    },
+    {
+      "slug": "telepathy",
+      "slot": 3,
+      "isHidden": true
+    }
+  ],
+  "evolution": {
+    "chainId": 152,
+    "evolvesFromSpeciesId": 307,
+    "evolvesTo": []
+  },
+  "source": {
+    "retrievedAt": "2026-07-23",
+    "sourceRevision": "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f",
+    "sourceUrls": [
+      "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
+      "https://github.com/PokeAPI/pokeapi/blob/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/LICENSE.md"
+    ],
+    "licenseStatus": "pending",
+    "requiredCredits": [
+      "PokéAPI contributors for the structured API data."
+    ],
+    "notes": [
+      "Structured data is sourced from PokéAPI under its BSD-3-Clause terms.",
+      "Pokémon names and character data remain subject to owner review and applicable trademark or copyright rights.",
+      "English source prose is preserved to avoid inventing translations of gameplay behavior."
+    ]
+  }
+}

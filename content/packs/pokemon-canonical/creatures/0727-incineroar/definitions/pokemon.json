@@ -1,0 +1,96 @@
+{
+  "schemaVersion": 2,
+  "id": "pokemon:0727-incineroar",
+  "nationalDexNumber": 727,
+  "canonicalName": "Incineroar",
+  "slug": "incineroar",
+  "genus": "Heel Pokémon",
+  "generationIntroduced": 7,
+  "generationSource": "generation-vii",
+  "types": [
+    "fire",
+    "dark"
+  ],
+  "physical": {
+    "heightDecimeters": 18,
+    "weightHectograms": 830
+  },
+  "baseExperience": 239,
+  "baseStats": {
+    "hp": {
+      "value": 95,
+      "effortYield": 0
+    },
+    "attack": {
+      "value": 115,
+      "effortYield": 3
+    },
+    "defense": {
+      "value": 90,
+      "effortYield": 0
+    },
+    "special-attack": {
+      "value": 80,
+      "effortYield": 0
+    },
+    "special-defense": {
+      "value": 90,
+      "effortYield": 0
+    },
+    "speed": {
+      "value": 60,
+      "effortYield": 0
+    }
+  },
+  "biologyAndTraining": {
+    "color": "red",
+    "shape": "upright",
+    "habitat": null,
+    "genderRate": 1,
+    "captureRate": 45,
+    "baseHappiness": 70,
+    "hatchCounter": 15,
+    "hasGenderDifferences": false,
+    "growthRate": "medium-slow",
+    "eggGroups": [
+      "ground"
+    ],
+    "isBaby": false,
+    "isLegendary": false,
+    "isMythical": false
+  },
+  "abilities": [
+    {
+      "slug": "blaze",
+      "slot": 1,
+      "isHidden": false
+    },
+    {
+      "slug": "intimidate",
+      "slot": 3,
+      "isHidden": true
+    }
+  ],
+  "evolution": {
+    "chainId": 375,
+    "evolvesFromSpeciesId": 726,
+    "evolvesTo": []
+  },
+  "source": {
+    "retrievedAt": "2026-07-23",
+    "sourceRevision": "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f",
+    "sourceUrls": [
+      "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
+      "https://github.com/PokeAPI/pokeapi/blob/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/LICENSE.md"
+    ],
+    "licenseStatus": "pending",
+    "requiredCredits": [
+      "PokéAPI contributors for the structured API data."
+    ],
+    "notes": [
+      "Structured data is sourced from PokéAPI under its BSD-3-Clause terms.",
+      "Pokémon names and character data remain subject to owner review and applicable trademark or copyright rights.",
+      "English source prose is preserved to avoid inventing translations of gameplay behavior."
+    ]
+  }
+}

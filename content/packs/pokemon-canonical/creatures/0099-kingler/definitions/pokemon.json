@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 2,
+  "id": "pokemon:0099-kingler",
+  "nationalDexNumber": 99,
+  "canonicalName": "Kingler",
+  "slug": "kingler",
+  "genus": "Pincer Pokémon",
+  "generationIntroduced": 1,
+  "generationSource": "generation-i",
+  "types": [
+    "water"
+  ],
+  "physical": {
+    "heightDecimeters": 13,
+    "weightHectograms": 600
+  },
+  "baseExperience": 166,
+  "baseStats": {
+    "hp": {
+      "value": 55,
+      "effortYield": 0
+    },
+    "attack": {
+      "value": 130,
+      "effortYield": 2
+    },
+    "defense": {
+      "value": 115,
+      "effortYield": 0
+    },
+    "special-attack": {
+      "value": 50,
+      "effortYield": 0
+    },
+    "special-defense": {
+      "value": 50,
+      "effortYield": 0
+    },
+    "speed": {
+      "value": 75,
+      "effortYield": 0
+    }
+  },
+  "biologyAndTraining": {
+    "color": "red",
+    "shape": "armor",
+    "habitat": "waters-edge",
+    "genderRate": 4,
+    "captureRate": 60,
+    "baseHappiness": 70,
+    "hatchCounter": 20,
+    "hasGenderDifferences": false,
+    "growthRate": "medium",
+    "eggGroups": [
+      "water3"
+    ],
+    "isBaby": false,
+    "isLegendary": false,
+    "isMythical": false
+  },
+  "abilities": [
+    {
+      "slug": "hyper-cutter",
+      "slot": 1,
+      "isHidden": false
+    },
+    {
+      "slug": "shell-armor",
+      "slot": 2,
+      "isHidden": false
+    },
+    {
+      "slug": "sheer-force",
+      "slot": 3,
+      "isHidden": true
+    }
+  ],
+  "evolution": {
+    "chainId": 43,
+    "evolvesFromSpeciesId": 98,
+    "evolvesTo": []
+  },
+  "source": {
+    "retrievedAt": "2026-07-23",
+    "sourceRevision": "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f",
+    "sourceUrls": [
+      "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
+      "https://github.com/PokeAPI/pokeapi/blob/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/LICENSE.md"
+    ],
+    "licenseStatus": "pending",
+    "requiredCredits": [
+      "PokéAPI contributors for the structured API data."
+    ],
+    "notes": [
+      "Structured data is sourced from PokéAPI under its BSD-3-Clause terms.",
+      "Pokémon names and character data remain subject to owner review and applicable trademark or copyright rights.",
+      "English source prose is preserved to avoid inventing translations of gameplay behavior."
+    ]
+  }
+}

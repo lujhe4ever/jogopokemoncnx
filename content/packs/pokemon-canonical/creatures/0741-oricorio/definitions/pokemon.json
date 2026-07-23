@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 2,
+  "id": "pokemon:0741-oricorio",
+  "nationalDexNumber": 741,
+  "canonicalName": "Oricorio",
+  "slug": "oricorio",
+  "genus": "Dancing Pokémon",
+  "generationIntroduced": 7,
+  "generationSource": "generation-vii",
+  "types": [
+    "fire",
+    "flying"
+  ],
+  "physical": {
+    "heightDecimeters": 6,
+    "weightHectograms": 34
+  },
+  "baseExperience": 167,
+  "baseStats": {
+    "hp": {
+      "value": 75,
+      "effortYield": 0
+    },
+    "attack": {
+      "value": 70,
+      "effortYield": 0
+    },
+    "defense": {
+      "value": 70,
+      "effortYield": 0
+    },
+    "special-attack": {
+      "value": 98,
+      "effortYield": 2
+    },
+    "special-defense": {
+      "value": 70,
+      "effortYield": 0
+    },
+    "speed": {
+      "value": 93,
+      "effortYield": 0
+    }
+  },
+  "biologyAndTraining": {
+    "color": "red",
+    "shape": "wings",
+    "habitat": null,
+    "genderRate": 6,
+    "captureRate": 45,
+    "baseHappiness": 70,
+    "hatchCounter": 20,
+    "hasGenderDifferences": false,
+    "growthRate": "medium",
+    "eggGroups": [
+      "flying"
+    ],
+    "isBaby": false,
+    "isLegendary": false,
+    "isMythical": false
+  },
+  "abilities": [
+    {
+      "slug": "dancer",
+      "slot": 1,
+      "isHidden": false
+    }
+  ],
+  "evolution": {
+    "chainId": 381,
+    "evolvesFromSpeciesId": null,
+    "evolvesTo": []
+  },
+  "source": {
+    "retrievedAt": "2026-07-23",
+    "sourceRevision": "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f",
+    "sourceUrls": [
+      "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
+      "https://github.com/PokeAPI/pokeapi/blob/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/LICENSE.md"
+    ],
+    "licenseStatus": "pending",
+    "requiredCredits": [
+      "PokéAPI contributors for the structured API data."
+    ],
+    "notes": [
+      "Structured data is sourced from PokéAPI under its BSD-3-Clause terms.",
+      "Pokémon names and character data remain subject to owner review and applicable trademark or copyright rights.",
+      "English source prose is preserved to avoid inventing translations of gameplay behavior."
+    ]
+  }
+}

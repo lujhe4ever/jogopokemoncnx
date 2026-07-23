@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 2,
+  "id": "pokemon:0107-hitmonchan",
+  "nationalDexNumber": 107,
+  "canonicalName": "Hitmonchan",
+  "slug": "hitmonchan",
+  "genus": "Punching Pokémon",
+  "generationIntroduced": 1,
+  "generationSource": "generation-i",
+  "types": [
+    "fighting"
+  ],
+  "physical": {
+    "heightDecimeters": 14,
+    "weightHectograms": 502
+  },
+  "baseExperience": 159,
+  "baseStats": {
+    "hp": {
+      "value": 50,
+      "effortYield": 0
+    },
+    "attack": {
+      "value": 105,
+      "effortYield": 0
+    },
+    "defense": {
+      "value": 79,
+      "effortYield": 0
+    },
+    "special-attack": {
+      "value": 35,
+      "effortYield": 0
+    },
+    "special-defense": {
+      "value": 110,
+      "effortYield": 2
+    },
+    "speed": {
+      "value": 76,
+      "effortYield": 0
+    }
+  },
+  "biologyAndTraining": {
+    "color": "brown",
+    "shape": "humanoid",
+    "habitat": "urban",
+    "genderRate": 0,
+    "captureRate": 45,
+    "baseHappiness": 70,
+    "hatchCounter": 25,
+    "hasGenderDifferences": false,
+    "growthRate": "medium",
+    "eggGroups": [
+      "humanshape"
+    ],
+    "isBaby": false,
+    "isLegendary": false,
+    "isMythical": false
+  },
+  "abilities": [
+    {
+      "slug": "keen-eye",
+      "slot": 1,
+      "isHidden": false
+    },
+    {
+      "slug": "iron-fist",
+      "slot": 2,
+      "isHidden": false
+    },
+    {
+      "slug": "inner-focus",
+      "slot": 3,
+      "isHidden": true
+    }
+  ],
+  "evolution": {
+    "chainId": 47,
+    "evolvesFromSpeciesId": 236,
+    "evolvesTo": []
+  },
+  "source": {
+    "retrievedAt": "2026-07-23",
+    "sourceRevision": "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f",
+    "sourceUrls": [
+      "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
+      "https://github.com/PokeAPI/pokeapi/blob/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/LICENSE.md"
+    ],
+    "licenseStatus": "pending",
+    "requiredCredits": [
+      "PokéAPI contributors for the structured API data."
+    ],
+    "notes": [
+      "Structured data is sourced from PokéAPI under its BSD-3-Clause terms.",
+      "Pokémon names and character data remain subject to owner review and applicable trademark or copyright rights.",
+      "English source prose is preserved to avoid inventing translations of gameplay behavior."
+    ]
+  }
+}

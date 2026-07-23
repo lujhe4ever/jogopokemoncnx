@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 2,
+  "id": "pokemon:0982-dudunsparce",
+  "nationalDexNumber": 982,
+  "canonicalName": "Dudunsparce",
+  "slug": "dudunsparce",
+  "genus": "Land Snake Pokémon",
+  "generationIntroduced": 9,
+  "generationSource": "generation-ix",
+  "types": [
+    "normal"
+  ],
+  "physical": {
+    "heightDecimeters": 36,
+    "weightHectograms": 392
+  },
+  "baseExperience": 182,
+  "baseStats": {
+    "hp": {
+      "value": 125,
+      "effortYield": 2
+    },
+    "attack": {
+      "value": 100,
+      "effortYield": 0
+    },
+    "defense": {
+      "value": 80,
+      "effortYield": 0
+    },
+    "special-attack": {
+      "value": 85,
+      "effortYield": 0
+    },
+    "special-defense": {
+      "value": 75,
+      "effortYield": 0
+    },
+    "speed": {
+      "value": 55,
+      "effortYield": 0
+    }
+  },
+  "biologyAndTraining": {
+    "color": "yellow",
+    "shape": "squiggle",
+    "habitat": null,
+    "genderRate": 4,
+    "captureRate": 45,
+    "baseHappiness": 50,
+    "hatchCounter": 20,
+    "hasGenderDifferences": false,
+    "growthRate": "medium",
+    "eggGroups": [
+      "ground"
+    ],
+    "isBaby": false,
+    "isLegendary": false,
+    "isMythical": false
+  },
+  "abilities": [
+    {
+      "slug": "serene-grace",
+      "slot": 1,
+      "isHidden": false
+    },
+    {
+      "slug": "run-away",
+      "slot": 2,
+      "isHidden": false
+    },
+    {
+      "slug": "rattled",
+      "slot": 3,
+      "isHidden": true
+    }
+  ],
+  "evolution": {
+    "chainId": 103,
+    "evolvesFromSpeciesId": 206,
+    "evolvesTo": []
+  },
+  "source": {
+    "retrievedAt": "2026-07-23",
+    "sourceRevision": "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f",
+    "sourceUrls": [
+      "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
+      "https://github.com/PokeAPI/pokeapi/blob/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/LICENSE.md"
+    ],
+    "licenseStatus": "pending",
+    "requiredCredits": [
+      "PokéAPI contributors for the structured API data."
+    ],
+    "notes": [
+      "Structured data is sourced from PokéAPI under its BSD-3-Clause terms.",
+      "Pokémon names and character data remain subject to owner review and applicable trademark or copyright rights.",
+      "English source prose is preserved to avoid inventing translations of gameplay behavior."
+    ]
+  }
+}

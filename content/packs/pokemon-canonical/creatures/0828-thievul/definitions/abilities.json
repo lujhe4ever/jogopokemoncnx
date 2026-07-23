@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 2,
+  "pokemonId": "pokemon:0828-thievul",
+  "abilities": [
+    {
+      "abilityId": 50,
+      "slot": 1,
+      "isHidden": false,
+      "slug": "run-away",
+      "canonicalName": "Run Away",
+      "shortEffect": "Ensures success fleeing from wild battles.",
+      "effect": "This Pokémon is always successful fleeing from wild battles, even if trapped by a move or ability.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/50/"
+    },
+    {
+      "abilityId": 84,
+      "slot": 2,
+      "isHidden": false,
+      "slug": "unburden",
+      "canonicalName": "Unburden",
+      "shortEffect": "Doubles Speed upon using or losing a held item.",
+      "effect": "When this Pokémon uses or loses its held item, its Speed is doubled.  If it gains another item or leaves battle, this bonus is lost.\n\nThis includes when the Pokémon drops its item because of Knock Off.  This bonus does not count as a stat modifier.  There is no notification when this ability takes effect.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/84/"
+    },
+    {
+      "abilityId": 198,
+      "slot": 3,
+      "isHidden": true,
+      "slug": "stakeout",
+      "canonicalName": "Stakeout",
+      "shortEffect": "This Pokémon's moves have double power against Pokémon that switched in this turn.",
+      "effect": "This Pokémon's moves have double power against Pokémon that switched in this turn.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/198/"
+    }
+  ],
+  "source": {
+    "retrievedAt": "2026-07-23",
+    "sourceRevision": "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f",
+    "sourceUrls": [
+      "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
+      "https://github.com/PokeAPI/pokeapi/blob/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/LICENSE.md"
+    ],
+    "licenseStatus": "pending",
+    "requiredCredits": [
+      "PokéAPI contributors for the structured API data."
+    ],
+    "notes": [
+      "Structured data is sourced from PokéAPI under its BSD-3-Clause terms.",
+      "Pokémon names and character data remain subject to owner review and applicable trademark or copyright rights.",
+      "English source prose is preserved to avoid inventing translations of gameplay behavior."
+    ]
+  }
+}

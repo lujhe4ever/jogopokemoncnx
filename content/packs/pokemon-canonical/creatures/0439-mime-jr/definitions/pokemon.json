@@ -1,0 +1,164 @@
+{
+  "schemaVersion": 2,
+  "id": "pokemon:0439-mime-jr",
+  "nationalDexNumber": 439,
+  "canonicalName": "Mime Jr.",
+  "slug": "mime-jr",
+  "genus": "Mime Pokémon",
+  "generationIntroduced": 4,
+  "generationSource": "generation-iv",
+  "types": [
+    "psychic",
+    "fairy"
+  ],
+  "physical": {
+    "heightDecimeters": 6,
+    "weightHectograms": 130
+  },
+  "baseExperience": 62,
+  "baseStats": {
+    "hp": {
+      "value": 20,
+      "effortYield": 0
+    },
+    "attack": {
+      "value": 25,
+      "effortYield": 0
+    },
+    "defense": {
+      "value": 45,
+      "effortYield": 0
+    },
+    "special-attack": {
+      "value": 70,
+      "effortYield": 0
+    },
+    "special-defense": {
+      "value": 90,
+      "effortYield": 1
+    },
+    "speed": {
+      "value": 60,
+      "effortYield": 0
+    }
+  },
+  "biologyAndTraining": {
+    "color": "pink",
+    "shape": "humanoid",
+    "habitat": null,
+    "genderRate": 4,
+    "captureRate": 145,
+    "baseHappiness": 70,
+    "hatchCounter": 25,
+    "hasGenderDifferences": false,
+    "growthRate": "medium",
+    "eggGroups": [
+      "no-eggs"
+    ],
+    "isBaby": true,
+    "isLegendary": false,
+    "isMythical": false
+  },
+  "abilities": [
+    {
+      "slug": "soundproof",
+      "slot": 1,
+      "isHidden": false
+    },
+    {
+      "slug": "filter",
+      "slot": 2,
+      "isHidden": false
+    },
+    {
+      "slug": "technician",
+      "slot": 3,
+      "isHidden": true
+    }
+  ],
+  "evolution": {
+    "chainId": 57,
+    "evolvesFromSpeciesId": null,
+    "evolvesTo": [
+      {
+        "fromSpeciesId": 439,
+        "toSpeciesId": 122,
+        "trigger": "level-up",
+        "versionGroupId": 8,
+        "isDefault": true,
+        "triggerItem": null,
+        "minimumLevel": null,
+        "genderId": null,
+        "locationId": null,
+        "heldItem": null,
+        "timeOfDay": null,
+        "knownMove": "mimic",
+        "knownMoveType": null,
+        "minimumHappiness": null,
+        "minimumBeauty": null,
+        "minimumAffection": null,
+        "relativePhysicalStats": null,
+        "partySpeciesId": null,
+        "partyType": null,
+        "tradeSpeciesId": null,
+        "needsOverworldRain": false,
+        "turnUpsideDown": false,
+        "needsMultiplayer": false,
+        "nearSpecialRock": false,
+        "regionId": null,
+        "usedMove": null,
+        "minimumMoveCount": null,
+        "minimumSteps": null,
+        "minimumDamageTaken": null
+      },
+      {
+        "fromSpeciesId": 439,
+        "toSpeciesId": 122,
+        "trigger": "level-up",
+        "versionGroupId": 20,
+        "isDefault": true,
+        "triggerItem": null,
+        "minimumLevel": null,
+        "genderId": null,
+        "locationId": null,
+        "heldItem": null,
+        "timeOfDay": null,
+        "knownMove": "mimic",
+        "knownMoveType": null,
+        "minimumHappiness": null,
+        "minimumBeauty": null,
+        "minimumAffection": null,
+        "relativePhysicalStats": null,
+        "partySpeciesId": null,
+        "partyType": null,
+        "tradeSpeciesId": null,
+        "needsOverworldRain": false,
+        "turnUpsideDown": false,
+        "needsMultiplayer": false,
+        "nearSpecialRock": false,
+        "regionId": 8,
+        "usedMove": null,
+        "minimumMoveCount": null,
+        "minimumSteps": null,
+        "minimumDamageTaken": null
+      }
+    ]
+  },
+  "source": {
+    "retrievedAt": "2026-07-23",
+    "sourceRevision": "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f",
+    "sourceUrls": [
+      "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
+      "https://github.com/PokeAPI/pokeapi/blob/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/LICENSE.md"
+    ],
+    "licenseStatus": "pending",
+    "requiredCredits": [
+      "PokéAPI contributors for the structured API data."
+    ],
+    "notes": [
+      "Structured data is sourced from PokéAPI under its BSD-3-Clause terms.",
+      "Pokémon names and character data remain subject to owner review and applicable trademark or copyright rights.",
+      "English source prose is preserved to avoid inventing translations of gameplay behavior."
+    ]
+  }
+}

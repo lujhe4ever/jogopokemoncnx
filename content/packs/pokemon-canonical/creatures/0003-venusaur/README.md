@@ -1,18 +1,10 @@
-# Venusaur
+# 0003 Venusaur
 
-Pilot content folder for Venusaur.
+Dados canônicos e inventários auditáveis de `venusaur`.
 
-This folder intentionally contains metadata and inventories only. No sprites, animations, or sounds were imported because media licensing remains pending owner review.
+- `definitions/`: espécie, habilidades e learnset por jogo/geração.
+- `sprites/`: candidatos estáticos; nenhum binário é versionado.
+- `animations/`: candidatos animados; nenhum binário é versionado.
+- `sounds/`: reservado para uma tarefa futura.
 
-## Status
-
-- Definitions: pending review
-- Sprites: inventory only
-- Animations: deferred
-- Sounds: deferred
-
-## Sources
-
-- https://pokeapi.co/api/v2/pokemon/3/
-- https://pokeapi.co/api/v2/pokemon-species/3/
-- https://pokemondb.net/sprites/venusaur
+Os estados `pending`, `doubtful` e `quarantined` não autorizam uso ou publicação.

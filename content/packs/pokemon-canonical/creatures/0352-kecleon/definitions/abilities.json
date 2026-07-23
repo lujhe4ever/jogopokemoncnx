@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 2,
+  "pokemonId": "pokemon:0352-kecleon",
+  "abilities": [
+    {
+      "abilityId": 16,
+      "slot": 1,
+      "isHidden": false,
+      "slug": "color-change",
+      "canonicalName": "Color Change",
+      "shortEffect": "Changes type to match when hit by a damaging move.",
+      "effect": "Whenever this Pokémon takes damage from a move, the Pokémon's type changes to match the move.\n\nIf the Pokémon has two types, both are overridden.  The Pokémon must directly take damage; for example, moves blocked by a Substitute will not trigger this ability, nor will moves that deal damage indirectly, such as Spikes.\n\nThis ability takes effect on only the last hit of a multiple-hit attack.\n\nIn Pokémon Colosseum and XD: Gale of Darkness, this ability does not take effect on Shadow-type moves.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/16/"
+    },
+    {
+      "abilityId": 168,
+      "slot": 3,
+      "isHidden": true,
+      "slug": "protean",
+      "canonicalName": "Protean",
+      "shortEffect": "Changes the bearer's type to match each move it uses.",
+      "effect": "Changes the bearer's type to match each move it uses.\n\nThe type change takes place just before the move is used.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/168/"
+    }
+  ],
+  "source": {
+    "retrievedAt": "2026-07-23",
+    "sourceRevision": "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f",
+    "sourceUrls": [
+      "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
+      "https://github.com/PokeAPI/pokeapi/blob/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/LICENSE.md"
+    ],
+    "licenseStatus": "pending",
+    "requiredCredits": [
+      "PokéAPI contributors for the structured API data."
+    ],
+    "notes": [
+      "Structured data is sourced from PokéAPI under its BSD-3-Clause terms.",
+      "Pokémon names and character data remain subject to owner review and applicable trademark or copyright rights.",
+      "English source prose is preserved to avoid inventing translations of gameplay behavior."
+    ]
+  }
+}

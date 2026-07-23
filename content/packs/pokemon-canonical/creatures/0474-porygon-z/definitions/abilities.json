@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 2,
+  "pokemonId": "pokemon:0474-porygon-z",
+  "abilities": [
+    {
+      "abilityId": 91,
+      "slot": 1,
+      "isHidden": false,
+      "slug": "adaptability",
+      "canonicalName": "Adaptability",
+      "shortEffect": "Increases the same-type attack bonus from 1.5× to 2×.",
+      "effect": "This Pokémon inflicts twice as much damage with moves whose types match its own, rather than the usual same-type attack bonus of 1.5×.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/91/"
+    },
+    {
+      "abilityId": 88,
+      "slot": 2,
+      "isHidden": false,
+      "slug": "download",
+      "canonicalName": "Download",
+      "shortEffect": "Raises the attack stat corresponding to the opponents' weaker defense one stage upon entering battle.",
+      "effect": "When this Pokémon enters battle, its Attack or Special Attack, whichever corresponds to its opponents' weaker total defensive stat, rises one stage.  In the event of a tie, Special Attack is raised.\n\nThis ability also takes effect when acquired during a battle.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/88/"
+    },
+    {
+      "abilityId": 148,
+      "slot": 3,
+      "isHidden": true,
+      "slug": "analytic",
+      "canonicalName": "Analytic",
+      "shortEffect": "Strengthens moves to 1.3× their power when moving last.",
+      "effect": "This Pokémon's moves have 1.3× their power when it moves last in a turn.\n\nFuture Sight and Doom Desire are unaffected.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/148/"
+    }
+  ],
+  "source": {
+    "retrievedAt": "2026-07-23",
+    "sourceRevision": "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f",
+    "sourceUrls": [
+      "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
+      "https://github.com/PokeAPI/pokeapi/blob/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/LICENSE.md"
+    ],
+    "licenseStatus": "pending",
+    "requiredCredits": [
+      "PokéAPI contributors for the structured API data."
+    ],
+    "notes": [
+      "Structured data is sourced from PokéAPI under its BSD-3-Clause terms.",
+      "Pokémon names and character data remain subject to owner review and applicable trademark or copyright rights.",
+      "English source prose is preserved to avoid inventing translations of gameplay behavior."
+    ]
+  }
+}

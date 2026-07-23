@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 2,
+  "id": "pokemon:0735-gumshoos",
+  "nationalDexNumber": 735,
+  "canonicalName": "Gumshoos",
+  "slug": "gumshoos",
+  "genus": "Stakeout Pokémon",
+  "generationIntroduced": 7,
+  "generationSource": "generation-vii",
+  "types": [
+    "normal"
+  ],
+  "physical": {
+    "heightDecimeters": 7,
+    "weightHectograms": 142
+  },
+  "baseExperience": 146,
+  "baseStats": {
+    "hp": {
+      "value": 88,
+      "effortYield": 0
+    },
+    "attack": {
+      "value": 110,
+      "effortYield": 2
+    },
+    "defense": {
+      "value": 60,
+      "effortYield": 0
+    },
+    "special-attack": {
+      "value": 55,
+      "effortYield": 0
+    },
+    "special-defense": {
+      "value": 60,
+      "effortYield": 0
+    },
+    "speed": {
+      "value": 45,
+      "effortYield": 0
+    }
+  },
+  "biologyAndTraining": {
+    "color": "brown",
+    "shape": "quadruped",
+    "habitat": null,
+    "genderRate": 4,
+    "captureRate": 127,
+    "baseHappiness": 70,
+    "hatchCounter": 15,
+    "hasGenderDifferences": false,
+    "growthRate": "medium",
+    "eggGroups": [
+      "ground"
+    ],
+    "isBaby": false,
+    "isLegendary": false,
+    "isMythical": false
+  },
+  "abilities": [
+    {
+      "slug": "stakeout",
+      "slot": 1,
+      "isHidden": false
+    },
+    {
+      "slug": "strong-jaw",
+      "slot": 2,
+      "isHidden": false
+    },
+    {
+      "slug": "adaptability",
+      "slot": 3,
+      "isHidden": true
+    }
+  ],
+  "evolution": {
+    "chainId": 378,
+    "evolvesFromSpeciesId": 734,
+    "evolvesTo": []
+  },
+  "source": {
+    "retrievedAt": "2026-07-23",
+    "sourceRevision": "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f",
+    "sourceUrls": [
+      "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
+      "https://github.com/PokeAPI/pokeapi/blob/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/LICENSE.md"
+    ],
+    "licenseStatus": "pending",
+    "requiredCredits": [
+      "PokéAPI contributors for the structured API data."
+    ],
+    "notes": [
+      "Structured data is sourced from PokéAPI under its BSD-3-Clause terms.",
+      "Pokémon names and character data remain subject to owner review and applicable trademark or copyright rights.",
+      "English source prose is preserved to avoid inventing translations of gameplay behavior."
+    ]
+  }
+}

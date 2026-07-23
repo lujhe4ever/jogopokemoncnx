@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 2,
+  "pokemonId": "pokemon:0531-audino",
+  "abilities": [
+    {
+      "abilityId": 131,
+      "slot": 1,
+      "isHidden": false,
+      "slug": "healer",
+      "canonicalName": "Healer",
+      "shortEffect": "Has a 30% chance of curing each adjacent ally of any major status ailment after each turn.",
+      "effect": "Friendly Pokémon next to this Pokémon in double and triple battles each have a 30% chance of being cured of any major status ailment after each turn.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/131/"
+    },
+    {
+      "abilityId": 144,
+      "slot": 2,
+      "isHidden": false,
+      "slug": "regenerator",
+      "canonicalName": "Regenerator",
+      "shortEffect": "Heals for 1/3 max HP upon switching out.",
+      "effect": "This Pokémon regains 1/3 of its maximum HP when it is switched out for another Pokémon under any circumstances other than having fainted.\n\nThis ability does not take effect when a battle ends.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/144/"
+    },
+    {
+      "abilityId": 103,
+      "slot": 3,
+      "isHidden": true,
+      "slug": "klutz",
+      "canonicalName": "Klutz",
+      "shortEffect": "Prevents the Pokémon from using its held item in battle.",
+      "effect": "In battle, this Pokémon cannot use its held item, nor will the item have any passive effect on the battle, positive or negative.  This Pokémon also cannot use Fling.\n\nThe Speed cut from the Iron Ball and the effort items (the Macho Brace, Power Weight, Power Bracer, Power Belt, Power Lens, Power Band, and Power Anklet) is unaffected.  Items that do not directly affect the battle, such as the Exp. Share, the Amulet Coin, or the Soothe Bell, work as usual.  All held items work as usual out of battle.\n\nOther moves that use the held item, such as Natural Gift and Switcheroo, work as usual.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/103/"
+    }
+  ],
+  "source": {
+    "retrievedAt": "2026-07-23",
+    "sourceRevision": "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f",
+    "sourceUrls": [
+      "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
+      "https://github.com/PokeAPI/pokeapi/blob/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/LICENSE.md"
+    ],
+    "licenseStatus": "pending",
+    "requiredCredits": [
+      "PokéAPI contributors for the structured API data."
+    ],
+    "notes": [
+      "Structured data is sourced from PokéAPI under its BSD-3-Clause terms.",
+      "Pokémon names and character data remain subject to owner review and applicable trademark or copyright rights.",
+      "English source prose is preserved to avoid inventing translations of gameplay behavior."
+    ]
+  }
+}

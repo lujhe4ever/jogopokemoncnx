@@ -1,0 +1,95 @@
+{
+  "schemaVersion": 2,
+  "id": "pokemon:0378-regice",
+  "nationalDexNumber": 378,
+  "canonicalName": "Regice",
+  "slug": "regice",
+  "genus": "Iceberg Pokémon",
+  "generationIntroduced": 3,
+  "generationSource": "generation-iii",
+  "types": [
+    "ice"
+  ],
+  "physical": {
+    "heightDecimeters": 18,
+    "weightHectograms": 1750
+  },
+  "baseExperience": 261,
+  "baseStats": {
+    "hp": {
+      "value": 80,
+      "effortYield": 0
+    },
+    "attack": {
+      "value": 50,
+      "effortYield": 0
+    },
+    "defense": {
+      "value": 100,
+      "effortYield": 0
+    },
+    "special-attack": {
+      "value": 100,
+      "effortYield": 0
+    },
+    "special-defense": {
+      "value": 200,
+      "effortYield": 3
+    },
+    "speed": {
+      "value": 50,
+      "effortYield": 0
+    }
+  },
+  "biologyAndTraining": {
+    "color": "blue",
+    "shape": "humanoid",
+    "habitat": "cave",
+    "genderRate": -1,
+    "captureRate": 3,
+    "baseHappiness": 35,
+    "hatchCounter": 80,
+    "hasGenderDifferences": false,
+    "growthRate": "slow",
+    "eggGroups": [
+      "no-eggs"
+    ],
+    "isBaby": false,
+    "isLegendary": true,
+    "isMythical": false
+  },
+  "abilities": [
+    {
+      "slug": "clear-body",
+      "slot": 1,
+      "isHidden": false
+    },
+    {
+      "slug": "ice-body",
+      "slot": 3,
+      "isHidden": true
+    }
+  ],
+  "evolution": {
+    "chainId": 194,
+    "evolvesFromSpeciesId": null,
+    "evolvesTo": []
+  },
+  "source": {
+    "retrievedAt": "2026-07-23",
+    "sourceRevision": "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f",
+    "sourceUrls": [
+      "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
+      "https://github.com/PokeAPI/pokeapi/blob/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/LICENSE.md"
+    ],
+    "licenseStatus": "pending",
+    "requiredCredits": [
+      "PokéAPI contributors for the structured API data."
+    ],
+    "notes": [
+      "Structured data is sourced from PokéAPI under its BSD-3-Clause terms.",
+      "Pokémon names and character data remain subject to owner review and applicable trademark or copyright rights.",
+      "English source prose is preserved to avoid inventing translations of gameplay behavior."
+    ]
+  }
+}

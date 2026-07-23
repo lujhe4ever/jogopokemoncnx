@@ -1,0 +1,134 @@
+{
+  "schemaVersion": 2,
+  "id": "pokemon:0564-tirtouga",
+  "nationalDexNumber": 564,
+  "canonicalName": "Tirtouga",
+  "slug": "tirtouga",
+  "genus": "Prototurtle Pokémon",
+  "generationIntroduced": 5,
+  "generationSource": "generation-v",
+  "types": [
+    "water",
+    "rock"
+  ],
+  "physical": {
+    "heightDecimeters": 7,
+    "weightHectograms": 165
+  },
+  "baseExperience": 71,
+  "baseStats": {
+    "hp": {
+      "value": 54,
+      "effortYield": 0
+    },
+    "attack": {
+      "value": 78,
+      "effortYield": 0
+    },
+    "defense": {
+      "value": 103,
+      "effortYield": 1
+    },
+    "special-attack": {
+      "value": 53,
+      "effortYield": 0
+    },
+    "special-defense": {
+      "value": 45,
+      "effortYield": 0
+    },
+    "speed": {
+      "value": 22,
+      "effortYield": 0
+    }
+  },
+  "biologyAndTraining": {
+    "color": "blue",
+    "shape": "quadruped",
+    "habitat": null,
+    "genderRate": 1,
+    "captureRate": 45,
+    "baseHappiness": 70,
+    "hatchCounter": 30,
+    "hasGenderDifferences": false,
+    "growthRate": "medium",
+    "eggGroups": [
+      "water1",
+      "water3"
+    ],
+    "isBaby": false,
+    "isLegendary": false,
+    "isMythical": false
+  },
+  "abilities": [
+    {
+      "slug": "solid-rock",
+      "slot": 1,
+      "isHidden": false
+    },
+    {
+      "slug": "sturdy",
+      "slot": 2,
+      "isHidden": false
+    },
+    {
+      "slug": "swift-swim",
+      "slot": 3,
+      "isHidden": true
+    }
+  ],
+  "evolution": {
+    "chainId": 288,
+    "evolvesFromSpeciesId": null,
+    "evolvesTo": [
+      {
+        "fromSpeciesId": 564,
+        "toSpeciesId": 565,
+        "trigger": "level-up",
+        "versionGroupId": 11,
+        "isDefault": true,
+        "triggerItem": null,
+        "minimumLevel": 37,
+        "genderId": null,
+        "locationId": null,
+        "heldItem": null,
+        "timeOfDay": null,
+        "knownMove": null,
+        "knownMoveType": null,
+        "minimumHappiness": null,
+        "minimumBeauty": null,
+        "minimumAffection": null,
+        "relativePhysicalStats": null,
+        "partySpeciesId": null,
+        "partyType": null,
+        "tradeSpeciesId": null,
+        "needsOverworldRain": false,
+        "turnUpsideDown": false,
+        "needsMultiplayer": false,
+        "nearSpecialRock": false,
+        "regionId": null,
+        "usedMove": null,
+        "minimumMoveCount": null,
+        "minimumSteps": null,
+        "minimumDamageTaken": null
+      }
+    ]
+  },
+  "source": {
+    "retrievedAt": "2026-07-23",
+    "sourceRevision": "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f",
+    "sourceUrls": [
+      "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
+      "https://github.com/PokeAPI/pokeapi/blob/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/LICENSE.md"
+    ],
+    "licenseStatus": "pending",
+    "requiredCredits": [
+      "PokéAPI contributors for the structured API data."
+    ],
+    "notes": [
+      "Structured data is sourced from PokéAPI under its BSD-3-Clause terms.",
+      "Pokémon names and character data remain subject to owner review and applicable trademark or copyright rights.",
+      "English source prose is preserved to avoid inventing translations of gameplay behavior."
+    ]
+  }
+}

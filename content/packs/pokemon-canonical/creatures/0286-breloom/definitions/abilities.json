@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 2,
+  "pokemonId": "pokemon:0286-breloom",
+  "abilities": [
+    {
+      "abilityId": 27,
+      "slot": 1,
+      "isHidden": false,
+      "slug": "effect-spore",
+      "canonicalName": "Effect Spore",
+      "shortEffect": "Has a 30% chance of inflcting either paralysis, poison, or sleep on attacking Pokémon on contact.",
+      "effect": "Whenever a move makes contact with this Pokémon, the move's user has a 30% chance of being paralyzed, poisoned, or put to sleep, chosen at random.\n\nNothing is done to compensate if the move's user is immune to one of these ailments; there is simply a lower chance that the move's user will be affected.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/27/"
+    },
+    {
+      "abilityId": 90,
+      "slot": 2,
+      "isHidden": false,
+      "slug": "poison-heal",
+      "canonicalName": "Poison Heal",
+      "shortEffect": "Heals for 1/8 max HP after each turn when poisoned in place of damage.",
+      "effect": "If this Pokémon is poisoned, it will heal for 1/8 of its maximum HP after each turn rather than taking damage.  This includes bad poison.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/90/"
+    },
+    {
+      "abilityId": 101,
+      "slot": 3,
+      "isHidden": true,
+      "slug": "technician",
+      "canonicalName": "Technician",
+      "shortEffect": "Strengthens moves of 60 base power or less to 1.5× their power.",
+      "effect": "This Pokémon's moves have 1.5× their power if their base power is 60 or less.\n\nThis includes moves of variable power, such as Hidden Power and Magnitude, when their power is 60 or less.  Helping Hand's power boost is taken into account for any move, as is Defense Curl's power boost for Rollout.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/101/"
+    }
+  ],
+  "source": {
+    "retrievedAt": "2026-07-23",
+    "sourceRevision": "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f",
+    "sourceUrls": [
+      "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
+      "https://github.com/PokeAPI/pokeapi/blob/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/LICENSE.md"
+    ],
+    "licenseStatus": "pending",
+    "requiredCredits": [
+      "PokéAPI contributors for the structured API data."
+    ],
+    "notes": [
+      "Structured data is sourced from PokéAPI under its BSD-3-Clause terms.",
+      "Pokémon names and character data remain subject to owner review and applicable trademark or copyright rights.",
+      "English source prose is preserved to avoid inventing translations of gameplay behavior."
+    ]
+  }
+}

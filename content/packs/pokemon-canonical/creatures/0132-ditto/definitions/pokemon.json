@@ -1,0 +1,95 @@
+{
+  "schemaVersion": 2,
+  "id": "pokemon:0132-ditto",
+  "nationalDexNumber": 132,
+  "canonicalName": "Ditto",
+  "slug": "ditto",
+  "genus": "Transform Pokémon",
+  "generationIntroduced": 1,
+  "generationSource": "generation-i",
+  "types": [
+    "normal"
+  ],
+  "physical": {
+    "heightDecimeters": 3,
+    "weightHectograms": 40
+  },
+  "baseExperience": 101,
+  "baseStats": {
+    "hp": {
+      "value": 48,
+      "effortYield": 1
+    },
+    "attack": {
+      "value": 48,
+      "effortYield": 0
+    },
+    "defense": {
+      "value": 48,
+      "effortYield": 0
+    },
+    "special-attack": {
+      "value": 48,
+      "effortYield": 0
+    },
+    "special-defense": {
+      "value": 48,
+      "effortYield": 0
+    },
+    "speed": {
+      "value": 48,
+      "effortYield": 0
+    }
+  },
+  "biologyAndTraining": {
+    "color": "purple",
+    "shape": "ball",
+    "habitat": "urban",
+    "genderRate": -1,
+    "captureRate": 35,
+    "baseHappiness": 70,
+    "hatchCounter": 20,
+    "hasGenderDifferences": false,
+    "growthRate": "medium",
+    "eggGroups": [
+      "ditto"
+    ],
+    "isBaby": false,
+    "isLegendary": false,
+    "isMythical": false
+  },
+  "abilities": [
+    {
+      "slug": "limber",
+      "slot": 1,
+      "isHidden": false
+    },
+    {
+      "slug": "imposter",
+      "slot": 3,
+      "isHidden": true
+    }
+  ],
+  "evolution": {
+    "chainId": 66,
+    "evolvesFromSpeciesId": null,
+    "evolvesTo": []
+  },
+  "source": {
+    "retrievedAt": "2026-07-23",
+    "sourceRevision": "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f",
+    "sourceUrls": [
+      "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
+      "https://github.com/PokeAPI/pokeapi/blob/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/LICENSE.md"
+    ],
+    "licenseStatus": "pending",
+    "requiredCredits": [
+      "PokéAPI contributors for the structured API data."
+    ],
+    "notes": [
+      "Structured data is sourced from PokéAPI under its BSD-3-Clause terms.",
+      "Pokémon names and character data remain subject to owner review and applicable trademark or copyright rights.",
+      "English source prose is preserved to avoid inventing translations of gameplay behavior."
+    ]
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 2,
+  "pokemonId": "pokemon:0435-skuntank",
+  "abilities": [
+    {
+      "abilityId": 1,
+      "slot": 1,
+      "isHidden": false,
+      "slug": "stench",
+      "canonicalName": "Stench",
+      "shortEffect": "Has a 10% chance of making target Pokémon flinch with each hit.",
+      "effect": "This Pokémon's damaging moves have a 10% chance to make the target flinch with each hit if they do not already cause flinching as a secondary effect.\n\nThis ability does not stack with a held item.\n\nOverworld: The wild encounter rate is halved while this Pokémon is first in the party.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/1/"
+    },
+    {
+      "abilityId": 106,
+      "slot": 2,
+      "isHidden": false,
+      "slug": "aftermath",
+      "canonicalName": "Aftermath",
+      "shortEffect": "Damages the attacker for 1/4 its max HP when knocked out by a contact move.",
+      "effect": "When this Pokémon is knocked out by a move that makes contact, the move's user takes 1/4 its maximum HP in damage.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/106/"
+    },
+    {
+      "abilityId": 51,
+      "slot": 3,
+      "isHidden": true,
+      "slug": "keen-eye",
+      "canonicalName": "Keen Eye",
+      "shortEffect": "Prevents accuracy from being lowered.",
+      "effect": "This Pokémon cannot have its accuracy lowered.\n\nThis ability does not prevent any accuracy losses other than stat modifiers, such as the accuracy cut from fog; nor does it prevent other Pokémon's evasion from making this Pokémon's moves less accurate.  This Pokémon can still be passed negative accuracy modifiers through Heart Swap.\n\nOverworld: If the first Pokémon in the party has this ability, any random encounter with a Pokémon five or more levels lower than it has a 50% chance of being skipped.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/51/"
+    }
+  ],
+  "source": {
+    "retrievedAt": "2026-07-23",
+    "sourceRevision": "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f",
+    "sourceUrls": [
+      "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
+      "https://github.com/PokeAPI/pokeapi/blob/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/LICENSE.md"
+    ],
+    "licenseStatus": "pending",
+    "requiredCredits": [
+      "PokéAPI contributors for the structured API data."
+    ],
+    "notes": [
+      "Structured data is sourced from PokéAPI under its BSD-3-Clause terms.",
+      "Pokémon names and character data remain subject to owner review and applicable trademark or copyright rights.",
+      "English source prose is preserved to avoid inventing translations of gameplay behavior."
+    ]
+  }
+}

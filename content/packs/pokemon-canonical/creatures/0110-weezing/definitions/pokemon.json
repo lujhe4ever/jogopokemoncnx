@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 2,
+  "id": "pokemon:0110-weezing",
+  "nationalDexNumber": 110,
+  "canonicalName": "Weezing",
+  "slug": "weezing",
+  "genus": "Poison Gas Pokémon",
+  "generationIntroduced": 1,
+  "generationSource": "generation-i",
+  "types": [
+    "poison"
+  ],
+  "physical": {
+    "heightDecimeters": 12,
+    "weightHectograms": 95
+  },
+  "baseExperience": 172,
+  "baseStats": {
+    "hp": {
+      "value": 65,
+      "effortYield": 0
+    },
+    "attack": {
+      "value": 90,
+      "effortYield": 0
+    },
+    "defense": {
+      "value": 120,
+      "effortYield": 2
+    },
+    "special-attack": {
+      "value": 85,
+      "effortYield": 0
+    },
+    "special-defense": {
+      "value": 70,
+      "effortYield": 0
+    },
+    "speed": {
+      "value": 60,
+      "effortYield": 0
+    }
+  },
+  "biologyAndTraining": {
+    "color": "purple",
+    "shape": "heads",
+    "habitat": "urban",
+    "genderRate": 4,
+    "captureRate": 60,
+    "baseHappiness": 70,
+    "hatchCounter": 20,
+    "hasGenderDifferences": false,
+    "growthRate": "medium",
+    "eggGroups": [
+      "indeterminate"
+    ],
+    "isBaby": false,
+    "isLegendary": false,
+    "isMythical": false
+  },
+  "abilities": [
+    {
+      "slug": "levitate",
+      "slot": 1,
+      "isHidden": false
+    },
+    {
+      "slug": "neutralizing-gas",
+      "slot": 2,
+      "isHidden": false
+    },
+    {
+      "slug": "stench",
+      "slot": 3,
+      "isHidden": true
+    }
+  ],
+  "evolution": {
+    "chainId": 49,
+    "evolvesFromSpeciesId": 109,
+    "evolvesTo": []
+  },
+  "source": {
+    "retrievedAt": "2026-07-23",
+    "sourceRevision": "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f",
+    "sourceUrls": [
+      "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
+      "https://github.com/PokeAPI/pokeapi/blob/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/LICENSE.md"
+    ],
+    "licenseStatus": "pending",
+    "requiredCredits": [
+      "PokéAPI contributors for the structured API data."
+    ],
+    "notes": [
+      "Structured data is sourced from PokéAPI under its BSD-3-Clause terms.",
+      "Pokémon names and character data remain subject to owner review and applicable trademark or copyright rights.",
+      "English source prose is preserved to avoid inventing translations of gameplay behavior."
+    ]
+  }
+}

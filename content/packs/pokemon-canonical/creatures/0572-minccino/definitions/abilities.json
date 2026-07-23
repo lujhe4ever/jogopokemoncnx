@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 2,
+  "pokemonId": "pokemon:0572-minccino",
+  "abilities": [
+    {
+      "abilityId": 56,
+      "slot": 1,
+      "isHidden": false,
+      "slug": "cute-charm",
+      "canonicalName": "Cute Charm",
+      "shortEffect": "Has a 30% chance of infatuating attacking Pokémon on contact.",
+      "effect": "Whenever a move makes contact with this Pokémon, the move's user has a 30% chance of being infatuated.\n\nOverworld: If the first Pokémon in the party has this ability, any wild Pokémon whose species can be either gender has a 2/3 chance of being set to the opposite gender, and a 1/3 chance of having a random gender as usual.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/56/"
+    },
+    {
+      "abilityId": 101,
+      "slot": 2,
+      "isHidden": false,
+      "slug": "technician",
+      "canonicalName": "Technician",
+      "shortEffect": "Strengthens moves of 60 base power or less to 1.5× their power.",
+      "effect": "This Pokémon's moves have 1.5× their power if their base power is 60 or less.\n\nThis includes moves of variable power, such as Hidden Power and Magnitude, when their power is 60 or less.  Helping Hand's power boost is taken into account for any move, as is Defense Curl's power boost for Rollout.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/101/"
+    },
+    {
+      "abilityId": 92,
+      "slot": 3,
+      "isHidden": true,
+      "slug": "skill-link",
+      "canonicalName": "Skill Link",
+      "shortEffect": "Extends two-to-five-hit moves and Triple Kick to their full length every time.",
+      "effect": "This Pokémon always hits five times with two-to-five-hit moves, such as Icicle Spear.  It also bypasses the accuracy checks on Triple Kick's second and third hits.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/92/"
+    }
+  ],
+  "source": {
+    "retrievedAt": "2026-07-23",
+    "sourceRevision": "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f",
+    "sourceUrls": [
+      "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
+      "https://github.com/PokeAPI/pokeapi/blob/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/LICENSE.md"
+    ],
+    "licenseStatus": "pending",
+    "requiredCredits": [
+      "PokéAPI contributors for the structured API data."
+    ],
+    "notes": [
+      "Structured data is sourced from PokéAPI under its BSD-3-Clause terms.",
+      "Pokémon names and character data remain subject to owner review and applicable trademark or copyright rights.",
+      "English source prose is preserved to avoid inventing translations of gameplay behavior."
+    ]
+  }
+}

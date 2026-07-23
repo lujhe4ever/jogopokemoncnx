@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 2,
+  "id": "pokemon:0354-banette",
+  "nationalDexNumber": 354,
+  "canonicalName": "Banette",
+  "slug": "banette",
+  "genus": "Marionette Pokémon",
+  "generationIntroduced": 3,
+  "generationSource": "generation-iii",
+  "types": [
+    "ghost"
+  ],
+  "physical": {
+    "heightDecimeters": 11,
+    "weightHectograms": 125
+  },
+  "baseExperience": 159,
+  "baseStats": {
+    "hp": {
+      "value": 64,
+      "effortYield": 0
+    },
+    "attack": {
+      "value": 115,
+      "effortYield": 2
+    },
+    "defense": {
+      "value": 65,
+      "effortYield": 0
+    },
+    "special-attack": {
+      "value": 83,
+      "effortYield": 0
+    },
+    "special-defense": {
+      "value": 63,
+      "effortYield": 0
+    },
+    "speed": {
+      "value": 65,
+      "effortYield": 0
+    }
+  },
+  "biologyAndTraining": {
+    "color": "black",
+    "shape": "upright",
+    "habitat": "urban",
+    "genderRate": 4,
+    "captureRate": 45,
+    "baseHappiness": 35,
+    "hatchCounter": 25,
+    "hasGenderDifferences": false,
+    "growthRate": "fast",
+    "eggGroups": [
+      "indeterminate"
+    ],
+    "isBaby": false,
+    "isLegendary": false,
+    "isMythical": false
+  },
+  "abilities": [
+    {
+      "slug": "insomnia",
+      "slot": 1,
+      "isHidden": false
+    },
+    {
+      "slug": "frisk",
+      "slot": 2,
+      "isHidden": false
+    },
+    {
+      "slug": "cursed-body",
+      "slot": 3,
+      "isHidden": true
+    }
+  ],
+  "evolution": {
+    "chainId": 181,
+    "evolvesFromSpeciesId": 353,
+    "evolvesTo": []
+  },
+  "source": {
+    "retrievedAt": "2026-07-23",
+    "sourceRevision": "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f",
+    "sourceUrls": [
+      "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
+      "https://github.com/PokeAPI/pokeapi/blob/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/LICENSE.md"
+    ],
+    "licenseStatus": "pending",
+    "requiredCredits": [
+      "PokéAPI contributors for the structured API data."
+    ],
+    "notes": [
+      "Structured data is sourced from PokéAPI under its BSD-3-Clause terms.",
+      "Pokémon names and character data remain subject to owner review and applicable trademark or copyright rights.",
+      "English source prose is preserved to avoid inventing translations of gameplay behavior."
+    ]
+  }
+}

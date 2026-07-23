@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 2,
+  "id": "pokemon:0225-delibird",
+  "nationalDexNumber": 225,
+  "canonicalName": "Delibird",
+  "slug": "delibird",
+  "genus": "Delivery Pokémon",
+  "generationIntroduced": 2,
+  "generationSource": "generation-ii",
+  "types": [
+    "ice",
+    "flying"
+  ],
+  "physical": {
+    "heightDecimeters": 9,
+    "weightHectograms": 160
+  },
+  "baseExperience": 116,
+  "baseStats": {
+    "hp": {
+      "value": 45,
+      "effortYield": 0
+    },
+    "attack": {
+      "value": 55,
+      "effortYield": 0
+    },
+    "defense": {
+      "value": 45,
+      "effortYield": 0
+    },
+    "special-attack": {
+      "value": 65,
+      "effortYield": 0
+    },
+    "special-defense": {
+      "value": 45,
+      "effortYield": 0
+    },
+    "speed": {
+      "value": 75,
+      "effortYield": 1
+    }
+  },
+  "biologyAndTraining": {
+    "color": "red",
+    "shape": "wings",
+    "habitat": "mountain",
+    "genderRate": 4,
+    "captureRate": 45,
+    "baseHappiness": 70,
+    "hatchCounter": 20,
+    "hasGenderDifferences": false,
+    "growthRate": "fast",
+    "eggGroups": [
+      "water1",
+      "ground"
+    ],
+    "isBaby": false,
+    "isLegendary": false,
+    "isMythical": false
+  },
+  "abilities": [
+    {
+      "slug": "vital-spirit",
+      "slot": 1,
+      "isHidden": false
+    },
+    {
+      "slug": "hustle",
+      "slot": 2,
+      "isHidden": false
+    },
+    {
+      "slug": "insomnia",
+      "slot": 3,
+      "isHidden": true
+    }
+  ],
+  "evolution": {
+    "chainId": 115,
+    "evolvesFromSpeciesId": null,
+    "evolvesTo": []
+  },
+  "source": {
+    "retrievedAt": "2026-07-23",
+    "sourceRevision": "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f",
+    "sourceUrls": [
+      "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
+      "https://github.com/PokeAPI/pokeapi/blob/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/LICENSE.md"
+    ],
+    "licenseStatus": "pending",
+    "requiredCredits": [
+      "PokéAPI contributors for the structured API data."
+    ],
+    "notes": [
+      "Structured data is sourced from PokéAPI under its BSD-3-Clause terms.",
+      "Pokémon names and character data remain subject to owner review and applicable trademark or copyright rights.",
+      "English source prose is preserved to avoid inventing translations of gameplay behavior."
+    ]
+  }
+}

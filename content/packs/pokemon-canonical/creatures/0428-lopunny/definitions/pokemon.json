@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 2,
+  "id": "pokemon:0428-lopunny",
+  "nationalDexNumber": 428,
+  "canonicalName": "Lopunny",
+  "slug": "lopunny",
+  "genus": "Rabbit Pokémon",
+  "generationIntroduced": 4,
+  "generationSource": "generation-iv",
+  "types": [
+    "normal"
+  ],
+  "physical": {
+    "heightDecimeters": 12,
+    "weightHectograms": 333
+  },
+  "baseExperience": 168,
+  "baseStats": {
+    "hp": {
+      "value": 65,
+      "effortYield": 0
+    },
+    "attack": {
+      "value": 76,
+      "effortYield": 0
+    },
+    "defense": {
+      "value": 84,
+      "effortYield": 0
+    },
+    "special-attack": {
+      "value": 54,
+      "effortYield": 0
+    },
+    "special-defense": {
+      "value": 96,
+      "effortYield": 0
+    },
+    "speed": {
+      "value": 105,
+      "effortYield": 2
+    }
+  },
+  "biologyAndTraining": {
+    "color": "brown",
+    "shape": "upright",
+    "habitat": null,
+    "genderRate": 4,
+    "captureRate": 60,
+    "baseHappiness": 140,
+    "hatchCounter": 20,
+    "hasGenderDifferences": false,
+    "growthRate": "medium",
+    "eggGroups": [
+      "ground",
+      "humanshape"
+    ],
+    "isBaby": false,
+    "isLegendary": false,
+    "isMythical": false
+  },
+  "abilities": [
+    {
+      "slug": "cute-charm",
+      "slot": 1,
+      "isHidden": false
+    },
+    {
+      "slug": "klutz",
+      "slot": 2,
+      "isHidden": false
+    },
+    {
+      "slug": "limber",
+      "slot": 3,
+      "isHidden": true
+    }
+  ],
+  "evolution": {
+    "chainId": 220,
+    "evolvesFromSpeciesId": 427,
+    "evolvesTo": []
+  },
+  "source": {
+    "retrievedAt": "2026-07-23",
+    "sourceRevision": "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f",
+    "sourceUrls": [
+      "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
+      "https://github.com/PokeAPI/pokeapi/blob/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/LICENSE.md"
+    ],
+    "licenseStatus": "pending",
+    "requiredCredits": [
+      "PokéAPI contributors for the structured API data."
+    ],
+    "notes": [
+      "Structured data is sourced from PokéAPI under its BSD-3-Clause terms.",
+      "Pokémon names and character data remain subject to owner review and applicable trademark or copyright rights.",
+      "English source prose is preserved to avoid inventing translations of gameplay behavior."
+    ]
+  }
+}

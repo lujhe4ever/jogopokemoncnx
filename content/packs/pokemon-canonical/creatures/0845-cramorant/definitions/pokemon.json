@@ -1,0 +1,92 @@
+{
+  "schemaVersion": 2,
+  "id": "pokemon:0845-cramorant",
+  "nationalDexNumber": 845,
+  "canonicalName": "Cramorant",
+  "slug": "cramorant",
+  "genus": "Gulp Pokémon",
+  "generationIntroduced": 8,
+  "generationSource": "generation-viii",
+  "types": [
+    "flying",
+    "water"
+  ],
+  "physical": {
+    "heightDecimeters": 8,
+    "weightHectograms": 180
+  },
+  "baseExperience": 166,
+  "baseStats": {
+    "hp": {
+      "value": 70,
+      "effortYield": 0
+    },
+    "attack": {
+      "value": 85,
+      "effortYield": 0
+    },
+    "defense": {
+      "value": 55,
+      "effortYield": 0
+    },
+    "special-attack": {
+      "value": 85,
+      "effortYield": 0
+    },
+    "special-defense": {
+      "value": 95,
+      "effortYield": 2
+    },
+    "speed": {
+      "value": 85,
+      "effortYield": 0
+    }
+  },
+  "biologyAndTraining": {
+    "color": "blue",
+    "shape": "wings",
+    "habitat": null,
+    "genderRate": 4,
+    "captureRate": 45,
+    "baseHappiness": 50,
+    "hatchCounter": 20,
+    "hasGenderDifferences": false,
+    "growthRate": "medium",
+    "eggGroups": [
+      "water1",
+      "flying"
+    ],
+    "isBaby": false,
+    "isLegendary": false,
+    "isMythical": false
+  },
+  "abilities": [
+    {
+      "slug": "gulp-missile",
+      "slot": 1,
+      "isHidden": false
+    }
+  ],
+  "evolution": {
+    "chainId": 444,
+    "evolvesFromSpeciesId": null,
+    "evolvesTo": []
+  },
+  "source": {
+    "retrievedAt": "2026-07-23",
+    "sourceRevision": "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f",
+    "sourceUrls": [
+      "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
+      "https://github.com/PokeAPI/pokeapi/blob/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/LICENSE.md"
+    ],
+    "licenseStatus": "pending",
+    "requiredCredits": [
+      "PokéAPI contributors for the structured API data."
+    ],
+    "notes": [
+      "Structured data is sourced from PokéAPI under its BSD-3-Clause terms.",
+      "Pokémon names and character data remain subject to owner review and applicable trademark or copyright rights.",
+      "English source prose is preserved to avoid inventing translations of gameplay behavior."
+    ]
+  }
+}

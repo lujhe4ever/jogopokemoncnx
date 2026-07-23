@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 2,
+  "id": "pokemon:1000-gholdengo",
+  "nationalDexNumber": 1000,
+  "canonicalName": "Gholdengo",
+  "slug": "gholdengo",
+  "genus": "Coin Entity Pokémon",
+  "generationIntroduced": 9,
+  "generationSource": "generation-ix",
+  "types": [
+    "steel",
+    "ghost"
+  ],
+  "physical": {
+    "heightDecimeters": 12,
+    "weightHectograms": 300
+  },
+  "baseExperience": 275,
+  "baseStats": {
+    "hp": {
+      "value": 87,
+      "effortYield": 0
+    },
+    "attack": {
+      "value": 60,
+      "effortYield": 0
+    },
+    "defense": {
+      "value": 95,
+      "effortYield": 0
+    },
+    "special-attack": {
+      "value": 133,
+      "effortYield": 2
+    },
+    "special-defense": {
+      "value": 91,
+      "effortYield": 0
+    },
+    "speed": {
+      "value": 84,
+      "effortYield": 0
+    }
+  },
+  "biologyAndTraining": {
+    "color": "yellow",
+    "shape": "humanoid",
+    "habitat": null,
+    "genderRate": -1,
+    "captureRate": 45,
+    "baseHappiness": 50,
+    "hatchCounter": 50,
+    "hasGenderDifferences": false,
+    "growthRate": "slow",
+    "eggGroups": [
+      "no-eggs"
+    ],
+    "isBaby": false,
+    "isLegendary": false,
+    "isMythical": false
+  },
+  "abilities": [
+    {
+      "slug": "good-as-gold",
+      "slot": 1,
+      "isHidden": false
+    }
+  ],
+  "evolution": {
+    "chainId": 528,
+    "evolvesFromSpeciesId": 999,
+    "evolvesTo": []
+  },
+  "source": {
+    "retrievedAt": "2026-07-23",
+    "sourceRevision": "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f",
+    "sourceUrls": [
+      "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
+      "https://github.com/PokeAPI/pokeapi/blob/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/LICENSE.md"
+    ],
+    "licenseStatus": "pending",
+    "requiredCredits": [
+      "PokéAPI contributors for the structured API data."
+    ],
+    "notes": [
+      "Structured data is sourced from PokéAPI under its BSD-3-Clause terms.",
+      "Pokémon names and character data remain subject to owner review and applicable trademark or copyright rights.",
+      "English source prose is preserved to avoid inventing translations of gameplay behavior."
+    ]
+  }
+}

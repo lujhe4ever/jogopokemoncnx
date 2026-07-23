@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 2,
+  "pokemonId": "pokemon:0858-hatterene",
+  "abilities": [
+    {
+      "abilityId": 131,
+      "slot": 1,
+      "isHidden": false,
+      "slug": "healer",
+      "canonicalName": "Healer",
+      "shortEffect": "Has a 30% chance of curing each adjacent ally of any major status ailment after each turn.",
+      "effect": "Friendly Pokémon next to this Pokémon in double and triple battles each have a 30% chance of being cured of any major status ailment after each turn.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/131/"
+    },
+    {
+      "abilityId": 107,
+      "slot": 2,
+      "isHidden": false,
+      "slug": "anticipation",
+      "canonicalName": "Anticipation",
+      "shortEffect": "Notifies all trainers upon entering battle if an opponent has a super-effective move, Self-Destruct, Explosion, or a one-hit KO move.",
+      "effect": "When this Pokémon enters battle, if one of its opponents has a move that is super effective against it, Self-Destruct, Explosion, or a one-hit knockout move, all participating trainers are notified.\n\nThe move itself is not revealed; only that there is such a move.  Moves that inflict typeless damage, such as Future Sight, and moves of variable type, such as Hidden Power, count as their listed types.  Counter, Metal Burst, Mirror Coat, and one-hit KO moves to which this Pokémon is immune do not trigger this ability.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/107/"
+    },
+    {
+      "abilityId": 156,
+      "slot": 3,
+      "isHidden": true,
+      "slug": "magic-bounce",
+      "canonicalName": "Magic Bounce",
+      "shortEffect": "Reflects most non-damaging moves back at their user.",
+      "effect": "When this Pokémon is targeted by a move flagged as being reflectable, the move is redirected to its user.\n\nAll reflectable moves are non-damaging, and most non-damaging moves that target other Pokémon are reflectable.\n\nA move reflected by this ability or Magic Coat cannot be reflected back.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/156/"
+    }
+  ],
+  "source": {
+    "retrievedAt": "2026-07-23",
+    "sourceRevision": "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f",
+    "sourceUrls": [
+      "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
+      "https://github.com/PokeAPI/pokeapi/blob/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/LICENSE.md"
+    ],
+    "licenseStatus": "pending",
+    "requiredCredits": [
+      "PokéAPI contributors for the structured API data."
+    ],
+    "notes": [
+      "Structured data is sourced from PokéAPI under its BSD-3-Clause terms.",
+      "Pokémon names and character data remain subject to owner review and applicable trademark or copyright rights.",
+      "English source prose is preserved to avoid inventing translations of gameplay behavior."
+    ]
+  }
+}

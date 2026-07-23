@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 2,
+  "source": {
+    "retrievedAt": "2026-07-23",
+    "sourceRevision": "bf4c47ac82c33b330e33d98b8882d1cedb2f53e7",
+    "sourceUrls": [
+      "https://github.com/PokeAPI/sprites/tree/bf4c47ac82c33b330e33d98b8882d1cedb2f53e7",
+      "https://github.com/PokeAPI/sprites/blob/bf4c47ac82c33b330e33d98b8882d1cedb2f53e7/LICENCE.txt"
+    ],
+    "licenseStatus": "doubtful",
+    "requiredCredits": [
+      "The Pokémon Company for official image contents, as declared by the source repository.",
+      "PokéAPI and the named community artists where a candidate comes from a fan-made collection."
+    ],
+    "notes": [
+      "The source repository applies CC0 while also declaring image copyright owned by The Pokémon Company.",
+      "That conflict does not establish clear authority to redistribute the images in this public repository.",
+      "Candidates remain pending or quarantined and are never used by the runtime."
+    ]
+  },
+  "policies": [
+    {
+      "id": "official-image-rights-unclear",
+      "authorOrRipper": "Official-image provenance; individual ripper not established by the source index.",
+      "licenseOrCondition": "The source declares The Pokémon Company copyright and also applies CC0; authority to license the image is unclear.",
+      "status": "doubtful",
+      "requiredCredits": [
+        "The Pokémon Company, according to the source repository declaration."
+      ],
+      "limitations": [
+        "Not approved for publication in this public repository.",
+        "Do not hotlink in the game runtime.",
+        "Owner/legal review is required before any use."
+      ]
+    },
+    {
+      "id": "smogon-project-specific",
+      "authorOrRipper": "Smogon community and individual credited artists.",
+      "licenseOrCondition": "Some Smogon projects permit non-commercial use with credits, while redistribution is restricted or unclear; collection-specific terms control.",
+      "status": "pending",
+      "requiredCredits": [
+        "Smogon sprite project and the individual artists named by the applicable project."
+      ],
+      "limitations": [
+        "Not approved for publication in this public repository.",
+        "Do not hotlink in the game runtime.",
+        "Verify the exact project thread and credits before use."
+      ]
+    }
+  ]
+}

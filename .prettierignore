@@ -3,4 +3,8 @@ architecture.md
 docs/
 node_modules/
 dist/
+content/packs/pokemon-canonical/catalogs/
+content/packs/pokemon-canonical/creatures/
+content/packs/pokemon-canonical/manifest.json
+content/packs/pokemon-canonical/reports/
 coverage/

@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 2,
+  "pokemonId": "pokemon:0880-dracozolt",
+  "abilities": [
+    {
+      "abilityId": 10,
+      "slot": 1,
+      "isHidden": false,
+      "slug": "volt-absorb",
+      "canonicalName": "Volt Absorb",
+      "shortEffect": "Absorbs Electric moves, healing for 1/4 max HP.",
+      "effect": "Whenever an Electric-type move hits this Pokémon, it heals for 1/4 of its maximum HP, negating any other effect on it.\n\nThis ability will not take effect if this Pokémon is Ground-type and thus immune to Electric moves.  Electric moves will ignore this Pokémon's Substitute.\n\nThis effect includes non-damaging moves, i.e. Thunder Wave.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/10/"
+    },
+    {
+      "abilityId": 55,
+      "slot": 2,
+      "isHidden": false,
+      "slug": "hustle",
+      "canonicalName": "Hustle",
+      "shortEffect": "Strengthens physical moves to inflict 1.5× damage, but decreases their accuracy to 0.8×.",
+      "effect": "This Pokémon's physical moves do 1.5× as much regular damage, but have 0.8× their usual accuracy.\n\nSpecial moves are unaffected.  Moves that do set damage, such as Seismic Toss, have their accuracy affected, but not their damage.\n\nOverworld: If the lead Pokémon has this ability, higher-levelled Pokémon have their encounter rate increased.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/55/"
+    },
+    {
+      "abilityId": 146,
+      "slot": 3,
+      "isHidden": true,
+      "slug": "sand-rush",
+      "canonicalName": "Sand Rush",
+      "shortEffect": "Doubles Speed during a sandstorm.  Protects against sandstorm damage.",
+      "effect": "This Pokémon's Speed is doubled during a sandstorm, and it does not take sandstorm damage, regardless of type.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/146/"
+    }
+  ],
+  "source": {
+    "retrievedAt": "2026-07-23",
+    "sourceRevision": "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f",
+    "sourceUrls": [
+      "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
+      "https://github.com/PokeAPI/pokeapi/blob/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/LICENSE.md"
+    ],
+    "licenseStatus": "pending",
+    "requiredCredits": [
+      "PokéAPI contributors for the structured API data."
+    ],
+    "notes": [
+      "Structured data is sourced from PokéAPI under its BSD-3-Clause terms.",
+      "Pokémon names and character data remain subject to owner review and applicable trademark or copyright rights.",
+      "English source prose is preserved to avoid inventing translations of gameplay behavior."
+    ]
+  }
+}

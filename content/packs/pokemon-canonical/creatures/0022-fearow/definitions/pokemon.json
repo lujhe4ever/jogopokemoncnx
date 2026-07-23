@@ -1,0 +1,96 @@
+{
+  "schemaVersion": 2,
+  "id": "pokemon:0022-fearow",
+  "nationalDexNumber": 22,
+  "canonicalName": "Fearow",
+  "slug": "fearow",
+  "genus": "Beak Pokémon",
+  "generationIntroduced": 1,
+  "generationSource": "generation-i",
+  "types": [
+    "normal",
+    "flying"
+  ],
+  "physical": {
+    "heightDecimeters": 12,
+    "weightHectograms": 380
+  },
+  "baseExperience": 155,
+  "baseStats": {
+    "hp": {
+      "value": 65,
+      "effortYield": 0
+    },
+    "attack": {
+      "value": 90,
+      "effortYield": 0
+    },
+    "defense": {
+      "value": 65,
+      "effortYield": 0
+    },
+    "special-attack": {
+      "value": 61,
+      "effortYield": 0
+    },
+    "special-defense": {
+      "value": 61,
+      "effortYield": 0
+    },
+    "speed": {
+      "value": 100,
+      "effortYield": 2
+    }
+  },
+  "biologyAndTraining": {
+    "color": "brown",
+    "shape": "wings",
+    "habitat": "rough-terrain",
+    "genderRate": 4,
+    "captureRate": 90,
+    "baseHappiness": 70,
+    "hatchCounter": 15,
+    "hasGenderDifferences": false,
+    "growthRate": "medium",
+    "eggGroups": [
+      "flying"
+    ],
+    "isBaby": false,
+    "isLegendary": false,
+    "isMythical": false
+  },
+  "abilities": [
+    {
+      "slug": "keen-eye",
+      "slot": 1,
+      "isHidden": false
+    },
+    {
+      "slug": "sniper",
+      "slot": 3,
+      "isHidden": true
+    }
+  ],
+  "evolution": {
+    "chainId": 8,
+    "evolvesFromSpeciesId": 21,
+    "evolvesTo": []
+  },
+  "source": {
+    "retrievedAt": "2026-07-23",
+    "sourceRevision": "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f",
+    "sourceUrls": [
+      "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
+      "https://github.com/PokeAPI/pokeapi/blob/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/LICENSE.md"
+    ],
+    "licenseStatus": "pending",
+    "requiredCredits": [
+      "PokéAPI contributors for the structured API data."
+    ],
+    "notes": [
+      "Structured data is sourced from PokéAPI under its BSD-3-Clause terms.",
+      "Pokémon names and character data remain subject to owner review and applicable trademark or copyright rights.",
+      "English source prose is preserved to avoid inventing translations of gameplay behavior."
+    ]
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 2,
+  "pokemonId": "pokemon:0934-garganacl",
+  "abilities": [
+    {
+      "abilityId": 272,
+      "slot": 1,
+      "isHidden": false,
+      "slug": "purifying-salt",
+      "canonicalName": "Purifying Salt",
+      "shortEffect": "Protects from status conditions and halves damage from Ghost-type moves.",
+      "effect": "The Pokémon’s pure salt protects it from status conditions and halves the damage taken from Ghost-type moves.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/272/"
+    },
+    {
+      "abilityId": 5,
+      "slot": 2,
+      "isHidden": false,
+      "slug": "sturdy",
+      "canonicalName": "Sturdy",
+      "shortEffect": "Prevents being KOed from full HP, leaving 1 HP instead.  Protects against the one-hit KO moves regardless of HP.",
+      "effect": "When this Pokémon is at full HP, any hit that would knock it out will instead leave it with 1 HP.  Regardless of its current HP, it is also immune to the one-hit KO moves: Fissure, Guillotine, Horn Drill, and Sheer Cold.\n\nIf this Pokémon is holding a Focus Sash, this ability takes precedence and the item will not be consumed.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/5/"
+    },
+    {
+      "abilityId": 29,
+      "slot": 3,
+      "isHidden": true,
+      "slug": "clear-body",
+      "canonicalName": "Clear Body",
+      "shortEffect": "Prevents stats from being lowered by other Pokémon.",
+      "effect": "This Pokémon cannot have its stats lowered by other Pokémon.\n\nThis ability does not prevent any stat losses other than stat modifiers, such as the Speed cut from paralysis.  This Pokémon can still be passed negative stat modifiers through Guard Swap, Heart Swap, or Power Swap.\n\nThis ability functions identically to White Smoke in battle.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/29/"
+    }
+  ],
+  "source": {
+    "retrievedAt": "2026-07-23",
+    "sourceRevision": "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f",
+    "sourceUrls": [
+      "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
+      "https://github.com/PokeAPI/pokeapi/blob/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/LICENSE.md"
+    ],
+    "licenseStatus": "pending",
+    "requiredCredits": [
+      "PokéAPI contributors for the structured API data."
+    ],
+    "notes": [
+      "Structured data is sourced from PokéAPI under its BSD-3-Clause terms.",
+      "Pokémon names and character data remain subject to owner review and applicable trademark or copyright rights.",
+      "English source prose is preserved to avoid inventing translations of gameplay behavior."
+    ]
+  }
+}

@@ -1,0 +1,123 @@
+{
+  "schemaVersion": 2,
+  "id": "pokemon:0948-toedscool",
+  "nationalDexNumber": 948,
+  "canonicalName": "Toedscool",
+  "slug": "toedscool",
+  "genus": "Woodear Pokémon",
+  "generationIntroduced": 9,
+  "generationSource": "generation-ix",
+  "types": [
+    "ground",
+    "grass"
+  ],
+  "physical": {
+    "heightDecimeters": 9,
+    "weightHectograms": 330
+  },
+  "baseExperience": 67,
+  "baseStats": {
+    "hp": {
+      "value": 40,
+      "effortYield": 0
+    },
+    "attack": {
+      "value": 40,
+      "effortYield": 0
+    },
+    "defense": {
+      "value": 35,
+      "effortYield": 0
+    },
+    "special-attack": {
+      "value": 50,
+      "effortYield": 0
+    },
+    "special-defense": {
+      "value": 100,
+      "effortYield": 1
+    },
+    "speed": {
+      "value": 70,
+      "effortYield": 0
+    }
+  },
+  "biologyAndTraining": {
+    "color": "yellow",
+    "shape": "legs",
+    "habitat": null,
+    "genderRate": 4,
+    "captureRate": 190,
+    "baseHappiness": 50,
+    "hatchCounter": 20,
+    "hasGenderDifferences": false,
+    "growthRate": "medium-slow",
+    "eggGroups": [
+      "plant"
+    ],
+    "isBaby": false,
+    "isLegendary": false,
+    "isMythical": false
+  },
+  "abilities": [
+    {
+      "slug": "mycelium-might",
+      "slot": 1,
+      "isHidden": false
+    }
+  ],
+  "evolution": {
+    "chainId": 496,
+    "evolvesFromSpeciesId": null,
+    "evolvesTo": [
+      {
+        "fromSpeciesId": 948,
+        "toSpeciesId": 949,
+        "trigger": "level-up",
+        "versionGroupId": 25,
+        "isDefault": true,
+        "triggerItem": null,
+        "minimumLevel": 30,
+        "genderId": null,
+        "locationId": null,
+        "heldItem": null,
+        "timeOfDay": null,
+        "knownMove": null,
+        "knownMoveType": null,
+        "minimumHappiness": null,
+        "minimumBeauty": null,
+        "minimumAffection": null,
+        "relativePhysicalStats": null,
+        "partySpeciesId": null,
+        "partyType": null,
+        "tradeSpeciesId": null,
+        "needsOverworldRain": false,
+        "turnUpsideDown": false,
+        "needsMultiplayer": false,
+        "nearSpecialRock": false,
+        "regionId": null,
+        "usedMove": null,
+        "minimumMoveCount": null,
+        "minimumSteps": null,
+        "minimumDamageTaken": null
+      }
+    ]
+  },
+  "source": {
+    "retrievedAt": "2026-07-23",
+    "sourceRevision": "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f",
+    "sourceUrls": [
+      "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
+      "https://github.com/PokeAPI/pokeapi/blob/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/LICENSE.md"
+    ],
+    "licenseStatus": "pending",
+    "requiredCredits": [
+      "PokéAPI contributors for the structured API data."
+    ],
+    "notes": [
+      "Structured data is sourced from PokéAPI under its BSD-3-Clause terms.",
+      "Pokémon names and character data remain subject to owner review and applicable trademark or copyright rights.",
+      "English source prose is preserved to avoid inventing translations of gameplay behavior."
+    ]
+  }
+}

@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 2,
+  "id": "pokemon:0844-sandaconda",
+  "nationalDexNumber": 844,
+  "canonicalName": "Sandaconda",
+  "slug": "sandaconda",
+  "genus": "Sand Snake Pokémon",
+  "generationIntroduced": 8,
+  "generationSource": "generation-viii",
+  "types": [
+    "ground"
+  ],
+  "physical": {
+    "heightDecimeters": 38,
+    "weightHectograms": 655
+  },
+  "baseExperience": 179,
+  "baseStats": {
+    "hp": {
+      "value": 72,
+      "effortYield": 0
+    },
+    "attack": {
+      "value": 107,
+      "effortYield": 0
+    },
+    "defense": {
+      "value": 125,
+      "effortYield": 2
+    },
+    "special-attack": {
+      "value": 65,
+      "effortYield": 0
+    },
+    "special-defense": {
+      "value": 70,
+      "effortYield": 0
+    },
+    "speed": {
+      "value": 71,
+      "effortYield": 0
+    }
+  },
+  "biologyAndTraining": {
+    "color": "green",
+    "shape": "squiggle",
+    "habitat": null,
+    "genderRate": 4,
+    "captureRate": 120,
+    "baseHappiness": 50,
+    "hatchCounter": 20,
+    "hasGenderDifferences": false,
+    "growthRate": "medium",
+    "eggGroups": [
+      "ground",
+      "dragon"
+    ],
+    "isBaby": false,
+    "isLegendary": false,
+    "isMythical": false
+  },
+  "abilities": [
+    {
+      "slug": "sand-spit",
+      "slot": 1,
+      "isHidden": false
+    },
+    {
+      "slug": "shed-skin",
+      "slot": 2,
+      "isHidden": false
+    },
+    {
+      "slug": "sand-veil",
+      "slot": 3,
+      "isHidden": true
+    }
+  ],
+  "evolution": {
+    "chainId": 443,
+    "evolvesFromSpeciesId": 843,
+    "evolvesTo": []
+  },
+  "source": {
+    "retrievedAt": "2026-07-23",
+    "sourceRevision": "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f",
+    "sourceUrls": [
+      "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
+      "https://github.com/PokeAPI/pokeapi/blob/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/LICENSE.md"
+    ],
+    "licenseStatus": "pending",
+    "requiredCredits": [
+      "PokéAPI contributors for the structured API data."
+    ],
+    "notes": [
+      "Structured data is sourced from PokéAPI under its BSD-3-Clause terms.",
+      "Pokémon names and character data remain subject to owner review and applicable trademark or copyright rights.",
+      "English source prose is preserved to avoid inventing translations of gameplay behavior."
+    ]
+  }
+}

@@ -1,0 +1,3754 @@
+{
+  "schemaVersion": 2,
+  "count": 373,
+  "language": "en",
+  "source": {
+    "retrievedAt": "2026-07-23",
+    "sourceRevision": "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f",
+    "sourceUrls": [
+      "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
+      "https://github.com/PokeAPI/pokeapi/blob/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/LICENSE.md"
+    ],
+    "licenseStatus": "pending",
+    "requiredCredits": [
+      "PokéAPI contributors for the structured API data."
+    ],
+    "notes": [
+      "Structured data is sourced from PokéAPI under its BSD-3-Clause terms.",
+      "Pokémon names and character data remain subject to owner review and applicable trademark or copyright rights.",
+      "English source prose is preserved to avoid inventing translations of gameplay behavior."
+    ]
+  },
+  "abilities": [
+    {
+      "id": 1,
+      "slug": "stench",
+      "canonicalName": "Stench",
+      "generationIntroduced": 3,
+      "isMainSeries": true,
+      "shortEffect": "Has a 10% chance of making target Pokémon flinch with each hit.",
+      "effect": "This Pokémon's damaging moves have a 10% chance to make the target flinch with each hit if they do not already cause flinching as a secondary effect.\n\nThis ability does not stack with a held item.\n\nOverworld: The wild encounter rate is halved while this Pokémon is first in the party.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/1/"
+    },
+    {
+      "id": 2,
+      "slug": "drizzle",
+      "canonicalName": "Drizzle",
+      "generationIntroduced": 3,
+      "isMainSeries": true,
+      "shortEffect": "Summons rain that lasts indefinitely upon entering battle.",
+      "effect": "The weather changes to rain when this Pokémon enters battle and does not end unless replaced by another weather condition.\n\nIf multiple Pokémon with this ability, Drought, Sand Stream, or Snow Warning are sent out at the same time, the abilities will activate in order of Speed, respecting Trick Room.  Each ability's weather will cancel the previous weather, and only the weather summoned by the slowest of the Pokémon will stay.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/2/"
+    },
+    {
+      "id": 3,
+      "slug": "speed-boost",
+      "canonicalName": "Speed Boost",
+      "generationIntroduced": 3,
+      "isMainSeries": true,
+      "shortEffect": "Raises Speed one stage after each turn.",
+      "effect": "This Pokémon's Speed rises one stage after each turn.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/3/"
+    },
+    {
+      "id": 4,
+      "slug": "battle-armor",
+      "canonicalName": "Battle Armor",
+      "generationIntroduced": 3,
+      "isMainSeries": true,
+      "shortEffect": "Protects against critical hits.",
+      "effect": "Moves cannot score critical hits against this Pokémon.\n\nThis ability functions identically to Shell Armor.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/4/"
+    },
+    {
+      "id": 5,
+      "slug": "sturdy",
+      "canonicalName": "Sturdy",
+      "generationIntroduced": 3,
+      "isMainSeries": true,
+      "shortEffect": "Prevents being KOed from full HP, leaving 1 HP instead.  Protects against the one-hit KO moves regardless of HP.",
+      "effect": "When this Pokémon is at full HP, any hit that would knock it out will instead leave it with 1 HP.  Regardless of its current HP, it is also immune to the one-hit KO moves: Fissure, Guillotine, Horn Drill, and Sheer Cold.\n\nIf this Pokémon is holding a Focus Sash, this ability takes precedence and the item will not be consumed.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/5/"
+    },
+    {
+      "id": 6,
+      "slug": "damp",
+      "canonicalName": "Damp",
+      "generationIntroduced": 3,
+      "isMainSeries": true,
+      "shortEffect": "Prevents Self-Destruct, Explosion, and Aftermath from working while the Pokémon is in battle.",
+      "effect": "While this Pokémon is in battle, Self-Destruct and Explosion will fail and Aftermath will not take effect.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/6/"
+    },
+    {
+      "id": 7,
+      "slug": "limber",
+      "canonicalName": "Limber",
+      "generationIntroduced": 3,
+      "isMainSeries": true,
+      "shortEffect": "Prevents paralysis.",
+      "effect": "This Pokémon cannot be paralyzed.\n\nIf a Pokémon is paralyzed and acquires this ability, its paralysis is healed; this includes when regaining a lost ability upon leaving battle.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/7/"
+    },
+    {
+      "id": 8,
+      "slug": "sand-veil",
+      "canonicalName": "Sand Veil",
+      "generationIntroduced": 3,
+      "isMainSeries": true,
+      "shortEffect": "Increases evasion to 1.25× during a sandstorm.  Protects against sandstorm damage.",
+      "effect": "During a sandstorm, this Pokémon has 1.25× its evasion, and it does not take sandstorm damage regardless of type.\n\nThe evasion bonus does not count as a stat modifier.\n\nOverworld: If the lead Pokémon has this ability, the wild encounter rate is halved in a sandstorm.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/8/"
+    },
+    {
+      "id": 9,
+      "slug": "static",
+      "canonicalName": "Static",
+      "generationIntroduced": 3,
+      "isMainSeries": true,
+      "shortEffect": "Has a 30% chance of paralyzing attacking Pokémon on contact.",
+      "effect": "Whenever a move makes contact with this Pokémon, the move's user has a 30% chance of being paralyzed.\n\nPokémon that are immune to Electric-type moves can still be paralyzed by this ability.\n\nOverworld: If the lead Pokémon has this ability, there is a 50% chance that encounters will be with an Electric Pokémon, if applicable.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/9/"
+    },
+    {
+      "id": 10,
+      "slug": "volt-absorb",
+      "canonicalName": "Volt Absorb",
+      "generationIntroduced": 3,
+      "isMainSeries": true,
+      "shortEffect": "Absorbs Electric moves, healing for 1/4 max HP.",
+      "effect": "Whenever an Electric-type move hits this Pokémon, it heals for 1/4 of its maximum HP, negating any other effect on it.\n\nThis ability will not take effect if this Pokémon is Ground-type and thus immune to Electric moves.  Electric moves will ignore this Pokémon's Substitute.\n\nThis effect includes non-damaging moves, i.e. Thunder Wave.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/10/"
+    },
+    {
+      "id": 11,
+      "slug": "water-absorb",
+      "canonicalName": "Water Absorb",
+      "generationIntroduced": 3,
+      "isMainSeries": true,
+      "shortEffect": "Absorbs Water moves, healing for 1/4 max HP.",
+      "effect": "Whenever a Water-type move hits this Pokémon, it heals for 1/4 of its maximum HP, negating any other effect on it.\n\nWater moves will ignore this Pokémon's Substitute.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/11/"
+    },
+    {
+      "id": 12,
+      "slug": "oblivious",
+      "canonicalName": "Oblivious",
+      "generationIntroduced": 3,
+      "isMainSeries": true,
+      "shortEffect": "Prevents infatuation and protects against Captivate.",
+      "effect": "This Pokémon cannot be infatuated and is immune to Captivate.\n\nIf a Pokémon is infatuated and acquires this ability, its infatuation is cleared.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/12/"
+    },
+    {
+      "id": 13,
+      "slug": "cloud-nine",
+      "canonicalName": "Cloud Nine",
+      "generationIntroduced": 3,
+      "isMainSeries": true,
+      "shortEffect": "Negates all effects of weather, but does not prevent the weather itself.",
+      "effect": "While this Pokémon is in battle, weather can still be in play, but will not have any of its effects.\n\nThis ability functions identically to Air Lock.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/13/"
+    },
+    {
+      "id": 14,
+      "slug": "compound-eyes",
+      "canonicalName": "Compound Eyes",
+      "generationIntroduced": 3,
+      "isMainSeries": true,
+      "shortEffect": "Increases moves' accuracy to 1.3×.",
+      "effect": "This Pokémon's moves have 1.3× their accuracy.\n\nThis ability has no effect on the one-hit KO moves (Fissure, Guillotine, Horn Drill, and Sheer Cold).\n\nOverworld: If the first Pokémon in the party has this ability, the chance of a wild Pokémon holding a particular item is raised from 50%, 5%, or 1% to 60%, 20%, or 5%, respectively.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/14/"
+    },
+    {
+      "id": 15,
+      "slug": "insomnia",
+      "canonicalName": "Insomnia",
+      "generationIntroduced": 3,
+      "isMainSeries": true,
+      "shortEffect": "Prevents sleep.",
+      "effect": "This Pokémon cannot be asleep.\n\nThis causes Rest to fail altogether.  If a Pokémon is asleep and acquires this ability, it will immediately wake up; this includes when regaining a lost ability upon leaving battle.\n\nThis ability functions identically to Vital Spirit in battle.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/15/"
+    },
+    {
+      "id": 16,
+      "slug": "color-change",
+      "canonicalName": "Color Change",
+      "generationIntroduced": 3,
+      "isMainSeries": true,
+      "shortEffect": "Changes type to match when hit by a damaging move.",
+      "effect": "Whenever this Pokémon takes damage from a move, the Pokémon's type changes to match the move.\n\nIf the Pokémon has two types, both are overridden.  The Pokémon must directly take damage; for example, moves blocked by a Substitute will not trigger this ability, nor will moves that deal damage indirectly, such as Spikes.\n\nThis ability takes effect on only the last hit of a multiple-hit attack.\n\nIn Pokémon Colosseum and XD: Gale of Darkness, this ability does not take effect on Shadow-type moves.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/16/"
+    },
+    {
+      "id": 17,
+      "slug": "immunity",
+      "canonicalName": "Immunity",
+      "generationIntroduced": 3,
+      "isMainSeries": true,
+      "shortEffect": "Prevents poison.",
+      "effect": "This Pokémon cannot be poisoned.  This includes bad poison.\n\nIf a Pokémon is poisoned and acquires this ability, its poison is healed; this includes when regaining a lost ability upon leaving battle.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/17/"
+    },
+    {
+      "id": 18,
+      "slug": "flash-fire",
+      "canonicalName": "Flash Fire",
+      "generationIntroduced": 3,
+      "isMainSeries": true,
+      "shortEffect": "Protects against Fire moves.  Once one has been blocked, the Pokémon's own Fire moves inflict 1.5× damage until it leaves battle.",
+      "effect": "This Pokémon is immune to Fire-type moves.  Once this Pokémon has been hit by a Fire move, its own Fire moves will inflict 1.5× as much damage until it leaves battle.\n\nThis ability has no effect while the Pokémon is frozen.  The Fire damage bonus is retained even if the Pokémon is frozen and thawed or the ability is lost or disabled.  Fire moves will ignore this Pokémon's Substitute.  This ability takes effect even on non-damaging moves, i.e. Will-O-Wisp.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/18/"
+    },
+    {
+      "id": 19,
+      "slug": "shield-dust",
+      "canonicalName": "Shield Dust",
+      "generationIntroduced": 3,
+      "isMainSeries": true,
+      "shortEffect": "Protects against incoming moves' extra effects.",
+      "effect": "This Pokémon is immune to the extra effects of moves used against it.\n\nAn extra effect is a move's chance, listed as an \"effect chance\", to inflict a status ailment, cause a stat change, or make the target flinch in addition to the move's main effect.  For example, Thunder Shock's paralysis is an extra effect, but Thunder Wave's is not, nor are Knock Off's item removal and Air Cutter's increased critical hit rate.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/19/"
+    },
+    {
+      "id": 20,
+      "slug": "own-tempo",
+      "canonicalName": "Own Tempo",
+      "generationIntroduced": 3,
+      "isMainSeries": true,
+      "shortEffect": "Prevents confusion.",
+      "effect": "This Pokémon cannot be confused.\n\nIf a Pokémon is confused and acquires this ability, its confusion will immediately be healed.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/20/"
+    },
+    {
+      "id": 21,
+      "slug": "suction-cups",
+      "canonicalName": "Suction Cups",
+      "generationIntroduced": 3,
+      "isMainSeries": true,
+      "shortEffect": "Prevents being forced out of battle by other Pokémon's moves.",
+      "effect": "This Pokémon cannot be forced out of battle by moves such as Whirlwind.\n\nDragon Tail and Circle Throw still inflict damage against this Pokémon.\n\nOverworld: If the lead Pokémon has this ability, the success rate while fishing is increased.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/21/"
+    },
+    {
+      "id": 22,
+      "slug": "intimidate",
+      "canonicalName": "Intimidate",
+      "generationIntroduced": 3,
+      "isMainSeries": true,
+      "shortEffect": "Lowers opponents' Attack one stage upon entering battle.",
+      "effect": "When this Pokémon enters battle, the opponent's Attack is lowered by one stage.  In a double battle, both opponents are affected.\n\nThis ability also takes effect when acquired during a battle, but will not take effect again if lost and reobtained without leaving battle.\n\nThis ability has no effect on an opponent that has a Substitute.\n\nOverworld: If the first Pokémon in the party has this ability, any random encounter with a Pokémon five or more levels lower than it has a 50% chance of being skipped.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/22/"
+    },
+    {
+      "id": 23,
+      "slug": "shadow-tag",
+      "canonicalName": "Shadow Tag",
+      "generationIntroduced": 3,
+      "isMainSeries": true,
+      "shortEffect": "Prevents opponents from fleeing or switching out.",
+      "effect": "While this Pokémon is in battle, opposing Pokémon cannot flee or switch out.\n\nOther Pokémon with this ability are unaffected.  Pokémon with Run Away can still flee.  Pokémon can still switch out with the use of a move or item.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/23/"
+    },
+    {
+      "id": 24,
+      "slug": "rough-skin",
+      "canonicalName": "Rough Skin",
+      "generationIntroduced": 3,
+      "isMainSeries": true,
+      "shortEffect": "Damages attacking Pokémon for 1/8 their max HP on contact.",
+      "effect": "Whenever a move makes contact with this Pokémon, the move's user takes 1/8 of its maximum HP in damage.\n\nThis ability functions identically to Iron Barbs.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/24/"
+    },
+    {
+      "id": 25,
+      "slug": "wonder-guard",
+      "canonicalName": "Wonder Guard",
+      "generationIntroduced": 3,
+      "isMainSeries": true,
+      "shortEffect": "Protects against damaging moves that are not super effective.",
+      "effect": "This Pokémon is immune to damaging moves that are not super effective against it.\n\nMoves that inflict fixed damage, such as Night Shade or Seismic Toss, are considered super effective if their types are.  Damage not directly dealt by moves, such as damage from weather, a status ailment, or Spikes, is not prevented.\n\nThis ability cannot be copied with Role Play or traded away with Skill Swap, but it can be copied with Trace, disabled with Gastro Acid, or changed with Worry Seed.  This Pokémon can still use Role Play itself to lose this ability, but not Skill Swap.\n\nIf this Pokémon has a Substitute, this ability will block moves as usual and any moves not blocked will react to the Substitute as usual.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/25/"
+    },
+    {
+      "id": 26,
+      "slug": "levitate",
+      "canonicalName": "Levitate",
+      "generationIntroduced": 3,
+      "isMainSeries": true,
+      "shortEffect": "Evades Ground moves.",
+      "effect": "This Pokémon is immune to Ground-type moves, Spikes, Toxic Spikes, and Arena Trap.\n\nThis ability is disabled during Gravity or Ingrain, or while holding an Iron Ball.  This ability is not disabled during Roost.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/26/"
+    },
+    {
+      "id": 27,
+      "slug": "effect-spore",
+      "canonicalName": "Effect Spore",
+      "generationIntroduced": 3,
+      "isMainSeries": true,
+      "shortEffect": "Has a 30% chance of inflcting either paralysis, poison, or sleep on attacking Pokémon on contact.",
+      "effect": "Whenever a move makes contact with this Pokémon, the move's user has a 30% chance of being paralyzed, poisoned, or put to sleep, chosen at random.\n\nNothing is done to compensate if the move's user is immune to one of these ailments; there is simply a lower chance that the move's user will be affected.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/27/"
+    },
+    {
+      "id": 28,
+      "slug": "synchronize",
+      "canonicalName": "Synchronize",
+      "generationIntroduced": 3,
+      "isMainSeries": true,
+      "shortEffect": "Copies burns, paralysis, and poison received onto the Pokémon that inflicted them.",
+      "effect": "Whenever this Pokémon is burned, paralyzed, or poisoned, the Pokémon who gave this Pokémon that ailment is also given the ailment.\n\nThis ability passes back bad poison when this Pokémon is badly poisoned.  This ability cannot pass on a status ailment that the Pokémon did not directly receive from another Pokémon, such as the poison from Toxic Spikes or the burn from a Flame Orb.\n\nOverworld: If the lead Pokémon has this ability, wild Pokémon have a 50% chance of having the lead Pokémon's nature, and a 50% chance of being given a random nature as usual, including the lead Pokémon's nature.  This does not work on Pokémon received outside of battle or roaming legendaries.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/28/"
+    },
+    {
+      "id": 29,
+      "slug": "clear-body",
+      "canonicalName": "Clear Body",
+      "generationIntroduced": 3,
+      "isMainSeries": true,
+      "shortEffect": "Prevents stats from being lowered by other Pokémon.",
+      "effect": "This Pokémon cannot have its stats lowered by other Pokémon.\n\nThis ability does not prevent any stat losses other than stat modifiers, such as the Speed cut from paralysis.  This Pokémon can still be passed negative stat modifiers through Guard Swap, Heart Swap, or Power Swap.\n\nThis ability functions identically to White Smoke in battle.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/29/"
+    },
+    {
+      "id": 30,
+      "slug": "natural-cure",
+      "canonicalName": "Natural Cure",
+      "generationIntroduced": 3,
+      "isMainSeries": true,
+      "shortEffect": "Cures any major status ailment upon switching out.",
+      "effect": "This Pokémon is cured of any major status ailment when it is switched out for another Pokémon.\n\nIf this ability is acquired during battle, the Pokémon is cured upon leaving battle before losing the temporary ability.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/30/"
+    },
+    {
+      "id": 31,
+      "slug": "lightning-rod",
+      "canonicalName": "Lightning Rod",
+      "generationIntroduced": 3,
+      "isMainSeries": true,
+      "shortEffect": "Redirects single-target Electric moves to this Pokémon where possible.  Absorbs Electric moves, raising Special Attack one stage.",
+      "effect": "All other Pokémon's single-target Electric-type moves are redirected to this Pokémon if it is an eligible target.  Other Pokémon's Electric moves raise this Pokémon's Special Attack one stage, negating any other effect on it, and cannot miss it.\n\nIf the move's intended target also has this ability, the move is not redirected.  When multiple Pokémon with this ability are possible targets for redirection, the move is redirected to the one with the highest Speed stat, or, in the case of a tie, to a random tied Pokémon.  Follow Me takes precedence over this ability.\n\nIf the Pokémon is a Ground-type and thus immune to Electric moves, its immunity prevents the Special Attack boost.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/31/"
+    },
+    {
+      "id": 32,
+      "slug": "serene-grace",
+      "canonicalName": "Serene Grace",
+      "generationIntroduced": 3,
+      "isMainSeries": true,
+      "shortEffect": "Doubles the chance of moves' extra effects occurring.",
+      "effect": "This Pokémon's moves have twice their usual effect chance.\n\nAn effect chance is a move's chance to inflict a status ailment, cause a stat change, or make the target flinch in addition to the move's main effect.  For example, Flamethrower's chance of burning the target is doubled, but Protect's chance of success and Air Cutter's increased critical hit rate are unaffected.\n\nSecret Power is unaffected.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/32/"
+    },
+    {
+      "id": 33,
+      "slug": "swift-swim",
+      "canonicalName": "Swift Swim",
+      "generationIntroduced": 3,
+      "isMainSeries": true,
+      "shortEffect": "Doubles Speed during rain.",
+      "effect": "This Pokémon's Speed is doubled during rain.\n\nThis bonus does not count as a stat modifier.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/33/"
+    },
+    {
+      "id": 34,
+      "slug": "chlorophyll",
+      "canonicalName": "Chlorophyll",
+      "generationIntroduced": 3,
+      "isMainSeries": true,
+      "shortEffect": "Doubles Speed during strong sunlight.",
+      "effect": "This Pokémon's Speed is doubled during strong sunlight.\n\nThis bonus does not count as a stat modifier.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/34/"
+    },
+    {
+      "id": 35,
+      "slug": "illuminate",
+      "canonicalName": "Illuminate",
+      "generationIntroduced": 3,
+      "isMainSeries": true,
+      "shortEffect": "Doubles the wild encounter rate.",
+      "effect": "Overworld: If the lead Pokémon has this ability, the wild encounter rate is doubled.\n\nThis ability has no effect in battle.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/35/"
+    },
+    {
+      "id": 36,
+      "slug": "trace",
+      "canonicalName": "Trace",
+      "generationIntroduced": 3,
+      "isMainSeries": true,
+      "shortEffect": "Copies an opponent's ability upon entering battle.",
+      "effect": "When this Pokémon enters battle, it copies a random opponent's ability.\n\nThis ability cannot copy Flower Gift, Forecast, Illusion, Imposter, Multitype, Trace, Wonder Guard, or Zen Mode.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/36/"
+    },
+    {
+      "id": 37,
+      "slug": "huge-power",
+      "canonicalName": "Huge Power",
+      "generationIntroduced": 3,
+      "isMainSeries": true,
+      "shortEffect": "Doubles Attack in battle.",
+      "effect": "This Pokémon's Attack is doubled while in battle.\n\nThis bonus does not count as a stat modifier.\n\nThis ability functions identically to Pure Power.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/37/"
+    },
+    {
+      "id": 38,
+      "slug": "poison-point",
+      "canonicalName": "Poison Point",
+      "generationIntroduced": 3,
+      "isMainSeries": true,
+      "shortEffect": "Has a 30% chance of poisoning attacking Pokémon on contact.",
+      "effect": "Whenever a move makes contact with this Pokémon, the move's user has a 30% chance of being poisoned.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/38/"
+    },
+    {
+      "id": 39,
+      "slug": "inner-focus",
+      "canonicalName": "Inner Focus",
+      "generationIntroduced": 3,
+      "isMainSeries": true,
+      "shortEffect": "Prevents flinching.",
+      "effect": "This Pokémon cannot flinch.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/39/"
+    },
+    {
+      "id": 40,
+      "slug": "magma-armor",
+      "canonicalName": "Magma Armor",
+      "generationIntroduced": 3,
+      "isMainSeries": true,
+      "shortEffect": "Prevents freezing.",
+      "effect": "This Pokémon cannot be frozen.\n\nIf a Pokémon is frozen and acquires this ability, it will immediately thaw out; this includes when regaining a lost ability upon leaving battle.\n\nOverworld: If any Pokémon in the party has this ability, each egg in the party has its hatch counter decreased by 2 (rather than 1) each step cycle, making eggs hatch roughly twice as quickly.  This effect does not stack if multiple Pokémon have this ability or Flame Body.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/40/"
+    },
+    {
+      "id": 41,
+      "slug": "water-veil",
+      "canonicalName": "Water Veil",
+      "generationIntroduced": 3,
+      "isMainSeries": true,
+      "shortEffect": "Prevents burns.",
+      "effect": "This Pokémon cannot be burned.\n\nIf a Pokémon is burned and acquires this ability, its burn is healed; this includes when regaining a lost ability upon leaving battle.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/41/"
+    },
+    {
+      "id": 42,
+      "slug": "magnet-pull",
+      "canonicalName": "Magnet Pull",
+      "generationIntroduced": 3,
+      "isMainSeries": true,
+      "shortEffect": "Prevents Steel opponents from fleeing or switching out.",
+      "effect": "While this Pokémon is in battle, opposing Steel-type Pokémon cannot flee or switch out.\n\nPokémon with Run Away can still flee.  Pokémon can still switch out with the use of a move or item.\n\nOverworld: If the lead Pokémon has this ability, Steel-type Pokémon have a higher encounter rate.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/42/"
+    },
+    {
+      "id": 43,
+      "slug": "soundproof",
+      "canonicalName": "Soundproof",
+      "generationIntroduced": 3,
+      "isMainSeries": true,
+      "shortEffect": "Protects against sound-based moves.",
+      "effect": "This Pokémon is immune to moves flagged as being sound-based.\n\nHeal Bell is unaffected.  Uproar still prevents this Pokémon from sleeping.  This Pokémon can still receive a Perish Song counter through Baton Pass, and will retain a Perish Song counter if it acquires this ability after Perish Song is used.\n\nHowl, Roar of Time, Sonic Boom, and Yawn are not flagged as sound-based.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/43/"
+    },
+    {
+      "id": 44,
+      "slug": "rain-dish",
+      "canonicalName": "Rain Dish",
+      "generationIntroduced": 3,
+      "isMainSeries": true,
+      "shortEffect": "Heals for 1/16 max HP after each turn during rain.",
+      "effect": "This Pokémon heals for 1/16 of its maximum HP after each turn during rain.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/44/"
+    },
+    {
+      "id": 45,
+      "slug": "sand-stream",
+      "canonicalName": "Sand Stream",
+      "generationIntroduced": 3,
+      "isMainSeries": true,
+      "shortEffect": "Summons a sandstorm that lasts indefinitely upon entering battle.",
+      "effect": "The weather changes to a sandstorm when this Pokémon enters battle and does not end unless cancelled by another weather condition.\n\nIf multiple Pokémon with this ability, Drizzle, Drought, or Snow Warning are sent out at the same time, the abilities will activate in order of Speed, respecting Trick Room.  Each ability's weather will cancel the previous weather, and only the weather summoned by the slowest of the Pokémon will stay.\n\nOverworld: If the lead Pokémon has this ability, the wild encounter rate is halved in a sandstorm.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/45/"
+    },
+    {
+      "id": 46,
+      "slug": "pressure",
+      "canonicalName": "Pressure",
+      "generationIntroduced": 3,
+      "isMainSeries": true,
+      "shortEffect": "Increases the PP cost of moves targetting the Pokémon by one.",
+      "effect": "Moves targetting this Pokémon use one extra PP.\n\nThis ability stacks if multiple targets have it.  This ability still affects moves that fail or miss.  This ability does not affect ally moves that target either the entire field or just its side, nor this Pokémon's self-targetted moves; it does, however, affect single-targetted ally moves aimed at this Pokémon, ally moves that target all other Pokémon, and opponents' moves that target the entire field.  If this ability raises a move's PP cost above its remaining PP, it will use all remaining PP.\n\nWhen this Pokémon enters battle, all participating trainers are notified that it has this ability.\n\nOverworld: If the lead Pokémon has this ability, higher-levelled Pokémon have their encounter rate increased.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/46/"
+    },
+    {
+      "id": 47,
+      "slug": "thick-fat",
+      "canonicalName": "Thick Fat",
+      "generationIntroduced": 3,
+      "isMainSeries": true,
+      "shortEffect": "Halves damage from Fire and Ice moves.",
+      "effect": "This Pokémon takes half as much damage from Fire- and Ice-type moves.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/47/"
+    },
+    {
+      "id": 48,
+      "slug": "early-bird",
+      "canonicalName": "Early Bird",
+      "generationIntroduced": 3,
+      "isMainSeries": true,
+      "shortEffect": "Makes sleep pass twice as quickly.",
+      "effect": "This Pokémon's remaining sleep turn count falls by 2 rather than 1.\n\nIf this Pokémon's sleep counter is at 1, it will fall to 0 and then the Pokémon will wake up.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/48/"
+    },
+    {
+      "id": 49,
+      "slug": "flame-body",
+      "canonicalName": "Flame Body",
+      "generationIntroduced": 3,
+      "isMainSeries": true,
+      "shortEffect": "Has a 30% chance of burning attacking Pokémon on contact.",
+      "effect": "Whenever a move makes contact with this Pokémon, the move's user has a 30% chance of being burned.\n\nOverworld: If any Pokémon in the party has this ability, each egg in the party has its hatch counter decreased by 2 (rather than 1) each step cycle, making eggs hatch roughly twice as quickly.  This effect does not stack if multiple Pokémon have this ability or Magma Armor.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/49/"
+    },
+    {
+      "id": 50,
+      "slug": "run-away",
+      "canonicalName": "Run Away",
+      "generationIntroduced": 3,
+      "isMainSeries": true,
+      "shortEffect": "Ensures success fleeing from wild battles.",
+      "effect": "This Pokémon is always successful fleeing from wild battles, even if trapped by a move or ability.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/50/"
+    },
+    {
+      "id": 51,
+      "slug": "keen-eye",
+      "canonicalName": "Keen Eye",
+      "generationIntroduced": 3,
+      "isMainSeries": true,
+      "shortEffect": "Prevents accuracy from being lowered.",
+      "effect": "This Pokémon cannot have its accuracy lowered.\n\nThis ability does not prevent any accuracy losses other than stat modifiers, such as the accuracy cut from fog; nor does it prevent other Pokémon's evasion from making this Pokémon's moves less accurate.  This Pokémon can still be passed negative accuracy modifiers through Heart Swap.\n\nOverworld: If the first Pokémon in the party has this ability, any random encounter with a Pokémon five or more levels lower than it has a 50% chance of being skipped.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/51/"
+    },
+    {
+      "id": 52,
+      "slug": "hyper-cutter",
+      "canonicalName": "Hyper Cutter",
+      "generationIntroduced": 3,
+      "isMainSeries": true,
+      "shortEffect": "Prevents Attack from being lowered by other Pokémon.",
+      "effect": "This Pokémon's Attack cannot be lowered by other Pokémon.\n\nThis ability does not prevent any Attack losses other than stat modifiers, such as the Attack cut from a burn.  This Pokémon can still be passed negative Attack modifiers through Heart Swap or Power Swap.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/52/"
+    },
+    {
+      "id": 53,
+      "slug": "pickup",
+      "canonicalName": "Pickup",
+      "generationIntroduced": 3,
+      "isMainSeries": true,
+      "shortEffect": "Picks up other Pokémon's used and Flung held items.  May also pick up an item after battle.",
+      "effect": "At the end of each turn, if another Pokémon consumed or Flung a held item that turn, this Pokémon picks up the item if it is not already holding one.  After each battle, this Pokémon has a 10% chance of picking up an item if it is not already holding one.\n\nThe Air Balloon and Eject Button cannot be picked up.\n\nThe items that may be found vary by game, and, since Pokémon Emerald, by the Pokémon's level.  This ability is checked after the battle ends, at which point any temporary ability changes have worn off.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/53/"
+    },
+    {
+      "id": 54,
+      "slug": "truant",
+      "canonicalName": "Truant",
+      "generationIntroduced": 3,
+      "isMainSeries": true,
+      "shortEffect": "Skips every second turn.",
+      "effect": "Every second turn on which this Pokémon should attempt to use a move, it will instead do nothing (\"loaf around\").\n\nLoafing around interrupts moves that take multiple turns the same way paralysis, flinching, etc do.  Most such moves, for example Bide or Rollout, are simply cut off upon loafing around.  Attacks with a recharge turn, such as Hyper Beam, do not have to recharge; attacks with a preparation turn, such as Fly, do not end up being used.  Moves that are forced over multiple turns and keep going through failure, such as Outrage, Uproar, or any move forced by Encore, keep going as usual.\n\nIf this Pokémon is confused, its confusion is not checked when loafing around; the Pokémon cannot hurt itself, and its confusion does not end or come closer to ending.\n\nIf this Pokémon attempts to move but fails, e.g. because of paralysis or Gravity, it still counts as having moved and will loaf around the next turn.  If it does not attempt to move, e.g. because it is asleep or frozen, whatever it would have done will be postponed until its next attempt; that is, it will either loaf around or move as usual, depending on what it last did.\n\nThis ability cannot be changed with Worry Seed, but it can be disabled with Gastro Acid, changed with Role Play, or traded away with Skill Swap.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/54/"
+    },
+    {
+      "id": 55,
+      "slug": "hustle",
+      "canonicalName": "Hustle",
+      "generationIntroduced": 3,
+      "isMainSeries": true,
+      "shortEffect": "Strengthens physical moves to inflict 1.5× damage, but decreases their accuracy to 0.8×.",
+      "effect": "This Pokémon's physical moves do 1.5× as much regular damage, but have 0.8× their usual accuracy.\n\nSpecial moves are unaffected.  Moves that do set damage, such as Seismic Toss, have their accuracy affected, but not their damage.\n\nOverworld: If the lead Pokémon has this ability, higher-levelled Pokémon have their encounter rate increased.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/55/"
+    },
+    {
+      "id": 56,
+      "slug": "cute-charm",
+      "canonicalName": "Cute Charm",
+      "generationIntroduced": 3,
+      "isMainSeries": true,
+      "shortEffect": "Has a 30% chance of infatuating attacking Pokémon on contact.",
+      "effect": "Whenever a move makes contact with this Pokémon, the move's user has a 30% chance of being infatuated.\n\nOverworld: If the first Pokémon in the party has this ability, any wild Pokémon whose species can be either gender has a 2/3 chance of being set to the opposite gender, and a 1/3 chance of having a random gender as usual.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/56/"
+    },
+    {
+      "id": 57,
+      "slug": "plus",
+      "canonicalName": "Plus",
+      "generationIntroduced": 3,
+      "isMainSeries": true,
+      "shortEffect": "Increases Special Attack to 1.5× when a friendly Pokémon has Plus or Minus.",
+      "effect": "This Pokémon has 1.5× its Special Attack if any friendly Pokémon has Plus or Minus.\n\nThis bonus does not count as a stat modifier.  If either ability is disabled by Gastro Acid, both lose their effect.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/57/"
+    },
+    {
+      "id": 58,
+      "slug": "minus",
+      "canonicalName": "Minus",
+      "generationIntroduced": 3,
+      "isMainSeries": true,
+      "shortEffect": "Increases Special Attack to 1.5× when a friendly Pokémon has Plus or Minus.",
+      "effect": "This Pokémon has 1.5× its Special Attack if any friendly Pokémon has Plus or Minus.\n\nThis bonus does not count as a stat modifier.  If either ability is disabled by Gastro Acid, both lose their effect.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/58/"
+    },
+    {
+      "id": 59,
+      "slug": "forecast",
+      "canonicalName": "Forecast",
+      "generationIntroduced": 3,
+      "isMainSeries": true,
+      "shortEffect": "Changes Castform's type and form to match the weather.",
+      "effect": "During rain, strong sunlight, or hail, this Pokémon's type changes to Water, Fire, or Ice, respectively, and its form changes to match.\n\nThis ability has no effect for any Pokémon other than Castform.\n\nIf the weather ends or becomes anything that does not trigger this ability, or a Pokémon with Air Lock or Cloud Nine enters battle, this Pokémon's type and form revert to their default.  If this ability is lost or disabled, this Pokémon cannot change its current type and form until it regains its ability.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/59/"
+    },
+    {
+      "id": 60,
+      "slug": "sticky-hold",
+      "canonicalName": "Sticky Hold",
+      "generationIntroduced": 3,
+      "isMainSeries": true,
+      "shortEffect": "Prevents a held item from being removed by other Pokémon.",
+      "effect": "This Pokémon's hold item cannot be removed by other Pokémon.\n\nDamaging moves that would remove this Pokémon's item can still inflict damage against this Pokémon, e.g. Knock Off or Pluck.  This Pokémon can still use moves that involve the loss of its own item, e.g. Fling or Trick.\n\nOverworld: If the lead Pokémon has this ability, the encounter rate while fishing is increased.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/60/"
+    },
+    {
+      "id": 61,
+      "slug": "shed-skin",
+      "canonicalName": "Shed Skin",
+      "generationIntroduced": 3,
+      "isMainSeries": true,
+      "shortEffect": "Has a 33% chance of curing any major status ailment after each turn.",
+      "effect": "After each turn, this Pokémon has a 33% of being cured of any major status ailment.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/61/"
+    },
+    {
+      "id": 62,
+      "slug": "guts",
+      "canonicalName": "Guts",
+      "generationIntroduced": 3,
+      "isMainSeries": true,
+      "shortEffect": "Increases Attack to 1.5× with a major status ailment.",
+      "effect": "Whenever this Pokémon is asleep, burned, paralyzed, or poisoned, it has 1.5× its Attack.  This Pokémon is not affected by the usual Attack cut from a burn.\n\nThis bonus does not count as a stat modifier.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/62/"
+    },
+    {
+      "id": 63,
+      "slug": "marvel-scale",
+      "canonicalName": "Marvel Scale",
+      "generationIntroduced": 3,
+      "isMainSeries": true,
+      "shortEffect": "Increases Defense to 1.5× with a major status ailment.",
+      "effect": "Whenever this Pokémon has a major status ailment, it has 1.5× its Defense.\n\nThis bonus does not count as a stat modifier.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/63/"
+    },
+    {
+      "id": 64,
+      "slug": "liquid-ooze",
+      "canonicalName": "Liquid Ooze",
+      "generationIntroduced": 3,
+      "isMainSeries": true,
+      "shortEffect": "Damages opponents using leeching moves for as much as they would heal.",
+      "effect": "Whenever a Pokémon would heal after hitting this Pokémon with a leeching move like Absorb, it instead loses as many HP as it would usually gain.\n\nDream Eater is unaffected.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/64/"
+    },
+    {
+      "id": 65,
+      "slug": "overgrow",
+      "canonicalName": "Overgrow",
+      "generationIntroduced": 3,
+      "isMainSeries": true,
+      "shortEffect": "Strengthens Grass moves to inflict 1.5× damage at 1/3 max HP or less.",
+      "effect": "When this Pokémon has 1/3 or less of its HP remaining, its Grass-type moves inflict 1.5× as much regular damage.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/65/"
+    },
+    {
+      "id": 66,
+      "slug": "blaze",
+      "canonicalName": "Blaze",
+      "generationIntroduced": 3,
+      "isMainSeries": true,
+      "shortEffect": "Strengthens Fire moves to inflict 1.5× damage at 1/3 max HP or less.",
+      "effect": "When this Pokémon has 1/3 or less of its HP remaining, its Fire-type moves inflict 1.5× as much regular damage.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/66/"
+    },
+    {
+      "id": 67,
+      "slug": "torrent",
+      "canonicalName": "Torrent",
+      "generationIntroduced": 3,
+      "isMainSeries": true,
+      "shortEffect": "Strengthens Water moves to inflict 1.5× damage at 1/3 max HP or less.",
+      "effect": "When this Pokémon has 1/3 or less of its HP remaining, its Water-type moves inflict 1.5× as much regular damage.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/67/"
+    },
+    {
+      "id": 68,
+      "slug": "swarm",
+      "canonicalName": "Swarm",
+      "generationIntroduced": 3,
+      "isMainSeries": true,
+      "shortEffect": "Strengthens Bug moves to inflict 1.5× damage at 1/3 max HP or less.",
+      "effect": "When this Pokémon has 1/3 or less of its HP remaining, its Bug-type moves inflict 1.5× as much regular damage.\n\nOverworld: If the lead Pokémon has this ability, the wild encounter rate is increased.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/68/"
+    },
+    {
+      "id": 69,
+      "slug": "rock-head",
+      "canonicalName": "Rock Head",
+      "generationIntroduced": 3,
+      "isMainSeries": true,
+      "shortEffect": "Protects against recoil damage.",
+      "effect": "This Pokémon does not receive recoil damage from its recoil moves.\n\nStruggle's recoil is unaffected.  This ability does not prevent crash damage from missing with Jump Kick or High Jump Kick.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/69/"
+    },
+    {
+      "id": 70,
+      "slug": "drought",
+      "canonicalName": "Drought",
+      "generationIntroduced": 3,
+      "isMainSeries": true,
+      "shortEffect": "Summons strong sunlight that lasts indefinitely upon entering battle.",
+      "effect": "The weather changes to strong sunlight when this Pokémon enters battle and does not end unless cancelled by another weather condition.\n\nIf multiple Pokémon with this ability, Drizzle, Sand Stream, or Snow Warning are sent out at the same time, the abilities will activate in order of Speed, respecting Trick Room.  Each ability's weather will cancel the previous weather, and only the weather summoned by the slowest of the Pokémon will stay.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/70/"
+    },
+    {
+      "id": 71,
+      "slug": "arena-trap",
+      "canonicalName": "Arena Trap",
+      "generationIntroduced": 3,
+      "isMainSeries": true,
+      "shortEffect": "Prevents opponents from fleeing or switching out.  Eluded by Flying-types and Pokémon in the air.",
+      "effect": "While this Pokémon is in battle, opposing Pokémon cannot flee or switch out.  Flying-type Pokémon and Pokémon in the air, e.g. due to Levitate or Magnet Rise, are unaffected.\n\nPokémon with Run Away can still flee.  Pokémon can still switch out with the use of a move or item.\n\nOverworld: If the lead Pokémon has this ability, the wild encounter rate is doubled.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/71/"
+    },
+    {
+      "id": 72,
+      "slug": "vital-spirit",
+      "canonicalName": "Vital Spirit",
+      "generationIntroduced": 3,
+      "isMainSeries": true,
+      "shortEffect": "Prevents sleep.",
+      "effect": "This Pokémon cannot be asleep.\n\nThis causes Rest to fail altogether.  If a Pokémon is asleep and acquires this ability, it will immediately wake up; this includes when regaining a lost ability upon leaving battle.\n\nThis ability functions identically to Insomnia in battle.\n\nOverworld: If the lead Pokémon has this ability, higher-levelled Pokémon have their encounter rate increased.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/72/"
+    },
+    {
+      "id": 73,
+      "slug": "white-smoke",
+      "canonicalName": "White Smoke",
+      "generationIntroduced": 3,
+      "isMainSeries": true,
+      "shortEffect": "Prevents stats from being lowered by other Pokémon.",
+      "effect": "This Pokémon cannot have its stats lowered by other Pokémon.\n\nThis ability does not prevent any stat losses other than stat modifiers, such as the Speed cut from paralysis; nor self-inflicted stat drops, such as the Special Attack drop from Overheat; nor opponent-triggered stat boosts, such as the Attack boost from Swagger.  This Pokémon can still be passed negative stat modifiers through Guard Swap, Heart Swap, or Power Swap.\n\nThis ability functions identically to Clear Body in battle.\n\nOverworld: If the lead Pokémon has this ability, the wild encounter rate is halved.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/73/"
+    },
+    {
+      "id": 74,
+      "slug": "pure-power",
+      "canonicalName": "Pure Power",
+      "generationIntroduced": 3,
+      "isMainSeries": true,
+      "shortEffect": "Doubles Attack in battle.",
+      "effect": "This Pokémon's Attack is doubled in battle.\n\nThis bonus does not count as a stat modifier.\n\nThis ability functions identically to Huge Power.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/74/"
+    },
+    {
+      "id": 75,
+      "slug": "shell-armor",
+      "canonicalName": "Shell Armor",
+      "generationIntroduced": 3,
+      "isMainSeries": true,
+      "shortEffect": "Protects against critical hits.",
+      "effect": "Moves cannot score critical hits against this Pokémon.\n\nThis ability functions identically to Battle Armor.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/75/"
+    },
+    {
+      "id": 76,
+      "slug": "air-lock",
+      "canonicalName": "Air Lock",
+      "generationIntroduced": 3,
+      "isMainSeries": true,
+      "shortEffect": "Negates all effects of weather, but does not prevent the weather itself.",
+      "effect": "While this Pokémon is in battle, weather can still be in play, but will not have any of its effects.\n\nThis ability functions identically to Cloud Nine.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/76/"
+    },
+    {
+      "id": 77,
+      "slug": "tangled-feet",
+      "canonicalName": "Tangled Feet",
+      "generationIntroduced": 4,
+      "isMainSeries": true,
+      "shortEffect": "Doubles evasion when confused.",
+      "effect": "When this Pokémon is confused, it has twice its evasion.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/77/"
+    },
+    {
+      "id": 78,
+      "slug": "motor-drive",
+      "canonicalName": "Motor Drive",
+      "generationIntroduced": 4,
+      "isMainSeries": true,
+      "shortEffect": "Absorbs Electric moves, raising Speed one stage.",
+      "effect": "Whenever an Electric-type move hits this Pokémon, its Speed rises one stage, negating any other effect on it.\n\nThis ability will not take effect if this Pokémon is immune to Electric moves.  Electric moves will ignore this Pokémon's Substitute.\n\nThis effect includes non-damaging moves, i.e. Thunder Wave.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/78/"
+    },
+    {
+      "id": 79,
+      "slug": "rivalry",
+      "canonicalName": "Rivalry",
+      "generationIntroduced": 4,
+      "isMainSeries": true,
+      "shortEffect": "Increases damage inflicted to 1.25× against Pokémon of the same gender, but decreases damage to 0.75× against the opposite gender.",
+      "effect": "This Pokémon inflicts 1.25× as much regular damage against Pokémon of the same gender and 0.75× as much regular damage against Pokémon of the opposite gender.\n\nIf either Pokémon is genderless, damage is unaffected.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/79/"
+    },
+    {
+      "id": 80,
+      "slug": "steadfast",
+      "canonicalName": "Steadfast",
+      "generationIntroduced": 4,
+      "isMainSeries": true,
+      "shortEffect": "Raises Speed one stage upon flinching.",
+      "effect": "Whenever this Pokémon flinches, its Speed rises one stage.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/80/"
+    },
+    {
+      "id": 81,
+      "slug": "snow-cloak",
+      "canonicalName": "Snow Cloak",
+      "generationIntroduced": 4,
+      "isMainSeries": true,
+      "shortEffect": "Increases evasion to 1.25× during hail.  Protects against hail damage.",
+      "effect": "During hail, this Pokémon has 1.25× its evasion, and it does not take hail damage regardless of type.\n\nThe evasion bonus does not count as a stat modifier.\n\nOverworld: If the lead Pokémon has this ability, the wild encounter rate is halved in snow.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/81/"
+    },
+    {
+      "id": 82,
+      "slug": "gluttony",
+      "canonicalName": "Gluttony",
+      "generationIntroduced": 4,
+      "isMainSeries": true,
+      "shortEffect": "Makes the Pokémon eat any held Berry triggered by low HP below 1/2 its max HP.",
+      "effect": "This Pokémon eats any held Berry triggered by low HP when it falls below 50% of its HP, regardless of the Berry's usual threshold.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/82/"
+    },
+    {
+      "id": 83,
+      "slug": "anger-point",
+      "canonicalName": "Anger Point",
+      "generationIntroduced": 4,
+      "isMainSeries": true,
+      "shortEffect": "Raises Attack to the maximum of six stages upon receiving a critical hit.",
+      "effect": "Whenever this Pokémon receives a critical hit, its Attack rises to the maximum of 6 stages.\n\nThis ability will still take effect if the critical hit is received by a Substitute.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/83/"
+    },
+    {
+      "id": 84,
+      "slug": "unburden",
+      "canonicalName": "Unburden",
+      "generationIntroduced": 4,
+      "isMainSeries": true,
+      "shortEffect": "Doubles Speed upon using or losing a held item.",
+      "effect": "When this Pokémon uses or loses its held item, its Speed is doubled.  If it gains another item or leaves battle, this bonus is lost.\n\nThis includes when the Pokémon drops its item because of Knock Off.  This bonus does not count as a stat modifier.  There is no notification when this ability takes effect.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/84/"
+    },
+    {
+      "id": 85,
+      "slug": "heatproof",
+      "canonicalName": "Heatproof",
+      "generationIntroduced": 4,
+      "isMainSeries": true,
+      "shortEffect": "Halves damage from Fire moves and burns.",
+      "effect": "This Pokémon takes half as much damage from Fire-type moves and burns.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/85/"
+    },
+    {
+      "id": 86,
+      "slug": "simple",
+      "canonicalName": "Simple",
+      "generationIntroduced": 4,
+      "isMainSeries": true,
+      "shortEffect": "Doubles the Pokémon's stat modifiers.  These doubled modifiers are still capped at -6 or 6 stages.",
+      "effect": "Each stage of this Pokémon's stat modifiers acts as two stages.  These doubled stages are still limited to a minimum of -6 and a maximum of 6.\n\nThis Pokémon can still accumulate less than -3 or more than 3 stages of stat modifiers, even though the extra ones have no effect after doubling.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/86/"
+    },
+    {
+      "id": 87,
+      "slug": "dry-skin",
+      "canonicalName": "Dry Skin",
+      "generationIntroduced": 4,
+      "isMainSeries": true,
+      "shortEffect": "Causes 1/8 max HP in damage each turn during strong sunlight, but heals for 1/8 max HP during rain.  Increases damage from Fire moves to 1.25×, but absorbs Water moves, healing for 1/4 max HP.",
+      "effect": "This Pokémon takes 1/8 of its maximum HP in damage after each turn during strong sunlight, but it heals for 1/8 of its HP each turn during rain.  This Pokémon takes 1.25× as much damage from Fire-type moves, but whenever a Water move hits it, it heals for 1/4 its maximum HP instead.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/87/"
+    },
+    {
+      "id": 88,
+      "slug": "download",
+      "canonicalName": "Download",
+      "generationIntroduced": 4,
+      "isMainSeries": true,
+      "shortEffect": "Raises the attack stat corresponding to the opponents' weaker defense one stage upon entering battle.",
+      "effect": "When this Pokémon enters battle, its Attack or Special Attack, whichever corresponds to its opponents' weaker total defensive stat, rises one stage.  In the event of a tie, Special Attack is raised.\n\nThis ability also takes effect when acquired during a battle.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/88/"
+    },
+    {
+      "id": 89,
+      "slug": "iron-fist",
+      "canonicalName": "Iron Fist",
+      "generationIntroduced": 4,
+      "isMainSeries": true,
+      "shortEffect": "Strengthens punch-based moves to 1.2× their power.",
+      "effect": "Moves flagged as being punch-based have 1.2× their base power for this Pokémon.\n\nSucker Punch is not flagged as punch-based; its original, Japanese name only means \"surprise attack\".",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/89/"
+    },
+    {
+      "id": 90,
+      "slug": "poison-heal",
+      "canonicalName": "Poison Heal",
+      "generationIntroduced": 4,
+      "isMainSeries": true,
+      "shortEffect": "Heals for 1/8 max HP after each turn when poisoned in place of damage.",
+      "effect": "If this Pokémon is poisoned, it will heal for 1/8 of its maximum HP after each turn rather than taking damage.  This includes bad poison.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/90/"
+    },
+    {
+      "id": 91,
+      "slug": "adaptability",
+      "canonicalName": "Adaptability",
+      "generationIntroduced": 4,
+      "isMainSeries": true,
+      "shortEffect": "Increases the same-type attack bonus from 1.5× to 2×.",
+      "effect": "This Pokémon inflicts twice as much damage with moves whose types match its own, rather than the usual same-type attack bonus of 1.5×.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/91/"
+    },
+    {
+      "id": 92,
+      "slug": "skill-link",
+      "canonicalName": "Skill Link",
+      "generationIntroduced": 4,
+      "isMainSeries": true,
+      "shortEffect": "Extends two-to-five-hit moves and Triple Kick to their full length every time.",
+      "effect": "This Pokémon always hits five times with two-to-five-hit moves, such as Icicle Spear.  It also bypasses the accuracy checks on Triple Kick's second and third hits.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/92/"
+    },
+    {
+      "id": 93,
+      "slug": "hydration",
+      "canonicalName": "Hydration",
+      "generationIntroduced": 4,
+      "isMainSeries": true,
+      "shortEffect": "Cures any major status ailment after each turn during rain.",
+      "effect": "This Pokémon is cured of any major status ailment after each turn during rain.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/93/"
+    },
+    {
+      "id": 94,
+      "slug": "solar-power",
+      "canonicalName": "Solar Power",
+      "generationIntroduced": 4,
+      "isMainSeries": true,
+      "shortEffect": "Increases Special Attack to 1.5× but costs 1/8 max HP after each turn during strong sunlight.",
+      "effect": "During strong sunlight, this Pokémon has 1.5× its Special Attack but takes 1/8 of its maximum HP in damage after each turn.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/94/"
+    },
+    {
+      "id": 95,
+      "slug": "quick-feet",
+      "canonicalName": "Quick Feet",
+      "generationIntroduced": 4,
+      "isMainSeries": true,
+      "shortEffect": "Increases Speed to 1.5× with a major status ailment.",
+      "effect": "Whenever this Pokémon has a major status ailment, it has 1.5× its Speed.  This Pokémon is not affected by the usual Speed cut from paralysis.\n\nOverworld: If the lead Pokémon has this ability, the wild encounter rate is halved.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/95/"
+    },
+    {
+      "id": 96,
+      "slug": "normalize",
+      "canonicalName": "Normalize",
+      "generationIntroduced": 4,
+      "isMainSeries": true,
+      "shortEffect": "Makes the Pokémon's moves all act Normal-type.",
+      "effect": "This Pokémon's moves all act as if they were Normal-type.\n\nMoves that inflict typeless damage do so as usual.  Moves of variable type, such as Hidden Power, are affected.  They otherwise work as usual, however; Weather Ball, for example, is always forced to be Normal, but it still has doubled power and looks different during weather.\n\nAs Thunder Wave is prevented by immunities, unlike most non-damaging moves, it does not affect Ghost-type Pokémon under the effect of this ability.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/96/"
+    },
+    {
+      "id": 97,
+      "slug": "sniper",
+      "canonicalName": "Sniper",
+      "generationIntroduced": 4,
+      "isMainSeries": true,
+      "shortEffect": "Strengthens critical hits to inflict 3× damage rather than 2×.",
+      "effect": "This Pokémon inflicts triple damage with critical hits, rather than the usual double damage.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/97/"
+    },
+    {
+      "id": 98,
+      "slug": "magic-guard",
+      "canonicalName": "Magic Guard",
+      "generationIntroduced": 4,
+      "isMainSeries": true,
+      "shortEffect": "Protects against damage not directly caused by a move.",
+      "effect": "This Pokémon is immune to damage not directly caused by a move.\n\nFor example, this Pokémon takes no damage from from weather, recoil, status ailments, or Spikes, but it still suffers from the Attack cut when burned, and a Life Orb will still power up this Pokémon's moves without damaging it.  Anything that directly depends on such damage will also not happen; for example, Leech Seed will neither hurt this Pokémon nor heal the opponent, and Pokémon with a Jaboca Berry or Rowap Berry will not consume the berry when hit by this Pokémon.\n\nThe following are unaffected: Struggle, Pain Split (whether used by or against this Pokémon), Belly Drum, Substitute, Curse, moves that knock the user out, and damage from confusion.\n\nThis Pokémon will neither lose nor regain HP if it drains HP from a Pokémon with Liquid Ooze.\n\nIf this Pokémon is badly poisoned, the poison counter is still increased each turn; if the Pokémon loses this ability, it will begin taking as much damage as it would be if it had been taking increasing damage each turn.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/98/"
+    },
+    {
+      "id": 99,
+      "slug": "no-guard",
+      "canonicalName": "No Guard",
+      "generationIntroduced": 4,
+      "isMainSeries": true,
+      "shortEffect": "Ensures all moves used by and against the Pokémon hit.",
+      "effect": "Moves used by or against this Pokémon never miss.\n\nOne-hit KO moves are unaffected.  Moves affected by this ability can hit Pokémon during the preparation turn of moves like Dig or Fly.\n\nOverworld: If the lead Pokémon has this ability, the wild encounter rate is doubled.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/99/"
+    },
+    {
+      "id": 100,
+      "slug": "stall",
+      "canonicalName": "Stall",
+      "generationIntroduced": 4,
+      "isMainSeries": true,
+      "shortEffect": "Makes the Pokémon move last within its move's priority bracket.",
+      "effect": "This Pokémon moves last within its priority bracket.\n\nMultiple Pokémon with this ability move in order of Speed amongst themselves.\n\nThe Full Incense and Lagging Tail take precedence over this ability; that is, Pokémon with these items move after Pokémon with this ability.  Pokémon with both this ability and one of these items are delayed as much as if they had only the item.\n\nThis ability works as usual during Trick Room: Pokémon with this ability will move in reverse order of Speed after Pokémon without it.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/100/"
+    },
+    {
+      "id": 101,
+      "slug": "technician",
+      "canonicalName": "Technician",
+      "generationIntroduced": 4,
+      "isMainSeries": true,
+      "shortEffect": "Strengthens moves of 60 base power or less to 1.5× their power.",
+      "effect": "This Pokémon's moves have 1.5× their power if their base power is 60 or less.\n\nThis includes moves of variable power, such as Hidden Power and Magnitude, when their power is 60 or less.  Helping Hand's power boost is taken into account for any move, as is Defense Curl's power boost for Rollout.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/101/"
+    },
+    {
+      "id": 102,
+      "slug": "leaf-guard",
+      "canonicalName": "Leaf Guard",
+      "generationIntroduced": 4,
+      "isMainSeries": true,
+      "shortEffect": "Protects against major status ailments during strong sunlight.",
+      "effect": "This Pokémon cannot be given a major status ailment during strong sunlight.\n\nThis ability does not heal prior status ailments.  Rest will fail altogether with this ability in effect.  Yawn will immediately fail if used on this Pokémon during strong sunlight, and an already-used Yawn will fail if the weather turns to strong sunlight in the meantime.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/102/"
+    },
+    {
+      "id": 103,
+      "slug": "klutz",
+      "canonicalName": "Klutz",
+      "generationIntroduced": 4,
+      "isMainSeries": true,
+      "shortEffect": "Prevents the Pokémon from using its held item in battle.",
+      "effect": "In battle, this Pokémon cannot use its held item, nor will the item have any passive effect on the battle, positive or negative.  This Pokémon also cannot use Fling.\n\nThe Speed cut from the Iron Ball and the effort items (the Macho Brace, Power Weight, Power Bracer, Power Belt, Power Lens, Power Band, and Power Anklet) is unaffected.  Items that do not directly affect the battle, such as the Exp. Share, the Amulet Coin, or the Soothe Bell, work as usual.  All held items work as usual out of battle.\n\nOther moves that use the held item, such as Natural Gift and Switcheroo, work as usual.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/103/"
+    },
+    {
+      "id": 104,
+      "slug": "mold-breaker",
+      "canonicalName": "Mold Breaker",
+      "generationIntroduced": 4,
+      "isMainSeries": true,
+      "shortEffect": "Bypasses targets' abilities if they could hinder or prevent a move.",
+      "effect": "This Pokémon's moves completely ignore abilities that could hinder or prevent their effect on the target.\n\nFor example, this Pokémon's moves ignore abilities that would fully negate them, such as Water Absorb; abilities that would prevent any of their effects, such as Clear Body, Shell Armor, or Sticky Hold; and abilities that grant any general protective benefit, such as Simple, Snow Cloak, or Thick Fat.  If an ability could either hinder or help this Pokémon's moves, e.g. Dry Skin or Unaware, the ability is ignored either way.\n\nAbilities that do not fit this description, even if they could hinder moves in some other way, are not affected.  For example, Cursed Body only affects potential future uses of the move, while Liquid Ooze and Shadow Tag can only hinder a move's effect on the user.  This ablity cannot ignore type or form changes granted by abilities, for example Color Change or Forecast; nor effects that were caused by abilities but are no longer tied to an ability, such as the rain from Drizzle.  This ability cannot ignore Multitype at all.\n\nAn ability ignored by this ability is only nullified while the move is being used.  For example, this Pokémon's moves can paralyze a Pokémon with Limber, but Limber will activate and heal the paralysis immediately thereafter, and this Pokémon's Spikes are not affected by this ability after they have been placed.\n\nWhen this Pokémon enters battle, all participating trainers are notified that it has this ability.\n\nThis ability functions identically to Teravolt and Turboblaze.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/104/"
+    },
+    {
+      "id": 105,
+      "slug": "super-luck",
+      "canonicalName": "Super Luck",
+      "generationIntroduced": 4,
+      "isMainSeries": true,
+      "shortEffect": "Raises moves' critical hit rates one stage.",
+      "effect": "This Pokémon's moves have critical hit rates one stage higher than normal.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/105/"
+    },
+    {
+      "id": 106,
+      "slug": "aftermath",
+      "canonicalName": "Aftermath",
+      "generationIntroduced": 4,
+      "isMainSeries": true,
+      "shortEffect": "Damages the attacker for 1/4 its max HP when knocked out by a contact move.",
+      "effect": "When this Pokémon is knocked out by a move that makes contact, the move's user takes 1/4 its maximum HP in damage.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/106/"
+    },
+    {
+      "id": 107,
+      "slug": "anticipation",
+      "canonicalName": "Anticipation",
+      "generationIntroduced": 4,
+      "isMainSeries": true,
+      "shortEffect": "Notifies all trainers upon entering battle if an opponent has a super-effective move, Self-Destruct, Explosion, or a one-hit KO move.",
+      "effect": "When this Pokémon enters battle, if one of its opponents has a move that is super effective against it, Self-Destruct, Explosion, or a one-hit knockout move, all participating trainers are notified.\n\nThe move itself is not revealed; only that there is such a move.  Moves that inflict typeless damage, such as Future Sight, and moves of variable type, such as Hidden Power, count as their listed types.  Counter, Metal Burst, Mirror Coat, and one-hit KO moves to which this Pokémon is immune do not trigger this ability.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/107/"
+    },
+    {
+      "id": 108,
+      "slug": "forewarn",
+      "canonicalName": "Forewarn",
+      "generationIntroduced": 4,
+      "isMainSeries": true,
+      "shortEffect": "Reveals the opponents' strongest move upon entering battle.",
+      "effect": "When this Pokémon enters battle, it reveals the move with the highest base power known by any opposing Pokémon to all participating trainers.\n\nIn the event of a tie, one is chosen at random.\n\nMoves without a listed base power are assigned one as follows:\n\nPower | Moves\n----: | -----\n  160 | One-hit KO moves: Fissure, Guillotine, Horn Drill, and Sheer Cold\n  120 | Counter moves: Counter, Metal Burst, and Mirror Coat\n   80 | Variable power or set damage: Crush Grip, Dragon Rage, Electro Ball, Endeavor, Final Gambit, Flail, Frustration, Grass Knot, Gyro Ball, Heat Crash, Heavy Slam, Hidden Power, Low Kick, Natural Gift, Night Shade, Psywave, Return, Reversal, Seismic Toss, Sonic Boom, Trump Card, and Wring Out\n    0 | Any such move not listed\n",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/108/"
+    },
+    {
+      "id": 109,
+      "slug": "unaware",
+      "canonicalName": "Unaware",
+      "generationIntroduced": 4,
+      "isMainSeries": true,
+      "shortEffect": "Ignores other Pokémon's stat modifiers for damage and accuracy calculation.",
+      "effect": "This Pokémon ignores other Pokémon's stat modifiers for the purposes of damage and accuracy calculation.\n\nEffectively, this affects modifiers of every stat except Speed.\n\nThe power of Punishment and Stored Power is calculated as usual.  When this Pokémon hurts itself in confusion, its stat modifiers affect damage as usual.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/109/"
+    },
+    {
+      "id": 110,
+      "slug": "tinted-lens",
+      "canonicalName": "Tinted Lens",
+      "generationIntroduced": 4,
+      "isMainSeries": true,
+      "shortEffect": "Doubles damage inflicted with not-very-effective moves.",
+      "effect": "This Pokémon deals twice as much damage with moves that are not very effective against the target.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/110/"
+    },
+    {
+      "id": 111,
+      "slug": "filter",
+      "canonicalName": "Filter",
+      "generationIntroduced": 4,
+      "isMainSeries": true,
+      "shortEffect": "Decreases damage taken from super-effective moves by 1/4.",
+      "effect": "This Pokémon takes 0.75× as much damage from moves that are super effective against it.\n\nThis ability functions identically to Solid Rock.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/111/"
+    },
+    {
+      "id": 112,
+      "slug": "slow-start",
+      "canonicalName": "Slow Start",
+      "generationIntroduced": 4,
+      "isMainSeries": true,
+      "shortEffect": "Halves Attack and Speed for five turns upon entering battle.",
+      "effect": "This Pokémon's Attack and Speed are halved for five turns upon entering battle.\n\nThis ability also takes effect when acquired during battle.  If this Pokémon loses its ability before the five turns are up, its Attack and Speed return to normal; if it then regains this ability without leaving battle, its Attack and Speed are halved again, but the counter keeps counting from where it was.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/112/"
+    },
+    {
+      "id": 113,
+      "slug": "scrappy",
+      "canonicalName": "Scrappy",
+      "generationIntroduced": 4,
+      "isMainSeries": true,
+      "shortEffect": "Lets the Pokémon's Normal and Fighting moves hit Ghost Pokémon.",
+      "effect": "This Pokémon ignores Ghost-type Pokémon's immunity to Normal- and Fighting-type moves.\n\nGhost Pokémon's other types affect damage as usual.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/113/"
+    },
+    {
+      "id": 114,
+      "slug": "storm-drain",
+      "canonicalName": "Storm Drain",
+      "generationIntroduced": 4,
+      "isMainSeries": true,
+      "shortEffect": "Redirects single-target Water moves to this Pokémon where possible.  Absorbs Water moves, raising Special Attack one stage.",
+      "effect": "All other Pokémon's single-target Water-type moves are redirected to this Pokémon, if it is an eligible target.  Other Pokémon's Water moves raise this Pokémon's Special Attack one stage, negating any other effect on it, and cannot miss it.\n\nIf the move's intended target also has this ability, the move is not redirected.  When multiple Pokémon with this ability are possible targets for redirection, the move is redirected to the one with the highest Speed stat, or, in the case of a tie, to a random tied Pokémon.  Follow Me takes precedence over this ability.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/114/"
+    },
+    {
+      "id": 115,
+      "slug": "ice-body",
+      "canonicalName": "Ice Body",
+      "generationIntroduced": 4,
+      "isMainSeries": true,
+      "shortEffect": "Heals for 1/16 max HP after each turn during hail.  Protects against hail damage.",
+      "effect": "This Pokémon heals for 1/16 of its maximum HP after each turn during hail, and it does not take hail damage regardless of type.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/115/"
+    },
+    {
+      "id": 116,
+      "slug": "solid-rock",
+      "canonicalName": "Solid Rock",
+      "generationIntroduced": 4,
+      "isMainSeries": true,
+      "shortEffect": "Decreases damage taken from super-effective moves by 1/4.",
+      "effect": "This Pokémon takes 0.75× as much damage from moves that are super effective against it.\n\nThis ability functions identically to Filter.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/116/"
+    },
+    {
+      "id": 117,
+      "slug": "snow-warning",
+      "canonicalName": "Snow Warning",
+      "generationIntroduced": 4,
+      "isMainSeries": true,
+      "shortEffect": "Summons hail that lasts indefinitely upon entering battle.",
+      "effect": "The weather changes to hail when this Pokémon enters battle and does not end unless cancelled by another weather condition.\n\nIf multiple Pokémon with this ability, Drizzle, Drought, or Sand Stream are sent out at the same time, the abilities will activate in order of Speed, respecting Trick Room.  Each ability's weather will cancel the previous weather, and only the weather summoned by the slowest of the Pokémon will stay.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/117/"
+    },
+    {
+      "id": 118,
+      "slug": "honey-gather",
+      "canonicalName": "Honey Gather",
+      "generationIntroduced": 4,
+      "isMainSeries": true,
+      "shortEffect": "The Pokémon may pick up Honey after battle.",
+      "effect": "This Pokémon has a chance of picking up Honey after each battle.  This chance starts at 5% and rises another 5% after every tenth level: 5% from level 1–10, 10% from 11–20, and so on, up to 50% from 91–100.\n\nThis ability is checked after the battle ends, at which point any temporary ability changes have worn off.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/118/"
+    },
+    {
+      "id": 119,
+      "slug": "frisk",
+      "canonicalName": "Frisk",
+      "generationIntroduced": 4,
+      "isMainSeries": true,
+      "shortEffect": "Reveals an opponent's held item upon entering battle.",
+      "effect": "When this Pokémon enters battle, it reveals an opposing Pokémon's held item to all participating trainers.\n\nIn a double battle, if one opponent has an item, this Pokémon will Frisk that Pokémon; if both have an item, it will Frisk one at random.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/119/"
+    },
+    {
+      "id": 120,
+      "slug": "reckless",
+      "canonicalName": "Reckless",
+      "generationIntroduced": 4,
+      "isMainSeries": true,
+      "shortEffect": "Strengthens recoil moves to 1.2× their power.",
+      "effect": "This Pokémon's recoil moves and crash moves have 1.2× their base power.\n\nStruggle is unaffected.\n\nThe \"crash moves\" are the moves that damage the user upon missing: Jump Kick and High Jump Kick.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/120/"
+    },
+    {
+      "id": 121,
+      "slug": "multitype",
+      "canonicalName": "Multitype",
+      "generationIntroduced": 4,
+      "isMainSeries": true,
+      "shortEffect": "Changes Arceus's type and form to match its held Plate.",
+      "effect": "If this Pokémon is holding an elemental Plate, its type and form change to match the Plate.\n\nThis Pokémon's held item, whether or not it is a Plate, cannot be taken by Covet or Thief, nor removed by Knock Off, nor traded by Switcheroo or Trick.  Covet, Thief, and Knock Off still inflict damage against this Pokémon.  Unlike with Sticky Hold, this Pokémon cannot use Fling, Switcheroo, or Trick to lose its item itself, nor gain an item through Switcheroo or Trick if it does not have one.\n\nThis ability has no effect for any Pokémon other than Arceus.  This ability cannot be traded with Skill Swap, nor copied with Role Play or Trace, nor disabled with Gastro Acid, nor changed with Worry Seed.  This Pokémon cannot use Skill Swap or Role Play to lose its ability itself.  Mold Breaker cannot ignore this ability.\n\nIf a Pokémon Transforms into an Arceus with this ability, it will Transform into Arceus's default, Normal-type form.  If the Transforming Pokémon is holding a Plate, this ability will then activate and change the Pokémon into the corresponding form.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/121/"
+    },
+    {
+      "id": 122,
+      "slug": "flower-gift",
+      "canonicalName": "Flower Gift",
+      "generationIntroduced": 4,
+      "isMainSeries": true,
+      "shortEffect": "Increases friendly Pokémon's Attack and Special Defense to 1.5× during strong sunlight.",
+      "effect": "Friendly Pokémon have 1.5× their Attack and Special Defense during strong sunlight if any friendly Pokémon has this ability.\n\nUnlike Forecast, Multitype, and Zen Mode, this ability is not tied to its Pokémon's form change; Cherrim will switch between its forms even if it loses this ability.  As such, this ability also works if obtained by a Pokémon other than Cherrim.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/122/"
+    },
+    {
+      "id": 123,
+      "slug": "bad-dreams",
+      "canonicalName": "Bad Dreams",
+      "generationIntroduced": 4,
+      "isMainSeries": true,
+      "shortEffect": "Damages sleeping opponents for 1/8 their max HP after each turn.",
+      "effect": "Opposing Pokémon take 1/8 of their maximum HP in damage after each turn while they are asleep.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/123/"
+    },
+    {
+      "id": 124,
+      "slug": "pickpocket",
+      "canonicalName": "Pickpocket",
+      "generationIntroduced": 5,
+      "isMainSeries": true,
+      "shortEffect": "Steals attacking Pokémon's held items on contact.",
+      "effect": "Whenever a move makes contact with this Pokémon, if it does not have a held item, it steals the attacker's held item.\n\nThis Pokémon cannot steal upon being knocked out.  It can steal if the attacker has a Substitute, but cannot steal when its own Substitute is hit.  If a move hits multiple times, only the last hit triggers this ability.  If this Pokémon is wild, it cannot steal from a trained Pokémon.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/124/"
+    },
+    {
+      "id": 125,
+      "slug": "sheer-force",
+      "canonicalName": "Sheer Force",
+      "generationIntroduced": 5,
+      "isMainSeries": true,
+      "shortEffect": "Strengthens moves with extra effects to 1.3× their power, but prevents their extra effects.",
+      "effect": "This Pokémon's moves with extra effects have 1.3× their power, but lose their extra effects.\n\nAn effect chance is a move's chance to inflict a status ailment, cause a stat change, or make the target flinch in addition to the move's main effect. For example, Thunder Shock's paralysis is an extra effect, but Thunder Wave's is not, nor are Knock Off's item removal and Air Cutter's increased critical hit rate.\n\nMoves that lower the user's stats are unaffected.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/125/"
+    },
+    {
+      "id": 126,
+      "slug": "contrary",
+      "canonicalName": "Contrary",
+      "generationIntroduced": 5,
+      "isMainSeries": true,
+      "shortEffect": "Inverts stat changes.",
+      "effect": "Whenever this Pokémon's stats would be raised, they are instead lowered by the same amount, and vice versa.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/126/"
+    },
+    {
+      "id": 127,
+      "slug": "unnerve",
+      "canonicalName": "Unnerve",
+      "generationIntroduced": 5,
+      "isMainSeries": true,
+      "shortEffect": "Prevents opposing Pokémon from eating held Berries.",
+      "effect": "Opposing Pokémon cannot eat held Berries while this Pokémon is in battle.\n\nAffected Pokémon can still use Bug Bite or Pluck to eat a target's Berry.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/127/"
+    },
+    {
+      "id": 128,
+      "slug": "defiant",
+      "canonicalName": "Defiant",
+      "generationIntroduced": 5,
+      "isMainSeries": true,
+      "shortEffect": "Raises Attack two stages upon having any stat lowered.",
+      "effect": "When any of this Pokémon's stats are lowered, its Attack rises by two stages.\n\nIf multiple stats are lowered at once, this ability takes effect with each stat lowered.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/128/"
+    },
+    {
+      "id": 129,
+      "slug": "defeatist",
+      "canonicalName": "Defeatist",
+      "generationIntroduced": 5,
+      "isMainSeries": true,
+      "shortEffect": "Halves Attack and Special Attack at 50% max HP or less.",
+      "effect": "This Pokémon's Attack and Special Attack are halved when it has half its HP or less.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/129/"
+    },
+    {
+      "id": 130,
+      "slug": "cursed-body",
+      "canonicalName": "Cursed Body",
+      "generationIntroduced": 5,
+      "isMainSeries": true,
+      "shortEffect": "Has a 30% chance of Disabling any move that hits the Pokémon.",
+      "effect": "Moves that hit this Pokémon have a 30% chance of being Disabled afterward.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/130/"
+    },
+    {
+      "id": 131,
+      "slug": "healer",
+      "canonicalName": "Healer",
+      "generationIntroduced": 5,
+      "isMainSeries": true,
+      "shortEffect": "Has a 30% chance of curing each adjacent ally of any major status ailment after each turn.",
+      "effect": "Friendly Pokémon next to this Pokémon in double and triple battles each have a 30% chance of being cured of any major status ailment after each turn.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/131/"
+    },
+    {
+      "id": 132,
+      "slug": "friend-guard",
+      "canonicalName": "Friend Guard",
+      "generationIntroduced": 5,
+      "isMainSeries": true,
+      "shortEffect": "Decreases all direct damage taken by friendly Pokémon to 0.75×.",
+      "effect": "All friendly Pokémon take 0.75× as much direct damage from moves while this Pokémon is in battle.\n\nThis effect stacks if multiple allied Pokémon have it.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/132/"
+    },
+    {
+      "id": 133,
+      "slug": "weak-armor",
+      "canonicalName": "Weak Armor",
+      "generationIntroduced": 5,
+      "isMainSeries": true,
+      "shortEffect": "Raises Speed and lowers Defense by one stage each upon being hit by a physical move.",
+      "effect": "Whenever a physical move hits this Pokémon, its Speed rises one stage and its Defense falls one stage.\n\nThis ability triggers on every hit of a multiple-hit move.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/133/"
+    },
+    {
+      "id": 134,
+      "slug": "heavy-metal",
+      "canonicalName": "Heavy Metal",
+      "generationIntroduced": 5,
+      "isMainSeries": true,
+      "shortEffect": "Doubles the Pokémon's weight.",
+      "effect": "This Pokémon has double the usual weight for its species.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/134/"
+    },
+    {
+      "id": 135,
+      "slug": "light-metal",
+      "canonicalName": "Light Metal",
+      "generationIntroduced": 5,
+      "isMainSeries": true,
+      "shortEffect": "Halves the Pokémon's weight.",
+      "effect": "This Pokémon has half the usual weight for its species.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/135/"
+    },
+    {
+      "id": 136,
+      "slug": "multiscale",
+      "canonicalName": "Multiscale",
+      "generationIntroduced": 5,
+      "isMainSeries": true,
+      "shortEffect": "Halves damage taken from full HP.",
+      "effect": "This Pokémon takes half as much damage when it is hit having full HP.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/136/"
+    },
+    {
+      "id": 137,
+      "slug": "toxic-boost",
+      "canonicalName": "Toxic Boost",
+      "generationIntroduced": 5,
+      "isMainSeries": true,
+      "shortEffect": "Increases Attack to 1.5× when poisoned.",
+      "effect": "This Pokémon has 1.5× its Attack when poisoned.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/137/"
+    },
+    {
+      "id": 138,
+      "slug": "flare-boost",
+      "canonicalName": "Flare Boost",
+      "generationIntroduced": 5,
+      "isMainSeries": true,
+      "shortEffect": "Increases Special Attack to 1.5× when burned.",
+      "effect": "This Pokémon has 1.5× its Special Attack when burned.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/138/"
+    },
+    {
+      "id": 139,
+      "slug": "harvest",
+      "canonicalName": "Harvest",
+      "generationIntroduced": 5,
+      "isMainSeries": true,
+      "shortEffect": "Has a 50% chance of restoring a used Berry after each turn if the Pokémon has held no items in the meantime.",
+      "effect": "After each turn, if the last item this Pokémon consumed was a Berry and it is not currently holding an item, it has a 50% chance of regaining that Berry, or a 100% chance during strong sunlight.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/139/"
+    },
+    {
+      "id": 140,
+      "slug": "telepathy",
+      "canonicalName": "Telepathy",
+      "generationIntroduced": 5,
+      "isMainSeries": true,
+      "shortEffect": "Protects against friendly Pokémon's damaging moves.",
+      "effect": "This Pokémon does not take damage from friendly Pokémon's moves, including single-target moves aimed at it.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/140/"
+    },
+    {
+      "id": 141,
+      "slug": "moody",
+      "canonicalName": "Moody",
+      "generationIntroduced": 5,
+      "isMainSeries": true,
+      "shortEffect": "Raises a random stat two stages and lowers another one stage after each turn.",
+      "effect": "After each turn, one of this Pokémon's stats at random rises two stages, and another falls one stage.\n\nIf a stat is already at 6 or -6 stages, it will not be chosen to be increased or decreased, respectively.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/141/"
+    },
+    {
+      "id": 142,
+      "slug": "overcoat",
+      "canonicalName": "Overcoat",
+      "generationIntroduced": 5,
+      "isMainSeries": true,
+      "shortEffect": "Protects against damage from weather.",
+      "effect": "This Pokémon does not take damage from weather.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/142/"
+    },
+    {
+      "id": 143,
+      "slug": "poison-touch",
+      "canonicalName": "Poison Touch",
+      "generationIntroduced": 5,
+      "isMainSeries": true,
+      "shortEffect": "Has a 30% chance of poisoning target Pokémon upon contact.",
+      "effect": "This Pokémon's contact moves have a 30% chance of poisoning the target with each hit.\n\nThis counts as an extra effect for the purposes of Shield Dust.  This ability takes effect before Mummy.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/143/"
+    },
+    {
+      "id": 144,
+      "slug": "regenerator",
+      "canonicalName": "Regenerator",
+      "generationIntroduced": 5,
+      "isMainSeries": true,
+      "shortEffect": "Heals for 1/3 max HP upon switching out.",
+      "effect": "This Pokémon regains 1/3 of its maximum HP when it is switched out for another Pokémon under any circumstances other than having fainted.\n\nThis ability does not take effect when a battle ends.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/144/"
+    },
+    {
+      "id": 145,
+      "slug": "big-pecks",
+      "canonicalName": "Big Pecks",
+      "generationIntroduced": 5,
+      "isMainSeries": true,
+      "shortEffect": "Protects against Defense drops.",
+      "effect": "This Pokémon's Defense cannot be lowered by other Pokémon.\n\nThis Pokémon can still be passed negative Defense modifiers through Heart Swap or Guard Swap.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/145/"
+    },
+    {
+      "id": 146,
+      "slug": "sand-rush",
+      "canonicalName": "Sand Rush",
+      "generationIntroduced": 5,
+      "isMainSeries": true,
+      "shortEffect": "Doubles Speed during a sandstorm.  Protects against sandstorm damage.",
+      "effect": "This Pokémon's Speed is doubled during a sandstorm, and it does not take sandstorm damage, regardless of type.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/146/"
+    },
+    {
+      "id": 147,
+      "slug": "wonder-skin",
+      "canonicalName": "Wonder Skin",
+      "generationIntroduced": 5,
+      "isMainSeries": true,
+      "shortEffect": "Lowers incoming non-damaging moves' base accuracy to exactly 50%.",
+      "effect": "Non-damaging moves have exactly 50% base accuracy against this Pokémon.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/147/"
+    },
+    {
+      "id": 148,
+      "slug": "analytic",
+      "canonicalName": "Analytic",
+      "generationIntroduced": 5,
+      "isMainSeries": true,
+      "shortEffect": "Strengthens moves to 1.3× their power when moving last.",
+      "effect": "This Pokémon's moves have 1.3× their power when it moves last in a turn.\n\nFuture Sight and Doom Desire are unaffected.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/148/"
+    },
+    {
+      "id": 149,
+      "slug": "illusion",
+      "canonicalName": "Illusion",
+      "generationIntroduced": 5,
+      "isMainSeries": true,
+      "shortEffect": "Takes the appearance of the last conscious party Pokémon upon being sent out until hit by a damaging move.",
+      "effect": "This Pokémon, upon being sent out, appears to have the species, nickname, and Poké Ball of the last Pokémon in the party that is able to battle.  This illusion breaks upon being hit by a damaging move.\n\nOther damage, e.g. from weather or Spikes, does not break the illusion, nor does damage done to a Substitute.\n\nIf the party order becomes temporarily shuffled around as Pokémon are switched out in battle, this ability chooses the last Pokémon according to that shuffled order.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/149/"
+    },
+    {
+      "id": 150,
+      "slug": "imposter",
+      "canonicalName": "Imposter",
+      "generationIntroduced": 5,
+      "isMainSeries": true,
+      "shortEffect": "Transforms upon entering battle.",
+      "effect": "This Pokémon transforms into a random opponent upon entering battle.  This effect is identical to the move Transform.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/150/"
+    },
+    {
+      "id": 151,
+      "slug": "infiltrator",
+      "canonicalName": "Infiltrator",
+      "generationIntroduced": 5,
+      "isMainSeries": true,
+      "shortEffect": "Bypasses Light Screen, Reflect, and Safeguard.",
+      "effect": "This Pokémon's moves ignore Light Screen, Reflect, and Safeguard.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/151/"
+    },
+    {
+      "id": 152,
+      "slug": "mummy",
+      "canonicalName": "Mummy",
+      "generationIntroduced": 5,
+      "isMainSeries": true,
+      "shortEffect": "Changes attacking Pokémon's abilities to Mummy on contact.",
+      "effect": "Whenever a contact move hits this Pokémon, the attacking Pokémon's ability changes to Mummy.\n\nMultitype is unaffected.  If a Pokémon with Moxie knocks this Pokémon out, the former's ability will change without taking effect.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/152/"
+    },
+    {
+      "id": 153,
+      "slug": "moxie",
+      "canonicalName": "Moxie",
+      "generationIntroduced": 5,
+      "isMainSeries": true,
+      "shortEffect": "Raises Attack one stage upon KOing a Pokémon.",
+      "effect": "This Pokémon's Attack rises one stage upon knocking out another Pokémon, even a friendly Pokémon.\n\nThis ability does not take effect when the Pokémon indirectly causes another Pokémon to faint, e.g. through poison or Spikes.\n\nIf this Pokémon knocks out a Pokémon with Mummy, the former's ability will change without taking effect.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/153/"
+    },
+    {
+      "id": 154,
+      "slug": "justified",
+      "canonicalName": "Justified",
+      "generationIntroduced": 5,
+      "isMainSeries": true,
+      "shortEffect": "Raises Attack one stage upon taking damage from a Dark move.",
+      "effect": "Whenever a Dark-type move hits this Pokémon, its Attack rises one stage.\n\nThe move is not negated in any way.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/154/"
+    },
+    {
+      "id": 155,
+      "slug": "rattled",
+      "canonicalName": "Rattled",
+      "generationIntroduced": 5,
+      "isMainSeries": true,
+      "shortEffect": "Raises Speed one stage upon being hit by a Dark, Ghost, or Bug move.",
+      "effect": "This Pokémon's Speed rises one stage with each hit from a damaging Dark-, Ghost-, or Bug-type move.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/155/"
+    },
+    {
+      "id": 156,
+      "slug": "magic-bounce",
+      "canonicalName": "Magic Bounce",
+      "generationIntroduced": 5,
+      "isMainSeries": true,
+      "shortEffect": "Reflects most non-damaging moves back at their user.",
+      "effect": "When this Pokémon is targeted by a move flagged as being reflectable, the move is redirected to its user.\n\nAll reflectable moves are non-damaging, and most non-damaging moves that target other Pokémon are reflectable.\n\nA move reflected by this ability or Magic Coat cannot be reflected back.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/156/"
+    },
+    {
+      "id": 157,
+      "slug": "sap-sipper",
+      "canonicalName": "Sap Sipper",
+      "generationIntroduced": 5,
+      "isMainSeries": true,
+      "shortEffect": "Absorbs Grass moves, raising Attack one stage.",
+      "effect": "Whenever a Grass-type move hits this Pokémon, its Attack rises one stage, negating any other effect on it.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/157/"
+    },
+    {
+      "id": 158,
+      "slug": "prankster",
+      "canonicalName": "Prankster",
+      "generationIntroduced": 5,
+      "isMainSeries": true,
+      "shortEffect": "Raises non-damaging moves' priority by one stage.",
+      "effect": "This Pokémon's non-damaging moves have their priority increased by one stage.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/158/"
+    },
+    {
+      "id": 159,
+      "slug": "sand-force",
+      "canonicalName": "Sand Force",
+      "generationIntroduced": 5,
+      "isMainSeries": true,
+      "shortEffect": "Strengthens Rock, Ground, and Steel moves to 1.3× their power during a sandstorm.  Protects against sandstorm damage.",
+      "effect": "During a sandstorm, this Pokémon's Rock-, Ground-, and Steel-type moves have 1.3× their base power.  This Pokémon does not take sandstorm damage, regardless of type.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/159/"
+    },
+    {
+      "id": 160,
+      "slug": "iron-barbs",
+      "canonicalName": "Iron Barbs",
+      "generationIntroduced": 5,
+      "isMainSeries": true,
+      "shortEffect": "Damages attacking Pokémon for 1/8 their max HP on contact.",
+      "effect": "Whenever a move makes contact with this Pokémon, the move's user takes 1/8 of its maximum HP in damage.\n\nThis ability functions identically to Rough Skin.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/160/"
+    },
+    {
+      "id": 161,
+      "slug": "zen-mode",
+      "canonicalName": "Zen Mode",
+      "generationIntroduced": 5,
+      "isMainSeries": true,
+      "shortEffect": "Changes Darmanitan's form after each turn depending on its HP: Zen Mode below 50% max HP, and Standard Mode otherwise.",
+      "effect": "This Pokémon switches between Standard Mode and Zen Mode after each turn depending on its HP.  Below 50% of its maximum HP, it switches to Zen Mode, and at 50% or above, it switches to Standard Mode.\n\nThis Pokémon returns to Standard Mode upon leaving battle or losing this ability.  This ability has no effect if this Pokémon is not a Darmanitan.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/161/"
+    },
+    {
+      "id": 162,
+      "slug": "victory-star",
+      "canonicalName": "Victory Star",
+      "generationIntroduced": 5,
+      "isMainSeries": true,
+      "shortEffect": "Increases moves' accuracy to 1.1× for friendly Pokémon.",
+      "effect": "All friendly Pokémon's moves, including this Pokémon's own moves, have 1.1× their usual accuracy while this Pokémon is in battle.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/162/"
+    },
+    {
+      "id": 163,
+      "slug": "turboblaze",
+      "canonicalName": "Turboblaze",
+      "generationIntroduced": 5,
+      "isMainSeries": true,
+      "shortEffect": "Bypasses targets' abilities if they could hinder or prevent moves.",
+      "effect": "This Pokémon's moves completely ignore abilities that could hinder or prevent their effect on the target.\n\nFor example, this Pokémon's moves ignore abilities that would fully negate them, such as Water Absorb; abilities that would prevent any of their effects, such as Clear Body, Shell Armor, or Sticky Hold; and abilities that grant any general protective benefit, such as Simple, Snow Cloak, or Thick Fat.  If an ability could either hinder or help this Pokémon's moves, e.g. Dry Skin or Unaware, the ability is ignored either way.\n\nAbilities that do not fit this description, even if they could hinder moves in some other way, are not affected.  For example, Cursed Body only affects potential future uses of the move, while Liquid Ooze and Shadow Tag can only hinder a move's effect on the user.  This ablity cannot ignore type or form changes granted by abilities, for example Color Change or Forecast; nor effects that were caused by abilities but are no longer tied to an ability, such as the rain from Drizzle.  This ability cannot ignore Multitype at all.\n\nAn ability ignored by this ability is only nullified while the move is being used.  For example, this Pokémon's moves can paralyze a Pokémon with Limber, but Limber will activate and heal the paralysis immediately thereafter, and this Pokémon's Spikes are not affected by this ability after they have been placed.\n\nWhen this Pokémon enters battle, all participating trainers are notified that it has this ability.\n\nThis ability functions identically to Mold Breaker and Teravolt.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/163/"
+    },
+    {
+      "id": 164,
+      "slug": "teravolt",
+      "canonicalName": "Teravolt",
+      "generationIntroduced": 5,
+      "isMainSeries": true,
+      "shortEffect": "Bypasses targets' abilities if they could hinder or prevent moves.",
+      "effect": "This Pokémon's moves completely ignore abilities that could hinder or prevent their effect on the target.\n\nFor example, this Pokémon's moves ignore abilities that would fully negate them, such as Water Absorb; abilities that would prevent any of their effects, such as Clear Body, Shell Armor, or Sticky Hold; and abilities that grant any general protective benefit, such as Simple, Snow Cloak, or Thick Fat.  If an ability could either hinder or help this Pokémon's moves, e.g. Dry Skin or Unaware, the ability is ignored either way.\n\nAbilities that do not fit this description, even if they could hinder moves in some other way, are not affected.  For example, Cursed Body only affects potential future uses of the move, while Liquid Ooze and Shadow Tag can only hinder a move's effect on the user.  This ablity cannot ignore type or form changes granted by abilities, for example Color Change or Forecast; nor effects that were caused by abilities but are no longer tied to an ability, such as the rain from Drizzle.  This ability cannot ignore Multitype at all.\n\nAn ability ignored by this ability is only nullified while the move is being used.  For example, this Pokémon's moves can paralyze a Pokémon with Limber, but Limber will activate and heal the paralysis immediately thereafter, and this Pokémon's Spikes are not affected by this ability after they have been placed.\n\nWhen this Pokémon enters battle, all participating trainers are notified that it has this ability.\n\nThis ability functions identically to Mold Breaker and Turboblaze.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/164/"
+    },
+    {
+      "id": 165,
+      "slug": "aroma-veil",
+      "canonicalName": "Aroma Veil",
+      "generationIntroduced": 6,
+      "isMainSeries": true,
+      "shortEffect": "Protects allies against moves that affect their mental state.",
+      "effect": "Protects allies against moves that affect their mental state.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/165/"
+    },
+    {
+      "id": 166,
+      "slug": "flower-veil",
+      "canonicalName": "Flower Veil",
+      "generationIntroduced": 6,
+      "isMainSeries": true,
+      "shortEffect": "Protects friendly Grass Pokémon from having their stats lowered by other Pokémon.",
+      "effect": "Protects friendly Grass Pokémon from having their stats lowered by other Pokémon.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/166/"
+    },
+    {
+      "id": 167,
+      "slug": "cheek-pouch",
+      "canonicalName": "Cheek Pouch",
+      "generationIntroduced": 6,
+      "isMainSeries": true,
+      "shortEffect": "Restores HP upon eating a Berry, in addition to the Berry's effect.",
+      "effect": "Restores HP upon eating a Berry, in addition to the Berry's effect.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/167/"
+    },
+    {
+      "id": 168,
+      "slug": "protean",
+      "canonicalName": "Protean",
+      "generationIntroduced": 6,
+      "isMainSeries": true,
+      "shortEffect": "Changes the bearer's type to match each move it uses.",
+      "effect": "Changes the bearer's type to match each move it uses.\n\nThe type change takes place just before the move is used.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/168/"
+    },
+    {
+      "id": 169,
+      "slug": "fur-coat",
+      "canonicalName": "Fur Coat",
+      "generationIntroduced": 6,
+      "isMainSeries": true,
+      "shortEffect": "Halves damage from physical attacks.",
+      "effect": "Halves damage from physical attacks.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/169/"
+    },
+    {
+      "id": 170,
+      "slug": "magician",
+      "canonicalName": "Magician",
+      "generationIntroduced": 6,
+      "isMainSeries": true,
+      "shortEffect": "Steals the target's held item when the bearer uses a damaging move.",
+      "effect": "Steals the target's held item when the bearer uses a damaging move.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/170/"
+    },
+    {
+      "id": 171,
+      "slug": "bulletproof",
+      "canonicalName": "Bulletproof",
+      "generationIntroduced": 6,
+      "isMainSeries": true,
+      "shortEffect": "Protects against bullet, ball, and bomb-based moves.",
+      "effect": "Protects against bullet, ball, and bomb-based moves.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/171/"
+    },
+    {
+      "id": 172,
+      "slug": "competitive",
+      "canonicalName": "Competitive",
+      "generationIntroduced": 6,
+      "isMainSeries": true,
+      "shortEffect": "Raises Special Attack by two stages upon having any stat lowered.",
+      "effect": "Raises Special Attack by two stages upon having any stat lowered.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/172/"
+    },
+    {
+      "id": 173,
+      "slug": "strong-jaw",
+      "canonicalName": "Strong Jaw",
+      "generationIntroduced": 6,
+      "isMainSeries": true,
+      "shortEffect": "Strengthens biting moves to 1.5× their power.",
+      "effect": "Strengthens biting moves to 1.5× their power.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/173/"
+    },
+    {
+      "id": 174,
+      "slug": "refrigerate",
+      "canonicalName": "Refrigerate",
+      "generationIntroduced": 6,
+      "isMainSeries": true,
+      "shortEffect": "Turns the bearer's Normal moves into Ice moves and strengthens them to 1.3× their power.",
+      "effect": "Turns the bearer's Normal-type moves into Ice-type moves.  Moves changed by this ability have 1.3× their power.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/174/"
+    },
+    {
+      "id": 175,
+      "slug": "sweet-veil",
+      "canonicalName": "Sweet Veil",
+      "generationIntroduced": 6,
+      "isMainSeries": true,
+      "shortEffect": "Prevents friendly Pokémon from sleeping.",
+      "effect": "Prevents friendly Pokémon from sleeping.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/175/"
+    },
+    {
+      "id": 176,
+      "slug": "stance-change",
+      "canonicalName": "Stance Change",
+      "generationIntroduced": 6,
+      "isMainSeries": true,
+      "shortEffect": "Changes Aegislash to Blade Forme before using a damaging move, or Shield Forme before using King’s Shield.",
+      "effect": "Changes Aegislash to Blade Forme before using a damaging move, or Shield Forme before using King’s Shield.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/176/"
+    },
+    {
+      "id": 177,
+      "slug": "gale-wings",
+      "canonicalName": "Gale Wings",
+      "generationIntroduced": 6,
+      "isMainSeries": true,
+      "shortEffect": "Raises Flying moves' priority by one stage.",
+      "effect": "Raises Flying moves' priority by one stage.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/177/"
+    },
+    {
+      "id": 178,
+      "slug": "mega-launcher",
+      "canonicalName": "Mega Launcher",
+      "generationIntroduced": 6,
+      "isMainSeries": true,
+      "shortEffect": "Strengthens aura and pulse moves to 1.5× their power.",
+      "effect": "Strengthens aura and pulse moves to 1.5× their power.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/178/"
+    },
+    {
+      "id": 179,
+      "slug": "grass-pelt",
+      "canonicalName": "Grass Pelt",
+      "generationIntroduced": 6,
+      "isMainSeries": true,
+      "shortEffect": "Boosts Defense while Grassy Terrain is in effect.",
+      "effect": "Boosts Defense while Grassy Terrain is in effect.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/179/"
+    },
+    {
+      "id": 180,
+      "slug": "symbiosis",
+      "canonicalName": "Symbiosis",
+      "generationIntroduced": 6,
+      "isMainSeries": true,
+      "shortEffect": "Passes the bearer's held item to an ally when the ally uses up its item.",
+      "effect": "Passes the bearer's held item to an ally when the ally uses up its item.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/180/"
+    },
+    {
+      "id": 181,
+      "slug": "tough-claws",
+      "canonicalName": "Tough Claws",
+      "generationIntroduced": 6,
+      "isMainSeries": true,
+      "shortEffect": "Strengthens moves that make contact to 1.33× their power.",
+      "effect": "Strengthens moves that make contact to 1.33× their power.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/181/"
+    },
+    {
+      "id": 182,
+      "slug": "pixilate",
+      "canonicalName": "Pixilate",
+      "generationIntroduced": 6,
+      "isMainSeries": true,
+      "shortEffect": "Turns the bearer's Normal moves into Fairy moves and strengthens them to 1.3× their power.",
+      "effect": "Turns the bearer's Normal-type moves into Fairy moves.  Moves changed by this ability have 1.3× their power.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/182/"
+    },
+    {
+      "id": 183,
+      "slug": "gooey",
+      "canonicalName": "Gooey",
+      "generationIntroduced": 6,
+      "isMainSeries": true,
+      "shortEffect": "Lowers attacking Pokémon's Speed by one stage on contact.",
+      "effect": "Lowers attacking Pokémon's Speed by one stage on contact.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/183/"
+    },
+    {
+      "id": 184,
+      "slug": "aerilate",
+      "canonicalName": "Aerilate",
+      "generationIntroduced": 6,
+      "isMainSeries": true,
+      "shortEffect": "Turns the bearer's Normal moves into Flying moves and strengthens them to 1.3× their power.",
+      "effect": "Turns the bearer's Normal-type moves into Flying-type moves.  Moves changed by this ability have 1.3× their power.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/184/"
+    },
+    {
+      "id": 185,
+      "slug": "parental-bond",
+      "canonicalName": "Parental Bond",
+      "generationIntroduced": 6,
+      "isMainSeries": true,
+      "shortEffect": "Lets the bearer hit twice with damaging moves.  The second hit has half power.",
+      "effect": "Lets the bearer hit twice with damaging moves.  The second hit has half power.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/185/"
+    },
+    {
+      "id": 186,
+      "slug": "dark-aura",
+      "canonicalName": "Dark Aura",
+      "generationIntroduced": 6,
+      "isMainSeries": true,
+      "shortEffect": "Strengthens Dark moves to 1.33× their power for all friendly and opposing Pokémon.",
+      "effect": "Strengthens Dark moves for all friendly and opposing Pokémon.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/186/"
+    },
+    {
+      "id": 187,
+      "slug": "fairy-aura",
+      "canonicalName": "Fairy Aura",
+      "generationIntroduced": 6,
+      "isMainSeries": true,
+      "shortEffect": "Strengthens Fairy moves to 1.33× their power for all friendly and opposing Pokémon.",
+      "effect": "Strengthens Fairy moves for all friendly and opposing Pokémon.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/187/"
+    },
+    {
+      "id": 188,
+      "slug": "aura-break",
+      "canonicalName": "Aura Break",
+      "generationIntroduced": 6,
+      "isMainSeries": true,
+      "shortEffect": "Makes Dark Aura and Fairy Aura weaken moves of their respective types.",
+      "effect": "While this Pokémon is on the field, Dark Aura and Fairy Aura weaken moves of their respective types to 2/3 their power, rather than strengthening them.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/188/"
+    },
+    {
+      "id": 189,
+      "slug": "primordial-sea",
+      "canonicalName": "Primordial Sea",
+      "generationIntroduced": 6,
+      "isMainSeries": true,
+      "shortEffect": "Creates heavy rain, which has all the properties of Rain Dance, cannot be replaced, and causes damaging Fire moves to fail.",
+      "effect": "When this Pokémon enters battle or gains this ability, the weather becomes heavy rain.  Heavy rain has all the properties of Rain Dance and also causes damaging Fire moves to fail.\n\nHeavy rain ends when this Pokémon leaves battle or loses this ability, or when this ability is nullified.  The weather cannot otherwise be changed except by the effects of Delta Stream and Desolate Land.\n\nAir Lock and Cloud Nine will prevent the effects of heavy rain, including allowing Fire moves to work, but will not allow the weather to be changed.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/189/"
+    },
+    {
+      "id": 190,
+      "slug": "desolate-land",
+      "canonicalName": "Desolate Land",
+      "generationIntroduced": 6,
+      "isMainSeries": true,
+      "shortEffect": "Creates extremely harsh sunlight, which has all the properties of Sunny Day, cannot be replaced, and causes damaging Water moves to fail.",
+      "effect": "When this Pokémon enters battle or gains this ability, the weather becomes extremely harsh sunlight.  Extremely harsh sunlight has all the properties of Sunny Day and also causes damaging Water moves to fail.\n\nExtremely harsh sunlight ends when this Pokémon leaves battle or loses this ability, or when this ability is nullified.  The weather cannot otherwise be changed except by the effects of Delta Stream and Primordial Sea.\n\nAir Lock and Cloud Nine will prevent the effects of extremely harsh sunlight, including allowing Water moves to work, but will not allow the weather to be changed.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/190/"
+    },
+    {
+      "id": 191,
+      "slug": "delta-stream",
+      "canonicalName": "Delta Stream",
+      "generationIntroduced": 6,
+      "isMainSeries": true,
+      "shortEffect": "Creates a mysterious air current, which cannot be replaced and causes moves to never be super effective against Flying Pokémon.",
+      "effect": "When this Pokémon enters battle or gains this ability, the weather becomes a mysterious air current.  A mysterious air current causes moves to not be super effective against Flying; they do neutral damage instead.  Anticipation and Stealth Rock are not affected.\n\nThe mysterious air current ends when this Pokémon leaves battle or loses this ability, or when this ability is nullified.  The weather cannot otherwise be changed except by the effects of Desolate Land and Primordial Sea.\n\nAir Lock and Cloud Nine will prevent the effect of a mysterious air current, but will not allow the weather to be changed.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/191/"
+    },
+    {
+      "id": 192,
+      "slug": "stamina",
+      "canonicalName": "Stamina",
+      "generationIntroduced": 7,
+      "isMainSeries": true,
+      "shortEffect": "Raises this Pokémon's Defense by one stage when it takes damage from a move.",
+      "effect": "Raises this Pokémon's Defense by one stage when it takes damage from a move.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/192/"
+    },
+    {
+      "id": 193,
+      "slug": "wimp-out",
+      "canonicalName": "Wimp Out",
+      "generationIntroduced": 7,
+      "isMainSeries": true,
+      "shortEffect": "This Pokémon automatically switches out when its HP drops below half.",
+      "effect": "After this Pokémon is hit by a move, if that move caused this Pokémon's HP to drop below half, it switches out.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/193/"
+    },
+    {
+      "id": 194,
+      "slug": "emergency-exit",
+      "canonicalName": "Emergency Exit",
+      "generationIntroduced": 7,
+      "isMainSeries": true,
+      "shortEffect": "This Pokémon automatically switches out when its HP drops below half.",
+      "effect": "After this Pokémon is hit by a move, if that move caused this Pokémon's HP to drop below half, it switches out.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/194/"
+    },
+    {
+      "id": 195,
+      "slug": "water-compaction",
+      "canonicalName": "Water Compaction",
+      "generationIntroduced": 7,
+      "isMainSeries": true,
+      "shortEffect": "Raises this Pokémon's Defense by two stages when it's hit by a Water move.",
+      "effect": "Raises this Pokémon's Defense by two stages when it's hit by a Water move.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/195/"
+    },
+    {
+      "id": 196,
+      "slug": "merciless",
+      "canonicalName": "Merciless",
+      "generationIntroduced": 7,
+      "isMainSeries": true,
+      "shortEffect": "This Pokémon's moves critical hit against poisoned targets.",
+      "effect": "This Pokémon's moves critical hit against poisoned targets.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/196/"
+    },
+    {
+      "id": 197,
+      "slug": "shields-down",
+      "canonicalName": "Shields Down",
+      "generationIntroduced": 7,
+      "isMainSeries": true,
+      "shortEffect": "Transforms this Minior between Core Form and Meteor Form.  Prevents major status ailments and drowsiness while in Meteor Form.",
+      "effect": "When this Pokémon enters battle and at the end of each turn, if its HP is 50% or above, it changes into Meteor Form; otherwise, it changes into Core Form.  In Meteor Form, it cannot be given a major status ailment (though existing ones are not cured), cannot become drowsy from Yawn, and cannot use Rest (which will simply fail).\n\nThis ability cannot be copied, replaced, or nullified.  This ability only takes effect for Minior.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/197/"
+    },
+    {
+      "id": 198,
+      "slug": "stakeout",
+      "canonicalName": "Stakeout",
+      "generationIntroduced": 7,
+      "isMainSeries": true,
+      "shortEffect": "This Pokémon's moves have double power against Pokémon that switched in this turn.",
+      "effect": "This Pokémon's moves have double power against Pokémon that switched in this turn.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/198/"
+    },
+    {
+      "id": 199,
+      "slug": "water-bubble",
+      "canonicalName": "Water Bubble",
+      "generationIntroduced": 7,
+      "isMainSeries": true,
+      "shortEffect": "Halves damage from Fire moves, doubles damage of Water moves, and prevents burns.",
+      "effect": "When this Pokémon is hit by a Fire move, the damage is halved.  When this Pokémon uses a Water move, the power is doubled. This Pokémon cannot be burned, and if it becomes burned, the burn is immediately cured.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/199/"
+    },
+    {
+      "id": 200,
+      "slug": "steelworker",
+      "canonicalName": "Steelworker",
+      "generationIntroduced": 7,
+      "isMainSeries": true,
+      "shortEffect": "This Pokémon's Steel moves have 1.5× power.",
+      "effect": "This Pokémon's Steel moves have 1.5× power.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/200/"
+    },
+    {
+      "id": 201,
+      "slug": "berserk",
+      "canonicalName": "Berserk",
+      "generationIntroduced": 7,
+      "isMainSeries": true,
+      "shortEffect": "Raises this Pokémon's Special Attack by one stage every time its HP drops below half.",
+      "effect": "Whenever this Pokémon takes damage from a move that causes its HP to drop below 50%, its Special Attack rises by one stage.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/201/"
+    },
+    {
+      "id": 202,
+      "slug": "slush-rush",
+      "canonicalName": "Slush Rush",
+      "generationIntroduced": 7,
+      "isMainSeries": true,
+      "shortEffect": "During Hail, this Pokémon has double Speed.",
+      "effect": "During Hail, this Pokémon has double Speed.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/202/"
+    },
+    {
+      "id": 203,
+      "slug": "long-reach",
+      "canonicalName": "Long Reach",
+      "generationIntroduced": 7,
+      "isMainSeries": true,
+      "shortEffect": "This Pokémon's moves do not make contact.",
+      "effect": "A move used by this Pokémon will not make contact.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/203/"
+    },
+    {
+      "id": 204,
+      "slug": "liquid-voice",
+      "canonicalName": "Liquid Voice",
+      "generationIntroduced": 7,
+      "isMainSeries": true,
+      "shortEffect": "Sound-based moves become Water-type.",
+      "effect": "When this Pokémon uses a move that is sound-based, that move's type is Water.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/204/"
+    },
+    {
+      "id": 205,
+      "slug": "triage",
+      "canonicalName": "Triage",
+      "generationIntroduced": 7,
+      "isMainSeries": true,
+      "shortEffect": "This Pokémon's healing moves have their priority increased by 3.",
+      "effect": "This Pokémon's healing moves have their priority increased by 3.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/205/"
+    },
+    {
+      "id": 206,
+      "slug": "galvanize",
+      "canonicalName": "Galvanize",
+      "generationIntroduced": 7,
+      "isMainSeries": true,
+      "shortEffect": "This Pokémon's Normal moves are Electric and have their power increased to 1.2×.",
+      "effect": "When this Pokémon uses a Normal moves, that move is Electric its power is 1.2×.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/206/"
+    },
+    {
+      "id": 207,
+      "slug": "surge-surfer",
+      "canonicalName": "Surge Surfer",
+      "generationIntroduced": 7,
+      "isMainSeries": true,
+      "shortEffect": "Doubles this Pokémon's Speed on Electric Terrain.",
+      "effect": "Doubles this Pokémon's Speed on Electric Terrain.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/207/"
+    },
+    {
+      "id": 208,
+      "slug": "schooling",
+      "canonicalName": "Schooling",
+      "generationIntroduced": 7,
+      "isMainSeries": true,
+      "shortEffect": "Wishiwashi becomes Schooling Form when its HP is 25% or higher.",
+      "effect": "If this Pokémon is a Wishiwashi and level 20 or above, then when it enters battle and at the start of each turn, it becomes Schooling Form if its HP is 25% or higher and Solo Form otherwise.\n\nThis ability cannot be replaced, copied, or nullified.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/208/"
+    },
+    {
+      "id": 209,
+      "slug": "disguise",
+      "canonicalName": "Disguise",
+      "generationIntroduced": 7,
+      "isMainSeries": true,
+      "shortEffect": "Prevents the first instance of battle damage.",
+      "effect": "If this Pokémon is in its Disguised Form and takes damage from a move, it switches to its Busted Form and the damage is prevented.  Other effects are not prevented.\n\nThis ability cannot be copied or replaced.  This ability only takes effect for Mimikyu.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/209/"
+    },
+    {
+      "id": 210,
+      "slug": "battle-bond",
+      "canonicalName": "Battle Bond",
+      "generationIntroduced": 7,
+      "isMainSeries": true,
+      "shortEffect": "Transforms this Pokémon into Ash-Greninja after fainting an opponent.  Water Shuriken's power is 20 and always hits three times.",
+      "effect": "Transforms this Pokémon into Ash-Greninja after fainting an opponent.  Water Shuriken's power is 20 and always hits three times.\n\nThis ability cannot be copied or replaced.  This ability only takes effect for Greninja.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/210/"
+    },
+    {
+      "id": 211,
+      "slug": "power-construct",
+      "canonicalName": "Power Construct",
+      "generationIntroduced": 7,
+      "isMainSeries": true,
+      "shortEffect": "Transforms 10% or 50% Zygarde into Complete Forme when its HP is below 50%.",
+      "effect": "Transforms 10% or 50% Zygarde into Complete Forme when its HP is below 50%.\n\nThis ability cannot be copied or replaced.  This ability only takes effect for Zygarde.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/211/"
+    },
+    {
+      "id": 212,
+      "slug": "corrosion",
+      "canonicalName": "Corrosion",
+      "generationIntroduced": 7,
+      "isMainSeries": true,
+      "shortEffect": "This Pokémon can inflict poison on Poison and Steel Pokémon.",
+      "effect": "This Pokémon's moves and item ignore the usual immunity of Poison and Steel Pokémon when attempting to inflict poison.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/212/"
+    },
+    {
+      "id": 213,
+      "slug": "comatose",
+      "canonicalName": "Comatose",
+      "generationIntroduced": 7,
+      "isMainSeries": true,
+      "shortEffect": "This Pokémon always  acts as though it were Asleep.",
+      "effect": "This Pokémon always acts as though it were Asleep.  It cannot be given another status ailment; it's unaffected by Yawn; it can use Sleep Talk; and so on.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/213/"
+    },
+    {
+      "id": 214,
+      "slug": "queenly-majesty",
+      "canonicalName": "Queenly Majesty",
+      "generationIntroduced": 7,
+      "isMainSeries": true,
+      "shortEffect": "Opposing Pokémon cannot use priority attacks.",
+      "effect": "When an opposing Pokémon attempts to use a move that targets this Pokémon or an ally, and that move has priority, it will fail.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/214/"
+    },
+    {
+      "id": 215,
+      "slug": "innards-out",
+      "canonicalName": "Innards Out",
+      "generationIntroduced": 7,
+      "isMainSeries": true,
+      "shortEffect": "When this Pokémon faints from an opponent's move, that opponent takes damage equal to the HP this Pokémon had remaining.",
+      "effect": "When this Pokémon faints from an opponent's move, that opponent takes damage equal to the HP this Pokémon had remaining.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/215/"
+    },
+    {
+      "id": 216,
+      "slug": "dancer",
+      "canonicalName": "Dancer",
+      "generationIntroduced": 7,
+      "isMainSeries": true,
+      "shortEffect": "Whenever another Pokémon uses a dance move, this Pokémon will use the same move immediately afterwards.",
+      "effect": "Whenever another Pokémon uses a dance move, this Pokémon will use the same move immediately afterwards.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/216/"
+    },
+    {
+      "id": 217,
+      "slug": "battery",
+      "canonicalName": "Battery",
+      "generationIntroduced": 7,
+      "isMainSeries": true,
+      "shortEffect": "Ally Pokémon's moves have their power increased to 1.3×.",
+      "effect": "Ally Pokémon's moves have their power increased to 1.3×.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/217/"
+    },
+    {
+      "id": 218,
+      "slug": "fluffy",
+      "canonicalName": "Fluffy",
+      "generationIntroduced": 7,
+      "isMainSeries": true,
+      "shortEffect": "Damage from contact moves is halved.  Damage from Fire moves is doubled.",
+      "effect": "Damage from contact moves is halved.  Damage from Fire moves is doubled.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/218/"
+    },
+    {
+      "id": 219,
+      "slug": "dazzling",
+      "canonicalName": "Dazzling",
+      "generationIntroduced": 7,
+      "isMainSeries": true,
+      "shortEffect": "Opposing Pokémon cannot use priority attacks.",
+      "effect": "When an opposing Pokémon attempts to use a move that targets this Pokémon or an ally, and that move has priority, it will fail.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/219/"
+    },
+    {
+      "id": 220,
+      "slug": "soul-heart",
+      "canonicalName": "Soul Heart",
+      "generationIntroduced": 7,
+      "isMainSeries": true,
+      "shortEffect": "This Pokémon's Special Attack rises by one stage every time any Pokémon faints.",
+      "effect": "This Pokémon's Special Attack rises by one stage every time any Pokémon faints.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/220/"
+    },
+    {
+      "id": 221,
+      "slug": "tangling-hair",
+      "canonicalName": "Tangling Hair",
+      "generationIntroduced": 7,
+      "isMainSeries": true,
+      "shortEffect": "When this Pokémon takes regular damage from a contact move, the attacking Pokémon's Speed lowers by one stage.",
+      "effect": "When this Pokémon takes regular damage from a contact move, the attacking Pokémon's Speed lowers by one stage.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/221/"
+    },
+    {
+      "id": 222,
+      "slug": "receiver",
+      "canonicalName": "Receiver",
+      "generationIntroduced": 7,
+      "isMainSeries": true,
+      "shortEffect": "When an ally faints, this Pokémon gains its Ability.",
+      "effect": "When an ally faints, this Pokémon gains its Ability.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/222/"
+    },
+    {
+      "id": 223,
+      "slug": "power-of-alchemy",
+      "canonicalName": "Power Of Alchemy",
+      "generationIntroduced": 7,
+      "isMainSeries": true,
+      "shortEffect": "When an ally faints, this Pokémon gains its Ability.",
+      "effect": "When an ally faints, this Pokémon gains its Ability.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/223/"
+    },
+    {
+      "id": 224,
+      "slug": "beast-boost",
+      "canonicalName": "Beast Boost",
+      "generationIntroduced": 7,
+      "isMainSeries": true,
+      "shortEffect": "Raises this Pokémon's highest stat by one stage when it faints another Pokémon.",
+      "effect": "Raises this Pokémon's highest stat by one stage when it faints another Pokémon.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/224/"
+    },
+    {
+      "id": 225,
+      "slug": "rks-system",
+      "canonicalName": "Rks System",
+      "generationIntroduced": 7,
+      "isMainSeries": true,
+      "shortEffect": "Changes this Pokémon's type to match its held Memory.",
+      "effect": "Changes this Pokémon's type to match its held Memory.\n\nThis ability cannot be copied, replaced, or nullified.  This ability only takes effect for Silvally.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/225/"
+    },
+    {
+      "id": 226,
+      "slug": "electric-surge",
+      "canonicalName": "Electric Surge",
+      "generationIntroduced": 7,
+      "isMainSeries": true,
+      "shortEffect": "When this Pokémon enters battle, it changes the terrain to Electric Terrain.",
+      "effect": "When this Pokémon enters battle, it changes the terrain to Electric Terrain.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/226/"
+    },
+    {
+      "id": 227,
+      "slug": "psychic-surge",
+      "canonicalName": "Psychic Surge",
+      "generationIntroduced": 7,
+      "isMainSeries": true,
+      "shortEffect": "When this Pokémon enters battle, it changes the terrain to Psychic Terrain.",
+      "effect": "When this Pokémon enters battle, it changes the terrain to Psychic Terrain.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/227/"
+    },
+    {
+      "id": 228,
+      "slug": "misty-surge",
+      "canonicalName": "Misty Surge",
+      "generationIntroduced": 7,
+      "isMainSeries": true,
+      "shortEffect": "When this Pokémon enters battle, it changes the terrain to Misty Terrain.",
+      "effect": "When this Pokémon enters battle, it changes the terrain to Misty Terrain.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/228/"
+    },
+    {
+      "id": 229,
+      "slug": "grassy-surge",
+      "canonicalName": "Grassy Surge",
+      "generationIntroduced": 7,
+      "isMainSeries": true,
+      "shortEffect": "When this Pokémon enters battle, it changes the terrain to Grassy Terrain.",
+      "effect": "When this Pokémon enters battle, it changes the terrain to Grassy Terrain.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/229/"
+    },
+    {
+      "id": 230,
+      "slug": "full-metal-body",
+      "canonicalName": "Full Metal Body",
+      "generationIntroduced": 7,
+      "isMainSeries": true,
+      "shortEffect": "Other Pokémon cannot lower this Pokémon's stats.",
+      "effect": "This Pokémon's stats cannot be lowered by other Pokémon's moves or abilities.  This effect only applies to normal stat modifications and not more exotic effects such as Topsy-Turvy or Power Swap.\n\nThis Ability is not bypassed by Mold Breaker, Teravolt, or Turboblaze.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/230/"
+    },
+    {
+      "id": 231,
+      "slug": "shadow-shield",
+      "canonicalName": "Shadow Shield",
+      "generationIntroduced": 7,
+      "isMainSeries": true,
+      "shortEffect": "When this Pokémon has full HP, regular damage from moves is halved.",
+      "effect": "When this Pokémon has full HP, regular damage (not fixed damage!) from moves is halved.\n\nThis ability cannot be nullified.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/231/"
+    },
+    {
+      "id": 232,
+      "slug": "prism-armor",
+      "canonicalName": "Prism Armor",
+      "generationIntroduced": 7,
+      "isMainSeries": true,
+      "shortEffect": "Reduces super-effective damage to 0.75×.",
+      "effect": "Super-effective damage this Pokémon takes is reduced to 0.75×.\n\nThis Ability is not bypassed by Mold Breaker, Teravolt, or Turboblaze.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/232/"
+    },
+    {
+      "id": 233,
+      "slug": "neuroforce",
+      "canonicalName": "Neuroforce",
+      "generationIntroduced": 7,
+      "isMainSeries": true,
+      "shortEffect": "Increases super-effective damage dealt to 1.25×.",
+      "effect": "Increases super-effective damage dealt to 1.25×.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/233/"
+    },
+    {
+      "id": 234,
+      "slug": "intrepid-sword",
+      "canonicalName": "Intrepid Sword",
+      "generationIntroduced": 8,
+      "isMainSeries": true,
+      "shortEffect": "Boosts Attack in battle.",
+      "effect": "Boosts the Pokémon’s Attack stat the first time the Pokémon enters a battle.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/234/"
+    },
+    {
+      "id": 235,
+      "slug": "dauntless-shield",
+      "canonicalName": "Dauntless Shield",
+      "generationIntroduced": 8,
+      "isMainSeries": true,
+      "shortEffect": "Boosts Defense in battle.",
+      "effect": "Boosts the Pokémon’s Defense stat the first time the Pokémon enters a battle.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/235/"
+    },
+    {
+      "id": 236,
+      "slug": "libero",
+      "canonicalName": "Libero",
+      "generationIntroduced": 8,
+      "isMainSeries": true,
+      "shortEffect": "Libero changes the Pokémon's type to that of its previously used attack.",
+      "effect": "Changes the Pokémon’s type to the type of the move it’s about to use. This works only once each time the Pokémon enters battle.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/236/"
+    },
+    {
+      "id": 237,
+      "slug": "ball-fetch",
+      "canonicalName": "Ball Fetch",
+      "generationIntroduced": 8,
+      "isMainSeries": true,
+      "shortEffect": "If the Pokémon is not holding an item, it will fetch the Poké Ball from the first failed throw of the battle.",
+      "effect": "At any time after the first Poké Ball is thrown and fails to catch a Pokémon, at the end of a turn, if a Pokémon with Ball Fetch is on the field and not holding another item, it will pick up the same type of ball as the first one thrown.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/237/"
+    },
+    {
+      "id": 238,
+      "slug": "cotton-down",
+      "canonicalName": "Cotton Down",
+      "generationIntroduced": 8,
+      "isMainSeries": true,
+      "shortEffect": "When Ignores moves and abilities that draw in moves.",
+      "effect": "When the Pokémon is hit by an attack, it scatters cotton fluff around and lowers the Speed stats of all Pokémon except itself.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/238/"
+    },
+    {
+      "id": 239,
+      "slug": "propeller-tail",
+      "canonicalName": "Propeller Tail",
+      "generationIntroduced": 8,
+      "isMainSeries": true,
+      "shortEffect": "Ignores moves and abilities that draw in moves.",
+      "effect": "Ignores the effects of opposing Pokémon’s Abilities and moves that draw in moves.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/239/"
+    },
+    {
+      "id": 240,
+      "slug": "mirror-armor",
+      "canonicalName": "Mirror Armor",
+      "generationIntroduced": 8,
+      "isMainSeries": true,
+      "shortEffect": "Reflects any stat-lowering effects.",
+      "effect": "Bounces back only the stat-lowering effects that the Pokémon receives.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/240/"
+    },
+    {
+      "id": 241,
+      "slug": "gulp-missile",
+      "canonicalName": "Gulp Missile",
+      "generationIntroduced": 8,
+      "isMainSeries": true,
+      "shortEffect": "If a Cramorant with Gulp Missile uses Surf or Dive, it catches prey and changes its form depending on its remaining HP.",
+      "effect": "When the Pokémon uses Surf or Dive, it will come back with prey. When it takes damage, it will spit out the prey to attack.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/241/"
+    },
+    {
+      "id": 242,
+      "slug": "stalwart",
+      "canonicalName": "Stalwart",
+      "generationIntroduced": 8,
+      "isMainSeries": true,
+      "shortEffect": "Ignores moves and abilities that draw in moves.",
+      "effect": "Ignores the effects of opposing Pokémon’s Abilities and moves that draw in moves.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/242/"
+    },
+    {
+      "id": 243,
+      "slug": "steam-engine",
+      "canonicalName": "Steam Engine",
+      "generationIntroduced": 8,
+      "isMainSeries": true,
+      "shortEffect": "Boosts the Speed stat drastically when the Pokémon is hit by a Fire- or Water-type move.",
+      "effect": "Raises the user's Speed by three stages when it is hit by a Fire- or Water-type attack. The attack still deals damage.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/243/"
+    },
+    {
+      "id": 244,
+      "slug": "punk-rock",
+      "canonicalName": "Punk Rock",
+      "generationIntroduced": 8,
+      "isMainSeries": true,
+      "shortEffect": "Boosts sound-based moves and halves damage from the same moves.",
+      "effect": "Boosts the power of sound-based moves. The Pokémon also takes half the damage from these kinds of moves.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/244/"
+    },
+    {
+      "id": 245,
+      "slug": "sand-spit",
+      "canonicalName": "Sand Spit",
+      "generationIntroduced": 8,
+      "isMainSeries": true,
+      "shortEffect": "Creates a sandstorm when hit by an attack.",
+      "effect": "The Pokémon creates a sandstorm when it’s hit by an attack.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/245/"
+    },
+    {
+      "id": 246,
+      "slug": "ice-scales",
+      "canonicalName": "Ice Scales",
+      "generationIntroduced": 8,
+      "isMainSeries": true,
+      "shortEffect": "Halves damage from Special moves.",
+      "effect": "The Pokémon is protected by ice scales, which halve the damage taken from special moves.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/246/"
+    },
+    {
+      "id": 247,
+      "slug": "ripen",
+      "canonicalName": "Ripen",
+      "generationIntroduced": 8,
+      "isMainSeries": true,
+      "shortEffect": "Doubles the effect of berries.",
+      "effect": "Ripens Berries and doubles their effect.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/247/"
+    },
+    {
+      "id": 248,
+      "slug": "ice-face",
+      "canonicalName": "Ice Face",
+      "generationIntroduced": 8,
+      "isMainSeries": true,
+      "shortEffect": "The Pokémon’s ice head can take a physical attack as a substitute, but the attack also changes the Pokémon’s appearance. The ice will be restored when it snows.",
+      "effect": "When an Eiscue that's in its Ice Face form is hit by a physical move, it takes no damage and changes into its Noice Face form. If a hailstorm or snowstorm begins while Eiscue is in its Noice Face form, or if it is sent out in its Noice Face form during hail, it will immediately revert to its Ice Face form.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/248/"
+    },
+    {
+      "id": 249,
+      "slug": "power-spot",
+      "canonicalName": "Power Spot",
+      "generationIntroduced": 8,
+      "isMainSeries": true,
+      "shortEffect": "Just being next to the Pokémon powers up moves.",
+      "effect": " The power of moves used by the allies of the Pokémon with Power Spot is increased by 30%.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/249/"
+    },
+    {
+      "id": 250,
+      "slug": "mimicry",
+      "canonicalName": "Mimicry",
+      "generationIntroduced": 8,
+      "isMainSeries": true,
+      "shortEffect": "Changes type depending on the terrain.",
+      "effect": "Changes the Pokémon’s type depending on the terrain.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/250/"
+    },
+    {
+      "id": 251,
+      "slug": "screen-cleaner",
+      "canonicalName": "Screen Cleaner",
+      "generationIntroduced": 8,
+      "isMainSeries": true,
+      "shortEffect": "Nullifies effects of Light Screen, Reflect, and Aurora Veil.",
+      "effect": "When the Pokémon enters a battle, the effects of Light Screen, Reflect, and Aurora Veil are nullified for both opposing and ally Pokémon.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/251/"
+    },
+    {
+      "id": 252,
+      "slug": "steely-spirit",
+      "canonicalName": "Steely Spirit",
+      "generationIntroduced": 8,
+      "isMainSeries": true,
+      "shortEffect": "Powers up ally Pokémon's Steel-type moves.",
+      "effect": "Powers up the Steel-type moves of the Pokémon and its allies.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/252/"
+    },
+    {
+      "id": 253,
+      "slug": "perish-body",
+      "canonicalName": "Perish Body",
+      "generationIntroduced": 8,
+      "isMainSeries": true,
+      "shortEffect": "When hit by a move that makes direct contact, the Pokémon and the attacker will faint after three turns unless they switch out of battle.",
+      "effect": "When the Pokémon with Perish Body is hit with a contact move, both the attacker and the Pokémon with Perish Body will faint in three turns.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/253/"
+    },
+    {
+      "id": 254,
+      "slug": "wandering-spirit",
+      "canonicalName": "Wandering Spirit",
+      "generationIntroduced": 8,
+      "isMainSeries": true,
+      "shortEffect": "Swaps abilities with opponents on contact.",
+      "effect": "The Pokémon exchanges Abilities with a Pokémon that hits it with a move that makes direct contact.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/254/"
+    },
+    {
+      "id": 255,
+      "slug": "gorilla-tactics",
+      "canonicalName": "Gorilla Tactics",
+      "generationIntroduced": 8,
+      "isMainSeries": true,
+      "shortEffect": "Boosts the Pokémon's Attack stat but only allows the use of the first selected move.",
+      "effect": "Boosts the Pokémon’s Attack stat but only allows the use of the first selected move.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/255/"
+    },
+    {
+      "id": 256,
+      "slug": "neutralizing-gas",
+      "canonicalName": "Neutralizing Gas",
+      "generationIntroduced": 8,
+      "isMainSeries": true,
+      "shortEffect": "Neutralizes abilities of all Pokémon in battle.",
+      "effect": "While the Pokémon is in the battle, the effects of all other Pokémon’s Abilities will be nullified or will not be triggered.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/256/"
+    },
+    {
+      "id": 257,
+      "slug": "pastel-veil",
+      "canonicalName": "Pastel Veil",
+      "generationIntroduced": 8,
+      "isMainSeries": true,
+      "shortEffect": "Prevents the Pokémon and its allies from being poisoned.",
+      "effect": "Prevents the Pokémon and its teammates from being poisoned. It also cures teammates of poisoning when it enters the battlefield.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/257/"
+    },
+    {
+      "id": 258,
+      "slug": "hunger-switch",
+      "canonicalName": "Hunger Switch",
+      "generationIntroduced": 8,
+      "isMainSeries": true,
+      "shortEffect": "Causes Morpeko to change its form each turn, alternating between Full Belly Mode and Hangry Mode",
+      "effect": "The Pokémon changes its form, alternating between its Full Belly Mode and Hangry Mode after the end of every turn.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/258/"
+    },
+    {
+      "id": 259,
+      "slug": "quick-draw",
+      "canonicalName": "Quick Draw",
+      "generationIntroduced": 8,
+      "isMainSeries": true,
+      "shortEffect": "Enables the Pokémon to move first occasionally.",
+      "effect": "If a Pokémon with this Ability selects a damaging move, it has a 30% chance of going first in its priority bracket.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/259/"
+    },
+    {
+      "id": 260,
+      "slug": "unseen-fist",
+      "canonicalName": "Unseen Fist",
+      "generationIntroduced": 8,
+      "isMainSeries": true,
+      "shortEffect": "Contact moves can strike through Protect/Detect.",
+      "effect": "If the Pokémon uses moves that make direct contact, it can attack the target even if the target protects itself.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/260/"
+    },
+    {
+      "id": 261,
+      "slug": "curious-medicine",
+      "canonicalName": "Curious Medicine",
+      "generationIntroduced": 8,
+      "isMainSeries": true,
+      "shortEffect": "Resets all stat changes upon entering battlefield.",
+      "effect": "When the Pokémon enters a battle, it scatters medicine from its shell, which removes all stat changes from allies.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/261/"
+    },
+    {
+      "id": 262,
+      "slug": "transistor",
+      "canonicalName": "Transistor",
+      "generationIntroduced": 8,
+      "isMainSeries": true,
+      "shortEffect": "Powers up Electric-type moves.",
+      "effect": "Increases the power of Electric-type moves used by this Pokémon by 50%.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/262/"
+    },
+    {
+      "id": 263,
+      "slug": "dragons-maw",
+      "canonicalName": "Dragons Maw",
+      "generationIntroduced": 8,
+      "isMainSeries": true,
+      "shortEffect": "Powers up Dragon-type moves.",
+      "effect": "Increases the power of Dragon-type moves used by this Pokémon by 50%.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/263/"
+    },
+    {
+      "id": 264,
+      "slug": "chilling-neigh",
+      "canonicalName": "Chilling Neigh",
+      "generationIntroduced": 8,
+      "isMainSeries": true,
+      "shortEffect": "Boosts Attack after knocking out a Pokémon.",
+      "effect": "When the Pokémon knocks out a target, it utters a chilling neigh, which boosts its Attack stat.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/264/"
+    },
+    {
+      "id": 265,
+      "slug": "grim-neigh",
+      "canonicalName": "Grim Neigh",
+      "generationIntroduced": 8,
+      "isMainSeries": true,
+      "shortEffect": "Boosts Special Attack after knocking out a Pokémon.",
+      "effect": "When the Pokémon knocks out a target, it utters a terrifying neigh, which boosts its Sp. Atk stat.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/265/"
+    },
+    {
+      "id": 266,
+      "slug": "as-one-glastrier",
+      "canonicalName": "As One Glastrier",
+      "generationIntroduced": 8,
+      "isMainSeries": true,
+      "shortEffect": "No English effect text available.",
+      "effect": "No English effect text available.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/266/"
+    },
+    {
+      "id": 267,
+      "slug": "as-one-spectrier",
+      "canonicalName": "As One Spectrier",
+      "generationIntroduced": 8,
+      "isMainSeries": true,
+      "shortEffect": "No English effect text available.",
+      "effect": "No English effect text available.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/267/"
+    },
+    {
+      "id": 268,
+      "slug": "lingering-aroma",
+      "canonicalName": "Lingering Aroma",
+      "generationIntroduced": 9,
+      "isMainSeries": true,
+      "shortEffect": "Contact changes the attacker's Ability to Lingering Aroma.",
+      "effect": "Contact with the Pokémon changes the attacker’s Ability to Lingering Aroma.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/268/"
+    },
+    {
+      "id": 269,
+      "slug": "seed-sower",
+      "canonicalName": "Seed Sower",
+      "generationIntroduced": 9,
+      "isMainSeries": true,
+      "shortEffect": "Turns the ground into Grassy Terrain when the Pokémon is hit by an attack.",
+      "effect": "Turns the ground into Grassy Terrain when the Pokémon is hit by an attack.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/269/"
+    },
+    {
+      "id": 270,
+      "slug": "thermal-exchange",
+      "canonicalName": "Thermal Exchange",
+      "generationIntroduced": 9,
+      "isMainSeries": true,
+      "shortEffect": "Raises Attack when hit by a Fire-type move. Cannot be burned.",
+      "effect": "Boosts the Attack stat when the Pokémon is hit by a Fire-type move. The Pokémon also cannot be burned.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/270/"
+    },
+    {
+      "id": 271,
+      "slug": "anger-shell",
+      "canonicalName": "Anger Shell",
+      "generationIntroduced": 9,
+      "isMainSeries": true,
+      "shortEffect": "When the Pokémon's HP drops below half, Anger Shell lowers its Defense and Special Defense but its Attack, Special Attack and Speed are raised.",
+      "effect": "When an attack causes its HP to drop to half or less, the Pokémon gets angry. This lowers its Defense and Sp. Def stats but boosts its Attack, Sp. Atk, and Speed stats.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/271/"
+    },
+    {
+      "id": 272,
+      "slug": "purifying-salt",
+      "canonicalName": "Purifying Salt",
+      "generationIntroduced": 9,
+      "isMainSeries": true,
+      "shortEffect": "Protects from status conditions and halves damage from Ghost-type moves.",
+      "effect": "The Pokémon’s pure salt protects it from status conditions and halves the damage taken from Ghost-type moves.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/272/"
+    },
+    {
+      "id": 273,
+      "slug": "well-baked-body",
+      "canonicalName": "Well Baked Body",
+      "generationIntroduced": 9,
+      "isMainSeries": true,
+      "shortEffect": "Immune to Fire-type moves, and Defense is sharply boosted.",
+      "effect": "The Pokémon takes no damage when hit by Fire-type moves. Instead, its Defense stat is sharply boosted.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/273/"
+    },
+    {
+      "id": 274,
+      "slug": "wind-rider",
+      "canonicalName": "Wind Rider",
+      "generationIntroduced": 9,
+      "isMainSeries": true,
+      "shortEffect": "Gives immunity to wind moves, and causes the Pokémon's Attack to increase by one stage when hit by one.",
+      "effect": "Boosts the Pokémon’s Attack stat if Tailwind takes effect or if the Pokémon is hit by a wind move. The Pokémon also takes no damage from wind moves.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/274/"
+    },
+    {
+      "id": 275,
+      "slug": "guard-dog",
+      "canonicalName": "Guard Dog",
+      "generationIntroduced": 9,
+      "isMainSeries": true,
+      "shortEffect": "Boosts Attack if intimidated, and prevents being forced to switch out.",
+      "effect": "Boosts the Pokémon’s Attack stat if intimidated. Moves and items that would force the Pokémon to switch out also fail to work.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/275/"
+    },
+    {
+      "id": 276,
+      "slug": "rocky-payload",
+      "canonicalName": "Rocky Payload",
+      "generationIntroduced": 9,
+      "isMainSeries": true,
+      "shortEffect": "Powers up Rock-type moves.",
+      "effect": "Increases the power of Rock-type moves used by this Pokémon by 50%.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/276/"
+    },
+    {
+      "id": 277,
+      "slug": "wind-power",
+      "canonicalName": "Wind Power",
+      "generationIntroduced": 9,
+      "isMainSeries": true,
+      "shortEffect": "When hit by a wind move, the power of the next Electric-type move it uses is doubled.",
+      "effect": "The Pokémon becomes charged when it is hit by a wind move, boosting the power of the next Electric-type move the Pokémon uses.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/277/"
+    },
+    {
+      "id": 278,
+      "slug": "zero-to-hero",
+      "canonicalName": "Zero To Hero",
+      "generationIntroduced": 9,
+      "isMainSeries": true,
+      "shortEffect": "Transforms into its Hero Form when switching out.",
+      "effect": "The Pokémon transforms into its Hero Form when it switches out.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/278/"
+    },
+    {
+      "id": 279,
+      "slug": "commander",
+      "canonicalName": "Commander",
+      "generationIntroduced": 9,
+      "isMainSeries": true,
+      "shortEffect": "Goes inside the mouth of an ally Dondozo if one is on the field.",
+      "effect": "When the Pokémon enters a battle, it goes inside the mouth of an ally Dondozo if one is on the field. The Pokémon then issues commands from there.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/279/"
+    },
+    {
+      "id": 280,
+      "slug": "electromorphosis",
+      "canonicalName": "Electromorphosis",
+      "generationIntroduced": 9,
+      "isMainSeries": true,
+      "shortEffect": "When hit by an attack, the power of the next Electric-type move it uses is doubled.",
+      "effect": "The Pokémon becomes charged when it takes damage, boosting the power of the next Electric-type move the Pokémon uses.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/280/"
+    },
+    {
+      "id": 281,
+      "slug": "protosynthesis",
+      "canonicalName": "Protosynthesis",
+      "generationIntroduced": 9,
+      "isMainSeries": true,
+      "shortEffect": "Raises highest stat in harsh sunlight, or if holding Booster Energy.",
+      "effect": "Boosts the Pokémon’s most proficient stat in harsh sunlight or if the Pokémon is holding Booster Energy.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/281/"
+    },
+    {
+      "id": 282,
+      "slug": "quark-drive",
+      "canonicalName": "Quark Drive",
+      "generationIntroduced": 9,
+      "isMainSeries": true,
+      "shortEffect": "Raises highest stat on Electric Terrain, or if holding Booster Energy.",
+      "effect": "Boosts the Pokémon’s most proficient stat on Electric Terrain or if the Pokémon is holding Booster Energy.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/282/"
+    },
+    {
+      "id": 283,
+      "slug": "good-as-gold",
+      "canonicalName": "Good As Gold",
+      "generationIntroduced": 9,
+      "isMainSeries": true,
+      "shortEffect": "Gives immunity to status moves.",
+      "effect": "A body of pure, solid gold gives the Pokémon full immunity to other Pokémon’s status moves.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/283/"
+    },
+    {
+      "id": 284,
+      "slug": "vessel-of-ruin",
+      "canonicalName": "Vessel Of Ruin",
+      "generationIntroduced": 9,
+      "isMainSeries": true,
+      "shortEffect": "Lowers Special Attack of all Pokémon except itself.",
+      "effect": "The power of the Pokémon’s ruinous vessel lowers the Sp. Atk stats of all Pokémon except itself.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/284/"
+    },
+    {
+      "id": 285,
+      "slug": "sword-of-ruin",
+      "canonicalName": "Sword Of Ruin",
+      "generationIntroduced": 9,
+      "isMainSeries": true,
+      "shortEffect": "Lowers Defense of all Pokémon except itself.",
+      "effect": "The power of the Pokémon’s ruinous sword lowers the Defense stats of all Pokémon except itself.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/285/"
+    },
+    {
+      "id": 286,
+      "slug": "tablets-of-ruin",
+      "canonicalName": "Tablets Of Ruin",
+      "generationIntroduced": 9,
+      "isMainSeries": true,
+      "shortEffect": "Lowers Attack of all Pokémon except itself.",
+      "effect": "The power of the Pokémon’s ruinous wooden tablets lowers the Attack stats of all Pokémon except itself.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/286/"
+    },
+    {
+      "id": 287,
+      "slug": "beads-of-ruin",
+      "canonicalName": "Beads Of Ruin",
+      "generationIntroduced": 9,
+      "isMainSeries": true,
+      "shortEffect": "Lowers Special Defense of all Pokémon except itself.",
+      "effect": "The power of the Pokémon’s ruinous beads lowers the Sp. Def stats of all Pokémon except itself.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/287/"
+    },
+    {
+      "id": 288,
+      "slug": "orichalcum-pulse",
+      "canonicalName": "Orichalcum Pulse",
+      "generationIntroduced": 9,
+      "isMainSeries": true,
+      "shortEffect": "Turns the sunlight harsh when entering battle, and boosts Attack while active.",
+      "effect": "Turns the sunlight harsh when the Pokémon enters a battle. The ancient pulse thrumming through the Pokémon also boosts its Attack stat in harsh sunlight.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/288/"
+    },
+    {
+      "id": 289,
+      "slug": "hadron-engine",
+      "canonicalName": "Hadron Engine",
+      "generationIntroduced": 9,
+      "isMainSeries": true,
+      "shortEffect": "Creates an Electric Terrain when entering battle, and boosts Special Attack while active.",
+      "effect": "Turns the ground into Electric Terrain when the Pokémon enters a battle. The futuristic engine within the Pokémon also boosts its Sp. Atk stat on Electric Terrain.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/289/"
+    },
+    {
+      "id": 290,
+      "slug": "opportunist",
+      "canonicalName": "Opportunist",
+      "generationIntroduced": 9,
+      "isMainSeries": true,
+      "shortEffect": "Copies stat boosts by the opponent.",
+      "effect": "If an opponent’s stat is boosted, the Pokémon seizes the opportunity to boost the same stat for itself.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/290/"
+    },
+    {
+      "id": 291,
+      "slug": "cud-chew",
+      "canonicalName": "Cud Chew",
+      "generationIntroduced": 9,
+      "isMainSeries": true,
+      "shortEffect": "Causes the Pokémon to reuse an already consumed Berry at the end of the next turn.",
+      "effect": "When the Pokémon eats a Berry, it will regurgitate that Berry at the end of the next turn and eat it one more time.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/291/"
+    },
+    {
+      "id": 292,
+      "slug": "sharpness",
+      "canonicalName": "Sharpness",
+      "generationIntroduced": 9,
+      "isMainSeries": true,
+      "shortEffect": "Powers up slicing moves.",
+      "effect": "Increases the power of all 'slicing' moves by 50%.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/292/"
+    },
+    {
+      "id": 293,
+      "slug": "supreme-overlord",
+      "canonicalName": "Supreme Overlord",
+      "generationIntroduced": 9,
+      "isMainSeries": true,
+      "shortEffect": "Attack and Special Attack are boosted for each party Pokémon that has been defeated.",
+      "effect": "When the Pokémon enters a battle, its Attack and Sp. Atk stats are slightly boosted for each of the allies in its party that have already been defeated.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/293/"
+    },
+    {
+      "id": 294,
+      "slug": "costar",
+      "canonicalName": "Costar",
+      "generationIntroduced": 9,
+      "isMainSeries": true,
+      "shortEffect": "Copies ally's stat changes on entering battle.",
+      "effect": "When the Pokémon enters a battle, it copies an ally’s stat changes.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/294/"
+    },
+    {
+      "id": 295,
+      "slug": "toxic-debris",
+      "canonicalName": "Toxic Debris",
+      "generationIntroduced": 9,
+      "isMainSeries": true,
+      "shortEffect": "Scatters poison spikes at the feet of the opposing team when the Pokémon takes damage from physical moves.",
+      "effect": "Scatters poison spikes at the feet of the opposing team when the Pokémon takes damage from physical moves.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/295/"
+    },
+    {
+      "id": 296,
+      "slug": "armor-tail",
+      "canonicalName": "Armor Tail",
+      "generationIntroduced": 9,
+      "isMainSeries": true,
+      "shortEffect": "Prevents the opponent from using any moves that have priority, such as Quick Attack.",
+      "effect": "The mysterious tail covering the Pokémon’s head makes opponents unable to use priority moves against the Pokémon or its allies.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/296/"
+    },
+    {
+      "id": 297,
+      "slug": "earth-eater",
+      "canonicalName": "Earth Eater",
+      "generationIntroduced": 9,
+      "isMainSeries": true,
+      "shortEffect": "Restores HP when hit by a Ground-type move.",
+      "effect": "If hit by a Ground-type move, the Pokémon has its HP restored instead of taking damage.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/297/"
+    },
+    {
+      "id": 298,
+      "slug": "mycelium-might",
+      "canonicalName": "Mycelium Might",
+      "generationIntroduced": 9,
+      "isMainSeries": true,
+      "shortEffect": "Status moves go last, but are not affected by the opponent's ability.",
+      "effect": "The Pokémon will always act more slowly when using status moves, but these moves will be unimpeded by the Ability of the target.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/298/"
+    },
+    {
+      "id": 299,
+      "slug": "minds-eye",
+      "canonicalName": "Minds Eye",
+      "generationIntroduced": 9,
+      "isMainSeries": true,
+      "shortEffect": "The Pokémon ignores changes to opponents' evasiveness, its accuracy can't be lowered, and it can hit Ghost types with Normal- and Fighting-type moves.",
+      "effect": "Mind's Eye enables the Pokémon with this Ability to hit Ghost-type Pokémon with damage-dealing Normal- and Fighting-type moves. It also prevents other Pokémon from lowering the Pokémon's accuracy and ignores changes to the opponents' evasion.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/299/"
+    },
+    {
+      "id": 300,
+      "slug": "supersweet-syrup",
+      "canonicalName": "Supersweet Syrup",
+      "generationIntroduced": 9,
+      "isMainSeries": true,
+      "shortEffect": "Once per battle, when a Pokémon with Supersweet Syrup enters the battle, it lowers the evasion stat of all adjacent opponents by one stage. ",
+      "effect": "A sickly sweet scent spreads across the field the first time the Pokémon enters a battle, lowering the evasiveness of opposing Pokémon.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/300/"
+    },
+    {
+      "id": 301,
+      "slug": "hospitality",
+      "canonicalName": "Hospitality",
+      "generationIntroduced": 9,
+      "isMainSeries": true,
+      "shortEffect": "When a Pokémon with Hospitality enters a battle, it restores HP for an ally by 25%.",
+      "effect": "When the Pokémon enters a battle, it showers its ally with hospitality, restoring a small amount of the ally's HP.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/301/"
+    },
+    {
+      "id": 302,
+      "slug": "toxic-chain",
+      "canonicalName": "Toxic Chain",
+      "generationIntroduced": 9,
+      "isMainSeries": true,
+      "shortEffect": "May cause bad poisoning when the Pokémon hits an opponent with a move.",
+      "effect": "The power of the Pokémon's toxic chain may badly poison any target the Pokémon hits with a move.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/302/"
+    },
+    {
+      "id": 303,
+      "slug": "embody-aspect",
+      "canonicalName": "Embody Aspect",
+      "generationIntroduced": 9,
+      "isMainSeries": true,
+      "shortEffect": "Embody Aspect boosts a particular stat, depending on the form of a Terastallized Ogerpon",
+      "effect": "Embody Aspect boosts a particular stat, depending on the form of a Terastallized Ogerpon",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/303/"
+    },
+    {
+      "id": 304,
+      "slug": "tera-shift",
+      "canonicalName": "Tera Shift",
+      "generationIntroduced": 9,
+      "isMainSeries": true,
+      "shortEffect": "When Terapagos enters the battle, it turns into its Terastal Form until the end of the battle. ",
+      "effect": "When the Pokémon enters a battle, it absorbs the energy around itself and transforms into its Terastal Form.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/304/"
+    },
+    {
+      "id": 305,
+      "slug": "tera-shell",
+      "canonicalName": "Tera Shell",
+      "generationIntroduced": 9,
+      "isMainSeries": true,
+      "shortEffect": "All damage-dealing moves that hit the Pokémon when its HP is full will not be very effective.",
+      "effect": "The Pokémon’s shell contains the powers of each type. All damage-dealing moves that hit the Pokémon when its HP is full will not be very effective.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/305/"
+    },
+    {
+      "id": 306,
+      "slug": "teraform-zero",
+      "canonicalName": "Teraform Zero",
+      "generationIntroduced": 9,
+      "isMainSeries": true,
+      "shortEffect": "As soon as Terapagos assumes its Stellar Form, it will immediately neutralize weather and terrain effects. ",
+      "effect": "When Terapagos changes into its Stellar Form, it uses its hidden powers to eliminate all effects of weather and terrain, reducing them to zero.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/306/"
+    },
+    {
+      "id": 307,
+      "slug": "poison-puppeteer",
+      "canonicalName": "Poison Puppeteer",
+      "generationIntroduced": 9,
+      "isMainSeries": true,
+      "shortEffect": "Pokémon poisoned by Pecharunt's moves will also become confused.",
+      "effect": "When a Pokémon is poisoned by any of Pecharunt's moves, it will also become confused.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/307/"
+    },
+    {
+      "id": 308,
+      "slug": "piercing-drill",
+      "canonicalName": "Piercing Drill",
+      "generationIntroduced": 9,
+      "isMainSeries": true,
+      "shortEffect": "When the Pokémon uses contact moves, it can hit even targets that are protecting themselves.",
+      "effect": "When the Pokémon uses contact moves, it can hit even targets that are protecting themselves, dealing 1/4 of the damage that the move would otherwise deal. Everything aside from the target's protective effects is still triggered.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/308/"
+    },
+    {
+      "id": 309,
+      "slug": "dragonize",
+      "canonicalName": "Dragonize",
+      "generationIntroduced": 9,
+      "isMainSeries": true,
+      "shortEffect": "The Pokémon's Normal-type moves become Dragon-type moves and their power is boosted by 20%.",
+      "effect": "The Pokémon's Normal-type moves become Dragon-type moves and their power is boosted by 20%.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/309/"
+    },
+    {
+      "id": 310,
+      "slug": "mega-sol",
+      "canonicalName": "Mega Sol",
+      "generationIntroduced": 9,
+      "isMainSeries": true,
+      "shortEffect": "The Pokémon can use its moves as if the weather were harsh sunlight.",
+      "effect": "Even when the sunlight has not turned harsh, the Pokémon can use its moves as if the weather were harsh sunlight.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/310/"
+    },
+    {
+      "id": 311,
+      "slug": "spicy-spray",
+      "canonicalName": "Spicy Spray",
+      "generationIntroduced": 9,
+      "isMainSeries": true,
+      "shortEffect": "When the Pokémon takes damage from a move, it burns the attacker.",
+      "effect": "When the Pokémon takes damage from a move, it burns the attacker.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/311/"
+    },
+    {
+      "id": 312,
+      "slug": "eelevate",
+      "canonicalName": "Eelevate",
+      "generationIntroduced": 9,
+      "isMainSeries": true,
+      "shortEffect": "The Pokémon floats off the ground, making it immune to Ground-type moves, as well as the Spikes, Toxic Spikes, and Sticky Web statuses. When the Pokémon knocks out a target with an attack, its highest stat is boosted by 1 stage.",
+      "effect": "The Pokémon floats off the ground, making it immune to Ground-type moves, as well as the Spikes, Toxic Spikes, and Sticky Web statuses. When the Pokémon knocks out a target with an attack, its highest stat is boosted by 1 stage.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/312/"
+    },
+    {
+      "id": 313,
+      "slug": "fire-mane",
+      "canonicalName": "Fire Mane",
+      "generationIntroduced": 9,
+      "isMainSeries": true,
+      "shortEffect": "Boosts the power of the Pokémon's Fire-type moves by 50%.",
+      "effect": "Boosts the power of the Pokémon's Fire-type moves by 50%.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/313/"
+    },
+    {
+      "id": 10001,
+      "slug": "mountaineer",
+      "canonicalName": "Mountaineer",
+      "generationIntroduced": 5,
+      "isMainSeries": false,
+      "shortEffect": "No English effect text available.",
+      "effect": "No English effect text available.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/10001/"
+    },
+    {
+      "id": 10002,
+      "slug": "wave-rider",
+      "canonicalName": "Wave Rider",
+      "generationIntroduced": 5,
+      "isMainSeries": false,
+      "shortEffect": "No English effect text available.",
+      "effect": "No English effect text available.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/10002/"
+    },
+    {
+      "id": 10003,
+      "slug": "skater",
+      "canonicalName": "Skater",
+      "generationIntroduced": 5,
+      "isMainSeries": false,
+      "shortEffect": "No English effect text available.",
+      "effect": "No English effect text available.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/10003/"
+    },
+    {
+      "id": 10004,
+      "slug": "thrust",
+      "canonicalName": "Thrust",
+      "generationIntroduced": 5,
+      "isMainSeries": false,
+      "shortEffect": "No English effect text available.",
+      "effect": "No English effect text available.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/10004/"
+    },
+    {
+      "id": 10005,
+      "slug": "perception",
+      "canonicalName": "Perception",
+      "generationIntroduced": 5,
+      "isMainSeries": false,
+      "shortEffect": "No English effect text available.",
+      "effect": "No English effect text available.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/10005/"
+    },
+    {
+      "id": 10006,
+      "slug": "parry",
+      "canonicalName": "Parry",
+      "generationIntroduced": 5,
+      "isMainSeries": false,
+      "shortEffect": "No English effect text available.",
+      "effect": "No English effect text available.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/10006/"
+    },
+    {
+      "id": 10007,
+      "slug": "instinct",
+      "canonicalName": "Instinct",
+      "generationIntroduced": 5,
+      "isMainSeries": false,
+      "shortEffect": "No English effect text available.",
+      "effect": "No English effect text available.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/10007/"
+    },
+    {
+      "id": 10008,
+      "slug": "dodge",
+      "canonicalName": "Dodge",
+      "generationIntroduced": 5,
+      "isMainSeries": false,
+      "shortEffect": "No English effect text available.",
+      "effect": "No English effect text available.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/10008/"
+    },
+    {
+      "id": 10009,
+      "slug": "jagged-edge",
+      "canonicalName": "Jagged Edge",
+      "generationIntroduced": 5,
+      "isMainSeries": false,
+      "shortEffect": "No English effect text available.",
+      "effect": "No English effect text available.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/10009/"
+    },
+    {
+      "id": 10010,
+      "slug": "frostbite",
+      "canonicalName": "Frostbite",
+      "generationIntroduced": 5,
+      "isMainSeries": false,
+      "shortEffect": "No English effect text available.",
+      "effect": "No English effect text available.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/10010/"
+    },
+    {
+      "id": 10011,
+      "slug": "tenacity",
+      "canonicalName": "Tenacity",
+      "generationIntroduced": 5,
+      "isMainSeries": false,
+      "shortEffect": "No English effect text available.",
+      "effect": "No English effect text available.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/10011/"
+    },
+    {
+      "id": 10012,
+      "slug": "pride",
+      "canonicalName": "Pride",
+      "generationIntroduced": 5,
+      "isMainSeries": false,
+      "shortEffect": "No English effect text available.",
+      "effect": "No English effect text available.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/10012/"
+    },
+    {
+      "id": 10013,
+      "slug": "deep-sleep",
+      "canonicalName": "Deep Sleep",
+      "generationIntroduced": 5,
+      "isMainSeries": false,
+      "shortEffect": "No English effect text available.",
+      "effect": "No English effect text available.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/10013/"
+    },
+    {
+      "id": 10014,
+      "slug": "power-nap",
+      "canonicalName": "Power Nap",
+      "generationIntroduced": 5,
+      "isMainSeries": false,
+      "shortEffect": "No English effect text available.",
+      "effect": "No English effect text available.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/10014/"
+    },
+    {
+      "id": 10015,
+      "slug": "spirit",
+      "canonicalName": "Spirit",
+      "generationIntroduced": 5,
+      "isMainSeries": false,
+      "shortEffect": "No English effect text available.",
+      "effect": "No English effect text available.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/10015/"
+    },
+    {
+      "id": 10016,
+      "slug": "warm-blanket",
+      "canonicalName": "Warm Blanket",
+      "generationIntroduced": 5,
+      "isMainSeries": false,
+      "shortEffect": "No English effect text available.",
+      "effect": "No English effect text available.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/10016/"
+    },
+    {
+      "id": 10017,
+      "slug": "gulp",
+      "canonicalName": "Gulp",
+      "generationIntroduced": 5,
+      "isMainSeries": false,
+      "shortEffect": "No English effect text available.",
+      "effect": "No English effect text available.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/10017/"
+    },
+    {
+      "id": 10018,
+      "slug": "herbivore",
+      "canonicalName": "Herbivore",
+      "generationIntroduced": 5,
+      "isMainSeries": false,
+      "shortEffect": "No English effect text available.",
+      "effect": "No English effect text available.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/10018/"
+    },
+    {
+      "id": 10019,
+      "slug": "sandpit",
+      "canonicalName": "Sandpit",
+      "generationIntroduced": 5,
+      "isMainSeries": false,
+      "shortEffect": "No English effect text available.",
+      "effect": "No English effect text available.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/10019/"
+    },
+    {
+      "id": 10020,
+      "slug": "hot-blooded",
+      "canonicalName": "Hot Blooded",
+      "generationIntroduced": 5,
+      "isMainSeries": false,
+      "shortEffect": "No English effect text available.",
+      "effect": "No English effect text available.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/10020/"
+    },
+    {
+      "id": 10021,
+      "slug": "medic",
+      "canonicalName": "Medic",
+      "generationIntroduced": 5,
+      "isMainSeries": false,
+      "shortEffect": "No English effect text available.",
+      "effect": "No English effect text available.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/10021/"
+    },
+    {
+      "id": 10022,
+      "slug": "life-force",
+      "canonicalName": "Life Force",
+      "generationIntroduced": 5,
+      "isMainSeries": false,
+      "shortEffect": "No English effect text available.",
+      "effect": "No English effect text available.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/10022/"
+    },
+    {
+      "id": 10023,
+      "slug": "lunchbox",
+      "canonicalName": "Lunchbox",
+      "generationIntroduced": 5,
+      "isMainSeries": false,
+      "shortEffect": "No English effect text available.",
+      "effect": "No English effect text available.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/10023/"
+    },
+    {
+      "id": 10024,
+      "slug": "nurse",
+      "canonicalName": "Nurse",
+      "generationIntroduced": 5,
+      "isMainSeries": false,
+      "shortEffect": "No English effect text available.",
+      "effect": "No English effect text available.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/10024/"
+    },
+    {
+      "id": 10025,
+      "slug": "melee",
+      "canonicalName": "Melee",
+      "generationIntroduced": 5,
+      "isMainSeries": false,
+      "shortEffect": "No English effect text available.",
+      "effect": "No English effect text available.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/10025/"
+    },
+    {
+      "id": 10026,
+      "slug": "sponge",
+      "canonicalName": "Sponge",
+      "generationIntroduced": 5,
+      "isMainSeries": false,
+      "shortEffect": "No English effect text available.",
+      "effect": "No English effect text available.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/10026/"
+    },
+    {
+      "id": 10027,
+      "slug": "bodyguard",
+      "canonicalName": "Bodyguard",
+      "generationIntroduced": 5,
+      "isMainSeries": false,
+      "shortEffect": "No English effect text available.",
+      "effect": "No English effect text available.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/10027/"
+    },
+    {
+      "id": 10028,
+      "slug": "hero",
+      "canonicalName": "Hero",
+      "generationIntroduced": 5,
+      "isMainSeries": false,
+      "shortEffect": "No English effect text available.",
+      "effect": "No English effect text available.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/10028/"
+    },
+    {
+      "id": 10029,
+      "slug": "last-bastion",
+      "canonicalName": "Last Bastion",
+      "generationIntroduced": 5,
+      "isMainSeries": false,
+      "shortEffect": "No English effect text available.",
+      "effect": "No English effect text available.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/10029/"
+    },
+    {
+      "id": 10030,
+      "slug": "stealth",
+      "canonicalName": "Stealth",
+      "generationIntroduced": 5,
+      "isMainSeries": false,
+      "shortEffect": "No English effect text available.",
+      "effect": "No English effect text available.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/10030/"
+    },
+    {
+      "id": 10031,
+      "slug": "vanguard",
+      "canonicalName": "Vanguard",
+      "generationIntroduced": 5,
+      "isMainSeries": false,
+      "shortEffect": "No English effect text available.",
+      "effect": "No English effect text available.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/10031/"
+    },
+    {
+      "id": 10032,
+      "slug": "nomad",
+      "canonicalName": "Nomad",
+      "generationIntroduced": 5,
+      "isMainSeries": false,
+      "shortEffect": "No English effect text available.",
+      "effect": "No English effect text available.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/10032/"
+    },
+    {
+      "id": 10033,
+      "slug": "sequence",
+      "canonicalName": "Sequence",
+      "generationIntroduced": 5,
+      "isMainSeries": false,
+      "shortEffect": "No English effect text available.",
+      "effect": "No English effect text available.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/10033/"
+    },
+    {
+      "id": 10034,
+      "slug": "grass-cloak",
+      "canonicalName": "Grass Cloak",
+      "generationIntroduced": 5,
+      "isMainSeries": false,
+      "shortEffect": "No English effect text available.",
+      "effect": "No English effect text available.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/10034/"
+    },
+    {
+      "id": 10035,
+      "slug": "celebrate",
+      "canonicalName": "Celebrate",
+      "generationIntroduced": 5,
+      "isMainSeries": false,
+      "shortEffect": "No English effect text available.",
+      "effect": "No English effect text available.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/10035/"
+    },
+    {
+      "id": 10036,
+      "slug": "lullaby",
+      "canonicalName": "Lullaby",
+      "generationIntroduced": 5,
+      "isMainSeries": false,
+      "shortEffect": "No English effect text available.",
+      "effect": "No English effect text available.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/10036/"
+    },
+    {
+      "id": 10037,
+      "slug": "calming",
+      "canonicalName": "Calming",
+      "generationIntroduced": 5,
+      "isMainSeries": false,
+      "shortEffect": "No English effect text available.",
+      "effect": "No English effect text available.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/10037/"
+    },
+    {
+      "id": 10038,
+      "slug": "daze",
+      "canonicalName": "Daze",
+      "generationIntroduced": 5,
+      "isMainSeries": false,
+      "shortEffect": "No English effect text available.",
+      "effect": "No English effect text available.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/10038/"
+    },
+    {
+      "id": 10039,
+      "slug": "frighten",
+      "canonicalName": "Frighten",
+      "generationIntroduced": 5,
+      "isMainSeries": false,
+      "shortEffect": "No English effect text available.",
+      "effect": "No English effect text available.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/10039/"
+    },
+    {
+      "id": 10040,
+      "slug": "interference",
+      "canonicalName": "Interference",
+      "generationIntroduced": 5,
+      "isMainSeries": false,
+      "shortEffect": "No English effect text available.",
+      "effect": "No English effect text available.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/10040/"
+    },
+    {
+      "id": 10041,
+      "slug": "mood-maker",
+      "canonicalName": "Mood Maker",
+      "generationIntroduced": 5,
+      "isMainSeries": false,
+      "shortEffect": "No English effect text available.",
+      "effect": "No English effect text available.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/10041/"
+    },
+    {
+      "id": 10042,
+      "slug": "confidence",
+      "canonicalName": "Confidence",
+      "generationIntroduced": 5,
+      "isMainSeries": false,
+      "shortEffect": "No English effect text available.",
+      "effect": "No English effect text available.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/10042/"
+    },
+    {
+      "id": 10043,
+      "slug": "fortune",
+      "canonicalName": "Fortune",
+      "generationIntroduced": 5,
+      "isMainSeries": false,
+      "shortEffect": "No English effect text available.",
+      "effect": "No English effect text available.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/10043/"
+    },
+    {
+      "id": 10044,
+      "slug": "bonanza",
+      "canonicalName": "Bonanza",
+      "generationIntroduced": 5,
+      "isMainSeries": false,
+      "shortEffect": "No English effect text available.",
+      "effect": "No English effect text available.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/10044/"
+    },
+    {
+      "id": 10045,
+      "slug": "explode",
+      "canonicalName": "Explode",
+      "generationIntroduced": 5,
+      "isMainSeries": false,
+      "shortEffect": "No English effect text available.",
+      "effect": "No English effect text available.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/10045/"
+    },
+    {
+      "id": 10046,
+      "slug": "omnipotent",
+      "canonicalName": "Omnipotent",
+      "generationIntroduced": 5,
+      "isMainSeries": false,
+      "shortEffect": "No English effect text available.",
+      "effect": "No English effect text available.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/10046/"
+    },
+    {
+      "id": 10047,
+      "slug": "share",
+      "canonicalName": "Share",
+      "generationIntroduced": 5,
+      "isMainSeries": false,
+      "shortEffect": "No English effect text available.",
+      "effect": "No English effect text available.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/10047/"
+    },
+    {
+      "id": 10048,
+      "slug": "black-hole",
+      "canonicalName": "Black Hole",
+      "generationIntroduced": 5,
+      "isMainSeries": false,
+      "shortEffect": "No English effect text available.",
+      "effect": "No English effect text available.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/10048/"
+    },
+    {
+      "id": 10049,
+      "slug": "shadow-dash",
+      "canonicalName": "Shadow Dash",
+      "generationIntroduced": 5,
+      "isMainSeries": false,
+      "shortEffect": "No English effect text available.",
+      "effect": "No English effect text available.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/10049/"
+    },
+    {
+      "id": 10050,
+      "slug": "sprint",
+      "canonicalName": "Sprint",
+      "generationIntroduced": 5,
+      "isMainSeries": false,
+      "shortEffect": "No English effect text available.",
+      "effect": "No English effect text available.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/10050/"
+    },
+    {
+      "id": 10051,
+      "slug": "disgust",
+      "canonicalName": "Disgust",
+      "generationIntroduced": 5,
+      "isMainSeries": false,
+      "shortEffect": "No English effect text available.",
+      "effect": "No English effect text available.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/10051/"
+    },
+    {
+      "id": 10052,
+      "slug": "high-rise",
+      "canonicalName": "High Rise",
+      "generationIntroduced": 5,
+      "isMainSeries": false,
+      "shortEffect": "No English effect text available.",
+      "effect": "No English effect text available.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/10052/"
+    },
+    {
+      "id": 10053,
+      "slug": "climber",
+      "canonicalName": "Climber",
+      "generationIntroduced": 5,
+      "isMainSeries": false,
+      "shortEffect": "No English effect text available.",
+      "effect": "No English effect text available.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/10053/"
+    },
+    {
+      "id": 10054,
+      "slug": "flame-boost",
+      "canonicalName": "Flame Boost",
+      "generationIntroduced": 5,
+      "isMainSeries": false,
+      "shortEffect": "No English effect text available.",
+      "effect": "No English effect text available.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/10054/"
+    },
+    {
+      "id": 10055,
+      "slug": "aqua-boost",
+      "canonicalName": "Aqua Boost",
+      "generationIntroduced": 5,
+      "isMainSeries": false,
+      "shortEffect": "No English effect text available.",
+      "effect": "No English effect text available.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/10055/"
+    },
+    {
+      "id": 10056,
+      "slug": "run-up",
+      "canonicalName": "Run Up",
+      "generationIntroduced": 5,
+      "isMainSeries": false,
+      "shortEffect": "No English effect text available.",
+      "effect": "No English effect text available.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/10056/"
+    },
+    {
+      "id": 10057,
+      "slug": "conqueror",
+      "canonicalName": "Conqueror",
+      "generationIntroduced": 5,
+      "isMainSeries": false,
+      "shortEffect": "No English effect text available.",
+      "effect": "No English effect text available.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/10057/"
+    },
+    {
+      "id": 10058,
+      "slug": "shackle",
+      "canonicalName": "Shackle",
+      "generationIntroduced": 5,
+      "isMainSeries": false,
+      "shortEffect": "No English effect text available.",
+      "effect": "No English effect text available.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/10058/"
+    },
+    {
+      "id": 10059,
+      "slug": "decoy",
+      "canonicalName": "Decoy",
+      "generationIntroduced": 5,
+      "isMainSeries": false,
+      "shortEffect": "No English effect text available.",
+      "effect": "No English effect text available.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/10059/"
+    },
+    {
+      "id": 10060,
+      "slug": "shield",
+      "canonicalName": "Shield",
+      "generationIntroduced": 5,
+      "isMainSeries": false,
+      "shortEffect": "No English effect text available.",
+      "effect": "No English effect text available.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/10060/"
+    }
+  ]
+}

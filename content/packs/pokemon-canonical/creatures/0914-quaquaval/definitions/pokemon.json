@@ -1,0 +1,97 @@
+{
+  "schemaVersion": 2,
+  "id": "pokemon:0914-quaquaval",
+  "nationalDexNumber": 914,
+  "canonicalName": "Quaquaval",
+  "slug": "quaquaval",
+  "genus": "Dancer Pokémon",
+  "generationIntroduced": 9,
+  "generationSource": "generation-ix",
+  "types": [
+    "water",
+    "fighting"
+  ],
+  "physical": {
+    "heightDecimeters": 18,
+    "weightHectograms": 619
+  },
+  "baseExperience": 265,
+  "baseStats": {
+    "hp": {
+      "value": 85,
+      "effortYield": 0
+    },
+    "attack": {
+      "value": 120,
+      "effortYield": 3
+    },
+    "defense": {
+      "value": 80,
+      "effortYield": 0
+    },
+    "special-attack": {
+      "value": 85,
+      "effortYield": 0
+    },
+    "special-defense": {
+      "value": 75,
+      "effortYield": 0
+    },
+    "speed": {
+      "value": 85,
+      "effortYield": 0
+    }
+  },
+  "biologyAndTraining": {
+    "color": "blue",
+    "shape": "upright",
+    "habitat": null,
+    "genderRate": 1,
+    "captureRate": 45,
+    "baseHappiness": 50,
+    "hatchCounter": 20,
+    "hasGenderDifferences": false,
+    "growthRate": "medium-slow",
+    "eggGroups": [
+      "flying",
+      "water1"
+    ],
+    "isBaby": false,
+    "isLegendary": false,
+    "isMythical": false
+  },
+  "abilities": [
+    {
+      "slug": "torrent",
+      "slot": 1,
+      "isHidden": false
+    },
+    {
+      "slug": "moxie",
+      "slot": 3,
+      "isHidden": true
+    }
+  ],
+  "evolution": {
+    "chainId": 480,
+    "evolvesFromSpeciesId": 913,
+    "evolvesTo": []
+  },
+  "source": {
+    "retrievedAt": "2026-07-23",
+    "sourceRevision": "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f",
+    "sourceUrls": [
+      "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
+      "https://github.com/PokeAPI/pokeapi/blob/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/LICENSE.md"
+    ],
+    "licenseStatus": "pending",
+    "requiredCredits": [
+      "PokéAPI contributors for the structured API data."
+    ],
+    "notes": [
+      "Structured data is sourced from PokéAPI under its BSD-3-Clause terms.",
+      "Pokémon names and character data remain subject to owner review and applicable trademark or copyright rights.",
+      "English source prose is preserved to avoid inventing translations of gameplay behavior."
+    ]
+  }
+}

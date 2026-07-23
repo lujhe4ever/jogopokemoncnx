@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 2,
+  "pokemonId": "pokemon:0427-buneary",
+  "abilities": [
+    {
+      "abilityId": 50,
+      "slot": 1,
+      "isHidden": false,
+      "slug": "run-away",
+      "canonicalName": "Run Away",
+      "shortEffect": "Ensures success fleeing from wild battles.",
+      "effect": "This Pokémon is always successful fleeing from wild battles, even if trapped by a move or ability.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/50/"
+    },
+    {
+      "abilityId": 103,
+      "slot": 2,
+      "isHidden": false,
+      "slug": "klutz",
+      "canonicalName": "Klutz",
+      "shortEffect": "Prevents the Pokémon from using its held item in battle.",
+      "effect": "In battle, this Pokémon cannot use its held item, nor will the item have any passive effect on the battle, positive or negative.  This Pokémon also cannot use Fling.\n\nThe Speed cut from the Iron Ball and the effort items (the Macho Brace, Power Weight, Power Bracer, Power Belt, Power Lens, Power Band, and Power Anklet) is unaffected.  Items that do not directly affect the battle, such as the Exp. Share, the Amulet Coin, or the Soothe Bell, work as usual.  All held items work as usual out of battle.\n\nOther moves that use the held item, such as Natural Gift and Switcheroo, work as usual.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/103/"
+    },
+    {
+      "abilityId": 7,
+      "slot": 3,
+      "isHidden": true,
+      "slug": "limber",
+      "canonicalName": "Limber",
+      "shortEffect": "Prevents paralysis.",
+      "effect": "This Pokémon cannot be paralyzed.\n\nIf a Pokémon is paralyzed and acquires this ability, its paralysis is healed; this includes when regaining a lost ability upon leaving battle.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/7/"
+    }
+  ],
+  "source": {
+    "retrievedAt": "2026-07-23",
+    "sourceRevision": "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f",
+    "sourceUrls": [
+      "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
+      "https://github.com/PokeAPI/pokeapi/blob/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/LICENSE.md"
+    ],
+    "licenseStatus": "pending",
+    "requiredCredits": [
+      "PokéAPI contributors for the structured API data."
+    ],
+    "notes": [
+      "Structured data is sourced from PokéAPI under its BSD-3-Clause terms.",
+      "Pokémon names and character data remain subject to owner review and applicable trademark or copyright rights.",
+      "English source prose is preserved to avoid inventing translations of gameplay behavior."
+    ]
+  }
+}

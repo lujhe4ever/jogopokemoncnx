@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 2,
+  "id": "pokemon:0980-clodsire",
+  "nationalDexNumber": 980,
+  "canonicalName": "Clodsire",
+  "slug": "clodsire",
+  "genus": "Spiny Fish Pokémon",
+  "generationIntroduced": 9,
+  "generationSource": "generation-ix",
+  "types": [
+    "poison",
+    "ground"
+  ],
+  "physical": {
+    "heightDecimeters": 18,
+    "weightHectograms": 2230
+  },
+  "baseExperience": 151,
+  "baseStats": {
+    "hp": {
+      "value": 130,
+      "effortYield": 2
+    },
+    "attack": {
+      "value": 75,
+      "effortYield": 0
+    },
+    "defense": {
+      "value": 60,
+      "effortYield": 0
+    },
+    "special-attack": {
+      "value": 45,
+      "effortYield": 0
+    },
+    "special-defense": {
+      "value": 100,
+      "effortYield": 0
+    },
+    "speed": {
+      "value": 20,
+      "effortYield": 0
+    }
+  },
+  "biologyAndTraining": {
+    "color": "brown",
+    "shape": "quadruped",
+    "habitat": null,
+    "genderRate": 4,
+    "captureRate": 90,
+    "baseHappiness": 50,
+    "hatchCounter": 20,
+    "hasGenderDifferences": false,
+    "growthRate": "medium",
+    "eggGroups": [
+      "water1",
+      "ground"
+    ],
+    "isBaby": false,
+    "isLegendary": false,
+    "isMythical": false
+  },
+  "abilities": [
+    {
+      "slug": "poison-point",
+      "slot": 1,
+      "isHidden": false
+    },
+    {
+      "slug": "water-absorb",
+      "slot": 2,
+      "isHidden": false
+    },
+    {
+      "slug": "unaware",
+      "slot": 3,
+      "isHidden": true
+    }
+  ],
+  "evolution": {
+    "chainId": 96,
+    "evolvesFromSpeciesId": 194,
+    "evolvesTo": []
+  },
+  "source": {
+    "retrievedAt": "2026-07-23",
+    "sourceRevision": "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f",
+    "sourceUrls": [
+      "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
+      "https://github.com/PokeAPI/pokeapi/blob/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/LICENSE.md"
+    ],
+    "licenseStatus": "pending",
+    "requiredCredits": [
+      "PokéAPI contributors for the structured API data."
+    ],
+    "notes": [
+      "Structured data is sourced from PokéAPI under its BSD-3-Clause terms.",
+      "Pokémon names and character data remain subject to owner review and applicable trademark or copyright rights.",
+      "English source prose is preserved to avoid inventing translations of gameplay behavior."
+    ]
+  }
+}

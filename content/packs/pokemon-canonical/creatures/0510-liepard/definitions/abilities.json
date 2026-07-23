@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 2,
+  "pokemonId": "pokemon:0510-liepard",
+  "abilities": [
+    {
+      "abilityId": 7,
+      "slot": 1,
+      "isHidden": false,
+      "slug": "limber",
+      "canonicalName": "Limber",
+      "shortEffect": "Prevents paralysis.",
+      "effect": "This Pokémon cannot be paralyzed.\n\nIf a Pokémon is paralyzed and acquires this ability, its paralysis is healed; this includes when regaining a lost ability upon leaving battle.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/7/"
+    },
+    {
+      "abilityId": 84,
+      "slot": 2,
+      "isHidden": false,
+      "slug": "unburden",
+      "canonicalName": "Unburden",
+      "shortEffect": "Doubles Speed upon using or losing a held item.",
+      "effect": "When this Pokémon uses or loses its held item, its Speed is doubled.  If it gains another item or leaves battle, this bonus is lost.\n\nThis includes when the Pokémon drops its item because of Knock Off.  This bonus does not count as a stat modifier.  There is no notification when this ability takes effect.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/84/"
+    },
+    {
+      "abilityId": 158,
+      "slot": 3,
+      "isHidden": true,
+      "slug": "prankster",
+      "canonicalName": "Prankster",
+      "shortEffect": "Raises non-damaging moves' priority by one stage.",
+      "effect": "This Pokémon's non-damaging moves have their priority increased by one stage.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/158/"
+    }
+  ],
+  "source": {
+    "retrievedAt": "2026-07-23",
+    "sourceRevision": "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f",
+    "sourceUrls": [
+      "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
+      "https://github.com/PokeAPI/pokeapi/blob/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/LICENSE.md"
+    ],
+    "licenseStatus": "pending",
+    "requiredCredits": [
+      "PokéAPI contributors for the structured API data."
+    ],
+    "notes": [
+      "Structured data is sourced from PokéAPI under its BSD-3-Clause terms.",
+      "Pokémon names and character data remain subject to owner review and applicable trademark or copyright rights.",
+      "English source prose is preserved to avoid inventing translations of gameplay behavior."
+    ]
+  }
+}

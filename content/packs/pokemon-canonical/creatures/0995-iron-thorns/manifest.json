@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 2,
+  "id": "pokemon:0995-iron-thorns",
+  "nationalDexNumber": 995,
+  "canonicalName": "Iron Thorns",
+  "slug": "iron-thorns",
+  "generationIntroduced": 9,
+  "types": [
+    "rock",
+    "electric"
+  ],
+  "assetStatus": "pending",
+  "definitionStatus": "pending",
+  "licenseStatus": "pending",
+  "sourceUrls": [
+    "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
+    "https://github.com/PokeAPI/pokeapi/blob/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/LICENSE.md"
+  ],
+  "requiredCredits": [
+    "PokéAPI contributors for the structured API data."
+  ],
+  "notes": [
+    "Definitions are catalogued for review and are not coupled to engine IDs.",
+    "No sprite, animation, or sound binary in this folder is tracked by Git.",
+    "A real front sprite was verified in the ignored local quarantine at .private/pokemon-canonical/0995-iron-thorns/sprites/0995-iron-thorns--pokeapi-default--front--normal.png."
+  ]
+}

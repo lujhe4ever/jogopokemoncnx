@@ -1,25 +1,27 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "id": "pokemon:0001-bulbasaur",
   "nationalDexNumber": 1,
   "canonicalName": "Bulbasaur",
   "slug": "bulbasaur",
   "generationIntroduced": 1,
-  "types": ["grass", "poison"],
+  "types": [
+    "grass",
+    "poison"
+  ],
   "assetStatus": "pending",
   "definitionStatus": "pending",
   "licenseStatus": "pending",
   "sourceUrls": [
-    "https://pokeapi.co/api/v2/pokemon/1/",
-    "https://pokeapi.co/api/v2/pokemon-species/1/",
-    "https://pokeapi.co/",
-    "https://github.com/PokeAPI/pokeapi/blob/master/LICENSE.md"
+    "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
+    "https://github.com/PokeAPI/pokeapi/blob/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/LICENSE.md"
   ],
   "requiredCredits": [
-    "PokeAPI contributors for structured API/data where applicable."
+    "PokéAPI contributors for the structured API data."
   ],
   "notes": [
-    "Pokemon names, character names, and related franchise data require owner review before publication or public use.",
-    "This pilot records metadata only and does not import sprites, sounds, animations, logos, or other media files."
+    "Definitions are catalogued for review and are not coupled to engine IDs.",
+    "No sprite, animation, or sound binary in this folder is tracked by Git.",
+    "A real front sprite was verified in the ignored local quarantine at .private/pokemon-canonical/0001-bulbasaur/sprites/0001-bulbasaur--pokeapi-default--front--normal.png."
   ]
 }

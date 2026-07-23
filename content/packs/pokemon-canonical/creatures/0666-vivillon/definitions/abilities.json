@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 2,
+  "pokemonId": "pokemon:0666-vivillon",
+  "abilities": [
+    {
+      "abilityId": 19,
+      "slot": 1,
+      "isHidden": false,
+      "slug": "shield-dust",
+      "canonicalName": "Shield Dust",
+      "shortEffect": "Protects against incoming moves' extra effects.",
+      "effect": "This Pokémon is immune to the extra effects of moves used against it.\n\nAn extra effect is a move's chance, listed as an \"effect chance\", to inflict a status ailment, cause a stat change, or make the target flinch in addition to the move's main effect.  For example, Thunder Shock's paralysis is an extra effect, but Thunder Wave's is not, nor are Knock Off's item removal and Air Cutter's increased critical hit rate.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/19/"
+    },
+    {
+      "abilityId": 14,
+      "slot": 2,
+      "isHidden": false,
+      "slug": "compound-eyes",
+      "canonicalName": "Compound Eyes",
+      "shortEffect": "Increases moves' accuracy to 1.3×.",
+      "effect": "This Pokémon's moves have 1.3× their accuracy.\n\nThis ability has no effect on the one-hit KO moves (Fissure, Guillotine, Horn Drill, and Sheer Cold).\n\nOverworld: If the first Pokémon in the party has this ability, the chance of a wild Pokémon holding a particular item is raised from 50%, 5%, or 1% to 60%, 20%, or 5%, respectively.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/14/"
+    },
+    {
+      "abilityId": 132,
+      "slot": 3,
+      "isHidden": true,
+      "slug": "friend-guard",
+      "canonicalName": "Friend Guard",
+      "shortEffect": "Decreases all direct damage taken by friendly Pokémon to 0.75×.",
+      "effect": "All friendly Pokémon take 0.75× as much direct damage from moves while this Pokémon is in battle.\n\nThis effect stacks if multiple allied Pokémon have it.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/132/"
+    }
+  ],
+  "source": {
+    "retrievedAt": "2026-07-23",
+    "sourceRevision": "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f",
+    "sourceUrls": [
+      "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
+      "https://github.com/PokeAPI/pokeapi/blob/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/LICENSE.md"
+    ],
+    "licenseStatus": "pending",
+    "requiredCredits": [
+      "PokéAPI contributors for the structured API data."
+    ],
+    "notes": [
+      "Structured data is sourced from PokéAPI under its BSD-3-Clause terms.",
+      "Pokémon names and character data remain subject to owner review and applicable trademark or copyright rights.",
+      "English source prose is preserved to avoid inventing translations of gameplay behavior."
+    ]
+  }
+}

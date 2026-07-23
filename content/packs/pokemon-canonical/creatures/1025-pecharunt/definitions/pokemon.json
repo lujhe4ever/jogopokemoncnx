@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 2,
+  "id": "pokemon:1025-pecharunt",
+  "nationalDexNumber": 1025,
+  "canonicalName": "Pecharunt",
+  "slug": "pecharunt",
+  "genus": "Subjugation Pokémon",
+  "generationIntroduced": 9,
+  "generationSource": "generation-ix",
+  "types": [
+    "poison",
+    "ghost"
+  ],
+  "physical": {
+    "heightDecimeters": 3,
+    "weightHectograms": 3
+  },
+  "baseExperience": 300,
+  "baseStats": {
+    "hp": {
+      "value": 88,
+      "effortYield": 0
+    },
+    "attack": {
+      "value": 88,
+      "effortYield": 0
+    },
+    "defense": {
+      "value": 160,
+      "effortYield": 3
+    },
+    "special-attack": {
+      "value": 88,
+      "effortYield": 0
+    },
+    "special-defense": {
+      "value": 88,
+      "effortYield": 0
+    },
+    "speed": {
+      "value": 88,
+      "effortYield": 0
+    }
+  },
+  "biologyAndTraining": {
+    "color": "purple",
+    "shape": "ball",
+    "habitat": null,
+    "genderRate": -1,
+    "captureRate": 3,
+    "baseHappiness": 0,
+    "hatchCounter": 20,
+    "hasGenderDifferences": false,
+    "growthRate": "slow",
+    "eggGroups": [
+      "no-eggs"
+    ],
+    "isBaby": false,
+    "isLegendary": false,
+    "isMythical": true
+  },
+  "abilities": [
+    {
+      "slug": "poison-puppeteer",
+      "slot": 1,
+      "isHidden": false
+    }
+  ],
+  "evolution": {
+    "chainId": 549,
+    "evolvesFromSpeciesId": null,
+    "evolvesTo": []
+  },
+  "source": {
+    "retrievedAt": "2026-07-23",
+    "sourceRevision": "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f",
+    "sourceUrls": [
+      "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
+      "https://github.com/PokeAPI/pokeapi/blob/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/LICENSE.md"
+    ],
+    "licenseStatus": "pending",
+    "requiredCredits": [
+      "PokéAPI contributors for the structured API data."
+    ],
+    "notes": [
+      "Structured data is sourced from PokéAPI under its BSD-3-Clause terms.",
+      "Pokémon names and character data remain subject to owner review and applicable trademark or copyright rights.",
+      "English source prose is preserved to avoid inventing translations of gameplay behavior."
+    ]
+  }
+}

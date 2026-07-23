@@ -1,0 +1,95 @@
+{
+  "schemaVersion": 2,
+  "id": "pokemon:0968-orthworm",
+  "nationalDexNumber": 968,
+  "canonicalName": "Orthworm",
+  "slug": "orthworm",
+  "genus": "Earthworm Pokémon",
+  "generationIntroduced": 9,
+  "generationSource": "generation-ix",
+  "types": [
+    "steel"
+  ],
+  "physical": {
+    "heightDecimeters": 25,
+    "weightHectograms": 3100
+  },
+  "baseExperience": 240,
+  "baseStats": {
+    "hp": {
+      "value": 70,
+      "effortYield": 0
+    },
+    "attack": {
+      "value": 85,
+      "effortYield": 0
+    },
+    "defense": {
+      "value": 145,
+      "effortYield": 2
+    },
+    "special-attack": {
+      "value": 60,
+      "effortYield": 0
+    },
+    "special-defense": {
+      "value": 55,
+      "effortYield": 0
+    },
+    "speed": {
+      "value": 65,
+      "effortYield": 0
+    }
+  },
+  "biologyAndTraining": {
+    "color": "pink",
+    "shape": "squiggle",
+    "habitat": null,
+    "genderRate": 4,
+    "captureRate": 25,
+    "baseHappiness": 50,
+    "hatchCounter": 35,
+    "hasGenderDifferences": false,
+    "growthRate": "slow",
+    "eggGroups": [
+      "ground"
+    ],
+    "isBaby": false,
+    "isLegendary": false,
+    "isMythical": false
+  },
+  "abilities": [
+    {
+      "slug": "earth-eater",
+      "slot": 1,
+      "isHidden": false
+    },
+    {
+      "slug": "sand-veil",
+      "slot": 3,
+      "isHidden": true
+    }
+  ],
+  "evolution": {
+    "chainId": 507,
+    "evolvesFromSpeciesId": null,
+    "evolvesTo": []
+  },
+  "source": {
+    "retrievedAt": "2026-07-23",
+    "sourceRevision": "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f",
+    "sourceUrls": [
+      "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
+      "https://github.com/PokeAPI/pokeapi/blob/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/LICENSE.md"
+    ],
+    "licenseStatus": "pending",
+    "requiredCredits": [
+      "PokéAPI contributors for the structured API data."
+    ],
+    "notes": [
+      "Structured data is sourced from PokéAPI under its BSD-3-Clause terms.",
+      "Pokémon names and character data remain subject to owner review and applicable trademark or copyright rights.",
+      "English source prose is preserved to avoid inventing translations of gameplay behavior."
+    ]
+  }
+}

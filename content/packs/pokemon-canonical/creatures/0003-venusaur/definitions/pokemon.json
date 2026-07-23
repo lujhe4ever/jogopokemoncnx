@@ -1,40 +1,64 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "id": "pokemon:0003-venusaur",
   "nationalDexNumber": 3,
   "canonicalName": "Venusaur",
   "slug": "venusaur",
+  "genus": "Seed Pokémon",
   "generationIntroduced": 1,
   "generationSource": "generation-i",
-  "types": ["grass", "poison"],
-  "heightDecimeters": 20,
-  "weightHectograms": 1000,
+  "types": [
+    "grass",
+    "poison"
+  ],
+  "physical": {
+    "heightDecimeters": 20,
+    "weightHectograms": 1000
+  },
   "baseExperience": 236,
   "baseStats": {
     "hp": {
-      "base": 80,
-      "effort": 0
+      "value": 80,
+      "effortYield": 0
     },
     "attack": {
-      "base": 82,
-      "effort": 0
+      "value": 82,
+      "effortYield": 0
     },
     "defense": {
-      "base": 83,
-      "effort": 0
+      "value": 83,
+      "effortYield": 0
     },
     "special-attack": {
-      "base": 100,
-      "effort": 2
+      "value": 100,
+      "effortYield": 2
     },
     "special-defense": {
-      "base": 100,
-      "effort": 1
+      "value": 100,
+      "effortYield": 1
     },
     "speed": {
-      "base": 80,
-      "effort": 0
+      "value": 80,
+      "effortYield": 0
     }
+  },
+  "biologyAndTraining": {
+    "color": "green",
+    "shape": "quadruped",
+    "habitat": "grassland",
+    "genderRate": 1,
+    "captureRate": 45,
+    "baseHappiness": 70,
+    "hatchCounter": 20,
+    "hasGenderDifferences": true,
+    "growthRate": "medium-slow",
+    "eggGroups": [
+      "monster",
+      "plant"
+    ],
+    "isBaby": false,
+    "isLegendary": false,
+    "isMythical": false
   },
   "abilities": [
     {
@@ -48,22 +72,26 @@
       "isHidden": true
     }
   ],
-  "evolution": null,
+  "evolution": {
+    "chainId": 1,
+    "evolvesFromSpeciesId": 2,
+    "evolvesTo": []
+  },
   "source": {
     "retrievedAt": "2026-07-23",
+    "sourceRevision": "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f",
     "sourceUrls": [
-      "https://pokeapi.co/api/v2/pokemon/3/",
-      "https://pokeapi.co/api/v2/pokemon-species/3/",
-      "https://pokeapi.co/",
-      "https://github.com/PokeAPI/pokeapi/blob/master/LICENSE.md"
+      "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
+      "https://github.com/PokeAPI/pokeapi/blob/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/LICENSE.md"
     ],
     "licenseStatus": "pending",
     "requiredCredits": [
-      "PokeAPI contributors for structured API/data where applicable."
+      "PokéAPI contributors for the structured API data."
     ],
     "notes": [
-      "Pokemon names, character names, and related franchise data require owner review before publication or public use.",
-      "This pilot records metadata only and does not import sprites, sounds, animations, logos, or other media files."
+      "Structured data is sourced from PokéAPI under its BSD-3-Clause terms.",
+      "Pokémon names and character data remain subject to owner review and applicable trademark or copyright rights.",
+      "English source prose is preserved to avoid inventing translations of gameplay behavior."
     ]
   }
 }

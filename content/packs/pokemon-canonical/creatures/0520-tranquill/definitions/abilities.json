@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 2,
+  "pokemonId": "pokemon:0520-tranquill",
+  "abilities": [
+    {
+      "abilityId": 145,
+      "slot": 1,
+      "isHidden": false,
+      "slug": "big-pecks",
+      "canonicalName": "Big Pecks",
+      "shortEffect": "Protects against Defense drops.",
+      "effect": "This Pokémon's Defense cannot be lowered by other Pokémon.\n\nThis Pokémon can still be passed negative Defense modifiers through Heart Swap or Guard Swap.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/145/"
+    },
+    {
+      "abilityId": 105,
+      "slot": 2,
+      "isHidden": false,
+      "slug": "super-luck",
+      "canonicalName": "Super Luck",
+      "shortEffect": "Raises moves' critical hit rates one stage.",
+      "effect": "This Pokémon's moves have critical hit rates one stage higher than normal.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/105/"
+    },
+    {
+      "abilityId": 79,
+      "slot": 3,
+      "isHidden": true,
+      "slug": "rivalry",
+      "canonicalName": "Rivalry",
+      "shortEffect": "Increases damage inflicted to 1.25× against Pokémon of the same gender, but decreases damage to 0.75× against the opposite gender.",
+      "effect": "This Pokémon inflicts 1.25× as much regular damage against Pokémon of the same gender and 0.75× as much regular damage against Pokémon of the opposite gender.\n\nIf either Pokémon is genderless, damage is unaffected.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/79/"
+    }
+  ],
+  "source": {
+    "retrievedAt": "2026-07-23",
+    "sourceRevision": "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f",
+    "sourceUrls": [
+      "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
+      "https://github.com/PokeAPI/pokeapi/blob/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/LICENSE.md"
+    ],
+    "licenseStatus": "pending",
+    "requiredCredits": [
+      "PokéAPI contributors for the structured API data."
+    ],
+    "notes": [
+      "Structured data is sourced from PokéAPI under its BSD-3-Clause terms.",
+      "Pokémon names and character data remain subject to owner review and applicable trademark or copyright rights.",
+      "English source prose is preserved to avoid inventing translations of gameplay behavior."
+    ]
+  }
+}

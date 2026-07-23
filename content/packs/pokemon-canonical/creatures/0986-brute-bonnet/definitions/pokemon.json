@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 2,
+  "id": "pokemon:0986-brute-bonnet",
+  "nationalDexNumber": 986,
+  "canonicalName": "Brute Bonnet",
+  "slug": "brute-bonnet",
+  "genus": "Paradox Pokémon",
+  "generationIntroduced": 9,
+  "generationSource": "generation-ix",
+  "types": [
+    "grass",
+    "dark"
+  ],
+  "physical": {
+    "heightDecimeters": 12,
+    "weightHectograms": 210
+  },
+  "baseExperience": 285,
+  "baseStats": {
+    "hp": {
+      "value": 111,
+      "effortYield": 0
+    },
+    "attack": {
+      "value": 127,
+      "effortYield": 3
+    },
+    "defense": {
+      "value": 99,
+      "effortYield": 0
+    },
+    "special-attack": {
+      "value": 79,
+      "effortYield": 0
+    },
+    "special-defense": {
+      "value": 99,
+      "effortYield": 0
+    },
+    "speed": {
+      "value": 55,
+      "effortYield": 0
+    }
+  },
+  "biologyAndTraining": {
+    "color": "gray",
+    "shape": "quadruped",
+    "habitat": null,
+    "genderRate": -1,
+    "captureRate": 50,
+    "baseHappiness": 0,
+    "hatchCounter": 50,
+    "hasGenderDifferences": false,
+    "growthRate": "slow",
+    "eggGroups": [
+      "no-eggs"
+    ],
+    "isBaby": false,
+    "isLegendary": false,
+    "isMythical": false
+  },
+  "abilities": [
+    {
+      "slug": "protosynthesis",
+      "slot": 1,
+      "isHidden": false
+    }
+  ],
+  "evolution": {
+    "chainId": 517,
+    "evolvesFromSpeciesId": null,
+    "evolvesTo": []
+  },
+  "source": {
+    "retrievedAt": "2026-07-23",
+    "sourceRevision": "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f",
+    "sourceUrls": [
+      "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
+      "https://github.com/PokeAPI/pokeapi/blob/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/LICENSE.md"
+    ],
+    "licenseStatus": "pending",
+    "requiredCredits": [
+      "PokéAPI contributors for the structured API data."
+    ],
+    "notes": [
+      "Structured data is sourced from PokéAPI under its BSD-3-Clause terms.",
+      "Pokémon names and character data remain subject to owner review and applicable trademark or copyright rights.",
+      "English source prose is preserved to avoid inventing translations of gameplay behavior."
+    ]
+  }
+}

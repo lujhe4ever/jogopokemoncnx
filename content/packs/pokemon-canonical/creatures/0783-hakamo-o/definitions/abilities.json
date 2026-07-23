@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 2,
+  "pokemonId": "pokemon:0783-hakamo-o",
+  "abilities": [
+    {
+      "abilityId": 171,
+      "slot": 1,
+      "isHidden": false,
+      "slug": "bulletproof",
+      "canonicalName": "Bulletproof",
+      "shortEffect": "Protects against bullet, ball, and bomb-based moves.",
+      "effect": "Protects against bullet, ball, and bomb-based moves.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/171/"
+    },
+    {
+      "abilityId": 43,
+      "slot": 2,
+      "isHidden": false,
+      "slug": "soundproof",
+      "canonicalName": "Soundproof",
+      "shortEffect": "Protects against sound-based moves.",
+      "effect": "This Pokémon is immune to moves flagged as being sound-based.\n\nHeal Bell is unaffected.  Uproar still prevents this Pokémon from sleeping.  This Pokémon can still receive a Perish Song counter through Baton Pass, and will retain a Perish Song counter if it acquires this ability after Perish Song is used.\n\nHowl, Roar of Time, Sonic Boom, and Yawn are not flagged as sound-based.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/43/"
+    },
+    {
+      "abilityId": 142,
+      "slot": 3,
+      "isHidden": true,
+      "slug": "overcoat",
+      "canonicalName": "Overcoat",
+      "shortEffect": "Protects against damage from weather.",
+      "effect": "This Pokémon does not take damage from weather.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/142/"
+    }
+  ],
+  "source": {
+    "retrievedAt": "2026-07-23",
+    "sourceRevision": "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f",
+    "sourceUrls": [
+      "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
+      "https://github.com/PokeAPI/pokeapi/blob/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/LICENSE.md"
+    ],
+    "licenseStatus": "pending",
+    "requiredCredits": [
+      "PokéAPI contributors for the structured API data."
+    ],
+    "notes": [
+      "Structured data is sourced from PokéAPI under its BSD-3-Clause terms.",
+      "Pokémon names and character data remain subject to owner review and applicable trademark or copyright rights.",
+      "English source prose is preserved to avoid inventing translations of gameplay behavior."
+    ]
+  }
+}

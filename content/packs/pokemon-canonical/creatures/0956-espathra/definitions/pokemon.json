@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 2,
+  "id": "pokemon:0956-espathra",
+  "nationalDexNumber": 956,
+  "canonicalName": "Espathra",
+  "slug": "espathra",
+  "genus": "Ostrich Pokémon",
+  "generationIntroduced": 9,
+  "generationSource": "generation-ix",
+  "types": [
+    "psychic"
+  ],
+  "physical": {
+    "heightDecimeters": 19,
+    "weightHectograms": 900
+  },
+  "baseExperience": 168,
+  "baseStats": {
+    "hp": {
+      "value": 95,
+      "effortYield": 0
+    },
+    "attack": {
+      "value": 60,
+      "effortYield": 0
+    },
+    "defense": {
+      "value": 60,
+      "effortYield": 0
+    },
+    "special-attack": {
+      "value": 101,
+      "effortYield": 0
+    },
+    "special-defense": {
+      "value": 60,
+      "effortYield": 0
+    },
+    "speed": {
+      "value": 105,
+      "effortYield": 2
+    }
+  },
+  "biologyAndTraining": {
+    "color": "yellow",
+    "shape": "upright",
+    "habitat": null,
+    "genderRate": 4,
+    "captureRate": 60,
+    "baseHappiness": 50,
+    "hatchCounter": 20,
+    "hasGenderDifferences": false,
+    "growthRate": "medium-slow",
+    "eggGroups": [
+      "flying"
+    ],
+    "isBaby": false,
+    "isLegendary": false,
+    "isMythical": false
+  },
+  "abilities": [
+    {
+      "slug": "opportunist",
+      "slot": 1,
+      "isHidden": false
+    },
+    {
+      "slug": "frisk",
+      "slot": 2,
+      "isHidden": false
+    },
+    {
+      "slug": "speed-boost",
+      "slot": 3,
+      "isHidden": true
+    }
+  ],
+  "evolution": {
+    "chainId": 500,
+    "evolvesFromSpeciesId": 955,
+    "evolvesTo": []
+  },
+  "source": {
+    "retrievedAt": "2026-07-23",
+    "sourceRevision": "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f",
+    "sourceUrls": [
+      "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
+      "https://github.com/PokeAPI/pokeapi/blob/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/LICENSE.md"
+    ],
+    "licenseStatus": "pending",
+    "requiredCredits": [
+      "PokéAPI contributors for the structured API data."
+    ],
+    "notes": [
+      "Structured data is sourced from PokéAPI under its BSD-3-Clause terms.",
+      "Pokémon names and character data remain subject to owner review and applicable trademark or copyright rights.",
+      "English source prose is preserved to avoid inventing translations of gameplay behavior."
+    ]
+  }
+}

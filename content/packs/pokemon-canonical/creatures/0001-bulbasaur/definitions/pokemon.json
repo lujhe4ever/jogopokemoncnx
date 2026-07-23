@@ -1,40 +1,64 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "id": "pokemon:0001-bulbasaur",
   "nationalDexNumber": 1,
   "canonicalName": "Bulbasaur",
   "slug": "bulbasaur",
+  "genus": "Seed Pokémon",
   "generationIntroduced": 1,
   "generationSource": "generation-i",
-  "types": ["grass", "poison"],
-  "heightDecimeters": 7,
-  "weightHectograms": 69,
+  "types": [
+    "grass",
+    "poison"
+  ],
+  "physical": {
+    "heightDecimeters": 7,
+    "weightHectograms": 69
+  },
   "baseExperience": 64,
   "baseStats": {
     "hp": {
-      "base": 45,
-      "effort": 0
+      "value": 45,
+      "effortYield": 0
     },
     "attack": {
-      "base": 49,
-      "effort": 0
+      "value": 49,
+      "effortYield": 0
     },
     "defense": {
-      "base": 49,
-      "effort": 0
+      "value": 49,
+      "effortYield": 0
     },
     "special-attack": {
-      "base": 65,
-      "effort": 1
+      "value": 65,
+      "effortYield": 1
     },
     "special-defense": {
-      "base": 65,
-      "effort": 0
+      "value": 65,
+      "effortYield": 0
     },
     "speed": {
-      "base": 45,
-      "effort": 0
+      "value": 45,
+      "effortYield": 0
     }
+  },
+  "biologyAndTraining": {
+    "color": "green",
+    "shape": "quadruped",
+    "habitat": "grassland",
+    "genderRate": 1,
+    "captureRate": 45,
+    "baseHappiness": 70,
+    "hatchCounter": 20,
+    "hasGenderDifferences": false,
+    "growthRate": "medium-slow",
+    "eggGroups": [
+      "monster",
+      "plant"
+    ],
+    "isBaby": false,
+    "isLegendary": false,
+    "isMythical": false
   },
   "abilities": [
     {
@@ -49,25 +73,57 @@
     }
   ],
   "evolution": {
-    "minimumLevel": 16,
-    "targetId": "pokemon:0002-ivysaur",
-    "targetSlug": "ivysaur"
+    "chainId": 1,
+    "evolvesFromSpeciesId": null,
+    "evolvesTo": [
+      {
+        "fromSpeciesId": 1,
+        "toSpeciesId": 2,
+        "trigger": "level-up",
+        "versionGroupId": 1,
+        "isDefault": true,
+        "triggerItem": null,
+        "minimumLevel": 16,
+        "genderId": null,
+        "locationId": null,
+        "heldItem": null,
+        "timeOfDay": null,
+        "knownMove": null,
+        "knownMoveType": null,
+        "minimumHappiness": null,
+        "minimumBeauty": null,
+        "minimumAffection": null,
+        "relativePhysicalStats": null,
+        "partySpeciesId": null,
+        "partyType": null,
+        "tradeSpeciesId": null,
+        "needsOverworldRain": false,
+        "turnUpsideDown": false,
+        "needsMultiplayer": false,
+        "nearSpecialRock": false,
+        "regionId": null,
+        "usedMove": null,
+        "minimumMoveCount": null,
+        "minimumSteps": null,
+        "minimumDamageTaken": null
+      }
+    ]
   },
   "source": {
     "retrievedAt": "2026-07-23",
+    "sourceRevision": "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f",
     "sourceUrls": [
-      "https://pokeapi.co/api/v2/pokemon/1/",
-      "https://pokeapi.co/api/v2/pokemon-species/1/",
-      "https://pokeapi.co/",
-      "https://github.com/PokeAPI/pokeapi/blob/master/LICENSE.md"
+      "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
+      "https://github.com/PokeAPI/pokeapi/blob/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/LICENSE.md"
     ],
     "licenseStatus": "pending",
     "requiredCredits": [
-      "PokeAPI contributors for structured API/data where applicable."
+      "PokéAPI contributors for the structured API data."
     ],
     "notes": [
-      "Pokemon names, character names, and related franchise data require owner review before publication or public use.",
-      "This pilot records metadata only and does not import sprites, sounds, animations, logos, or other media files."
+      "Structured data is sourced from PokéAPI under its BSD-3-Clause terms.",
+      "Pokémon names and character data remain subject to owner review and applicable trademark or copyright rights.",
+      "English source prose is preserved to avoid inventing translations of gameplay behavior."
     ]
   }
 }

@@ -1,0 +1,133 @@
+{
+  "schemaVersion": 2,
+  "id": "pokemon:0220-swinub",
+  "nationalDexNumber": 220,
+  "canonicalName": "Swinub",
+  "slug": "swinub",
+  "genus": "Pig Pokémon",
+  "generationIntroduced": 2,
+  "generationSource": "generation-ii",
+  "types": [
+    "ice",
+    "ground"
+  ],
+  "physical": {
+    "heightDecimeters": 4,
+    "weightHectograms": 65
+  },
+  "baseExperience": 50,
+  "baseStats": {
+    "hp": {
+      "value": 50,
+      "effortYield": 0
+    },
+    "attack": {
+      "value": 50,
+      "effortYield": 1
+    },
+    "defense": {
+      "value": 40,
+      "effortYield": 0
+    },
+    "special-attack": {
+      "value": 30,
+      "effortYield": 0
+    },
+    "special-defense": {
+      "value": 30,
+      "effortYield": 0
+    },
+    "speed": {
+      "value": 50,
+      "effortYield": 0
+    }
+  },
+  "biologyAndTraining": {
+    "color": "brown",
+    "shape": "quadruped",
+    "habitat": "cave",
+    "genderRate": 4,
+    "captureRate": 225,
+    "baseHappiness": 70,
+    "hatchCounter": 20,
+    "hasGenderDifferences": false,
+    "growthRate": "slow",
+    "eggGroups": [
+      "ground"
+    ],
+    "isBaby": false,
+    "isLegendary": false,
+    "isMythical": false
+  },
+  "abilities": [
+    {
+      "slug": "oblivious",
+      "slot": 1,
+      "isHidden": false
+    },
+    {
+      "slug": "snow-cloak",
+      "slot": 2,
+      "isHidden": false
+    },
+    {
+      "slug": "thick-fat",
+      "slot": 3,
+      "isHidden": true
+    }
+  ],
+  "evolution": {
+    "chainId": 112,
+    "evolvesFromSpeciesId": null,
+    "evolvesTo": [
+      {
+        "fromSpeciesId": 220,
+        "toSpeciesId": 221,
+        "trigger": "level-up",
+        "versionGroupId": 3,
+        "isDefault": true,
+        "triggerItem": null,
+        "minimumLevel": 33,
+        "genderId": null,
+        "locationId": null,
+        "heldItem": null,
+        "timeOfDay": null,
+        "knownMove": null,
+        "knownMoveType": null,
+        "minimumHappiness": null,
+        "minimumBeauty": null,
+        "minimumAffection": null,
+        "relativePhysicalStats": null,
+        "partySpeciesId": null,
+        "partyType": null,
+        "tradeSpeciesId": null,
+        "needsOverworldRain": false,
+        "turnUpsideDown": false,
+        "needsMultiplayer": false,
+        "nearSpecialRock": false,
+        "regionId": null,
+        "usedMove": null,
+        "minimumMoveCount": null,
+        "minimumSteps": null,
+        "minimumDamageTaken": null
+      }
+    ]
+  },
+  "source": {
+    "retrievedAt": "2026-07-23",
+    "sourceRevision": "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f",
+    "sourceUrls": [
+      "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
+      "https://github.com/PokeAPI/pokeapi/blob/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/LICENSE.md"
+    ],
+    "licenseStatus": "pending",
+    "requiredCredits": [
+      "PokéAPI contributors for the structured API data."
+    ],
+    "notes": [
+      "Structured data is sourced from PokéAPI under its BSD-3-Clause terms.",
+      "Pokémon names and character data remain subject to owner review and applicable trademark or copyright rights.",
+      "English source prose is preserved to avoid inventing translations of gameplay behavior."
+    ]
+  }
+}

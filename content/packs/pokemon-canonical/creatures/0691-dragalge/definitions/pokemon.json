@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 2,
+  "id": "pokemon:0691-dragalge",
+  "nationalDexNumber": 691,
+  "canonicalName": "Dragalge",
+  "slug": "dragalge",
+  "genus": "Mock Kelp Pokémon",
+  "generationIntroduced": 6,
+  "generationSource": "generation-vi",
+  "types": [
+    "poison",
+    "dragon"
+  ],
+  "physical": {
+    "heightDecimeters": 18,
+    "weightHectograms": 815
+  },
+  "baseExperience": 173,
+  "baseStats": {
+    "hp": {
+      "value": 65,
+      "effortYield": 0
+    },
+    "attack": {
+      "value": 75,
+      "effortYield": 0
+    },
+    "defense": {
+      "value": 90,
+      "effortYield": 0
+    },
+    "special-attack": {
+      "value": 97,
+      "effortYield": 0
+    },
+    "special-defense": {
+      "value": 123,
+      "effortYield": 2
+    },
+    "speed": {
+      "value": 44,
+      "effortYield": 0
+    }
+  },
+  "biologyAndTraining": {
+    "color": "brown",
+    "shape": "blob",
+    "habitat": null,
+    "genderRate": 4,
+    "captureRate": 55,
+    "baseHappiness": 70,
+    "hatchCounter": 20,
+    "hasGenderDifferences": false,
+    "growthRate": "medium",
+    "eggGroups": [
+      "water1",
+      "dragon"
+    ],
+    "isBaby": false,
+    "isLegendary": false,
+    "isMythical": false
+  },
+  "abilities": [
+    {
+      "slug": "poison-point",
+      "slot": 1,
+      "isHidden": false
+    },
+    {
+      "slug": "poison-touch",
+      "slot": 2,
+      "isHidden": false
+    },
+    {
+      "slug": "adaptability",
+      "slot": 3,
+      "isHidden": true
+    }
+  ],
+  "evolution": {
+    "chainId": 354,
+    "evolvesFromSpeciesId": 690,
+    "evolvesTo": []
+  },
+  "source": {
+    "retrievedAt": "2026-07-23",
+    "sourceRevision": "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f",
+    "sourceUrls": [
+      "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
+      "https://github.com/PokeAPI/pokeapi/blob/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/LICENSE.md"
+    ],
+    "licenseStatus": "pending",
+    "requiredCredits": [
+      "PokéAPI contributors for the structured API data."
+    ],
+    "notes": [
+      "Structured data is sourced from PokéAPI under its BSD-3-Clause terms.",
+      "Pokémon names and character data remain subject to owner review and applicable trademark or copyright rights.",
+      "English source prose is preserved to avoid inventing translations of gameplay behavior."
+    ]
+  }
+}
