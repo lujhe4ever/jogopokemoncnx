@@ -2,7 +2,7 @@
 
 | Campo | Valor |
 | --- | --- |
-| Status do projeto | **Fase 15 — concluída, aguardando integração** |
+| Status do projeto | **Fase 16 — em andamento** |
 | Atualizado em | 2026-07-23 |
 | Implementação existente | Nenhuma |
 
@@ -46,7 +46,7 @@ Status permitidos:
 | 13 | Batalhas entre jogadores | concluído |
 | 14 | Telões e transmissão de batalhas | concluído |
 | 15 | Painel administrativo | concluído |
-| 16 | Segurança, performance, testes e deploy | não iniciado |
+| 16 | Segurança, performance, testes e deploy | em andamento |
 | 17 | Alpha privado e estabilização | não iniciado |
 
 ## 3. Fases
@@ -669,8 +669,8 @@ Operar usuários e conteúdo sem acesso manual irrestrito ao banco.
 - alterações irreversíveis;
 - excesso de dados pessoais.
 
-**Status:** **concluído** na branch `agent/fase-15-painel-administrativo` e
-aguardando integração pelo PR #16.
+**Status:** **concluído** e integrado pelo PR #16 no commit
+`2b56ac734dc4ab133b3664e196e7a7c0a346fb98`.
 
 ### Fase 16 — Testes, segurança, otimização e deploy
 
@@ -713,7 +713,7 @@ Validar requisitos não funcionais e preparar operação privada em VPS.
 - backup não restaurável;
 - dispositivo de teste não representativo.
 
-**Status:** **não iniciado**.
+**Status:** **em andamento** na branch `agent/fase-16-hardening-operacional`.
 
 ### Fase 17 — Alpha privado e estabilização
 

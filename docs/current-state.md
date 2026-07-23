@@ -5,14 +5,14 @@
 | Atualizado em | 2026-07-23 |
 | Repositório | `lujhe4ever/jogopokemoncnx` |
 | Branch principal | `main` |
-| Branch desta entrega | `agent/fase-15-painel-administrativo` |
-| Fase | Fase 15 — painel administrativo |
-| Status | **concluída — aguardando integração do PR #16** |
+| Branch desta entrega | `agent/fase-16-hardening-operacional` |
+| Fase | Fase 16 — hardening e preparação operacional |
+| Status | **reservada — implementação em andamento** |
 
 ## 1. Resumo
 
-As Fases 0B a 14 foram integradas à `main`. A Fase 15 foi concluída na branch
-`agent/fase-15-painel-administrativo` e aguarda integração pelo PR #16.
+As Fases 0B a 15 foram integradas à `main`. A Fase 16 está reservada na branch
+`agent/fase-16-hardening-operacional`.
 
 O projeto possui workspace TypeScript, servidor Fastify, cliente Vite/Phaser,
 PostgreSQL, Prisma, WebSocket versionado, autenticação e a primeira fatia jogável da
@@ -130,7 +130,8 @@ completos sejam definidos.
 | Encontros e captura | concluídos na branch |
 | Batalhas PvP | concluídas |
 | Telões e espectadores | concluídos |
-| Administração | concluída na branch |
+| Administração | concluída |
+| Hardening e operação | em andamento na branch |
 | Arena e presença | concluídas na branch |
 | Chat, emotes e convites | concluídos na branch |
 | Administração e deploy | não iniciado |
@@ -172,9 +173,8 @@ continuam com o status registrado em `docs/decisions.md`.
 
 ## 9. Próxima tarefa recomendada
 
-Revisar e integrar o PR #16 e então reservar exclusivamente a Fase 16: consolidação
-de segurança, performance, observabilidade, backup/restore, empacotamento e runbooks,
-sem realizar deploy público.
+Implementar exclusivamente a Fase 16: consolidar segurança, performance,
+observabilidade, backup/restore, empacotamento e runbooks, sem realizar deploy público.
 
 ## 10. Instruções para reproduzir
 

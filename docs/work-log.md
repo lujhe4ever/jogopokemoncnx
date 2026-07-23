@@ -1174,3 +1174,36 @@ Definir temporariamente `ADMIN_GRANT_ACCOUNT_ID` e `ADMIN_GRANT_ROLE`, manter
 
 Revisar e integrar o PR #16 após a CI aprovada e reservar a Fase 16 sem executar
 deploy público.
+
+## 2026-07-23 — Integração da Fase 15 e reserva da Fase 16
+
+### Contexto
+
+O PR #16 passou na CI e foi integrado à `main` no commit
+`2b56ac734dc4ab133b3664e196e7a7c0a346fb98`.
+
+### Escopo reservado
+
+- headers, origem, limites, scan de segredo/dependência e revisão de ameaças;
+- budgets reproduzíveis para bundles, assets e ticks já medidos;
+- métricas protegidas, dashboard e alertas mínimos;
+- imagens de produção e proxy TLS sem banco exposto;
+- secrets por arquivo e migração controlada;
+- backup, restauração isolada e procedimento de rollback;
+- runbooks e workflow manual de candidato, sem deploy automático;
+- consolidação da suíte e evidências operacionais.
+
+### Baseline operacional adotada
+
+Enquanto não existe VPS/hardware autorizado, a prova usa CI Linux e Docker local. O
+alvo inicial fica em 20 presenças por arena, RPO de 24 horas, RTO de 4 horas e retenção
+de sete backups diários. Esses valores devem ser revalidados antes de operação real.
+
+### Fora do escopo
+
+Compra/configuração de VPS, DNS real, certificados reais, segredo real, tráfego externo
+e qualquer deploy público ou privado.
+
+### Próximo passo
+
+Publicar o PR rascunho da Fase 16 antes de iniciar a implementação.
