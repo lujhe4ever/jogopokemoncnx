@@ -7,7 +7,7 @@
 | Branch principal | `main` |
 | Branch desta entrega | `agent/fase-1-fundacao` |
 | Fase | Fase 1 — fundação e configuração do projeto |
-| Status | **reservada — preparação documental do PR em andamento** |
+| Status | **concluída na branch — PR #2 aguardando revisão** |
 
 ## 1. Resumo
 
@@ -128,29 +128,23 @@ iniciadas, incluindo:
 
 ## 7. Dependências e configuração
 
-- `package.json`: inexistente;
-- lockfile: inexistente;
-- runtime Node fixado: inexistente;
-- dependências: inexistentes;
-- `.env.example`: inexistente;
-- schema/migrações Prisma: inexistentes;
-- Dockerfiles/Compose: inexistentes;
-- workflows GitHub Actions: inexistentes;
-- assets aprovados: inexistentes.
-
-Nenhuma versão concreta de biblioteca ou runtime foi instalada nesta fase.
+- Node `24.14.0` e pnpm `11.9.0` fixados;
+- TypeScript `6.0.3`, ESLint, Prettier, Vitest, Husky e lint-staged configurados;
+- lockfile e `.env.example` sem segredos presentes;
+- CI do GitHub configurada para instalação congelada e `pnpm check`;
+- Prisma, Docker, assets e runtime de aplicação continuam inexistentes.
 
 ## 8. Comandos do produto
 
 | Finalidade | Estado |
 | --- | --- |
-| Instalação | não disponível até a Fase 1 |
-| Desenvolvimento | não disponível até a Fase 1 |
-| Formatação | não disponível até a Fase 1 |
-| Lint | não disponível até a Fase 1 |
-| Typecheck | não disponível até a Fase 1 |
-| Testes | não disponível até a Fase 1 |
-| Build | não disponível até a Fase 1 |
+| Instalação | `pnpm install --frozen-lockfile` |
+| Desenvolvimento | não disponível até a Fase 2 |
+| Formatação | `pnpm format:check` |
+| Lint | `pnpm lint` |
+| Typecheck | `pnpm typecheck` |
+| Testes | `pnpm test` |
+| Build | `pnpm build` |
 | Docker | não disponível até a Fase 1 |
 | Migrações | não disponível até a Fase 1 |
 
@@ -225,10 +219,7 @@ Não houve lint, teste ou build de aplicação porque esses comandos não existe
 
 ## 13. Próxima tarefa recomendada
 
-Revisar o PR #1 e decidir explicitamente entre solicitar ajustes ou autorizar que ele
-seja marcado como pronto para revisão. O merge permanece uma autorização posterior.
-
-A Fase 1 não foi iniciada e não deve começar no mesmo trabalho de revisão.
+Revisar o PR #2 e as verificações da CI. A Fase 2 permanece não iniciada.
 
 ## 14. Instruções para reproduzir o estado
 

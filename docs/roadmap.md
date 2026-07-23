@@ -133,8 +133,8 @@ Criar um workspace TypeScript mínimo, reproduzível e sem funcionalidade de gam
 - versões incompatíveis;
 - estrutura física maior que a necessidade real.
 
-**Status:** **em andamento** — tarefa reservada na branch
-`agent/fase-1-fundacao`; scaffold e toolchain ainda não criados neste snapshot.
+**Status:** **concluído na branch, aguardando revisão** — workspace, qualidade,
+teste arquitetural, hooks e CI implementados no PR #2.
 
 ### Fase 2 — Runtime e infraestrutura local mínimos
 

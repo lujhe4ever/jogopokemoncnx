@@ -352,3 +352,38 @@ Fase 1 antes de criar código.
 
 Publicar esta reserva em um PR rascunho e somente então iniciar o scaffold mínimo da
 Fase 1.
+
+## 2026-07-23 — Fundação técnica da Fase 1
+
+### Objetivo da sessão
+
+Criar um workspace TypeScript mínimo e reproduzível, sem gameplay.
+
+### Alterações realizadas
+
+- fixados Node 24.14.0, pnpm 11.9.0 e TypeScript 6.0.3;
+- criados workspaces mínimos para web, servidor e engine-core;
+- configurados Prettier, ESLint, Vitest, Husky, lint-staged e CI;
+- criado teste que impede dependências de framework e Node no engine-core;
+- D-001 e D-002 registradas como aceitas;
+- Turborepo adiado por não haver benefício mensurável nesta escala.
+
+### Testes e verificações
+
+- `pnpm install --frozen-lockfile`: lockfile reproduzível;
+- `pnpm format:check`: aprovado;
+- `pnpm lint`: aprovado;
+- `pnpm typecheck`: aprovado;
+- `pnpm test`: 1 teste aprovado;
+- `pnpm build`: aprovado;
+- `pnpm peers check`: nenhuma incompatibilidade.
+
+### Problemas e riscos
+
+- CI remota ainda depende da execução do GitHub Actions;
+- aplicações ainda são apenas composition roots de fundação;
+- repositório permanece público.
+
+### Próximo passo
+
+Revisar o PR #2 e seus checks; não iniciar a Fase 2 antes dessa revisão.
