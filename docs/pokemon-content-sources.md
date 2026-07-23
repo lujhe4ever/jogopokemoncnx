@@ -43,10 +43,12 @@ camada derivada e revisada.
 - 60.113 arquivos de imagem encontrados na árvore de origem;
 - 43.383 candidatos estáticos associados às espécies canônicas;
 - 10.421 candidatos animados associados às espécies canônicas;
-- 1.025 sprites frontais reais baixados, inspecionados e mantidos em quarentena
-  local ignorada pelo Git;
-- 1.025 hashes SHA-256, tamanhos e dimensões registrados nos inventários públicos;
-- zero PNG, GIF, SVG, áudio ou vídeo adicionado ao repositório.
+- 1.025 sprites frontais reais baixados e inspecionados;
+- 1.025 PNGs, totalizando aproximadamente 1,02 MiB, publicados por instrução
+  explícita do proprietário do repositório;
+- cópias originais preservadas na quarentena local ignorada pelo Git;
+- 1.025 hashes SHA-256, tamanhos, dimensões e caminhos públicos registrados;
+- zero GIF, SVG, áudio ou vídeo adicionado ao repositório.
 
 Os candidatos incluem materiais oficiais extraídos e materiais feitos por fãs. Essa
 classificação é registrada em `catalogs/asset-rights.json`; nenhum candidato possui
@@ -62,20 +64,32 @@ creatures/0383-groudon/
 creatures/1025-pecharunt/
 ```
 
-Sprites propostos:
+Sprites frontais publicados:
 
 ```text
-0001-bulbasaur--pokeapi-default--front--normal--27b73d36.png
+0001-bulbasaur--pokeapi-default--front--normal.png
+0383-groudon--pokeapi-default--front--normal.png
+1025-pecharunt--pokeapi-default--front--normal.png
+```
+
+Outros candidatos ainda não publicados:
+
+```text
 0001-bulbasaur--generation-v-black-white--back--shiny--<hash>.png
 ```
 
-O sufixo curto de hash evita colisões entre jogos e variantes que produziriam o
-mesmo nome semântico. O SHA completo continua registrado na entrada.
+O sprite frontal padrão usa nome estável porque existe apenas um por espécie nessa
+coleção. Outros jogos e variantes mantêm o sufixo curto de hash proposto para evitar
+colisões. O SHA-256 completo permanece registrado no inventário.
 
-## Decisão necessária
+## Decisão registrada
 
-Antes de mover qualquer binário para o pack público, o proprietário deve escolher
-uma coleção, confirmar a base legal de uso e redistribuição, aprovar o texto de
-créditos e aceitar o risco residual. A recomendação técnica é iniciar pelos sprites
-comunitários de uma única coleção que possua autorização direta e lista completa de
-artistas, não pelos sprites extraídos dos jogos.
+Em 2026-07-23, o proprietário instruiu explicitamente a publicação de todos os 1.025
+sprites frontais disponíveis. Essa decisão autoriza a inclusão no projeto, mas não
+representa licença concedida pelos titulares das imagens. Por isso:
+
+- a fonte e a revisão permanecem fixas e auditáveis;
+- o estado jurídico continua `doubtful`;
+- os créditos declarados pela fonte permanecem obrigatórios;
+- nenhum sprite é carregado pelo runtime nesta etapa;
+- distribuição e uso público devem passar por revisão jurídica posterior.

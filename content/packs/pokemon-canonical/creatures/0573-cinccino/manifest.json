@@ -8,9 +8,9 @@
   "types": [
     "normal"
   ],
-  "assetStatus": "pending",
+  "assetStatus": "doubtful",
   "definitionStatus": "pending",
-  "licenseStatus": "pending",
+  "licenseStatus": "doubtful",
   "sourceUrls": [
     "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
     "https://github.com/PokeAPI/pokeapi/blob/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/LICENSE.md"
@@ -20,7 +20,7 @@
   ],
   "notes": [
     "Definitions are catalogued for review and are not coupled to engine IDs.",
-    "No sprite, animation, or sound binary in this folder is tracked by Git.",
-    "A real front sprite was verified in the ignored local quarantine at .private/pokemon-canonical/0573-cinccino/sprites/0573-cinccino--pokeapi-default--front--normal.png."
+    "One default front sprite is tracked at sprites/0573-cinccino--pokeapi-default--front--normal.png after explicit repository-owner direction; third-party redistribution rights remain doubtful.",
+    "The tracked file matches the quarantined source by SHA-256 1d97da9ead49fa2b29f57f0d6dcf51d15a1bf9f42abd8abf8a2fc24c1be20c0f."
   ]
 }

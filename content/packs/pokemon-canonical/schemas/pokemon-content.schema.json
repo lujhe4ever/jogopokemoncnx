@@ -403,7 +403,8 @@
           "type": "string"
         },
         "mediaImportedCount": {
-          "const": 0
+          "type": "integer",
+          "minimum": 0
         },
         "statusSummary": {
           "type": "object"

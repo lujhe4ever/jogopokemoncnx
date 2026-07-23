@@ -1,3 +1,4 @@
+import { createHash } from "node:crypto";
 import { readFile, readdir } from "node:fs/promises";
 import path from "node:path";
 import { describe, expect, it } from "vitest";
@@ -32,6 +33,7 @@ interface PackManifest {
     spriteCandidateCount: number;
     animationCandidateCount: number;
     localPrivateSpriteCount: number;
+    mediaImportedCount: number;
   };
   creatures: PokemonSummary[];
 }
@@ -118,6 +120,17 @@ interface MediaInventory {
       width: number;
       height: number;
     };
+    repositoryAsset?: {
+      repositoryPath: string;
+      sha256: string;
+      bytes: number;
+      width: number;
+      height: number;
+      animated: boolean;
+      frameCount: number;
+      ownerAuthorizedAt: string;
+      rightsStatus: ApprovalStatus;
+    };
   }>;
 }
 
@@ -144,7 +157,7 @@ const expectedCreatureFiles = [
   "sprites",
 ];
 const sampleDexNumbers = [1, 25, 151, 493, 809, 1025];
-const forbiddenMediaExtensions =
+const mediaExtensions =
   /\.(png|gif|jpe?g|webp|bmp|svg|wav|mp3|ogg|flac|mp4|mov)$/i;
 
 async function readJson<T>(filePath: string): Promise<T> {
@@ -157,7 +170,7 @@ async function findMediaFiles(directory: string): Promise<string[]> {
     const entryPath = path.join(directory, entry.name);
     if (entry.isDirectory()) {
       found.push(...(await findMediaFiles(entryPath)));
-    } else if (forbiddenMediaExtensions.test(entry.name)) {
+    } else if (mediaExtensions.test(entry.name)) {
       found.push(entryPath);
     }
   }
@@ -180,8 +193,8 @@ describe("pokemon canonical catalog", () => {
     );
 
     expect(manifest.schemaVersion).toBe(2);
-    expect(manifest.completionStatus).toBe("complete-metadata-inventory");
-    expect(manifest.licenseStatus).toBe("pending");
+    expect(manifest.completionStatus).toBe("complete-metadata-front-sprites");
+    expect(manifest.licenseStatus).toBe("doubtful");
     expect(manifest.source.sourceRevision).toMatch(/^[0-9a-f]{40}$/);
     expect(manifest.spriteSource.sourceRevision).toMatch(/^[0-9a-f]{40}$/);
     expect(manifest.creatures).toHaveLength(expectedSpeciesCount);
@@ -194,6 +207,7 @@ describe("pokemon canonical catalog", () => {
     expect(manifest.scope.moveCount).toBe(expectedMoveCount);
     expect(manifest.scope.abilityCount).toBe(expectedAbilityCount);
     expect(manifest.scope.localPrivateSpriteCount).toBe(expectedSpeciesCount);
+    expect(manifest.scope.mediaImportedCount).toBe(expectedSpeciesCount);
     expect(manifest.scope.spriteCandidateCount).toBeGreaterThan(40_000);
     expect(manifest.scope.animationCandidateCount).toBeGreaterThan(10_000);
 
@@ -227,7 +241,7 @@ describe("pokemon canonical catalog", () => {
       moveCount: expectedMoveCount,
       abilityCount: expectedAbilityCount,
       privateSpriteCount: expectedSpeciesCount,
-      mediaFilesTracked: 0,
+      mediaFilesTracked: expectedSpeciesCount,
     });
   });
 
@@ -252,9 +266,9 @@ describe("pokemon canonical catalog", () => {
       expect(creature.id).toBe(
         `pokemon:${String(creature.nationalDexNumber).padStart(4, "0")}-${creature.slug}`,
       );
-      expect(creature.assetStatus).toBe("pending");
+      expect(creature.assetStatus).toBe("doubtful");
       expect(creature.definitionStatus).toBe("pending");
-      expect(creature.licenseStatus).toBe("pending");
+      expect(creature.licenseStatus).toBe("doubtful");
       expect(creature.localQuarantineVerified).toBe(true);
       expect(creature.spriteCandidates).toBeGreaterThan(0);
     }
@@ -333,14 +347,22 @@ describe("pokemon canonical catalog", () => {
     }
   });
 
-  it("publishes inventories and hashes but no third-party media", async () => {
+  it("publishes one owner-directed front sprite per species with audited hashes", async () => {
     const manifest = await readJson<PackManifest>(
       path.join(packDirectory, "manifest.json"),
     );
     const gitignore = await readFile(".gitignore", "utf8");
 
     expect(gitignore).toContain(".private/");
-    expect(await findMediaFiles(packDirectory)).toEqual([]);
+    const mediaFiles = await findMediaFiles(packDirectory);
+    expect(mediaFiles).toHaveLength(expectedSpeciesCount);
+    expect(
+      mediaFiles.every(
+        (filePath) =>
+          filePath.includes(`${path.sep}sprites${path.sep}`) &&
+          filePath.endsWith(".png"),
+      ),
+    ).toBe(true);
 
     for (const dexNumber of sampleDexNumbers) {
       const creature = manifest.creatures[dexNumber - 1];
@@ -353,11 +375,9 @@ describe("pokemon canonical catalog", () => {
       const animations = await readJson<MediaInventory>(
         path.join(packDirectory, creature.path, "animations", "inventory.json"),
       );
-      const quarantined = sprites.entries.find(
-        (entry) => entry.localQuarantine,
-      );
+      const published = sprites.entries.find((entry) => entry.repositoryAsset);
 
-      expect(sprites.mediaImportedCount).toBe(0);
+      expect(sprites.mediaImportedCount).toBe(1);
       expect(animations.mediaImportedCount).toBe(0);
       expect(sprites.statusSummary.approved).toBe(0);
       expect(animations.statusSummary.approved).toBe(0);
@@ -370,14 +390,30 @@ describe("pokemon canonical catalog", () => {
             ["pending", "doubtful", "quarantined"].includes(entry.status),
         ),
       ).toBe(true);
-      expect(quarantined?.localQuarantine?.localOnly).toBe(true);
-      expect(typeof quarantined?.localQuarantine?.bytes).toBe("number");
-      expect(typeof quarantined?.localQuarantine?.width).toBe("number");
-      expect(typeof quarantined?.localQuarantine?.height).toBe("number");
-      expect(quarantined?.localQuarantine?.relativePrivatePath).toMatch(
+      expect(published?.status).toBe("doubtful");
+      expect(published?.localQuarantine?.localOnly).toBe(true);
+      expect(typeof published?.localQuarantine?.bytes).toBe("number");
+      expect(typeof published?.localQuarantine?.width).toBe("number");
+      expect(typeof published?.localQuarantine?.height).toBe("number");
+      expect(published?.localQuarantine?.relativePrivatePath).toMatch(
         /^\.private\/pokemon-canonical\//,
       );
-      expect(quarantined?.localQuarantine?.sha256).toMatch(/^[0-9a-f]{64}$/);
+      expect(published?.localQuarantine?.sha256).toMatch(/^[0-9a-f]{64}$/);
+      expect(published?.repositoryAsset?.rightsStatus).toBe("doubtful");
+      expect(published?.repositoryAsset?.repositoryPath).toMatch(
+        /^sprites\/\d{4}-[a-z0-9-]+--pokeapi-default--front--normal\.png$/,
+      );
+
+      const repositoryFile = await readFile(
+        path.join(
+          packDirectory,
+          creature.path,
+          published?.repositoryAsset?.repositoryPath ?? "",
+        ),
+      );
+      expect(createHash("sha256").update(repositoryFile).digest("hex")).toBe(
+        published?.repositoryAsset?.sha256,
+      );
     }
   });
 });

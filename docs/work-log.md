@@ -1192,3 +1192,77 @@ Durante a conclusão do catálogo, o PR #13 foi integrado à `main` no commit
 
 Revisar o catálogo e decidir uma única política de sprites antes de publicar ou
 ligar qualquer mídia ao runtime.
+
+## 2026-07-23 — Publicação dos 1.025 sprites frontais
+
+### Objetivo da sessão
+
+Publicar no GitHub todos os sprites reais disponíveis na quarentena local, mantendo
+a origem, os hashes, a incerteza de direitos e o isolamento do trabalho paralelo.
+
+### Estado anterior
+
+A branch `codex/pokemon-canonical-full` continha definições e inventários completos,
+mas nenhum binário de mídia. A `main` avançou para
+`5ca0c3a1149884988d10f24e43cf59da700e7f48` com a integração da Fase 13, e a Fase 14
+foi reservada no PR #15.
+
+### Alterações realizadas
+
+- `main` incorporada por merge sem force-push;
+- conflitos exclusivamente documentais resolvidos preservando os dois históricos;
+- 1.025 PNGs frontais copiados para as respectivas pastas `sprites/`;
+- inventários atualizados com caminho público, SHA-256, dimensões, tamanho, data da
+  autorização e estado `doubtful`;
+- manifests por espécie e manifesto do pack atualizados;
+- gerador preparado para reprodução com revisões de fonte explícitas;
+- schema, teste de integridade, fontes, decisão D-019 e documentação atualizados;
+- runtime mantido sem dependência desses assets.
+
+### Arquivos alterados
+
+- `content/packs/pokemon-canonical/`;
+- `scripts/generate-pokemon-canonical.mjs`;
+- `tests/pokemon-canonical-content.test.ts`;
+- `docs/current-state.md`;
+- `docs/work-log.md`;
+- `docs/decisions.md`;
+- `docs/pokemon-content-sources.md`.
+
+### Testes e verificações
+
+- baseline anterior à integração: 18 arquivos e 53 testes aprovados;
+- `pnpm install --frozen-lockfile`: aprovado;
+- `pnpm --filter @lt/server prisma:generate`: aprovado;
+- teste específico do catálogo: 1 arquivo e 4 testes aprovados;
+- auditoria de todos os arquivos: 1.025 conferidos, zero erros, 1.067.409 bytes;
+- `pnpm check`: 20 arquivos e 59 testes aprovados, com lint, TypeScript e builds;
+- aviso não bloqueante: chunk `game` do Vite acima de 500 kB.
+
+### Decisões tomadas
+
+- publicar exatamente um sprite frontal padrão por espécie;
+- preservar a revisão `bf4c47ac82c33b330e33d98b8882d1cedb2f53e7` de
+  `PokeAPI/sprites`;
+- manter direitos e assets como `doubtful`, sem declarar licença inexistente;
+- não publicar animações, sons, shiny, costas ou variantes por jogo nesta etapa;
+- não ligar os sprites ao runtime.
+
+### Pendências ou riscos
+
+- a fonte não demonstra autoridade inequívoca para relicenciar a arte oficial;
+- o repositório é público;
+- qualquer solicitação dos titulares pode exigir remoção dos binários;
+- a Fase 14 continua em branch separada e deve preservar as duas entradas
+  documentais ao integrar.
+
+### Próxima tarefa recomendada
+
+Revisar visualmente uma amostra por geração e, em tarefa separada, definir o contrato
+neutro pelo qual o runtime selecionará sprites sem depender de nomes Pokémon.
+
+### Instrução para a próxima IA
+
+Ler `AGENTS.md`, `architecture.md`, a D-019 em `docs/decisions.md`, esta entrada,
+`docs/pokemon-content-sources.md` e o README do pack; sincronizar `main`, preservar a
+branch da Fase 14 e não alterar o estado jurídico `doubtful` sem nova evidência.

@@ -9,9 +9,9 @@
     "dark",
     "normal"
   ],
-  "assetStatus": "pending",
+  "assetStatus": "doubtful",
   "definitionStatus": "pending",
-  "licenseStatus": "pending",
+  "licenseStatus": "doubtful",
   "sourceUrls": [
     "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
     "https://github.com/PokeAPI/pokeapi/blob/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/LICENSE.md"
@@ -21,7 +21,7 @@
   ],
   "notes": [
     "Definitions are catalogued for review and are not coupled to engine IDs.",
-    "No sprite, animation, or sound binary in this folder is tracked by Git.",
-    "A real front sprite was verified in the ignored local quarantine at .private/pokemon-canonical/0862-obstagoon/sprites/0862-obstagoon--pokeapi-default--front--normal.png."
+    "One default front sprite is tracked at sprites/0862-obstagoon--pokeapi-default--front--normal.png after explicit repository-owner direction; third-party redistribution rights remain doubtful.",
+    "The tracked file matches the quarantined source by SHA-256 bd51403714a10f6f895a611da843d9ef15926d6921c3c576960ea0e2544e50e2."
   ]
 }

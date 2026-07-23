@@ -1,6 +1,7 @@
 import { Buffer } from "node:buffer";
 import { createHash } from "node:crypto";
 import {
+  copyFile,
   mkdir,
   readFile,
   readdir,
@@ -23,7 +24,10 @@ const RETRIEVED_AT = new Date().toISOString().slice(0, 10);
 const DOWNLOAD_PRIVATE_SPRITES = process.argv.includes(
   "--with-private-sprites",
 );
+const PUBLISH_FRONT_SPRITES = process.argv.includes("--publish-front-sprites");
 const REFRESH = process.argv.includes("--refresh");
+const POKEAPI_REVISION = argumentValue("--pokeapi-revision");
+const SPRITES_REVISION = argumentValue("--sprites-revision");
 const NATIONAL_DEX_LIMIT = 1025;
 const ENGLISH_LANGUAGE_ID = 9;
 const APPROVAL_STATUSES = [
@@ -36,6 +40,13 @@ const APPROVAL_STATUSES = [
 const POKEAPI_REPOSITORY = "PokeAPI/pokeapi";
 const SPRITES_REPOSITORY = "PokeAPI/sprites";
 const USER_AGENT = "Projeto-LT-Pokemon-Catalog/2";
+
+function argumentValue(name) {
+  const prefix = `${name}=`;
+  return process.argv
+    .find((argument) => argument.startsWith(prefix))
+    ?.slice(prefix.length);
+}
 
 const CSV_FILES = [
   "abilities.csv",
@@ -124,7 +135,9 @@ function spriteSourceInfo(spritesSha) {
     notes: [
       "The source repository applies CC0 while also declaring image copyright owned by The Pokémon Company.",
       "That conflict does not establish clear authority to redistribute the images in this public repository.",
-      "Candidates remain pending or quarantined and are never used by the runtime.",
+      PUBLISH_FRONT_SPRITES
+        ? "The repository owner explicitly directed publication of one default front sprite per species; rights remain doubtful and the runtime does not load them."
+        : "Candidates remain pending or quarantined and are never used by the runtime.",
     ],
   };
 }
@@ -442,7 +455,10 @@ function inspectImage(buffer, extension) {
 
 async function mirrorPrivateSprite(species, spritesSha, availablePaths) {
   const relativeSourcePath = `${species.id}.png`;
-  if (!DOWNLOAD_PRIVATE_SPRITES || !availablePaths.has(relativeSourcePath)) {
+  if (
+    (!DOWNLOAD_PRIVATE_SPRITES && !PUBLISH_FRONT_SPRITES) ||
+    !availablePaths.has(relativeSourcePath)
+  ) {
     return null;
   }
 
@@ -811,8 +827,8 @@ function inventorySummary(entries) {
 
 async function main() {
   const [pokeapiSha, spritesSha] = await Promise.all([
-    getHeadSha(POKEAPI_REPOSITORY),
-    getHeadSha(SPRITES_REPOSITORY),
+    POKEAPI_REVISION ?? getHeadSha(POKEAPI_REPOSITORY),
+    SPRITES_REVISION ?? getHeadSha(SPRITES_REPOSITORY),
   ]);
 
   globalThis.console.log(`PokéAPI data revision: ${pokeapiSha}`);
@@ -873,6 +889,7 @@ async function main() {
   let spriteCandidateCount = 0;
   let animationCandidateCount = 0;
   let privateSpriteCount = 0;
+  let publishedSpriteCount = 0;
 
   for (const model of species) {
     const dex = String(model.id).padStart(4, "0");
@@ -901,6 +918,7 @@ async function main() {
     const spriteEntries = allMediaEntries.filter((entry) => !entry.animated);
     const animationEntries = allMediaEntries.filter((entry) => entry.animated);
     const privateMirror = privateMirrorById.get(model.id);
+    let repositorySprite = null;
     if (privateMirror) {
       privateSpriteCount += 1;
       const selected = spriteEntries.find(
@@ -908,8 +926,34 @@ async function main() {
           entry.sourceRepositoryPath === `sprites/pokemon/${model.id}.png`,
       );
       if (selected) {
-        selected.status = "quarantined";
         selected.localQuarantine = privateMirror;
+        if (PUBLISH_FRONT_SPRITES) {
+          const fileName = path.basename(privateMirror.relativePrivatePath);
+          const repositoryPath = path
+            .join("sprites", fileName)
+            .replaceAll("\\", "/");
+          await mkdir(path.join(creatureRoot, "sprites"), { recursive: true });
+          await copyFile(
+            path.join(ROOT, privateMirror.relativePrivatePath),
+            path.join(creatureRoot, repositoryPath),
+          );
+          repositorySprite = {
+            repositoryPath,
+            sha256: privateMirror.sha256,
+            bytes: privateMirror.bytes,
+            width: privateMirror.width,
+            height: privateMirror.height,
+            animated: false,
+            frameCount: 1,
+            ownerAuthorizedAt: RETRIEVED_AT,
+            rightsStatus: "doubtful",
+          };
+          selected.status = "doubtful";
+          selected.repositoryAsset = repositorySprite;
+          publishedSpriteCount += 1;
+        } else {
+          selected.status = "quarantined";
+        }
       }
     }
     spriteCandidateCount += spriteEntries.length;
@@ -923,17 +967,21 @@ async function main() {
       slug: model.slug,
       generationIntroduced: model.generation,
       types: model.types,
-      assetStatus: "pending",
+      assetStatus: repositorySprite ? "doubtful" : "pending",
       definitionStatus: "pending",
-      licenseStatus: "pending",
+      licenseStatus: repositorySprite ? "doubtful" : "pending",
       sourceUrls: source.sourceUrls,
       requiredCredits: source.requiredCredits,
       notes: [
         "Definitions are catalogued for review and are not coupled to engine IDs.",
-        "No sprite, animation, or sound binary in this folder is tracked by Git.",
-        privateMirror
+        repositorySprite
+          ? `One default front sprite is tracked at ${repositorySprite.repositoryPath} after explicit repository-owner direction; third-party redistribution rights remain doubtful.`
+          : "No sprite, animation, or sound binary in this folder is tracked by Git.",
+        privateMirror && !repositorySprite
           ? `A real front sprite was verified in the ignored local quarantine at ${privateMirror.relativePrivatePath}.`
-          : "No local sprite mirror was requested or available during this generation.",
+          : repositorySprite
+            ? `The tracked file matches the quarantined source by SHA-256 ${repositorySprite.sha256}.`
+            : "No local sprite mirror was requested or available during this generation.",
       ],
     };
 
@@ -1024,7 +1072,7 @@ async function main() {
         source: spriteSource,
         sourceUrlBase: `https://raw.githubusercontent.com/${SPRITES_REPOSITORY}/${spritesSha}/`,
         rightsCatalogPath: "../../../catalogs/asset-rights.json",
-        mediaImportedCount: 0,
+        mediaImportedCount: repositorySprite ? 1 : 0,
         statusSummary: inventorySummary(spriteEntries),
         entries: spriteEntries,
       }),
@@ -1062,10 +1110,12 @@ async function main() {
         `# ${dex} ${model.canonicalName}\n\n` +
           `Dados canônicos e inventários auditáveis de \`${model.slug}\`.\n\n` +
           "- `definitions/`: espécie, habilidades e learnset por jogo/geração.\n" +
-          "- `sprites/`: candidatos estáticos; nenhum binário é versionado.\n" +
+          (repositorySprite
+            ? `- \`sprites/\`: inventário e sprite frontal \`${path.basename(repositorySprite.repositoryPath)}\` versionado por decisão do proprietário.\n`
+            : "- `sprites/`: candidatos estáticos; nenhum binário é versionado.\n") +
           "- `animations/`: candidatos animados; nenhum binário é versionado.\n" +
           "- `sounds/`: reservado para uma tarefa futura.\n\n" +
-          "Os estados `pending`, `doubtful` e `quarantined` não autorizam uso ou publicação.\n",
+          "O estado `doubtful` registra que a publicação decidida pelo proprietário não resolve os direitos de terceiros e ainda não autoriza uso pelo runtime.\n",
         "utf8",
       ),
     ]);
@@ -1076,9 +1126,9 @@ async function main() {
       canonicalName: model.canonicalName,
       slug: model.slug,
       path: `creatures/${folderName}`,
-      assetStatus: "pending",
+      assetStatus: repositorySprite ? "doubtful" : "pending",
       definitionStatus: "pending",
-      licenseStatus: "pending",
+      licenseStatus: repositorySprite ? "doubtful" : "pending",
       spriteCandidates: spriteEntries.length,
       animationCandidates: animationEntries.length,
       localQuarantineVerified: Boolean(privateMirror),
@@ -1129,9 +1179,11 @@ async function main() {
             "The Pokémon Company, according to the source repository declaration.",
           ],
           limitations: [
-            "Not approved for publication in this public repository.",
+            PUBLISH_FRONT_SPRITES
+              ? "Published after explicit repository-owner direction despite unresolved third-party redistribution rights."
+              : "Not approved for publication in this public repository.",
             "Do not hotlink in the game runtime.",
-            "Owner/legal review is required before any use.",
+            "Legal review is required before distribution or runtime use.",
           ],
         },
         {
@@ -1158,9 +1210,11 @@ async function main() {
     id: "pokemon-canonical",
     version: 2,
     title: "Pokémon canonical definitions and asset inventory",
-    completionStatus: "complete-metadata-inventory",
+    completionStatus: PUBLISH_FRONT_SPRITES
+      ? "complete-metadata-front-sprites"
+      : "complete-metadata-inventory",
     author: "Projeto LT",
-    licenseStatus: "pending",
+    licenseStatus: PUBLISH_FRONT_SPRITES ? "doubtful" : "pending",
     source,
     spriteSource,
     scope: {
@@ -1172,8 +1226,9 @@ async function main() {
       spriteCandidateCount,
       animationCandidateCount,
       localPrivateSpriteCount: privateSpriteCount,
+      mediaImportedCount: publishedSpriteCount,
       excluded: [
-        "Sprite, animation, and sound binaries in the public repository",
+        "Animation and sound binaries in the public repository",
         "Non-default forms as standalone creature folders",
         "Project-specific balancing overrides",
       ],
@@ -1196,15 +1251,16 @@ async function main() {
     spriteCandidateCount,
     animationCandidateCount,
     privateSpriteCount,
-    mediaFilesTracked: 0,
+    mediaFilesTracked: publishedSpriteCount,
     definitionsModel:
       "Per-Pokémon learnsets reference normalized move and ability catalogs.",
   };
   await writeJson(path.join(REPORTS_ROOT, "generation-report.json"), report);
 
-  const privateBytes = DOWNLOAD_PRIVATE_SPRITES
-    ? await directorySize(PRIVATE_ROOT)
-    : 0;
+  const privateBytes =
+    DOWNLOAD_PRIVATE_SPRITES || PUBLISH_FRONT_SPRITES
+      ? await directorySize(PRIVATE_ROOT)
+      : 0;
   globalThis.console.log(JSON.stringify({ ...report, privateBytes }, null, 2));
 }
 

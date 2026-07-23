@@ -19,7 +19,9 @@ pokemon-canonical/
 │       │   ├── abilities.json
 │       │   ├── moves.json
 │       │   └── pokemon.json
-│       ├── sprites/inventory.json
+│       ├── sprites/
+│       │   ├── 0001-bulbasaur--pokeapi-default--front--normal.png
+│       │   └── inventory.json
 │       ├── animations/inventory.json
 │       ├── sounds/inventory.json
 │       ├── manifest.json
@@ -46,33 +48,37 @@ O inventário foi criado a partir da revisão exata do repositório
 costas, shiny, gêneros, jogos, arte oficial, HOME, Showdown e animações quando
 existentes.
 
-Um sprite frontal real de cada uma das 1.025 espécies foi baixado e inspecionado
-em `.private/pokemon-canonical/`. Essa área é ignorada pelo Git; os inventários
-versionados registram caminho local esperado, SHA-256, tamanho e dimensões.
+Um sprite frontal real de cada uma das 1.025 espécies foi baixado, inspecionado e
+publicado na respectiva pasta `sprites/` por instrução explícita do proprietário do
+repositório. A cópia original continua em `.private/pokemon-canonical/`, ignorada
+pelo Git, e cada inventário registra os dois caminhos, SHA-256, tamanho e dimensões.
 
-Nenhuma imagem está aprovada para publicação. A licença do repositório de origem
-declara simultaneamente CC0 e copyright da The Pokémon Company, portanto não
-demonstra autoridade clara para relicenciar a arte. Candidatos da comunidade
-Smogon também dependem dos termos e créditos de cada projeto. O catálogo
-`asset-rights.json` concentra essas políticas.
+A publicação não altera o estado jurídico para `approved`. A licença do repositório
+de origem declara simultaneamente CC0 e copyright da The Pokémon Company, portanto
+não demonstra autoridade clara para relicenciar a arte. Os arquivos permanecem
+marcados como `doubtful`, com créditos e limitações centralizados em
+`asset-rights.json`, e não são carregados automaticamente pelo runtime.
 
 ## Regeneração
 
 ```text
 pnpm content:pokemon
 pnpm content:pokemon -- --with-private-sprites
-pnpm content:pokemon -- --with-private-sprites --refresh
+pnpm content:pokemon -- --with-private-sprites --publish-front-sprites \
+  --pokeapi-revision=<sha> --sprites-revision=<sha>
 ```
 
 O primeiro comando regenera definições e inventários usando cache local. O segundo
-também mantém a quarentena privada. `--refresh` atualiza caches e deve ser usado
-somente em uma tarefa autorizada de atualização de fonte.
+também mantém a quarentena privada. A terceira forma publica os sprites frontais e
+deve sempre receber as revisões auditadas. `--refresh` atualiza caches e deve ser
+usado somente em uma tarefa autorizada de atualização de fonte.
 
 ## Estado de aprovação
 
 - definições: `pending`, até revisão de conteúdo e decisão de uso;
-- sprites/animações: `pending`, `doubtful` ou `quarantined`;
+- sprites frontais publicados: `doubtful`;
+- demais sprites/animações: `pending`, `doubtful` ou `quarantined`;
 - sons: pendentes e reservados para tarefa futura;
-- mídia importada no pack público: zero.
+- mídia importada no pack público: 1.025 PNGs.
 
 Estados diferentes de `approved` não autorizam a engine a carregar o conteúdo.

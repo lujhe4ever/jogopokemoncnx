@@ -8,9 +8,9 @@
   "types": [
     "ice"
   ],
-  "assetStatus": "pending",
+  "assetStatus": "doubtful",
   "definitionStatus": "pending",
-  "licenseStatus": "pending",
+  "licenseStatus": "doubtful",
   "sourceUrls": [
     "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
     "https://github.com/PokeAPI/pokeapi/blob/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/LICENSE.md"
@@ -20,7 +20,7 @@
   ],
   "notes": [
     "Definitions are catalogued for review and are not coupled to engine IDs.",
-    "No sprite, animation, or sound binary in this folder is tracked by Git.",
-    "A real front sprite was verified in the ignored local quarantine at .private/pokemon-canonical/0614-beartic/sprites/0614-beartic--pokeapi-default--front--normal.png."
+    "One default front sprite is tracked at sprites/0614-beartic--pokeapi-default--front--normal.png after explicit repository-owner direction; third-party redistribution rights remain doubtful.",
+    "The tracked file matches the quarantined source by SHA-256 34a1509d482689833bbac5d957a7659ebeed14bfabe666aa2abc1cb2a726ca48."
   ]
 }

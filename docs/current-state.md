@@ -141,11 +141,13 @@ pnpm check
 ## 6. Verificações atuais
 
 - formatação, lint e TypeScript estrito;
-- 19 arquivos de teste e 55 testes automatizados;
+- 20 arquivos de teste e 59 testes automatizados;
 - build do servidor e cliente;
 - validação do schema Prisma;
 - migrações aplicadas em PostgreSQL vazio pela CI;
-- nenhum segredo ou asset de terceiros incluído.
+- nenhum segredo incluído;
+- 1.025 sprites frontais de terceiros incluídos por instrução explícita do
+  proprietário, todos marcados com direitos `doubtful`.
 
 ## 7. Limitações e riscos
 
@@ -154,13 +156,14 @@ pnpm check
 - parâmetros Argon2id precisam ser reavaliados em hardware de produção;
 - não existe envio de e-mail, recuperação de senha ou MFA;
 - o repositório permanece público;
-- sprites reais permanecem somente em `.private/`, sem sincronização pelo GitHub;
+- 1.025 sprites frontais foram publicados no pack e preservados também em
+  `.private/`;
 - nenhuma coleção de sprites está aprovada para redistribuição;
 - nenhum deploy foi realizado.
 
 ## 8. Decisões vigentes
 
-D-001 a D-008 e D-011 a D-018 estão aceitas. As demais decisões técnicas
+D-001 a D-008 e D-011 a D-019 estão aceitas. As demais decisões técnicas
 continuam com o status registrado em `docs/decisions.md`.
 
 ## 9. Próxima tarefa recomendada
@@ -221,14 +224,50 @@ Escopo concluído:
 - learnsets com grupo de versão, geração, método, nível, ordem, maestria e TM/HM/TR;
 - 43.383 candidatos estáticos e 10.421 animados inventariados;
 - 1.025 sprites reais frontais verificados em quarentena local;
+- 1.025 sprites reais frontais publicados nas respectivas pastas `sprites/`;
 - schema v2, gerador reproduzível, catálogos normalizados e teste integral;
 - análise de fontes em `docs/pokemon-content-sources.md`.
 
 Limites:
 
-- nenhuma mídia de terceiros foi publicada;
+- a mídia publicada permanece com direitos `doubtful` e desacoplada do runtime;
 - sons não foram pesquisados ou preenchidos;
 - formas alternativas são inventariadas como assets, mas não possuem pasta de
   criatura própria nesta versão;
 - todos os estados de definição e licença continuam pendentes de decisão do
   proprietário.
+
+## 13. Atualização 2026-07-23 - Publicação dos sprites frontais
+
+Estado do GitHub verificado antes da alteração:
+
+- `main` em `5ca0c3a1149884988d10f24e43cf59da700e7f48`, com a Fase 13 integrada;
+- PR #15 aberto em rascunho na branch `agent/fase-14-teloes-transmissao`;
+- sobreposição com a Fase 14 limitada a `docs/current-state.md` e
+  `docs/work-log.md`;
+- nenhum conflito em código, schemas, conteúdo Pokémon ou testes.
+
+Escopo concluído:
+
+- 1.025 PNGs frontais publicados, um em cada pasta `sprites/`;
+- 1.067.409 bytes de mídia, aproximadamente 1,02 MiB;
+- todos os arquivos comparados com a quarentena e com o SHA-256 do inventário;
+- zero divergências, ausências ou arquivos corrompidos;
+- gerador atualizado com `--publish-front-sprites` e revisões de fonte explícitas;
+- manifests, inventários, schema, documentação de fontes e decisão D-019
+  atualizados;
+- animações, sons, shiny, costas e variações por jogo continuam fora da publicação.
+
+Verificação executada:
+
+- `pnpm check`: aprovado;
+- 20 arquivos de teste e 59 testes aprovados;
+- lint, TypeScript e builds do servidor/cliente aprovados;
+- aviso não bloqueante: chunk `game` do Vite acima de 500 kB.
+
+Risco aceito:
+
+- os sprites permanecem com estado `doubtful`;
+- a autorização do proprietário do repositório não é apresentada como licença da
+  Nintendo, Game Freak ou The Pokémon Company;
+- os arquivos não foram ligados ao runtime nesta etapa.

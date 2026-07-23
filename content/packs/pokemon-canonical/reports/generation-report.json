@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-23T19:39:34.527Z",
+  "generatedAt": "2026-07-23T20:19:29.282Z",
   "pokeapiRevision": "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f",
   "spritesRevision": "bf4c47ac82c33b330e33d98b8882d1cedb2f53e7",
   "speciesCount": 1025,
@@ -9,9 +9,9 @@
     "canonicalName": "Bulbasaur",
     "slug": "bulbasaur",
     "path": "creatures/0001-bulbasaur",
-    "assetStatus": "pending",
+    "assetStatus": "doubtful",
     "definitionStatus": "pending",
-    "licenseStatus": "pending",
+    "licenseStatus": "doubtful",
     "spriteCandidates": 78,
     "animationCandidates": 11,
     "localQuarantineVerified": true
@@ -22,9 +22,9 @@
     "canonicalName": "Pecharunt",
     "slug": "pecharunt",
     "path": "creatures/1025-pecharunt",
-    "assetStatus": "pending",
+    "assetStatus": "doubtful",
     "definitionStatus": "pending",
-    "licenseStatus": "pending",
+    "licenseStatus": "doubtful",
     "spriteCandidates": 12,
     "animationCandidates": 0,
     "localQuarantineVerified": true
@@ -36,6 +36,6 @@
   "spriteCandidateCount": 43383,
   "animationCandidateCount": 10421,
   "privateSpriteCount": 1025,
-  "mediaFilesTracked": 0,
+  "mediaFilesTracked": 1025,
   "definitionsModel": "Per-Pokémon learnsets reference normalized move and ability catalogs."
 }

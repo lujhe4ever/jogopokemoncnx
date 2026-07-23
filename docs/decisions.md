@@ -485,6 +485,26 @@ Ao aceitar ou mudar uma decisão:
 - **Evidência de aprovação:** testes cobrem propriedade, isolamento da primeira
   escolha, sequência, projeção pública, timeout/abandono e persistência única.
 
+### D-019 — Publicação excepcional dos sprites frontais com direitos duvidosos
+
+- **Data:** 2026-07-23
+- **Status:** Aceita por instrução explícita do proprietário
+- **Contexto:** o pack possui 1.025 sprites frontais reais obtidos da revisão fixa do
+  repositório `PokeAPI/sprites`. A fonte aplica CC0, mas também atribui os direitos
+  das imagens à The Pokémon Company e não demonstra autoridade clara para
+  relicenciar esse conteúdo.
+- **Decisão:** publicar exatamente um PNG frontal padrão por espécie, mantendo a
+  fonte, revisão, créditos, SHA-256, dimensões e estado `doubtful` em cada inventário.
+- **Limite:** a decisão do proprietário autoriza a inclusão no repositório, mas não
+  é tratada como licença dos titulares nem muda qualquer asset para `approved`.
+- **Integração:** os arquivos permanecem desacoplados da engine e não são carregados
+  pelo runtime nesta etapa. Animações, sons, variantes shiny, costas e sprites por
+  jogo continuam apenas inventariados.
+- **Reversibilidade:** todos os binários ficam em caminhos previsíveis e podem ser
+  removidos sem alterar IDs ou regras da engine caso revisão jurídica exija.
+- **Evidência de aprovação:** instrução explícita do proprietário nesta tarefa para
+  anexar todos os sprites disponíveis ao GitHub.
+
 ## 4. Próximas decisões a revisar
 
 A Fase 1 depende primeiro de D-001 e D-002. A revisão deve:

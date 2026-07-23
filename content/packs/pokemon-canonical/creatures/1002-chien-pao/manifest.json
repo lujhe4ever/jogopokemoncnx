@@ -9,9 +9,9 @@
     "dark",
     "ice"
   ],
-  "assetStatus": "pending",
+  "assetStatus": "doubtful",
   "definitionStatus": "pending",
-  "licenseStatus": "pending",
+  "licenseStatus": "doubtful",
   "sourceUrls": [
     "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
     "https://github.com/PokeAPI/pokeapi/blob/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/LICENSE.md"
@@ -21,7 +21,7 @@
   ],
   "notes": [
     "Definitions are catalogued for review and are not coupled to engine IDs.",
-    "No sprite, animation, or sound binary in this folder is tracked by Git.",
-    "A real front sprite was verified in the ignored local quarantine at .private/pokemon-canonical/1002-chien-pao/sprites/1002-chien-pao--pokeapi-default--front--normal.png."
+    "One default front sprite is tracked at sprites/1002-chien-pao--pokeapi-default--front--normal.png after explicit repository-owner direction; third-party redistribution rights remain doubtful.",
+    "The tracked file matches the quarantined source by SHA-256 3f3b08a3b9e38a0d7bb56f745c19d40e2c076a5a88ae8ed70ee588222b0b9784."
   ]
 }
