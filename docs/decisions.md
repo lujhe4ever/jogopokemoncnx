@@ -61,6 +61,7 @@ Ao aceitar ou mudar uma decisão:
 | D-018 | PvP autorizado com escolhas privadas e resultado idempotente | Aceita |
 | D-019 | Transmissão por allowlist, revisão e fan-out limitado | Aceita |
 | D-020 | Administração separada, elevada, autorizada e auditada | Aceita |
+| D-021 | Candidato operacional reproduzível sem deploy automático | Aceita |
 
 ## 3. Registro cronológico
 
@@ -528,6 +529,28 @@ Ao aceitar ou mudar uma decisão:
   recuperação aprovada.
 - **Evidência de aprovação:** testes cobrem matriz RBAC, segredo inválido, minimização,
   referência assinada, confirmação, validação, idempotência, conflito e auditoria.
+
+### D-021 — Candidato operacional reproduzível sem deploy automático
+
+- **Data:** 2026-07-23
+- **Status:** Aceita para preparação privada, sem deploy
+- **Contexto:** a aplicação precisa demonstrar hardening, empacotamento, recuperação
+  e observabilidade antes de receber infraestrutura ou tráfego real.
+- **Empacotamento:** servidor, jogo e administração possuem imagens separadas; o
+  PostgreSQL permanece em rede interna e a borda termina TLS.
+- **Segredos:** produção lê valores por arquivo. Nenhuma credencial, chave ou
+  certificado real pertence ao repositório ou ao workflow.
+- **Promoção:** o workflow manual valida código, banco, backup e imagens, mas não
+  publica imagem nem executa deploy. Promoção futura exigirá tag imutável e aprovação.
+- **Recuperação:** RPO de 24 horas, RTO de 4 horas e sete backups diários são baseline
+  provisória, com checksum e restauração isolada obrigatória.
+- **Observabilidade:** request IDs, métricas protegidas, painel e alertas cobrem o
+  monólito; tracing será reavaliado apenas com múltiplos processos/serviços.
+- **Segurança residual:** admin continua sem exposição externa até existir MFA
+  individual; VPS, DNS, certificados, armazenamento externo e proteção DDoS dependem
+  da infraestrutura ainda não autorizada.
+- **Evidência de aprovação:** 67 testes, builds e budgets passam; auditoria, scan de
+  segredos/licenças e schema passam; CI Linux demonstra migração e restauração.
 
 ## 4. Próximas decisões a revisar
 

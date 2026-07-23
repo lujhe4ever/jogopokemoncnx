@@ -413,7 +413,7 @@ versões, não caminhos. Alterar um ID persistido exige migração.
 
 Somente conteúdo original, CC0 ou comprovadamente licenciado poderá ser publicado.
 
-## 14. Deploy inicial
+## 14. Preparação operacional
 
 ```mermaid
 flowchart TB
@@ -425,12 +425,16 @@ flowchart TB
     DB --> BACKUP["Backup externo criptografado"]
 ```
 
-Containers serão multi-stage, reproduzíveis e executados como usuário não-root.
-Migração será etapa separada. Health checks de disponibilidade e prontidão serão
-distintos. Deploy promoverá imagem por digest e manterá rollback.
+As imagens de servidor, jogo e administração são construídas separadamente e
+executadas como usuário não-root. Migração é uma etapa isolada. Health checks de
+disponibilidade e prontidão são distintos. O candidato manual constrói sem publicar
+ou implantar; uma promoção futura deverá usar tag/digest imutável e manter rollback.
 
-A VPS única é um ponto único de falha aceito inicialmente. Backup fora da VPS e teste
-de restauração precedem exposição externa.
+O proxy termina TLS, não publica métricas e mantém o banco em rede interna. Segredos
+são montados por arquivo. A VPS única continua um ponto único de falha aceito
+inicialmente. Backup fora da VPS e teste de restauração precedem exposição externa.
+O runbook, o modelo de ameaças e a observabilidade estão em `docs/runbooks`,
+`threat-model.md` e `observability.md`.
 
 ## 15. Evolução e gatilhos de escala
 

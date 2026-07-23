@@ -1207,3 +1207,42 @@ e qualquer deploy público ou privado.
 ### Próximo passo
 
 Publicar o PR rascunho da Fase 16 antes de iniciar a implementação.
+
+## 2026-07-23 — Implementação e validação local da Fase 16
+
+### Contexto
+
+O PR rascunho #18 reservou a branch `agent/fase-16-hardening-operacional` a partir de
+`2b56ac734dc4ab133b3664e196e7a7c0a346fb98`. O escopo foi executado sem VPS,
+credenciais reais ou deploy.
+
+### Alterações
+
+- limite HTTP de 64 KiB, headers defensivos e validação de origem WebSocket;
+- secrets por arquivo e métricas Prometheus protegidas por token;
+- budgets de bundles/assets e scans de segredos, licenças e dependências;
+- correção transitiva de `effect` para `3.20.0`, removendo o alerta de segurança;
+- imagens separadas, Compose de produção e proxy TLS sem porta pública do banco;
+- backup com checksum, restauração isolada, retenção e rollback confirmado;
+- dashboard, alertas, runbook, modelo de ameaças e documentação de observabilidade;
+- workflow manual de candidato que valida e constrói sem publicar ou implantar.
+
+### Verificações
+
+- `pnpm check`: aprovado, 23 arquivos e 67 testes;
+- builds web/admin: aprovados;
+- budgets: 1.247.996/1.400.000 bytes no jogo, 9.335/100.000 bytes no admin e
+  1.022/2.000.000 bytes no maior asset;
+- `pnpm audit --prod --audit-level high`: nenhuma vulnerabilidade conhecida;
+- schema Prisma, JSON operacional, scans de segredos e licenças: aprovados;
+- Docker e Bash indisponíveis neste computador; a CI Linux executará migração,
+  restauração e builds de imagem.
+
+### Riscos residuais
+
+Admin sem MFA individual, VPS única, hardware-alvo não medido e infraestrutura real
+não selecionada impedem exposição externa. Nenhum deploy foi realizado.
+
+### Próximo passo
+
+Revisar e integrar o PR #18 após a CI aprovada; depois reservar a Fase 17.

@@ -7,12 +7,12 @@
 | Branch principal | `main` |
 | Branch desta entrega | `agent/fase-16-hardening-operacional` |
 | Fase | Fase 16 — hardening e preparação operacional |
-| Status | **reservada — implementação em andamento** |
+| Status | **concluída na branch — aguardando revisão no PR #18** |
 
 ## 1. Resumo
 
-As Fases 0B a 15 foram integradas à `main`. A Fase 16 está reservada na branch
-`agent/fase-16-hardening-operacional`.
+As Fases 0B a 15 foram integradas à `main`. A Fase 16 foi concluída na branch
+`agent/fase-16-hardening-operacional` e aguarda CI/revisão no PR #18.
 
 O projeto possui workspace TypeScript, servidor Fastify, cliente Vite/Phaser,
 PostgreSQL, Prisma, WebSocket versionado, autenticação e a primeira fatia jogável da
@@ -98,6 +98,17 @@ casa, clareira original, transições autoritativas e o primeiro ciclo de intera
 - manifesto original/CC0 valida namespace, versão, checksum, paths, duplicatas e quantidade;
 - publicação é versionada, idempotente para mesmo checksum e rejeita conflito;
 - sucesso, negação e bootstrap de papel são auditados sem segredo ou PII direta.
+- headers defensivos, limite HTTP de 64 KiB e allowlist de origem protegem HTTP e
+  WebSocket;
+- configuração aceita segredos por arquivo e métricas exigem bearer token não
+  publicado na borda;
+- budgets verificam bundles, assets e a baseline de 20 presenças da arena;
+- scans automatizados cobrem credenciais, procedência de conteúdo e vulnerabilidades
+  conhecidas;
+- imagens separadas, proxy TLS e redes internas preparam operação sem expor o banco;
+- backup com checksum, restauração isolada e rollback exigem confirmação explícita;
+- dashboard, alertas, modelo de ameaças e runbook registram a operação prevista;
+- workflow manual valida um candidato e constrói imagens sem publicar ou implantar.
 
 Verificação e recuperação de e-mail permanecem fora do escopo até que seus fluxos
 completos sejam definidos.
@@ -111,6 +122,9 @@ completos sejam definidos.
 - `tests`: testes arquiteturais, de runtime e autenticação;
 - `docker-compose.yml`: PostgreSQL local;
 - `.github/workflows/ci.yml`: instalação, migração e qualidade.
+- `.github/workflows/release-candidate.yml`: candidato manual sem push ou deploy;
+- `ops`: imagens, proxy, budgets, observabilidade e scripts operacionais;
+- `docs/runbooks/operations.md`: preparação, backup, restauração e rollback.
 
 ## 4. Estado por área
 
@@ -131,10 +145,10 @@ completos sejam definidos.
 | Batalhas PvP | concluídas |
 | Telões e espectadores | concluídos |
 | Administração | concluída |
-| Hardening e operação | em andamento na branch |
+| Hardening e operação | concluído na branch |
 | Arena e presença | concluídas na branch |
 | Chat, emotes e convites | concluídos na branch |
-| Administração e deploy | não iniciado |
+| Empacotamento de produção | concluído, não implantado |
 
 ## 5. Comandos
 
@@ -146,16 +160,24 @@ pnpm --filter @lt/server db:migrate
 pnpm dev
 pnpm --filter @lt/admin dev
 pnpm check
+pnpm audit --prod --audit-level high
 ```
 
 ## 6. Verificações atuais
 
 - formatação, lint e TypeScript estrito;
-- 22 arquivos de teste e 64 testes automatizados;
+- 23 arquivos de teste e 67 testes automatizados;
 - build do servidor e cliente;
+- builds independentes do jogo e da administração;
+- budgets: web 1.247.996/1.400.000 bytes, admin 9.335/100.000 bytes e maior asset
+  1.022/2.000.000 bytes;
+- auditoria de dependências sem vulnerabilidades conhecidas;
+- scans de segredo e licenças aprovados;
 - validação do schema Prisma;
 - migrações aplicadas em PostgreSQL vazio pela CI;
-- nenhum segredo ou asset de terceiros incluído.
+- nenhum segredo ou asset de terceiros incluído;
+- imagens, Compose e restauração serão exercitados pela CI Linux porque Docker não
+  está disponível neste computador.
 
 ## 7. Limitações e riscos
 
@@ -168,13 +190,13 @@ pnpm check
 
 ## 8. Decisões vigentes
 
-D-001 a D-008 e D-011 a D-020 estão aceitas. As demais decisões técnicas
+D-001 a D-008 e D-011 a D-021 estão aceitas. As demais decisões técnicas
 continuam com o status registrado em `docs/decisions.md`.
 
 ## 9. Próxima tarefa recomendada
 
-Implementar exclusivamente a Fase 16: consolidar segurança, performance,
-observabilidade, backup/restore, empacotamento e runbooks, sem realizar deploy público.
+Revisar e integrar o PR #18 após a CI aprovada; então reservar a Fase 17 sem realizar
+deploy.
 
 ## 10. Instruções para reproduzir
 
