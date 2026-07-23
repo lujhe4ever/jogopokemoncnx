@@ -7,7 +7,7 @@
 | Branch principal | `main` |
 | Branch desta entrega | `docs/estrutura-inicial` |
 | Fase | Fase 0B — governança e continuidade colaborativa |
-| Status | **em andamento — documentação preparada, publicação pendente** |
+| Status | **em andamento — branch publicada, aguardando revisão** |
 
 ## 1. Resumo
 
@@ -20,25 +20,32 @@ A branch `main` possuía um único commit antes desta tarefa:
   `docs: establish architecture baseline`;
 - único arquivo: `architecture.md`.
 
-A ref remota `docs/estrutura-inicial` foi criada a partir dessa revisão e, neste
-snapshot, ainda aponta para o mesmo commit da `main`, sem os documentos preparados
-localmente. A baseline raiz preparada para publicação foi atualizada somente para
-distinguir a Fase 0A já concluída da Fase 0B e apontar o roadmap operacional; nenhuma
-proposta D-001 a D-010 mudou de status.
+A branch remota `docs/estrutura-inicial` foi publicada a partir dessa revisão. A
+baseline raiz foi atualizada somente para distinguir a Fase 0A já concluída da Fase 0B
+e apontar o roadmap operacional; nenhuma proposta D-001 a D-010 mudou de status.
+
+Commits de conteúdo verificados:
+
+- `b8cbb1400d6a87eab88fb4b03ee89ddf3ed85484` — publicação documental inicial;
+- `9dcd89861a23293e65ff189bc7aca817326c2b8e` — correção da codificação de
+  `architecture.md`.
+
+O commit que contém este snapshot de continuidade é identificado pelo histórico da
+branch, evitando autorreferência.
 
 As decisões D-001 a D-010 continuam com status **Proposta**. Esta entrega não aprova
 stack nem autoriza a Fase 1.
 
-## 2. Tarefa atual
+## 2. Última tarefa executada
 
-Preparação local da estrutura documental obrigatória para a branch
+Publicação e verificação da estrutura documental obrigatória na branch
 `docs/estrutura-inicial`, sem código ou dependências.
 
-Os arquivos foram preparados e validados localmente. Publicação, verificação do diff
-remoto, revisão e eventual merge ainda estão pendentes neste snapshot. Por isso, a
-Fase 0B permanece **em andamento** no roadmap.
+Os arquivos foram preparados, revisados, publicados e comparados com a `main`. A
+revisão do proprietário e eventual merge continuam pendentes. Por isso, a Fase 0B
+permanece **em andamento** no roadmap.
 
-## 3. Arquivos preparados para esta branch
+## 3. Arquivos existentes nesta branch
 
 - `architecture.md`: baseline normativa já existente;
 - `AGENTS.md`: regras obrigatórias para pessoas e IAs;
@@ -129,7 +136,7 @@ Nenhuma versão concreta de biblioteca ou runtime foi instalada nesta fase.
 
 ## 9. Testes e verificações da última tarefa
 
-Verificações executadas antes da publicação:
+Verificações executadas:
 
 - leitura do estado e histórico remoto da `main`;
 - confirmação de que a `main` continha somente `architecture.md`;
@@ -137,15 +144,19 @@ Verificações executadas antes da publicação:
 - validação de títulos/seções obrigatórias;
 - validação de links relativos;
 - validação do equilíbrio de blocos Markdown/Mermaid;
-- confirmação local de que nenhum arquivo de código, dependência ou asset foi
-  preparado.
+- busca por padrões comuns de segredo;
+- confirmação de que nenhum arquivo de código, dependência ou asset foi adicionado;
+- comparação remota da branch com `main`;
+- conferência do Git blob SHA dos oito arquivos locais contra os oito arquivos
+  remotos.
 
-Ainda pendentes neste snapshot:
+Resultado remoto após a correção:
 
-- publicar os documentos;
-- comparar a branch remota com `main`;
-- conferir o conteúdo remoto dos arquivos;
-- registrar os hashes e resultados finais.
+- branch dois commits à frente da `main` antes deste registro de continuidade;
+- zero commits atrás;
+- exatamente oito arquivos Markdown alterados;
+- oito arquivos com bytes idênticos entre preparação local e GitHub;
+- nenhum mismatch restante.
 
 Não houve lint, teste ou build de aplicação porque esses comandos não existem.
 
@@ -154,6 +165,9 @@ Não houve lint, teste ou build de aplicação porque esses comandos não existe
 - Não há aplicação para executar.
 - A arquitetura ainda não foi validada por spike técnico.
 - Metas de desempenho são hipóteses até existir benchmark.
+- A primeira publicação de `architecture.md` chegou com codificação corrompida; o
+  problema foi detectado pela comparação remota e corrigido no commit
+  `9dcd89861a23293e65ff189bc7aca817326c2b8e`.
 - O processo de revisão entre duas IAs está documentado, mas ainda não foi praticado em
   uma entrega de código.
 - A política de proteção de branch, reviewers e CI não está configurada.
@@ -186,8 +200,8 @@ Não houve lint, teste ou build de aplicação porque esses comandos não existe
 
 ## 13. Próxima tarefa recomendada
 
-Após a publicação e verificação remota desta documentação, revisar a branch
-`docs/estrutura-inicial` e obter decisão explícita sobre merge da Fase 0B.
+Revisar a branch `docs/estrutura-inicial` e obter decisão explícita sobre ajustes ou
+merge da Fase 0B.
 
 A Fase 1 não foi iniciada e não deve começar no mesmo trabalho de revisão.
 

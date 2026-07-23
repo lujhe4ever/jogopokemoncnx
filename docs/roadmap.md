@@ -90,9 +90,8 @@ sem depender de memória local.
 - transformar recomendação em requisito sem aprovação;
 - documentação extensa perder atualidade.
 
-**Status:** **em andamento** — a ref remota `docs/estrutura-inicial` existe na mesma
-revisão da `main`, e os arquivos estão preparados localmente para publicação; revisão
-e merge não estão presumidos.
+**Status:** **em andamento** — os oito documentos estão publicados e verificados na
+branch `docs/estrutura-inicial`; revisão do proprietário e merge não estão presumidos.
 
 ### Fase 1 — Fundação e configuração do projeto
 

@@ -179,3 +179,66 @@ reescrever esta.
 
 Publicar e verificar a branch `docs/estrutura-inicial`. Depois, apresentar o resultado
 para revisão e decisão explícita sobre merge. Não iniciar a Fase 1.
+
+## 2026-07-23 — Publicação e verificação da Fase 0B
+
+### Responsável humano
+
+Não informado.
+
+### Objetivo da sessão
+
+Publicar os documentos preparados, comprovar que o GitHub contém o conteúdo esperado e
+registrar o handoff final sem fazer merge ou iniciar a Fase 1.
+
+### Estado anterior
+
+- a ref remota `docs/estrutura-inicial` existia e era idêntica à `main`;
+- os oito documentos estavam preparados e validados localmente;
+- publicação, comparação remota e hashes ainda estavam pendentes.
+
+### Alterações realizadas
+
+- publicado o commit documental inicial
+  `b8cbb1400d6a87eab88fb4b03ee89ddf3ed85484`;
+- detectada codificação corrompida somente em `architecture.md` durante a conferência
+  do conteúdo remoto;
+- publicada a correção de codificação no commit
+  `9dcd89861a23293e65ff189bc7aca817326c2b8e`;
+- repetida a comparação por Git blob SHA para os oito arquivos;
+- atualizados `docs/current-state.md`, `docs/roadmap.md` e este registro com os
+  resultados reais.
+
+### Testes e verificações
+
+- comparação `main...docs/estrutura-inicial`: branch à frente, sem ficar atrás;
+- diff após a correção: exatamente oito arquivos Markdown;
+- comparação de bytes por Git blob SHA: oito correspondências, zero divergências;
+- links relativos, H1, cercas Markdown/Mermaid, fases do roadmap, campos do relatório
+  e padrões comuns de segredo: válidos;
+- lint, testes automatizados e build: não disponíveis até a Fase 1.
+
+### Resultado Git
+
+- branch: `docs/estrutura-inicial`;
+- base: `main` em
+  `b73b2b0124cbe57e96517785f84d0354426b5884`;
+- commits de conteúdo:
+  - `b8cbb1400d6a87eab88fb4b03ee89ddf3ed85484`;
+  - `9dcd89861a23293e65ff189bc7aca817326c2b8e`;
+- o commit que contém esta entrada é identificado pelo histórico da branch;
+- PR: não criado;
+- merge: não realizado;
+- deploy: não aplicável.
+
+### Problemas e riscos
+
+- o repositório permanece público;
+- D-001 a D-010 continuam **Proposta**;
+- não existe toolchain ou aplicação;
+- revisão do proprietário permanece obrigatória antes de merge ou Fase 1.
+
+### Próximo passo
+
+Revisar a branch publicada e decidir explicitamente entre ajustes ou merge da Fase
+0B. Não iniciar a Fase 1 na mesma tarefa.
