@@ -50,6 +50,9 @@ importers:
         specifier: 4.4.3
         version: 4.4.3
     devDependencies:
+      "@types/ws":
+        specifier: ^8.18.1
+        version: 8.18.1
       prisma:
         specifier: 6.19.0
         version: 6.19.0(typescript@6.0.3)
@@ -491,6 +494,12 @@ packages:
     resolution:
       {
         integrity: sha512-GNWcUTRBgIRJD5zj+Tq0fKOJ5XZajIiBroOF0yvj2bSU1WvNdYS/dn9UxwsujGW4JX06dnHyjV2y9rRaybH0iQ==,
+      }
+
+  "@types/ws@8.18.1":
+    resolution:
+      {
+        integrity: sha512-ThVF6DCVhA8kUGy+aazFQ4kXQ7E1Ty7A3ypFOe0IcJV8O/M511G99AW24irKrW56Wt44yG9+ij8FaqoBGkuBXg==,
       }
 
   "@typescript-eslint/eslint-plugin@8.65.0":
@@ -2228,6 +2237,10 @@ snapshots:
   "@types/node@24.10.1":
     dependencies:
       undici-types: 7.16.0
+
+  "@types/ws@8.18.1":
+    dependencies:
+      "@types/node": 24.10.1
 
   "@typescript-eslint/eslint-plugin@8.65.0(@typescript-eslint/parser@8.65.0(eslint@10.7.0(jiti@2.7.0))(typescript@6.0.3))(eslint@10.7.0(jiti@2.7.0))(typescript@6.0.3)":
     dependencies:

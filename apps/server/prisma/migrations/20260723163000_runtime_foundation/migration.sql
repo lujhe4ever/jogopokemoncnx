@@ -1,0 +1,5 @@
+CREATE TABLE "RuntimeMarker" (
+  "id" SERIAL NOT NULL,
+  "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  CONSTRAINT "RuntimeMarker_pkey" PRIMARY KEY ("id")
+);

@@ -3,6 +3,12 @@
   "version": "0.0.0",
   "private": true,
   "type": "module",
+  "scripts": {
+    "dev": "node --env-file-if-exists=../../.env --watch --experimental-strip-types src/server.ts",
+    "start": "node dist/server.js",
+    "prisma:generate": "prisma generate",
+    "db:migrate": "prisma migrate deploy"
+  },
   "dependencies": {
     "@fastify/websocket": "11.3.0",
     "@prisma/client": "6.19.0",
@@ -10,6 +16,7 @@
     "zod": "4.4.3"
   },
   "devDependencies": {
+    "@types/ws": "^8.18.1",
     "prisma": "6.19.0"
   }
 }

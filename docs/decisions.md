@@ -45,8 +45,8 @@ Ao aceitar ou mudar uma decisão:
 | D-002 | Monólito modular Fastify em uma VPS | Aceita |
 | D-003 | Servidor autoritativo e simulação de passo fixo | Proposta |
 | D-004 | Phaser restrito ao adaptador cliente | Proposta |
-| D-005 | Prisma restrito à infraestrutura | Proposta |
-| D-006 | Protocolo runtime validado e versionado | Proposta |
+| D-005 | Prisma restrito à infraestrutura | Aceita |
+| D-006 | Protocolo runtime validado e versionado | Aceita |
 | D-007 | Packs de conteúdo e catálogo de assets substituíveis | Proposta |
 | D-008 | Sessão opaca e ticket WebSocket efêmero | Proposta |
 | D-009 | Redis, broker e microserviços adiados até haver gatilho | Proposta |
@@ -198,7 +198,7 @@ Ao aceitar ou mudar uma decisão:
 ### D-005 — Prisma restrito à infraestrutura
 
 - **Data:** 2026-07-23
-- **Status:** Proposta
+- **Status:** Aceita
 - **Contexto:** Prisma facilita banco/migrações, mas seus tipos podem acoplar todo o
   sistema ao schema.
 - **Alternativas consideradas:**
@@ -218,7 +218,7 @@ Ao aceitar ou mudar uma decisão:
 ### D-006 — Protocolo runtime validado e versionado
 
 - **Data:** 2026-07-23
-- **Status:** Proposta
+- **Status:** Aceita
 - **Contexto:** tipos TypeScript desaparecem em runtime e clientes/servidores podem
   operar versões diferentes.
 - **Alternativas consideradas:**

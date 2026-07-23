@@ -7,7 +7,7 @@
 | Branch principal | `main` |
 | Branch desta entrega | `agent/fase-2-runtime-local` |
 | Fase | Fase 2 — runtime e infraestrutura local mínimos |
-| Status | **reservada — preparação do PR em andamento** |
+| Status | **concluída na branch — PR #3 aguardando revisão** |
 
 ## 1. Resumo
 
@@ -219,7 +219,7 @@ Não houve lint, teste ou build de aplicação porque esses comandos não existe
 
 ## 13. Próxima tarefa recomendada
 
-Revisar o PR #2 e as verificações da CI. A Fase 2 permanece não iniciada.
+Revisar o PR #3 e suas verificações. A Fase 3 permanece não iniciada.
 
 ## 14. Instruções para reproduzir o estado
 
