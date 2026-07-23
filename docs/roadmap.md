@@ -401,7 +401,7 @@ Criar uma batalha por turno isolada do mundo.
 - batalha presa em estado sem saída;
 - aplicação duplicada de recompensa.
 
-**Status:** **não iniciado**.
+**Status:** **em andamento** na branch `agent/fase-8-batalha-npc`.
 
 ### Fase 9 — Encontros e captura
 

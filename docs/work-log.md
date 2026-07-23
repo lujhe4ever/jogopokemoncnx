@@ -743,3 +743,26 @@ Publicar o PR de reserva da Fase 7 antes de implementar o domínio.
 ### Próximo passo
 
 Revisar e integrar o PR #8 após a CI aprovada.
+
+## 2026-07-23 — Integração da Fase 7 e reserva da Fase 8
+
+### Contexto
+
+O PR #8 passou no CI e foi integrado à `main` no commit
+`356d2f56cf9fcf27d82e9900db849b1344803adb`.
+
+### Escopo reservado
+
+- máquina de estados pura e isolada do mundo;
+- comandos/eventos e turnos validados;
+- adversário por política e RNG determinístico;
+- UI de seleção de ações;
+- resultado idempotente, timeout, abandono e retorno ao mundo.
+
+### Fora do escopo
+
+Encontros aleatórios, captura, missões, PvP, arena e deploy público.
+
+### Próximo passo
+
+Publicar o PR de reserva da Fase 8 antes de implementar a batalha.
