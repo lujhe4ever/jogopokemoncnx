@@ -90,10 +90,8 @@ sem depender de memória local.
 - transformar recomendação em requisito sem aprovação;
 - documentação extensa perder atualidade.
 
-**Status:** **em andamento** — os oito documentos estão publicados e verificados no
-[PR #1](https://github.com/lujhe4ever/jogopokemoncnx/pull/1), aberto como rascunho de
-`docs/estrutura-inicial` para `main`; revisão do proprietário e merge não estão
-presumidos.
+**Status:** **concluído** — os oito documentos foram revisados e integrados à `main`
+pelo PR #1 no commit `41c2807b1b5e240909fb08c76f0325cc68345729`.
 
 ### Fase 1 — Fundação e configuração do projeto
 
@@ -135,7 +133,8 @@ Criar um workspace TypeScript mínimo, reproduzível e sem funcionalidade de gam
 - versões incompatíveis;
 - estrutura física maior que a necessidade real.
 
-**Status:** **não iniciado**.
+**Status:** **em andamento** — tarefa reservada na branch
+`agent/fase-1-fundacao`; scaffold e toolchain ainda não criados neste snapshot.
 
 ### Fase 2 — Runtime e infraestrutura local mínimos
 

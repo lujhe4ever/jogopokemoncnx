@@ -5,14 +5,26 @@
 | Atualizado em | 2026-07-23 |
 | Repositório | `lujhe4ever/jogopokemoncnx` |
 | Branch principal | `main` |
-| Branch desta entrega | `docs/estrutura-inicial` |
-| Fase | Fase 0B — governança e continuidade colaborativa |
-| Status | **em andamento — PR #1 em rascunho, aguardando revisão** |
+| Branch desta entrega | `agent/fase-1-fundacao` |
+| Fase | Fase 1 — fundação e configuração do projeto |
+| Status | **reservada — preparação documental do PR em andamento** |
 
 ## 1. Resumo
 
-O projeto contém somente documentação. Não existe código de produto, scaffold,
-dependência instalada, banco configurado, container, pipeline ou aplicação executável.
+O PR #1 foi revisado, marcado como pronto e integrado à `main` no commit
+`41c2807b1b5e240909fb08c76f0325cc68345729`.
+
+A Fase 1 foi autorizada pelo proprietário para execução contínua, sem interrupções
+para confirmações rotineiras. A branch exclusiva `agent/fase-1-fundacao` foi criada
+a partir da `main` integrada. Neste snapshot de reserva ainda não existe código de
+produto, scaffold, dependência instalada, banco, container ou aplicação executável.
+
+Escopo reservado:
+
+- aceitar e registrar D-001 e D-002 para a fundação;
+- criar o workspace TypeScript mínimo;
+- configurar qualidade, testes arquiteturais e CI;
+- manter gameplay, banco, autenticação, deploy e assets fora do escopo.
 
 A branch `main` possuía um único commit antes desta tarefa:
 

@@ -302,3 +302,53 @@ na interface e sem realizar merge.
 
 Revisar o PR #1 e decidir entre ajustes ou autorização para marcá-lo como pronto para
 revisão. Não realizar merge nem iniciar a Fase 1 sem autorização separada.
+
+## 2026-07-23 — Integração da Fase 0B e reserva da Fase 1
+
+### Responsável humano
+
+Luan, conforme autorização registrada na conversa da tarefa.
+
+### Objetivo da sessão
+
+Integrar a documentação aprovada e reservar de forma visível a fundação técnica da
+Fase 1 antes de criar código.
+
+### Estado anterior
+
+- PR #1 aberto e marcado como pronto para revisão;
+- Fase 0B ainda não integrada;
+- Fase 1 não iniciada;
+- D-001 e D-002 ainda com status Proposta.
+
+### Alterações realizadas
+
+- PR #1 integrado à `main` pelo commit
+  `41c2807b1b5e240909fb08c76f0325cc68345729`;
+- branch exclusiva `agent/fase-1-fundacao` criada a partir dessa revisão;
+- Fase 0B marcada como concluída;
+- Fase 1 marcada como em andamento para publicação da reserva;
+- escopo limitado à fundação TypeScript, qualidade, testes arquiteturais e CI.
+
+### Testes e verificações
+
+- merge do PR #1 confirmado pelo GitHub;
+- `main` sincronizada com `origin/main`;
+- worktree confirmado sem alterações anteriores à reserva;
+- nenhum código, asset, dependência, banco ou deploy criado neste snapshot.
+
+### Decisões operacionais
+
+- D-001 e D-002 serão registradas como aceitas no conjunto de mudanças da Fase 1;
+- gameplay, autenticação, banco, migrações e deploy permanecem fora do escopo.
+
+### Problemas e riscos
+
+- o repositório permanece público;
+- a toolchain ainda precisa ser validada em Windows e CI;
+- o utilitário `gh` não está instalado; publicação usa `git` e o conector GitHub.
+
+### Próximo passo
+
+Publicar esta reserva em um PR rascunho e somente então iniciar o scaffold mínimo da
+Fase 1.
