@@ -1,0 +1,8 @@
+{
+  "webBundleBytes": 1400000,
+  "adminBundleBytes": 100000,
+  "largestContentAssetBytes": 2000000,
+  "arenaPlayers": 20,
+  "arenaHundredTicksMs": 250,
+  "arenaSingleTickMs": 50
+}

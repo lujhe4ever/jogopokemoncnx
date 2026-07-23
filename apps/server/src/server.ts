@@ -53,6 +53,8 @@ const app = await buildApp({
   arena,
   arenaProfiles: new PrismaArenaProfileStore(prisma),
   ...(admin ? { admin } : {}),
+  ...(config.PUBLIC_ORIGIN ? { allowedOrigin: config.PUBLIC_ORIGIN } : {}),
+  ...(config.METRICS_TOKEN ? { metricsToken: config.METRICS_TOKEN } : {}),
 });
 
 const shutdown = () => {

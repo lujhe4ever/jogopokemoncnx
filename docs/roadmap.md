@@ -2,7 +2,7 @@
 
 | Campo | Valor |
 | --- | --- |
-| Status do projeto | **Fase 15 — concluída, aguardando integração** |
+| Status do projeto | **Fase 16 — concluída na branch, aguardando revisão** |
 | Atualizado em | 2026-07-23 |
 | Implementação existente | Nenhuma |
 
@@ -46,7 +46,7 @@ Status permitidos:
 | 13 | Batalhas entre jogadores | concluído |
 | 14 | Telões e transmissão de batalhas | concluído |
 | 15 | Painel administrativo | concluído |
-| 16 | Segurança, performance, testes e deploy | não iniciado |
+| 16 | Segurança, performance, testes e deploy | concluído |
 | 17 | Alpha privado e estabilização | não iniciado |
 
 ## 3. Fases
@@ -669,8 +669,8 @@ Operar usuários e conteúdo sem acesso manual irrestrito ao banco.
 - alterações irreversíveis;
 - excesso de dados pessoais.
 
-**Status:** **concluído** na branch `agent/fase-15-painel-administrativo` e
-aguardando integração pelo PR #16.
+**Status:** **concluído** e integrado pelo PR #16 no commit
+`2b56ac734dc4ab133b3664e196e7a7c0a346fb98`.
 
 ### Fase 16 — Testes, segurança, otimização e deploy
 
@@ -713,7 +713,8 @@ Validar requisitos não funcionais e preparar operação privada em VPS.
 - backup não restaurável;
 - dispositivo de teste não representativo.
 
-**Status:** **não iniciado**.
+**Status:** **concluído na branch**, aguardando revisão no PR #18. O pacote de
+operação foi validado sem executar deploy.
 
 ### Fase 17 — Alpha privado e estabilização
 
@@ -754,8 +755,6 @@ Validar o ciclo completo com usuários autorizados e conteúdo permitido.
 
 ## 4. Gate para a próxima tarefa
 
-A única próxima tarefa recomendada é revisar a documentação da Fase 0B no PR #1,
-resolver inconsistências e obter autorização explícita para marcá-lo como pronto ou
-realizar ajustes. O merge exige autorização posterior.
-
-A Fase 1 não está iniciada nem implicitamente autorizada.
+A única próxima tarefa recomendada é revisar e integrar o PR #18 após a CI aprovada.
+Depois da integração, reservar a Fase 17 sem executar deploy nem iniciar tráfego
+privado.

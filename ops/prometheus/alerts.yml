@@ -1,0 +1,31 @@
+groups:
+  - name: projeto-lt
+    rules:
+      - alert: ProjetoLtHttpErrors
+        expr: increase(lt_http_errors_total[5m]) > 5
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: Elevated server errors
+      - alert: ProjetoLtArenaTickSlow
+        expr: lt_arena_max_tick_duration_ms > 50
+        for: 2m
+        labels:
+          severity: warning
+        annotations:
+          summary: Arena tick exceeded 50 ms
+      - alert: ProjetoLtArenaDrops
+        expr: increase(lt_arena_dropped_messages_total[5m]) > 20
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: Arena is dropping buffered messages
+      - alert: ProjetoLtProcessMemory
+        expr: lt_process_resident_memory_bytes > 536870912
+        for: 10m
+        labels:
+          severity: warning
+        annotations:
+          summary: Server RSS exceeded 512 MiB

@@ -1,0 +1,40 @@
+{
+  "title": "Projeto LT - Operação",
+  "schemaVersion": 39,
+  "version": 1,
+  "refresh": "30s",
+  "panels": [
+    {
+      "type": "timeseries",
+      "title": "HTTP requests and errors",
+      "targets": [
+        { "expr": "rate(lt_http_requests_total[5m])", "refId": "A" },
+        { "expr": "rate(lt_http_errors_total[5m])", "refId": "B" }
+      ]
+    },
+    {
+      "type": "timeseries",
+      "title": "Arena players and tick",
+      "targets": [
+        { "expr": "lt_arena_players", "refId": "A" },
+        { "expr": "lt_arena_max_tick_duration_ms", "refId": "B" }
+      ]
+    },
+    {
+      "type": "timeseries",
+      "title": "Backpressure and broadcasts",
+      "targets": [
+        { "expr": "rate(lt_arena_dropped_messages_total[5m])", "refId": "A" },
+        {
+          "expr": "rate(lt_battle_broadcast_deliveries_total[5m])",
+          "refId": "B"
+        }
+      ]
+    },
+    {
+      "type": "stat",
+      "title": "Resident memory",
+      "targets": [{ "expr": "lt_process_resident_memory_bytes", "refId": "A" }]
+    }
+  ]
+}
