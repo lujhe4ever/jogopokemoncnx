@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Projeto LT — Administração</title>
+    <link rel="stylesheet" href="/src/styles.css" />
+  </head>
+  <body>
+    <main>
+      <header>
+        <p class="eyebrow">SUPERFÍCIE SEPARADA E AUDITADA</p>
+        <h1>Administração do Projeto LT</h1>
+        <p>
+          Entre no jogo primeiro. O segredo de elevação fica somente na memória
+          desta aba e nunca é salvo.
+        </p>
+      </header>
+
+      <section aria-labelledby="access-title">
+        <h2 id="access-title">Elevar sessão</h2>
+        <form id="access-form">
+          <label for="step-up">Segundo fator administrativo</label>
+          <input
+            id="step-up"
+            type="password"
+            minlength="32"
+            autocomplete="one-time-code"
+            required
+          />
+          <button type="submit">Verificar acesso</button>
+        </form>
+        <p id="admin-status" role="status" aria-live="assertive">
+          Aguardando elevação.
+        </p>
+      </section>
+
+      <div id="admin-workspace" hidden>
+        <section id="support-section" aria-labelledby="support-title">
+          <h2 id="support-title">Suporte minimizado</h2>
+          <form id="profile-form">
+            <label for="display-name">Nome público exato</label>
+            <input id="display-name" minlength="2" maxlength="40" required />
+            <button type="submit">Consultar perfil</button>
+          </form>
+          <article id="profile-result" hidden aria-live="polite">
+            <h3>Resumo permitido</h3>
+            <dl id="profile-fields"></dl>
+            <form id="revoke-form">
+              <label for="revoke-reason">Motivo da revogação</label>
+              <input
+                id="revoke-reason"
+                minlength="10"
+                maxlength="200"
+                required
+              />
+              <label for="revoke-confirmation">
+                Digite REVOKE_SESSIONS para confirmar
+              </label>
+              <input id="revoke-confirmation" autocomplete="off" required />
+              <button type="submit">Revogar sessões ativas</button>
+            </form>
+          </article>
+        </section>
+
+        <section id="content-section" aria-labelledby="content-title">
+          <h2 id="content-title">Conteúdo declarativo</h2>
+          <form id="content-form">
+            <label for="manifest">Manifesto JSON original ou CC0</label>
+            <textarea id="manifest" rows="12" required></textarea>
+            <label for="publish-confirmation">
+              Digite PUBLISH_CONTENT para confirmar a publicação
+            </label>
+            <input id="publish-confirmation" autocomplete="off" required />
+            <div class="actions">
+              <button type="button" id="validate-content">Validar</button>
+              <button type="submit">Publicar com confirmação</button>
+            </div>
+          </form>
+          <pre id="content-result" aria-live="polite"></pre>
+        </section>
+
+        <section id="audit-section" aria-labelledby="audit-title">
+          <div class="section-heading">
+            <h2 id="audit-title">Auditoria recente</h2>
+            <button type="button" id="load-audits">Atualizar</button>
+          </div>
+          <ol id="audit-list" aria-live="polite"></ol>
+        </section>
+      </div>
+    </main>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

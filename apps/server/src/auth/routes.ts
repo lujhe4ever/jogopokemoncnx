@@ -5,7 +5,7 @@ import type { FastifyInstance, FastifyRequest } from "fastify";
 import { z } from "zod";
 import { AuthenticationError, type AuthService } from "./service.js";
 
-const SESSION_COOKIE = "lt_session";
+export const SESSION_COOKIE = "lt_session";
 const credentialsSchema = z.object({
   email: z.email().max(254),
   password: z.string().min(12).max(128),

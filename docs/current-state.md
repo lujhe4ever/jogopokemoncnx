@@ -5,14 +5,14 @@
 | Atualizado em | 2026-07-23 |
 | Repositório | `lujhe4ever/jogopokemoncnx` |
 | Branch principal | `main` |
-| Branch desta entrega | `agent/fase-14-teloes-transmissao` |
-| Fase | Fase 14 — telões e transmissão de batalhas |
-| Status | **concluída — aguardando integração do PR #15** |
+| Branch desta entrega | `agent/fase-15-painel-administrativo` |
+| Fase | Fase 15 — painel administrativo |
+| Status | **concluída — aguardando integração do PR #16** |
 
 ## 1. Resumo
 
-As Fases 0B a 13 foram integradas à `main`. A Fase 14 foi concluída na branch
-`agent/fase-14-teloes-transmissao` e aguarda integração pelo PR #15.
+As Fases 0B a 14 foram integradas à `main`. A Fase 15 foi concluída na branch
+`agent/fase-15-painel-administrativo` e aguarda integração pelo PR #16.
 
 O projeto possui workspace TypeScript, servidor Fastify, cliente Vite/Phaser,
 PostgreSQL, Prisma, WebSocket versionado, autenticação e a primeira fatia jogável da
@@ -89,6 +89,15 @@ casa, clareira original, transições autoritativas e o primeiro ciclo de intera
 - comandos de batalha enviados por espectador recebem `spectator_read_only`;
 - backpressure isola socket lento e métricas contam atualizações e entregas do fan-out;
 - telões acessíveis exibem competidores, criaturas, vida, turno e vencedor sem ações.
+- aplicação `apps/admin` é construída separadamente e não possui link no cliente do jogo;
+- rotas administrativas não são registradas sem `ADMIN_STEP_UP_SECRET` de 32 caracteres;
+- sessão normal e segredo de elevação em memória são exigidos em cada requisição;
+- RBAC separa suporte, edição de conteúdo e proprietário, sempre validado no servidor;
+- consultas de suporte omitem e-mail/ID interno e retornam referência assinada;
+- revogação de sessões é recuperável por novo login e exige frase mais motivo;
+- manifesto original/CC0 valida namespace, versão, checksum, paths, duplicatas e quantidade;
+- publicação é versionada, idempotente para mesmo checksum e rejeita conflito;
+- sucesso, negação e bootstrap de papel são auditados sem segredo ou PII direta.
 
 Verificação e recuperação de e-mail permanecem fora do escopo até que seus fluxos
 completos sejam definidos.
@@ -120,7 +129,8 @@ completos sejam definidos.
 | Batalha contra NPCs | concluída na branch |
 | Encontros e captura | concluídos na branch |
 | Batalhas PvP | concluídas |
-| Telões e espectadores | concluídos na branch |
+| Telões e espectadores | concluídos |
+| Administração | concluída na branch |
 | Arena e presença | concluídas na branch |
 | Chat, emotes e convites | concluídos na branch |
 | Administração e deploy | não iniciado |
@@ -133,13 +143,14 @@ docker compose up -d postgres
 pnpm --filter @lt/server prisma:generate
 pnpm --filter @lt/server db:migrate
 pnpm dev
+pnpm --filter @lt/admin dev
 pnpm check
 ```
 
 ## 6. Verificações atuais
 
 - formatação, lint e TypeScript estrito;
-- 20 arquivos de teste e 58 testes automatizados;
+- 22 arquivos de teste e 64 testes automatizados;
 - build do servidor e cliente;
 - validação do schema Prisma;
 - migrações aplicadas em PostgreSQL vazio pela CI;
@@ -156,13 +167,14 @@ pnpm check
 
 ## 8. Decisões vigentes
 
-D-001 a D-008 e D-011 a D-019 estão aceitas. As demais decisões técnicas
+D-001 a D-008 e D-011 a D-020 estão aceitas. As demais decisões técnicas
 continuam com o status registrado em `docs/decisions.md`.
 
 ## 9. Próxima tarefa recomendada
 
-Revisar e integrar o PR #15 e então reservar exclusivamente a Fase 15: painel
-administrativo auditável com autorização forte e sem acesso direto ao estado interno.
+Revisar e integrar o PR #16 e então reservar exclusivamente a Fase 16: consolidação
+de segurança, performance, observabilidade, backup/restore, empacotamento e runbooks,
+sem realizar deploy público.
 
 ## 10. Instruções para reproduzir
 

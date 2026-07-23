@@ -2,7 +2,7 @@
 
 | Campo | Valor |
 | --- | --- |
-| Status do projeto | **Fase 14 — concluída, aguardando integração** |
+| Status do projeto | **Fase 15 — concluída, aguardando integração** |
 | Atualizado em | 2026-07-23 |
 | Implementação existente | Nenhuma |
 
@@ -45,7 +45,7 @@ Status permitidos:
 | 12 | Chat, emotes e convites | concluído |
 | 13 | Batalhas entre jogadores | concluído |
 | 14 | Telões e transmissão de batalhas | concluído |
-| 15 | Painel administrativo | não iniciado |
+| 15 | Painel administrativo | concluído |
 | 16 | Segurança, performance, testes e deploy | não iniciado |
 | 17 | Alpha privado e estabilização | não iniciado |
 
@@ -630,8 +630,8 @@ Exibir batalhas ao vivo na arena por eventos públicos sanitizados.
 - sobrecarga de broadcast;
 - atraso ou inconsistência visual.
 
-**Status:** **concluído** na branch `agent/fase-14-teloes-transmissao` e
-aguardando integração pelo PR #15.
+**Status:** **concluído** e integrado pelo PR #15 no commit
+`88420a4481ac1ea04fa3562c0d729c84ba583f34`.
 
 ### Fase 15 — Painel administrativo
 
@@ -669,7 +669,8 @@ Operar usuários e conteúdo sem acesso manual irrestrito ao banco.
 - alterações irreversíveis;
 - excesso de dados pessoais.
 
-**Status:** **não iniciado**.
+**Status:** **concluído** na branch `agent/fase-15-painel-administrativo` e
+aguardando integração pelo PR #16.
 
 ### Fase 16 — Testes, segurança, otimização e deploy
 

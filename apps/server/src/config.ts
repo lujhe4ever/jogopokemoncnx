@@ -10,6 +10,10 @@ const configSchema = z.object({
     .enum(["development", "test", "production"])
     .default("development"),
   SERVER_PORT: z.coerce.number().int().min(1).max(65535).default(3000),
+  ADMIN_STEP_UP_SECRET: z.preprocess(
+    (value) => (value === "" ? undefined : value),
+    z.string().min(32).optional(),
+  ),
 });
 
 export type AppConfig = z.infer<typeof configSchema>;
