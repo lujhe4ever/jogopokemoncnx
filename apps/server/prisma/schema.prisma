@@ -21,6 +21,31 @@ model Account {
   sessions     Session[]
   tickets      WebSocketTicket[]
   checkpoint   PlayerCheckpoint?
+  inventory    InventoryStack[]
+  claims       InteractionClaim[]
+}
+
+model InventoryStack {
+  id        String   @id @default(cuid())
+  itemId    String
+  quantity  Int
+  updatedAt DateTime @updatedAt
+  accountId String
+  account   Account  @relation(fields: [accountId], references: [id], onDelete: Cascade)
+
+  @@unique([accountId, itemId])
+  @@index([accountId])
+}
+
+model InteractionClaim {
+  id            String   @id @default(cuid())
+  interactionId String
+  claimedAt     DateTime @default(now())
+  accountId     String
+  account       Account  @relation(fields: [accountId], references: [id], onDelete: Cascade)
+
+  @@unique([accountId, interactionId])
+  @@index([accountId])
 }
 
 model PlayerCheckpoint {

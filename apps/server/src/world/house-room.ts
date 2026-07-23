@@ -1,11 +1,13 @@
 import type { MovementInput, PlayerState } from "@lt/engine-core";
 import {
+  findAvailableInteraction,
   findAvailablePortal,
   getZone,
   simulateZoneMovement,
 } from "@lt/game-simulation";
 import type { PrismaClient } from "@prisma/client";
 import { z } from "zod";
+import type { InteractionStore } from "./interaction-store.js";
 
 const messageSchema = z.discriminatedUnion("type", [
   z.object({
@@ -15,6 +17,11 @@ const messageSchema = z.discriminatedUnion("type", [
     y: z.number().min(-1).max(1),
   }),
   z.object({ type: z.literal("transition"), portalId: z.string().min(1) }),
+  z.object({
+    type: z.literal("interact"),
+    requestId: z.string().min(1).max(80),
+    interactionId: z.string().min(1).max(120),
+  }),
 ]);
 
 export interface ZonePlayerState extends PlayerState {
@@ -77,6 +84,7 @@ export class HouseRoom {
   constructor(
     private readonly checkpoints: CheckpointStore,
     autoStart = true,
+    private readonly interactions?: InteractionStore,
   ) {
     this.timer = setInterval(
       () => {
@@ -115,6 +123,18 @@ export class HouseRoom {
       if (!message.success || !player) return;
       if (message.data.type === "transition") {
         this.transition(accountId, message.data.portalId);
+      } else if (message.data.type === "interact") {
+        const { requestId, interactionId } = message.data;
+        void this.interact(accountId, requestId, interactionId).catch(() => {
+          const connected = this.players.get(accountId);
+          if (connected)
+            this.sendInteraction(
+              connected,
+              requestId,
+              interactionId,
+              "unavailable",
+            );
+        });
       } else if (
         message.data.sequence > player.state.lastProcessedSequence &&
         player.inputs.length < 20
@@ -197,7 +217,75 @@ export class HouseRoom {
         zoneId: zone.id,
         packId: zone.packId,
         transitioned,
+        interactions: zone.interactions,
         players: this.snapshot(zone.id),
+      }),
+    );
+  }
+
+  private async interact(
+    accountId: string,
+    requestId: string,
+    interactionId: string,
+  ): Promise<void> {
+    const player = this.players.get(accountId);
+    if (!player || player.socket.readyState !== 1) return;
+    const interaction = findAvailableInteraction(
+      player.state.zoneId,
+      interactionId,
+      player.state,
+    );
+    if (!interaction) {
+      this.sendInteraction(player, requestId, interactionId, "unavailable");
+      return;
+    }
+    if (interaction.capability === "dialogue") {
+      player.socket.send(
+        JSON.stringify({
+          protocolVersion: 1,
+          type: "interaction_result",
+          requestId,
+          interactionId,
+          status: "dialogue",
+          label: interaction.label,
+          dialogue: interaction.dialogue,
+        }),
+      );
+      return;
+    }
+    if (!this.interactions) {
+      this.sendInteraction(player, requestId, interactionId, "unavailable");
+      return;
+    }
+    const result = await this.interactions.claim(
+      accountId,
+      interaction.id,
+      interaction.reward,
+    );
+    player.socket.send(
+      JSON.stringify({
+        protocolVersion: 1,
+        type: "interaction_result",
+        requestId,
+        interactionId,
+        ...result,
+      }),
+    );
+  }
+
+  private sendInteraction(
+    player: ConnectedPlayer,
+    requestId: string,
+    interactionId: string,
+    status: "unavailable",
+  ): void {
+    player.socket.send(
+      JSON.stringify({
+        protocolVersion: 1,
+        type: "interaction_result",
+        requestId,
+        interactionId,
+        status,
       }),
     );
   }

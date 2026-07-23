@@ -326,6 +326,24 @@ Ao aceitar ou mudar uma decisão:
   substituição.
 - **Evidência de aprovação:** nenhuma.
 
+### D-011 — Inventário limitado e recompensas idempotentes
+
+- **Data:** 2026-07-23
+- **Status:** Aceita para o primeiro ciclo jogável
+- **Contexto:** pickups e baús não podem duplicar recompensa em retry ou exceder
+  invariantes persistentes.
+- **Alternativas consideradas:** inventário ilimitado; controle apenas no cliente;
+  slots e stacks validados na mesma transação da coleta.
+- **Decisão:** usar 20 slots distintos e stacks de até 99 unidades nesta etapa;
+  `InteractionClaim` e `InventoryStack` são gravados atomicamente em isolamento
+  serializável, com unicidade por conta/interação.
+- **Justificativa:** fornece limites verificáveis e impede duplicação concorrente sem
+  acoplar conteúdo à engine.
+- **Consequências:** descarte e expansão de capacidade permanecem para decisão futura;
+  mudança de limites exige migração e revisão de design.
+- **Evidência de aprovação:** testes da Fase 6 cobrem distância, retry, capacidade de
+  slots e limite de stack; a migração adiciona restrições únicas e `CHECK`.
+
 ## 4. Próximas decisões a revisar
 
 A Fase 1 depende primeiro de D-001 e D-002. A revisão deve:

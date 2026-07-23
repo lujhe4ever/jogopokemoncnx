@@ -52,6 +52,9 @@
           ><span id="connection">conectando...</span>
         </header>
         <div id="game"></div>
+        <p id="interaction-feedback" role="status" aria-live="polite">
+          Aproxime-se de uma pessoa ou objeto e use E ou Interagir.
+        </p>
         <div id="touch-pad" aria-label="Controles de movimento">
           <button data-direction="up">▲</button>
           <div>
@@ -59,6 +62,7 @@
             ><button data-direction="down">▼</button
             ><button data-direction="right">▶</button>
           </div>
+          <button type="button" id="interact">Interagir</button>
         </div>
       </section>
     </main>

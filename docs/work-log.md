@@ -639,3 +639,58 @@ Publicar o PR de reserva da Fase 5 antes de iniciar a implementação.
 ### Próximo passo
 
 Revisar e integrar o PR #6 após a CI aprovada.
+
+## 2026-07-23 — Integração da Fase 5 e reserva da Fase 6
+
+### Contexto
+
+O PR #6 passou no CI e foi integrado à `main` no commit
+`db2a7377f3c97abe29351d4501a5edf3f316c58b`.
+
+### Escopo reservado
+
+- interação contextual validada por proximidade;
+- NPC e diálogo declarativos;
+- itens, pickups e baús idempotentes;
+- inventário transacional com limites;
+- feedback visual acessível.
+
+### Fora do escopo
+
+Criaturas, progressão, batalha, missões completas, arena e deploy público.
+
+### Próximo passo
+
+Publicar o PR de reserva da Fase 6 antes de implementar o ciclo de interação.
+
+## 2026-07-23 — NPCs, diálogos, itens e baús da Fase 6
+
+### Resultado
+
+- interações são conteúdo declarativo por zona e capacidade;
+- servidor valida zona, ID e distância antes de executar;
+- NPC entrega diálogo sem regra de infraestrutura;
+- pickup e baú concedem itens uma única vez por conta;
+- claim e inventário são atualizados na mesma transação serializável;
+- inventário preserva 20 slots e stacks de até 99 unidades;
+- cliente oferece ação por `E` e toque com resultado em região `aria-live`.
+
+### Testes e verificações
+
+- `pnpm check`: 7 arquivos e 17 testes aprovados;
+- distância inválida não alcança o repositório de recompensa;
+- retry retorna `already_claimed`;
+- limites de slot, stack e quantidade inválida verificados;
+- schema Prisma válido e migração preparada para PostgreSQL vazio;
+- build inicial continua separado do chunk Phaser;
+- tela inicial inspecionada no navegador sem overflow horizontal.
+
+### Riscos restantes
+
+- desempenho do Phaser em dispositivo móvel físico ainda requer medição;
+- descarte, expansão de capacidade e itens consumíveis ficam para fases futuras;
+- o chunk Phaser segue acima do aviso de 500 kB, porém é carregado após o login.
+
+### Próximo passo
+
+Revisar e integrar o PR #7 após a CI aprovada.

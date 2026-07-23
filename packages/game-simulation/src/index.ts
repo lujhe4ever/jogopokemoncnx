@@ -32,7 +32,31 @@ export interface ZoneDefinition {
     targetSpawn: PlayerState;
     trigger: { x: number; y: number; width: number; height: number };
   }[];
+  interactions: readonly InteractionDefinition[];
 }
+
+export type InteractionDefinition =
+  | {
+      id: string;
+      kind: "npc";
+      x: number;
+      y: number;
+      radius: number;
+      label: string;
+      capability: "dialogue";
+      dialogue: readonly string[];
+    }
+  | {
+      id: string;
+      kind: "pickup" | "chest";
+      x: number;
+      y: number;
+      radius: number;
+      label: string;
+      capability: "reward";
+      reward: { itemId: string; quantity: number };
+      once: true;
+    };
 
 const MEADOW_COLLISION: WorldCollision = {
   bounds: { x: 24, y: 24, width: 592, height: 352 },
@@ -56,6 +80,21 @@ export const ZONES: Readonly<Record<string, ZoneDefinition>> = {
         trigger: { x: 290, y: 342, width: 60, height: 34 },
       },
     ],
+    interactions: [
+      {
+        id: "npc:caretaker",
+        kind: "npc",
+        x: 260,
+        y: 190,
+        radius: 48,
+        label: "Cuidadora",
+        capability: "dialogue",
+        dialogue: [
+          "Bem-vindo. A clareira fica depois da porta iluminada.",
+          "Explore com calma e observe os objetos próximos.",
+        ],
+      },
+    ],
   },
   meadow: {
     id: "meadow",
@@ -68,6 +107,30 @@ export const ZONES: Readonly<Record<string, ZoneDefinition>> = {
         targetZoneId: "house",
         targetSpawn: { x: 320, y: 320, lastProcessedSequence: 0 },
         trigger: { x: 290, y: 24, width: 60, height: 58 },
+      },
+    ],
+    interactions: [
+      {
+        id: "pickup:herb-01",
+        kind: "pickup",
+        x: 250,
+        y: 170,
+        radius: 44,
+        label: "Erva luminosa",
+        capability: "reward",
+        reward: { itemId: "item:bright-herb", quantity: 1 },
+        once: true,
+      },
+      {
+        id: "chest:meadow-01",
+        kind: "chest",
+        x: 370,
+        y: 270,
+        radius: 52,
+        label: "Baú da clareira",
+        capability: "reward",
+        reward: { itemId: "item:field-tonic", quantity: 2 },
+        once: true,
       },
     ],
   },
@@ -96,6 +159,19 @@ export function findAvailablePortal(zoneId: string, state: PlayerState) {
       state.x <= trigger.x + trigger.width &&
       state.y >= trigger.y &&
       state.y <= trigger.y + trigger.height,
+  );
+}
+
+export function findAvailableInteraction(
+  zoneId: string,
+  interactionId: string,
+  state: PlayerState,
+): InteractionDefinition | undefined {
+  return getZone(zoneId)?.interactions.find(
+    (interaction) =>
+      interaction.id === interactionId &&
+      Math.hypot(state.x - interaction.x, state.y - interaction.y) <=
+        interaction.radius,
   );
 }
 

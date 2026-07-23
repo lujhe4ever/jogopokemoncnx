@@ -4,6 +4,7 @@ import {
   findAvailablePortal,
   getZone,
   simulateZoneMovement,
+  type InteractionDefinition,
 } from "@lt/game-simulation";
 import Phaser from "phaser";
 
@@ -12,6 +13,21 @@ interface Snapshot {
   zoneId: string;
   packId: string;
   players: Record<string, PlayerState>;
+  interactions: readonly InteractionDefinition[];
+}
+
+interface InteractionResult {
+  type: "interaction_result";
+  status:
+    | "dialogue"
+    | "granted"
+    | "already_claimed"
+    | "inventory_full"
+    | "unavailable";
+  label?: string;
+  dialogue?: readonly string[];
+  itemId?: string;
+  quantity?: number;
 }
 
 function isSnapshot(value: unknown): value is Snapshot {
@@ -23,6 +39,17 @@ function isSnapshot(value: unknown): value is Snapshot {
     "players" in value &&
     typeof value.players === "object" &&
     value.players !== null
+  );
+}
+
+function isInteractionResult(value: unknown): value is InteractionResult {
+  return (
+    typeof value === "object" &&
+    value !== null &&
+    "type" in value &&
+    value.type === "interaction_result" &&
+    "status" in value &&
+    typeof value.status === "string"
   );
 }
 
@@ -44,6 +71,7 @@ class HouseScene extends Phaser.Scene {
   private cursors: Phaser.Types.Input.Keyboard.CursorKeys | undefined;
   private keys:
     Record<"W" | "A" | "S" | "D", Phaser.Input.Keyboard.Key> | undefined;
+  private interactionKey: Phaser.Input.Keyboard.Key | undefined;
 
   constructor(
     private readonly ticket: string,
@@ -59,6 +87,7 @@ class HouseScene extends Phaser.Scene {
       "W" | "A" | "S" | "D",
       Phaser.Input.Keyboard.Key
     >;
+    this.interactionKey = this.input.keyboard?.addKey("E");
     this.bindTouch();
     this.connect();
   }
@@ -80,6 +109,11 @@ class HouseScene extends Phaser.Scene {
       } else if (!portal) this.requestedPortal = undefined;
     }
     this.renderAvatar(this.accountId, this.local, 0x2d69c4);
+    if (
+      this.interactionKey &&
+      Phaser.Input.Keyboard.JustDown(this.interactionKey)
+    )
+      this.requestInteraction();
   }
 
   private readInput(): MovementInput {
@@ -108,6 +142,10 @@ class HouseScene extends Phaser.Scene {
     });
     this.socket.addEventListener("message", (event) => {
       const value: unknown = JSON.parse(String(event.data));
+      if (isInteractionResult(value)) {
+        this.showInteractionResult(value);
+        return;
+      }
       if (!isSnapshot(value)) return;
       if (value.zoneId !== this.zoneId) {
         this.zoneId = value.zoneId;
@@ -169,12 +207,71 @@ class HouseScene extends Phaser.Scene {
           portal.trigger.height,
         );
     }
+    for (const interaction of zone.interactions) {
+      const color =
+        interaction.kind === "npc"
+          ? 0x784fc5
+          : interaction.kind === "chest"
+            ? 0xc58a32
+            : 0x59a953;
+      graphics.fillStyle(color).fillCircle(interaction.x, interaction.y, 12);
+      this.add.text(interaction.x - 34, interaction.y - 28, interaction.label, {
+        color: "#1d271d",
+        fontSize: "11px",
+      });
+    }
     this.add.text(
       40,
       340,
       `${this.zoneId === "house" ? "Casa" : "Clareira"} original • WASD/setas ou toque`,
       { color: "#263126", fontSize: "14px" },
     );
+  }
+
+  private requestInteraction() {
+    const zone = getZone(this.zoneId);
+    const interaction = zone?.interactions
+      .map((candidate) => ({
+        candidate,
+        distance: Math.hypot(
+          this.local.x - candidate.x,
+          this.local.y - candidate.y,
+        ),
+      }))
+      .filter(({ candidate, distance }) => distance <= candidate.radius)
+      .sort((left, right) => left.distance - right.distance)[0]?.candidate;
+    if (!interaction) {
+      this.setFeedback("Não há nada ao alcance.");
+      return;
+    }
+    this.socket?.send(
+      JSON.stringify({
+        type: "interact",
+        requestId: crypto.randomUUID(),
+        interactionId: interaction.id,
+      }),
+    );
+  }
+
+  private showInteractionResult(result: InteractionResult) {
+    if (result.status === "dialogue")
+      this.setFeedback(
+        `${result.label ?? "Pessoa"}: ${result.dialogue?.join(" ") ?? ""}`,
+      );
+    else if (result.status === "granted")
+      this.setFeedback(
+        `Recebido: ${String(result.quantity ?? 0)} × ${result.itemId ?? "item"}.`,
+      );
+    else if (result.status === "already_claimed")
+      this.setFeedback("Este recurso já foi coletado.");
+    else if (result.status === "inventory_full")
+      this.setFeedback("Inventário cheio. Libere espaço antes de coletar.");
+    else this.setFeedback("A interação não está disponível nesta posição.");
+  }
+
+  private setFeedback(message: string) {
+    const feedback = document.querySelector("#interaction-feedback");
+    if (feedback) feedback.textContent = message;
   }
 
   private renderAvatar(id: string, target: PlayerState, color: number) {
@@ -194,6 +291,9 @@ class HouseScene extends Phaser.Scene {
   }
 
   private bindTouch() {
+    document.querySelector("#interact")?.addEventListener("click", () => {
+      this.requestInteraction();
+    });
     document
       .querySelectorAll<HTMLButtonElement>("[data-direction]")
       .forEach((button) => {
