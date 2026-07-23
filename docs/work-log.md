@@ -242,3 +242,63 @@ registrar o handoff final sem fazer merge ou iniciar a Fase 1.
 
 Revisar a branch publicada e decidir explicitamente entre ajustes ou merge da Fase
 0B. Não iniciar a Fase 1 na mesma tarefa.
+
+## 2026-07-23 — Abertura do Pull Request da Fase 0B
+
+### Responsável humano
+
+Não informado.
+
+### Objetivo da sessão
+
+Publicar a documentação pelo fluxo de revisão ideal do GitHub, sem exigir ação manual
+na interface e sem realizar merge.
+
+### Estado anterior
+
+- a branch `docs/estrutura-inicial` estava publicada e verificada;
+- a branch estava três commits à frente e zero atrás da `main`;
+- não existia Pull Request aberto para essa branch;
+- a Fase 1 permanecia não iniciada.
+
+### Alterações realizadas
+
+- aberto o [PR #1](https://github.com/lujhe4ever/jogopokemoncnx/pull/1) com:
+  - título `docs: estabelecer arquitetura e governança da Fase 0B`;
+  - origem `docs/estrutura-inicial`;
+  - destino `main`;
+  - modo rascunho;
+  - descrição de objetivo, mudanças, motivação, impacto e verificações;
+  - riscos e checklist de revisão;
+- atualizado o estado atual e o roadmap para apontar ao PR;
+- nenhum merge, deploy, código, dependência ou asset foi criado.
+
+### Testes e verificações
+
+- confirmado que o PR possui oito arquivos alterados;
+- confirmado que o PR foi aberto, não foi mesclado e permanece em rascunho;
+- confirmado que a base é `main` no commit
+  `b73b2b0124cbe57e96517785f84d0354426b5884`;
+- validações documentais repetidas após esta atualização;
+- lint, testes automatizados e build: não disponíveis até a Fase 1.
+
+### Resultado Git
+
+- PR: [#1](https://github.com/lujhe4ever/jogopokemoncnx/pull/1);
+- branch: `docs/estrutura-inicial`;
+- destino: `main`;
+- o commit que contém esta entrada é identificado pelo histórico da branch;
+- merge: não realizado;
+- deploy: não aplicável.
+
+### Problemas e riscos
+
+- o repositório permanece público;
+- o PR ainda não possui CI porque não existe toolchain;
+- D-001 a D-010 continuam **Proposta**;
+- a revisão do proprietário permanece obrigatória.
+
+### Próximo passo
+
+Revisar o PR #1 e decidir entre ajustes ou autorização para marcá-lo como pronto para
+revisão. Não realizar merge nem iniciar a Fase 1 sem autorização separada.

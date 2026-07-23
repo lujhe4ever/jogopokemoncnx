@@ -7,7 +7,7 @@
 | Branch principal | `main` |
 | Branch desta entrega | `docs/estrutura-inicial` |
 | Fase | Fase 0B — governança e continuidade colaborativa |
-| Status | **em andamento — branch publicada, aguardando revisão** |
+| Status | **em andamento — PR #1 em rascunho, aguardando revisão** |
 
 ## 1. Resumo
 
@@ -33,16 +33,24 @@ Commits de conteúdo verificados:
 O commit que contém este snapshot de continuidade é identificado pelo histórico da
 branch, evitando autorreferência.
 
+Pull Request atual:
+
+- [PR #1 — `docs: estabelecer arquitetura e governança da Fase 0B`](https://github.com/lujhe4ever/jogopokemoncnx/pull/1);
+- origem: `docs/estrutura-inicial`;
+- destino: `main`;
+- estado: aberto como rascunho;
+- merge: não realizado.
+
 As decisões D-001 a D-010 continuam com status **Proposta**. Esta entrega não aprova
 stack nem autoriza a Fase 1.
 
 ## 2. Última tarefa executada
 
-Publicação e verificação da estrutura documental obrigatória na branch
-`docs/estrutura-inicial`, sem código ou dependências.
+Publicação do Pull Request da estrutura documental, sem código, dependências ou merge.
 
 Os arquivos foram preparados, revisados, publicados e comparados com a `main`. A
-revisão do proprietário e eventual merge continuam pendentes. Por isso, a Fase 0B
+descrição do PR registra escopo, motivação, impacto, verificações, riscos e checklist.
+A revisão do proprietário e eventual merge continuam pendentes. Por isso, a Fase 0B
 permanece **em andamento** no roadmap.
 
 ## 3. Arquivos existentes nesta branch
@@ -148,7 +156,10 @@ Verificações executadas:
 - confirmação de que nenhum arquivo de código, dependência ou asset foi adicionado;
 - comparação remota da branch com `main`;
 - conferência do Git blob SHA dos oito arquivos locais contra os oito arquivos
-  remotos.
+  remotos;
+- confirmação de que o PR #1 usa `docs/estrutura-inicial` como origem e `main` como
+  destino;
+- confirmação de que o PR foi aberto como rascunho, sem merge.
 
 Resultado remoto após a correção:
 
@@ -171,6 +182,8 @@ Não houve lint, teste ou build de aplicação porque esses comandos não existe
 - O processo de revisão entre duas IAs está documentado, mas ainda não foi praticado em
   uma entrega de código.
 - A política de proteção de branch, reviewers e CI não está configurada.
+- O PR #1 não possui checks de aplicação porque ainda não existe workflow ou
+  toolchain.
 - O repositório foi identificado como **público**, embora o projeto seja descrito como
   privado para estudo e lazer. Isso aumenta o cuidado com código, dados, branding e
   assets; nenhuma mudança de visibilidade foi autorizada.
@@ -200,8 +213,8 @@ Não houve lint, teste ou build de aplicação porque esses comandos não existe
 
 ## 13. Próxima tarefa recomendada
 
-Revisar a branch `docs/estrutura-inicial` e obter decisão explícita sobre ajustes ou
-merge da Fase 0B.
+Revisar o PR #1 e decidir explicitamente entre solicitar ajustes ou autorizar que ele
+seja marcado como pronto para revisão. O merge permanece uma autorização posterior.
 
 A Fase 1 não foi iniciada e não deve começar no mesmo trabalho de revisão.
 

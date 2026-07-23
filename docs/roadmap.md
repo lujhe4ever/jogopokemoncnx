@@ -90,8 +90,10 @@ sem depender de memória local.
 - transformar recomendação em requisito sem aprovação;
 - documentação extensa perder atualidade.
 
-**Status:** **em andamento** — os oito documentos estão publicados e verificados na
-branch `docs/estrutura-inicial`; revisão do proprietário e merge não estão presumidos.
+**Status:** **em andamento** — os oito documentos estão publicados e verificados no
+[PR #1](https://github.com/lujhe4ever/jogopokemoncnx/pull/1), aberto como rascunho de
+`docs/estrutura-inicial` para `main`; revisão do proprietário e merge não estão
+presumidos.
 
 ### Fase 1 — Fundação e configuração do projeto
 
@@ -744,8 +746,8 @@ Validar o ciclo completo com usuários autorizados e conteúdo permitido.
 
 ## 4. Gate para a próxima tarefa
 
-A única próxima tarefa recomendada é revisar a documentação da Fase 0B na branch
-`docs/estrutura-inicial`, resolver inconsistências e obter autorização explícita para
-merge ou ajustes.
+A única próxima tarefa recomendada é revisar a documentação da Fase 0B no PR #1,
+resolver inconsistências e obter autorização explícita para marcá-lo como pronto ou
+realizar ajustes. O merge exige autorização posterior.
 
 A Fase 1 não está iniciada nem implicitamente autorizada.
