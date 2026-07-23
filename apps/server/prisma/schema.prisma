@@ -30,6 +30,30 @@ model Account {
   questProgress QuestProgress[]
   questEvents   QuestEventReceipt[]
   questRewards  QuestRewardClaim[]
+  pvpAsFirst    PvpBattleRecord[] @relation("PvpFirst")
+  pvpAsSecond   PvpBattleRecord[] @relation("PvpSecond")
+  pvpWins       PvpBattleRecord[] @relation("PvpWinner")
+}
+
+model PvpBattleRecord {
+  id              String    @id
+  roomId          String
+  seed            Int
+  status          String    @default("active")
+  outcome         String?
+  finishReason    String?
+  startedAt       DateTime  @default(now())
+  finishedAt      DateTime?
+  firstPlayerId   String
+  secondPlayerId  String
+  winnerId        String?
+  firstPlayer     Account   @relation("PvpFirst", fields: [firstPlayerId], references: [id], onDelete: Cascade)
+  secondPlayer    Account   @relation("PvpSecond", fields: [secondPlayerId], references: [id], onDelete: Cascade)
+  winner          Account?  @relation("PvpWinner", fields: [winnerId], references: [id], onDelete: SetNull)
+
+  @@index([firstPlayerId])
+  @@index([secondPlayerId])
+  @@index([roomId, status])
 }
 
 model QuestProgress {

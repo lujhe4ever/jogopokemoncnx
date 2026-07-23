@@ -64,6 +64,9 @@ importers:
       "@lt/game-simulation":
         specifier: workspace:*
         version: link:../../packages/game-simulation
+      "@lt/pvp-domain":
+        specifier: workspace:*
+        version: link:../../packages/pvp-domain
       "@lt/quest-domain":
         specifier: workspace:*
         version: link:../../packages/quest-domain
@@ -121,6 +124,12 @@ importers:
       "@lt/engine-core":
         specifier: workspace:*
         version: link:../engine-core
+
+  packages/pvp-domain:
+    dependencies:
+      "@lt/battle-domain":
+        specifier: workspace:*
+        version: link:../battle-domain
 
   packages/quest-domain: {}
 

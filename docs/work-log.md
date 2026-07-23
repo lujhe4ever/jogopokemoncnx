@@ -1003,3 +1003,55 @@ Publicar o PR rascunho da Fase 12 antes de iniciar a implementação.
 
 Revisar e integrar o PR #13 após a CI aprovada e reservar a Fase 13 sem executar
 deploy público.
+
+## 2026-07-23 — Integração da Fase 12 e reserva da Fase 13
+
+### Contexto
+
+O PR #13 passou na CI e foi integrado à `main` no commit
+`87ced88cc2a72505d9eea563214be0cbc059a891`.
+
+### Escopo reservado
+
+- converter desafio social aceito em batalha PvP autorizada;
+- validar ownership dos dois participantes e impedir comandos do oponente;
+- coletar escolhas privadas e resolver cada turno de modo determinístico;
+- timeout, abandono e desconexão com resultado explícito;
+- resultado persistido uma única vez;
+- retorno seguro à arena.
+
+### Fora do escopo
+
+Espectadores, telões, ranking, matchmaking, administração e deploy público.
+
+### Próximo passo
+
+Publicar o PR rascunho da Fase 13 antes de iniciar a implementação.
+
+## 2026-07-23 — Batalhas PvP da Fase 13
+
+### Resultado
+
+- novo pacote puro `@lt/pvp-domain` reutiliza combatentes e ações do núcleo de batalha;
+- desafio social consumido inicia PvP apenas para os dois participantes validados;
+- servidor consulta uma criatura pertencente a cada conta antes de criar a instância;
+- escolhas privadas são confirmadas somente ao remetente e resolvidas após ambas;
+- sequência por jogador e mapeamento autenticado impedem replay e comando do oponente;
+- timeout de 30 s, abandono e desconexão produzem encerramento explícito;
+- `PvpBattleRecord` persiste seed, participantes e resultado uma única vez;
+- projeção pública omite escolhas e IDs internos;
+- painel acessível apresenta status, vida, atacar, defender, abandonar e retorno à arena.
+
+### Testes e verificações
+
+- `pnpm typecheck`, `pnpm lint` e `pnpm test`: 19 arquivos e 55 testes automatizados;
+- schema Prisma validado e migração versionada para registros PvP;
+- domínio cobre resolução determinística, sequência, empate e projeção sem escolhas;
+- serviço cobre ownership, privacidade da primeira escolha e encerramento idempotente;
+- QA no navegador confirmou região nomeada, `aria-live`, barras de vida rotuladas,
+  ações acessíveis e ausência de overflow horizontal em 1280 × 720.
+
+### Próximo passo
+
+Revisar e integrar o PR #14 após a CI aprovada e reservar a Fase 14 sem executar
+deploy público.
