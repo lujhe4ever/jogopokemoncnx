@@ -41,6 +41,7 @@ Provedor de VPS, DNS e emissão de certificados ainda não foram selecionados.
 | banco exposto | rede Docker interna sem porta publicada |
 | perda/corrupção | dump com checksum, retenção e restauração isolada |
 | imagem incompatível | build manual sem push e promoção por tag imutável |
+| telemetria revelar participante | desabilitada por padrão, consentimento, allowlist e contagem anônima em memória |
 
 ## Riscos residuais
 

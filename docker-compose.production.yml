@@ -44,6 +44,7 @@ services:
       NODE_ENV: production
       HOST: 0.0.0.0
       SERVER_PORT: 3000
+      ALPHA_TELEMETRY_ENABLED: ${ALPHA_TELEMETRY_ENABLED:-false}
       PUBLIC_ORIGIN: https://game.example.invalid
       DATABASE_URL_FILE: /run/secrets/database_url
       ADMIN_STEP_UP_SECRET_FILE: /run/secrets/admin_step_up

@@ -17,6 +17,7 @@ import { PrismaArenaProfileStore } from "./arena/profile-store.js";
 import { PvpService } from "./battles/pvp-service.js";
 import { AdminService } from "./admin/service.js";
 import { PrismaAdminRepository } from "./admin/prisma-repository.js";
+import { AlphaTelemetry } from "./alpha/telemetry.js";
 
 const config = loadConfig(process.env);
 const prisma = new PrismaClient();
@@ -55,6 +56,9 @@ const app = await buildApp({
   ...(admin ? { admin } : {}),
   ...(config.PUBLIC_ORIGIN ? { allowedOrigin: config.PUBLIC_ORIGIN } : {}),
   ...(config.METRICS_TOKEN ? { metricsToken: config.METRICS_TOKEN } : {}),
+  ...(config.ALPHA_TELEMETRY_ENABLED
+    ? { alphaTelemetry: new AlphaTelemetry() }
+    : {}),
 });
 
 const shutdown = () => {

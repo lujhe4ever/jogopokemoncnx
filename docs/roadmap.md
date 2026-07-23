@@ -2,7 +2,7 @@
 
 | Campo | Valor |
 | --- | --- |
-| Status do projeto | **Fase 17 — em andamento** |
+| Status do projeto | **Fase 17 — concluída na branch, aguardando revisão** |
 | Atualizado em | 2026-07-23 |
 | Implementação existente | Nenhuma |
 
@@ -47,7 +47,7 @@ Status permitidos:
 | 14 | Telões e transmissão de batalhas | concluído |
 | 15 | Painel administrativo | concluído |
 | 16 | Segurança, performance, testes e deploy | concluído |
-| 17 | Alpha privado e estabilização | em andamento |
+| 17 | Alpha privado e estabilização | concluído |
 
 ## 3. Fases
 
@@ -752,10 +752,11 @@ Validar o ciclo completo com usuários autorizados e conteúdo permitido.
 - defeitos de progressão persistente;
 - telemetria excessiva.
 
-**Status:** **em andamento** na branch `agent/fase-17-alpha-estabilizacao`, sem
-deploy ou usuários externos.
+**Status:** **concluído na branch**, aguardando revisão no PR #19. O ensaio permaneceu
+interno, sem deploy, convidados ou coleta real.
 
 ## 4. Gate para a próxima tarefa
 
-A única próxima tarefa recomendada é concluir a jornada integrada, checklist de
-alpha, triagem e evidências da Fase 17, sem executar deploy nem convidar usuários.
+A única próxima tarefa recomendada é revisar e integrar o PR #19 após a CI aprovada.
+Qualquer etapa posterior exige uma nova decisão de produto e infraestrutura; não há
+deploy implicitamente autorizado.

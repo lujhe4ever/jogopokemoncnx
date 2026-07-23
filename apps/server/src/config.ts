@@ -23,6 +23,10 @@ const configSchema = z.object({
     (value) => (value === "" ? undefined : value),
     z.url().optional(),
   ),
+  ALPHA_TELEMETRY_ENABLED: z
+    .enum(["true", "false"])
+    .default("false")
+    .transform((value) => value === "true"),
 });
 
 export type AppConfig = z.infer<typeof configSchema>;
