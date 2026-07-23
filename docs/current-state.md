@@ -7,237 +7,98 @@
 | Branch principal | `main` |
 | Branch desta entrega | `agent/fase-3-autenticacao` |
 | Fase | Fase 3 — autenticação, perfil e sessão |
-| Status | **reservada — preparação do PR em andamento** |
+| Status | **concluída na branch — PR #4 aguardando revisão** |
 
 ## 1. Resumo
 
-O PR #1 foi revisado, marcado como pronto e integrado à `main` no commit
-`41c2807b1b5e240909fb08c76f0325cc68345729`.
+As Fases 0B, 1 e 2 foram integradas à `main`. A Fase 3 está implementada na branch
+`agent/fase-3-autenticacao` e reservada no PR #4.
 
-A Fase 1 foi autorizada pelo proprietário para execução contínua, sem interrupções
-para confirmações rotineiras. A branch exclusiva `agent/fase-1-fundacao` foi criada
-a partir da `main` integrada. Neste snapshot de reserva ainda não existe código de
-produto, scaffold, dependência instalada, banco, container ou aplicação executável.
+O projeto possui workspace TypeScript, servidor Fastify, cliente Vite, PostgreSQL,
+Prisma, WebSocket versionado e autenticação por e-mail/senha. Ainda não existe
+gameplay.
 
-Escopo reservado:
+## 2. Entrega atual
 
-- aceitar e registrar D-001 e D-002 para a fundação;
-- criar o workspace TypeScript mínimo;
-- configurar qualidade, testes arquiteturais e CI;
-- manter gameplay, banco, autenticação, deploy e assets fora do escopo.
+- cadastro com e-mail normalizado, nome público e senha Argon2id;
+- login com resposta genérica para credenciais inválidas;
+- sessão opaca armazenada somente por hash, com expiração e revogação;
+- cookie `HttpOnly`, `SameSite=Strict` e `Secure` em produção;
+- perfil mínimo persistido;
+- ticket WebSocket com validade de 30 segundos e uso único;
+- rate limiting para cadastro e login;
+- auditoria de sucesso/falha sem registrar credenciais;
+- testes de sessão, falha de login, Argon2id e ticket descartável.
 
-A branch `main` possuía um único commit antes desta tarefa:
+Verificação e recuperação de e-mail permanecem fora do escopo até que seus fluxos
+completos sejam definidos.
 
-- `b73b2b0124cbe57e96517785f84d0354426b5884` —
-  `docs: establish architecture baseline`;
-- único arquivo: `architecture.md`.
+## 3. Estrutura relevante
 
-A branch remota `docs/estrutura-inicial` foi publicada a partir dessa revisão. A
-baseline raiz foi atualizada somente para distinguir a Fase 0A já concluída da Fase 0B
-e apontar o roadmap operacional; nenhuma proposta D-001 a D-010 mudou de status.
-
-Commits de conteúdo verificados:
-
-- `b8cbb1400d6a87eab88fb4b03ee89ddf3ed85484` — publicação documental inicial;
-- `9dcd89861a23293e65ff189bc7aca817326c2b8e` — correção da codificação de
-  `architecture.md`.
-
-O commit que contém este snapshot de continuidade é identificado pelo histórico da
-branch, evitando autorreferência.
-
-Pull Request atual:
-
-- [PR #1 — `docs: estabelecer arquitetura e governança da Fase 0B`](https://github.com/lujhe4ever/jogopokemoncnx/pull/1);
-- origem: `docs/estrutura-inicial`;
-- destino: `main`;
-- estado: aberto como rascunho;
-- merge: não realizado.
-
-As decisões D-001 a D-010 continuam com status **Proposta**. Esta entrega não aprova
-stack nem autoriza a Fase 1.
-
-## 2. Última tarefa executada
-
-Publicação do Pull Request da estrutura documental, sem código, dependências ou merge.
-
-Os arquivos foram preparados, revisados, publicados e comparados com a `main`. A
-descrição do PR registra escopo, motivação, impacto, verificações, riscos e checklist.
-A revisão do proprietário e eventual merge continuam pendentes. Por isso, a Fase 0B
-permanece **em andamento** no roadmap.
-
-## 3. Arquivos existentes nesta branch
-
-- `architecture.md`: baseline normativa já existente;
-- `AGENTS.md`: regras obrigatórias para pessoas e IAs;
-- `docs/architecture.md`: visão operacional da arquitetura;
-- `docs/roadmap.md`: fases, dependências, critérios, riscos e status;
-- `docs/game-design.md`: visão funcional e questões de design;
-- `docs/decisions.md`: decisões aceitas de colaboração e propostas técnicas;
-- `docs/current-state.md`: fotografia factual do estado presente;
-- `docs/work-log.md`: histórico cronológico append-only.
-
-Não existe `docs/adr/`. O diretório deve nascer somente junto de um ADR concreto.
+- `apps/web`: cliente placeholder Vite;
+- `apps/server`: servidor, configuração, autenticação e adaptadores Prisma;
+- `apps/server/prisma`: schema e migrações;
+- `packages/engine-core`: núcleo puro ainda mínimo;
+- `tests`: testes arquiteturais, de runtime e autenticação;
+- `docker-compose.yml`: PostgreSQL local;
+- `.github/workflows/ci.yml`: instalação, migração e qualidade.
 
 ## 4. Estado por área
 
 | Área | Estado |
 | --- | --- |
-| Arquitetura raiz | proposta documentada |
-| Governança entre duas IAs | documentada na branch, aguardando revisão |
-| Frontend Phaser/Vite | não iniciado |
-| Backend Fastify/WebSocket | não iniciado |
-| Engine e domínio | não iniciado |
-| PostgreSQL/Prisma | não iniciado |
-| Autenticação e perfil | não iniciado |
-| Mundo e gameplay | não iniciado |
-| Arena/social | não iniciado |
-| Admin | não iniciado |
-| Assets/packs de conteúdo | não iniciado |
-| Docker/VPS | não iniciado |
-| CI/CD | não iniciado |
-| Observabilidade | não iniciado |
-| Testes automatizados | não iniciado |
+| Fundação TypeScript e CI | concluída |
+| Runtime HTTP/WebSocket | concluído |
+| PostgreSQL/Prisma | concluído para a fundação |
+| Autenticação, perfil e sessão | concluído na branch |
+| Recuperação/verificação de e-mail | não iniciado |
+| Casa, movimento e colisão | não iniciado |
+| Mapas, NPCs, itens e missões | não iniciado |
+| Criaturas e batalhas | não iniciado |
+| Arena e recursos sociais | não iniciado |
+| Administração e deploy | não iniciado |
 
-## 5. Funcionalidades funcionando
-
-Nenhuma funcionalidade de produto existe.
-
-O que está disponível:
-
-- documentação versionada;
-- baseline arquitetural;
-- processo de início/fim de tarefas;
-- roadmap e handoff entre IAs.
-
-Isso não equivale a runtime, protótipo ou prova técnica.
-
-## 6. Funcionalidades incompletas
-
-Todas as funcionalidades descritas em `roadmap.md` a partir da Fase 1 estão não
-iniciadas, incluindo:
-
-- workspace e comandos;
-- cliente e servidor;
-- autenticação;
-- banco e migrações;
-- casa, movimento e colisão;
-- mapas, NPCs, itens, baús e missões;
-- criaturas, captura, progressão e batalha;
-- arena, chat, emotes, convites e telões;
-- admin, testes, segurança e deploy.
-
-## 7. Dependências e configuração
-
-- Node `24.14.0` e pnpm `11.9.0` fixados;
-- TypeScript `6.0.3`, ESLint, Prettier, Vitest, Husky e lint-staged configurados;
-- lockfile e `.env.example` sem segredos presentes;
-- CI do GitHub configurada para instalação congelada e `pnpm check`;
-- Prisma, Docker, assets e runtime de aplicação continuam inexistentes.
-
-## 8. Comandos do produto
-
-| Finalidade | Estado |
-| --- | --- |
-| Instalação | `pnpm install --frozen-lockfile` |
-| Desenvolvimento | não disponível até a Fase 2 |
-| Formatação | `pnpm format:check` |
-| Lint | `pnpm lint` |
-| Typecheck | `pnpm typecheck` |
-| Testes | `pnpm test` |
-| Build | `pnpm build` |
-| Docker | não disponível até a Fase 1 |
-| Migrações | não disponível até a Fase 1 |
-
-## 9. Testes e verificações da última tarefa
-
-Verificações executadas:
-
-- leitura do estado e histórico remoto da `main`;
-- confirmação de que a `main` continha somente `architecture.md`;
-- revisão independente de consistência entre os oito documentos;
-- validação de títulos/seções obrigatórias;
-- validação de links relativos;
-- validação do equilíbrio de blocos Markdown/Mermaid;
-- busca por padrões comuns de segredo;
-- confirmação de que nenhum arquivo de código, dependência ou asset foi adicionado;
-- comparação remota da branch com `main`;
-- conferência do Git blob SHA dos oito arquivos locais contra os oito arquivos
-  remotos;
-- confirmação de que o PR #1 usa `docs/estrutura-inicial` como origem e `main` como
-  destino;
-- confirmação de que o PR foi aberto como rascunho, sem merge.
-
-Resultado remoto após a correção:
-
-- branch dois commits à frente da `main` antes deste registro de continuidade;
-- zero commits atrás;
-- exatamente oito arquivos Markdown alterados;
-- oito arquivos com bytes idênticos entre preparação local e GitHub;
-- nenhum mismatch restante.
-
-Não houve lint, teste ou build de aplicação porque esses comandos não existem.
-
-## 10. Erros e limitações conhecidas
-
-- Não há aplicação para executar.
-- A arquitetura ainda não foi validada por spike técnico.
-- Metas de desempenho são hipóteses até existir benchmark.
-- A primeira publicação de `architecture.md` chegou com codificação corrompida; o
-  problema foi detectado pela comparação remota e corrigido no commit
-  `9dcd89861a23293e65ff189bc7aca817326c2b8e`.
-- O processo de revisão entre duas IAs está documentado, mas ainda não foi praticado em
-  uma entrega de código.
-- A política de proteção de branch, reviewers e CI não está configurada.
-- O PR #1 não possui checks de aplicação porque ainda não existe workflow ou
-  toolchain.
-- O repositório foi identificado como **público**, embora o projeto seja descrito como
-  privado para estudo e lazer. Isso aumenta o cuidado com código, dados, branding e
-  assets; nenhuma mudança de visibilidade foi autorizada.
-
-## 11. Decisões pendentes
-
-- aceitar ou ajustar D-001 a D-010;
-- confirmar `pnpm` e Turborepo;
-- confirmar Fastify em vez de Nest;
-- escolher e fixar a versão LTS do Node;
-- definir biblioteca/schema de validação e transporte WebSocket;
-- decidir visibilidade e política de colaboradores do repositório;
-- definir dispositivos de referência;
-- aprovar o primeiro pack placeholder e sua licença;
-- definir espectadores por arena;
-- definir RPO, RTO e retenção;
-- resolver questões abertas de `game-design.md` na fase que as consome.
-
-## 12. Riscos atuais
-
-- começar scaffold antes da aprovação documental;
-- decisões propostas serem tratadas como aceitas;
-- repositório público receber conteúdo protegido;
-- duplicação entre a baseline raiz e a visão operacional;
-- duas IAs escreverem na mesma branch;
-- documentação deixar de ser atualizada junto do código futuro.
-
-## 13. Próxima tarefa recomendada
-
-Revisar o PR #3 e suas verificações. A Fase 3 permanece não iniciada.
-
-## 14. Instruções para reproduzir o estado
-
-Não existe ambiente de aplicação. Para revisar a documentação com Git instalado:
+## 5. Comandos
 
 ```text
-git clone https://github.com/lujhe4ever/jogopokemoncnx.git
-cd jogopokemoncnx
-git fetch origin
-git switch docs/estrutura-inicial
+pnpm install --frozen-lockfile
+docker compose up -d postgres
+pnpm --filter @lt/server prisma:generate
+pnpm --filter @lt/server db:migrate
+pnpm dev
+pnpm check
 ```
 
-Ler, nesta ordem:
+## 6. Verificações atuais
 
-1. `AGENTS.md`;
-2. `architecture.md`;
-3. todos os arquivos em `docs/`;
-4. histórico e diff contra `main`.
+- formatação, lint e TypeScript estrito;
+- seis testes antes do teste Argon2id adicional;
+- build do servidor e cliente;
+- validação do schema Prisma;
+- migrações aplicadas em PostgreSQL vazio pela CI;
+- nenhum segredo ou asset de terceiros incluído.
 
-Se a branch já tiver sido integrada, sincronizar `main` com fast-forward e seguir o
-mesmo roteiro de leitura.
+## 7. Limitações e riscos
+
+- Docker não está disponível no computador atual; a integração com PostgreSQL é
+  validada na CI;
+- parâmetros Argon2id precisam ser reavaliados em hardware de produção;
+- não existe envio de e-mail, recuperação de senha ou MFA;
+- o repositório permanece público;
+- nenhum deploy foi realizado.
+
+## 8. Decisões vigentes
+
+D-001, D-002, D-005, D-006 e D-008 estão aceitas. As demais decisões técnicas
+continuam com o status registrado em `docs/decisions.md`.
+
+## 9. Próxima tarefa recomendada
+
+Revisar e integrar o PR #4. Depois, iniciar exclusivamente a Fase 4: protótipo local
+da casa, movimentação e colisão.
+
+## 10. Instruções para reproduzir
+
+Sincronizar a branch, copiar `.env.example` para `.env`, iniciar PostgreSQL, aplicar
+as migrações e executar `pnpm dev`. Para revisão sem Docker, executar `pnpm check`;
+a CI cobre PostgreSQL e migrações.

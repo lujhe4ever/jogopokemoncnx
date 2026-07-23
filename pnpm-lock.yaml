@@ -37,12 +37,21 @@ importers:
 
   apps/server:
     dependencies:
+      "@fastify/cookie":
+        specifier: 11.1.2
+        version: 11.1.2
+      "@fastify/rate-limit":
+        specifier: 11.1.0
+        version: 11.1.0
       "@fastify/websocket":
         specifier: 11.3.0
         version: 11.3.0
       "@prisma/client":
         specifier: 6.19.0
         version: 6.19.0(prisma@6.19.0(typescript@6.0.3))(typescript@6.0.3)
+      argon2:
+        specifier: 0.45.1
+        version: 0.45.1
       fastify:
         specifier: 5.10.0
         version: 5.10.0
@@ -82,6 +91,12 @@ packages:
     resolution:
       {
         integrity: sha512-c95qOXkHdydNKhscBTebqEC1CVAZpyqOfVfBzQ1qgzyl3gfeldUjIggDbIZgDKsHLgnsM+igH7TJ/eAasaVuMA==,
+      }
+
+  "@epic-web/invariant@1.0.0":
+    resolution:
+      {
+        integrity: sha512-lrTPqgvfFQtR/eY/qkIzp98OGdNJu0m5ji3q/nJI8v3SXkRKEnWiOxMmbvcSoAIzv/cGiuvRy57k4suKQSAdwA==,
       }
 
   "@eslint-community/eslint-utils@4.10.1":
@@ -153,6 +168,12 @@ packages:
         integrity: sha512-KoWKW+MhvfTRWL4qrhUwAAZoaChluo0m0vbiJlGMt2GXvL4LVPQEjt8kSpHI3IBq5Rez8fg+XeH3cneztq+C7A==,
       }
 
+  "@fastify/cookie@11.1.2":
+    resolution:
+      {
+        integrity: sha512-Dtrpk/YOGUsbRMvP/8ZqPpwnMRv0qSqodFdoQ2B589Obc7jw4s4Qla+cV72Bsm7WsZJnqlYFX/i7uSBq0xzg6g==,
+      }
+
   "@fastify/error@4.2.0":
     resolution:
       {
@@ -181,6 +202,12 @@ packages:
     resolution:
       {
         integrity: sha512-INS+6gh91cLUjB+PVHfu1UqcB76Sqtpyp7bnL+FYojhjygvOPA9ctiD/JDKsyD9Xgu4hUhCSJBPig/w7duNajw==,
+      }
+
+  "@fastify/rate-limit@11.1.0":
+    resolution:
+      {
+        integrity: sha512-BeJ9tizLvmTXGD7deYU5G04OtHhwk5uHxbpEPVp09gKvUBIXmau/4Bshxhu9ci54MvVWfGjCEx4RzvsTntojwA==,
       }
 
   "@fastify/websocket@11.3.0":
@@ -230,6 +257,13 @@ packages:
         integrity: sha512-cYQ9310grqxueWbl+WuIUIaiUaDcj7WOq5fVhEljNVgRfOUhY9fy2zTvfoqWsnebh8Sl70VScFbICvJnLKB0Og==,
       }
 
+  "@lukeed/ms@2.0.2":
+    resolution:
+      {
+        integrity: sha512-9I2Zn6+NJLfaGoz9jN3lpwDgAYvfGeNYdbAIjJOqzs4Tpc+VU3Jqq4IofSUBKajiDS8k9fZIg18/z13mpk1bsA==,
+      }
+    engines: { node: ">=8" }
+
   "@napi-rs/wasm-runtime@1.1.6":
     resolution:
       {
@@ -244,6 +278,13 @@ packages:
       {
         integrity: sha512-r9gHphtCs+1M7J0pw6Sn/hh/Wpa/iQrOOkrNAlVLF/gHq+/CJmHIWKKUUhdWjcD6CIa8idarspCsASiXCXvFUw==,
       }
+
+  "@phc/format@1.0.0":
+    resolution:
+      {
+        integrity: sha512-m7X9U6BG2+J+R1lSOdCiITLLrxm+cWlNI3HUFA92oLO77ObGNzaKdh8pMLqdZcshtkKuV84olNNXDfMc4FezBQ==,
+      }
+    engines: { node: ">=10" }
 
   "@pinojs/redact@0.4.0":
     resolution:
@@ -686,6 +727,13 @@ packages:
         integrity: sha512-Thbli+OlOj+iMPYFBVBfJ3OmCAnaSyNn4M1vz9T6Gka5Jt9ba/HIR56joy65tY6kx/FCF5VXNB819Y7/GUrBGA==,
       }
 
+  argon2@0.45.1:
+    resolution:
+      {
+        integrity: sha512-skm+/WCjkGqCQxF7FG1LuZXM5yvbFjgbfiCGsud2oLgaDhh6b6dbH0b1EkghbM+xx4Bj8Ape+KKgixoIlWZicQ==,
+      }
+    engines: { node: ">=16.17.0" }
+
   assertion-error@2.0.1:
     resolution:
       {
@@ -782,6 +830,21 @@ packages:
         integrity: sha512-ei8Aos7ja0weRpFzJnEA9UHJ/7XQmqglbRwnf2ATjcB9Wq874VKH9kfjjirM6UhU2/E5fFYadylyhFldcqSidQ==,
       }
     engines: { node: ">=18" }
+
+  cookie@2.0.1:
+    resolution:
+      {
+        integrity: sha512-yuToqVvRrj6pfDXREyQAAv8SkAEk/8GS3jQRTiUMm66TVtBYmqQeoEjL2Lmq8Rpo6271vH76InTChTitEAm65w==,
+      }
+    engines: { node: ">=22" }
+
+  cross-env@10.1.0:
+    resolution:
+      {
+        integrity: sha512-GsYosgnACZTADcmEyJctkJIoqAhHjttw7RsFrVoJNXbsWWqaq6Ym+7kZjq6mS45O0jij6vtiReppKQEtqWy6Dw==,
+      }
+    engines: { node: ">=20" }
+    hasBin: true
 
   cross-spawn@7.0.6:
     resolution:
@@ -1391,11 +1454,25 @@ packages:
         integrity: sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==,
       }
 
+  node-addon-api@8.9.0:
+    resolution:
+      {
+        integrity: sha512-ekZMeaaIzSQTSpr7X2X3iJM7lTzgnx8ahAG9pJfT/7+14mlEM8ZYQ9cgCDvSSRbReFK0oHli3WrZdCiRsgAT9Q==,
+      }
+    engines: { node: ^18 || ^20 || >= 21 }
+
   node-fetch-native@1.6.7:
     resolution:
       {
         integrity: sha512-g9yhqoedzIUm0nTnTqAQvueMPVOuIY16bqgAJJC8XOOubYFNwz6IER9qs0Gq2Xd0+CecCKFjtdDTMA4u4xG06Q==,
       }
+
+  node-gyp-build@4.8.4:
+    resolution:
+      {
+        integrity: sha512-LA4ZjwlnUblHVgq0oBF3Jl/6h/Nvs5fzBLwdEF4nuxnFdsfajde4WfxtJr3CaiH+F6ewcIB/q4jQ4UzPyid+CQ==,
+      }
+    hasBin: true
 
   nypm@0.6.8:
     resolution:
@@ -2032,6 +2109,8 @@ snapshots:
       tslib: 2.8.1
     optional: true
 
+  "@epic-web/invariant@1.0.0": {}
+
   "@eslint-community/eslint-utils@4.10.1(eslint@10.7.0(jiti@2.7.0))":
     dependencies:
       eslint: 10.7.0(jiti@2.7.0)
@@ -2072,6 +2151,11 @@ snapshots:
       ajv-formats: 3.0.1(ajv@8.20.0)
       fast-uri: 3.1.4
 
+  "@fastify/cookie@11.1.2":
+    dependencies:
+      cookie: 2.0.1
+      fastify-plugin: 6.0.0
+
   "@fastify/error@4.2.0": {}
 
   "@fastify/fast-json-stringify-compiler@5.1.0":
@@ -2088,6 +2172,12 @@ snapshots:
     dependencies:
       "@fastify/forwarded": 3.0.1
       ipaddr.js: 2.4.0
+
+  "@fastify/rate-limit@11.1.0":
+    dependencies:
+      "@lukeed/ms": 2.0.2
+      fastify-plugin: 6.0.0
+      toad-cache: 3.7.4
 
   "@fastify/websocket@11.3.0":
     dependencies:
@@ -2116,6 +2206,8 @@ snapshots:
 
   "@jridgewell/sourcemap-codec@1.5.5": {}
 
+  "@lukeed/ms@2.0.2": {}
+
   "@napi-rs/wasm-runtime@1.1.6(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.1)":
     dependencies:
       "@emnapi/core": 1.11.1
@@ -2124,6 +2216,8 @@ snapshots:
     optional: true
 
   "@oxc-project/types@0.139.0": {}
+
+  "@phc/format@1.0.0": {}
 
   "@pinojs/redact@0.4.0": {}
 
@@ -2400,6 +2494,13 @@ snapshots:
       json-schema-traverse: 1.0.0
       require-from-string: 2.0.2
 
+  argon2@0.45.1:
+    dependencies:
+      "@phc/format": 1.0.0
+      cross-env: 10.1.0
+      node-addon-api: 8.9.0
+      node-gyp-build: 4.8.4
+
   assertion-error@2.0.1: {}
 
   atomic-sleep@1.0.0: {}
@@ -2449,6 +2550,13 @@ snapshots:
   convert-source-map@2.0.0: {}
 
   cookie@1.1.1: {}
+
+  cookie@2.0.1: {}
+
+  cross-env@10.1.0:
+    dependencies:
+      "@epic-web/invariant": 1.0.0
+      cross-spawn: 7.0.6
 
   cross-spawn@7.0.6:
     dependencies:
@@ -2789,7 +2897,11 @@ snapshots:
 
   natural-compare@1.4.0: {}
 
+  node-addon-api@8.9.0: {}
+
   node-fetch-native@1.6.7: {}
+
+  node-gyp-build@4.8.4: {}
 
   nypm@0.6.8:
     dependencies:

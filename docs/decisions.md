@@ -48,7 +48,7 @@ Ao aceitar ou mudar uma decisão:
 | D-005 | Prisma restrito à infraestrutura | Aceita |
 | D-006 | Protocolo runtime validado e versionado | Aceita |
 | D-007 | Packs de conteúdo e catálogo de assets substituíveis | Proposta |
-| D-008 | Sessão opaca e ticket WebSocket efêmero | Proposta |
+| D-008 | Sessão opaca e ticket WebSocket efêmero | Aceita |
 | D-009 | Redis, broker e microserviços adiados até haver gatilho | Proposta |
 | D-010 | Conteúdo somente original ou comprovadamente licenciado | Proposta |
 
@@ -262,7 +262,7 @@ Ao aceitar ou mudar uma decisão:
 ### D-008 — Sessão opaca e ticket WebSocket efêmero
 
 - **Data:** 2026-07-23
-- **Status:** Proposta
+- **Status:** Aceita
 - **Contexto:** login e WebSocket precisam compartilhar identidade sem expor
   credencial duradoura.
 - **Alternativas consideradas:**

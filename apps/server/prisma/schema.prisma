@@ -11,3 +11,52 @@ model RuntimeMarker {
   id        Int      @id @default(autoincrement())
   createdAt DateTime @default(now())
 }
+
+model Account {
+  id           String    @id @default(cuid())
+  email        String    @unique
+  passwordHash String
+  createdAt    DateTime  @default(now())
+  profile      Profile?
+  sessions     Session[]
+  tickets      WebSocketTicket[]
+}
+
+model Profile {
+  id          String  @id @default(cuid())
+  displayName String
+  accountId   String  @unique
+  account     Account @relation(fields: [accountId], references: [id], onDelete: Cascade)
+}
+
+model Session {
+  id        String    @id @default(cuid())
+  tokenHash String    @unique
+  expiresAt DateTime
+  revokedAt DateTime?
+  createdAt DateTime  @default(now())
+  accountId String
+  account   Account   @relation(fields: [accountId], references: [id], onDelete: Cascade)
+
+  @@index([accountId])
+}
+
+model WebSocketTicket {
+  id        String    @id @default(cuid())
+  tokenHash String    @unique
+  expiresAt DateTime
+  usedAt    DateTime?
+  createdAt DateTime  @default(now())
+  accountId String
+  account   Account   @relation(fields: [accountId], references: [id], onDelete: Cascade)
+
+  @@index([accountId])
+}
+
+model AuthAudit {
+  id        String   @id @default(cuid())
+  event     String
+  success   Boolean
+  ipHash    String?
+  createdAt DateTime @default(now())
+}

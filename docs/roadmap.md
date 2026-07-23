@@ -211,8 +211,8 @@ Permitir login seguro por e-mail/senha e carregar um perfil mínimo.
 - cookies/CORS configurados incorretamente;
 - dados pessoais excessivos.
 
-**Status:** **em andamento** — reservado na branch `agent/fase-3-autenticacao`;
-implementação ainda não iniciada neste snapshot.
+**Status:** **concluído na branch, aguardando revisão** — autenticação, sessão,
+perfil, ticket WebSocket, mitigação de abuso e testes implementados no PR #4.
 
 ### Fase 4 — Protótipo local da casa, movimentação e colisão
 
