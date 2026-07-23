@@ -136,6 +136,33 @@
           </div>
         </section>
       </section>
+      <section id="pvp-panel" hidden aria-labelledby="pvp-title">
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow">DUELO AUTORIZADO</p>
+            <h2 id="pvp-title">Batalha entre jogadores</h2>
+          </div>
+          <button type="button" id="return-arena" hidden>
+            Retornar à arena
+          </button>
+        </div>
+        <p id="pvp-status" role="status" aria-live="assertive"></p>
+        <div class="battle-combatants">
+          <div>
+            <strong id="pvp-self-name">Jogador</strong>
+            <progress id="pvp-self-health" max="1" value="1"></progress>
+          </div>
+          <div>
+            <strong id="pvp-opponent-name">Oponente</strong>
+            <progress id="pvp-opponent-health" max="1" value="1"></progress>
+          </div>
+        </div>
+        <div class="battle-actions" aria-label="Ações do duelo">
+          <button type="button" data-pvp-action="strike">Atacar</button>
+          <button type="button" data-pvp-action="guard">Defender</button>
+          <button type="button" id="abandon-pvp">Abandonar</button>
+        </div>
+      </section>
       <section
         id="quest-panel"
         hidden

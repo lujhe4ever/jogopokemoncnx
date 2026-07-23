@@ -68,6 +68,44 @@ type SocialMessage =
       retryAfterMs?: number;
     };
 
+interface PvpProjection {
+  id: string;
+  turn: number;
+  phase: "choosing" | "finished";
+  participants: Array<{
+    playerId: string;
+    displayName: string;
+    combatant: {
+      name: string;
+      health: number;
+      maxHealth: number;
+    };
+  }>;
+  winnerPlayerId?: string;
+  outcome?: "win" | "draw" | "abandoned";
+  finishReason?: string;
+}
+
+type PvpStateEvent = "pvp_started" | "pvp_turn_resolved" | "pvp_finished";
+
+type PvpStateMessage = {
+  [Event in PvpStateEvent]: {
+    type: Event;
+    state: PvpProjection;
+    selfPlayerId: string;
+    expectedSequence: number;
+  };
+}[PvpStateEvent];
+
+type PvpMessage =
+  | PvpStateMessage
+  | {
+      type: "pvp_choice_received";
+      battleId: string;
+      sequence: number;
+    }
+  | { type: "pvp_error"; code: string; battleId?: string };
+
 const gamePanel = document.querySelector<HTMLElement>("#game-panel");
 const arenaPanel = document.querySelector<HTMLElement>("#arena-panel");
 const arenaStage = document.querySelector<HTMLElement>("#arena-stage");
@@ -85,6 +123,12 @@ const inviteTarget = document.querySelector<HTMLSelectElement>(
 const sendInvite =
   document.querySelector<HTMLButtonElement>("#send-arena-invite");
 const invitations = document.querySelector<HTMLElement>("#arena-invitations");
+const pvpPanel = document.querySelector<HTMLElement>("#pvp-panel");
+const pvpStatus = document.querySelector<HTMLElement>("#pvp-status");
+const returnArena = document.querySelector<HTMLButtonElement>("#return-arena");
+const pvpActionButtons = [
+  ...document.querySelectorAll<HTMLButtonElement>("[data-pvp-action]"),
+];
 const players = new Map<string, ArenaPresence>();
 const mutedPlayers = new Set<string>();
 const movement = { up: false, down: false, left: false, right: false };
@@ -95,6 +139,9 @@ let revision = -1;
 let activeRoom = "arena-1";
 let manualClose = true;
 let reconnectAttempts = 0;
+let activePvp: PvpProjection | undefined;
+let pvpSelfId = "";
+let pvpExpectedSequence = 1;
 
 function setStatus(message: string): void {
   if (status) status.textContent = message;
@@ -315,6 +362,120 @@ function isSocialMessage(value: unknown): value is SocialMessage {
   );
 }
 
+function isPvpMessage(value: unknown): value is PvpMessage {
+  if (
+    typeof value !== "object" ||
+    value === null ||
+    !("type" in value) ||
+    typeof value.type !== "string"
+  )
+    return false;
+  if (["pvp_started", "pvp_turn_resolved", "pvp_finished"].includes(value.type))
+    return (
+      "state" in value &&
+      typeof value.state === "object" &&
+      value.state !== null &&
+      "id" in value.state &&
+      typeof value.state.id === "string" &&
+      "selfPlayerId" in value &&
+      typeof value.selfPlayerId === "string" &&
+      "expectedSequence" in value &&
+      typeof value.expectedSequence === "number"
+    );
+  if (value.type === "pvp_choice_received")
+    return (
+      "battleId" in value &&
+      typeof value.battleId === "string" &&
+      "sequence" in value &&
+      typeof value.sequence === "number"
+    );
+  return (
+    value.type === "pvp_error" &&
+    "code" in value &&
+    typeof value.code === "string"
+  );
+}
+
+function renderPvp(
+  message: Extract<
+    PvpMessage,
+    { type: "pvp_started" | "pvp_turn_resolved" | "pvp_finished" }
+  >,
+): void {
+  activePvp = message.state;
+  pvpSelfId = message.selfPlayerId;
+  pvpExpectedSequence = message.expectedSequence;
+  const self = message.state.participants.find(
+    ({ playerId }) => playerId === pvpSelfId,
+  );
+  const opponent = message.state.participants.find(
+    ({ playerId }) => playerId !== pvpSelfId,
+  );
+  const combatant = (
+    nameSelector: string,
+    healthSelector: string,
+    participant: PvpProjection["participants"][number] | undefined,
+  ) => {
+    const name = document.querySelector<HTMLElement>(nameSelector);
+    const health = document.querySelector<HTMLProgressElement>(healthSelector);
+    if (name)
+      name.textContent = participant
+        ? `${participant.displayName} — ${participant.combatant.name}`
+        : "Indisponível";
+    if (health && participant) {
+      health.max = participant.combatant.maxHealth;
+      health.value = participant.combatant.health;
+      health.setAttribute(
+        "aria-label",
+        `${participant.displayName}: ${String(participant.combatant.health)} de ${String(participant.combatant.maxHealth)}`,
+      );
+    }
+  };
+  combatant("#pvp-self-name", "#pvp-self-health", self);
+  combatant("#pvp-opponent-name", "#pvp-opponent-health", opponent);
+  if (arenaPanel) arenaPanel.hidden = true;
+  if (pvpPanel) pvpPanel.hidden = false;
+  const finished = message.state.phase === "finished";
+  for (const button of pvpActionButtons) button.disabled = finished;
+  const abandon = document.querySelector<HTMLButtonElement>("#abandon-pvp");
+  if (abandon) abandon.disabled = finished;
+  if (returnArena) returnArena.hidden = !finished;
+  if (pvpStatus)
+    pvpStatus.textContent = finished
+      ? message.state.outcome === "draw"
+        ? "O duelo terminou empatado."
+        : message.state.winnerPlayerId === pvpSelfId
+          ? "Vitória confirmada."
+          : "Derrota confirmada."
+      : `Turno ${String(message.state.turn)}. Escolha em até 30 segundos.`;
+}
+
+function receivePvp(message: PvpMessage): void {
+  if (
+    message.type === "pvp_started" ||
+    message.type === "pvp_turn_resolved" ||
+    message.type === "pvp_finished"
+  ) {
+    renderPvp(message);
+    return;
+  }
+  if (message.type === "pvp_choice_received") {
+    if (pvpStatus)
+      pvpStatus.textContent = "Escolha recebida. Aguardando o outro jogador...";
+    for (const button of pvpActionButtons) button.disabled = true;
+    return;
+  }
+  const labels: Record<string, string> = {
+    pvp_unavailable:
+      "Duelo indisponível: ambos precisam de uma criatura e estar livres.",
+    choice_already_submitted: "A escolha deste turno já foi recebida.",
+    sequence_mismatch: "Comando fora de sequência.",
+  };
+  const messageText = labels[message.code] ?? "Comando PvP rejeitado.";
+  if (activePvp && pvpStatus) pvpStatus.textContent = messageText;
+  else setStatus(messageText);
+}
+
 function showBubble(playerId: string, message: string): void {
   if (mutedPlayers.has(playerId)) return;
   const avatar = arenaStage?.querySelector<HTMLElement>(
@@ -457,6 +618,7 @@ async function connect(): Promise<void> {
     const value: unknown = JSON.parse(String(event.data));
     if (isArenaMessage(value)) receive(value);
     else if (isSocialMessage(value)) receiveSocial(value);
+    else if (isPvpMessage(value)) receivePvp(value);
   });
   current.addEventListener("close", (event) => {
     if (socket !== current || manualClose) return;
@@ -549,6 +711,29 @@ sendInvite?.addEventListener("click", () => {
     requestId: crypto.randomUUID(),
     targetPlayerId,
   });
+});
+
+for (const button of pvpActionButtons)
+  button.addEventListener("click", () => {
+    if (!activePvp || activePvp.phase === "finished") return;
+    sendSocial({
+      type: "pvp_choice",
+      battleId: activePvp.id,
+      sequence: pvpExpectedSequence,
+      action: button.dataset.pvpAction,
+    });
+  });
+
+document.querySelector("#abandon-pvp")?.addEventListener("click", () => {
+  if (!activePvp || activePvp.phase === "finished") return;
+  sendSocial({ type: "pvp_abandon", battleId: activePvp.id });
+});
+
+returnArena?.addEventListener("click", () => {
+  activePvp = undefined;
+  if (pvpPanel) pvpPanel.hidden = true;
+  if (arenaPanel) arenaPanel.hidden = false;
+  setStatus(`Online em ${activeRoom}: ${String(players.size)}/20 presenças.`);
 });
 
 window.addEventListener("keydown", (event) => {

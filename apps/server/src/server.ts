@@ -14,11 +14,13 @@ import { PrismaInteractionStore } from "./world/interaction-store.js";
 import { QuestService } from "./quests/quest-service.js";
 import { ArenaRegistry } from "./arena/arena-room.js";
 import { PrismaArenaProfileStore } from "./arena/profile-store.js";
+import { PvpService } from "./battles/pvp-service.js";
 
 const config = loadConfig(process.env);
 const prisma = new PrismaClient();
 const quests = new QuestService(prisma);
-const arena = new ArenaRegistry();
+const pvp = new PvpService(prisma);
+const arena = new ArenaRegistry(true, Date.now, pvp);
 const world = new HouseRoom(
   new PrismaCheckpointStore(prisma),
   true,

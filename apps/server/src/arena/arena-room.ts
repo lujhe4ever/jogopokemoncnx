@@ -8,6 +8,7 @@ import { performance } from "node:perf_hooks";
 import { randomUUID } from "node:crypto";
 import { z } from "zod";
 import { ArenaSocialService } from "./social-service.js";
+import type { PvpService } from "../battles/pvp-service.js";
 
 const inputSchema = z.object({
   type: z.literal("arena_input"),
@@ -72,8 +73,33 @@ export class ArenaRoom {
     private readonly clock: () => number = Date.now,
     private readonly onIdle: () => void = () => {},
     private readonly publicId: () => string = randomUUID,
+    private readonly pvp?: PvpService,
   ) {
-    this.social = new ArenaSocialService(id, clock);
+    this.social = new ArenaSocialService(
+      id,
+      clock,
+      randomUUID,
+      (first, second) => {
+        if (!this.pvp) return;
+        const deliver = (accountId: string, payload: object) => {
+          const player = this.players.get(accountId);
+          if (player) this.send(player.socket, payload);
+        };
+        void this.pvp.start(id, first, second, deliver).then((started) => {
+          if (started) return;
+          deliver(first.accountId, {
+            protocolVersion: 1,
+            type: "pvp_error",
+            code: "pvp_unavailable",
+          });
+          deliver(second.accountId, {
+            protocolVersion: 1,
+            type: "pvp_error",
+            code: "pvp_unavailable",
+          });
+        });
+      },
+    );
     this.timer = setInterval(
       () => {
         this.step();
@@ -121,6 +147,7 @@ export class ArenaRoom {
         connected.inputs.push(input.data);
         return;
       }
+      if (this.pvp?.handle(value, accountId)) return;
       this.social.handle(
         value,
         accountId,
@@ -228,6 +255,7 @@ export class ArenaRoom {
     const connected = this.players.get(accountId);
     if (!connected || connected.socket !== socket) return;
     this.players.delete(accountId);
+    this.pvp?.disconnect(accountId);
     this.social.remove(accountId);
     this.recent.set(accountId, {
       presence: connected.presence,
@@ -273,6 +301,7 @@ export class ArenaRegistry {
   constructor(
     private readonly autoStart = true,
     private readonly clock: () => number = Date.now,
+    private readonly pvp?: PvpService,
   ) {}
 
   connect(
@@ -283,11 +312,18 @@ export class ArenaRegistry {
   ): boolean {
     let room = this.rooms.get(roomId);
     if (!room) {
-      room = new ArenaRoom(roomId, this.autoStart, this.clock, () => {
-        if (this.rooms.get(roomId) !== room) return;
-        room?.close();
-        this.rooms.delete(roomId);
-      });
+      room = new ArenaRoom(
+        roomId,
+        this.autoStart,
+        this.clock,
+        () => {
+          if (this.rooms.get(roomId) !== room) return;
+          room?.close();
+          this.rooms.delete(roomId);
+        },
+        randomUUID,
+        this.pvp,
+      );
     }
     this.rooms.set(roomId, room);
     return room.connect(socket, accountId, displayName);
@@ -320,5 +356,6 @@ export class ArenaRegistry {
   close(): void {
     for (const room of this.rooms.values()) room.close();
     this.rooms.clear();
+    this.pvp?.close();
   }
 }

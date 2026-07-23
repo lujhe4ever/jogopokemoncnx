@@ -6,14 +6,15 @@
 | Repositório | `lujhe4ever/jogopokemoncnx` |
 | Branch principal | `main` |
 | Branch desta entrega | `codex/pokemon-canonical-full` |
-| Fase | Catálogo Pokémon canônico |
-| Status | **implementado na branch — aguardando revisão do proprietário** |
+| Fase | Catálogo Pokémon canônico e publicação de sprites |
+| Status | **em execução na branch — autorizada pelo proprietário** |
 
 ## 1. Resumo
 
-As Fases 0B a 12 foram integradas à `main`. Esta branch adiciona um catálogo separado
-para metadados canônicos de Pokémon e inventário de assets, sem publicar mídia de
-terceiros cuja redistribuição não esteja claramente autorizada.
+As Fases 0B a 13 foram integradas à `main`. Esta branch adiciona um catálogo separado
+para metadados canônicos de Pokémon e inventário de assets. O proprietário autorizou
+expressamente a publicação dos 1.025 sprites frontais mantidos em quarentena local;
+a incerteza sobre os direitos de redistribuição permanece registrada.
 
 O projeto possui workspace TypeScript, servidor Fastify, cliente Vite/Phaser,
 PostgreSQL, Prisma, WebSocket versionado, autenticação e a primeira fatia jogável da
@@ -78,7 +79,15 @@ casa, clareira original, transições autoritativas e o primeiro ciclo de intera
 - emotes `wave`, `cheer` e `surprised` validados por catálogo;
 - mute local remove fala do painel e do balão sem expor ação ao remetente;
 - convites direcionados expiram em 30 segundos, são únicos e revalidam presenças;
-- aceite confirma um desafio social para os dois participantes sem iniciar PvP ainda.
+- aceite confirma o desafio social para os dois participantes e autoriza o início PvP.
+- desafio social aceito inicia uma instância PvP somente para os dois participantes;
+- ownership das criaturas é validado no servidor antes da criação da batalha;
+- escolhas `strike` e `guard` permanecem privadas até ambos enviarem o turno;
+- comandos usam sequência, batalha e identidade autenticada para impedir controle do
+  oponente;
+- timeout de 30 segundos, abandono e desconexão produzem derrota explícita;
+- resultado e vencedor são persistidos uma única vez por atualização condicional;
+- projeção do duelo omite escolhas e IDs internos, e a UI retorna com segurança à arena.
 
 Verificação e recuperação de e-mail permanecem fora do escopo até que seus fluxos
 completos sejam definidos.
@@ -111,7 +120,7 @@ completos sejam definidos.
 | Fundação de criaturas e progressão | concluída na branch |
 | Batalha contra NPCs | concluída na branch |
 | Encontros e captura | concluídos na branch |
-| Outras batalhas | não iniciado |
+| Batalhas PvP | concluídas na branch |
 | Arena e presença | concluídas na branch |
 | Catálogo Pokémon e inventário de sprites | concluído na branch; aprovação pendente |
 | Chat, emotes e convites | concluídos na branch |
@@ -132,7 +141,7 @@ pnpm check
 ## 6. Verificações atuais
 
 - formatação, lint e TypeScript estrito;
-- 18 arquivos de teste e 53 testes automatizados;
+- 19 arquivos de teste e 55 testes automatizados;
 - build do servidor e cliente;
 - validação do schema Prisma;
 - migrações aplicadas em PostgreSQL vazio pela CI;
@@ -151,13 +160,13 @@ pnpm check
 
 ## 8. Decisões vigentes
 
-D-001 a D-008 e D-011 a D-017 estão aceitas. As demais decisões técnicas
+D-001 a D-008 e D-011 a D-018 estão aceitas. As demais decisões técnicas
 continuam com o status registrado em `docs/decisions.md`.
 
 ## 9. Próxima tarefa recomendada
 
-Revisar a expansão do catálogo Pokémon canônico e decidir explicitamente quais
-coleções de sprites poderão avançar da quarentena para uso no projeto.
+Revisar a expansão do catálogo Pokémon canônico e a publicação explicitamente
+autorizada dos 1.025 sprites frontais, sem ligar os assets ao runtime nesta etapa.
 
 ## 10. Instruções para reproduzir
 
