@@ -253,7 +253,8 @@ reconexão.
 - escrita excessiva de posição;
 - pack placeholder contaminar regras.
 
-**Status:** **não iniciado**.
+**Status:** **em andamento** — reservado na branch
+`agent/fase-4-casa-movimento`; protótipo ainda não criado neste snapshot.
 
 ### Fase 5 — Mapas, zonas e transições
 

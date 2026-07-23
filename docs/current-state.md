@@ -5,9 +5,9 @@
 | Atualizado em | 2026-07-23 |
 | Repositório | `lujhe4ever/jogopokemoncnx` |
 | Branch principal | `main` |
-| Branch desta entrega | `agent/fase-3-autenticacao` |
-| Fase | Fase 3 — autenticação, perfil e sessão |
-| Status | **concluída na branch — PR #4 aguardando revisão** |
+| Branch desta entrega | `agent/fase-4-casa-movimento` |
+| Fase | Fase 4 — casa, movimentação e colisão |
+| Status | **reservada — preparação do PR em andamento** |
 
 ## 1. Resumo
 
