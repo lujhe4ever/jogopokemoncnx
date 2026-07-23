@@ -919,3 +919,33 @@ Chat, emotes, convites, PvP, telões, administração e deploy público.
 ### Próximo passo
 
 Publicar o PR rascunho da Fase 11 antes de iniciar a implementação.
+
+## 2026-07-23 — Arena multiplayer e presença da Fase 11
+
+### Resultado
+
+- novo pacote puro `@lt/arena-domain` com movimento e limites autoritativos;
+- endpoint WebSocket de arena usa ticket efêmero separado da exploração;
+- registro cria múltiplas salas isoladas com capacidade de 20 jogadores;
+- snapshot inicial, eventos de entrada/saída e deltas revisionados;
+- reconexão de 30 segundos restaura posição e substituição encerra socket anterior;
+- backpressure descarta broadcast para socket lento sem bloquear o tick;
+- métricas agregam salas, jogadores, mensagens descartadas e maior duração de tick;
+- protocolo expõe somente ID público efêmero e nome público;
+- UI social separa o mundo, oferece teclado/toque e lista textual acessível.
+
+### Testes e verificações
+
+- `pnpm check`: 15 arquivos e 43 testes automatizados;
+- 21ª presença é rejeitada com código de lotação;
+- salas distintas não compartilham snapshots;
+- reconexão restaura posição dentro da janela;
+- conta interna não aparece no payload;
+- 20 avatares por 100 ticks permanecem dentro do orçamento local de 250 ms;
+- socket acima de 64 KiB é isolado e contabilizado;
+- QA no navegador confirmou região, status, lista alternativa e ausência de overflow.
+
+### Próximo passo
+
+Revisar e integrar o PR #12 após a CI aprovada e reservar a Fase 12 sem executar
+deploy público.

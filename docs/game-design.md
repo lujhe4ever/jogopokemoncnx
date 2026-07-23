@@ -284,10 +284,15 @@ PvP.
 - **[R]** Emotes e reações.
 - **[R]** Convites/desafios entre jogadores.
 - **[R]** Telões mostrando batalhas em tempo real.
+- **[R]** Cada arena é uma área de interesse isolada com no máximo 20 presenças.
+- **[R]** A posição é validada pelo servidor em tick de 20 Hz.
+- **[R]** A arena usa identidade pública efêmera e nome público do perfil, sem ID de
+  conta no protocolo.
+- **[R]** Reconexão dentro de 30 segundos restaura a posição social segura.
 
 ### 11.2 Propostas
 
-- **[P]** Arena não é obrigatória para concluir a progressão principal.
+- **[R]** Arena não é obrigatória para concluir a progressão principal.
 - **[P]** Chat também aparece em um painel acessível, não só no canvas.
 - **[P]** Chat é efêmero até existir política aprovada de retenção.
 - **[P]** Emotes são IDs de um catálogo moderado.

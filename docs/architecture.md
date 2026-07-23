@@ -301,6 +301,13 @@ O servidor decide posição válida.
 
 Arena é um módulo social, não o motor de batalha.
 
+- `ArenaRegistry` mantém salas isoladas em memória e cada sala é uma fronteira de
+  área de interesse;
+- cada sala aceita até 20 presenças, simula movimento a 20 Hz e publica snapshot
+  inicial seguido de deltas;
+- sockets acima do limite de buffer deixam de receber broadcast sem bloquear o tick;
+- uma janela de 30 segundos restaura posição em reconexão e IDs públicos efêmeros não
+  revelam a chave interna da conta;
 - chat tem tamanho, frequência, autoria e timestamp validados;
 - mensagens aparecem sobre personagens por tempo limitado e podem alimentar painel
   acessível;

@@ -14,6 +14,8 @@ const startBattleButton =
 const questJournalButton = document.querySelector<HTMLButtonElement>(
   "#quest-journal-button",
 );
+const enterArenaButton =
+  document.querySelector<HTMLButtonElement>("#enter-arena");
 
 function values() {
   if (!form) throw new Error("Formulário indisponível");
@@ -103,6 +105,10 @@ questJournalButton?.addEventListener("click", () => {
   void import("./quest-ui.js").then(({ openQuestJournal }) =>
     openQuestJournal(),
   );
+});
+
+enterArenaButton?.addEventListener("click", () => {
+  void import("./arena-ui.js").then(({ openArena }) => openArena("arena-1"));
 });
 
 window.addEventListener("lt:encounter", (event) => {

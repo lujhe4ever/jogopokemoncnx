@@ -56,6 +56,7 @@ Ao aceitar ou mudar uma decisão:
 | D-013 | Batalha NPC determinística e isolada | Aceita |
 | D-014 | Captura pós-batalha atômica e determinística | Aceita |
 | D-015 | Missões versionadas por eventos públicos idempotentes | Aceita |
+| D-016 | Arena em memória com salas autoritativas e isoladas | Aceita |
 
 ## 3. Registro cronológico
 
@@ -423,6 +424,26 @@ Ao aceitar ou mudar uma decisão:
 - **Evidência de aprovação:** testes cobrem filtros, migração, drift, retry,
   restauração e recompensa única; schema e migração possuem chaves exclusivas e
   restrições de estado.
+
+### D-016 — Arena em memória com salas autoritativas e isoladas
+
+- **Data:** 2026-07-23
+- **Status:** Aceita para a primeira arena social
+- **Contexto:** presença social precisa suportar 20 avatares sem acoplar progresso
+  durável, mundo de exploração ou batalha ao fan-out da sala.
+- **Decisão:** `ArenaRegistry` e `ArenaRoom` vivem no monólito modular e mantêm estado
+  transitório em memória. Cada `roomId` é uma área de interesse isolada, com limite
+  autoritativo de 20 presenças e tick de 20 Hz.
+- **Protocolo:** entrada usa ticket WebSocket descartável; snapshot ocorre uma vez e
+  movimento/presença seguem por deltas revisionados e validados.
+- **Privacidade:** clientes recebem ID público efêmero e nome público, nunca a chave
+  interna da conta.
+- **Resiliência:** posição pode ser restaurada por 30 segundos; sessão nova substitui
+  socket antigo; buffer acima de 64 KiB descarta broadcast e incrementa métrica.
+- **Escala:** Redis/broker continuam adiados; múltiplos processos ou fan-out entre
+  processos são gatilhos explícitos de revisão da D-009.
+- **Evidência de aprovação:** testes cobrem lotação, salas isoladas, reconexão,
+  privacidade, backpressure e benchmark de 20 avatares por 100 ticks.
 
 ## 4. Próximas decisões a revisar
 

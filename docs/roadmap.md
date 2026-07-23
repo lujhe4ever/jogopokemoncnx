@@ -2,7 +2,7 @@
 
 | Campo | Valor |
 | --- | --- |
-| Status do projeto | **Fase 11 — em andamento** |
+| Status do projeto | **Fase 11 — concluída na branch** |
 | Atualizado em | 2026-07-23 |
 | Implementação existente | Nenhuma |
 
@@ -41,7 +41,7 @@ Status permitidos:
 | 8 | Batalha contra NPCs | concluído |
 | 9 | Encontros e captura | concluído |
 | 10 | Missões e persistência integrada | concluído |
-| 11 | Arena multiplayer e presença | em andamento |
+| 11 | Arena multiplayer e presença | concluído na branch |
 | 12 | Chat, emotes e convites | não iniciado |
 | 13 | Batalhas entre jogadores | não iniciado |
 | 14 | Telões e transmissão de batalhas | não iniciado |
@@ -516,7 +516,7 @@ Validar uma sala social separada da exploração para até 20 jogadores.
 - abuso de presença;
 - medição em hardware não representativo.
 
-**Status:** **em andamento** na branch `agent/fase-11-arena-presenca`.
+**Status:** **concluído na branch**, aguardando CI e integração no PR #12.
 
 ### Fase 12 — Chat, emotes e convites
 
