@@ -5,13 +5,13 @@
 | Atualizado em | 2026-07-23 |
 | Repositório | `lujhe4ever/jogopokemoncnx` |
 | Branch principal | `main` |
-| Branch desta entrega | `codex/pokemon-canonical-pilot` |
+| Branch desta entrega | `codex/pokemon-canonical-full` |
 | Fase | Catálogo Pokémon canônico |
-| Status | **em expansão na branch — aguardando revisão do proprietário** |
+| Status | **implementado na branch — aguardando revisão do proprietário** |
 
 ## 1. Resumo
 
-As Fases 0B a 10 foram integradas à `main`. Esta branch adiciona um catálogo separado
+As Fases 0B a 11 foram integradas à `main`. Esta branch adiciona um catálogo separado
 para metadados canônicos de Pokémon e inventário de assets, sem publicar mídia de
 terceiros cuja redistribuição não esteja claramente autorizada.
 
@@ -60,6 +60,13 @@ casa, clareira original, transições autoritativas e o primeiro ciclo de intera
 - recompensa aplicada uma vez na mesma transação serializável do progresso;
 - diário de missões acessível e carregado sob demanda;
 - política explícita que rejeita version drift sem migração declarada.
+- arena social separada da exploração por endpoint e ciclo de conexão próprios;
+- registro em memória com múltiplas salas isoladas e limite de 20 presenças cada;
+- movimento autoritativo a 20 Hz, snapshots de entrada e deltas de posição;
+- reconexão por 30 segundos, substituição de sessão e remoção explícita de presença;
+- backpressure limita sockets lentos e métricas agregam tick, salas e descartes;
+- IDs públicos efêmeros impedem exposição de IDs internos de conta;
+- UI social acessível com palco visual, lista de presenças e controles por teclado/toque.
 
 Verificação e recuperação de e-mail permanecem fora do escopo até que seus fluxos
 completos sejam definidos.
@@ -91,7 +98,8 @@ completos sejam definidos.
 | Batalha contra NPCs | concluída na branch |
 | Encontros e captura | concluídos na branch |
 | Outras batalhas | não iniciado |
-| Arena e recursos sociais | não iniciado |
+| Arena e presença | concluídas na branch |
+| Chat, emotes e convites | não iniciado |
 | Administração e deploy | não iniciado |
 
 ## 5. Comandos
@@ -108,7 +116,7 @@ pnpm check
 ## 6. Verificações atuais
 
 - formatação, lint e TypeScript estrito;
-- 13 arquivos de teste e 37 testes automatizados;
+- 15 arquivos de teste e 43 testes automatizados;
 - build do servidor e cliente;
 - validação do schema Prisma;
 - migrações aplicadas em PostgreSQL vazio pela CI;
@@ -125,13 +133,13 @@ pnpm check
 
 ## 8. Decisões vigentes
 
-D-001 a D-008 e D-011 a D-015 estão aceitas. As demais decisões técnicas
+D-001 a D-008 e D-011 a D-016 estão aceitas. As demais decisões técnicas
 continuam com o status registrado em `docs/decisions.md`.
 
 ## 9. Próxima tarefa recomendada
 
-Concluir e revisar a expansão do catálogo Pokémon canônico, incluindo definições
-auditáveis e a decisão de licença de cada coleção candidata de sprites reais.
+Revisar a expansão do catálogo Pokémon canônico e decidir explicitamente quais
+coleções de sprites poderão avançar da quarentena para uso no projeto.
 
 ## 10. Instruções para reproduzir
 

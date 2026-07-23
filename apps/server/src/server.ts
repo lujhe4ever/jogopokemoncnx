@@ -12,10 +12,13 @@ import { EncounterService } from "./encounters/encounter-service.js";
 import { HouseRoom, PrismaCheckpointStore } from "./world/house-room.js";
 import { PrismaInteractionStore } from "./world/interaction-store.js";
 import { QuestService } from "./quests/quest-service.js";
+import { ArenaRegistry } from "./arena/arena-room.js";
+import { PrismaArenaProfileStore } from "./arena/profile-store.js";
 
 const config = loadConfig(process.env);
 const prisma = new PrismaClient();
 const quests = new QuestService(prisma);
+const arena = new ArenaRegistry();
 const world = new HouseRoom(
   new PrismaCheckpointStore(prisma),
   true,
@@ -37,6 +40,8 @@ const app = await buildApp({
     quests,
   ),
   quests,
+  arena,
+  arenaProfiles: new PrismaArenaProfileStore(prisma),
 });
 
 const shutdown = () => {

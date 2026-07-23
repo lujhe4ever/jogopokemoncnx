@@ -18,6 +18,7 @@
     "@lt/battle-domain": "workspace:*",
     "@lt/encounter-domain": "workspace:*",
     "@lt/quest-domain": "workspace:*",
+    "@lt/arena-domain": "workspace:*",
     "@lt/game-simulation": "workspace:*",
     "@prisma/client": "6.19.0",
     "argon2": "0.45.1",

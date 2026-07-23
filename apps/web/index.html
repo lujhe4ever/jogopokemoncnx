@@ -59,6 +59,7 @@
         <button type="button" id="quest-journal-button">
           Diário de missões
         </button>
+        <button type="button" id="enter-arena">Entrar na arena social</button>
         <div id="touch-pad" aria-label="Controles de movimento">
           <button data-direction="up">▲</button>
           <div>
@@ -67,6 +68,35 @@
             ><button data-direction="right">▶</button>
           </div>
           <button type="button" id="interact">Interagir</button>
+        </div>
+      </section>
+      <section id="arena-panel" hidden aria-labelledby="arena-title">
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow">ENCONTRO SOCIAL</p>
+            <h2 id="arena-title">Arena da comunidade</h2>
+          </div>
+          <button type="button" id="leave-arena">Voltar à exploração</button>
+        </div>
+        <p id="arena-status" role="status" aria-live="polite">Conectando...</p>
+        <div
+          id="arena-stage"
+          role="img"
+          aria-label="Arena com posições dos jogadores"
+        ></div>
+        <div class="arena-footer">
+          <div>
+            <h3>Presenças</h3>
+            <ul id="arena-presence-list" aria-live="polite"></ul>
+          </div>
+          <div id="arena-touch-pad" aria-label="Controles da arena">
+            <button data-arena-direction="up">▲</button>
+            <div>
+              <button data-arena-direction="left">◀</button>
+              <button data-arena-direction="down">▼</button>
+              <button data-arena-direction="right">▶</button>
+            </div>
+          </div>
         </div>
       </section>
       <section

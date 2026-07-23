@@ -65,7 +65,7 @@ class HouseScene extends Phaser.Scene {
     left: false,
     right: false,
   };
-  private socket?: WebSocket;
+  private socket: WebSocket | undefined;
   private local: PlayerState = { ...SAFE_SPAWN };
   private zoneId = "house";
   private requestedPortal: string | undefined;
@@ -75,6 +75,7 @@ class HouseScene extends Phaser.Scene {
   private keys:
     Record<"W" | "A" | "S" | "D", Phaser.Input.Keyboard.Key> | undefined;
   private interactionKey: Phaser.Input.Keyboard.Key | undefined;
+  private suspended = false;
 
   constructor(
     private readonly ticket: string,
@@ -92,10 +93,17 @@ class HouseScene extends Phaser.Scene {
     >;
     this.interactionKey = this.input.keyboard?.addKey("E");
     this.bindTouch();
-    this.connect();
+    this.connect(this.ticket);
+    window.addEventListener("lt:arena-open", () => {
+      this.suspendForArena();
+    });
+    window.addEventListener("lt:arena-close", () => {
+      void this.resumeFromArena();
+    });
   }
 
   override update(_time: number, delta: number) {
+    if (this.suspended) return;
     this.accumulator += Math.min(delta, 100);
     while (this.accumulator >= 50) {
       this.accumulator -= 50;
@@ -134,10 +142,10 @@ class HouseScene extends Phaser.Scene {
     };
   }
 
-  private connect() {
+  private connect(ticket: string) {
     const protocol = location.protocol === "https:" ? "wss" : "ws";
     this.socket = new WebSocket(
-      `${protocol}://${location.host}/ws?ticket=${encodeURIComponent(this.ticket)}`,
+      `${protocol}://${location.host}/ws?ticket=${encodeURIComponent(ticket)}`,
     );
     this.socket.addEventListener("open", () => {
       const label = document.querySelector("#connection");
@@ -174,6 +182,33 @@ class HouseScene extends Phaser.Scene {
         if (id !== this.accountId) this.renderAvatar(id, state, 0xb94a48);
       }
     });
+  }
+
+  private suspendForArena() {
+    this.suspended = true;
+    this.socket?.close(1000, "arena_mode");
+    this.socket = undefined;
+    const label = document.querySelector("#connection");
+    if (label) label.textContent = "na arena";
+  }
+
+  private async resumeFromArena() {
+    if (!this.suspended) return;
+    const response = await fetch("/api/auth/ws-ticket", {
+      method: "POST",
+      credentials: "include",
+    });
+    if (!response.ok) {
+      this.setFeedback("Não foi possível retomar a exploração.");
+      return;
+    }
+    const value = (await response.json()) as { ticket?: unknown };
+    if (typeof value.ticket !== "string") {
+      this.setFeedback("Ticket de retorno inválido.");
+      return;
+    }
+    this.suspended = false;
+    this.connect(value.ticket);
   }
 
   private renderZone() {
