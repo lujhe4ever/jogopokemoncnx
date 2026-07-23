@@ -11,7 +11,7 @@
 
 ## 1. Resumo
 
-As Fases 0B a 11 foram integradas à `main`. Esta branch adiciona um catálogo separado
+As Fases 0B a 12 foram integradas à `main`. Esta branch adiciona um catálogo separado
 para metadados canônicos de Pokémon e inventário de assets, sem publicar mídia de
 terceiros cuja redistribuição não esteja claramente autorizada.
 
@@ -72,6 +72,13 @@ casa, clareira original, transições autoritativas e o primeiro ciclo de intera
 - 43.383 sprites e 10.421 animações inventariados com revisão de origem fixa;
 - 1.025 sprites frontais reais verificados em quarentena local ignorada pelo Git;
 - nenhum binário de terceiros incluído ou carregado pela engine.
+- chat efêmero com autoria, timestamp e ID gerados pelo servidor;
+- mensagens normalizadas, limitadas a 160 caracteres, sem URL/controle e com rate limit;
+- requisições deduplicadas e histórico apenas em memória/DOM limitado a 50 itens;
+- emotes `wave`, `cheer` e `surprised` validados por catálogo;
+- mute local remove fala do painel e do balão sem expor ação ao remetente;
+- convites direcionados expiram em 30 segundos, são únicos e revalidam presenças;
+- aceite confirma um desafio social para os dois participantes sem iniciar PvP ainda.
 
 Verificação e recuperação de e-mail permanecem fora do escopo até que seus fluxos
 completos sejam definidos.
@@ -107,7 +114,7 @@ completos sejam definidos.
 | Outras batalhas | não iniciado |
 | Arena e presença | concluídas na branch |
 | Catálogo Pokémon e inventário de sprites | concluído na branch; aprovação pendente |
-| Chat, emotes e convites | não iniciado |
+| Chat, emotes e convites | concluídos na branch |
 | Administração e deploy | não iniciado |
 
 ## 5. Comandos
@@ -125,7 +132,7 @@ pnpm check
 ## 6. Verificações atuais
 
 - formatação, lint e TypeScript estrito;
-- 16 arquivos de teste e 47 testes automatizados;
+- 18 arquivos de teste e 53 testes automatizados;
 - build do servidor e cliente;
 - validação do schema Prisma;
 - migrações aplicadas em PostgreSQL vazio pela CI;
@@ -144,7 +151,7 @@ pnpm check
 
 ## 8. Decisões vigentes
 
-D-001 a D-008 e D-011 a D-016 estão aceitas. As demais decisões técnicas
+D-001 a D-008 e D-011 a D-017 estão aceitas. As demais decisões técnicas
 continuam com o status registrado em `docs/decisions.md`.
 
 ## 9. Próxima tarefa recomendada
@@ -192,8 +199,8 @@ permanecem pendentes ate revisao explicita de licenca/autorizacao pelo proprieta
 
 Estado do GitHub verificado antes da conclusão:
 
-- `main` em `80f8b534580203eb83cae0c9d7f7cb2c01ab5f4c`, com o PR #12 integrado;
-- PR #13 aberto em rascunho para chat, emotes e convites;
+- `main` em `87ced88cc2a72505d9eea563214be0cbc059a891`, com o PR #13 integrado;
+- PR #14 aberto em rascunho para batalhas entre jogadores;
 - branch desta entrega: `codex/pokemon-canonical-full`;
 - branch atualizada por merge de `origin/main`, sem force-push.
 

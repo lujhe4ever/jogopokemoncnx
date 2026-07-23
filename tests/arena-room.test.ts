@@ -150,4 +150,23 @@ describe("authoritative arena room", () => {
     expect(active.messages("arena_delta")).toHaveLength(1);
     room.close();
   });
+
+  it("routes validated social messages inside the same room", () => {
+    const room = new ArenaRoom("arena-1", false, () => 10_000);
+    const sender = new FakeSocket();
+    const receiver = new FakeSocket();
+    room.connect(sender, "sender-account", "Sender");
+    room.connect(receiver, "receiver-account", "Receiver");
+    sender.input({
+      type: "social_chat",
+      requestId: "chat-1",
+      text: "Olá!",
+    });
+    expect(receiver.messages("social_chat").at(-1)).toMatchObject({
+      author: { displayName: "Sender" },
+      text: "Olá!",
+      sentAt: "1970-01-01T00:00:10.000Z",
+    });
+    room.close();
+  });
 });

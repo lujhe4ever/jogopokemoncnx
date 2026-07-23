@@ -57,6 +57,7 @@ Ao aceitar ou mudar uma decisão:
 | D-014 | Captura pós-batalha atômica e determinística | Aceita |
 | D-015 | Missões versionadas por eventos públicos idempotentes | Aceita |
 | D-016 | Arena em memória com salas autoritativas e isoladas | Aceita |
+| D-017 | Interações sociais efêmeras, limitadas e deduplicadas | Aceita |
 
 ## 3. Registro cronológico
 
@@ -444,6 +445,25 @@ Ao aceitar ou mudar uma decisão:
   processos são gatilhos explícitos de revisão da D-009.
 - **Evidência de aprovação:** testes cobrem lotação, salas isoladas, reconexão,
   privacidade, backpressure e benchmark de 20 avatares por 100 ticks.
+
+### D-017 — Interações sociais efêmeras, limitadas e deduplicadas
+
+- **Data:** 2026-07-23
+- **Status:** Aceita para a primeira camada social
+- **Contexto:** conversa, emotes e convites precisam funcionar dentro da arena sem
+  persistir dados pessoais nem permitir spam, payload arbitrário ou replay.
+- **Chat:** texto normalizado NFKC, até 160 caracteres, sem URL ou controle; servidor
+  define autoria/timestamp e aceita no máximo três mensagens por cinco segundos.
+- **Idempotência:** cada ação leva `requestId`; os últimos 100 IDs por conexão são
+  deduplicados.
+- **Emotes:** allowlist inicial `wave`, `cheer` e `surprised`, até cinco usos por dez
+  segundos.
+- **Convites:** direcionados à identidade pública na mesma sala, até três por 30
+  segundos, expiram em 30 segundos e são consumidos uma vez após revalidar ambos.
+- **Privacidade/moderação:** chat não é persistido; histórico do cliente é limitado e
+  mute é local. Denúncia, retenção e bloqueio durável exigem política posterior.
+- **Evidência de aprovação:** testes cobrem normalização, conteúdo inseguro, rate
+  limit, deduplicação, autoria, allowlist, expiração, presença e consumo único.
 
 ## 4. Próximas decisões a revisar
 

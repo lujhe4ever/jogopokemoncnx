@@ -293,11 +293,15 @@ PvP.
 ### 11.2 Propostas
 
 - **[R]** Arena não é obrigatória para concluir a progressão principal.
-- **[P]** Chat também aparece em um painel acessível, não só no canvas.
-- **[P]** Chat é efêmero até existir política aprovada de retenção.
-- **[P]** Emotes são IDs de um catálogo moderado.
-- **[P]** Convites expiram e são de uso único.
-- **[P]** Capacidade é validada novamente ao aceitar o convite.
+- **[R]** Chat também aparece em um painel acessível, não só no canvas.
+- **[R]** Chat é efêmero até existir política aprovada de retenção.
+- **[R]** Mensagens têm até 160 caracteres, autoria/timestamp do servidor e limites de
+  frequência; URLs e caracteres de controle são rejeitados.
+- **[R]** Jogadores podem silenciar localmente outra identidade pública.
+- **[R]** Emotes são IDs de um catálogo moderado; a primeira allowlist contém aceno,
+  comemoração e surpresa.
+- **[R]** Convites expiram em 30 segundos e são de uso único.
+- **[R]** Presença dos dois participantes é validada novamente ao aceitar o convite.
 
 ### 11.3 Questões abertas
 

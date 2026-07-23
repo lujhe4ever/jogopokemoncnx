@@ -1060,3 +1060,76 @@ Ler primeiro `AGENTS.md`, `architecture.md`, `docs/current-state.md`,
 `docs/pokemon-content-sources.md`, o fim de `docs/work-log.md` e
 `content/packs/pokemon-canonical/README.md`; sincronizar `main` e não publicar a
 pasta `.private/`.
+
+## 2026-07-23 — Integração da Fase 11 e reserva da Fase 12
+
+### Contexto
+
+O PR #12 passou na CI e foi integrado à `main` no commit
+`80f8b534580203eb83cae0c9d7f7cb2c01ab5f4c`.
+
+### Escopo reservado
+
+- chat efêmero com autoria e timestamp do servidor;
+- tamanho, frequência e conteúdo básico validados;
+- emotes por allowlist de catálogo;
+- convites direcionados, expirados e de uso único;
+- revalidação de presença e capacidade ao aceitar;
+- painel textual acessível além da apresentação sobre o avatar.
+
+### Fora do escopo
+
+Persistência de chat, denúncia avançada, PvP, telões, administração e deploy público.
+
+### Próximo passo
+
+Publicar o PR rascunho da Fase 12 antes de iniciar a implementação.
+
+## 2026-07-23 — Chat, emotes e convites da Fase 12
+
+### Resultado
+
+- novo pacote puro `@lt/social-domain` para validação e rate limit;
+- chat efêmero com autoria, timestamp e ID definidos pelo servidor;
+- normalização NFKC, limite de 160, rejeição de URL/controle e três mensagens/5 s;
+- request IDs deduplicam as últimas 100 ações por conexão;
+- emotes por allowlist com limite independente;
+- mute local acessível remove mensagens e balões do autor;
+- convites direcionados expiram em 30 s e só podem ser aceitos uma vez;
+- aceite revalida os dois participantes e emite confirmação privada;
+- painel acessível complementa balões sobre os avatares.
+
+### Testes e verificações
+
+- `pnpm check`: 17 arquivos e 49 testes automatizados;
+- texto seguro normalizado e conteúdo inseguro rejeitado;
+- quarta mensagem na janela recebe `rate_limited`;
+- retry de request ID não duplica broadcast;
+- IDs internos não aparecem na mensagem pública;
+- emote fora da allowlist é rejeitado;
+- convite expirado, repetido ou sem participante é rejeitado;
+- QA confirmou chat, mute, emotes, convite, `aria-live` e ausência de overflow.
+
+### Próximo passo
+
+Revisar e integrar o PR #13 após a CI aprovada e reservar a Fase 13 sem executar
+deploy público.
+
+## 2026-07-23 — Sincronização final do catálogo Pokémon
+
+### Contexto
+
+Durante a conclusão do catálogo, o PR #13 foi integrado à `main` no commit
+`87ced88cc2a72505d9eea563214be0cbc059a891` e o PR #14 foi aberto em rascunho.
+
+### Resultado
+
+- branch `codex/pokemon-canonical-full` atualizada por merge, sem force-push;
+- histórico completo das Fases 11 e 12 preservado;
+- documentação do catálogo atualizada para o novo estado compartilhado;
+- validação integral do catálogo será repetida sobre a base combinada.
+
+### Próximo passo
+
+Revisar o catálogo e decidir uma única política de sprites antes de publicar ou
+ligar qualquer mídia ao runtime.

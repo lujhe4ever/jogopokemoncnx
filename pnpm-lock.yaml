@@ -67,6 +67,9 @@ importers:
       "@lt/quest-domain":
         specifier: workspace:*
         version: link:../../packages/quest-domain
+      "@lt/social-domain":
+        specifier: workspace:*
+        version: link:../../packages/social-domain
       "@prisma/client":
         specifier: 6.19.0
         version: 6.19.0(prisma@6.19.0(typescript@6.0.3))(typescript@6.0.3)
@@ -120,6 +123,8 @@ importers:
         version: link:../engine-core
 
   packages/quest-domain: {}
+
+  packages/social-domain: {}
 
 packages:
   "@emnapi/core@1.11.1":

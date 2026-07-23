@@ -7,6 +7,7 @@ import {
 import { performance } from "node:perf_hooks";
 import { randomUUID } from "node:crypto";
 import { z } from "zod";
+import { ArenaSocialService } from "./social-service.js";
 
 const inputSchema = z.object({
   type: z.literal("arena_input"),
@@ -56,6 +57,7 @@ export class ArenaRoom {
   private readonly players = new Map<string, ConnectedPresence>();
   private readonly recent = new Map<string, RecentPresence>();
   private readonly timer: NodeJS.Timeout;
+  private readonly social: ArenaSocialService;
   private revision = 0;
   private metricsState: ArenaMetrics = {
     ticks: 0,
@@ -71,6 +73,7 @@ export class ArenaRoom {
     private readonly onIdle: () => void = () => {},
     private readonly publicId: () => string = randomUUID,
   ) {
+    this.social = new ArenaSocialService(id, clock);
     this.timer = setInterval(
       () => {
         this.step();
@@ -108,15 +111,32 @@ export class ArenaRoom {
       }
       const input = inputSchema.safeParse(value);
       const connected = this.players.get(accountId);
-      if (
-        !input.success ||
-        !connected ||
-        connected.socket !== socket ||
-        connected.inputs.length >= MAX_PENDING_INPUTS ||
-        input.data.sequence <= connected.presence.lastProcessedSequence
-      )
+      if (!connected || connected.socket !== socket) return;
+      if (input.success) {
+        if (
+          connected.inputs.length >= MAX_PENDING_INPUTS ||
+          input.data.sequence <= connected.presence.lastProcessedSequence
+        )
+          return;
+        connected.inputs.push(input.data);
         return;
-      connected.inputs.push(input.data);
+      }
+      this.social.handle(
+        value,
+        accountId,
+        [...this.players].map(([peerAccountId, peer]) => ({
+          accountId: peerAccountId,
+          playerId: peer.presence.playerId,
+          displayName: peer.presence.displayName,
+        })),
+        (targetAccountId, payload) => {
+          const target = this.players.get(targetAccountId);
+          if (target) this.send(target.socket, payload);
+        },
+        (payload) => {
+          this.broadcast(payload);
+        },
+      );
     });
     socket.once("close", () => {
       this.disconnect(accountId, socket);
@@ -176,6 +196,7 @@ export class ArenaRoom {
       ),
     };
     this.purgeRecent(true);
+    this.social.purge();
   }
 
   snapshot(): Record<string, ArenaPresence> {
@@ -207,6 +228,7 @@ export class ArenaRoom {
     const connected = this.players.get(accountId);
     if (!connected || connected.socket !== socket) return;
     this.players.delete(accountId);
+    this.social.remove(accountId);
     this.recent.set(accountId, {
       presence: connected.presence,
       expiresAt: this.clock() + RECONNECT_GRACE_MS,
