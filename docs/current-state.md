@@ -7,11 +7,11 @@
 | Branch principal | `main` |
 | Branch desta entrega | `codex/pokemon-canonical-full` |
 | Fase | Catálogo Pokémon canônico e publicação de sprites |
-| Status | **em execução na branch — autorizada pelo proprietário** |
+| Status | **implementada na branch — aguardando revisão** |
 
 ## 1. Resumo
 
-As Fases 0B a 13 foram integradas à `main`. Esta branch adiciona um catálogo separado
+As Fases 0B a 14 foram integradas à `main`. Esta branch adiciona um catálogo separado
 para metadados canônicos de Pokémon e inventário de assets. O proprietário autorizou
 expressamente a publicação dos 1.025 sprites frontais mantidos em quarentena local;
 a incerteza sobre os direitos de redistribuição permanece registrada.
@@ -88,6 +88,14 @@ casa, clareira original, transições autoritativas e o primeiro ciclo de intera
 - timeout de 30 segundos, abandono e desconexão produzem derrota explícita;
 - resultado e vencedor são persistidos uma única vez por atualização condicional;
 - projeção do duelo omite escolhas e IDs internos, e a UI retorna com segurança à arena.
+- `@lt/broadcast-domain` constrói a projeção de telão por allowlist explícita;
+- cada sala mantém revisão, histórico limitado a 64 deltas e até 20 batalhas visíveis;
+- lacuna recuperável recebe replay; lacuna antiga ou reconexão recebe snapshot atual;
+- início, turno resolvido e fim confirmado são distribuídos aos presentes na arena;
+- vencedor só é publicado depois da persistência idempotente do resultado PvP;
+- comandos de batalha enviados por espectador recebem `spectator_read_only`;
+- backpressure isola socket lento e métricas contam atualizações e entregas do fan-out;
+- telões acessíveis exibem competidores, criaturas, vida, turno e vencedor sem ações.
 
 Verificação e recuperação de e-mail permanecem fora do escopo até que seus fluxos
 completos sejam definidos.
@@ -120,7 +128,8 @@ completos sejam definidos.
 | Fundação de criaturas e progressão | concluída na branch |
 | Batalha contra NPCs | concluída na branch |
 | Encontros e captura | concluídos na branch |
-| Batalhas PvP | concluídas na branch |
+| Batalhas PvP | concluídas |
+| Telões e espectadores | concluídos na branch |
 | Arena e presença | concluídas na branch |
 | Catálogo Pokémon e inventário de sprites | concluído na branch; aprovação pendente |
 | Chat, emotes e convites | concluídos na branch |
@@ -163,7 +172,7 @@ pnpm check
 
 ## 8. Decisões vigentes
 
-D-001 a D-008 e D-011 a D-019 estão aceitas. As demais decisões técnicas
+D-001 a D-008 e D-011 a D-020 estão aceitas. As demais decisões técnicas
 continuam com o status registrado em `docs/decisions.md`.
 
 ## 9. Próxima tarefa recomendada
@@ -241,9 +250,9 @@ Limites:
 
 Estado do GitHub verificado antes da alteração:
 
-- `main` em `5ca0c3a1149884988d10f24e43cf59da700e7f48`, com a Fase 13 integrada;
-- PR #15 aberto em rascunho na branch `agent/fase-14-teloes-transmissao`;
-- sobreposição com a Fase 14 limitada a `docs/current-state.md` e
+- `main` em `88420a4481ac1ea04fa3562c0d729c84ba583f34`, com a Fase 14 integrada;
+- PR #16 aberto em rascunho na branch `agent/fase-15-painel-administrativo`;
+- sobreposição com o trabalho paralelo limitada a `docs/current-state.md` e
   `docs/work-log.md`;
 - nenhum conflito em código, schemas, conteúdo Pokémon ou testes.
 
@@ -254,7 +263,7 @@ Escopo concluído:
 - todos os arquivos comparados com a quarentena e com o SHA-256 do inventário;
 - zero divergências, ausências ou arquivos corrompidos;
 - gerador atualizado com `--publish-front-sprites` e revisões de fonte explícitas;
-- manifests, inventários, schema, documentação de fontes e decisão D-019
+- manifests, inventários, schema, documentação de fontes e decisão D-020
   atualizados;
 - animações, sons, shiny, costas e variações por jogo continuam fora da publicação.
 

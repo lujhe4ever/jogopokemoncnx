@@ -318,6 +318,16 @@ Arena é um módulo social, não o motor de batalha.
 - competidores e vencedor são identificados por dados sanitizados;
 - escolhas secretas ou dados privados nunca entram na projeção.
 
+`BattleBroadcastChannel` cria essa projeção por allowlist, mantém revisão por sala,
+até 64 deltas e no máximo 20 batalhas visíveis. Um espectador recebe snapshot ao
+entrar; após lacuna solicita retomada e recebe deltas contíguos ou novo snapshot
+quando o histórico já girou. `ArenaRoom` distribui apenas `started`,
+`turn_resolved` e `finished`, reaproveitando o limite de buffer por socket e somando
+métricas de atualizações e entregas. O evento `finished` só é publicado depois que a
+persistência PvP confirma a primeira atualização do resultado. O canal não possui
+comando de batalha e uma tentativa de ação por não participante recebe rejeição
+explícita.
+
 ## 10. Batalha
 
 Batalha é uma máquina de estados pura, orientada a comandos e eventos. Ela recebe

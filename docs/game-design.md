@@ -348,6 +348,20 @@ Informações proibidas:
 O espectador é somente leitura. **[A]** Avaliar atraso configurável para evitar
 espionagem em PvP.
 
+### 12.1 Baseline aprovada para a primeira transmissão
+
+- **[P]** Todo presente na mesma arena recebe a transmissão; espectadores continuam
+  dentro do limite de 20 presenças da sala.
+- **[P]** O telão mostra nome público, criatura, vida, turno, encerramento e vencedor
+  confirmado, sem escolha, comando, inventário ou ID interno.
+- **[P]** A transmissão mantém até 20 batalhas recentes e permite retomar por revisão
+  ou snapshot após perda de mensagens.
+- **[P]** Espectador não possui ação de batalha; tentativa direta é rejeitada pelo
+  servidor.
+- **[P]** A primeira versão não adiciona atraso artificial porque nenhuma escolha é
+  publicada antes da resolução. A política deve ser revista se efeitos futuros
+  revelarem informação explorável.
+
 ## 13. Conta e salvamento
 
 Estado durável pretendido:
