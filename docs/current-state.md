@@ -5,14 +5,15 @@
 | Atualizado em | 2026-07-23 |
 | Repositório | `lujhe4ever/jogopokemoncnx` |
 | Branch principal | `main` |
-| Branch desta entrega | `agent/fase-10-missoes-persistencia` |
-| Fase | Fase 10 — missões e persistência integrada |
-| Status | **implementada — aguardando CI e integração** |
+| Branch desta entrega | `codex/pokemon-canonical-pilot` |
+| Fase | Catálogo Pokémon canônico |
+| Status | **em expansão na branch — aguardando revisão do proprietário** |
 
 ## 1. Resumo
 
-As Fases 0B a 9 foram integradas à `main`. A Fase 10 está implementada na branch
-`agent/fase-10-missoes-persistencia` e reservada no PR #11.
+As Fases 0B a 10 foram integradas à `main`. Esta branch adiciona um catálogo separado
+para metadados canônicos de Pokémon e inventário de assets, sem publicar mídia de
+terceiros cuja redistribuição não esteja claramente autorizada.
 
 O projeto possui workspace TypeScript, servidor Fastify, cliente Vite/Phaser,
 PostgreSQL, Prisma, WebSocket versionado, autenticação e a primeira fatia jogável da
@@ -129,11 +130,41 @@ continuam com o status registrado em `docs/decisions.md`.
 
 ## 9. Próxima tarefa recomendada
 
-Integrar o PR #11 após a CI aprovada e reservar exclusivamente a Fase 11: arena
-multiplayer, presença, capacidade autoritativa, reconexão e benchmark de 20 avatares.
+Concluir e revisar a expansão do catálogo Pokémon canônico, incluindo definições
+auditáveis e a decisão de licença de cada coleção candidata de sprites reais.
 
 ## 10. Instruções para reproduzir
 
 Sincronizar a branch, copiar `.env.example` para `.env`, iniciar PostgreSQL, aplicar
 as migrações e executar `pnpm dev`. Para revisão sem Docker, executar `pnpm check`;
 a CI cobre PostgreSQL e migrações.
+
+## 11. Atualizacao 2026-07-23 - Pokemon canonical pilot
+
+Estado verificado no GitHub antes desta entrega e novamente durante o rebase:
+
+- `main` estava em `d9989374ee667cf2bbaf0f042fdefe56a7492828`;
+- PR #9 estava mergeado;
+- PR #10 estava mergeado;
+- esta entrega foi preparada na branch `codex/pokemon-canonical-pilot`.
+
+Escopo implementado nesta branch:
+
+- pacote piloto `content/packs/pokemon-canonical`;
+- estrutura por Pokemon para Bulbasaur, Ivysaur e Venusaur;
+- manifestos por Pokemon com status `pending`;
+- definicoes de Pokemon, habilidades e golpes em JSON;
+- inventarios vazios ou referenciais para sprites, animacoes e sons;
+- schema JSON documentando o contrato inicial do pacote;
+- teste automatizado para impedir importacao acidental de midia neste piloto.
+
+Verificacao executada nesta branch:
+
+- `pnpm check`: aprovado;
+- 12 arquivos de teste e 35 testes aprovados;
+- aviso nao bloqueante: Node local `v24.16.0`, enquanto o repo pede `24.14.0`;
+- aviso nao bloqueante: chunk `game` do Vite acima de 500 kB.
+
+Nenhum sprite, animacao, som, logo ou outro arquivo de midia foi baixado,
+convertido, otimizado, renomeado ou publicado nesta etapa. As referencias visuais
+permanecem pendentes ate revisao explicita de licenca/autorizacao pelo proprietario.

@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "id": "pokemon-canonical",
+  "version": 1,
+  "title": "Pokemon canonical metadata pilot",
+  "completionStatus": "pilot",
+  "author": "Projeto LT",
+  "licenseStatus": "pending",
+  "source": {
+    "retrievedAt": "2026-07-23",
+    "sourceUrls": [
+      "https://pokeapi.co/",
+      "https://github.com/PokeAPI/pokeapi/blob/master/LICENSE.md",
+      "https://github.com/PokeAPI/api-data/blob/master/LICENSE.txt"
+    ],
+    "licenseStatus": "pending",
+    "requiredCredits": [
+      "PokeAPI contributors for structured API/data where applicable."
+    ],
+    "notes": [
+      "Pokemon names, character names, and related franchise data require owner review before publication or public use.",
+      "This pilot records metadata only and does not import sprites, sounds, animations, logos, or other media files.",
+      "PokeAPI API/data is licensed by its contributors, but Pokemon names and character data require owner review."
+    ]
+  },
+  "scope": {
+    "includedNationalDexNumbers": [1, 2, 3],
+    "excluded": [
+      "Sprites media files",
+      "Animation media files",
+      "Sound media files",
+      "Full National Pokedex expansion"
+    ]
+  },
+  "creatures": [
+    {
+      "id": "pokemon:0001-bulbasaur",
+      "nationalDexNumber": 1,
+      "canonicalName": "Bulbasaur",
+      "slug": "bulbasaur",
+      "path": "creatures/0001-bulbasaur",
+      "assetStatus": "pending",
+      "definitionStatus": "pending",
+      "licenseStatus": "pending"
+    },
+    {
+      "id": "pokemon:0002-ivysaur",
+      "nationalDexNumber": 2,
+      "canonicalName": "Ivysaur",
+      "slug": "ivysaur",
+      "path": "creatures/0002-ivysaur",
+      "assetStatus": "pending",
+      "definitionStatus": "pending",
+      "licenseStatus": "pending"
+    },
+    {
+      "id": "pokemon:0003-venusaur",
+      "nationalDexNumber": 3,
+      "canonicalName": "Venusaur",
+      "slug": "venusaur",
+      "path": "creatures/0003-venusaur",
+      "assetStatus": "pending",
+      "definitionStatus": "pending",
+      "licenseStatus": "pending"
+    }
+  ]
+}

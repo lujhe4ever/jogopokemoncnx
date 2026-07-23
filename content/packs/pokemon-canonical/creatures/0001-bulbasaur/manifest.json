@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "id": "pokemon:0001-bulbasaur",
+  "nationalDexNumber": 1,
+  "canonicalName": "Bulbasaur",
+  "slug": "bulbasaur",
+  "generationIntroduced": 1,
+  "types": ["grass", "poison"],
+  "assetStatus": "pending",
+  "definitionStatus": "pending",
+  "licenseStatus": "pending",
+  "sourceUrls": [
+    "https://pokeapi.co/api/v2/pokemon/1/",
+    "https://pokeapi.co/api/v2/pokemon-species/1/",
+    "https://pokeapi.co/",
+    "https://github.com/PokeAPI/pokeapi/blob/master/LICENSE.md"
+  ],
+  "requiredCredits": [
+    "PokeAPI contributors for structured API/data where applicable."
+  ],
+  "notes": [
+    "Pokemon names, character names, and related franchise data require owner review before publication or public use.",
+    "This pilot records metadata only and does not import sprites, sounds, animations, logos, or other media files."
+  ]
+}

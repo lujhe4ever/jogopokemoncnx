@@ -1,0 +1,498 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/lujhe4ever/jogopokemoncnx/content/packs/pokemon-canonical/schemas/pokemon-content.schema.json",
+  "title": "Pokemon canonical content schemas",
+  "type": "object",
+  "$defs": {
+    "approvalStatus": {
+      "type": "string",
+      "enum": ["approved", "pending", "doubtful", "rejected", "quarantined"]
+    },
+    "sourceInfo": {
+      "type": "object",
+      "required": [
+        "retrievedAt",
+        "sourceUrls",
+        "licenseStatus",
+        "requiredCredits",
+        "notes"
+      ],
+      "properties": {
+        "retrievedAt": {
+          "type": "string",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+        },
+        "sourceUrls": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uri"
+          }
+        },
+        "licenseStatus": {
+          "$ref": "#/$defs/approvalStatus"
+        },
+        "requiredCredits": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "notes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "packManifest": {
+      "type": "object",
+      "required": [
+        "schemaVersion",
+        "id",
+        "version",
+        "title",
+        "completionStatus",
+        "author",
+        "licenseStatus",
+        "source",
+        "scope",
+        "creatures"
+      ],
+      "properties": {
+        "schemaVersion": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "id": {
+          "type": "string"
+        },
+        "version": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "title": {
+          "type": "string"
+        },
+        "completionStatus": {
+          "type": "string"
+        },
+        "author": {
+          "type": "string"
+        },
+        "licenseStatus": {
+          "$ref": "#/$defs/approvalStatus"
+        },
+        "source": {
+          "$ref": "#/$defs/sourceInfo"
+        },
+        "scope": {
+          "type": "object"
+        },
+        "creatures": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/pokemonSummary"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "pokemonSummary": {
+      "type": "object",
+      "required": [
+        "id",
+        "nationalDexNumber",
+        "canonicalName",
+        "slug",
+        "path",
+        "assetStatus",
+        "definitionStatus",
+        "licenseStatus"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "nationalDexNumber": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "canonicalName": {
+          "type": "string"
+        },
+        "slug": {
+          "type": "string",
+          "pattern": "^[a-z0-9-]+$"
+        },
+        "path": {
+          "type": "string"
+        },
+        "assetStatus": {
+          "$ref": "#/$defs/approvalStatus"
+        },
+        "definitionStatus": {
+          "$ref": "#/$defs/approvalStatus"
+        },
+        "licenseStatus": {
+          "$ref": "#/$defs/approvalStatus"
+        }
+      },
+      "additionalProperties": false
+    },
+    "pokemonManifest": {
+      "type": "object",
+      "required": [
+        "schemaVersion",
+        "id",
+        "nationalDexNumber",
+        "canonicalName",
+        "slug",
+        "generationIntroduced",
+        "types",
+        "assetStatus",
+        "definitionStatus",
+        "licenseStatus",
+        "sourceUrls",
+        "requiredCredits",
+        "notes"
+      ],
+      "properties": {
+        "schemaVersion": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "id": {
+          "type": "string"
+        },
+        "nationalDexNumber": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "canonicalName": {
+          "type": "string"
+        },
+        "slug": {
+          "type": "string",
+          "pattern": "^[a-z0-9-]+$"
+        },
+        "generationIntroduced": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "types": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1
+        },
+        "assetStatus": {
+          "$ref": "#/$defs/approvalStatus"
+        },
+        "definitionStatus": {
+          "$ref": "#/$defs/approvalStatus"
+        },
+        "licenseStatus": {
+          "$ref": "#/$defs/approvalStatus"
+        },
+        "sourceUrls": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uri"
+          }
+        },
+        "requiredCredits": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "notes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "pokemonDefinition": {
+      "type": "object",
+      "required": [
+        "schemaVersion",
+        "id",
+        "nationalDexNumber",
+        "canonicalName",
+        "slug",
+        "generationIntroduced",
+        "generationSource",
+        "types",
+        "baseStats",
+        "abilities",
+        "source"
+      ],
+      "properties": {
+        "schemaVersion": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "id": {
+          "type": "string"
+        },
+        "nationalDexNumber": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "canonicalName": {
+          "type": "string"
+        },
+        "slug": {
+          "type": "string",
+          "pattern": "^[a-z0-9-]+$"
+        },
+        "generationIntroduced": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "generationSource": {
+          "type": "string"
+        },
+        "types": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "heightDecimeters": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "weightHectograms": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "baseExperience": {
+          "type": ["integer", "null"],
+          "minimum": 0
+        },
+        "baseStats": {
+          "type": "object"
+        },
+        "abilities": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/pokemonAbilitySlot"
+          }
+        },
+        "evolution": {
+          "type": ["object", "null"]
+        },
+        "source": {
+          "$ref": "#/$defs/sourceInfo"
+        }
+      },
+      "additionalProperties": false
+    },
+    "pokemonAbilitySlot": {
+      "type": "object",
+      "required": ["slug", "slot", "isHidden"],
+      "properties": {
+        "slug": {
+          "type": "string"
+        },
+        "slot": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "isHidden": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": false
+    },
+    "abilitiesDefinition": {
+      "type": "object",
+      "required": ["schemaVersion", "pokemonId", "abilities", "source"],
+      "properties": {
+        "schemaVersion": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "pokemonId": {
+          "type": "string"
+        },
+        "abilities": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/abilityDefinition"
+          }
+        },
+        "source": {
+          "$ref": "#/$defs/sourceInfo"
+        }
+      },
+      "additionalProperties": false
+    },
+    "abilityDefinition": {
+      "type": "object",
+      "required": [
+        "slug",
+        "canonicalName",
+        "slot",
+        "isHidden",
+        "effect",
+        "shortEffect",
+        "sourceUrl"
+      ],
+      "properties": {
+        "slug": {
+          "type": "string"
+        },
+        "canonicalName": {
+          "type": "string"
+        },
+        "slot": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "isHidden": {
+          "type": "boolean"
+        },
+        "effect": {
+          "type": "string"
+        },
+        "shortEffect": {
+          "type": "string"
+        },
+        "sourceUrl": {
+          "type": "string",
+          "format": "uri"
+        }
+      },
+      "additionalProperties": false
+    },
+    "movesDefinition": {
+      "type": "object",
+      "required": ["schemaVersion", "pokemonId", "moves", "source"],
+      "properties": {
+        "schemaVersion": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "pokemonId": {
+          "type": "string"
+        },
+        "moves": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/moveDefinition"
+          }
+        },
+        "source": {
+          "$ref": "#/$defs/sourceInfo"
+        }
+      },
+      "additionalProperties": false
+    },
+    "moveDefinition": {
+      "type": "object",
+      "required": [
+        "slug",
+        "canonicalName",
+        "type",
+        "category",
+        "power",
+        "accuracy",
+        "pp",
+        "priority",
+        "effectChance",
+        "effect",
+        "shortEffect",
+        "learnedByLevel",
+        "learnedByMachine",
+        "otherMethods",
+        "sourceUrl"
+      ],
+      "properties": {
+        "slug": {
+          "type": "string"
+        },
+        "canonicalName": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "category": {
+          "type": "string"
+        },
+        "power": {
+          "type": ["integer", "null"],
+          "minimum": 0
+        },
+        "accuracy": {
+          "type": ["integer", "null"],
+          "minimum": 0
+        },
+        "pp": {
+          "type": ["integer", "null"],
+          "minimum": 0
+        },
+        "priority": {
+          "type": "integer"
+        },
+        "effectChance": {
+          "type": ["integer", "null"],
+          "minimum": 0
+        },
+        "effect": {
+          "type": "string"
+        },
+        "shortEffect": {
+          "type": "string"
+        },
+        "learnedByLevel": {
+          "type": "array"
+        },
+        "learnedByMachine": {
+          "type": "array"
+        },
+        "otherMethods": {
+          "type": "array"
+        },
+        "sourceUrl": {
+          "type": "string",
+          "format": "uri"
+        }
+      },
+      "additionalProperties": false
+    },
+    "mediaInventory": {
+      "type": "object",
+      "required": ["schemaVersion", "pokemonId", "statusSummary", "entries"],
+      "properties": {
+        "schemaVersion": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "pokemonId": {
+          "type": "string"
+        },
+        "statusSummary": {
+          "type": "object"
+        },
+        "entries": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

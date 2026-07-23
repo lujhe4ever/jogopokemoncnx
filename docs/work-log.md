@@ -895,3 +895,43 @@ Publicar o PR de reserva da Fase 10 antes de implementar o domínio.
 
 Revisar e integrar o PR #11 após a CI aprovada e reservar a Fase 11 sem executar
 deploy público.
+
+## 2026-07-23 - Piloto de catalogo Pokemon canonico
+
+### Contexto
+
+O repositorio foi sincronizado com o GitHub antes da alteracao. Durante a entrega,
+`main` avancou para `d9989374ee667cf2bbaf0f042fdefe56a7492828` com o merge do PR
+#10; a branch do piloto foi rebaseada sobre essa revisao.
+
+### Resultado
+
+- criada a branch `codex/pokemon-canonical-pilot`;
+- criado o pacote `content/packs/pokemon-canonical`;
+- criado o recorte piloto Bulbasaur/Ivysaur/Venusaur;
+- criada a estrutura `sprites`, `animations`, `sounds` e `definitions` por Pokemon;
+- preenchidos `pokemon.json`, `abilities.json` e `moves.json` com dados estruturados;
+- registrados inventarios de midia sem baixar ou publicar assets;
+- adicionado schema JSON inicial para manifests, definicoes e inventarios;
+- adicionado teste automatizado para garantir que as pastas de midia tenham apenas
+  `inventory.json` durante o piloto.
+
+### Testes e verificacoes
+
+- `pnpm check`: aprovado;
+- 12 arquivos de teste e 35 testes aprovados;
+- aviso nao bloqueante: Node local `v24.16.0`, enquanto o repo pede `24.14.0`;
+- aviso nao bloqueante: chunk `game` do Vite acima de 500 kB.
+
+### Riscos e limites
+
+- licenca e autorizacao seguem como `pending`;
+- PokeAPI foi usada como fonte estruturada de metadados, nao como autorizacao sobre
+  marcas, personagens ou conteudo visual;
+- PokemonDB foi registrado somente como referencia visual pendente;
+- sprites, animacoes e sons seguem fora do escopo de importacao.
+
+### Proximo passo
+
+Revisar o piloto e aprovar ou ajustar o schema antes de expandir para a primeira
+geracao inteira ou iniciar a triagem de uma colecao privada de sprites.

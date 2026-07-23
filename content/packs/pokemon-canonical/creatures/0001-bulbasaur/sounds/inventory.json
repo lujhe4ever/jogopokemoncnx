@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "pokemonId": "pokemon:0001-bulbasaur",
+  "statusSummary": {
+    "approved": 0,
+    "pending": 0,
+    "doubtful": 0,
+    "rejected": 0,
+    "quarantined": 0
+  },
+  "entries": [],
+  "notes": ["Sounds are intentionally deferred to a later authorized task."]
+}
