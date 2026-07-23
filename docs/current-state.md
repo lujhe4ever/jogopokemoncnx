@@ -7,12 +7,12 @@
 | Branch principal | `main` |
 | Branch desta entrega | `agent/fase-12-chat-emotes-convites` |
 | Fase | Fase 12 — chat, emotes e convites |
-| Status | **reservada — implementação em andamento** |
+| Status | **implementada — aguardando CI e integração** |
 
 ## 1. Resumo
 
-As Fases 0B a 11 foram integradas à `main`. A Fase 12 está reservada na branch
-`agent/fase-12-chat-emotes-convites`.
+As Fases 0B a 11 foram integradas à `main`. A Fase 12 está implementada na branch
+`agent/fase-12-chat-emotes-convites` e reservada no PR #13.
 
 O projeto possui workspace TypeScript, servidor Fastify, cliente Vite/Phaser,
 PostgreSQL, Prisma, WebSocket versionado, autenticação e a primeira fatia jogável da
@@ -66,6 +66,13 @@ casa, clareira original, transições autoritativas e o primeiro ciclo de intera
 - backpressure limita sockets lentos e métricas agregam tick, salas e descartes;
 - IDs públicos efêmeros impedem exposição de IDs internos de conta;
 - UI social acessível com palco visual, lista de presenças e controles por teclado/toque.
+- chat efêmero com autoria, timestamp e ID gerados pelo servidor;
+- mensagens normalizadas, limitadas a 160 caracteres, sem URL/controle e com rate limit;
+- requisições deduplicadas e histórico apenas em memória/DOM limitado a 50 itens;
+- emotes `wave`, `cheer` e `surprised` validados por catálogo;
+- mute local remove fala do painel e do balão sem expor ação ao remetente;
+- convites direcionados expiram em 30 segundos, são únicos e revalidam presenças;
+- aceite confirma um desafio social para os dois participantes sem iniciar PvP ainda.
 
 Verificação e recuperação de e-mail permanecem fora do escopo até que seus fluxos
 completos sejam definidos.
@@ -98,7 +105,7 @@ completos sejam definidos.
 | Encontros e captura | concluídos na branch |
 | Outras batalhas | não iniciado |
 | Arena e presença | concluídas na branch |
-| Chat, emotes e convites | não iniciado |
+| Chat, emotes e convites | concluídos na branch |
 | Administração e deploy | não iniciado |
 
 ## 5. Comandos
@@ -115,7 +122,7 @@ pnpm check
 ## 6. Verificações atuais
 
 - formatação, lint e TypeScript estrito;
-- 15 arquivos de teste e 43 testes automatizados;
+- 17 arquivos de teste e 49 testes automatizados;
 - build do servidor e cliente;
 - validação do schema Prisma;
 - migrações aplicadas em PostgreSQL vazio pela CI;
@@ -132,13 +139,13 @@ pnpm check
 
 ## 8. Decisões vigentes
 
-D-001 a D-008 e D-011 a D-016 estão aceitas. As demais decisões técnicas
+D-001 a D-008 e D-011 a D-017 estão aceitas. As demais decisões técnicas
 continuam com o status registrado em `docs/decisions.md`.
 
 ## 9. Próxima tarefa recomendada
 
-Implementar exclusivamente a Fase 12: chat efêmero, emotes catalogados, convites
-descartáveis, moderação mínima, expiração e revalidação de capacidade.
+Integrar o PR #13 após a CI aprovada e reservar exclusivamente a Fase 13: desafios
+PvP com aceite mútuo, validação de participantes, turnos, timeout e resultado único.
 
 ## 10. Instruções para reproduzir
 

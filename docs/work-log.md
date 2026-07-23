@@ -973,3 +973,33 @@ Persistência de chat, denúncia avançada, PvP, telões, administração e depl
 ### Próximo passo
 
 Publicar o PR rascunho da Fase 12 antes de iniciar a implementação.
+
+## 2026-07-23 — Chat, emotes e convites da Fase 12
+
+### Resultado
+
+- novo pacote puro `@lt/social-domain` para validação e rate limit;
+- chat efêmero com autoria, timestamp e ID definidos pelo servidor;
+- normalização NFKC, limite de 160, rejeição de URL/controle e três mensagens/5 s;
+- request IDs deduplicam as últimas 100 ações por conexão;
+- emotes por allowlist com limite independente;
+- mute local acessível remove mensagens e balões do autor;
+- convites direcionados expiram em 30 s e só podem ser aceitos uma vez;
+- aceite revalida os dois participantes e emite confirmação privada;
+- painel acessível complementa balões sobre os avatares.
+
+### Testes e verificações
+
+- `pnpm check`: 17 arquivos e 49 testes automatizados;
+- texto seguro normalizado e conteúdo inseguro rejeitado;
+- quarta mensagem na janela recebe `rate_limited`;
+- retry de request ID não duplica broadcast;
+- IDs internos não aparecem na mensagem pública;
+- emote fora da allowlist é rejeitado;
+- convite expirado, repetido ou sem participante é rejeitado;
+- QA confirmou chat, mute, emotes, convite, `aria-live` e ausência de overflow.
+
+### Próximo passo
+
+Revisar e integrar o PR #13 após a CI aprovada e reservar a Fase 13 sem executar
+deploy público.

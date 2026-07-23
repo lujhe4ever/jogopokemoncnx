@@ -2,7 +2,7 @@
 
 | Campo | Valor |
 | --- | --- |
-| Status do projeto | **Fase 12 — em andamento** |
+| Status do projeto | **Fase 12 — concluída na branch** |
 | Atualizado em | 2026-07-23 |
 | Implementação existente | Nenhuma |
 
@@ -42,7 +42,7 @@ Status permitidos:
 | 9 | Encontros e captura | concluído |
 | 10 | Missões e persistência integrada | concluído |
 | 11 | Arena multiplayer e presença | concluído |
-| 12 | Chat, emotes e convites | em andamento |
+| 12 | Chat, emotes e convites | concluído na branch |
 | 13 | Batalhas entre jogadores | não iniciado |
 | 14 | Telões e transmissão de batalhas | não iniciado |
 | 15 | Painel administrativo | não iniciado |
@@ -553,7 +553,7 @@ Adicionar comunicação e desafios sociais com segurança.
 - retenção inadequada;
 - overlay de chat ilegível em mobile.
 
-**Status:** **em andamento** na branch `agent/fase-12-chat-emotes-convites`.
+**Status:** **concluído na branch**, aguardando CI e integração no PR #13.
 
 ### Fase 13 — Batalhas entre jogadores
 
