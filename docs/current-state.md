@@ -5,14 +5,14 @@
 | Atualizado em | 2026-07-23 |
 | Repositório | `lujhe4ever/jogopokemoncnx` |
 | Branch principal | `main` |
-| Branch desta entrega | `agent/fase-13-batalhas-pvp` |
-| Fase | Fase 13 — batalhas entre jogadores |
-| Status | **concluída — aguardando integração do PR #14** |
+| Branch desta entrega | `agent/fase-14-teloes-transmissao` |
+| Fase | Fase 14 — telões e transmissão de batalhas |
+| Status | **reservada — implementação em andamento** |
 
 ## 1. Resumo
 
-As Fases 0B a 12 foram integradas à `main`. A Fase 13 foi concluída na branch
-`agent/fase-13-batalhas-pvp` e aguarda integração pelo PR #14.
+As Fases 0B a 13 foram integradas à `main`. A Fase 14 está reservada na branch
+`agent/fase-14-teloes-transmissao`.
 
 O projeto possui workspace TypeScript, servidor Fastify, cliente Vite/Phaser,
 PostgreSQL, Prisma, WebSocket versionado, autenticação e a primeira fatia jogável da
@@ -111,7 +111,8 @@ completos sejam definidos.
 | Fundação de criaturas e progressão | concluída na branch |
 | Batalha contra NPCs | concluída na branch |
 | Encontros e captura | concluídos na branch |
-| Batalhas PvP | concluídas na branch |
+| Batalhas PvP | concluídas |
+| Telões e espectadores | em andamento na branch |
 | Arena e presença | concluídas na branch |
 | Chat, emotes e convites | concluídos na branch |
 | Administração e deploy | não iniciado |
@@ -152,9 +153,8 @@ continuam com o status registrado em `docs/decisions.md`.
 
 ## 9. Próxima tarefa recomendada
 
-Revisar e integrar o PR #14 e então reservar exclusivamente a Fase 14: projeção
-pública somente leitura, retomada sequenciada, anúncio confirmado e fan-out seguro
-para os telões da arena.
+Implementar exclusivamente a Fase 14: projeção pública somente leitura, retomada
+sequenciada, anúncio confirmado e fan-out seguro para os telões da arena.
 
 ## 10. Instruções para reproduzir
 

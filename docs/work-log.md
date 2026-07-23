@@ -1055,3 +1055,28 @@ Publicar o PR rascunho da Fase 13 antes de iniciar a implementação.
 
 Revisar e integrar o PR #14 após a CI aprovada e reservar a Fase 14 sem executar
 deploy público.
+
+## 2026-07-23 — Integração da Fase 13 e reserva da Fase 14
+
+### Contexto
+
+O PR #14 passou na CI e foi integrado à `main` no commit
+`5ca0c3a1149884988d10f24e43cf59da700e7f48`.
+
+### Escopo reservado
+
+- projeção pública de batalha por allowlist, sem escolhas ou comandos;
+- canal de espectador somente leitura dentro da área de interesse da arena;
+- sequência, snapshot e retomada após perda de mensagem;
+- identificação pública dos competidores, estado revelado e vencedor confirmado;
+- fan-out com backpressure e métricas sem bloquear o tick da arena;
+- teste de privacidade, retomada e orçamento para até 20 presenças.
+
+### Fora do escopo
+
+Interação de espectador com a batalha, replay histórico, streaming externo, ranking,
+administração e deploy público.
+
+### Próximo passo
+
+Publicar o PR rascunho da Fase 14 antes de iniciar a implementação.
