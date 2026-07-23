@@ -211,10 +211,17 @@ Baseline aprovada para a Fase 9:
 ## 9. Missões e progressão
 
 - **[R]** O jogador progride e salva o avanço.
-- **[P]** Missões reagem a eventos públicos do gameplay.
-- **[P]** Recompensas são idempotentes.
-- **[P]** Conteúdo de missão tem versão e política de migração.
-- **[A]** Estrutura narrativa, repetibilidade e desbloqueios.
+- **[R]** Missões reagem somente a eventos públicos confirmados do gameplay.
+- **[R]** Eventos e recompensas são idempotentes por conta.
+- **[R]** Conteúdo de missão tem versão e migração explícita; drift implícito é
+  rejeitado.
+- **[R]** A primeira expedição exige visitar a campina, conversar com a cuidadora,
+  vencer uma batalha e capturar uma criatura.
+- **[R]** A recompensa inicial é três Tônicos de Campo, respeitando os limites do
+  inventário.
+- **[P]** Missões futuras podem ser repetíveis quando o reset e a chave idempotente
+  fizerem parte da definição.
+- **[A]** Estrutura narrativa e desbloqueios posteriores.
 
 Progressão global não deve exigir participação na arena, salvo decisão futura
 explícita.

@@ -74,9 +74,56 @@ button:hover {
   background: #17251d;
   box-shadow: 0 24px 80px #0008;
 }
-#start-battle {
+#start-battle,
+#quest-journal-button {
   display: block;
   margin: 0 auto 14px;
+}
+#quest-journal-button {
+  background: #6b5725;
+}
+#quest-panel {
+  max-width: 680px;
+  margin: 5vh auto;
+  padding: 24px;
+  border: 1px solid #806c38;
+  border-radius: 18px;
+  background: #17251d;
+  box-shadow: 0 24px 80px #0008;
+}
+.panel-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+.panel-heading h2,
+.panel-heading p {
+  margin-top: 0;
+}
+#quest-list {
+  display: grid;
+  gap: 16px;
+}
+.quest-card {
+  padding: 18px;
+  border: 1px solid #53705d;
+  border-radius: 14px;
+  background: #0d1610;
+}
+.quest-card h3 {
+  margin: 0 0 6px;
+}
+.quest-card ul {
+  display: grid;
+  gap: 8px;
+  padding-left: 22px;
+}
+.quest-card li[data-complete="true"] {
+  color: #b9d49f;
+}
+.quest-reward {
+  color: #f5e5a4;
 }
 #battle-panel {
   max-width: 680px;
@@ -154,5 +201,11 @@ button:hover {
 @media (min-width: 760px) {
   #touch-pad {
     display: none;
+  }
+}
+@media (max-width: 520px) {
+  .panel-heading {
+    align-items: stretch;
+    flex-direction: column;
   }
 }

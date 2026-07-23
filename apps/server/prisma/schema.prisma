@@ -27,6 +27,49 @@ model Account {
   progression  CreatureProgressionEvent[]
   battles      BattleRecord[]
   encounters   EncounterRecord[]
+  questProgress QuestProgress[]
+  questEvents   QuestEventReceipt[]
+  questRewards  QuestRewardClaim[]
+}
+
+model QuestProgress {
+  id                String   @id @default(cuid())
+  questId           String
+  definitionVersion Int
+  status            String   @default("active")
+  progress          Json
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+  ownerId           String
+  owner             Account  @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+
+  @@unique([ownerId, questId])
+  @@index([ownerId, status])
+}
+
+model QuestEventReceipt {
+  id         String   @id @default(cuid())
+  eventId    String
+  eventType  String
+  occurredAt DateTime
+  createdAt  DateTime @default(now())
+  ownerId    String
+  owner      Account  @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+
+  @@unique([ownerId, eventId])
+  @@index([ownerId, occurredAt])
+}
+
+model QuestRewardClaim {
+  id                String   @id @default(cuid())
+  questId           String
+  definitionVersion Int
+  claimedAt         DateTime @default(now())
+  ownerId           String
+  owner             Account  @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+
+  @@unique([ownerId, questId, definitionVersion])
+  @@index([ownerId])
 }
 
 model BattleRecord {

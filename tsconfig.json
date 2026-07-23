@@ -7,6 +7,7 @@
     { "path": "./packages/game-simulation" },
     { "path": "./packages/creature-domain" },
     { "path": "./packages/battle-domain" },
-    { "path": "./packages/encounter-domain" }
+    { "path": "./packages/encounter-domain" },
+    { "path": "./packages/quest-domain" }
   ]
 }

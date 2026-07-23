@@ -6,6 +6,10 @@ import {
 import { Prisma, type PrismaClient } from "@prisma/client";
 import { randomInt, randomUUID } from "node:crypto";
 import type { BattleService } from "../battles/battle-service.js";
+import {
+  noopGameplayEvents,
+  type GameplayEventSink,
+} from "../events/gameplay-events.js";
 
 export interface EncounterView {
   id: string;
@@ -36,6 +40,7 @@ export class EncounterService {
     private readonly battles: BattleService,
     private readonly id: () => string = randomUUID,
     private readonly seed: () => number = () => randomInt(1, 2_147_483_647),
+    private readonly events: GameplayEventSink = noopGameplayEvents,
   ) {}
 
   async start(ownerId: string, zoneId: string): Promise<EncounterView> {
@@ -66,7 +71,7 @@ export class EncounterService {
     requestId: string,
   ): Promise<CaptureResult | null> {
     try {
-      return await this.prisma.$transaction(
+      const result: CaptureResult | null = await this.prisma.$transaction(
         async (transaction) => {
           const encounter = await transaction.encounterRecord.findFirst({
             where: { id: encounterId, ownerId },
@@ -158,6 +163,8 @@ export class EncounterService {
         },
         { isolationLevel: Prisma.TransactionIsolationLevel.Serializable },
       );
+      await this.publishCapture(ownerId, result);
+      return result;
     } catch (error) {
       if (
         error instanceof Prisma.PrismaClientKnownRequestError &&
@@ -166,12 +173,15 @@ export class EncounterService {
         const encounter = await this.prisma.encounterRecord.findFirst({
           where: { id: encounterId, ownerId },
         });
-        if (encounter && encounter.status !== "battling")
-          return {
+        if (encounter && encounter.status !== "battling") {
+          const result: CaptureResult = {
             ...this.view(encounter),
             result: encounter.status === "captured" ? "captured" : "escaped",
             replayed: true,
           };
+          await this.publishCapture(ownerId, result);
+          return result;
+        }
       }
       throw error;
     }
@@ -224,5 +234,18 @@ export class EncounterService {
         ? { capturedCreatureId: record.capturedCreatureId }
         : {}),
     };
+  }
+
+  private async publishCapture(
+    ownerId: string,
+    result: CaptureResult | null,
+  ): Promise<void> {
+    if (!result || result.result !== "captured") return;
+    await this.events.publish(ownerId, {
+      id: `creature-captured:${result.id}`,
+      type: "creature.captured",
+      occurredAt: new Date().toISOString(),
+      attributes: { definitionId: result.definitionId },
+    });
   }
 }

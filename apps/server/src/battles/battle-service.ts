@@ -8,6 +8,10 @@ import {
 } from "@lt/battle-domain";
 import type { PrismaClient } from "@prisma/client";
 import { randomInt, randomUUID } from "node:crypto";
+import {
+  noopGameplayEvents,
+  type GameplayEventSink,
+} from "../events/gameplay-events.js";
 
 export interface BattleResultStore {
   start(ownerId: string, battleId: string, seed: number): Promise<void>;
@@ -20,7 +24,10 @@ export interface BattleResultStore {
 }
 
 export class PrismaBattleResultStore implements BattleResultStore {
-  constructor(private readonly prisma: PrismaClient) {}
+  constructor(
+    private readonly prisma: PrismaClient,
+    private readonly events: GameplayEventSink = noopGameplayEvents,
+  ) {}
 
   async start(ownerId: string, battleId: string, seed: number): Promise<void> {
     await this.prisma.battleRecord.create({
@@ -34,7 +41,7 @@ export class PrismaBattleResultStore implements BattleResultStore {
     outcome: BattleOutcome,
     winner?: "player" | "npc",
   ): Promise<boolean> {
-    return this.prisma.$transaction(async (transaction) => {
+    const applied = await this.prisma.$transaction(async (transaction) => {
       const updated = await transaction.battleRecord.updateMany({
         where: { id: battleId, ownerId, finishedAt: null },
         data: {
@@ -46,6 +53,13 @@ export class PrismaBattleResultStore implements BattleResultStore {
       });
       return updated.count === 1;
     });
+    await this.events.publish(ownerId, {
+      id: `battle-finished:${battleId}`,
+      type: "battle.finished",
+      occurredAt: new Date().toISOString(),
+      attributes: { outcome },
+    });
+    return applied;
   }
 }
 
@@ -148,12 +162,23 @@ export class BattleService {
     command: Parameters<typeof applyBattleCommand>[1],
   ): Promise<BattleCommandResponse> {
     const result = applyBattleCommand(battle.state, command);
-    if (!result.accepted)
+    if (!result.accepted) {
+      if (
+        battle.state.phase === "finished" &&
+        battle.state.outcome !== undefined
+      )
+        await this.results.finish(
+          battle.ownerId,
+          battle.state.id,
+          battle.state.outcome,
+          battle.state.winner,
+        );
       return {
         accepted: false,
         state: result.state,
         error: result.error,
       };
+    }
     battle.state = result.state;
     battle.deadline = this.clock() + TURN_TIMEOUT_MS;
     if (result.state.phase !== "finished")

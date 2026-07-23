@@ -3,7 +3,7 @@
 | Campo | Valor |
 | --- | --- |
 | Atualizado em | 2026-07-23 |
-| Implementação existente | Fases 1–8 |
+| Implementação existente | Fases 1–10 |
 | Referência de IDs técnicos | [`../architecture.md`](../architecture.md) |
 
 ## 1. Regras
@@ -55,6 +55,7 @@ Ao aceitar ou mudar uma decisão:
 | D-012 | Progressão por catálogo versionado | Aceita |
 | D-013 | Batalha NPC determinística e isolada | Aceita |
 | D-014 | Captura pós-batalha atômica e determinística | Aceita |
+| D-015 | Missões versionadas por eventos públicos idempotentes | Aceita |
 
 ## 3. Registro cronológico
 
@@ -401,6 +402,27 @@ Ao aceitar ou mudar uma decisão:
   versionada; o mundo não importa internals de captura.
 - **Evidência de aprovação:** testes cobrem elegibilidade, seed, chance, consumo único,
   criação única e autorização descartável; CI aplica as restrições no PostgreSQL.
+
+### D-015 — Missões versionadas por eventos públicos idempotentes
+
+- **Data:** 2026-07-23
+- **Status:** Aceita para a primeira expedição
+- **Contexto:** exploração, NPCs, batalha e captura precisam avançar objetivos sem
+  dependências diretas entre seus módulos nem duplicação em retry/reconexão.
+- **Decisão:** `@lt/quest-domain` consome apenas eventos públicos tipados. Cada
+  definição e save preserva uma versão, e qualquer diferença exige migração
+  declarada.
+- **Idempotência:** `QuestEventReceipt` é único por conta/evento; progresso, recibo e
+  eventual recompensa são processados em transação serializável.
+- **Recompensa:** cada versão da missão possui um único `QuestRewardClaim` e respeita
+  os limites existentes de slots e stacks.
+- **Recuperação:** eventos de zona, batalha e captura usam IDs determinísticos para
+  que reconexão ou repetição repare entrega interrompida sem avançar duas vezes.
+- **Consequências:** renomear objetivos ou alterar requisitos requer nova versão e
+  migração; novos produtores dependem somente da porta `GameplayEventSink`.
+- **Evidência de aprovação:** testes cobrem filtros, migração, drift, retry,
+  restauração e recompensa única; schema e migração possuem chaves exclusivas e
+  restrições de estado.
 
 ## 4. Próximas decisões a revisar
 

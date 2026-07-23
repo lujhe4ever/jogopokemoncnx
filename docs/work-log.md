@@ -868,3 +868,30 @@ Arena, presença, chat, PvP, telões, administração e deploy público.
 ### Próximo passo
 
 Publicar o PR de reserva da Fase 10 antes de implementar o domínio.
+
+## 2026-07-23 — Missões e persistência integrada da Fase 10
+
+### Resultado
+
+- novo pacote puro `@lt/quest-domain` com estado, objetivos, filtros e migração;
+- primeira expedição original versionada em pack declarativo;
+- progresso alimentado por eventos públicos de zona, interação, batalha e captura;
+- recibos por conta/evento e recompensas por missão/versão com unicidade persistente;
+- progresso, recibo, inventário e claim protegidos por transação serializável;
+- IDs determinísticos permitem reparar entrega em retry ou reconexão;
+- diário acessível mostra objetivos, estado e recompensa e é carregado sob demanda;
+- versão incompatível é rejeitada até existir migração explícita.
+
+### Testes e verificações
+
+- `pnpm check`: 13 arquivos de teste e 37 testes automatizados;
+- filtros e conclusão da missão verificados no domínio puro;
+- retry não avança o mesmo evento duas vezes;
+- novo serviço restaura o progresso persistido após reconexão;
+- conclusão concede exatamente três Tônicos de Campo e retry não duplica o stack;
+- schema Prisma e migração de missões validados para PostgreSQL vazio pela CI.
+
+### Próximo passo
+
+Revisar e integrar o PR #11 após a CI aprovada e reservar a Fase 11 sem executar
+deploy público.

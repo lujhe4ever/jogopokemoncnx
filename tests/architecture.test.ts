@@ -28,6 +28,7 @@ describe("architecture boundaries", () => {
           "battle-domain",
           "creature-domain",
           "encounter-domain",
+          "quest-domain",
         ].map((name) => sourceFiles(`packages/${name}/src`)),
       )
     ).flat();

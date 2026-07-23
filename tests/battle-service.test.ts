@@ -12,6 +12,7 @@ class MemoryResults implements BattleResultStore {
     battleId: string;
     outcome: BattleOutcome;
   }> = [];
+  finishCalls = 0;
   private readonly applied = new Set<string>();
 
   start(ownerId: string, battleId: string, seed: number) {
@@ -28,6 +29,7 @@ class MemoryResults implements BattleResultStore {
     winner?: "player" | "npc",
   ) {
     void winner;
+    this.finishCalls += 1;
     const first = !this.applied.has(battleId);
     if (first) {
       this.applied.add(battleId);
@@ -73,6 +75,7 @@ describe("battle session service", () => {
       error: "battle_finished",
     });
     expect(results.finishes).toHaveLength(1);
+    expect(results.finishCalls).toBe(2);
   });
 
   it("enforces timeout and records disconnect as explicit defeat", async () => {
