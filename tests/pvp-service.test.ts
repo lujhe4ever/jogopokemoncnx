@@ -78,10 +78,7 @@ describe("PvP application service", () => {
       accountId: string;
       payload: Record<string, unknown>;
     }> = [];
-    const broadcasts: Array<{
-      event: string;
-      projection: Record<string, unknown>;
-    }> = [];
+    const broadcasts: string[] = [];
     const service = new PvpService(
       database as never,
       () => "pvp-1",
@@ -99,11 +96,8 @@ describe("PvP application service", () => {
         participants[0],
         participants[1],
         deliver,
-        (event, projection) => {
-          broadcasts.push({
-            event,
-            projection,
-          });
+        (event) => {
+          broadcasts.push(event);
         },
       ),
     ).toBe(true);
@@ -136,13 +130,13 @@ describe("PvP application service", () => {
     expect(
       delivered.filter(({ payload }) => payload.type === "pvp_finished"),
     ).toHaveLength(2);
-    expect(broadcasts).toMatchObject([
-      { event: "started" },
-      {
-        event: "finished",
-        projection: { winnerPlayerId: "public-b" },
-      },
-    ]);
+    expect(
+      delivered.find(
+        ({ accountId, payload }) =>
+          accountId === "account-b" && payload.type === "pvp_finished",
+      )?.payload,
+    ).toMatchObject({ state: { winnerPlayerId: "public-b" } });
+    expect(broadcasts).toEqual(["started", "finished"]);
     service.disconnect("account-a");
     expect(database.records.size).toBe(1);
     expect(broadcasts).toHaveLength(2);
