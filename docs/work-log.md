@@ -1303,3 +1303,23 @@ foi usado. Os riscos residuais da Fase 16 continuam bloqueando exposição.
 
 Revisar e integrar o PR #19 após a CI aprovada. Qualquer etapa posterior exige nova
 decisão explícita.
+
+## 2026-07-23 — Integração da Fase 17 e encerramento do roadmap
+
+### Resultado
+
+A CI #54 aprovou a Fase 17. O PR #19 foi integrado à `main` no commit
+`375dca531e1abda09aa50a469a645a861a6485b6`. Com isso, todas as fases 0B–17 estão
+concluídas e integradas.
+
+### Estado operacional
+
+O projeto está validado para desenvolvimento e ensaio local. Nenhum deploy, ambiente
+privado real, convidado externo ou coleta real de telemetria foi executado. MFA
+individual, hardware-alvo e infraestrutura externa continuam gates obrigatórios para
+exposição.
+
+### Próximo passo
+
+Não há fase seguinte autorizada. Definir um novo ciclo e seus critérios antes de
+alterar produto ou infraestrutura.
