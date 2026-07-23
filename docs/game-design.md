@@ -273,6 +273,21 @@ Preparar participantes → iniciar instância → escolher ação → validar �
 Esta baseline serve à Fase 8 e não antecipa tipos, habilidades, efeitos ou regras de
 PvP.
 
+### 10.6 Baseline aprovada para PvP social
+
+- **[P]** O primeiro PvP usa uma criatura pertencente a cada participante.
+- **[P]** Ações mínimas continuam sendo atacar e defender, resolvidas pelo mesmo
+  núcleo determinístico da batalha contra NPC.
+- **[P]** Cada turno aceita uma escolha privada por jogador e expira em 30 segundos.
+- **[P]** Timeout, abandono ou desconexão contam como derrota explícita; vida zerada
+  define vitória e o limite de 100 turnos define empate.
+- **[P]** Convite social aceito autoriza apenas os dois participantes presentes na
+  mesma arena; identidade autenticada impede comando em nome do oponente.
+- **[P]** Resultado é persistido uma vez, mas esta baseline não concede recompensa,
+  ranking, perda de item ou progressão.
+- **[P]** O duelo retorna à arena após o resultado. Espectadores e telões ficam para
+  a projeção pública somente leitura da Fase 14.
+
 ## 11. Arena social
 
 ### 11.1 Requisitos

@@ -54,6 +54,10 @@ interface SocialInvite {
 
 export type SendSocial = (accountId: string, payload: object) => void;
 export type BroadcastSocial = (payload: object) => void;
+export type StartSocialChallenge = (
+  first: SocialPeer,
+  second: SocialPeer,
+) => void;
 
 export class ArenaSocialService {
   private readonly limits = new Map<string, SocialLimits>();
@@ -63,6 +67,7 @@ export class ArenaSocialService {
     private readonly roomId: string,
     private readonly clock: () => number = Date.now,
     private readonly id: () => string = randomUUID,
+    private readonly startChallenge?: StartSocialChallenge,
   ) {}
 
   handle(
@@ -175,19 +180,19 @@ export class ArenaSocialService {
     }
 
     const invite = this.invites.get(parsed.data.inviteId);
-    const inviterPresent = invite
-      ? peers.some(({ accountId }) => accountId === invite.inviterAccountId)
-      : false;
-    const targetPresent = invite
-      ? peers.some(({ accountId }) => accountId === invite.targetAccountId)
-      : false;
+    const inviter = invite
+      ? peers.find(({ accountId }) => accountId === invite.inviterAccountId)
+      : undefined;
+    const target = invite
+      ? peers.find(({ accountId }) => accountId === invite.targetAccountId)
+      : undefined;
     if (
       !invite ||
       invite.targetAccountId !== senderAccountId ||
       invite.used ||
       invite.expiresAt < now ||
-      !inviterPresent ||
-      !targetPresent
+      !inviter ||
+      !target
     ) {
       this.error(send, senderAccountId, "invite_unavailable");
       return true;
@@ -203,6 +208,7 @@ export class ArenaSocialService {
     };
     send(invite.inviterAccountId, payload);
     send(invite.targetAccountId, payload);
+    this.startChallenge?.(inviter, target);
     return true;
   }
 

@@ -3,7 +3,7 @@
 | Campo | Valor |
 | --- | --- |
 | Atualizado em | 2026-07-23 |
-| Implementação existente | Fases 1–10 |
+| Implementação existente | Fases 1–13 |
 | Referência de IDs técnicos | [`../architecture.md`](../architecture.md) |
 
 ## 1. Regras
@@ -58,6 +58,7 @@ Ao aceitar ou mudar uma decisão:
 | D-015 | Missões versionadas por eventos públicos idempotentes | Aceita |
 | D-016 | Arena em memória com salas autoritativas e isoladas | Aceita |
 | D-017 | Interações sociais efêmeras, limitadas e deduplicadas | Aceita |
+| D-018 | PvP autorizado com escolhas privadas e resultado idempotente | Aceita |
 
 ## 3. Registro cronológico
 
@@ -464,6 +465,25 @@ Ao aceitar ou mudar uma decisão:
   mute é local. Denúncia, retenção e bloqueio durável exigem política posterior.
 - **Evidência de aprovação:** testes cobrem normalização, conteúdo inseguro, rate
   limit, deduplicação, autoria, allowlist, expiração, presença e consumo único.
+
+### D-018 — PvP autorizado com escolhas privadas e resultado idempotente
+
+- **Data:** 2026-07-23
+- **Status:** Aceita para a primeira batalha social
+- **Contexto:** um convite aceito precisa iniciar um duelo sem permitir comando em
+  nome do oponente, espionagem da primeira escolha ou aplicação duplicada do resultado.
+- **Autorização:** somente os dois participantes presentes no convite consumido podem
+  entrar; o servidor valida ownership de uma criatura por conta antes de persistir a
+  instância.
+- **Privacidade:** cada escolha é confirmada apenas ao remetente. A projeção enviada
+  após a resolução omite escolhas, comandos, IDs de conta e IDs de banco.
+- **Regras:** uma criatura por lado, ações `strike` e `guard`, seed persistida, comando
+  sequenciado, timeout de 30 segundos, abandono e desconexão com derrota explícita.
+- **Idempotência:** `PvpBattleRecord` termina por atualização condicional
+  `finishedAt = null`; repetição de encerramento não anuncia nem aplica novo resultado.
+- **Progressão:** o primeiro PvP não concede recompensa, ranking nem perda de item.
+- **Evidência de aprovação:** testes cobrem propriedade, isolamento da primeira
+  escolha, sequência, projeção pública, timeout/abandono e persistência única.
 
 ## 4. Próximas decisões a revisar
 

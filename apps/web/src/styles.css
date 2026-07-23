@@ -286,6 +286,15 @@ button:hover {
   background: #17251d;
   box-shadow: 0 24px 80px #0008;
 }
+#pvp-panel {
+  max-width: 680px;
+  margin: 5vh auto;
+  padding: 24px;
+  border: 1px solid #7b66b3;
+  border-radius: 18px;
+  background: #17251d;
+  box-shadow: 0 24px 80px #0008;
+}
 .battle-combatants {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));

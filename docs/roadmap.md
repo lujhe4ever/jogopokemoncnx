@@ -2,7 +2,7 @@
 
 | Campo | Valor |
 | --- | --- |
-| Status do projeto | **Fase 13 — em andamento** |
+| Status do projeto | **Fase 13 — concluída, aguardando integração** |
 | Atualizado em | 2026-07-23 |
 | Implementação existente | Nenhuma |
 
@@ -43,7 +43,7 @@ Status permitidos:
 | 10 | Missões e persistência integrada | concluído |
 | 11 | Arena multiplayer e presença | concluído |
 | 12 | Chat, emotes e convites | concluído |
-| 13 | Batalhas entre jogadores | em andamento |
+| 13 | Batalhas entre jogadores | concluído |
 | 14 | Telões e transmissão de batalhas | não iniciado |
 | 15 | Painel administrativo | não iniciado |
 | 16 | Segurança, performance, testes e deploy | não iniciado |
@@ -591,7 +591,8 @@ Reutilizar o núcleo de batalha em desafios PvP autorizados pela arena.
 - vantagem por desconexão;
 - balanceamento virar bloqueio arquitetural.
 
-**Status:** **em andamento** na branch `agent/fase-13-batalhas-pvp`.
+**Status:** **concluído** na branch `agent/fase-13-batalhas-pvp` e aguardando
+integração pelo PR #14.
 
 ### Fase 14 — Telões e transmissão de batalhas
 

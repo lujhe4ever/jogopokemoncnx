@@ -329,6 +329,16 @@ mesmo núcleo, com políticas de entrada e visibilidade distintas.
 Comandos são idempotentes e sequenciados. A projeção para jogador pode conter dados
 privados autorizados; a projeção para telão usa allowlist pública.
 
+Na primeira integração PvP, o aceite de um convite social chama `PvpService`, que
+valida no banco uma criatura pertencente a cada conta e cria uma instância isolada.
+Cada conexão autenticada é mapeada somente para sua identidade pública naquela
+batalha. A primeira escolha recebe confirmação privada; apenas após as duas escolhas
+o domínio puro resolve o turno por seed e publica a projeção sanitizada aos
+participantes. Timeout de 30 segundos, abandono e desconexão encerram a instância, e
+`PvpBattleRecord` usa atualização condicional por `finishedAt` para aplicar o resultado
+uma única vez. A arena permanece suspensa visualmente durante o duelo e volta a ser o
+contexto ativo após o encerramento.
+
 ## 11. Persistência
 
 PostgreSQL guarda:

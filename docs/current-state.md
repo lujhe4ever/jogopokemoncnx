@@ -7,12 +7,12 @@
 | Branch principal | `main` |
 | Branch desta entrega | `agent/fase-13-batalhas-pvp` |
 | Fase | Fase 13 — batalhas entre jogadores |
-| Status | **reservada — implementação em andamento** |
+| Status | **concluída — aguardando integração do PR #14** |
 
 ## 1. Resumo
 
-As Fases 0B a 12 foram integradas à `main`. A Fase 13 está reservada na branch
-`agent/fase-13-batalhas-pvp`.
+As Fases 0B a 12 foram integradas à `main`. A Fase 13 foi concluída na branch
+`agent/fase-13-batalhas-pvp` e aguarda integração pelo PR #14.
 
 O projeto possui workspace TypeScript, servidor Fastify, cliente Vite/Phaser,
 PostgreSQL, Prisma, WebSocket versionado, autenticação e a primeira fatia jogável da
@@ -72,7 +72,15 @@ casa, clareira original, transições autoritativas e o primeiro ciclo de intera
 - emotes `wave`, `cheer` e `surprised` validados por catálogo;
 - mute local remove fala do painel e do balão sem expor ação ao remetente;
 - convites direcionados expiram em 30 segundos, são únicos e revalidam presenças;
-- aceite confirma um desafio social para os dois participantes sem iniciar PvP ainda.
+- aceite confirma o desafio social para os dois participantes e autoriza o início PvP.
+- desafio social aceito inicia uma instância PvP somente para os dois participantes;
+- ownership das criaturas é validado no servidor antes da criação da batalha;
+- escolhas `strike` e `guard` permanecem privadas até ambos enviarem o turno;
+- comandos usam sequência, batalha e identidade autenticada para impedir controle do
+  oponente;
+- timeout de 30 segundos, abandono e desconexão produzem derrota explícita;
+- resultado e vencedor são persistidos uma única vez por atualização condicional;
+- projeção do duelo omite escolhas e IDs internos, e a UI retorna com segurança à arena.
 
 Verificação e recuperação de e-mail permanecem fora do escopo até que seus fluxos
 completos sejam definidos.
@@ -103,7 +111,7 @@ completos sejam definidos.
 | Fundação de criaturas e progressão | concluída na branch |
 | Batalha contra NPCs | concluída na branch |
 | Encontros e captura | concluídos na branch |
-| Outras batalhas | não iniciado |
+| Batalhas PvP | concluídas na branch |
 | Arena e presença | concluídas na branch |
 | Chat, emotes e convites | concluídos na branch |
 | Administração e deploy | não iniciado |
@@ -122,7 +130,7 @@ pnpm check
 ## 6. Verificações atuais
 
 - formatação, lint e TypeScript estrito;
-- 17 arquivos de teste e 49 testes automatizados;
+- 19 arquivos de teste e 55 testes automatizados;
 - build do servidor e cliente;
 - validação do schema Prisma;
 - migrações aplicadas em PostgreSQL vazio pela CI;
@@ -139,13 +147,14 @@ pnpm check
 
 ## 8. Decisões vigentes
 
-D-001 a D-008 e D-011 a D-017 estão aceitas. As demais decisões técnicas
+D-001 a D-008 e D-011 a D-018 estão aceitas. As demais decisões técnicas
 continuam com o status registrado em `docs/decisions.md`.
 
 ## 9. Próxima tarefa recomendada
 
-Implementar exclusivamente a Fase 13: desafios PvP com aceite mútuo, validação de
-participantes, escolhas privadas, turnos, timeout, abandono e resultado único.
+Revisar e integrar o PR #14 e então reservar exclusivamente a Fase 14: projeção
+pública somente leitura, retomada sequenciada, anúncio confirmado e fan-out seguro
+para os telões da arena.
 
 ## 10. Instruções para reproduzir
 
