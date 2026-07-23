@@ -5,6 +5,7 @@
     { "path": "./apps/server" },
     { "path": "./packages/engine-core" },
     { "path": "./packages/game-simulation" },
-    { "path": "./packages/creature-domain" }
+    { "path": "./packages/creature-domain" },
+    { "path": "./packages/battle-domain" }
   ]
 }

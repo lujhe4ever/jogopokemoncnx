@@ -9,6 +9,8 @@ const registerButton = document.querySelector<HTMLButtonElement>("#register");
 const status = document.querySelector<HTMLParagraphElement>("#status");
 const authPanel = document.querySelector<HTMLElement>("#auth-panel");
 const gamePanel = document.querySelector<HTMLElement>("#game-panel");
+const startBattleButton =
+  document.querySelector<HTMLButtonElement>("#start-battle");
 
 function values() {
   if (!form) throw new Error("Formulário indisponível");
@@ -85,5 +87,11 @@ registerButton?.addEventListener("click", () => {
     if (status)
       status.textContent =
         error instanceof Error ? error.message : "Falha no cadastro";
+  });
+});
+
+startBattleButton?.addEventListener("click", () => {
+  void import("./battle-ui.js").then(({ startBattle }) => {
+    return startBattle();
   });
 });

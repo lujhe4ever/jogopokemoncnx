@@ -5,5 +5,8 @@
     "rootDir": "src"
   },
   "include": ["src/**/*.ts"],
-  "references": [{ "path": "../../packages/creature-domain" }]
+  "references": [
+    { "path": "../../packages/creature-domain" },
+    { "path": "../../packages/battle-domain" }
+  ]
 }

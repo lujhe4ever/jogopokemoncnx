@@ -3,6 +3,8 @@ import Fastify from "fastify";
 import { z } from "zod";
 import { registerAuthRoutes } from "./auth/routes.js";
 import type { AuthService } from "./auth/service.js";
+import { registerBattleRoutes } from "./battles/routes.js";
+import type { BattleService } from "./battles/battle-service.js";
 import type { DatabaseProbe } from "./database.js";
 import type { HouseRoom } from "./world/house-room.js";
 
@@ -12,6 +14,7 @@ export interface AppDependencies {
   cookieSecure?: boolean;
   logger?: boolean;
   world?: HouseRoom;
+  battles?: BattleService;
 }
 
 export async function buildApp({
@@ -20,6 +23,7 @@ export async function buildApp({
   cookieSecure = false,
   logger = true,
   world,
+  battles,
 }: AppDependencies) {
   const app = Fastify({
     logger,
@@ -29,6 +33,7 @@ export async function buildApp({
 
   await app.register(websocket);
   if (auth) await registerAuthRoutes(app, auth, cookieSecure);
+  if (auth && battles) registerBattleRoutes(app, auth, battles);
 
   app.get("/health", (request) => ({
     status: "ok",

@@ -241,6 +241,21 @@ Preparar participantes → iniciar instância → escolher ação → validar �
 - **[A]** Recuperação após derrota.
 - **[A]** Balanceamento separado ou comum para NPC/PvP.
 
+### 10.5 Baseline aprovada para batalha contra NPC
+
+- **[P]** Uma criatura ativa por lado nesta primeira implementação.
+- **[P]** Ações mínimas: atacar e defender.
+- **[P]** O turno expira em 30 segundos; timeout, abandono ou desconexão resultam em
+  derrota explícita.
+- **[P]** A batalha termina por vida zerada ou em empate após 100 turnos.
+- **[P]** RNG usa seed persistida e toda entrada é sequenciada para permitir replay.
+- **[P]** O resultado registra recompensa de 100 pontos de experiência apenas em
+  vitória e é persistido uma única vez; sua aplicação à criatura integra a progressão
+  em uma etapa posterior.
+
+Esta baseline serve à Fase 8 e não antecipa tipos, habilidades, efeitos ou regras de
+PvP.
+
 ## 11. Arena social
 
 ### 11.1 Requisitos

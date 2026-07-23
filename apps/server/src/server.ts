@@ -3,6 +3,10 @@ import { buildApp } from "./app.js";
 import { PrismaAuthRepository } from "./auth/prisma-repository.js";
 import { AuthService } from "./auth/service.js";
 import { loadConfig } from "./config.js";
+import {
+  BattleService,
+  PrismaBattleResultStore,
+} from "./battles/battle-service.js";
 import { createDatabaseProbe } from "./database.js";
 import { HouseRoom, PrismaCheckpointStore } from "./world/house-room.js";
 import { PrismaInteractionStore } from "./world/interaction-store.js";
@@ -19,6 +23,7 @@ const app = await buildApp({
   auth: new AuthService(new PrismaAuthRepository(prisma)),
   cookieSecure: config.NODE_ENV === "production",
   world,
+  battles: new BattleService(new PrismaBattleResultStore(prisma)),
 });
 
 const shutdown = () => {
