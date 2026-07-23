@@ -41,8 +41,8 @@ Ao aceitar ou mudar uma decisão:
 | --- | --- | --- |
 | COL-001 | GitHub como fonte compartilhada da verdade | Aceita |
 | COL-002 | Trabalho por gates de autorização e handoff | Aceita |
-| D-001 | Monorepo TypeScript com `pnpm` workspaces | Proposta |
-| D-002 | Monólito modular Fastify em uma VPS | Proposta |
+| D-001 | Monorepo TypeScript com `pnpm` workspaces | Aceita |
+| D-002 | Monólito modular Fastify em uma VPS | Aceita |
 | D-003 | Servidor autoritativo e simulação de passo fixo | Proposta |
 | D-004 | Phaser restrito ao adaptador cliente | Proposta |
 | D-005 | Prisma restrito à infraestrutura | Proposta |
@@ -102,7 +102,7 @@ Ao aceitar ou mudar uma decisão:
 ### D-001 — Monorepo TypeScript com `pnpm` workspaces
 
 - **Data:** 2026-07-23
-- **Status:** Proposta
+- **Status:** Aceita
 - **Contexto:** cliente, servidor, contratos e engine compartilham linguagem, mas
   precisam de limites claros.
 - **Alternativas consideradas:**
@@ -128,7 +128,7 @@ Ao aceitar ou mudar uma decisão:
 ### D-002 — Monólito modular Fastify em uma VPS
 
 - **Data:** 2026-07-23
-- **Status:** Proposta
+- **Status:** Aceita
 - **Contexto:** a primeira meta é uma arena de 20 jogadores e operação privada com
   baixa complexidade.
 - **Alternativas consideradas:**

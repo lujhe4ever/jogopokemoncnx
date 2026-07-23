@@ -184,15 +184,15 @@ verificações inexistentes.
 
 | Finalidade | Comando atual |
 | --- | --- |
-| Instalação | não disponível até a Fase 1 |
-| Desenvolvimento | não disponível até a Fase 1 |
-| Formatação | não disponível até a Fase 1 |
-| Lint | não disponível até a Fase 1 |
-| Verificação de tipos | não disponível até a Fase 1 |
-| Testes unitários | não disponível até a Fase 1 |
+| Instalação | `pnpm install --frozen-lockfile` |
+| Desenvolvimento | não disponível até a Fase 2 |
+| Formatação | `pnpm format` / `pnpm format:check` |
+| Lint | `pnpm lint` |
+| Verificação de tipos | `pnpm typecheck` |
+| Testes unitários | `pnpm test` |
 | Testes de integração | não disponível até a Fase 1 |
 | Testes E2E | não disponível até a Fase 1 |
-| Build | não disponível até a Fase 1 |
+| Build | `pnpm build` |
 | Docker | não disponível até a Fase 1 |
 | Migrações | não disponível até a Fase 1 |
 
