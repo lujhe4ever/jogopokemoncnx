@@ -5,8 +5,9 @@ export interface DatabaseProbe {
   close(): Promise<void>;
 }
 
-export function createDatabaseProbe(): DatabaseProbe {
-  const prisma = new PrismaClient();
+export function createDatabaseProbe(
+  prisma = new PrismaClient(),
+): DatabaseProbe {
   return {
     async isReady() {
       try {
