@@ -476,7 +476,7 @@ Conectar exploração, NPCs, captura e batalha em objetivos persistentes.
 - conteúdo novo invalidar progresso;
 - eventos excessivamente genéricos.
 
-**Status:** **não iniciado**.
+**Status:** **em andamento** na branch `agent/fase-10-missoes-persistencia`.
 
 ### Fase 11 — Arena multiplayer e presença
 

@@ -844,3 +844,27 @@ Publicar o PR de reserva da Fase 9 antes de implementar o fluxo.
 ### Próximo passo
 
 Revisar e integrar o PR #10 após a CI aprovada.
+
+## 2026-07-23 — Integração da Fase 9 e reserva da Fase 10
+
+### Contexto
+
+O PR #10 passou no CI e foi integrado à `main` no commit
+`d9989374ee667cf2bbaf0f042fdefe56a7492828`.
+
+### Escopo reservado
+
+- estados e condições de missão versionados;
+- progresso por eventos públicos estáveis;
+- recompensas idempotentes e transacionais;
+- diário de missões;
+- política de migração de conteúdo;
+- checkpoint integrado ao progresso.
+
+### Fora do escopo
+
+Arena, presença, chat, PvP, telões, administração e deploy público.
+
+### Próximo passo
+
+Publicar o PR de reserva da Fase 10 antes de implementar o domínio.

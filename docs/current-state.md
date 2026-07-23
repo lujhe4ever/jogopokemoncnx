@@ -5,9 +5,9 @@
 | Atualizado em | 2026-07-23 |
 | Repositório | `lujhe4ever/jogopokemoncnx` |
 | Branch principal | `main` |
-| Branch desta entrega | `agent/fase-9-encontros-captura` |
-| Fase | Fase 9 — encontros e captura |
-| Status | **concluída na branch — PR #10 aguardando revisão** |
+| Branch desta entrega | `agent/fase-10-missoes-persistencia` |
+| Fase | Fase 10 — missões e persistência integrada |
+| Status | **reservada — implementação em andamento** |
 
 ## 1. Resumo
 
@@ -123,8 +123,8 @@ continuam com o status registrado em `docs/decisions.md`.
 
 ## 9. Próxima tarefa recomendada
 
-Revisar e integrar o PR #10. Depois, iniciar exclusivamente a Fase 10: missões e
-persistência integrada.
+Implementar exclusivamente a Fase 10: estados/condições de missão, eventos públicos,
+recompensas idempotentes, diário, migração de conteúdo e checkpoints integrados.
 
 ## 10. Instruções para reproduzir
 
