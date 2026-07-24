@@ -1627,3 +1627,67 @@ exposição.
 
 Não há fase seguinte autorizada. Definir um novo ciclo e seus critérios antes de
 alterar produto ou infraestrutura.
+
+## 2026-07-23 — Reconciliação e publicação do catálogo Pokémon completo
+
+### Objetivo da sessão
+
+Revisar todas as atualizações remotas, preservar o trabalho das Fases 15–17 e
+publicar o catálogo, as definições e a coleção temporária de sprites no PR #17.
+
+### Estado anterior
+
+A branch local continha 1.025 espécies, 4.100 sprites e status automatizados das
+definições, mas estava baseada na Fase 14 e ainda não havia publicado o último commit.
+A `main` já havia concluído as Fases 15–17 e o encerramento documental do roadmap.
+
+### Alterações realizadas
+
+- `main` em `6f8929fb` incorporada por merge normal, sem force-push;
+- conflitos em `current-state.md`, `decisions.md` e `work-log.md` resolvidos
+  preservando os dois históricos;
+- decisão dos sprites renumerada para D-023, mantendo D-020 a D-022 da `main`;
+- pack marcado com política temporária, runtime desabilitado e substituição
+  obrigatória;
+- gate de licença preservado para packs normais e aberto somente para a exceção
+  nominal `pokemon-canonical`;
+- branch publicada e PR #17 atualizado no SHA `b26ccd6e`.
+
+### Testes e verificações
+
+- `pnpm install --frozen-lockfile`: aprovado;
+- `pnpm --filter @lt/server prisma:generate`: aprovado;
+- teste do catálogo: 1 arquivo e 4 testes aprovados;
+- auditoria integral: 1.025 espécies, 1.025 status, 4.100 sprites, 4.010.860 bytes e
+  zero erros de hash;
+- `pnpm check`: 25 arquivos e 73 testes aprovados;
+- builds web/admin, budgets, scan de segredos, gate de licença e readiness aprovados;
+- busca em `apps/` e `packages/`: nenhuma referência ao pack ou aos nomes dos PNGs.
+
+### Decisões tomadas
+
+- tratar os sprites como referência temporária e juridicamente `doubtful`;
+- manter `runtimeEnabled: false` e `replacementRequired: true`;
+- usar slots semânticos de inventário para permitir substituição sem mudar IDs ou
+  regras da engine;
+- manter o PR em rascunho e não executar merge na `main`.
+
+### Pendências ou riscos
+
+- a autorização do proprietário não substitui licença dos titulares;
+- o repositório é público e uma solicitação de remoção pode exigir excluir os
+  binários;
+- `definitionStatus: approved` cobre validação automatizada, não revisão manual de
+  todas as regras por geração;
+- a CI do SHA documental final ainda precisa confirmar o estado remoto.
+
+### Próxima tarefa recomendada
+
+Revisar o PR #17 e decidir se a coleção temporária permanece no repositório enquanto
+se pesquisa uma coleção original ou comprovadamente licenciada.
+
+### Instrução para a próxima IA
+
+Ler primeiro D-023, `docs/content-inventory.md`, o README e o manifesto do pack.
+Confirmar o SHA e a CI do PR #17 antes de qualquer mudança; não ligar o pack ao
+runtime e preservar os quatro `variantId` ao substituir os arquivos.

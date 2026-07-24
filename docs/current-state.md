@@ -7,7 +7,7 @@
 | Branch principal | `main` |
 | Branch desta entrega | `codex/pokemon-canonical-full` |
 | Fase | Roadmap 0B–17 concluído; catálogo Pokémon em revisão |
-| Status | **implementada na branch — aguardando revisão** |
+| Status | **publicada no PR #17 — aguardando revisão** |
 
 ## 1. Resumo
 
