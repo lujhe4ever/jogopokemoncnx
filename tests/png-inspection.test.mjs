@@ -43,7 +43,7 @@ function corruptIdatWithValidCrc(buffer) {
   const result = Buffer.from(buffer);
   const idat = chunks(result).find((chunk) => chunk.type === "IDAT");
   const dataOffset = idat.offset + 8;
-  result[dataOffset] ^= 0xff;
+  result[dataOffset + idat.length - 1] ^= 0xff;
   const crcInput = result.subarray(idat.offset + 4, dataOffset + idat.length);
   result.writeUInt32BE(crc32(crcInput), dataOffset + idat.length);
   return result;

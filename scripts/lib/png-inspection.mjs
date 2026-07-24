@@ -1,4 +1,5 @@
 import { Buffer } from "node:buffer";
+import { inflateSync } from "node:zlib";
 import pngjs from "pngjs";
 
 const { PNG } = pngjs;
@@ -32,6 +33,7 @@ function inspectStructure(buffer, context, limits) {
   let ihdr;
   let sawIdat = false;
   let sawIend = false;
+  const idatParts = [];
 
   while (offset < buffer.length) {
     if (offset + 12 > buffer.length) {
@@ -83,6 +85,7 @@ function inspectStructure(buffer, context, limits) {
       );
     } else if (type === "IDAT") {
       sawIdat = true;
+      idatParts.push(buffer.subarray(offset + 8, offset + 8 + length));
     } else if (type === "IEND") {
       if (length !== 0) {
         throw contextualError(context, "IEND chunk must be empty");
@@ -106,13 +109,19 @@ function inspectStructure(buffer, context, limits) {
   if (!sawIend) {
     throw contextualError(context, "missing IEND chunk");
   }
-  return ihdr;
+  return {
+    ...ihdr,
+    idatData: Buffer.concat(idatParts),
+  };
 }
 
 export function inspectPng(buffer, context = "PNG", limits = PNG_LIMITS) {
   const header = inspectStructure(buffer, context, limits);
   let decoded;
   try {
+    inflateSync(header.idatData, {
+      maxOutputLength: limits.maxPixels * 8 + limits.maxDimension,
+    });
     decoded = PNG.sync.read(buffer, {
       checkCRC: true,
       skipRescale: false,

@@ -5,9 +5,10 @@
 | Atualizado em | 2026-07-23 |
 | Repositório | `lujhe4ever/jogopokemoncnx` |
 | Branch principal | `main` |
-| Branch desta entrega | `codex/pokemon-canonical-full` |
-| Fase | Roadmap 0B–17 concluído; catálogo Pokémon em revisão |
-| Status | **publicada no PR #17 — aguardando revisão** |
+| Branch desta entrega | `codex/pokemon-assets-audit` |
+| Base desta entrega | `codex/pokemon-canonical-full` em `9192f727` |
+| Fase | Roadmap 0B–17 concluído; auditoria de assets Pokémon em revisão |
+| Status | **publicada no PR draft #21 — CI aprovada, aguardando revisão** |
 
 ## 1. Resumo
 
@@ -15,10 +16,11 @@ As Fases 0B a 17 foram integradas à `main`. A Fase 17 passou na CI #54 e foi
 integrada pelo PR #19 no commit `375dca531e1abda09aa50a469a645a861a6485b6`,
 sem deploy ou participantes externos.
 
-Esta branch adiciona um catálogo separado para metadados canônicos de Pokémon e
-inventário de assets. O proprietário autorizou expressamente a publicação de 4.100
-sprites compactos como conteúdo temporário; a incerteza sobre os direitos de
-redistribuição permanece registrada e impede seu uso pelo runtime.
+Esta branch audita o catálogo separado de metadados canônicos de Pokémon e seu
+inventário de assets. O proprietário autorizou expressamente a publicação anterior
+de 4.100 sprites compactos como conteúdo temporário; a incerteza sobre os direitos de
+redistribuição permanece registrada e impede seu uso pelo runtime. Esta auditoria
+não adiciona, baixa, converte nem habilita nova mídia.
 
 O projeto possui workspace TypeScript, servidor Fastify, cliente Vite/Phaser,
 PostgreSQL, Prisma, WebSocket versionado, autenticação e a primeira fatia jogável da
@@ -74,13 +76,21 @@ casa, clareira original, transições autoritativas e o primeiro ciclo de intera
 - UI social acessível com palco visual, lista de presenças e controles por teclado/toque.
 - catálogo canônico separado com 1.025 espécies, 937 golpes e 373 habilidades;
 - learnsets por versão, método, nível e máquina, ligados a catálogos normalizados;
-- 43.383 sprites e 10.421 animações inventariados com revisão de origem fixa;
+- 60.065 candidatos visuais mapeados para 1.351 entidades, sendo 48.210 estáticos e
+  11.855 animados, com revisão de origem fixa;
+- 2.000 candidatos de áudio inventariados, sem download ou ativação;
+- 1.579 registros de forma auditados; 326 formas alternativas ainda não possuem
+  definição independente no pack;
 - 4.100 sprites de batalha verificados e publicados, quatro por espécie;
 - cache privado isolado pela revisão exata de `PokeAPI/sprites`;
 - auditoria offline decodifica os 4.100 PNGs e verifica todos os hashes;
 - gate permanente impede referências ao pack temporário em `apps/` e `packages/`;
 - 1.025 definições com status `approved` por validação automatizada;
 - nenhum sprite carregado pela engine.
+- 12 artefatos de auditoria registram fontes, lacunas, compatibilidade, áudio,
+  animações, dados canônicos e um schema substituível;
+- validação PNG também verifica explicitamente o fluxo zlib dos chunks IDAT;
+- broadcasts de um mesmo passo ou transição compartilham o mesmo `serverTime`.
 - chat efêmero com autoria, timestamp e ID gerados pelo servidor;
 - mensagens normalizadas, limitadas a 160 caracteres, sem URL/controle e com rate limit;
 - requisições deduplicadas e histórico apenas em memória/DOM limitado a 50 itens;
@@ -187,6 +197,7 @@ pnpm --filter @lt/server db:migrate
 pnpm dev
 pnpm content:pokemon -- --with-private-sprites
 pnpm content:pokemon:audit
+pnpm content:pokemon:assets-audit
 pnpm security:runtime-content
 pnpm --filter @lt/admin dev
 pnpm check
@@ -197,7 +208,7 @@ pnpm alpha:readiness
 ## 6. Verificações atuais
 
 - formatação, lint e TypeScript estrito;
-- 29 arquivos de teste e 106 testes automatizados;
+- 30 arquivos de teste e 112 testes automatizados;
 - build do servidor e cliente;
 - builds independentes do jogo e da administração;
 - budgets: web 1.248.145/1.400.000 bytes, admin 9.335/100.000 bytes e maior asset
@@ -236,8 +247,9 @@ continuam com o status registrado em `docs/decisions.md`.
 
 ## 9. Próxima tarefa recomendada
 
-Revisar o catálogo Pokémon, a exceção temporária de direitos e os 4.100 sprites no
-PR #17, sem merge automático nem ligação dos assets ao runtime.
+Revisar os 12 artefatos em `docs/assets/`, escolher uma única família visual piloto e
+obter comprovação de direitos antes de qualquer download, substituição ou ligação ao
+runtime.
 
 ## 10. Instruções para reproduzir
 

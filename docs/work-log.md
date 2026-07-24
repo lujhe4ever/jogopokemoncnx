@@ -1759,3 +1759,86 @@ ou com licença comprovada para substituir os quatro slots de uma única espéci
 Ler D-023, o README do pack, `scripts/lib/audit-pokemon-canonical-assets.mjs` e
 `scripts/lib/runtime-content-boundary.mjs`; confirmar SHA e CI do PR #17 antes de
 qualquer alteração e nunca habilitar o pack temporário no runtime.
+
+## 2026-07-23 — Auditoria completa de assets e dados Pokémon
+
+### Objetivo da sessão
+
+Auditar integralmente o catálogo canônico e as fontes candidatas de sprites, áudio e
+animações sem baixar nova mídia, habilitar o pack no runtime ou alterar o estado da
+`main`.
+
+### Estado anterior
+
+A branch `codex/pokemon-canonical-full` no commit `9192f727` continha 1.025 espécies,
+4.100 PNGs temporários e definições aprovadas por validação automatizada. O PR #17
+permanecia em rascunho; sprites, formas alternativas, cries e animações ainda não
+possuíam uma auditoria transversal por entidade e arquivo.
+
+### Alterações realizadas
+
+- criada a branch isolada `codex/pokemon-assets-audit` sobre o SHA `9192f727`;
+- registradas revisões imutáveis das fontes de dados, sprites, cries e Showdown;
+- gerados 12 artefatos em `docs/assets/`, incluindo 60.065 candidatos visuais e 2.000
+  candidatos de áudio;
+- auditadas 1.025 espécies, 1.351 registros Pokémon, 1.579 registros de forma, 937
+  golpes e 373 habilidades;
+- classificados 51.081 candidatos visuais como `doubtful` e 8.984 como `pending`;
+- proposta uma matriz de compatibilidade e um schema de IDs lógicos substituíveis;
+- documentadas as lacunas de formas, textos, flags de golpes e validação manual;
+- adicionados seis testes automatizados para contratos, contagens, revisões e bloqueio
+  de runtime;
+- fortalecida a inspeção PNG com validação zlib explícita dos chunks IDAT;
+- corrigido o broadcast de mundo para compartilhar `serverTime` entre snapshots do
+  mesmo passo ou transição;
+- reconciliados `current-state.md`, `content-inventory.md` e
+  `pokemon-content-sources.md` com o novo escopo.
+
+### Testes e verificações
+
+- `pnpm content:pokemon:assets-audit`: 1.025 espécies, 1.351 Pokémon, 1.579 formas,
+  60.065 sprites e 2.000 áudios inventariados;
+- teste focado da auditoria: 1 arquivo e 6 testes aprovados;
+- testes focados de PNG e sala: 2 arquivos e 8 testes aprovados;
+- `pnpm check`: 30 arquivos e 112 testes aprovados;
+- formatação, lint, TypeScript, builds web/admin e budgets aprovados;
+- scan de segredos e gate de licenças aprovados;
+- gate de runtime: 82 arquivos examinados, zero referência proibida;
+- auditoria do pack: 4.100 hashes e PNGs verificados, 4.010.860 bytes, zero erros;
+- readiness: seis checkpoints, zero P0/P1 e nenhum deploy.
+
+### Decisões tomadas
+
+- inventário de disponibilidade não equivale a aprovação jurídica ou técnica;
+- mídias oficiais ou comunitárias sem autorização demonstrada continuam bloqueadas;
+- `definitionStatus: approved` significa somente validação automatizada;
+- IDs lógicos e manifests devem permitir substituir os bytes sem acoplar a engine;
+- nenhuma família atual oferece cobertura animada completa para as 1.351 entidades;
+- o próximo passo deve ser um piloto único após comprovação de direitos.
+
+### Pendências ou riscos
+
+- 4.100 PNGs temporários continuam públicos, `doubtful` e fora do runtime;
+- 326 registros alternativos não possuem definição independente;
+- 111 golpes e 62 habilidades não possuem descrição inglesa na fonte fixada;
+- nenhum candidato de áudio teve duração, canais, sample rate, silêncio ou SHA-256
+  medidos porque os binários não foram baixados;
+- nenhum candidato adicional foi aprovado, importado ou habilitado;
+- revisão independente de cada regra canônica e análise jurídica permanecem pendentes;
+- branch publicada e PR draft #21 aberto contra
+  `codex/pokemon-canonical-full`;
+- CI `quality` aprovada no run `30060438795` para o commit de continuidade
+  `af8165e3`.
+
+### Próxima tarefa recomendada
+
+Escolher uma única família visual piloto e comprovar autoria, licença, créditos e
+redistribuição antes de importar qualquer arquivo.
+
+### Instrução para a próxima IA
+
+Ler primeiro `docs/assets/pokemon-assets-audit.md`,
+`docs/assets/pokemon-assets-roadmap.md`, `docs/assets/source-register.json`, D-023 e o
+README do pack. Confirmar o SHA e a CI do PR desta auditoria; não baixar nem ativar
+mídia enquanto o proprietário não aprovar uma fonte específica com direitos
+verificáveis.

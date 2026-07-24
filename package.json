@@ -12,6 +12,7 @@
     "dev": "pnpm --parallel --filter @lt/server --filter @lt/web dev",
     "content:pokemon": "node scripts/generate-pokemon-canonical.mjs",
     "content:pokemon:audit": "node scripts/audit-pokemon-canonical-assets.mjs",
+    "content:pokemon:assets-audit": "node scripts/generate-pokemon-assets-audit.mjs",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "lint": "eslint .",
