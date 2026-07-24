@@ -31,9 +31,15 @@ export class AssetLabScene extends Phaser.Scene {
       { color: "#a7b5aa", fontSize: "13px" },
     );
     this.animator = new PhaserProceduralAnimator(target, this.cameras.main);
-    this.input.keyboard?.on("keydown-LEFT", () => { this.select(-1); });
-    this.input.keyboard?.on("keydown-RIGHT", () => { this.select(1); });
-    this.input.keyboard?.on("keydown-SPACE", () => { this.play(); });
+    this.input.keyboard?.on("keydown-LEFT", () => {
+      this.select(-1);
+    });
+    this.input.keyboard?.on("keydown-RIGHT", () => {
+      this.select(1);
+    });
+    this.input.keyboard?.on("keydown-SPACE", () => {
+      this.play();
+    });
     this.input.keyboard?.on("keydown-ESC", () => this.animator?.cancel());
     this.renderStatus();
   }
