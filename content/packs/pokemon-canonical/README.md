@@ -59,9 +59,10 @@ existentes.
 
 Quatro sprites compactos de batalha de cada uma das 1.025 espécies foram baixados,
 inspecionados e publicados: frente normal, frente shiny, costas normal e costas
-shiny. As cópias originais continuam em `.private/pokemon-canonical/`, ignorada pelo
-Git, e cada inventário registra os dois caminhos, variante, SHA-256, tamanho e
-dimensões.
+shiny. As cópias originais continuam em
+`.private/pokemon-canonical/sprite-revisions/<sprites-sha>/`, ignorada pelo Git. Uma
+revisão nunca reutiliza silenciosamente o cache de outra. Cada inventário registra os
+dois caminhos, variante, SHA-256, tamanho, dimensões e transparência real decodificada.
 
 A publicação não altera o estado jurídico para `approved`. A licença do repositório
 de origem declara simultaneamente CC0 e copyright da The Pokémon Company, portanto
@@ -73,6 +74,27 @@ O manifesto global reforça essa condição com
 `publicationPolicy: temporary-owner-authorized-reference`,
 `runtimeEnabled: false` e `replacementRequired: true`. O gate de licença reconhece
 somente essa exceção nominal; ela não torna outros packs sem procedência publicáveis.
+A autorização do proprietário é vinculada à decisão D-023 e à data fixa
+`2026-07-23`; `retrievedAt` registra coleta e não altera a data da decisão.
+
+## Verificação de integridade
+
+```text
+pnpm content:pokemon:audit
+pnpm security:runtime-content
+```
+
+A auditoria é offline e percorre todas as 1.025 espécies e todos os 4.100 arquivos
+publicados. Ela confirma existência, caminho seguro e único, bytes, SHA-256,
+dimensões, variantes, manifesto, inventários e metadados jurídicos. Cada PNG é
+estruturalmente analisado, tem CRC verificado, é realmente decodificado e é rejeitado
+se estiver truncado, corrompido, animado, sem dimensões válidas ou acima dos limites
+de 2.048 pixels por eixo e 4.194.304 pixels totais.
+
+O gate de runtime examina código e entradas carregáveis em `apps/` e `packages/`.
+Qualquer import, `require`, URL, loader, caminho físico ou referência ao pack é erro
+enquanto a política continuar temporária, os direitos forem `doubtful` ou
+`runtimeEnabled` permanecer falso. Os dois comandos fazem parte de `pnpm check`.
 
 ## Substituição futura
 
@@ -97,8 +119,9 @@ pnpm content:pokemon -- --with-private-sprites --publish-battle-sprites \
 
 O primeiro comando regenera definições e inventários usando cache local. O segundo
 também mantém a quarentena privada. A terceira forma publica os sprites de batalha e
-deve sempre receber as revisões auditadas. `--refresh` atualiza caches e deve ser
-usado somente em uma tarefa autorizada de atualização de fonte.
+deve sempre receber as revisões auditadas. `--refresh` atualiza somente o cache da
+revisão selecionada e deve ser usado apenas em uma tarefa autorizada de atualização
+de fonte.
 
 ## Estado de aprovação
 

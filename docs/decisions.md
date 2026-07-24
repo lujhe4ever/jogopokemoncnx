@@ -595,6 +595,10 @@ Ao aceitar ou mudar uma decisão:
 - **Gate:** a exceção de procedência é limitada ao pack `pokemon-canonical`, exige
   `runtimeEnabled: false`, `replacementRequired: true` e direitos `doubtful`; nenhum
   outro pack sem licença aprovada é permitido.
+- **Data da autorização:** `2026-07-23`, vinculada à D-023 e independente de datas de
+  coleta, geração ou execução.
+- **Verificação permanente:** a CI audita integralmente os 4.100 arquivos e rejeita
+  referências ao pack em entradas de runtime enquanto os gates acima permanecerem.
 - **Evidência de aprovação:** instruções explícitas do proprietário para publicar a
   coleção no GitHub como material temporário e substituí-la futuramente.
 

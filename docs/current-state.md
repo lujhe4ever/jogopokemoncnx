@@ -76,6 +76,9 @@ casa, clareira original, transições autoritativas e o primeiro ciclo de intera
 - learnsets por versão, método, nível e máquina, ligados a catálogos normalizados;
 - 43.383 sprites e 10.421 animações inventariados com revisão de origem fixa;
 - 4.100 sprites de batalha verificados e publicados, quatro por espécie;
+- cache privado isolado pela revisão exata de `PokeAPI/sprites`;
+- auditoria offline decodifica os 4.100 PNGs e verifica todos os hashes;
+- gate permanente impede referências ao pack temporário em `apps/` e `packages/`;
 - 1.025 definições com status `approved` por validação automatizada;
 - nenhum sprite carregado pela engine.
 - chat efêmero com autoria, timestamp e ID gerados pelo servidor;
@@ -183,6 +186,8 @@ pnpm --filter @lt/server prisma:generate
 pnpm --filter @lt/server db:migrate
 pnpm dev
 pnpm content:pokemon -- --with-private-sprites
+pnpm content:pokemon:audit
+pnpm security:runtime-content
 pnpm --filter @lt/admin dev
 pnpm check
 pnpm audit --prod --audit-level high
@@ -192,7 +197,7 @@ pnpm alpha:readiness
 ## 6. Verificações atuais
 
 - formatação, lint e TypeScript estrito;
-- 25 arquivos de teste e 73 testes automatizados;
+- 29 arquivos de teste e 106 testes automatizados;
 - build do servidor e cliente;
 - builds independentes do jogo e da administração;
 - budgets: web 1.248.145/1.400.000 bytes, admin 9.335/100.000 bytes e maior asset
@@ -204,6 +209,10 @@ pnpm alpha:readiness
 - nenhum segredo incluído;
 - 4.100 sprites de terceiros incluídos por instrução explícita do proprietário,
   todos temporários, desconectados do runtime e marcados com direitos `doubtful`;
+- 4.100 hashes e 4.100 decodificações PNG verificados offline; CRC, estrutura,
+  dimensões, transparência, unicidade e variantes cobertos;
+- cache privado separado por SHA da revisão e autorização D-023 fixada em
+  `2026-07-23`, sem dependência de `retrievedAt` ou relógio do sistema;
 - imagens, Compose e restauração serão exercitados pela CI Linux porque Docker não
   está disponível neste computador.
 

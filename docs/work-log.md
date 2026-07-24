@@ -1691,3 +1691,70 @@ se pesquisa uma coleção original ou comprovadamente licenciada.
 Ler primeiro D-023, `docs/content-inventory.md`, o README e o manifesto do pack.
 Confirmar o SHA e a CI do PR #17 antes de qualquer mudança; não ligar o pack ao
 runtime e preservar os quatro `variantId` ao substituir os arquivos.
+
+## 2026-07-23 — Hardening integral dos sprites temporários
+
+### Objetivo da sessão
+
+Corrigir os cinco pontos de revisão do PR #17 sem alterar nenhum PNG: cache privado
+por revisão, auditoria integral, validação PNG real, gate permanente de runtime e data
+fixa da autorização D-023.
+
+### Estado anterior
+
+O pack continha 1.025 espécies e 4.100 sprites publicados, mas o cache privado não
+separava revisões, a verificação de hashes era amostral, a inspeção PNG lia apenas o
+cabeçalho, a ausência de uso no runtime não era um gate de CI e
+`ownerAuthorizedAt` derivava da data de coleta.
+
+### Alterações realizadas
+
+- cache movido para
+  `.private/pokemon-canonical/sprite-revisions/<sprites-sha>/<espécie>/sprites/`;
+- gerador impedido de reutilizar bytes de outra revisão e `--refresh` limitado à
+  revisão selecionada;
+- auditoria offline cobrindo manifesto, 1.025 inventários, 4.100 caminhos, hashes,
+  bytes, dimensões, variantes, direitos e metadados;
+- validação PNG com estrutura de chunks, CRC, decode RGBA, transparência e limites de
+  dimensão/pixels;
+- gate estático contra imports, URLs, loaders e caminhos do pack em `apps/` e
+  `packages/`;
+- autorização D-023 fixada em `2026-07-23`, separada de `retrievedAt`;
+- `pngjs` incluído como dependência de desenvolvimento MIT.
+
+### Testes e verificações
+
+- testes focados: 4 arquivos e 33 testes aprovados;
+- auditoria integral: 1.025 espécies, 4.100 hashes e 4.100 PNGs decodificados, zero
+  erros;
+- gate de runtime: 82 arquivos examinados e zero referência proibida;
+- lint e typecheck aprovados;
+- casos negativos cobrem cache cruzado, arquivo ausente/extra, hash, bytes, dimensão,
+  variante, data D-023, assinatura, truncamento, CRC, stream comprimido, APNG e
+  referência de runtime.
+
+### Decisões tomadas
+
+- preservar nomes e caminhos públicos dos PNGs para manter a substituição futura
+  simples;
+- tratar `sprites-sha` como parte obrigatória da identidade do cache;
+- manter `doubtful`, `runtimeEnabled: false` e `replacementRequired: true`;
+- não transformar a autorização do proprietário em licença ou aprovação jurídica.
+
+### Pendências ou riscos
+
+- os direitos dos 4.100 sprites continuam duvidosos e a coleção precisa ser
+  substituída por material original ou comprovadamente licenciável;
+- a CI remota do commit final ainda precisa confirmar o estado publicado;
+- nenhum deploy ou merge na `main` foi autorizado.
+
+### Próxima tarefa recomendada
+
+Revisar o resultado do hardening no PR #17 e selecionar uma coleção piloto original
+ou com licença comprovada para substituir os quatro slots de uma única espécie.
+
+### Instrução para a próxima IA
+
+Ler D-023, o README do pack, `scripts/lib/audit-pokemon-canonical-assets.mjs` e
+`scripts/lib/runtime-content-boundary.mjs`; confirmar SHA e CI do PR #17 antes de
+qualquer alteração e nunca habilitar o pack temporário no runtime.
