@@ -8,11 +8,11 @@
     "buildMode": "production"
   },
   "bundle": {
-    "webBytes": 1257297,
+    "webBytes": 1257242,
     "webBudgetBytes": 1400000,
     "adminBytes": 9335,
     "adminBudgetBytes": 100000,
-    "runtimeAudioChunkBytes": 8789,
+    "runtimeAudioChunkBytes": 8734,
     "largestGameChunkBytes": 1207166
   },
   "catalogs": {

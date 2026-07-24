@@ -64,6 +64,7 @@ Ao aceitar ou mudar uma decisão:
 | D-021 | Candidato operacional reproduzível sem deploy automático | Aceita |
 | D-022 | Alpha interno com telemetria anônima, consentida e opt-in | Aceita |
 | D-023 | Publicação temporária dos sprites de batalha com direitos duvidosos | Aceita |
+| D-024 | Pipeline de assets fail-closed sem aprovação implícita de mídia | Aceita |
 
 ## 3. Registro cronológico
 
@@ -601,6 +602,32 @@ Ao aceitar ou mudar uma decisão:
   referências ao pack em entradas de runtime enquanto os gates acima permanecerem.
 - **Evidência de aprovação:** instruções explícitas do proprietário para publicar a
   coleção no GitHub como material temporário e substituí-la futuramente.
+
+### D-024 — Pipeline de assets fail-closed sem aprovação implícita de mídia
+
+- **Data:** 2026-07-23
+- **Status:** Aceita para a infraestrutura da segunda etapa
+- **Contexto:** a auditoria encontrou 60.065 candidatos visuais e 2.000 cries, mas
+  nenhum arquivo adicional com autorização exata para redistribuição no repositório
+  público. O proprietário autorizou implementar a integração controlada sem inventar
+  licença, autoria ou conteúdo.
+- **Decisão:** adotar registro central de fontes, schema unificado por asset,
+  catálogos versionados, flags específicas e gates fail-closed. Aprovação exige
+  arquivo exato, revisão, hash, licença, redistribuição, decisão e responsável.
+- **Runtime:** `doubtful`, `pending`, `rejected`, `quarantined`, sem hash, sem revisão,
+  sem decisão ou com redistribuição não confirmada nunca são carregados. A D-023 não
+  pode ser promovida por feature flag.
+- **Apresentação:** perfis procedurais e mapeamentos de movimento são apenas visuais;
+  dano, efeitos e tempo lógico continuam no servidor. Frame animation exige fonte
+  aprovada e permissão de modificação.
+- **Áudio:** cenas usam a porta central; cries e efeitos permanecem desativados até
+  existir mídia aprovada. Não há importação direta de GIF ou áudio remoto.
+- **Dados canônicos:** revisão PokéAPI fixa; 64 nomes de movimentos e 15 nomes de
+  habilidades foram alinhados ao nome inglês da fonte e 1.579 formas passaram a ter
+  catálogo explícito. Os 32 version groups continuam separados, sem baseline de jogo
+  escolhida silenciosamente.
+- **Evidência:** PR draft #23, testes de contratos/gates e catálogos gerados com zero
+  mídia Pokémon habilitada.
 
 ## 4. Próximas decisões a revisar
 

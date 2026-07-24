@@ -495,6 +495,17 @@ conceder item, captura, missão, posição final ou resultado de batalha.
 - origem, autor e licença por asset;
 - hash negociado entre cliente e servidor.
 
+O catálogo unificado implementado em `@lt/content-contracts` separa identidade lógica,
+origem, revisão, hash, licença, aprovação e estado de runtime. Um asset só pode ser
+resolvido pelo runtime quando o arquivo e a fonte estão aprovados, a redistribuição
+está explicitamente permitida, há revisão/hash/decisão rastreáveis e a feature flag
+específica está ativa. Flags gerais não liberam quarentena.
+
+Animações de apresentação são metadados determinísticos e não alteram a simulação
+autoritativa. Áudio é acessado pela porta central de `@lt/audio-domain`; cenas não
+carregam sons diretamente. Catálogos de pesquisa e mídia bloqueada não são incluídos
+no bundle nem pré-carregados no início.
+
 Packs são declarativos e validados no build. Não podem executar JavaScript arbitrário.
 O servidor carrega somente dados necessários às regras; o cliente carrega arte, áudio
 e mapas sob demanda por zona.
@@ -513,6 +524,9 @@ visual, e um repositório público pode caracterizar distribuição. Portanto:
   extraídos ou outros assets de franquias sem autorização verificável;
 - conteúdo de desenvolvimento será original, CC0 ou licenciado de forma compatível;
 - a procedência e a licença serão registradas;
+- aprovação de uma fonte não aprova automaticamente cada arquivo;
+- conversão, recorte ou animação não altera titularidade e exige permissão de
+  modificação quando produzir derivado;
 - material sem origem comprovada ficará em quarentena e fora do repositório;
 - `THIRD_PARTY_NOTICES` e inventário de licenças serão criados quando houver a
   primeira dependência ou asset de terceiros;

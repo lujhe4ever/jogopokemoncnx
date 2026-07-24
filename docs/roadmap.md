@@ -758,7 +758,14 @@ deploy, convidados ou coleta real.
 
 ## 4. Gate para a próxima tarefa
 
-Não existe fase seguinte autorizada. A próxima decisão deve escolher entre ampliar o
-produto, preparar infraestrutura privada real ou manter o projeto somente local.
-Qualquer opção exige novo escopo, revisão dos riscos residuais e autorização
-específica; deploy continua desautorizado.
+A integração estrutural de assets autorizada está no PR draft #23. Ela não altera o
+status das Fases 0B–17 e não autoriza deploy. O próximo gate de conteúdo exige:
+
+- selecionar um piloto exato, não apenas um site ou coleção;
+- demonstrar autoria, licença, modificação e redistribuição;
+- registrar revisão, arquivo, hash, crédito e decisão;
+- validar o piloto sem liberar os demais assets;
+- obter revisão do proprietário antes de ativar a feature flag correspondente.
+
+Sons, cries e frame animations permanecem sem mídia aprovada. Deploy, merge e uma
+importação em massa continuam desautorizados.

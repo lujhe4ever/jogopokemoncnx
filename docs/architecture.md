@@ -413,6 +413,27 @@ versões, não caminhos. Alterar um ID persistido exige migração.
 
 Somente conteúdo original, CC0 ou comprovadamente licenciado poderá ser publicado.
 
+### 13.1 Pipeline implementado
+
+- `@lt/content-contracts`: schema unificado, feature flags, política fail-closed,
+  perfis procedurais e mapeamento de apresentação dos movimentos;
+- `@lt/audio-domain`: porta testável para categorias, volume, mute, persistência,
+  preload explícito, descarregamento, prioridade, cooldown, limite de vozes,
+  crossfade e fallback;
+- `content/assets/source-registry.json`: registro central de fontes, sem transformar
+  pesquisa em aprovação;
+- `content/assets/catalogs/`: sprites temporários, cries candidatos, perfis,
+  apresentações e espaço vazio para frame animations aprovadas;
+- `scripts/lib/asset-catalog-audit.mjs`: integridade, metadados, licenças e política
+  de runtime;
+- `scripts/lib/runtime-content-boundary.mjs`: bloqueio em `apps/**` e `packages/**`
+  por import, loader, URL, caminho e ID de asset.
+
+Os defaults mantêm toda mídia Pokémon desativada. O laboratório visual é carregado
+somente em desenvolvimento com `?asset-lab=1` e usa uma forma geométrica, porque não
+há mídia Pokémon aprovada para runtime. Os catálogos estáticos são divididos em três
+shards e não entram no bundle do navegador.
+
 ## 14. Preparação operacional
 
 ```mermaid
