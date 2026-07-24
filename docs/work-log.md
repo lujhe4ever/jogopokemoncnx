@@ -1825,9 +1825,10 @@ possuíam uma auditoria transversal por entidade e arquivo.
   medidos porque os binários não foram baixados;
 - nenhum candidato adicional foi aprovado, importado ou habilitado;
 - revisão independente de cada regra canônica e análise jurídica permanecem pendentes;
-- branch publicada no commit `af79de8d` e PR draft #21 aberto contra
-  `codex/pokemon-canonical-full`; a CI remota do SHA final ainda precisa ser
-  concluída.
+- branch publicada e PR draft #21 aberto contra
+  `codex/pokemon-canonical-full`;
+- CI `quality` aprovada no run `30060438795` para o commit de continuidade
+  `af8165e3`.
 
 ### Próxima tarefa recomendada
 
