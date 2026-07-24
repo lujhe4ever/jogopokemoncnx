@@ -24,6 +24,9 @@ interface PackManifest {
   schemaVersion: number;
   completionStatus: string;
   licenseStatus: ApprovalStatus;
+  publicationPolicy: string;
+  runtimeEnabled: boolean;
+  replacementRequired: boolean;
   source: { sourceRevision: string };
   spriteSource: { sourceRevision: string };
   scope: {
@@ -225,6 +228,11 @@ describe("pokemon canonical catalog", () => {
       "complete-definitions-battle-sprites",
     );
     expect(manifest.licenseStatus).toBe("doubtful");
+    expect(manifest.publicationPolicy).toBe(
+      "temporary-owner-authorized-reference",
+    );
+    expect(manifest.runtimeEnabled).toBe(false);
+    expect(manifest.replacementRequired).toBe(true);
     expect(manifest.source.sourceRevision).toMatch(/^[0-9a-f]{40}$/);
     expect(manifest.spriteSource.sourceRevision).toMatch(/^[0-9a-f]{40}$/);
     expect(manifest.creatures).toHaveLength(expectedSpeciesCount);
@@ -329,7 +337,7 @@ describe("pokemon canonical catalog", () => {
       });
       expect(definitionStatus.limitations.length).toBeGreaterThan(0);
     }
-  });
+  }, 15_000);
 
   it("resolves species abilities and learnsets through audited catalogs", async () => {
     const manifest = await readJson<PackManifest>(

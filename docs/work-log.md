@@ -1410,6 +1410,220 @@ perspectiva e variação, sem codificar nomes Pokémon na engine.
 
 ### Instrução para a próxima IA
 
-Ler a D-020, este registro, o README do pack e uma amostra de `status.json`; preservar
+Ler a D-023, este registro, o README do pack e uma amostra de `status.json`; preservar
 as quatro variantes, o significado restrito de `approved` e o estado visual
 `doubtful`.
+
+## 2026-07-23 — Integração da Fase 14 e reserva da Fase 15
+
+### Contexto
+
+O PR #15 passou na CI e foi integrado à `main` no commit
+`88420a4481ac1ea04fa3562c0d729c84ba583f34`.
+
+### Escopo reservado
+
+- autenticação administrativa como elevação da sessão existente;
+- segundo fator obrigatório e módulo desabilitado sem configuração segura;
+- RBAC para suporte, conteúdo e proprietário;
+- auditoria de sucesso e negação sem segredo ou PII desnecessária;
+- consulta minimizada de perfil/progresso por caso de uso;
+- revogação recuperável de sessões com confirmação e motivo;
+- validação/publicação de manifesto declarativo original ou CC0;
+- cliente administrativo separado do jogo.
+
+### Fora do escopo
+
+Exposição pública, gestão de infraestrutura, acesso SQL pela UI, alteração arbitrária
+de inventário/progresso, deleção definitiva de conta e deploy público.
+
+### Próximo passo
+
+Publicar o PR rascunho da Fase 15 antes de iniciar a implementação.
+
+## 2026-07-23 — Painel administrativo da Fase 15
+
+### Resultado
+
+- novo `@lt/admin-domain` define três papéis, permissões e validação de manifesto;
+- `apps/admin` é cliente Vite separado e não é exposto pelo jogo;
+- módulo permanece 404 sem segredo de elevação seguro configurado;
+- sessão e segundo fator são conferidos em cada caso de uso;
+- consulta de suporte retorna somente progresso agregado e referência HMAC;
+- revogação recuperável exige motivo e `REVOKE_SESSIONS`;
+- publicação exige `PUBLISH_CONTENT`, licença original/CC0 e versão sem conflito;
+- auditoria persiste sucesso, negação, request ID e alvo pseudonimizado;
+- comando local `admin:grant` concede o primeiro papel e registra o bootstrap.
+
+### Testes e verificações
+
+- 22 arquivos e 64 testes automatizados;
+- matriz RBAC separa suporte, conteúdo e proprietário;
+- segredo inválido é auditado e nunca aparece no registro;
+- resposta de suporte não contém e-mail nem ID interno;
+- referência adulterada e confirmação ausente são rejeitadas;
+- manifesto com traversal, script ou ID duplicado não valida;
+- versão publicada é idempotente para mesmo checksum e conflitante para outro;
+- sem configuração administrativa, `/api/admin/me` retorna 404;
+- QA confirmou cliente separado, área oculta, segundo fator protegido, confirmações,
+  regiões acessíveis e ausência de overflow horizontal em 1280 × 720.
+
+### Operação local inicial
+
+Definir temporariamente `ADMIN_GRANT_ACCOUNT_ID` e `ADMIN_GRANT_ROLE`, manter
+`ADMIN_STEP_UP_SECRET` fora do repositório e executar
+`pnpm --filter @lt/server admin:grant`. Remover as variáveis de concessão após o uso.
+
+### Próximo passo
+
+Revisar e integrar o PR #16 após a CI aprovada e reservar a Fase 16 sem executar
+deploy público.
+
+## 2026-07-23 — Integração da Fase 15 e reserva da Fase 16
+
+### Contexto
+
+O PR #16 passou na CI e foi integrado à `main` no commit
+`2b56ac734dc4ab133b3664e196e7a7c0a346fb98`.
+
+### Escopo reservado
+
+- headers, origem, limites, scan de segredo/dependência e revisão de ameaças;
+- budgets reproduzíveis para bundles, assets e ticks já medidos;
+- métricas protegidas, dashboard e alertas mínimos;
+- imagens de produção e proxy TLS sem banco exposto;
+- secrets por arquivo e migração controlada;
+- backup, restauração isolada e procedimento de rollback;
+- runbooks e workflow manual de candidato, sem deploy automático;
+- consolidação da suíte e evidências operacionais.
+
+### Baseline operacional adotada
+
+Enquanto não existe VPS/hardware autorizado, a prova usa CI Linux e Docker local. O
+alvo inicial fica em 20 presenças por arena, RPO de 24 horas, RTO de 4 horas e retenção
+de sete backups diários. Esses valores devem ser revalidados antes de operação real.
+
+### Fora do escopo
+
+Compra/configuração de VPS, DNS real, certificados reais, segredo real, tráfego externo
+e qualquer deploy público ou privado.
+
+### Próximo passo
+
+Publicar o PR rascunho da Fase 16 antes de iniciar a implementação.
+
+## 2026-07-23 — Implementação e validação local da Fase 16
+
+### Contexto
+
+O PR rascunho #18 reservou a branch `agent/fase-16-hardening-operacional` a partir de
+`2b56ac734dc4ab133b3664e196e7a7c0a346fb98`. O escopo foi executado sem VPS,
+credenciais reais ou deploy.
+
+### Alterações
+
+- limite HTTP de 64 KiB, headers defensivos e validação de origem WebSocket;
+- secrets por arquivo e métricas Prometheus protegidas por token;
+- budgets de bundles/assets e scans de segredos, licenças e dependências;
+- correção transitiva de `effect` para `3.20.0`, removendo o alerta de segurança;
+- imagens separadas, Compose de produção e proxy TLS sem porta pública do banco;
+- backup com checksum, restauração isolada, retenção e rollback confirmado;
+- dashboard, alertas, runbook, modelo de ameaças e documentação de observabilidade;
+- workflow manual de candidato que valida e constrói sem publicar ou implantar.
+
+### Verificações
+
+- `pnpm check`: aprovado, 23 arquivos e 67 testes;
+- builds web/admin: aprovados;
+- budgets: 1.247.996/1.400.000 bytes no jogo, 9.335/100.000 bytes no admin e
+  1.022/2.000.000 bytes no maior asset;
+- `pnpm audit --prod --audit-level high`: nenhuma vulnerabilidade conhecida;
+- schema Prisma, JSON operacional, scans de segredos e licenças: aprovados;
+- Docker e Bash indisponíveis neste computador; a CI Linux executará migração,
+  restauração e builds de imagem.
+- a CI #50 confirmou todos os checks e falhou somente porque o runner oferecia
+  `pg_dump` 16 para PostgreSQL 17; a prova foi isolada na imagem 17.5 para eliminar
+  incompatibilidade entre cliente e servidor.
+
+### Riscos residuais
+
+Admin sem MFA individual, VPS única, hardware-alvo não medido e infraestrutura real
+não selecionada impedem exposição externa. Nenhum deploy foi realizado.
+
+### Próximo passo
+
+Revisar e integrar o PR #18 após a CI aprovada; depois reservar a Fase 17.
+
+## 2026-07-23 — Integração da Fase 16 e reserva da Fase 17
+
+### Contexto
+
+A CI #51 aprovou qualidade, auditoria e restauração isolada. O PR #18 foi integrado à
+`main` no commit `1cef026c3c6635a604fc6470e87ef94abde24b61`.
+
+### Escopo reservado
+
+- jornada interna integrada do cadastro ao ciclo jogável e arena;
+- roteiro reproduzível de alpha privado, sem convidados nesta execução;
+- telemetria mínima com privacidade e consentimento explícitos;
+- matriz de severidade, triagem e verificação de defeitos;
+- inventário final de licenças/procedência;
+- critérios objetivos para encerrar o alpha e decidir a próxima etapa.
+
+### Fora do escopo
+
+Deploy, VPS, DNS, certificados, segredos reais, convite de usuários, coleta real de
+telemetria e expansão de conteúdo.
+
+### Próximo passo
+
+Publicar o PR rascunho da Fase 17 e iniciar o ensaio integrado.
+
+## 2026-07-23 — Implementação e ensaio interno da Fase 17
+
+### Alterações
+
+- telemetria agregada em memória, desabilitada por padrão, autenticada e condicionada
+  a consentimento explícito;
+- dez eventos allowlist sem IDs, e-mail, IP, texto livre, chat ou perfil;
+- seis checkpoints da jornada ligados a testes existentes por gate executável;
+- roteiro privado, matriz P0–P3, critérios de saída e inventário de conteúdo;
+- ALPHA-001 removeu valores padrão de e-mail/senha da tela e ganhou gate de regressão.
+
+### Verificações
+
+- `pnpm check`: aprovado, 24 arquivos e 69 testes;
+- `pnpm alpha:readiness`: seis checkpoints, zero P0/P1 aberto e deploy desautorizado;
+- budgets, scans e builds permaneceram aprovados;
+- QA visual local em 1280 × 720 confirmou título, labels, campos de credencial vazios,
+  botões acessíveis e ausência de overflow horizontal.
+
+### Privacidade e operação
+
+Nenhum participante externo, dado real, telemetria real, servidor público ou deploy
+foi usado. Os riscos residuais da Fase 16 continuam bloqueando exposição.
+
+### Próximo passo
+
+Revisar e integrar o PR #19 após a CI aprovada. Qualquer etapa posterior exige nova
+decisão explícita.
+
+## 2026-07-23 — Integração da Fase 17 e encerramento do roadmap
+
+### Resultado
+
+A CI #54 aprovou a Fase 17. O PR #19 foi integrado à `main` no commit
+`375dca531e1abda09aa50a469a645a861a6485b6`. Com isso, todas as fases 0B–17 estão
+concluídas e integradas.
+
+### Estado operacional
+
+O projeto está validado para desenvolvimento e ensaio local. Nenhum deploy, ambiente
+privado real, convidado externo ou coleta real de telemetria foi executado. MFA
+individual, hardware-alvo e infraestrutura externa continuam gates obrigatórios para
+exposição.
+
+### Próximo passo
+
+Não há fase seguinte autorizada. Definir um novo ciclo e seus critérios antes de
+alterar produto ou infraestrutura.

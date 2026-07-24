@@ -1,0 +1,133 @@
+services:
+  postgres:
+    image: postgres:17.5-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: projeto_lt
+      POSTGRES_USER: projeto_lt
+      POSTGRES_PASSWORD_FILE: /run/secrets/postgres_password
+    secrets:
+      - postgres_password
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    networks:
+      - database
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U projeto_lt"]
+      interval: 10s
+      timeout: 3s
+      retries: 10
+
+  migrate:
+    build:
+      context: .
+      dockerfile: ops/docker/server.Dockerfile
+    profiles: ["migration"]
+    environment:
+      DATABASE_URL_FILE: /run/secrets/database_url
+    secrets:
+      - database_url
+    networks:
+      - database
+    depends_on:
+      postgres:
+        condition: service_healthy
+    command: ["pnpm", "--filter", "@lt/server", "db:migrate"]
+
+  server:
+    image: jogopokemoncnx-server:${LT_IMAGE_TAG:-local}
+    build:
+      context: .
+      dockerfile: ops/docker/server.Dockerfile
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      HOST: 0.0.0.0
+      SERVER_PORT: 3000
+      ALPHA_TELEMETRY_ENABLED: ${ALPHA_TELEMETRY_ENABLED:-false}
+      PUBLIC_ORIGIN: https://game.example.invalid
+      DATABASE_URL_FILE: /run/secrets/database_url
+      ADMIN_STEP_UP_SECRET_FILE: /run/secrets/admin_step_up
+      METRICS_TOKEN_FILE: /run/secrets/metrics_token
+    secrets:
+      - database_url
+      - admin_step_up
+      - metrics_token
+    networks:
+      - application
+      - database
+    depends_on:
+      postgres:
+        condition: service_healthy
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "node",
+          "-e",
+          "fetch('http://127.0.0.1:3000/ready').then(r=>{if(!r.ok)process.exit(1)})",
+        ]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+
+  web:
+    image: jogopokemoncnx-web:${LT_IMAGE_TAG:-local}
+    build:
+      context: .
+      dockerfile: ops/docker/web.Dockerfile
+    restart: unless-stopped
+    networks:
+      - application
+
+  admin:
+    image: jogopokemoncnx-admin:${LT_IMAGE_TAG:-local}
+    build:
+      context: .
+      dockerfile: ops/docker/admin.Dockerfile
+    restart: unless-stopped
+    networks:
+      - application
+
+  proxy:
+    image: nginxinc/nginx-unprivileged:1.29.1-alpine
+    restart: unless-stopped
+    ports:
+      - "80:8080"
+      - "443:8443"
+    volumes:
+      - ./ops/nginx/edge.conf:/etc/nginx/conf.d/default.conf:ro
+    secrets:
+      - tls_cert
+      - tls_key
+    networks:
+      - application
+    depends_on:
+      server:
+        condition: service_healthy
+      web:
+        condition: service_started
+      admin:
+        condition: service_started
+
+networks:
+  application:
+  database:
+    internal: true
+
+volumes:
+  postgres-data:
+
+secrets:
+  postgres_password:
+    file: ./ops/secrets/postgres_password.txt
+  database_url:
+    file: ./ops/secrets/database_url.txt
+  admin_step_up:
+    file: ./ops/secrets/admin_step_up.txt
+  metrics_token:
+    file: ./ops/secrets/metrics_token.txt
+  tls_cert:
+    file: ./ops/secrets/tls_cert.pem
+  tls_key:
+    file: ./ops/secrets/tls_key.pem

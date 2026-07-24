@@ -33,6 +33,7 @@ describe("architecture boundaries", () => {
           "social-domain",
           "pvp-domain",
           "broadcast-domain",
+          "admin-domain",
         ].map((name) => sourceFiles(`packages/${name}/src`)),
       )
     ).flat();

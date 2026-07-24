@@ -13,6 +13,11 @@ import { registerQuestRoutes } from "./quests/routes.js";
 import type { QuestService } from "./quests/quest-service.js";
 import type { ArenaRegistry } from "./arena/arena-room.js";
 import type { ArenaProfileStore } from "./arena/profile-store.js";
+import { registerAdminRoutes } from "./admin/routes.js";
+import type { AdminService } from "./admin/service.js";
+import { createHash, timingSafeEqual } from "node:crypto";
+import { registerAlphaRoutes } from "./alpha/routes.js";
+import type { AlphaTelemetry } from "./alpha/telemetry.js";
 
 export interface AppDependencies {
   database: DatabaseProbe;
@@ -25,6 +30,10 @@ export interface AppDependencies {
   quests?: QuestService;
   arena?: ArenaRegistry;
   arenaProfiles?: ArenaProfileStore;
+  admin?: AdminService;
+  allowedOrigin?: string;
+  metricsToken?: string;
+  alphaTelemetry?: AlphaTelemetry;
 }
 
 export async function buildApp({
@@ -38,19 +47,58 @@ export async function buildApp({
   quests,
   arena,
   arenaProfiles,
+  admin,
+  allowedOrigin,
+  metricsToken,
+  alphaTelemetry,
 }: AppDependencies) {
   const app = Fastify({
     logger,
-    genReqId: (request) =>
-      request.headers["x-request-id"]?.toString() ?? crypto.randomUUID(),
+    bodyLimit: 64 * 1024,
+    genReqId: (request) => {
+      const candidate = request.headers["x-request-id"]?.toString();
+      return candidate && /^[A-Za-z0-9_-]{1,64}$/.test(candidate)
+        ? candidate
+        : crypto.randomUUID();
+    },
   });
+  let requestCount = 0;
+  let errorCount = 0;
 
   await app.register(websocket);
+  app.addHook("onSend", (_request, reply, payload, done) => {
+    void reply
+      .header(
+        "content-security-policy",
+        [
+          "default-src 'self'",
+          "script-src 'self'",
+          "style-src 'self'",
+          "img-src 'self' data:",
+          "connect-src 'self' ws: wss:",
+          "object-src 'none'",
+          "base-uri 'none'",
+          "frame-ancestors 'none'",
+        ].join("; "),
+      )
+      .header("referrer-policy", "no-referrer")
+      .header("x-content-type-options", "nosniff")
+      .header("x-frame-options", "DENY")
+      .header("permissions-policy", "camera=(), microphone=(), geolocation=()");
+    done(null, payload);
+  });
+  app.addHook("onResponse", (_request, reply, done) => {
+    requestCount += 1;
+    if (reply.statusCode >= 500) errorCount += 1;
+    done();
+  });
   if (auth) await registerAuthRoutes(app, auth, cookieSecure);
+  if (auth && alphaTelemetry) registerAlphaRoutes(app, auth, alphaTelemetry);
   if (auth && battles) registerBattleRoutes(app, auth, battles);
   if (auth && encounters && world)
     registerEncounterRoutes(app, auth, encounters, world);
   if (auth && quests) registerQuestRoutes(app, auth, quests);
+  if (auth && admin) registerAdminRoutes(app, auth, admin);
 
   app.get("/health", (request) => ({
     status: "ok",
@@ -63,6 +111,10 @@ export async function buildApp({
       .send({ status: ready ? "ready" : "unavailable" });
   });
   app.get("/ws", { websocket: true }, (socket, request) => {
+    if (allowedOrigin && request.headers.origin !== allowedOrigin) {
+      socket.close(1008, "origin_not_allowed");
+      return;
+    }
     const ticket = z
       .object({ ticket: z.string().min(1) })
       .safeParse(request.query);
@@ -89,6 +141,10 @@ export async function buildApp({
     })();
   });
   app.get("/arena", { websocket: true }, (socket, request) => {
+    if (allowedOrigin && request.headers.origin !== allowedOrigin) {
+      socket.close(1008, "origin_not_allowed");
+      return;
+    }
     const query = z
       .object({
         ticket: z.string().min(1),
@@ -111,11 +167,51 @@ export async function buildApp({
       arena.connect(query.data.roomId, socket, accountId, displayName);
     })();
   });
-  app.get("/arena-metrics", () =>
-    arena
-      ? arena.metrics()
-      : { rooms: 0, players: 0, droppedMessages: 0, maxTickDurationMs: 0 },
-  );
+  if (metricsToken)
+    app.get("/metrics", (request, reply) => {
+      const authorization = request.headers.authorization;
+      const candidate = authorization?.startsWith("Bearer ")
+        ? authorization.slice(7)
+        : "";
+      const expectedHash = createHash("sha256").update(metricsToken).digest();
+      const candidateHash = createHash("sha256").update(candidate).digest();
+      if (!timingSafeEqual(expectedHash, candidateHash))
+        return reply.code(401).send({ error: "unauthorized" });
+      const metrics = arena
+        ? arena.metrics()
+        : {
+            rooms: 0,
+            players: 0,
+            droppedMessages: 0,
+            battleBroadcasts: 0,
+            battleBroadcastDeliveries: 0,
+            maxTickDurationMs: 0,
+          };
+      const alphaMetrics = alphaTelemetry
+        ? Object.entries(alphaTelemetry.snapshot()).map(
+            ([event, count]) =>
+              `lt_alpha_events_total{event="${event}"} ${String(count)}`,
+          )
+        : [];
+      return reply
+        .type("text/plain; version=0.0.4")
+        .send(
+          [
+            `lt_http_requests_total ${String(requestCount)}`,
+            `lt_http_errors_total ${String(errorCount)}`,
+            `lt_process_uptime_seconds ${String(Math.floor(process.uptime()))}`,
+            `lt_process_resident_memory_bytes ${String(process.memoryUsage().rss)}`,
+            `lt_arena_rooms ${String(metrics.rooms)}`,
+            `lt_arena_players ${String(metrics.players)}`,
+            `lt_arena_dropped_messages_total ${String(metrics.droppedMessages)}`,
+            `lt_arena_max_tick_duration_ms ${String(metrics.maxTickDurationMs)}`,
+            `lt_battle_broadcasts_total ${String(metrics.battleBroadcasts)}`,
+            `lt_battle_broadcast_deliveries_total ${String(metrics.battleBroadcastDeliveries)}`,
+            ...alphaMetrics,
+            "",
+          ].join("\n"),
+        );
+    });
   app.addHook("onClose", async () => database.close());
   if (world) app.addHook("onClose", async () => world.close());
   if (arena)

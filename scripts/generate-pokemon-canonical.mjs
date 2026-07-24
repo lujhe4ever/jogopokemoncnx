@@ -1288,6 +1288,11 @@ async function main() {
       : "complete-metadata-inventory",
     author: "Projeto LT",
     licenseStatus: PUBLISH_BATTLE_SPRITES ? "doubtful" : "pending",
+    publicationPolicy: PUBLISH_BATTLE_SPRITES
+      ? "temporary-owner-authorized-reference"
+      : "inventory-only",
+    runtimeEnabled: false,
+    replacementRequired: PUBLISH_BATTLE_SPRITES,
     source,
     spriteSource,
     scope: {

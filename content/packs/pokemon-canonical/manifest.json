@@ -6,6 +6,9 @@
   "completionStatus": "complete-definitions-battle-sprites",
   "author": "Projeto LT",
   "licenseStatus": "doubtful",
+  "publicationPolicy": "temporary-owner-authorized-reference",
+  "runtimeEnabled": false,
+  "replacementRequired": true,
   "source": {
     "retrievedAt": "2026-07-23",
     "sourceRevision": "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f",

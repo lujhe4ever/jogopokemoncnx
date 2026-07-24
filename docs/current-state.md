@@ -6,15 +6,19 @@
 | Repositório | `lujhe4ever/jogopokemoncnx` |
 | Branch principal | `main` |
 | Branch desta entrega | `codex/pokemon-canonical-full` |
-| Fase | Catálogo Pokémon canônico e publicação de sprites |
+| Fase | Roadmap 0B–17 concluído; catálogo Pokémon em revisão |
 | Status | **implementada na branch — aguardando revisão** |
 
 ## 1. Resumo
 
-As Fases 0B a 14 foram integradas à `main`. Esta branch adiciona um catálogo separado
-para metadados canônicos de Pokémon e inventário de assets. O proprietário autorizou
-expressamente a publicação de 4.100 sprites compactos mantidos em quarentena local;
-a incerteza sobre os direitos de redistribuição permanece registrada.
+As Fases 0B a 17 foram integradas à `main`. A Fase 17 passou na CI #54 e foi
+integrada pelo PR #19 no commit `375dca531e1abda09aa50a469a645a861a6485b6`,
+sem deploy ou participantes externos.
+
+Esta branch adiciona um catálogo separado para metadados canônicos de Pokémon e
+inventário de assets. O proprietário autorizou expressamente a publicação de 4.100
+sprites compactos como conteúdo temporário; a incerteza sobre os direitos de
+redistribuição permanece registrada e impede seu uso pelo runtime.
 
 O projeto possui workspace TypeScript, servidor Fastify, cliente Vite/Phaser,
 PostgreSQL, Prisma, WebSocket versionado, autenticação e a primeira fatia jogável da
@@ -97,6 +101,31 @@ casa, clareira original, transições autoritativas e o primeiro ciclo de intera
 - comandos de batalha enviados por espectador recebem `spectator_read_only`;
 - backpressure isola socket lento e métricas contam atualizações e entregas do fan-out;
 - telões acessíveis exibem competidores, criaturas, vida, turno e vencedor sem ações.
+- aplicação `apps/admin` é construída separadamente e não possui link no cliente do jogo;
+- rotas administrativas não são registradas sem `ADMIN_STEP_UP_SECRET` de 32 caracteres;
+- sessão normal e segredo de elevação em memória são exigidos em cada requisição;
+- RBAC separa suporte, edição de conteúdo e proprietário, sempre validado no servidor;
+- consultas de suporte omitem e-mail/ID interno e retornam referência assinada;
+- revogação de sessões é recuperável por novo login e exige frase mais motivo;
+- manifesto original/CC0 valida namespace, versão, checksum, paths, duplicatas e quantidade;
+- publicação é versionada, idempotente para mesmo checksum e rejeita conflito;
+- sucesso, negação e bootstrap de papel são auditados sem segredo ou PII direta.
+- headers defensivos, limite HTTP de 64 KiB e allowlist de origem protegem HTTP e
+  WebSocket;
+- configuração aceita segredos por arquivo e métricas exigem bearer token não
+  publicado na borda;
+- budgets verificam bundles, assets e a baseline de 20 presenças da arena;
+- scans automatizados cobrem credenciais, procedência de conteúdo e vulnerabilidades
+  conhecidas;
+- imagens separadas, proxy TLS e redes internas preparam operação sem expor o banco;
+- backup com checksum, restauração isolada e rollback exigem confirmação explícita;
+- dashboard, alertas, modelo de ameaças e runbook registram a operação prevista;
+- workflow manual valida um candidato e constrói imagens sem publicar ou implantar.
+- telemetria do alpha fica desabilitada por padrão, exige sessão/consentimento e
+  agrega somente eventos allowlist em memória;
+- readiness executável liga seis checkpoints da jornada às evidências automatizadas;
+- roteiro de teste, matriz de severidade e inventário de conteúdo fecham o gate;
+- ALPHA-001 removeu e bloqueou a regressão de credenciais de demonstração preenchidas.
 
 Verificação e recuperação de e-mail permanecem fora do escopo até que seus fluxos
 completos sejam definidos.
@@ -112,6 +141,12 @@ completos sejam definidos.
 - `tests`: testes arquiteturais, de runtime e autenticação;
 - `docker-compose.yml`: PostgreSQL local;
 - `.github/workflows/ci.yml`: instalação, migração e qualidade.
+- `.github/workflows/release-candidate.yml`: candidato manual sem push ou deploy;
+- `ops`: imagens, proxy, budgets, observabilidade e scripts operacionais;
+- `docs/runbooks/operations.md`: preparação, backup, restauração e rollback.
+- `ops/alpha/readiness.json`: checkpoints, defeitos e autorizações negativas;
+- `docs/alpha-test-plan.md`: jornada, privacidade, triagem e gate de saída;
+- `docs/content-inventory.md`: procedência do conteúdo permitido.
 
 ## 4. Estado por área
 
@@ -130,11 +165,14 @@ completos sejam definidos.
 | Batalha contra NPCs | concluída na branch |
 | Encontros e captura | concluídos na branch |
 | Batalhas PvP | concluídas |
-| Telões e espectadores | concluídos na branch |
+| Telões e espectadores | concluídos |
+| Administração | concluída |
+| Hardening e operação | concluído e integrado |
+| Alpha privado e estabilização | concluído e integrado |
 | Arena e presença | concluídas na branch |
 | Catálogo Pokémon e inventário de sprites | concluído na branch; aprovação pendente |
 | Chat, emotes e convites | concluídos na branch |
-| Administração e deploy | não iniciado |
+| Empacotamento de produção | concluído, não implantado |
 
 ## 5. Comandos
 
@@ -145,19 +183,29 @@ pnpm --filter @lt/server prisma:generate
 pnpm --filter @lt/server db:migrate
 pnpm dev
 pnpm content:pokemon -- --with-private-sprites
+pnpm --filter @lt/admin dev
 pnpm check
+pnpm audit --prod --audit-level high
+pnpm alpha:readiness
 ```
 
 ## 6. Verificações atuais
 
 - formatação, lint e TypeScript estrito;
-- 21 arquivos de teste e 62 testes automatizados;
+- 25 arquivos de teste e 73 testes automatizados;
 - build do servidor e cliente;
+- builds independentes do jogo e da administração;
+- budgets: web 1.248.145/1.400.000 bytes, admin 9.335/100.000 bytes e maior asset
+  913.555/2.000.000 bytes;
+- auditoria de dependências sem vulnerabilidades conhecidas;
+- scans de segredo e licenças aprovados;
 - validação do schema Prisma;
 - migrações aplicadas em PostgreSQL vazio pela CI;
 - nenhum segredo incluído;
-- 4.100 sprites de terceiros incluídos por instrução explícita do
-  proprietário, todos marcados com direitos `doubtful`.
+- 4.100 sprites de terceiros incluídos por instrução explícita do proprietário,
+  todos temporários, desconectados do runtime e marcados com direitos `doubtful`;
+- imagens, Compose e restauração serão exercitados pela CI Linux porque Docker não
+  está disponível neste computador.
 
 ## 7. Limitações e riscos
 
@@ -173,13 +221,13 @@ pnpm check
 
 ## 8. Decisões vigentes
 
-D-001 a D-008 e D-011 a D-020 estão aceitas. As demais decisões técnicas
+D-001 a D-008 e D-011 a D-023 estão aceitas. As demais decisões técnicas
 continuam com o status registrado em `docs/decisions.md`.
 
 ## 9. Próxima tarefa recomendada
 
-Revisar a expansão do catálogo Pokémon canônico, os 4.100 sprites publicados e o
-status automatizado das 1.025 definições, sem ligar os assets ao runtime.
+Revisar o catálogo Pokémon, a exceção temporária de direitos e os 4.100 sprites no
+PR #17, sem merge automático nem ligação dos assets ao runtime.
 
 ## 10. Instruções para reproduzir
 

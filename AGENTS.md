@@ -189,12 +189,13 @@ verificações inexistentes.
 | Formatação | `pnpm format` / `pnpm format:check` |
 | Lint | `pnpm lint` |
 | Verificação de tipos | `pnpm typecheck` |
-| Testes unitários | `pnpm test` |
-| Testes de integração | não disponível até a Fase 1 |
-| Testes E2E | não disponível até a Fase 1 |
-| Build | `pnpm build` |
+| Testes unitários e de integração | `pnpm test` |
+| Gate da jornada alpha | `pnpm alpha:readiness` |
+| Testes E2E no navegador | roteiro assistido em `docs/alpha-test-plan.md` |
+| Build de servidor, jogo e admin | `pnpm build` |
 | Docker | `docker compose up -d postgres` / `docker compose down` |
 | Migrações | `pnpm --filter @lt/server db:migrate` |
+| Candidato operacional | workflow manual `Build release candidate (no deploy)` |
 
 Quando a Fase 1 definir comandos, atualizar esta tabela no mesmo PR que os introduzir.
 

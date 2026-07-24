@@ -8,3 +8,5 @@ allowBuilds:
   prisma: true
 minimumReleaseAgeExclude:
   - lint-staged@17.2.0
+overrides:
+  effect: 3.20.0

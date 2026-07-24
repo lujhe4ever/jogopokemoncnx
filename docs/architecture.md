@@ -229,6 +229,21 @@ O backend inicial é um monólito modular Fastify em um processo. Módulos previ
 Um módulo não consulta diretamente tabelas pertencentes a outro. Coordenação ocorre
 por casos de uso e contratos tipados.
 
+O cliente `apps/admin` é uma aplicação Vite separada e sem navegação a partir do jogo.
+O servidor só registra `/api/admin/*` quando `ADMIN_STEP_UP_SECRET` possui ao menos 32
+caracteres. Cada chamada combina sessão opaca válida com o segredo de elevação enviado
+em header e mantido apenas na memória da aba. `@lt/admin-domain` define papéis e
+permissões; esconder controles no cliente é apenas UX, pois `AdminService` refaz RBAC
+em toda ação.
+
+Suporte consulta um resumo minimizado por nome público e recebe referência HMAC em vez
+do ID interno. Revogação de sessões exige referência válida, motivo e confirmação,
+mas é recuperável por novo login. Conteúdo declarativo original/CC0 é validado antes
+de uma publicação imutável por `packId + version`. `AdminAudit` registra autorização,
+negação, alvo pseudonimizado, motivo e request ID; segredo, e-mail e token não entram
+na trilha. A concessão inicial de papel ocorre somente por comando local auditado,
+nunca por rota pública.
+
 ## 8. Fluxo principal do jogo
 
 ```mermaid
@@ -380,7 +395,8 @@ usar expand/contract quando necessário.
 - CORS, origem e CSP com allowlists;
 - rate limits separados por login, chat, convite e jogo;
 - validação runtime e limites de tamanho;
-- admin com RBAC, auditoria e MFA antes de exposição externa;
+- admin com sessão, segundo fator de elevação, RBAC e auditoria; continua sem exposição
+  externa e exige MFA individual antes de qualquer deploy;
 - logs sem senha, token, segredo ou PII desnecessária.
 
 O servidor nunca aceita do cliente resultado de batalha, captura, recompensa,
@@ -397,7 +413,7 @@ versões, não caminhos. Alterar um ID persistido exige migração.
 
 Somente conteúdo original, CC0 ou comprovadamente licenciado poderá ser publicado.
 
-## 14. Deploy inicial
+## 14. Preparação operacional
 
 ```mermaid
 flowchart TB
@@ -409,12 +425,16 @@ flowchart TB
     DB --> BACKUP["Backup externo criptografado"]
 ```
 
-Containers serão multi-stage, reproduzíveis e executados como usuário não-root.
-Migração será etapa separada. Health checks de disponibilidade e prontidão serão
-distintos. Deploy promoverá imagem por digest e manterá rollback.
+As imagens de servidor, jogo e administração são construídas separadamente e
+executadas como usuário não-root. Migração é uma etapa isolada. Health checks de
+disponibilidade e prontidão são distintos. O candidato manual constrói sem publicar
+ou implantar; uma promoção futura deverá usar tag/digest imutável e manter rollback.
 
-A VPS única é um ponto único de falha aceito inicialmente. Backup fora da VPS e teste
-de restauração precedem exposição externa.
+O proxy termina TLS, não publica métricas e mantém o banco em rede interna. Segredos
+são montados por arquivo. A VPS única continua um ponto único de falha aceito
+inicialmente. Backup fora da VPS e teste de restauração precedem exposição externa.
+O runbook, o modelo de ameaças e a observabilidade estão em `docs/runbooks`,
+`threat-model.md` e `observability.md`.
 
 ## 15. Evolução e gatilhos de escala
 

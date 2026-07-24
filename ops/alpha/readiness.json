@@ -1,0 +1,54 @@
+{
+  "status": "internal_validation",
+  "deploymentAuthorized": false,
+  "externalParticipantsAuthorized": false,
+  "telemetryDefaultEnabled": false,
+  "journey": [
+    {
+      "id": "account_and_session",
+      "evidence": ["tests/auth.test.ts"]
+    },
+    {
+      "id": "home_movement_and_reconnection",
+      "evidence": ["tests/movement.test.ts", "tests/house-room.test.ts"]
+    },
+    {
+      "id": "meadow_and_interactions",
+      "evidence": ["tests/zone-transition.test.ts", "tests/interaction.test.ts"]
+    },
+    {
+      "id": "battle_capture_and_quests",
+      "evidence": [
+        "tests/battle-service.test.ts",
+        "tests/encounter-domain.test.ts",
+        "tests/quest-service.test.ts"
+      ]
+    },
+    {
+      "id": "arena_social_and_pvp",
+      "evidence": [
+        "tests/arena-room.test.ts",
+        "tests/social-service.test.ts",
+        "tests/pvp-service.test.ts",
+        "tests/broadcast-domain.test.ts"
+      ]
+    },
+    {
+      "id": "privacy_and_operations",
+      "evidence": [
+        "tests/admin-service.test.ts",
+        "tests/hardening.test.ts",
+        "tests/alpha-telemetry.test.ts"
+      ]
+    }
+  ],
+  "resolvedDefects": [
+    {
+      "id": "ALPHA-001",
+      "severity": "P1",
+      "summary": "Credential fields contained demonstration defaults",
+      "regressionEvidence": "scripts/check-alpha-readiness.mjs"
+    }
+  ],
+  "openDefects": []
+}

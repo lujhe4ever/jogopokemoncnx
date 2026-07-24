@@ -18,26 +18,29 @@
             >Nome público
             <input
               name="displayName"
+              autocomplete="nickname"
               minlength="2"
               maxlength="40"
-              value="Explorador"
+              placeholder="Explorador"
           /></label>
           <label
             >E-mail
             <input
               name="email"
               type="email"
+              autocomplete="email"
               required
-              value="player@example.com"
+              placeholder="voce@exemplo.com"
           /></label>
           <label
             >Senha
             <input
               name="password"
               type="password"
+              autocomplete="current-password"
               minlength="12"
               required
-              value="local-password"
+              placeholder="Use pelo menos 12 caracteres"
           /></label>
           <div class="actions">
             <button type="button" id="register">Criar conta</button>

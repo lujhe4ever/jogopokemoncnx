@@ -2,14 +2,14 @@
 
 | Campo | Valor |
 | --- | --- |
-| Status do projeto | **Fase 14 — concluída, aguardando integração** |
+| Status do projeto | **Roadmap 0B–17 concluído** |
 | Atualizado em | 2026-07-23 |
-| Implementação existente | Nenhuma |
+| Implementação existente | Fases 1–17 integradas à `main` |
 
 ## 1. Regras do roadmap
 
-- Nenhuma fase de implementação foi iniciada.
-- A documentação da Fase 0B não aprova automaticamente as decisões D-001 a D-010.
+- O ciclo 0B–17 foi concluído; mudanças futuras exigem novo escopo e novo gate.
+- O histórico de decisões permanece canônico em `docs/decisions.md`.
 - Cada fase exige proposta, autorização explícita, execução, verificação e revisão.
 - Uma fase só é concluída quando todos os critérios possuem evidência.
 - Datas e estimativas serão discutidas somente após o escopo da fase ser aprovado.
@@ -45,9 +45,9 @@ Status permitidos:
 | 12 | Chat, emotes e convites | concluído |
 | 13 | Batalhas entre jogadores | concluído |
 | 14 | Telões e transmissão de batalhas | concluído |
-| 15 | Painel administrativo | não iniciado |
-| 16 | Segurança, performance, testes e deploy | não iniciado |
-| 17 | Alpha privado e estabilização | não iniciado |
+| 15 | Painel administrativo | concluído |
+| 16 | Segurança, performance, testes e deploy | concluído |
+| 17 | Alpha privado e estabilização | concluído |
 
 ## 3. Fases
 
@@ -630,8 +630,8 @@ Exibir batalhas ao vivo na arena por eventos públicos sanitizados.
 - sobrecarga de broadcast;
 - atraso ou inconsistência visual.
 
-**Status:** **concluído** na branch `agent/fase-14-teloes-transmissao` e
-aguardando integração pelo PR #15.
+**Status:** **concluído** e integrado pelo PR #15 no commit
+`88420a4481ac1ea04fa3562c0d729c84ba583f34`.
 
 ### Fase 15 — Painel administrativo
 
@@ -669,7 +669,8 @@ Operar usuários e conteúdo sem acesso manual irrestrito ao banco.
 - alterações irreversíveis;
 - excesso de dados pessoais.
 
-**Status:** **não iniciado**.
+**Status:** **concluído** e integrado pelo PR #16 no commit
+`2b56ac734dc4ab133b3664e196e7a7c0a346fb98`.
 
 ### Fase 16 — Testes, segurança, otimização e deploy
 
@@ -712,7 +713,9 @@ Validar requisitos não funcionais e preparar operação privada em VPS.
 - backup não restaurável;
 - dispositivo de teste não representativo.
 
-**Status:** **não iniciado**.
+**Status:** **concluído** e integrado pelo PR #18 no commit
+`1cef026c3c6635a604fc6470e87ef94abde24b61`. O pacote de operação foi validado sem
+executar deploy.
 
 ### Fase 17 — Alpha privado e estabilização
 
@@ -749,12 +752,13 @@ Validar o ciclo completo com usuários autorizados e conteúdo permitido.
 - defeitos de progressão persistente;
 - telemetria excessiva.
 
-**Status:** **não iniciado**.
+**Status:** **concluído** e integrado pelo PR #19 no commit
+`375dca531e1abda09aa50a469a645a861a6485b6`. O ensaio permaneceu interno, sem
+deploy, convidados ou coleta real.
 
 ## 4. Gate para a próxima tarefa
 
-A única próxima tarefa recomendada é revisar a documentação da Fase 0B no PR #1,
-resolver inconsistências e obter autorização explícita para marcá-lo como pronto ou
-realizar ajustes. O merge exige autorização posterior.
-
-A Fase 1 não está iniciada nem implicitamente autorizada.
+Não existe fase seguinte autorizada. A próxima decisão deve escolher entre ampliar o
+produto, preparar infraestrutura privada real ou manter o projeto somente local.
+Qualquer opção exige novo escopo, revisão dos riscos residuais e autorização
+específica; deploy continua desautorizado.

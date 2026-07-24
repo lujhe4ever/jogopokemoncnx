@@ -16,8 +16,12 @@
     "lint": "eslint .",
     "typecheck": "tsc -b --pretty false",
     "test": "vitest run",
-    "build": "tsc -b && pnpm --filter @lt/web build",
-    "check": "pnpm format:check && pnpm lint && pnpm typecheck && pnpm test && pnpm build"
+    "build": "tsc -b && pnpm --filter @lt/web build && pnpm --filter @lt/admin build",
+    "security:secrets": "node scripts/check-secrets.mjs",
+    "security:licenses": "node scripts/check-content-licenses.mjs",
+    "alpha:readiness": "node scripts/check-alpha-readiness.mjs",
+    "budget": "node scripts/check-budgets.mjs",
+    "check": "pnpm format:check && pnpm lint && pnpm typecheck && pnpm test && pnpm build && pnpm budget && pnpm security:secrets && pnpm security:licenses && pnpm alpha:readiness"
   },
   "devDependencies": {
     "@eslint/js": "10.0.1",

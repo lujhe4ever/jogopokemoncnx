@@ -15,12 +15,21 @@ import { QuestService } from "./quests/quest-service.js";
 import { ArenaRegistry } from "./arena/arena-room.js";
 import { PrismaArenaProfileStore } from "./arena/profile-store.js";
 import { PvpService } from "./battles/pvp-service.js";
+import { AdminService } from "./admin/service.js";
+import { PrismaAdminRepository } from "./admin/prisma-repository.js";
+import { AlphaTelemetry } from "./alpha/telemetry.js";
 
 const config = loadConfig(process.env);
 const prisma = new PrismaClient();
 const quests = new QuestService(prisma);
 const pvp = new PvpService(prisma);
 const arena = new ArenaRegistry(true, Date.now, pvp);
+const admin = config.ADMIN_STEP_UP_SECRET
+  ? new AdminService(
+      new PrismaAdminRepository(prisma),
+      config.ADMIN_STEP_UP_SECRET,
+    )
+  : undefined;
 const world = new HouseRoom(
   new PrismaCheckpointStore(prisma),
   true,
@@ -44,6 +53,12 @@ const app = await buildApp({
   quests,
   arena,
   arenaProfiles: new PrismaArenaProfileStore(prisma),
+  ...(admin ? { admin } : {}),
+  ...(config.PUBLIC_ORIGIN ? { allowedOrigin: config.PUBLIC_ORIGIN } : {}),
+  ...(config.METRICS_TOKEN ? { metricsToken: config.METRICS_TOKEN } : {}),
+  ...(config.ALPHA_TELEMETRY_ENABLED
+    ? { alphaTelemetry: new AlphaTelemetry() }
+    : {}),
 });
 
 const shutdown = () => {

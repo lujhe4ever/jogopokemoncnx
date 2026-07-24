@@ -3,7 +3,7 @@
 | Campo | Valor |
 | --- | --- |
 | Atualizado em | 2026-07-23 |
-| Implementação existente | Fases 1–14 |
+| Implementação existente | Fases 1–15 |
 | Referência de IDs técnicos | [`../architecture.md`](../architecture.md) |
 
 ## 1. Regras
@@ -60,6 +60,10 @@ Ao aceitar ou mudar uma decisão:
 | D-017 | Interações sociais efêmeras, limitadas e deduplicadas | Aceita |
 | D-018 | PvP autorizado com escolhas privadas e resultado idempotente | Aceita |
 | D-019 | Transmissão por allowlist, revisão e fan-out limitado | Aceita |
+| D-020 | Administração separada, elevada, autorizada e auditada | Aceita |
+| D-021 | Candidato operacional reproduzível sem deploy automático | Aceita |
+| D-022 | Alpha interno com telemetria anônima, consentida e opt-in | Aceita |
+| D-023 | Publicação temporária dos sprites de batalha com direitos duvidosos | Aceita |
 
 ## 3. Registro cronológico
 
@@ -505,7 +509,71 @@ Ao aceitar ou mudar uma decisão:
 - **Evidência de aprovação:** testes cobrem allowlist, replay, fallback para snapshot,
   rejeição de espectador e 100 atualizações para 20 sockets dentro do orçamento local.
 
-### D-020 — Publicação excepcional dos sprites de batalha com direitos duvidosos
+### D-020 — Administração separada, elevada, autorizada e auditada
+
+- **Data:** 2026-07-23
+- **Status:** Aceita para operação local, sem exposição externa
+- **Contexto:** suporte e conteúdo precisam de casos de uso limitados sem SQL genérico,
+  escalada por cliente ou excesso de dados pessoais.
+- **Autenticação:** sessão opaca válida mais segredo de elevação de no mínimo 32
+  caracteres em memória; sem configuração, as rotas nem são registradas.
+- **RBAC:** `SUPPORT`, `CONTENT_EDITOR` e `OWNER` recebem permissões explícitas em
+  `@lt/admin-domain`; toda rota reautoriza no servidor.
+- **Minimização:** suporte busca nome público e recebe referência HMAC; e-mail, senha,
+  token e ID interno não aparecem na resposta.
+- **Ações:** revogação de sessões exige referência, motivo e frase de confirmação e é
+  recuperável por novo login. Publicação aceita apenas manifesto declarativo original
+  ou CC0 validado e versionado.
+- **Auditoria:** autorização negada, leitura, revogação, validação, publicação e
+  bootstrap registram request ID, ação, resultado e alvo pseudonimizado.
+- **Exposição:** o segredo compartilhado é apenas baseline local. Antes de exposição
+  externa, substituir por MFA individual resistente a phishing e política de
+  recuperação aprovada.
+- **Evidência de aprovação:** testes cobrem matriz RBAC, segredo inválido, minimização,
+  referência assinada, confirmação, validação, idempotência, conflito e auditoria.
+
+### D-021 — Candidato operacional reproduzível sem deploy automático
+
+- **Data:** 2026-07-23
+- **Status:** Aceita para preparação privada, sem deploy
+- **Contexto:** a aplicação precisa demonstrar hardening, empacotamento, recuperação
+  e observabilidade antes de receber infraestrutura ou tráfego real.
+- **Empacotamento:** servidor, jogo e administração possuem imagens separadas; o
+  PostgreSQL permanece em rede interna e a borda termina TLS.
+- **Segredos:** produção lê valores por arquivo. Nenhuma credencial, chave ou
+  certificado real pertence ao repositório ou ao workflow.
+- **Promoção:** o workflow manual valida código, banco, backup e imagens, mas não
+  publica imagem nem executa deploy. Promoção futura exigirá tag imutável e aprovação.
+- **Recuperação:** RPO de 24 horas, RTO de 4 horas e sete backups diários são baseline
+  provisória, com checksum e restauração isolada obrigatória.
+- **Observabilidade:** request IDs, métricas protegidas, painel e alertas cobrem o
+  monólito; tracing será reavaliado apenas com múltiplos processos/serviços.
+- **Segurança residual:** admin continua sem exposição externa até existir MFA
+  individual; VPS, DNS, certificados, armazenamento externo e proteção DDoS dependem
+  da infraestrutura ainda não autorizada.
+- **Evidência de aprovação:** 67 testes, builds e budgets passam; auditoria, scan de
+  segredos/licenças e schema passam; CI Linux demonstra migração e restauração.
+
+### D-022 — Alpha interno com telemetria anônima, consentida e opt-in
+
+- **Data:** 2026-07-23
+- **Status:** Aceita para ensaio interno, sem participantes externos
+- **Contexto:** a jornada completa precisa de evidência e triagem antes de qualquer
+  teste com pessoas, sem introduzir coleta excessiva.
+- **Coleta:** desabilitada por padrão; habilitação exige configuração explícita,
+  sessão e `consent: true`.
+- **Minimização:** somente dez nomes allowlist são aceitos. Não existe texto livre,
+  ID, e-mail, IP, chat, perfil ou sequência individual.
+- **Retenção:** contagens agregadas ficam apenas em memória e aparecem somente na rota
+  protegida de métricas; reiniciar o processo remove os valores.
+- **Gate:** o checklist executável exige seis checkpoints com evidência, zero P0/P1
+  aberto, procedência completa e flags de deploy/participantes desativadas.
+- **Defeito estabilizado:** ALPHA-001 removeu credenciais de demonstração preenchidas
+  na tela e adicionou verificação contra regressão.
+- **Evidência de aprovação:** 69 testes, jornada documentada, inventário de conteúdo,
+  gate de readiness e QA visual local.
+
+### D-023 — Publicação temporária dos sprites de batalha com direitos duvidosos
 
 - **Data:** 2026-07-23
 - **Status:** Aceita por instrução explícita do proprietário
@@ -516,15 +584,19 @@ Ao aceitar ou mudar uma decisão:
 - **Decisão:** publicar frente normal, frente shiny, costas normal e costas shiny de
   cada espécie, mantendo fonte, revisão, créditos, SHA-256, dimensões e estado
   `doubtful` em cada inventário.
-- **Limite:** a decisão do proprietário autoriza a inclusão no repositório, mas não
-  é tratada como licença dos titulares nem muda qualquer asset para `approved`.
+- **Limite:** a decisão do proprietário autoriza a inclusão temporária no
+  repositório, mas não é tratada como licença dos titulares nem muda qualquer asset
+  para `approved`.
 - **Integração:** os arquivos permanecem desacoplados da engine e não são carregados
-  pelo runtime nesta etapa. Animações, sons, variantes shiny, costas e sprites por
-  jogo continuam apenas inventariados.
-- **Reversibilidade:** todos os binários ficam em caminhos previsíveis e podem ser
-  removidos sem alterar IDs ou regras da engine caso revisão jurídica exija.
-- **Evidência de aprovação:** instrução explícita do proprietário nesta tarefa para
-  anexar todos os sprites disponíveis ao GitHub.
+  pelo runtime. Animações, sons e sprites por jogo continuam apenas inventariados.
+- **Reversibilidade:** os binários são selecionados por manifesto e ficam em caminhos
+  previsíveis; uma coleção licenciada pode substituí-los sem alterar IDs ou regras da
+  engine.
+- **Gate:** a exceção de procedência é limitada ao pack `pokemon-canonical`, exige
+  `runtimeEnabled: false`, `replacementRequired: true` e direitos `doubtful`; nenhum
+  outro pack sem licença aprovada é permitido.
+- **Evidência de aprovação:** instruções explícitas do proprietário para publicar a
+  coleção no GitHub como material temporário e substituí-la futuramente.
 
 ## 4. Próximas decisões a revisar
 

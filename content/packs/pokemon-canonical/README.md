@@ -69,6 +69,23 @@ não demonstra autoridade clara para relicenciar a arte. Os arquivos permanecem
 marcados como `doubtful`, com créditos e limitações centralizados em
 `asset-rights.json`, e não são carregados automaticamente pelo runtime.
 
+O manifesto global reforça essa condição com
+`publicationPolicy: temporary-owner-authorized-reference`,
+`runtimeEnabled: false` e `replacementRequired: true`. O gate de licença reconhece
+somente essa exceção nominal; ela não torna outros packs sem procedência publicáveis.
+
+## Substituição futura
+
+Cada arquivo ocupa um slot semântico registrado em `sprites/inventory.json`:
+`front-normal`, `front-shiny`, `back-normal` ou `back-shiny`. Para trocar a coleção,
+preservar o `pokemonId` e o `variantId`, substituir o caminho indicado por
+`repositoryAsset` e regenerar SHA-256, dimensões, fonte, créditos e licença. A engine
+deve resolver esses slots por catálogo, nunca pelo nome físico do PNG.
+
+Quando todos os arquivos tiverem licença verificável, remover a exceção temporária,
+alterar `replacementRequired` para `false` e somente então avaliar
+`runtimeEnabled: true` em tarefa separada.
+
 ## Regeneração
 
 ```text
