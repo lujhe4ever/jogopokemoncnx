@@ -213,6 +213,7 @@ pnpm alpha:readiness
   dimensões, transparência, unicidade e variantes cobertos;
 - cache privado separado por SHA da revisão e autorização D-023 fixada em
   `2026-07-23`, sem dependência de `retrievedAt` ou relógio do sistema;
+- CI do hardening aprovada no run `30058365529` para o SHA `98566b21`;
 - imagens, Compose e restauração serão exercitados pela CI Linux porque Docker não
   está disponível neste computador.
 

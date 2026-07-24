@@ -1729,6 +1729,7 @@ cabeçalho, a ausência de uso no runtime não era um gate de CI e
   erros;
 - gate de runtime: 82 arquivos examinados e zero referência proibida;
 - lint e typecheck aprovados;
+- CI #30058365529 aprovada no primeiro attempt para o SHA `98566b21`;
 - casos negativos cobrem cache cruzado, arquivo ausente/extra, hash, bytes, dimensão,
   variante, data D-023, assinatura, truncamento, CRC, stream comprimido, APNG e
   referência de runtime.
@@ -1745,7 +1746,7 @@ cabeçalho, a ausência de uso no runtime não era um gate de CI e
 
 - os direitos dos 4.100 sprites continuam duvidosos e a coleção precisa ser
   substituída por material original ou comprovadamente licenciável;
-- a CI remota do commit final ainda precisa confirmar o estado publicado;
+- o PR #17 permanece em rascunho e aguarda revisão do proprietário;
 - nenhum deploy ou merge na `main` foi autorizado.
 
 ### Próxima tarefa recomendada
