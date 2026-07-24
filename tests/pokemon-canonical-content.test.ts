@@ -27,6 +27,11 @@ interface PackManifest {
   publicationPolicy: string;
   runtimeEnabled: boolean;
   replacementRequired: boolean;
+  ownerAuthorization: {
+    decisionId: string;
+    authorizedAt: string;
+    scope: string;
+  };
   source: { sourceRevision: string };
   spriteSource: { sourceRevision: string };
   scope: {
@@ -141,6 +146,7 @@ interface MediaInventory {
       bytes: number;
       width: number;
       height: number;
+      hasTransparency: boolean;
     };
     repositoryAsset?: {
       variantId: string;
@@ -151,6 +157,8 @@ interface MediaInventory {
       height: number;
       animated: boolean;
       frameCount: number;
+      hasTransparency: boolean;
+      decisionId: string;
       ownerAuthorizedAt: string;
       rightsStatus: ApprovalStatus;
     };
@@ -233,6 +241,11 @@ describe("pokemon canonical catalog", () => {
     );
     expect(manifest.runtimeEnabled).toBe(false);
     expect(manifest.replacementRequired).toBe(true);
+    expect(manifest.ownerAuthorization).toEqual({
+      decisionId: "D-023",
+      authorizedAt: "2026-07-23",
+      scope: "temporary publication of four battle sprites per species",
+    });
     expect(manifest.source.sourceRevision).toMatch(/^[0-9a-f]{40}$/);
     expect(manifest.spriteSource.sourceRevision).toMatch(/^[0-9a-f]{40}$/);
     expect(manifest.creatures).toHaveLength(expectedSpeciesCount);
@@ -468,11 +481,15 @@ describe("pokemon canonical catalog", () => {
         expect(typeof entry.localQuarantine?.bytes).toBe("number");
         expect(typeof entry.localQuarantine?.width).toBe("number");
         expect(typeof entry.localQuarantine?.height).toBe("number");
+        expect(typeof entry.localQuarantine?.hasTransparency).toBe("boolean");
         expect(entry.localQuarantine?.relativePrivatePath).toMatch(
-          /^\.private\/pokemon-canonical\//,
+          /^\.private\/pokemon-canonical\/sprite-revisions\/[0-9a-f]{40}\/\d{4}-[a-z0-9-]+\/sprites\//,
         );
         expect(entry.localQuarantine?.sha256).toMatch(/^[0-9a-f]{64}$/);
         expect(entry.repositoryAsset?.rightsStatus).toBe("doubtful");
+        expect(entry.repositoryAsset?.decisionId).toBe("D-023");
+        expect(entry.repositoryAsset?.ownerAuthorizedAt).toBe("2026-07-23");
+        expect(typeof entry.repositoryAsset?.hasTransparency).toBe("boolean");
         expect(entry.repositoryAsset?.repositoryPath).toMatch(
           /^sprites\/\d{4}-[a-z0-9-]+--pokeapi-default--(front|back)--(normal|shiny)\.png$/,
         );

@@ -1,6 +1,10 @@
 import console from "node:console";
 import { readdirSync, readFileSync } from "node:fs";
 import { join, resolve } from "node:path";
+import {
+  D023_DECISION_ID,
+  D023_OWNER_AUTHORIZED_AT,
+} from "./lib/pokemon-canonical-policy.mjs";
 
 const packs = resolve(import.meta.dirname, "..", "content", "packs");
 const failures = [];
@@ -19,7 +23,9 @@ for (const directory of readdirSync(packs, { withFileTypes: true })) {
     manifest.runtimeEnabled === false &&
     manifest.replacementRequired === true &&
     manifest.licenseStatus === "doubtful" &&
-    manifest.spriteSource?.licenseStatus === "doubtful";
+    manifest.spriteSource?.licenseStatus === "doubtful" &&
+    manifest.ownerAuthorization?.decisionId === D023_DECISION_ID &&
+    manifest.ownerAuthorization?.authorizedAt === D023_OWNER_AUTHORIZED_AT;
 
   if (approvedProvenance) continue;
   if (temporaryReference) {

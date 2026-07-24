@@ -12,6 +12,14 @@ import {
 import path from "node:path";
 import process from "node:process";
 import { setTimeout as delay } from "node:timers/promises";
+import { loadRevisionedSprite } from "./lib/pokemon-canonical-cache.mjs";
+import {
+  D023_DECISION_ID,
+  D023_OWNER_AUTHORIZED_AT,
+  ownerAuthorization,
+  validateGitSha,
+} from "./lib/pokemon-canonical-policy.mjs";
+import { inspectPng } from "./lib/png-inspection.mjs";
 
 const ROOT = process.cwd();
 const PACK_ROOT = path.join("content", "packs", "pokemon-canonical");
@@ -442,45 +450,6 @@ function approvalForSprite(relativePath, pokemonId) {
   };
 }
 
-function inspectImage(buffer, extension) {
-  if (
-    extension === "png" &&
-    buffer.length >= 24 &&
-    buffer.subarray(1, 4).toString("ascii") === "PNG"
-  ) {
-    return {
-      width: buffer.readUInt32BE(16),
-      height: buffer.readUInt32BE(20),
-      animated: false,
-      frameCount: 1,
-      transparency: "present-or-palette-dependent",
-    };
-  }
-  if (
-    extension === "gif" &&
-    buffer.length >= 10 &&
-    buffer.subarray(0, 3).toString("ascii") === "GIF"
-  ) {
-    const frameMarkers = buffer
-      .toString("latin1")
-      .split(String.fromCharCode(0x2c)).length;
-    return {
-      width: buffer.readUInt16LE(6),
-      height: buffer.readUInt16LE(8),
-      animated: frameMarkers > 2,
-      frameCount: Math.max(1, frameMarkers - 1),
-      transparency: "palette-dependent",
-    };
-  }
-  return {
-    width: null,
-    height: null,
-    animated: extension === "gif",
-    frameCount: null,
-    transparency: "unknown",
-  };
-}
-
 async function mirrorPrivateSprite(
   species,
   variant,
@@ -497,35 +466,37 @@ async function mirrorPrivateSprite(
 
   const folder = `${String(species.id).padStart(4, "0")}-${species.slug}`;
   const fileName = `${folder}--pokeapi-default--${variant.perspective}--${variant.variation}.png`;
-  const relativePrivatePath = path
-    .join(".private", "pokemon-canonical", folder, "sprites", fileName)
-    .replaceAll("\\", "/");
-  const absolutePrivatePath = path.join(ROOT, relativePrivatePath);
-  let buffer;
-
-  if (!REFRESH) {
-    try {
-      buffer = await readFile(absolutePrivatePath);
-    } catch {
-      buffer = undefined;
-    }
+  try {
+    const cached = await loadRevisionedSprite({
+      root: ROOT,
+      spritesSha,
+      speciesFolder: folder,
+      fileName,
+      refresh: REFRESH,
+      fetchBuffer: async () => {
+        const url = `https://raw.githubusercontent.com/${SPRITES_REPOSITORY}/${spritesSha}/sprites/pokemon/${relativeSourcePath}`;
+        return Buffer.from(await (await fetchWithRetry(url)).arrayBuffer());
+      },
+    });
+    const inspection = inspectPng(
+      cached.buffer,
+      `sprites revision ${spritesSha}, species ${folder}, variant ${variant.id}`,
+    );
+    return {
+      variantId: variant.id,
+      sourceRelativePath: relativeSourcePath,
+      localOnly: true,
+      relativePrivatePath: cached.relativePath,
+      sha256: createHash("sha256").update(cached.buffer).digest("hex"),
+      bytes: cached.buffer.length,
+      ...inspection,
+    };
+  } catch (error) {
+    throw new Error(
+      `failed sprite revision ${spritesSha}, species ${folder}, variant ${variant.id}: ${error.message}`,
+      { cause: error },
+    );
   }
-  if (buffer === undefined) {
-    const url = `https://raw.githubusercontent.com/${SPRITES_REPOSITORY}/${spritesSha}/sprites/pokemon/${relativeSourcePath}`;
-    buffer = Buffer.from(await (await fetchWithRetry(url)).arrayBuffer());
-    await mkdir(path.dirname(absolutePrivatePath), { recursive: true });
-    await writeFile(absolutePrivatePath, buffer);
-  }
-
-  return {
-    variantId: variant.id,
-    sourceRelativePath: relativeSourcePath,
-    localOnly: true,
-    relativePrivatePath,
-    sha256: createHash("sha256").update(buffer).digest("hex"),
-    bytes: buffer.length,
-    ...inspectImage(buffer, "png"),
-  };
 }
 
 function buildMoveCatalog(tables) {
@@ -861,10 +832,18 @@ function inventorySummary(entries) {
 }
 
 async function main() {
-  const [pokeapiSha, spritesSha] = await Promise.all([
+  const [resolvedPokeapiSha, resolvedSpritesSha] = await Promise.all([
     POKEAPI_REVISION ?? getHeadSha(POKEAPI_REPOSITORY),
     SPRITES_REVISION ?? getHeadSha(SPRITES_REPOSITORY),
   ]);
+  const pokeapiSha = validateGitSha(
+    resolvedPokeapiSha,
+    "PokéAPI data revision",
+  );
+  const spritesSha = validateGitSha(
+    resolvedSpritesSha,
+    "PokéAPI sprites revision",
+  );
 
   globalThis.console.log(`PokéAPI data revision: ${pokeapiSha}`);
   globalThis.console.log(`PokéAPI sprites revision: ${spritesSha}`);
@@ -989,7 +968,9 @@ async function main() {
             height: privateMirror.height,
             animated: false,
             frameCount: 1,
-            ownerAuthorizedAt: RETRIEVED_AT,
+            hasTransparency: privateMirror.hasTransparency,
+            decisionId: D023_DECISION_ID,
+            ownerAuthorizedAt: D023_OWNER_AUTHORIZED_AT,
             rightsStatus: "doubtful",
           };
           selected.status = "doubtful";
@@ -1293,6 +1274,7 @@ async function main() {
       : "inventory-only",
     runtimeEnabled: false,
     replacementRequired: PUBLISH_BATTLE_SPRITES,
+    ownerAuthorization: ownerAuthorization(),
     source,
     spriteSource,
     scope: {
