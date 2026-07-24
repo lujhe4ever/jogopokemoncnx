@@ -1,0 +1,851 @@
+{
+  "schemaVersion": 1,
+  "catalogId": "procedural-and-approved-frame-animations",
+  "proceduralProfiles": [
+    {
+      "id": "battle-entry",
+      "durationMs": 360,
+      "loop": false,
+      "damageAtMs": null,
+      "frames": [
+        {
+          "atMs": 0,
+          "x": -24,
+          "y": 0,
+          "scale": 1,
+          "quarterTurns": 0,
+          "alpha": 0,
+          "tint": null,
+          "cameraShake": 0,
+          "particles": "none"
+        },
+        {
+          "atMs": 360,
+          "x": 0,
+          "y": 0,
+          "scale": 1,
+          "quarterTurns": 0,
+          "alpha": 1,
+          "tint": null,
+          "cameraShake": 0,
+          "particles": "none"
+        }
+      ]
+    },
+    {
+      "id": "idle",
+      "durationMs": 800,
+      "loop": true,
+      "damageAtMs": null,
+      "frames": [
+        {
+          "atMs": 0,
+          "x": 0,
+          "y": 0,
+          "scale": 1,
+          "quarterTurns": 0,
+          "alpha": 1,
+          "tint": null,
+          "cameraShake": 0,
+          "particles": "none"
+        },
+        {
+          "atMs": 400,
+          "x": 0,
+          "y": -2,
+          "scale": 1,
+          "quarterTurns": 0,
+          "alpha": 1,
+          "tint": null,
+          "cameraShake": 0,
+          "particles": "none"
+        },
+        {
+          "atMs": 800,
+          "x": 0,
+          "y": 0,
+          "scale": 1,
+          "quarterTurns": 0,
+          "alpha": 1,
+          "tint": null,
+          "cameraShake": 0,
+          "particles": "none"
+        }
+      ]
+    },
+    {
+      "id": "physical-attack",
+      "durationMs": 360,
+      "loop": false,
+      "damageAtMs": 220,
+      "frames": [
+        {
+          "atMs": 0,
+          "x": 0,
+          "y": 0,
+          "scale": 1,
+          "quarterTurns": 0,
+          "alpha": 1,
+          "tint": null,
+          "cameraShake": 0,
+          "particles": "none"
+        },
+        {
+          "atMs": 100,
+          "x": -6,
+          "y": 0,
+          "scale": 1,
+          "quarterTurns": 0,
+          "alpha": 1,
+          "tint": null,
+          "cameraShake": 0,
+          "particles": "none"
+        },
+        {
+          "atMs": 220,
+          "x": 18,
+          "y": 0,
+          "scale": 1,
+          "quarterTurns": 0,
+          "alpha": 1,
+          "tint": null,
+          "cameraShake": 0,
+          "particles": "none"
+        },
+        {
+          "atMs": 360,
+          "x": 0,
+          "y": 0,
+          "scale": 1,
+          "quarterTurns": 0,
+          "alpha": 1,
+          "tint": null,
+          "cameraShake": 0,
+          "particles": "none"
+        }
+      ]
+    },
+    {
+      "id": "special-attack",
+      "durationMs": 520,
+      "loop": false,
+      "damageAtMs": 320,
+      "frames": [
+        {
+          "atMs": 0,
+          "x": 0,
+          "y": 0,
+          "scale": 1,
+          "quarterTurns": 0,
+          "alpha": 1,
+          "tint": null,
+          "cameraShake": 0,
+          "particles": "none"
+        },
+        {
+          "atMs": 180,
+          "x": 0,
+          "y": 0,
+          "scale": 1,
+          "quarterTurns": 0,
+          "alpha": 1,
+          "tint": 16777215,
+          "cameraShake": 0,
+          "particles": "spark"
+        },
+        {
+          "atMs": 320,
+          "x": 0,
+          "y": 0,
+          "scale": 1,
+          "quarterTurns": 0,
+          "alpha": 1,
+          "tint": null,
+          "cameraShake": 2,
+          "particles": "impact"
+        },
+        {
+          "atMs": 520,
+          "x": 0,
+          "y": 0,
+          "scale": 1,
+          "quarterTurns": 0,
+          "alpha": 1,
+          "tint": null,
+          "cameraShake": 0,
+          "particles": "none"
+        }
+      ]
+    },
+    {
+      "id": "status-action",
+      "durationMs": 440,
+      "loop": false,
+      "damageAtMs": null,
+      "frames": [
+        {
+          "atMs": 0,
+          "x": 0,
+          "y": 0,
+          "scale": 1,
+          "quarterTurns": 0,
+          "alpha": 1,
+          "tint": null,
+          "cameraShake": 0,
+          "particles": "none"
+        },
+        {
+          "atMs": 220,
+          "x": 0,
+          "y": 0,
+          "scale": 1,
+          "quarterTurns": 0,
+          "alpha": 1,
+          "tint": 9097727,
+          "cameraShake": 0,
+          "particles": "status"
+        },
+        {
+          "atMs": 440,
+          "x": 0,
+          "y": 0,
+          "scale": 1,
+          "quarterTurns": 0,
+          "alpha": 1,
+          "tint": null,
+          "cameraShake": 0,
+          "particles": "none"
+        }
+      ]
+    },
+    {
+      "id": "hit-light",
+      "durationMs": 180,
+      "loop": false,
+      "damageAtMs": null,
+      "frames": [
+        {
+          "atMs": 0,
+          "x": 0,
+          "y": 0,
+          "scale": 1,
+          "quarterTurns": 0,
+          "alpha": 1,
+          "tint": null,
+          "cameraShake": 0,
+          "particles": "none"
+        },
+        {
+          "atMs": 60,
+          "x": -3,
+          "y": 0,
+          "scale": 1,
+          "quarterTurns": 0,
+          "alpha": 1,
+          "tint": 16777215,
+          "cameraShake": 0,
+          "particles": "none"
+        },
+        {
+          "atMs": 180,
+          "x": 0,
+          "y": 0,
+          "scale": 1,
+          "quarterTurns": 0,
+          "alpha": 1,
+          "tint": null,
+          "cameraShake": 0,
+          "particles": "none"
+        }
+      ]
+    },
+    {
+      "id": "hit-heavy",
+      "durationMs": 280,
+      "loop": false,
+      "damageAtMs": null,
+      "frames": [
+        {
+          "atMs": 0,
+          "x": 0,
+          "y": 0,
+          "scale": 1,
+          "quarterTurns": 0,
+          "alpha": 1,
+          "tint": null,
+          "cameraShake": 0,
+          "particles": "none"
+        },
+        {
+          "atMs": 90,
+          "x": -8,
+          "y": 0,
+          "scale": 1,
+          "quarterTurns": 0,
+          "alpha": 1,
+          "tint": null,
+          "cameraShake": 3,
+          "particles": "impact"
+        },
+        {
+          "atMs": 280,
+          "x": 0,
+          "y": 0,
+          "scale": 1,
+          "quarterTurns": 0,
+          "alpha": 1,
+          "tint": null,
+          "cameraShake": 0,
+          "particles": "none"
+        }
+      ]
+    },
+    {
+      "id": "critical-hit",
+      "durationMs": 360,
+      "loop": false,
+      "damageAtMs": null,
+      "frames": [
+        {
+          "atMs": 0,
+          "x": 0,
+          "y": 0,
+          "scale": 1,
+          "quarterTurns": 0,
+          "alpha": 1,
+          "tint": null,
+          "cameraShake": 0,
+          "particles": "none"
+        },
+        {
+          "atMs": 100,
+          "x": -10,
+          "y": 0,
+          "scale": 1,
+          "quarterTurns": 0,
+          "alpha": 1,
+          "tint": 16777215,
+          "cameraShake": 5,
+          "particles": "impact"
+        },
+        {
+          "atMs": 360,
+          "x": 0,
+          "y": 0,
+          "scale": 1,
+          "quarterTurns": 0,
+          "alpha": 1,
+          "tint": null,
+          "cameraShake": 0,
+          "particles": "none"
+        }
+      ]
+    },
+    {
+      "id": "heal",
+      "durationMs": 600,
+      "loop": false,
+      "damageAtMs": null,
+      "frames": [
+        {
+          "atMs": 0,
+          "x": 0,
+          "y": 0,
+          "scale": 1,
+          "quarterTurns": 0,
+          "alpha": 1,
+          "tint": null,
+          "cameraShake": 0,
+          "particles": "none"
+        },
+        {
+          "atMs": 300,
+          "x": 0,
+          "y": 0,
+          "scale": 1,
+          "quarterTurns": 0,
+          "alpha": 1,
+          "tint": 8191898,
+          "cameraShake": 0,
+          "particles": "spark"
+        },
+        {
+          "atMs": 600,
+          "x": 0,
+          "y": 0,
+          "scale": 1,
+          "quarterTurns": 0,
+          "alpha": 1,
+          "tint": null,
+          "cameraShake": 0,
+          "particles": "none"
+        }
+      ]
+    },
+    {
+      "id": "buff",
+      "durationMs": 500,
+      "loop": false,
+      "damageAtMs": null,
+      "frames": [
+        {
+          "atMs": 0,
+          "x": 0,
+          "y": 0,
+          "scale": 1,
+          "quarterTurns": 0,
+          "alpha": 1,
+          "tint": null,
+          "cameraShake": 0,
+          "particles": "none"
+        },
+        {
+          "atMs": 250,
+          "x": 0,
+          "y": -4,
+          "scale": 1,
+          "quarterTurns": 0,
+          "alpha": 1,
+          "tint": 16768358,
+          "cameraShake": 0,
+          "particles": "spark"
+        },
+        {
+          "atMs": 500,
+          "x": 0,
+          "y": 0,
+          "scale": 1,
+          "quarterTurns": 0,
+          "alpha": 1,
+          "tint": null,
+          "cameraShake": 0,
+          "particles": "none"
+        }
+      ]
+    },
+    {
+      "id": "debuff",
+      "durationMs": 500,
+      "loop": false,
+      "damageAtMs": null,
+      "frames": [
+        {
+          "atMs": 0,
+          "x": 0,
+          "y": 0,
+          "scale": 1,
+          "quarterTurns": 0,
+          "alpha": 1,
+          "tint": null,
+          "cameraShake": 0,
+          "particles": "none"
+        },
+        {
+          "atMs": 250,
+          "x": 0,
+          "y": 3,
+          "scale": 1,
+          "quarterTurns": 0,
+          "alpha": 1,
+          "tint": 9205928,
+          "cameraShake": 0,
+          "particles": "status"
+        },
+        {
+          "atMs": 500,
+          "x": 0,
+          "y": 0,
+          "scale": 1,
+          "quarterTurns": 0,
+          "alpha": 1,
+          "tint": null,
+          "cameraShake": 0,
+          "particles": "none"
+        }
+      ]
+    },
+    {
+      "id": "status-poison",
+      "durationMs": 600,
+      "loop": false,
+      "damageAtMs": null,
+      "frames": [
+        {
+          "atMs": 0,
+          "x": 0,
+          "y": 0,
+          "scale": 1,
+          "quarterTurns": 0,
+          "alpha": 1,
+          "tint": null,
+          "cameraShake": 0,
+          "particles": "none"
+        },
+        {
+          "atMs": 300,
+          "x": 0,
+          "y": 0,
+          "scale": 1,
+          "quarterTurns": 0,
+          "alpha": 1,
+          "tint": 11033804,
+          "cameraShake": 0,
+          "particles": "status"
+        },
+        {
+          "atMs": 600,
+          "x": 0,
+          "y": 0,
+          "scale": 1,
+          "quarterTurns": 0,
+          "alpha": 1,
+          "tint": null,
+          "cameraShake": 0,
+          "particles": "none"
+        }
+      ]
+    },
+    {
+      "id": "status-burn",
+      "durationMs": 600,
+      "loop": false,
+      "damageAtMs": null,
+      "frames": [
+        {
+          "atMs": 0,
+          "x": 0,
+          "y": 0,
+          "scale": 1,
+          "quarterTurns": 0,
+          "alpha": 1,
+          "tint": null,
+          "cameraShake": 0,
+          "particles": "none"
+        },
+        {
+          "atMs": 300,
+          "x": 0,
+          "y": 0,
+          "scale": 1,
+          "quarterTurns": 0,
+          "alpha": 1,
+          "tint": 16741711,
+          "cameraShake": 0,
+          "particles": "status"
+        },
+        {
+          "atMs": 600,
+          "x": 0,
+          "y": 0,
+          "scale": 1,
+          "quarterTurns": 0,
+          "alpha": 1,
+          "tint": null,
+          "cameraShake": 0,
+          "particles": "none"
+        }
+      ]
+    },
+    {
+      "id": "status-sleep",
+      "durationMs": 800,
+      "loop": false,
+      "damageAtMs": null,
+      "frames": [
+        {
+          "atMs": 0,
+          "x": 0,
+          "y": 0,
+          "scale": 1,
+          "quarterTurns": 0,
+          "alpha": 1,
+          "tint": null,
+          "cameraShake": 0,
+          "particles": "none"
+        },
+        {
+          "atMs": 400,
+          "x": 0,
+          "y": 2,
+          "scale": 1,
+          "quarterTurns": 0,
+          "alpha": 0.72,
+          "tint": null,
+          "cameraShake": 0,
+          "particles": "none"
+        },
+        {
+          "atMs": 800,
+          "x": 0,
+          "y": 0,
+          "scale": 1,
+          "quarterTurns": 0,
+          "alpha": 1,
+          "tint": null,
+          "cameraShake": 0,
+          "particles": "none"
+        }
+      ]
+    },
+    {
+      "id": "capture-enter",
+      "durationMs": 460,
+      "loop": false,
+      "damageAtMs": null,
+      "frames": [
+        {
+          "atMs": 0,
+          "x": 0,
+          "y": 0,
+          "scale": 1,
+          "quarterTurns": 0,
+          "alpha": 1,
+          "tint": null,
+          "cameraShake": 0,
+          "particles": "none"
+        },
+        {
+          "atMs": 230,
+          "x": 0,
+          "y": 0,
+          "scale": 2,
+          "quarterTurns": 0,
+          "alpha": 0.5,
+          "tint": null,
+          "cameraShake": 0,
+          "particles": "none"
+        },
+        {
+          "atMs": 460,
+          "x": 0,
+          "y": 0,
+          "scale": 1,
+          "quarterTurns": 0,
+          "alpha": 0,
+          "tint": null,
+          "cameraShake": 0,
+          "particles": "none"
+        }
+      ]
+    },
+    {
+      "id": "capture-shake",
+      "durationMs": 540,
+      "loop": false,
+      "damageAtMs": null,
+      "frames": [
+        {
+          "atMs": 0,
+          "x": 0,
+          "y": 0,
+          "scale": 1,
+          "quarterTurns": 0,
+          "alpha": 1,
+          "tint": null,
+          "cameraShake": 0,
+          "particles": "none"
+        },
+        {
+          "atMs": 180,
+          "x": 0,
+          "y": 0,
+          "scale": 1,
+          "quarterTurns": -1,
+          "alpha": 1,
+          "tint": null,
+          "cameraShake": 0,
+          "particles": "none"
+        },
+        {
+          "atMs": 360,
+          "x": 0,
+          "y": 0,
+          "scale": 1,
+          "quarterTurns": 1,
+          "alpha": 1,
+          "tint": null,
+          "cameraShake": 0,
+          "particles": "none"
+        },
+        {
+          "atMs": 540,
+          "x": 0,
+          "y": 0,
+          "scale": 1,
+          "quarterTurns": 0,
+          "alpha": 1,
+          "tint": null,
+          "cameraShake": 0,
+          "particles": "none"
+        }
+      ]
+    },
+    {
+      "id": "capture-success",
+      "durationMs": 700,
+      "loop": false,
+      "damageAtMs": null,
+      "frames": [
+        {
+          "atMs": 0,
+          "x": 0,
+          "y": 0,
+          "scale": 1,
+          "quarterTurns": 0,
+          "alpha": 1,
+          "tint": null,
+          "cameraShake": 0,
+          "particles": "none"
+        },
+        {
+          "atMs": 350,
+          "x": 0,
+          "y": 0,
+          "scale": 1,
+          "quarterTurns": 0,
+          "alpha": 1,
+          "tint": 16769642,
+          "cameraShake": 0,
+          "particles": "spark"
+        },
+        {
+          "atMs": 700,
+          "x": 0,
+          "y": 0,
+          "scale": 1,
+          "quarterTurns": 0,
+          "alpha": 1,
+          "tint": null,
+          "cameraShake": 0,
+          "particles": "none"
+        }
+      ]
+    },
+    {
+      "id": "faint",
+      "durationMs": 620,
+      "loop": false,
+      "damageAtMs": null,
+      "frames": [
+        {
+          "atMs": 0,
+          "x": 0,
+          "y": 0,
+          "scale": 1,
+          "quarterTurns": 0,
+          "alpha": 1,
+          "tint": null,
+          "cameraShake": 0,
+          "particles": "none"
+        },
+        {
+          "atMs": 620,
+          "x": 0,
+          "y": 24,
+          "scale": 1,
+          "quarterTurns": 0,
+          "alpha": 0,
+          "tint": null,
+          "cameraShake": 0,
+          "particles": "none"
+        }
+      ]
+    },
+    {
+      "id": "evolution",
+      "durationMs": 1200,
+      "loop": false,
+      "damageAtMs": null,
+      "frames": [
+        {
+          "atMs": 0,
+          "x": 0,
+          "y": 0,
+          "scale": 1,
+          "quarterTurns": 0,
+          "alpha": 1,
+          "tint": null,
+          "cameraShake": 0,
+          "particles": "none"
+        },
+        {
+          "atMs": 400,
+          "x": 0,
+          "y": 0,
+          "scale": 1,
+          "quarterTurns": 0,
+          "alpha": 1,
+          "tint": 16777215,
+          "cameraShake": 0,
+          "particles": "spark"
+        },
+        {
+          "atMs": 800,
+          "x": 0,
+          "y": 0,
+          "scale": 2,
+          "quarterTurns": 0,
+          "alpha": 0.6,
+          "tint": null,
+          "cameraShake": 0,
+          "particles": "spark"
+        },
+        {
+          "atMs": 1200,
+          "x": 0,
+          "y": 0,
+          "scale": 1,
+          "quarterTurns": 0,
+          "alpha": 1,
+          "tint": null,
+          "cameraShake": 0,
+          "particles": "none"
+        }
+      ]
+    },
+    {
+      "id": "shiny-intro",
+      "durationMs": 800,
+      "loop": false,
+      "damageAtMs": null,
+      "frames": [
+        {
+          "atMs": 0,
+          "x": 0,
+          "y": 0,
+          "scale": 1,
+          "quarterTurns": 0,
+          "alpha": 1,
+          "tint": null,
+          "cameraShake": 0,
+          "particles": "none"
+        },
+        {
+          "atMs": 300,
+          "x": 0,
+          "y": 0,
+          "scale": 1,
+          "quarterTurns": 0,
+          "alpha": 1,
+          "tint": 16777215,
+          "cameraShake": 0,
+          "particles": "spark"
+        },
+        {
+          "atMs": 800,
+          "x": 0,
+          "y": 0,
+          "scale": 1,
+          "quarterTurns": 0,
+          "alpha": 1,
+          "tint": null,
+          "cameraShake": 0,
+          "particles": "none"
+        }
+      ]
+    }
+  ],
+  "frameAnimations": [],
+  "blockedCandidateCount": 11855,
+  "policy": "Remote GIF is never a runtime format. Frame assets require exact approval and deterministic conversion."
+}

@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "catalogId": "temporary-pokemon-static-sprites",
+  "familyId": "pokeapi-default",
+  "runtimeEnabled": false,
+  "replacementRequired": true,
+  "assetCount": 4100,
+  "shards": [
+    {
+      "path": "content/assets/catalogs/static-sprites-001.json",
+      "count": 1370,
+      "firstAssetId": "pokemon:0001-bulbasaur:battle-sprite:front-normal",
+      "lastAssetId": "pokemon:0343-baltoy:battle-sprite:back-normal"
+    },
+    {
+      "path": "content/assets/catalogs/static-sprites-002.json",
+      "count": 1370,
+      "firstAssetId": "pokemon:0343-baltoy:battle-sprite:back-shiny",
+      "lastAssetId": "pokemon:0685-slurpuff:battle-sprite:front-shiny"
+    },
+    {
+      "path": "content/assets/catalogs/static-sprites-003.json",
+      "count": 1360,
+      "firstAssetId": "pokemon:0686-inkay:battle-sprite:front-normal",
+      "lastAssetId": "pokemon:1025-pecharunt:battle-sprite:front-shiny"
+    }
+  ]
+}

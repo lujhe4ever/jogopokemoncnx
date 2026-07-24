@@ -14,6 +14,8 @@
     { "path": "./packages/social-domain" },
     { "path": "./packages/pvp-domain" },
     { "path": "./packages/broadcast-domain" },
-    { "path": "./packages/admin-domain" }
+    { "path": "./packages/admin-domain" },
+    { "path": "./packages/content-contracts" },
+    { "path": "./packages/audio-domain" }
   ]
 }
