@@ -2008,3 +2008,8 @@ Ler D-025, `docs/asset-integration-policy.md`,
 `content/packs/production-assets/README.md`, `content/assets/coverage.json` e o PR
 #25. Confirmar a CI e a base antes de editar; manter `runtimeEnabled: false` até uma
 autorização explícita e não alterar o pack Pokémon durante o piloto.
+
+### Atualização remota
+
+A CI run `30065522318` foi aprovada no GitHub para o SHA `142fc20f`, incluindo
+PostgreSQL, migrações, `pnpm check`, auditoria e restauração isolada.

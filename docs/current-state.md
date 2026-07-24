@@ -472,7 +472,7 @@ Verificações locais:
 - build, budgets, segredos, licenças e limite de runtime aprovados;
 - auditoria unificada: 22 fontes, 4.115 imagens, 2.039 áudios e zero violação;
 - `pnpm audit --prod --audit-level high`: nenhuma vulnerabilidade conhecida;
-- CI do commit documental final: **não confirmada**.
+- CI run `30065522318`: aprovada para o SHA `142fc20f`.
 
 Riscos:
 
