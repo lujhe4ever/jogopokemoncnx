@@ -28,7 +28,7 @@ const CATALOGS_ROOT = path.join(PACK_ROOT, "catalogs");
 const REPORTS_ROOT = path.join(PACK_ROOT, "reports");
 const CACHE_ROOT = path.join(".cache", "pokemon-canonical");
 const PRIVATE_ROOT = path.join(".private", "pokemon-canonical");
-const RETRIEVED_AT = new Date().toISOString().slice(0, 10);
+const RETRIEVED_AT = "2026-07-23";
 const DOWNLOAD_PRIVATE_SPRITES = process.argv.includes(
   "--with-private-sprites",
 );
@@ -36,8 +36,12 @@ const PUBLISH_BATTLE_SPRITES =
   process.argv.includes("--publish-battle-sprites") ||
   process.argv.includes("--publish-front-sprites");
 const REFRESH = process.argv.includes("--refresh");
-const POKEAPI_REVISION = argumentValue("--pokeapi-revision");
-const SPRITES_REVISION = argumentValue("--sprites-revision");
+const PINNED_POKEAPI_REVISION = "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f";
+const PINNED_SPRITES_REVISION = "bf4c47ac82c33b330e33d98b8882d1cedb2f53e7";
+const POKEAPI_REVISION =
+  argumentValue("--pokeapi-revision") ?? PINNED_POKEAPI_REVISION;
+const SPRITES_REVISION =
+  argumentValue("--sprites-revision") ?? PINNED_SPRITES_REVISION;
 const NATIONAL_DEX_LIMIT = 1025;
 const ENGLISH_LANGUAGE_ID = 9;
 const APPROVAL_STATUSES = [
@@ -86,6 +90,7 @@ function argumentValue(name) {
 
 const CSV_FILES = [
   "abilities.csv",
+  "ability_names.csv",
   "ability_prose.csv",
   "egg_groups.csv",
   "evolution_triggers.csv",
@@ -101,11 +106,13 @@ const CSV_FILES = [
   "move_meta_stat_changes.csv",
   "move_targets.csv",
   "moves.csv",
+  "move_names.csv",
   "pokemon.csv",
   "pokemon_abilities.csv",
   "pokemon_colors.csv",
   "pokemon_egg_groups.csv",
   "pokemon_evolution.csv",
+  "pokemon_forms.csv",
   "pokemon_habitats.csv",
   "pokemon_move_methods.csv",
   "pokemon_moves.csv",
@@ -206,13 +213,6 @@ async function fetchWithRetry(url, options = {}, attempts = 4) {
 
 async function fetchJson(url) {
   return (await fetchWithRetry(url)).json();
-}
-
-async function getHeadSha(repository) {
-  const ref = await fetchJson(
-    `https://api.github.com/repos/${repository}/git/refs/heads/master`,
-  );
-  return ref.object.sha;
 }
 
 function parseCsv(text) {
@@ -326,6 +326,14 @@ function englishProse(rows, idKey) {
     rows
       .filter((row) => toInteger(row.local_language_id) === ENGLISH_LANGUAGE_ID)
       .map((row) => [row[idKey], row]),
+  );
+}
+
+function englishNames(rows, idKey) {
+  return new Map(
+    rows
+      .filter((row) => toInteger(row.local_language_id) === ENGLISH_LANGUAGE_ID)
+      .map((row) => [row[idKey], row.name]),
   );
 }
 
@@ -489,7 +497,11 @@ async function mirrorPrivateSprite(
       relativePrivatePath: cached.relativePath,
       sha256: createHash("sha256").update(cached.buffer).digest("hex"),
       bytes: cached.buffer.length,
-      ...inspection,
+      width: inspection.width,
+      height: inspection.height,
+      animated: inspection.animated,
+      frameCount: inspection.frameCount,
+      hasTransparency: inspection.hasTransparency,
     };
   } catch (error) {
     throw new Error(
@@ -500,6 +512,7 @@ async function mirrorPrivateSprite(
 }
 
 function buildMoveCatalog(tables) {
+  const names = englishNames(tables["move_names.csv"], "move_id");
   const types = indexBy(tables["types.csv"], "id");
   const damageClasses = indexBy(tables["move_damage_classes.csv"], "id");
   const targets = indexBy(tables["move_targets.csv"], "id");
@@ -522,7 +535,7 @@ function buildMoveCatalog(tables) {
     return {
       id: toInteger(move.id),
       slug: move.identifier,
-      canonicalName: titleFromSlug(move.identifier),
+      canonicalName: names.get(move.id) ?? titleFromSlug(move.identifier),
       generationIntroduced: toInteger(move.generation_id),
       type: types.get(move.type_id)?.identifier ?? "unknown",
       category:
@@ -562,18 +575,42 @@ function buildMoveCatalog(tables) {
 }
 
 function buildAbilityCatalog(tables) {
+  const names = englishNames(tables["ability_names.csv"], "ability_id");
   const prose = englishProse(tables["ability_prose.csv"], "ability_id");
   return tables["abilities.csv"].map((ability) => {
     const effect = prose.get(ability.id);
     return {
       id: toInteger(ability.id),
       slug: ability.identifier,
-      canonicalName: titleFromSlug(ability.identifier),
+      canonicalName: names.get(ability.id) ?? titleFromSlug(ability.identifier),
       generationIntroduced: toInteger(ability.generation_id),
       isMainSeries: toBoolean(ability.is_main_series),
       shortEffect: effect?.short_effect ?? "No English effect text available.",
       effect: effect?.effect ?? "No English effect text available.",
       sourceUrl: `https://pokeapi.co/api/v2/ability/${ability.id}/`,
+    };
+  });
+}
+
+function buildFormCatalog(tables) {
+  const pokemon = indexBy(tables["pokemon.csv"], "id");
+  return tables["pokemon_forms.csv"].map((form) => {
+    const entity = pokemon.get(form.pokemon_id);
+    return {
+      id: toInteger(form.id),
+      slug: form.identifier,
+      formIdentifier: form.form_identifier || null,
+      pokemonId: toInteger(form.pokemon_id),
+      pokemonSlug: entity?.identifier ?? "unknown",
+      speciesId: toInteger(entity?.species_id),
+      introducedInVersionGroupId: toInteger(
+        form.introduced_in_version_group_id,
+      ),
+      isDefault: toBoolean(form.is_default),
+      isBattleOnly: toBoolean(form.is_battle_only),
+      isMega: toBoolean(form.is_mega),
+      formOrder: toInteger(form.form_order),
+      order: toInteger(form.order),
     };
   });
 }
@@ -832,10 +869,8 @@ function inventorySummary(entries) {
 }
 
 async function main() {
-  const [resolvedPokeapiSha, resolvedSpritesSha] = await Promise.all([
-    POKEAPI_REVISION ?? getHeadSha(POKEAPI_REPOSITORY),
-    SPRITES_REVISION ?? getHeadSha(SPRITES_REPOSITORY),
-  ]);
+  const resolvedPokeapiSha = POKEAPI_REVISION;
+  const resolvedSpritesSha = SPRITES_REVISION;
   const pokeapiSha = validateGitSha(
     resolvedPokeapiSha,
     "PokéAPI data revision",
@@ -860,6 +895,7 @@ async function main() {
   const moveCatalog = buildMoveCatalog(tables);
   const abilityCatalog = buildAbilityCatalog(tables);
   const versionGroupCatalog = buildVersionGroupCatalog(tables);
+  const formCatalog = buildFormCatalog(tables);
   const species = buildSpeciesModels(tables);
   const speciesById = new Map(species.map((entry) => [entry.id, entry]));
   const speciesBySlug = new Map(species.map((entry) => [entry.slug, entry]));
@@ -968,10 +1004,10 @@ async function main() {
             height: privateMirror.height,
             animated: false,
             frameCount: 1,
-            hasTransparency: privateMirror.hasTransparency,
-            decisionId: D023_DECISION_ID,
             ownerAuthorizedAt: D023_OWNER_AUTHORIZED_AT,
             rightsStatus: "doubtful",
+            hasTransparency: privateMirror.hasTransparency,
+            decisionId: D023_DECISION_ID,
           };
           selected.status = "doubtful";
           selected.repositoryAsset = repositorySprite;
@@ -1210,6 +1246,12 @@ async function main() {
       source,
       versionGroups: versionGroupCatalog,
     }),
+    writeJson(path.join(CATALOGS_ROOT, "forms.json"), {
+      schemaVersion: 2,
+      count: formCatalog.length,
+      source,
+      forms: formCatalog,
+    }),
     writeJson(path.join(CATALOGS_ROOT, "move-methods.json"), {
       schemaVersion: 2,
       source,
@@ -1283,6 +1325,7 @@ async function main() {
       speciesCount: summaries.length,
       moveCount: moveCatalog.length,
       abilityCount: abilityCatalog.length,
+      formCount: formCatalog.length,
       spriteCandidateCount,
       animationCandidateCount,
       localPrivateSpriteCount: privateSpriteCount,
@@ -1299,7 +1342,7 @@ async function main() {
   await writeJson(path.join(PACK_ROOT, "manifest.json"), manifest);
 
   const report = {
-    generatedAt: new Date().toISOString(),
+    generatedAt: RETRIEVED_AT,
     pokeapiRevision: pokeapiSha,
     spritesRevision: spritesSha,
     speciesCount: summaries.length,
@@ -1308,6 +1351,7 @@ async function main() {
     moveCount: moveCatalog.length,
     abilityCount: abilityCatalog.length,
     versionGroupCount: versionGroupCatalog.length,
+    formCount: formCatalog.length,
     spriteTreeBlobCount: spriteTree.length,
     spriteCandidateCount,
     animationCandidateCount,

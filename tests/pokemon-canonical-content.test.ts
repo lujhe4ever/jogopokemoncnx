@@ -38,6 +38,7 @@ interface PackManifest {
     speciesCount: number;
     moveCount: number;
     abilityCount: number;
+    formCount: number;
     spriteCandidateCount: number;
     animationCandidateCount: number;
     localPrivateSpriteCount: number;
@@ -52,6 +53,7 @@ interface MoveCatalog {
   moves: Array<{
     id: number;
     slug: string;
+    canonicalName: string;
     type: string;
     category: string;
     power: number | null;
@@ -68,7 +70,21 @@ interface AbilityCatalog {
   abilities: Array<{
     id: number;
     slug: string;
+    canonicalName: string;
     effect: string;
+  }>;
+}
+
+interface FormCatalog {
+  count: number;
+  forms: Array<{
+    id: number;
+    slug: string;
+    pokemonId: number;
+    speciesId: number;
+    isDefault: boolean;
+    isBattleOnly: boolean;
+    isMega: boolean;
   }>;
 }
 
@@ -180,6 +196,7 @@ const packDirectory = path.join("content", "packs", "pokemon-canonical");
 const expectedSpeciesCount = 1025;
 const expectedMoveCount = 937;
 const expectedAbilityCount = 373;
+const expectedFormCount = 1579;
 const expectedPublishedSpriteCount = expectedSpeciesCount * 4;
 const expectedDefinitionFiles = [
   "abilities.json",
@@ -230,6 +247,9 @@ describe("pokemon canonical catalog", () => {
     const abilities = await readJson<AbilityCatalog>(
       path.join(packDirectory, "catalogs", "abilities.json"),
     );
+    const forms = await readJson<FormCatalog>(
+      path.join(packDirectory, "catalogs", "forms.json"),
+    );
 
     expect(manifest.schemaVersion).toBe(2);
     expect(manifest.completionStatus).toBe(
@@ -257,6 +277,7 @@ describe("pokemon canonical catalog", () => {
     expect(manifest.scope.speciesCount).toBe(expectedSpeciesCount);
     expect(manifest.scope.moveCount).toBe(expectedMoveCount);
     expect(manifest.scope.abilityCount).toBe(expectedAbilityCount);
+    expect(manifest.scope.formCount).toBe(expectedFormCount);
     expect(manifest.scope.localPrivateSpriteCount).toBe(
       expectedPublishedSpriteCount,
     );
@@ -291,6 +312,24 @@ describe("pokemon canonical catalog", () => {
           ability.effect.length > 0,
       ),
     ).toBe(true);
+    expect(forms.count).toBe(expectedFormCount);
+    expect(forms.forms).toHaveLength(expectedFormCount);
+    expect(new Set(forms.forms.map((form) => form.speciesId)).size).toBe(
+      expectedSpeciesCount,
+    );
+    expect(forms.forms.filter((form) => form.isDefault).length).toBeGreaterThan(
+      expectedSpeciesCount,
+    );
+    expect(forms.forms.some((form) => form.isBattleOnly)).toBe(true);
+    expect(forms.forms.some((form) => form.isMega)).toBe(true);
+
+    expect(
+      moves.moves.find((move) => move.slug === "double-edge")?.canonicalName,
+    ).toBe("Double-Edge");
+    expect(
+      abilities.abilities.find((ability) => ability.slug === "rks-system")
+        ?.canonicalName,
+    ).toBe("RKS System");
 
     expect(report).toMatchObject({
       speciesCount: expectedSpeciesCount,

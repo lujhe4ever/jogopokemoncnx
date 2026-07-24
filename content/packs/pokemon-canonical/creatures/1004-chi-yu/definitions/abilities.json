@@ -7,7 +7,7 @@
       "slot": 1,
       "isHidden": false,
       "slug": "beads-of-ruin",
-      "canonicalName": "Beads Of Ruin",
+      "canonicalName": "Beads of Ruin",
       "shortEffect": "Lowers Special Defense of all Pokémon except itself.",
       "effect": "The power of the Pokémon’s ruinous beads lowers the Sp. Def stats of all Pokémon except itself.",
       "sourceUrl": "https://pokeapi.co/api/v2/ability/287/"
