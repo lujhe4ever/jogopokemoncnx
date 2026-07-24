@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 2,
+  "id": "pokemon:0430-honchkrow",
+  "nationalDexNumber": 430,
+  "canonicalName": "Honchkrow",
+  "slug": "honchkrow",
+  "genus": "Big Boss Pokémon",
+  "generationIntroduced": 4,
+  "generationSource": "generation-iv",
+  "types": [
+    "dark",
+    "flying"
+  ],
+  "physical": {
+    "heightDecimeters": 9,
+    "weightHectograms": 273
+  },
+  "baseExperience": 177,
+  "baseStats": {
+    "hp": {
+      "value": 100,
+      "effortYield": 0
+    },
+    "attack": {
+      "value": 125,
+      "effortYield": 2
+    },
+    "defense": {
+      "value": 52,
+      "effortYield": 0
+    },
+    "special-attack": {
+      "value": 105,
+      "effortYield": 0
+    },
+    "special-defense": {
+      "value": 52,
+      "effortYield": 0
+    },
+    "speed": {
+      "value": 71,
+      "effortYield": 0
+    }
+  },
+  "biologyAndTraining": {
+    "color": "black",
+    "shape": "wings",
+    "habitat": null,
+    "genderRate": 4,
+    "captureRate": 30,
+    "baseHappiness": 35,
+    "hatchCounter": 20,
+    "hasGenderDifferences": false,
+    "growthRate": "medium-slow",
+    "eggGroups": [
+      "flying"
+    ],
+    "isBaby": false,
+    "isLegendary": false,
+    "isMythical": false
+  },
+  "abilities": [
+    {
+      "slug": "insomnia",
+      "slot": 1,
+      "isHidden": false
+    },
+    {
+      "slug": "super-luck",
+      "slot": 2,
+      "isHidden": false
+    },
+    {
+      "slug": "moxie",
+      "slot": 3,
+      "isHidden": true
+    }
+  ],
+  "evolution": {
+    "chainId": 97,
+    "evolvesFromSpeciesId": 198,
+    "evolvesTo": []
+  },
+  "source": {
+    "retrievedAt": "2026-07-23",
+    "sourceRevision": "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f",
+    "sourceUrls": [
+      "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
+      "https://github.com/PokeAPI/pokeapi/blob/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/LICENSE.md"
+    ],
+    "licenseStatus": "pending",
+    "requiredCredits": [
+      "PokéAPI contributors for the structured API data."
+    ],
+    "notes": [
+      "Structured data is sourced from PokéAPI under its BSD-3-Clause terms.",
+      "Pokémon names and character data remain subject to owner review and applicable trademark or copyright rights.",
+      "English source prose is preserved to avoid inventing translations of gameplay behavior."
+    ]
+  }
+}

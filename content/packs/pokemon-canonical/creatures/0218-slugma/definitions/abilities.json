@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 2,
+  "pokemonId": "pokemon:0218-slugma",
+  "abilities": [
+    {
+      "abilityId": 40,
+      "slot": 1,
+      "isHidden": false,
+      "slug": "magma-armor",
+      "canonicalName": "Magma Armor",
+      "shortEffect": "Prevents freezing.",
+      "effect": "This Pokémon cannot be frozen.\n\nIf a Pokémon is frozen and acquires this ability, it will immediately thaw out; this includes when regaining a lost ability upon leaving battle.\n\nOverworld: If any Pokémon in the party has this ability, each egg in the party has its hatch counter decreased by 2 (rather than 1) each step cycle, making eggs hatch roughly twice as quickly.  This effect does not stack if multiple Pokémon have this ability or Flame Body.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/40/"
+    },
+    {
+      "abilityId": 49,
+      "slot": 2,
+      "isHidden": false,
+      "slug": "flame-body",
+      "canonicalName": "Flame Body",
+      "shortEffect": "Has a 30% chance of burning attacking Pokémon on contact.",
+      "effect": "Whenever a move makes contact with this Pokémon, the move's user has a 30% chance of being burned.\n\nOverworld: If any Pokémon in the party has this ability, each egg in the party has its hatch counter decreased by 2 (rather than 1) each step cycle, making eggs hatch roughly twice as quickly.  This effect does not stack if multiple Pokémon have this ability or Magma Armor.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/49/"
+    },
+    {
+      "abilityId": 133,
+      "slot": 3,
+      "isHidden": true,
+      "slug": "weak-armor",
+      "canonicalName": "Weak Armor",
+      "shortEffect": "Raises Speed and lowers Defense by one stage each upon being hit by a physical move.",
+      "effect": "Whenever a physical move hits this Pokémon, its Speed rises one stage and its Defense falls one stage.\n\nThis ability triggers on every hit of a multiple-hit move.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/133/"
+    }
+  ],
+  "source": {
+    "retrievedAt": "2026-07-23",
+    "sourceRevision": "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f",
+    "sourceUrls": [
+      "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
+      "https://github.com/PokeAPI/pokeapi/blob/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/LICENSE.md"
+    ],
+    "licenseStatus": "pending",
+    "requiredCredits": [
+      "PokéAPI contributors for the structured API data."
+    ],
+    "notes": [
+      "Structured data is sourced from PokéAPI under its BSD-3-Clause terms.",
+      "Pokémon names and character data remain subject to owner review and applicable trademark or copyright rights.",
+      "English source prose is preserved to avoid inventing translations of gameplay behavior."
+    ]
+  }
+}

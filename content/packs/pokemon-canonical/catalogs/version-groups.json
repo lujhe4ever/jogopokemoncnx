@@ -1,0 +1,364 @@
+{
+  "schemaVersion": 2,
+  "count": 32,
+  "source": {
+    "retrievedAt": "2026-07-23",
+    "sourceRevision": "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f",
+    "sourceUrls": [
+      "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
+      "https://github.com/PokeAPI/pokeapi/blob/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/LICENSE.md"
+    ],
+    "licenseStatus": "pending",
+    "requiredCredits": [
+      "PokéAPI contributors for the structured API data."
+    ],
+    "notes": [
+      "Structured data is sourced from PokéAPI under its BSD-3-Clause terms.",
+      "Pokémon names and character data remain subject to owner review and applicable trademark or copyright rights.",
+      "English source prose is preserved to avoid inventing translations of gameplay behavior."
+    ]
+  },
+  "versionGroups": [
+    {
+      "id": 1,
+      "slug": "red-blue",
+      "generation": 1,
+      "generationSlug": "generation-i",
+      "order": 3,
+      "versions": [
+        "red",
+        "blue"
+      ]
+    },
+    {
+      "id": 2,
+      "slug": "yellow",
+      "generation": 1,
+      "generationSlug": "generation-i",
+      "order": 4,
+      "versions": [
+        "yellow"
+      ]
+    },
+    {
+      "id": 3,
+      "slug": "gold-silver",
+      "generation": 2,
+      "generationSlug": "generation-ii",
+      "order": 5,
+      "versions": [
+        "gold",
+        "silver"
+      ]
+    },
+    {
+      "id": 4,
+      "slug": "crystal",
+      "generation": 2,
+      "generationSlug": "generation-ii",
+      "order": 6,
+      "versions": [
+        "crystal"
+      ]
+    },
+    {
+      "id": 5,
+      "slug": "ruby-sapphire",
+      "generation": 3,
+      "generationSlug": "generation-iii",
+      "order": 7,
+      "versions": [
+        "ruby",
+        "sapphire"
+      ]
+    },
+    {
+      "id": 6,
+      "slug": "emerald",
+      "generation": 3,
+      "generationSlug": "generation-iii",
+      "order": 8,
+      "versions": [
+        "emerald"
+      ]
+    },
+    {
+      "id": 7,
+      "slug": "firered-leafgreen",
+      "generation": 3,
+      "generationSlug": "generation-iii",
+      "order": 11,
+      "versions": [
+        "firered",
+        "leafgreen"
+      ]
+    },
+    {
+      "id": 8,
+      "slug": "diamond-pearl",
+      "generation": 4,
+      "generationSlug": "generation-iv",
+      "order": 12,
+      "versions": [
+        "diamond",
+        "pearl"
+      ]
+    },
+    {
+      "id": 9,
+      "slug": "platinum",
+      "generation": 4,
+      "generationSlug": "generation-iv",
+      "order": 13,
+      "versions": [
+        "platinum"
+      ]
+    },
+    {
+      "id": 10,
+      "slug": "heartgold-soulsilver",
+      "generation": 4,
+      "generationSlug": "generation-iv",
+      "order": 14,
+      "versions": [
+        "heartgold",
+        "soulsilver"
+      ]
+    },
+    {
+      "id": 11,
+      "slug": "black-white",
+      "generation": 5,
+      "generationSlug": "generation-v",
+      "order": 15,
+      "versions": [
+        "black",
+        "white"
+      ]
+    },
+    {
+      "id": 12,
+      "slug": "colosseum",
+      "generation": 3,
+      "generationSlug": "generation-iii",
+      "order": 9,
+      "versions": [
+        "colosseum"
+      ]
+    },
+    {
+      "id": 13,
+      "slug": "xd",
+      "generation": 3,
+      "generationSlug": "generation-iii",
+      "order": 10,
+      "versions": [
+        "xd"
+      ]
+    },
+    {
+      "id": 14,
+      "slug": "black-2-white-2",
+      "generation": 5,
+      "generationSlug": "generation-v",
+      "order": 16,
+      "versions": [
+        "black-2",
+        "white-2"
+      ]
+    },
+    {
+      "id": 15,
+      "slug": "x-y",
+      "generation": 6,
+      "generationSlug": "generation-vi",
+      "order": 17,
+      "versions": [
+        "x",
+        "y"
+      ]
+    },
+    {
+      "id": 16,
+      "slug": "omega-ruby-alpha-sapphire",
+      "generation": 6,
+      "generationSlug": "generation-vi",
+      "order": 18,
+      "versions": [
+        "omega-ruby",
+        "alpha-sapphire"
+      ]
+    },
+    {
+      "id": 17,
+      "slug": "sun-moon",
+      "generation": 7,
+      "generationSlug": "generation-vii",
+      "order": 19,
+      "versions": [
+        "sun",
+        "moon"
+      ]
+    },
+    {
+      "id": 18,
+      "slug": "ultra-sun-ultra-moon",
+      "generation": 7,
+      "generationSlug": "generation-vii",
+      "order": 20,
+      "versions": [
+        "ultra-sun",
+        "ultra-moon"
+      ]
+    },
+    {
+      "id": 19,
+      "slug": "lets-go-pikachu-lets-go-eevee",
+      "generation": 7,
+      "generationSlug": "generation-vii",
+      "order": 21,
+      "versions": [
+        "lets-go-pikachu",
+        "lets-go-eevee"
+      ]
+    },
+    {
+      "id": 20,
+      "slug": "sword-shield",
+      "generation": 8,
+      "generationSlug": "generation-viii",
+      "order": 22,
+      "versions": [
+        "sword",
+        "shield"
+      ]
+    },
+    {
+      "id": 21,
+      "slug": "the-isle-of-armor",
+      "generation": 8,
+      "generationSlug": "generation-viii",
+      "order": 23,
+      "versions": [
+        "the-isle-of-armor-sword",
+        "the-isle-of-armor-shield"
+      ]
+    },
+    {
+      "id": 22,
+      "slug": "the-crown-tundra",
+      "generation": 8,
+      "generationSlug": "generation-viii",
+      "order": 24,
+      "versions": [
+        "the-crown-tundra-sword",
+        "the-crown-tundra-shield"
+      ]
+    },
+    {
+      "id": 23,
+      "slug": "brilliant-diamond-shining-pearl",
+      "generation": 8,
+      "generationSlug": "generation-viii",
+      "order": 25,
+      "versions": [
+        "brilliant-diamond",
+        "shining-pearl"
+      ]
+    },
+    {
+      "id": 24,
+      "slug": "legends-arceus",
+      "generation": 8,
+      "generationSlug": "generation-viii",
+      "order": 26,
+      "versions": [
+        "legends-arceus"
+      ]
+    },
+    {
+      "id": 25,
+      "slug": "scarlet-violet",
+      "generation": 9,
+      "generationSlug": "generation-ix",
+      "order": 27,
+      "versions": [
+        "scarlet",
+        "violet"
+      ]
+    },
+    {
+      "id": 26,
+      "slug": "the-teal-mask",
+      "generation": 9,
+      "generationSlug": "generation-ix",
+      "order": 28,
+      "versions": [
+        "the-teal-mask-scarlet",
+        "the-teal-mask-violet"
+      ]
+    },
+    {
+      "id": 27,
+      "slug": "the-indigo-disk",
+      "generation": 9,
+      "generationSlug": "generation-ix",
+      "order": 29,
+      "versions": [
+        "the-indigo-disk-scarlet",
+        "the-indigo-disk-violet"
+      ]
+    },
+    {
+      "id": 28,
+      "slug": "red-green-japan",
+      "generation": 1,
+      "generationSlug": "generation-i",
+      "order": 1,
+      "versions": [
+        "red-japan",
+        "green-japan"
+      ]
+    },
+    {
+      "id": 29,
+      "slug": "blue-japan",
+      "generation": 1,
+      "generationSlug": "generation-i",
+      "order": 2,
+      "versions": [
+        "blue-japan"
+      ]
+    },
+    {
+      "id": 30,
+      "slug": "legends-za",
+      "generation": 9,
+      "generationSlug": "generation-ix",
+      "order": 30,
+      "versions": [
+        "legends-za"
+      ]
+    },
+    {
+      "id": 31,
+      "slug": "mega-dimension",
+      "generation": 9,
+      "generationSlug": "generation-ix",
+      "order": 31,
+      "versions": [
+        "mega-dimension"
+      ]
+    },
+    {
+      "id": 32,
+      "slug": "champions",
+      "generation": 9,
+      "generationSlug": "generation-ix",
+      "order": 32,
+      "versions": [
+        "champions"
+      ]
+    }
+  ]
+}

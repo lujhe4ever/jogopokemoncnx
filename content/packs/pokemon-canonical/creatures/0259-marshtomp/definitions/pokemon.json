@@ -1,0 +1,129 @@
+{
+  "schemaVersion": 2,
+  "id": "pokemon:0259-marshtomp",
+  "nationalDexNumber": 259,
+  "canonicalName": "Marshtomp",
+  "slug": "marshtomp",
+  "genus": "Mud Fish Pokémon",
+  "generationIntroduced": 3,
+  "generationSource": "generation-iii",
+  "types": [
+    "water",
+    "ground"
+  ],
+  "physical": {
+    "heightDecimeters": 7,
+    "weightHectograms": 280
+  },
+  "baseExperience": 142,
+  "baseStats": {
+    "hp": {
+      "value": 70,
+      "effortYield": 0
+    },
+    "attack": {
+      "value": 85,
+      "effortYield": 2
+    },
+    "defense": {
+      "value": 70,
+      "effortYield": 0
+    },
+    "special-attack": {
+      "value": 60,
+      "effortYield": 0
+    },
+    "special-defense": {
+      "value": 70,
+      "effortYield": 0
+    },
+    "speed": {
+      "value": 50,
+      "effortYield": 0
+    }
+  },
+  "biologyAndTraining": {
+    "color": "blue",
+    "shape": "upright",
+    "habitat": "waters-edge",
+    "genderRate": 1,
+    "captureRate": 45,
+    "baseHappiness": 70,
+    "hatchCounter": 20,
+    "hasGenderDifferences": false,
+    "growthRate": "medium-slow",
+    "eggGroups": [
+      "monster",
+      "water1"
+    ],
+    "isBaby": false,
+    "isLegendary": false,
+    "isMythical": false
+  },
+  "abilities": [
+    {
+      "slug": "torrent",
+      "slot": 1,
+      "isHidden": false
+    },
+    {
+      "slug": "damp",
+      "slot": 3,
+      "isHidden": true
+    }
+  ],
+  "evolution": {
+    "chainId": 132,
+    "evolvesFromSpeciesId": 258,
+    "evolvesTo": [
+      {
+        "fromSpeciesId": 259,
+        "toSpeciesId": 260,
+        "trigger": "level-up",
+        "versionGroupId": 5,
+        "isDefault": true,
+        "triggerItem": null,
+        "minimumLevel": 36,
+        "genderId": null,
+        "locationId": null,
+        "heldItem": null,
+        "timeOfDay": null,
+        "knownMove": null,
+        "knownMoveType": null,
+        "minimumHappiness": null,
+        "minimumBeauty": null,
+        "minimumAffection": null,
+        "relativePhysicalStats": null,
+        "partySpeciesId": null,
+        "partyType": null,
+        "tradeSpeciesId": null,
+        "needsOverworldRain": false,
+        "turnUpsideDown": false,
+        "needsMultiplayer": false,
+        "nearSpecialRock": false,
+        "regionId": null,
+        "usedMove": null,
+        "minimumMoveCount": null,
+        "minimumSteps": null,
+        "minimumDamageTaken": null
+      }
+    ]
+  },
+  "source": {
+    "retrievedAt": "2026-07-23",
+    "sourceRevision": "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f",
+    "sourceUrls": [
+      "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
+      "https://github.com/PokeAPI/pokeapi/blob/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/LICENSE.md"
+    ],
+    "licenseStatus": "pending",
+    "requiredCredits": [
+      "PokéAPI contributors for the structured API data."
+    ],
+    "notes": [
+      "Structured data is sourced from PokéAPI under its BSD-3-Clause terms.",
+      "Pokémon names and character data remain subject to owner review and applicable trademark or copyright rights.",
+      "English source prose is preserved to avoid inventing translations of gameplay behavior."
+    ]
+  }
+}

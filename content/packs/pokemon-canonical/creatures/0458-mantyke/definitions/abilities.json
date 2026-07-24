@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 2,
+  "pokemonId": "pokemon:0458-mantyke",
+  "abilities": [
+    {
+      "abilityId": 33,
+      "slot": 1,
+      "isHidden": false,
+      "slug": "swift-swim",
+      "canonicalName": "Swift Swim",
+      "shortEffect": "Doubles Speed during rain.",
+      "effect": "This Pokémon's Speed is doubled during rain.\n\nThis bonus does not count as a stat modifier.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/33/"
+    },
+    {
+      "abilityId": 11,
+      "slot": 2,
+      "isHidden": false,
+      "slug": "water-absorb",
+      "canonicalName": "Water Absorb",
+      "shortEffect": "Absorbs Water moves, healing for 1/4 max HP.",
+      "effect": "Whenever a Water-type move hits this Pokémon, it heals for 1/4 of its maximum HP, negating any other effect on it.\n\nWater moves will ignore this Pokémon's Substitute.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/11/"
+    },
+    {
+      "abilityId": 41,
+      "slot": 3,
+      "isHidden": true,
+      "slug": "water-veil",
+      "canonicalName": "Water Veil",
+      "shortEffect": "Prevents burns.",
+      "effect": "This Pokémon cannot be burned.\n\nIf a Pokémon is burned and acquires this ability, its burn is healed; this includes when regaining a lost ability upon leaving battle.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/41/"
+    }
+  ],
+  "source": {
+    "retrievedAt": "2026-07-23",
+    "sourceRevision": "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f",
+    "sourceUrls": [
+      "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
+      "https://github.com/PokeAPI/pokeapi/blob/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/LICENSE.md"
+    ],
+    "licenseStatus": "pending",
+    "requiredCredits": [
+      "PokéAPI contributors for the structured API data."
+    ],
+    "notes": [
+      "Structured data is sourced from PokéAPI under its BSD-3-Clause terms.",
+      "Pokémon names and character data remain subject to owner review and applicable trademark or copyright rights.",
+      "English source prose is preserved to avoid inventing translations of gameplay behavior."
+    ]
+  }
+}

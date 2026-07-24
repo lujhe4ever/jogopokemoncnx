@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 2,
+  "pokemonId": "pokemon:0363-spheal",
+  "abilities": [
+    {
+      "abilityId": 47,
+      "slot": 1,
+      "isHidden": false,
+      "slug": "thick-fat",
+      "canonicalName": "Thick Fat",
+      "shortEffect": "Halves damage from Fire and Ice moves.",
+      "effect": "This Pokémon takes half as much damage from Fire- and Ice-type moves.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/47/"
+    },
+    {
+      "abilityId": 115,
+      "slot": 2,
+      "isHidden": false,
+      "slug": "ice-body",
+      "canonicalName": "Ice Body",
+      "shortEffect": "Heals for 1/16 max HP after each turn during hail.  Protects against hail damage.",
+      "effect": "This Pokémon heals for 1/16 of its maximum HP after each turn during hail, and it does not take hail damage regardless of type.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/115/"
+    },
+    {
+      "abilityId": 12,
+      "slot": 3,
+      "isHidden": true,
+      "slug": "oblivious",
+      "canonicalName": "Oblivious",
+      "shortEffect": "Prevents infatuation and protects against Captivate.",
+      "effect": "This Pokémon cannot be infatuated and is immune to Captivate.\n\nIf a Pokémon is infatuated and acquires this ability, its infatuation is cleared.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/12/"
+    }
+  ],
+  "source": {
+    "retrievedAt": "2026-07-23",
+    "sourceRevision": "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f",
+    "sourceUrls": [
+      "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
+      "https://github.com/PokeAPI/pokeapi/blob/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/LICENSE.md"
+    ],
+    "licenseStatus": "pending",
+    "requiredCredits": [
+      "PokéAPI contributors for the structured API data."
+    ],
+    "notes": [
+      "Structured data is sourced from PokéAPI under its BSD-3-Clause terms.",
+      "Pokémon names and character data remain subject to owner review and applicable trademark or copyright rights.",
+      "English source prose is preserved to avoid inventing translations of gameplay behavior."
+    ]
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 2,
+  "pokemonId": "pokemon:0198-murkrow",
+  "abilities": [
+    {
+      "abilityId": 15,
+      "slot": 1,
+      "isHidden": false,
+      "slug": "insomnia",
+      "canonicalName": "Insomnia",
+      "shortEffect": "Prevents sleep.",
+      "effect": "This Pokémon cannot be asleep.\n\nThis causes Rest to fail altogether.  If a Pokémon is asleep and acquires this ability, it will immediately wake up; this includes when regaining a lost ability upon leaving battle.\n\nThis ability functions identically to Vital Spirit in battle.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/15/"
+    },
+    {
+      "abilityId": 105,
+      "slot": 2,
+      "isHidden": false,
+      "slug": "super-luck",
+      "canonicalName": "Super Luck",
+      "shortEffect": "Raises moves' critical hit rates one stage.",
+      "effect": "This Pokémon's moves have critical hit rates one stage higher than normal.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/105/"
+    },
+    {
+      "abilityId": 158,
+      "slot": 3,
+      "isHidden": true,
+      "slug": "prankster",
+      "canonicalName": "Prankster",
+      "shortEffect": "Raises non-damaging moves' priority by one stage.",
+      "effect": "This Pokémon's non-damaging moves have their priority increased by one stage.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/158/"
+    }
+  ],
+  "source": {
+    "retrievedAt": "2026-07-23",
+    "sourceRevision": "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f",
+    "sourceUrls": [
+      "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
+      "https://github.com/PokeAPI/pokeapi/blob/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/LICENSE.md"
+    ],
+    "licenseStatus": "pending",
+    "requiredCredits": [
+      "PokéAPI contributors for the structured API data."
+    ],
+    "notes": [
+      "Structured data is sourced from PokéAPI under its BSD-3-Clause terms.",
+      "Pokémon names and character data remain subject to owner review and applicable trademark or copyright rights.",
+      "English source prose is preserved to avoid inventing translations of gameplay behavior."
+    ]
+  }
+}

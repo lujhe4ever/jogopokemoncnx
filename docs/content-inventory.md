@@ -7,10 +7,15 @@
 | `original-items` | 1 | Projeto LT | conteúdo original do projeto |
 | `original-creatures` | 1 | Projeto LT | conteúdo original do projeto |
 | `original-quests` | 1 | Projeto LT | conteúdo original do projeto |
+| `pokemon-canonical` | 2 | PokéAPI / titulares declarados na fonte | exceção temporária D-023; direitos `doubtful`; runtime bloqueado |
 
 Os manifests são a fonte verificável e `pnpm security:licenses` rejeita autoria,
 licença ou procedência ausente, caminhos perigosos e licenças fora da allowlist.
-Não há nome, logo, sprite, áudio, mapa ou texto de franquia externa no inventário.
+O pack `pokemon-canonical` é a única exceção: contém 4.100 sprites de referência
+publicados após autorização explícita do proprietário. Ele declara
+`runtimeEnabled: false`, `replacementRequired: true`, origem, revisão, créditos,
+hashes e direitos `doubtful`. A exceção não representa licença dos titulares.
 
 Qualquer novo asset deve registrar origem e licença antes de entrar no repositório.
-Material sem comprovação fica em quarentena fora do pack e não pode ser publicado.
+Fora da exceção nominal D-023, material sem comprovação fica em quarentena fora do
+pack e não pode ser publicado.

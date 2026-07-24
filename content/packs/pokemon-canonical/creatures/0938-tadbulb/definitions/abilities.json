@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 2,
+  "pokemonId": "pokemon:0938-tadbulb",
+  "abilities": [
+    {
+      "abilityId": 20,
+      "slot": 1,
+      "isHidden": false,
+      "slug": "own-tempo",
+      "canonicalName": "Own Tempo",
+      "shortEffect": "Prevents confusion.",
+      "effect": "This Pokémon cannot be confused.\n\nIf a Pokémon is confused and acquires this ability, its confusion will immediately be healed.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/20/"
+    },
+    {
+      "abilityId": 9,
+      "slot": 2,
+      "isHidden": false,
+      "slug": "static",
+      "canonicalName": "Static",
+      "shortEffect": "Has a 30% chance of paralyzing attacking Pokémon on contact.",
+      "effect": "Whenever a move makes contact with this Pokémon, the move's user has a 30% chance of being paralyzed.\n\nPokémon that are immune to Electric-type moves can still be paralyzed by this ability.\n\nOverworld: If the lead Pokémon has this ability, there is a 50% chance that encounters will be with an Electric Pokémon, if applicable.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/9/"
+    },
+    {
+      "abilityId": 6,
+      "slot": 3,
+      "isHidden": true,
+      "slug": "damp",
+      "canonicalName": "Damp",
+      "shortEffect": "Prevents Self-Destruct, Explosion, and Aftermath from working while the Pokémon is in battle.",
+      "effect": "While this Pokémon is in battle, Self-Destruct and Explosion will fail and Aftermath will not take effect.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/6/"
+    }
+  ],
+  "source": {
+    "retrievedAt": "2026-07-23",
+    "sourceRevision": "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f",
+    "sourceUrls": [
+      "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
+      "https://github.com/PokeAPI/pokeapi/blob/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/LICENSE.md"
+    ],
+    "licenseStatus": "pending",
+    "requiredCredits": [
+      "PokéAPI contributors for the structured API data."
+    ],
+    "notes": [
+      "Structured data is sourced from PokéAPI under its BSD-3-Clause terms.",
+      "Pokémon names and character data remain subject to owner review and applicable trademark or copyright rights.",
+      "English source prose is preserved to avoid inventing translations of gameplay behavior."
+    ]
+  }
+}

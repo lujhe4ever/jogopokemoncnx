@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 2,
+  "pokemonId": "pokemon:0336-seviper",
+  "abilities": [
+    {
+      "abilityId": 61,
+      "slot": 1,
+      "isHidden": false,
+      "slug": "shed-skin",
+      "canonicalName": "Shed Skin",
+      "shortEffect": "Has a 33% chance of curing any major status ailment after each turn.",
+      "effect": "After each turn, this Pokémon has a 33% of being cured of any major status ailment.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/61/"
+    },
+    {
+      "abilityId": 151,
+      "slot": 3,
+      "isHidden": true,
+      "slug": "infiltrator",
+      "canonicalName": "Infiltrator",
+      "shortEffect": "Bypasses Light Screen, Reflect, and Safeguard.",
+      "effect": "This Pokémon's moves ignore Light Screen, Reflect, and Safeguard.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/151/"
+    }
+  ],
+  "source": {
+    "retrievedAt": "2026-07-23",
+    "sourceRevision": "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f",
+    "sourceUrls": [
+      "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
+      "https://github.com/PokeAPI/pokeapi/blob/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/LICENSE.md"
+    ],
+    "licenseStatus": "pending",
+    "requiredCredits": [
+      "PokéAPI contributors for the structured API data."
+    ],
+    "notes": [
+      "Structured data is sourced from PokéAPI under its BSD-3-Clause terms.",
+      "Pokémon names and character data remain subject to owner review and applicable trademark or copyright rights.",
+      "English source prose is preserved to avoid inventing translations of gameplay behavior."
+    ]
+  }
+}

@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 2,
+  "id": "pokemon:0210-granbull",
+  "nationalDexNumber": 210,
+  "canonicalName": "Granbull",
+  "slug": "granbull",
+  "genus": "Fairy Pokémon",
+  "generationIntroduced": 2,
+  "generationSource": "generation-ii",
+  "types": [
+    "fairy"
+  ],
+  "physical": {
+    "heightDecimeters": 14,
+    "weightHectograms": 487
+  },
+  "baseExperience": 158,
+  "baseStats": {
+    "hp": {
+      "value": 90,
+      "effortYield": 0
+    },
+    "attack": {
+      "value": 120,
+      "effortYield": 2
+    },
+    "defense": {
+      "value": 75,
+      "effortYield": 0
+    },
+    "special-attack": {
+      "value": 60,
+      "effortYield": 0
+    },
+    "special-defense": {
+      "value": 60,
+      "effortYield": 0
+    },
+    "speed": {
+      "value": 45,
+      "effortYield": 0
+    }
+  },
+  "biologyAndTraining": {
+    "color": "purple",
+    "shape": "upright",
+    "habitat": "urban",
+    "genderRate": 6,
+    "captureRate": 75,
+    "baseHappiness": 70,
+    "hatchCounter": 20,
+    "hasGenderDifferences": false,
+    "growthRate": "fast",
+    "eggGroups": [
+      "ground",
+      "fairy"
+    ],
+    "isBaby": false,
+    "isLegendary": false,
+    "isMythical": false
+  },
+  "abilities": [
+    {
+      "slug": "intimidate",
+      "slot": 1,
+      "isHidden": false
+    },
+    {
+      "slug": "quick-feet",
+      "slot": 2,
+      "isHidden": false
+    },
+    {
+      "slug": "rattled",
+      "slot": 3,
+      "isHidden": true
+    }
+  ],
+  "evolution": {
+    "chainId": 105,
+    "evolvesFromSpeciesId": 209,
+    "evolvesTo": []
+  },
+  "source": {
+    "retrievedAt": "2026-07-23",
+    "sourceRevision": "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f",
+    "sourceUrls": [
+      "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
+      "https://github.com/PokeAPI/pokeapi/blob/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/LICENSE.md"
+    ],
+    "licenseStatus": "pending",
+    "requiredCredits": [
+      "PokéAPI contributors for the structured API data."
+    ],
+    "notes": [
+      "Structured data is sourced from PokéAPI under its BSD-3-Clause terms.",
+      "Pokémon names and character data remain subject to owner review and applicable trademark or copyright rights.",
+      "English source prose is preserved to avoid inventing translations of gameplay behavior."
+    ]
+  }
+}

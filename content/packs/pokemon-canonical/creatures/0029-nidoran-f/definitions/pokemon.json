@@ -1,0 +1,133 @@
+{
+  "schemaVersion": 2,
+  "id": "pokemon:0029-nidoran-f",
+  "nationalDexNumber": 29,
+  "canonicalName": "Nidoran♀",
+  "slug": "nidoran-f",
+  "genus": "Poison Pin Pokémon",
+  "generationIntroduced": 1,
+  "generationSource": "generation-i",
+  "types": [
+    "poison"
+  ],
+  "physical": {
+    "heightDecimeters": 4,
+    "weightHectograms": 70
+  },
+  "baseExperience": 55,
+  "baseStats": {
+    "hp": {
+      "value": 55,
+      "effortYield": 1
+    },
+    "attack": {
+      "value": 47,
+      "effortYield": 0
+    },
+    "defense": {
+      "value": 52,
+      "effortYield": 0
+    },
+    "special-attack": {
+      "value": 40,
+      "effortYield": 0
+    },
+    "special-defense": {
+      "value": 40,
+      "effortYield": 0
+    },
+    "speed": {
+      "value": 41,
+      "effortYield": 0
+    }
+  },
+  "biologyAndTraining": {
+    "color": "blue",
+    "shape": "quadruped",
+    "habitat": "grassland",
+    "genderRate": 8,
+    "captureRate": 235,
+    "baseHappiness": 70,
+    "hatchCounter": 20,
+    "hasGenderDifferences": false,
+    "growthRate": "medium-slow",
+    "eggGroups": [
+      "monster",
+      "ground"
+    ],
+    "isBaby": false,
+    "isLegendary": false,
+    "isMythical": false
+  },
+  "abilities": [
+    {
+      "slug": "poison-point",
+      "slot": 1,
+      "isHidden": false
+    },
+    {
+      "slug": "rivalry",
+      "slot": 2,
+      "isHidden": false
+    },
+    {
+      "slug": "hustle",
+      "slot": 3,
+      "isHidden": true
+    }
+  ],
+  "evolution": {
+    "chainId": 12,
+    "evolvesFromSpeciesId": null,
+    "evolvesTo": [
+      {
+        "fromSpeciesId": 29,
+        "toSpeciesId": 30,
+        "trigger": "level-up",
+        "versionGroupId": 1,
+        "isDefault": true,
+        "triggerItem": null,
+        "minimumLevel": 16,
+        "genderId": null,
+        "locationId": null,
+        "heldItem": null,
+        "timeOfDay": null,
+        "knownMove": null,
+        "knownMoveType": null,
+        "minimumHappiness": null,
+        "minimumBeauty": null,
+        "minimumAffection": null,
+        "relativePhysicalStats": null,
+        "partySpeciesId": null,
+        "partyType": null,
+        "tradeSpeciesId": null,
+        "needsOverworldRain": false,
+        "turnUpsideDown": false,
+        "needsMultiplayer": false,
+        "nearSpecialRock": false,
+        "regionId": null,
+        "usedMove": null,
+        "minimumMoveCount": null,
+        "minimumSteps": null,
+        "minimumDamageTaken": null
+      }
+    ]
+  },
+  "source": {
+    "retrievedAt": "2026-07-23",
+    "sourceRevision": "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f",
+    "sourceUrls": [
+      "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
+      "https://github.com/PokeAPI/pokeapi/blob/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/LICENSE.md"
+    ],
+    "licenseStatus": "pending",
+    "requiredCredits": [
+      "PokéAPI contributors for the structured API data."
+    ],
+    "notes": [
+      "Structured data is sourced from PokéAPI under its BSD-3-Clause terms.",
+      "Pokémon names and character data remain subject to owner review and applicable trademark or copyright rights.",
+      "English source prose is preserved to avoid inventing translations of gameplay behavior."
+    ]
+  }
+}

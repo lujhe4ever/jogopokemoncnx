@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 2,
+  "pokemonId": "pokemon:0324-torkoal",
+  "abilities": [
+    {
+      "abilityId": 73,
+      "slot": 1,
+      "isHidden": false,
+      "slug": "white-smoke",
+      "canonicalName": "White Smoke",
+      "shortEffect": "Prevents stats from being lowered by other Pokémon.",
+      "effect": "This Pokémon cannot have its stats lowered by other Pokémon.\n\nThis ability does not prevent any stat losses other than stat modifiers, such as the Speed cut from paralysis; nor self-inflicted stat drops, such as the Special Attack drop from Overheat; nor opponent-triggered stat boosts, such as the Attack boost from Swagger.  This Pokémon can still be passed negative stat modifiers through Guard Swap, Heart Swap, or Power Swap.\n\nThis ability functions identically to Clear Body in battle.\n\nOverworld: If the lead Pokémon has this ability, the wild encounter rate is halved.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/73/"
+    },
+    {
+      "abilityId": 70,
+      "slot": 2,
+      "isHidden": false,
+      "slug": "drought",
+      "canonicalName": "Drought",
+      "shortEffect": "Summons strong sunlight that lasts indefinitely upon entering battle.",
+      "effect": "The weather changes to strong sunlight when this Pokémon enters battle and does not end unless cancelled by another weather condition.\n\nIf multiple Pokémon with this ability, Drizzle, Sand Stream, or Snow Warning are sent out at the same time, the abilities will activate in order of Speed, respecting Trick Room.  Each ability's weather will cancel the previous weather, and only the weather summoned by the slowest of the Pokémon will stay.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/70/"
+    },
+    {
+      "abilityId": 75,
+      "slot": 3,
+      "isHidden": true,
+      "slug": "shell-armor",
+      "canonicalName": "Shell Armor",
+      "shortEffect": "Protects against critical hits.",
+      "effect": "Moves cannot score critical hits against this Pokémon.\n\nThis ability functions identically to Battle Armor.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/75/"
+    }
+  ],
+  "source": {
+    "retrievedAt": "2026-07-23",
+    "sourceRevision": "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f",
+    "sourceUrls": [
+      "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
+      "https://github.com/PokeAPI/pokeapi/blob/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/LICENSE.md"
+    ],
+    "licenseStatus": "pending",
+    "requiredCredits": [
+      "PokéAPI contributors for the structured API data."
+    ],
+    "notes": [
+      "Structured data is sourced from PokéAPI under its BSD-3-Clause terms.",
+      "Pokémon names and character data remain subject to owner review and applicable trademark or copyright rights.",
+      "English source prose is preserved to avoid inventing translations of gameplay behavior."
+    ]
+  }
+}

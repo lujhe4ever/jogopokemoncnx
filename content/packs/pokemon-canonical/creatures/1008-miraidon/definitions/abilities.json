@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 2,
+  "pokemonId": "pokemon:1008-miraidon",
+  "abilities": [
+    {
+      "abilityId": 289,
+      "slot": 1,
+      "isHidden": false,
+      "slug": "hadron-engine",
+      "canonicalName": "Hadron Engine",
+      "shortEffect": "Creates an Electric Terrain when entering battle, and boosts Special Attack while active.",
+      "effect": "Turns the ground into Electric Terrain when the Pokémon enters a battle. The futuristic engine within the Pokémon also boosts its Sp. Atk stat on Electric Terrain.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/289/"
+    }
+  ],
+  "source": {
+    "retrievedAt": "2026-07-23",
+    "sourceRevision": "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f",
+    "sourceUrls": [
+      "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
+      "https://github.com/PokeAPI/pokeapi/blob/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/LICENSE.md"
+    ],
+    "licenseStatus": "pending",
+    "requiredCredits": [
+      "PokéAPI contributors for the structured API data."
+    ],
+    "notes": [
+      "Structured data is sourced from PokéAPI under its BSD-3-Clause terms.",
+      "Pokémon names and character data remain subject to owner review and applicable trademark or copyright rights.",
+      "English source prose is preserved to avoid inventing translations of gameplay behavior."
+    ]
+  }
+}

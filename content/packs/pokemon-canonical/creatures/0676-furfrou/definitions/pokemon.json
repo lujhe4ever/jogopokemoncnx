@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 2,
+  "id": "pokemon:0676-furfrou",
+  "nationalDexNumber": 676,
+  "canonicalName": "Furfrou",
+  "slug": "furfrou",
+  "genus": "Poodle Pokémon",
+  "generationIntroduced": 6,
+  "generationSource": "generation-vi",
+  "types": [
+    "normal"
+  ],
+  "physical": {
+    "heightDecimeters": 12,
+    "weightHectograms": 280
+  },
+  "baseExperience": 165,
+  "baseStats": {
+    "hp": {
+      "value": 75,
+      "effortYield": 0
+    },
+    "attack": {
+      "value": 80,
+      "effortYield": 0
+    },
+    "defense": {
+      "value": 60,
+      "effortYield": 0
+    },
+    "special-attack": {
+      "value": 65,
+      "effortYield": 0
+    },
+    "special-defense": {
+      "value": 90,
+      "effortYield": 0
+    },
+    "speed": {
+      "value": 102,
+      "effortYield": 1
+    }
+  },
+  "biologyAndTraining": {
+    "color": "white",
+    "shape": "quadruped",
+    "habitat": null,
+    "genderRate": 4,
+    "captureRate": 160,
+    "baseHappiness": 70,
+    "hatchCounter": 20,
+    "hasGenderDifferences": false,
+    "growthRate": "medium",
+    "eggGroups": [
+      "ground"
+    ],
+    "isBaby": false,
+    "isLegendary": false,
+    "isMythical": false
+  },
+  "abilities": [
+    {
+      "slug": "fur-coat",
+      "slot": 1,
+      "isHidden": false
+    }
+  ],
+  "evolution": {
+    "chainId": 347,
+    "evolvesFromSpeciesId": null,
+    "evolvesTo": []
+  },
+  "source": {
+    "retrievedAt": "2026-07-23",
+    "sourceRevision": "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f",
+    "sourceUrls": [
+      "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
+      "https://github.com/PokeAPI/pokeapi/blob/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/LICENSE.md"
+    ],
+    "licenseStatus": "pending",
+    "requiredCredits": [
+      "PokéAPI contributors for the structured API data."
+    ],
+    "notes": [
+      "Structured data is sourced from PokéAPI under its BSD-3-Clause terms.",
+      "Pokémon names and character data remain subject to owner review and applicable trademark or copyright rights.",
+      "English source prose is preserved to avoid inventing translations of gameplay behavior."
+    ]
+  }
+}

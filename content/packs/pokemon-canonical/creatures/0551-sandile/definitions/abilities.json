@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 2,
+  "pokemonId": "pokemon:0551-sandile",
+  "abilities": [
+    {
+      "abilityId": 22,
+      "slot": 1,
+      "isHidden": false,
+      "slug": "intimidate",
+      "canonicalName": "Intimidate",
+      "shortEffect": "Lowers opponents' Attack one stage upon entering battle.",
+      "effect": "When this Pokémon enters battle, the opponent's Attack is lowered by one stage.  In a double battle, both opponents are affected.\n\nThis ability also takes effect when acquired during a battle, but will not take effect again if lost and reobtained without leaving battle.\n\nThis ability has no effect on an opponent that has a Substitute.\n\nOverworld: If the first Pokémon in the party has this ability, any random encounter with a Pokémon five or more levels lower than it has a 50% chance of being skipped.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/22/"
+    },
+    {
+      "abilityId": 153,
+      "slot": 2,
+      "isHidden": false,
+      "slug": "moxie",
+      "canonicalName": "Moxie",
+      "shortEffect": "Raises Attack one stage upon KOing a Pokémon.",
+      "effect": "This Pokémon's Attack rises one stage upon knocking out another Pokémon, even a friendly Pokémon.\n\nThis ability does not take effect when the Pokémon indirectly causes another Pokémon to faint, e.g. through poison or Spikes.\n\nIf this Pokémon knocks out a Pokémon with Mummy, the former's ability will change without taking effect.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/153/"
+    },
+    {
+      "abilityId": 83,
+      "slot": 3,
+      "isHidden": true,
+      "slug": "anger-point",
+      "canonicalName": "Anger Point",
+      "shortEffect": "Raises Attack to the maximum of six stages upon receiving a critical hit.",
+      "effect": "Whenever this Pokémon receives a critical hit, its Attack rises to the maximum of 6 stages.\n\nThis ability will still take effect if the critical hit is received by a Substitute.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/83/"
+    }
+  ],
+  "source": {
+    "retrievedAt": "2026-07-23",
+    "sourceRevision": "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f",
+    "sourceUrls": [
+      "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
+      "https://github.com/PokeAPI/pokeapi/blob/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/LICENSE.md"
+    ],
+    "licenseStatus": "pending",
+    "requiredCredits": [
+      "PokéAPI contributors for the structured API data."
+    ],
+    "notes": [
+      "Structured data is sourced from PokéAPI under its BSD-3-Clause terms.",
+      "Pokémon names and character data remain subject to owner review and applicable trademark or copyright rights.",
+      "English source prose is preserved to avoid inventing translations of gameplay behavior."
+    ]
+  }
+}

@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 2,
+  "id": "pokemon:0424-ambipom",
+  "nationalDexNumber": 424,
+  "canonicalName": "Ambipom",
+  "slug": "ambipom",
+  "genus": "Long Tail Pokémon",
+  "generationIntroduced": 4,
+  "generationSource": "generation-iv",
+  "types": [
+    "normal"
+  ],
+  "physical": {
+    "heightDecimeters": 12,
+    "weightHectograms": 203
+  },
+  "baseExperience": 169,
+  "baseStats": {
+    "hp": {
+      "value": 75,
+      "effortYield": 0
+    },
+    "attack": {
+      "value": 100,
+      "effortYield": 0
+    },
+    "defense": {
+      "value": 66,
+      "effortYield": 0
+    },
+    "special-attack": {
+      "value": 60,
+      "effortYield": 0
+    },
+    "special-defense": {
+      "value": 66,
+      "effortYield": 0
+    },
+    "speed": {
+      "value": 115,
+      "effortYield": 2
+    }
+  },
+  "biologyAndTraining": {
+    "color": "purple",
+    "shape": "upright",
+    "habitat": null,
+    "genderRate": 4,
+    "captureRate": 45,
+    "baseHappiness": 100,
+    "hatchCounter": 20,
+    "hasGenderDifferences": true,
+    "growthRate": "fast",
+    "eggGroups": [
+      "ground"
+    ],
+    "isBaby": false,
+    "isLegendary": false,
+    "isMythical": false
+  },
+  "abilities": [
+    {
+      "slug": "technician",
+      "slot": 1,
+      "isHidden": false
+    },
+    {
+      "slug": "pickup",
+      "slot": 2,
+      "isHidden": false
+    },
+    {
+      "slug": "skill-link",
+      "slot": 3,
+      "isHidden": true
+    }
+  ],
+  "evolution": {
+    "chainId": 93,
+    "evolvesFromSpeciesId": 190,
+    "evolvesTo": []
+  },
+  "source": {
+    "retrievedAt": "2026-07-23",
+    "sourceRevision": "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f",
+    "sourceUrls": [
+      "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
+      "https://github.com/PokeAPI/pokeapi/blob/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/LICENSE.md"
+    ],
+    "licenseStatus": "pending",
+    "requiredCredits": [
+      "PokéAPI contributors for the structured API data."
+    ],
+    "notes": [
+      "Structured data is sourced from PokéAPI under its BSD-3-Clause terms.",
+      "Pokémon names and character data remain subject to owner review and applicable trademark or copyright rights.",
+      "English source prose is preserved to avoid inventing translations of gameplay behavior."
+    ]
+  }
+}

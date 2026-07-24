@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 2,
+  "id": "pokemon:0898-calyrex",
+  "nationalDexNumber": 898,
+  "canonicalName": "Calyrex",
+  "slug": "calyrex",
+  "genus": "King Pokémon",
+  "generationIntroduced": 8,
+  "generationSource": "generation-viii",
+  "types": [
+    "psychic",
+    "grass"
+  ],
+  "physical": {
+    "heightDecimeters": 11,
+    "weightHectograms": 77
+  },
+  "baseExperience": 250,
+  "baseStats": {
+    "hp": {
+      "value": 100,
+      "effortYield": 3
+    },
+    "attack": {
+      "value": 80,
+      "effortYield": 0
+    },
+    "defense": {
+      "value": 80,
+      "effortYield": 0
+    },
+    "special-attack": {
+      "value": 80,
+      "effortYield": 0
+    },
+    "special-defense": {
+      "value": 80,
+      "effortYield": 0
+    },
+    "speed": {
+      "value": 80,
+      "effortYield": 0
+    }
+  },
+  "biologyAndTraining": {
+    "color": "green",
+    "shape": "humanoid",
+    "habitat": null,
+    "genderRate": -1,
+    "captureRate": 3,
+    "baseHappiness": 100,
+    "hatchCounter": 120,
+    "hasGenderDifferences": false,
+    "growthRate": "slow",
+    "eggGroups": [
+      "no-eggs"
+    ],
+    "isBaby": false,
+    "isLegendary": true,
+    "isMythical": false
+  },
+  "abilities": [
+    {
+      "slug": "unnerve",
+      "slot": 1,
+      "isHidden": false
+    }
+  ],
+  "evolution": {
+    "chainId": 476,
+    "evolvesFromSpeciesId": null,
+    "evolvesTo": []
+  },
+  "source": {
+    "retrievedAt": "2026-07-23",
+    "sourceRevision": "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f",
+    "sourceUrls": [
+      "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
+      "https://github.com/PokeAPI/pokeapi/blob/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/LICENSE.md"
+    ],
+    "licenseStatus": "pending",
+    "requiredCredits": [
+      "PokéAPI contributors for the structured API data."
+    ],
+    "notes": [
+      "Structured data is sourced from PokéAPI under its BSD-3-Clause terms.",
+      "Pokémon names and character data remain subject to owner review and applicable trademark or copyright rights.",
+      "English source prose is preserved to avoid inventing translations of gameplay behavior."
+    ]
+  }
+}

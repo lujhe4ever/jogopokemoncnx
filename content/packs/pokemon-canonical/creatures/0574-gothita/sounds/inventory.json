@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 2,
+  "pokemonId": "pokemon:0574-gothita",
+  "source": {
+    "retrievedAt": "2026-07-23",
+    "sourceRevision": null,
+    "sourceUrls": [],
+    "licenseStatus": "pending",
+    "requiredCredits": [],
+    "notes": [
+      "Sound research and acquisition are reserved for a future authorized task."
+    ]
+  },
+  "statusSummary": {
+    "approved": 0,
+    "pending": 0,
+    "doubtful": 0,
+    "rejected": 0,
+    "quarantined": 0
+  },
+  "entries": []
+}

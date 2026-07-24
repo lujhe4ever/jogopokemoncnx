@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 2,
+  "id": "pokemon:0241-miltank",
+  "nationalDexNumber": 241,
+  "canonicalName": "Miltank",
+  "slug": "miltank",
+  "genus": "Milk Cow Pokémon",
+  "generationIntroduced": 2,
+  "generationSource": "generation-ii",
+  "types": [
+    "normal"
+  ],
+  "physical": {
+    "heightDecimeters": 12,
+    "weightHectograms": 755
+  },
+  "baseExperience": 172,
+  "baseStats": {
+    "hp": {
+      "value": 95,
+      "effortYield": 0
+    },
+    "attack": {
+      "value": 80,
+      "effortYield": 0
+    },
+    "defense": {
+      "value": 105,
+      "effortYield": 2
+    },
+    "special-attack": {
+      "value": 40,
+      "effortYield": 0
+    },
+    "special-defense": {
+      "value": 70,
+      "effortYield": 0
+    },
+    "speed": {
+      "value": 100,
+      "effortYield": 0
+    }
+  },
+  "biologyAndTraining": {
+    "color": "pink",
+    "shape": "upright",
+    "habitat": "grassland",
+    "genderRate": 8,
+    "captureRate": 45,
+    "baseHappiness": 70,
+    "hatchCounter": 20,
+    "hasGenderDifferences": false,
+    "growthRate": "slow",
+    "eggGroups": [
+      "ground"
+    ],
+    "isBaby": false,
+    "isLegendary": false,
+    "isMythical": false
+  },
+  "abilities": [
+    {
+      "slug": "thick-fat",
+      "slot": 1,
+      "isHidden": false
+    },
+    {
+      "slug": "scrappy",
+      "slot": 2,
+      "isHidden": false
+    },
+    {
+      "slug": "sap-sipper",
+      "slot": 3,
+      "isHidden": true
+    }
+  ],
+  "evolution": {
+    "chainId": 122,
+    "evolvesFromSpeciesId": null,
+    "evolvesTo": []
+  },
+  "source": {
+    "retrievedAt": "2026-07-23",
+    "sourceRevision": "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f",
+    "sourceUrls": [
+      "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
+      "https://github.com/PokeAPI/pokeapi/blob/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/LICENSE.md"
+    ],
+    "licenseStatus": "pending",
+    "requiredCredits": [
+      "PokéAPI contributors for the structured API data."
+    ],
+    "notes": [
+      "Structured data is sourced from PokéAPI under its BSD-3-Clause terms.",
+      "Pokémon names and character data remain subject to owner review and applicable trademark or copyright rights.",
+      "English source prose is preserved to avoid inventing translations of gameplay behavior."
+    ]
+  }
+}

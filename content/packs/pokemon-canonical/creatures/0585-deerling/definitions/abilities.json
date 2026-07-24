@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 2,
+  "pokemonId": "pokemon:0585-deerling",
+  "abilities": [
+    {
+      "abilityId": 34,
+      "slot": 1,
+      "isHidden": false,
+      "slug": "chlorophyll",
+      "canonicalName": "Chlorophyll",
+      "shortEffect": "Doubles Speed during strong sunlight.",
+      "effect": "This Pokémon's Speed is doubled during strong sunlight.\n\nThis bonus does not count as a stat modifier.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/34/"
+    },
+    {
+      "abilityId": 157,
+      "slot": 2,
+      "isHidden": false,
+      "slug": "sap-sipper",
+      "canonicalName": "Sap Sipper",
+      "shortEffect": "Absorbs Grass moves, raising Attack one stage.",
+      "effect": "Whenever a Grass-type move hits this Pokémon, its Attack rises one stage, negating any other effect on it.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/157/"
+    },
+    {
+      "abilityId": 32,
+      "slot": 3,
+      "isHidden": true,
+      "slug": "serene-grace",
+      "canonicalName": "Serene Grace",
+      "shortEffect": "Doubles the chance of moves' extra effects occurring.",
+      "effect": "This Pokémon's moves have twice their usual effect chance.\n\nAn effect chance is a move's chance to inflict a status ailment, cause a stat change, or make the target flinch in addition to the move's main effect.  For example, Flamethrower's chance of burning the target is doubled, but Protect's chance of success and Air Cutter's increased critical hit rate are unaffected.\n\nSecret Power is unaffected.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/32/"
+    }
+  ],
+  "source": {
+    "retrievedAt": "2026-07-23",
+    "sourceRevision": "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f",
+    "sourceUrls": [
+      "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
+      "https://github.com/PokeAPI/pokeapi/blob/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/LICENSE.md"
+    ],
+    "licenseStatus": "pending",
+    "requiredCredits": [
+      "PokéAPI contributors for the structured API data."
+    ],
+    "notes": [
+      "Structured data is sourced from PokéAPI under its BSD-3-Clause terms.",
+      "Pokémon names and character data remain subject to owner review and applicable trademark or copyright rights.",
+      "English source prose is preserved to avoid inventing translations of gameplay behavior."
+    ]
+  }
+}

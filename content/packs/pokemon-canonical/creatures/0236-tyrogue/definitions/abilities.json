@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 2,
+  "pokemonId": "pokemon:0236-tyrogue",
+  "abilities": [
+    {
+      "abilityId": 62,
+      "slot": 1,
+      "isHidden": false,
+      "slug": "guts",
+      "canonicalName": "Guts",
+      "shortEffect": "Increases Attack to 1.5× with a major status ailment.",
+      "effect": "Whenever this Pokémon is asleep, burned, paralyzed, or poisoned, it has 1.5× its Attack.  This Pokémon is not affected by the usual Attack cut from a burn.\n\nThis bonus does not count as a stat modifier.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/62/"
+    },
+    {
+      "abilityId": 80,
+      "slot": 2,
+      "isHidden": false,
+      "slug": "steadfast",
+      "canonicalName": "Steadfast",
+      "shortEffect": "Raises Speed one stage upon flinching.",
+      "effect": "Whenever this Pokémon flinches, its Speed rises one stage.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/80/"
+    },
+    {
+      "abilityId": 72,
+      "slot": 3,
+      "isHidden": true,
+      "slug": "vital-spirit",
+      "canonicalName": "Vital Spirit",
+      "shortEffect": "Prevents sleep.",
+      "effect": "This Pokémon cannot be asleep.\n\nThis causes Rest to fail altogether.  If a Pokémon is asleep and acquires this ability, it will immediately wake up; this includes when regaining a lost ability upon leaving battle.\n\nThis ability functions identically to Insomnia in battle.\n\nOverworld: If the lead Pokémon has this ability, higher-levelled Pokémon have their encounter rate increased.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/72/"
+    }
+  ],
+  "source": {
+    "retrievedAt": "2026-07-23",
+    "sourceRevision": "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f",
+    "sourceUrls": [
+      "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
+      "https://github.com/PokeAPI/pokeapi/blob/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/LICENSE.md"
+    ],
+    "licenseStatus": "pending",
+    "requiredCredits": [
+      "PokéAPI contributors for the structured API data."
+    ],
+    "notes": [
+      "Structured data is sourced from PokéAPI under its BSD-3-Clause terms.",
+      "Pokémon names and character data remain subject to owner review and applicable trademark or copyright rights.",
+      "English source prose is preserved to avoid inventing translations of gameplay behavior."
+    ]
+  }
+}

@@ -1,0 +1,95 @@
+{
+  "schemaVersion": 2,
+  "id": "pokemon:0466-electivire",
+  "nationalDexNumber": 466,
+  "canonicalName": "Electivire",
+  "slug": "electivire",
+  "genus": "Thunderbolt Pokémon",
+  "generationIntroduced": 4,
+  "generationSource": "generation-iv",
+  "types": [
+    "electric"
+  ],
+  "physical": {
+    "heightDecimeters": 18,
+    "weightHectograms": 1386
+  },
+  "baseExperience": 243,
+  "baseStats": {
+    "hp": {
+      "value": 75,
+      "effortYield": 0
+    },
+    "attack": {
+      "value": 123,
+      "effortYield": 3
+    },
+    "defense": {
+      "value": 67,
+      "effortYield": 0
+    },
+    "special-attack": {
+      "value": 95,
+      "effortYield": 0
+    },
+    "special-defense": {
+      "value": 85,
+      "effortYield": 0
+    },
+    "speed": {
+      "value": 95,
+      "effortYield": 0
+    }
+  },
+  "biologyAndTraining": {
+    "color": "yellow",
+    "shape": "upright",
+    "habitat": null,
+    "genderRate": 2,
+    "captureRate": 30,
+    "baseHappiness": 70,
+    "hatchCounter": 25,
+    "hasGenderDifferences": false,
+    "growthRate": "medium",
+    "eggGroups": [
+      "humanshape"
+    ],
+    "isBaby": false,
+    "isLegendary": false,
+    "isMythical": false
+  },
+  "abilities": [
+    {
+      "slug": "motor-drive",
+      "slot": 1,
+      "isHidden": false
+    },
+    {
+      "slug": "vital-spirit",
+      "slot": 3,
+      "isHidden": true
+    }
+  ],
+  "evolution": {
+    "chainId": 60,
+    "evolvesFromSpeciesId": 125,
+    "evolvesTo": []
+  },
+  "source": {
+    "retrievedAt": "2026-07-23",
+    "sourceRevision": "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f",
+    "sourceUrls": [
+      "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
+      "https://github.com/PokeAPI/pokeapi/blob/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/LICENSE.md"
+    ],
+    "licenseStatus": "pending",
+    "requiredCredits": [
+      "PokéAPI contributors for the structured API data."
+    ],
+    "notes": [
+      "Structured data is sourced from PokéAPI under its BSD-3-Clause terms.",
+      "Pokémon names and character data remain subject to owner review and applicable trademark or copyright rights.",
+      "English source prose is preserved to avoid inventing translations of gameplay behavior."
+    ]
+  }
+}

@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 2,
+  "id": "pokemon:0474-porygon-z",
+  "nationalDexNumber": 474,
+  "canonicalName": "Porygon-Z",
+  "slug": "porygon-z",
+  "genus": "Virtual Pokémon",
+  "generationIntroduced": 4,
+  "generationSource": "generation-iv",
+  "types": [
+    "normal"
+  ],
+  "physical": {
+    "heightDecimeters": 9,
+    "weightHectograms": 340
+  },
+  "baseExperience": 241,
+  "baseStats": {
+    "hp": {
+      "value": 85,
+      "effortYield": 0
+    },
+    "attack": {
+      "value": 80,
+      "effortYield": 0
+    },
+    "defense": {
+      "value": 70,
+      "effortYield": 0
+    },
+    "special-attack": {
+      "value": 135,
+      "effortYield": 3
+    },
+    "special-defense": {
+      "value": 75,
+      "effortYield": 0
+    },
+    "speed": {
+      "value": 90,
+      "effortYield": 0
+    }
+  },
+  "biologyAndTraining": {
+    "color": "red",
+    "shape": "arms",
+    "habitat": null,
+    "genderRate": -1,
+    "captureRate": 30,
+    "baseHappiness": 70,
+    "hatchCounter": 20,
+    "hasGenderDifferences": false,
+    "growthRate": "medium",
+    "eggGroups": [
+      "mineral"
+    ],
+    "isBaby": false,
+    "isLegendary": false,
+    "isMythical": false
+  },
+  "abilities": [
+    {
+      "slug": "adaptability",
+      "slot": 1,
+      "isHidden": false
+    },
+    {
+      "slug": "download",
+      "slot": 2,
+      "isHidden": false
+    },
+    {
+      "slug": "analytic",
+      "slot": 3,
+      "isHidden": true
+    }
+  ],
+  "evolution": {
+    "chainId": 68,
+    "evolvesFromSpeciesId": 233,
+    "evolvesTo": []
+  },
+  "source": {
+    "retrievedAt": "2026-07-23",
+    "sourceRevision": "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f",
+    "sourceUrls": [
+      "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
+      "https://github.com/PokeAPI/pokeapi/blob/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/LICENSE.md"
+    ],
+    "licenseStatus": "pending",
+    "requiredCredits": [
+      "PokéAPI contributors for the structured API data."
+    ],
+    "notes": [
+      "Structured data is sourced from PokéAPI under its BSD-3-Clause terms.",
+      "Pokémon names and character data remain subject to owner review and applicable trademark or copyright rights.",
+      "English source prose is preserved to avoid inventing translations of gameplay behavior."
+    ]
+  }
+}

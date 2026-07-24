@@ -1,0 +1,97 @@
+{
+  "schemaVersion": 2,
+  "id": "pokemon:0149-dragonite",
+  "nationalDexNumber": 149,
+  "canonicalName": "Dragonite",
+  "slug": "dragonite",
+  "genus": "Dragon Pokémon",
+  "generationIntroduced": 1,
+  "generationSource": "generation-i",
+  "types": [
+    "dragon",
+    "flying"
+  ],
+  "physical": {
+    "heightDecimeters": 22,
+    "weightHectograms": 2100
+  },
+  "baseExperience": 270,
+  "baseStats": {
+    "hp": {
+      "value": 91,
+      "effortYield": 0
+    },
+    "attack": {
+      "value": 134,
+      "effortYield": 3
+    },
+    "defense": {
+      "value": 95,
+      "effortYield": 0
+    },
+    "special-attack": {
+      "value": 100,
+      "effortYield": 0
+    },
+    "special-defense": {
+      "value": 100,
+      "effortYield": 0
+    },
+    "speed": {
+      "value": 80,
+      "effortYield": 0
+    }
+  },
+  "biologyAndTraining": {
+    "color": "brown",
+    "shape": "upright",
+    "habitat": "waters-edge",
+    "genderRate": 4,
+    "captureRate": 45,
+    "baseHappiness": 35,
+    "hatchCounter": 40,
+    "hasGenderDifferences": false,
+    "growthRate": "slow",
+    "eggGroups": [
+      "water1",
+      "dragon"
+    ],
+    "isBaby": false,
+    "isLegendary": false,
+    "isMythical": false
+  },
+  "abilities": [
+    {
+      "slug": "inner-focus",
+      "slot": 1,
+      "isHidden": false
+    },
+    {
+      "slug": "multiscale",
+      "slot": 3,
+      "isHidden": true
+    }
+  ],
+  "evolution": {
+    "chainId": 76,
+    "evolvesFromSpeciesId": 148,
+    "evolvesTo": []
+  },
+  "source": {
+    "retrievedAt": "2026-07-23",
+    "sourceRevision": "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f",
+    "sourceUrls": [
+      "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
+      "https://github.com/PokeAPI/pokeapi/blob/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/LICENSE.md"
+    ],
+    "licenseStatus": "pending",
+    "requiredCredits": [
+      "PokéAPI contributors for the structured API data."
+    ],
+    "notes": [
+      "Structured data is sourced from PokéAPI under its BSD-3-Clause terms.",
+      "Pokémon names and character data remain subject to owner review and applicable trademark or copyright rights.",
+      "English source prose is preserved to avoid inventing translations of gameplay behavior."
+    ]
+  }
+}

@@ -1,0 +1,95 @@
+{
+  "schemaVersion": 2,
+  "id": "pokemon:0771-pyukumuku",
+  "nationalDexNumber": 771,
+  "canonicalName": "Pyukumuku",
+  "slug": "pyukumuku",
+  "genus": "Sea Cucumber Pokémon",
+  "generationIntroduced": 7,
+  "generationSource": "generation-vii",
+  "types": [
+    "water"
+  ],
+  "physical": {
+    "heightDecimeters": 3,
+    "weightHectograms": 12
+  },
+  "baseExperience": 144,
+  "baseStats": {
+    "hp": {
+      "value": 55,
+      "effortYield": 0
+    },
+    "attack": {
+      "value": 60,
+      "effortYield": 0
+    },
+    "defense": {
+      "value": 130,
+      "effortYield": 0
+    },
+    "special-attack": {
+      "value": 30,
+      "effortYield": 0
+    },
+    "special-defense": {
+      "value": 130,
+      "effortYield": 2
+    },
+    "speed": {
+      "value": 5,
+      "effortYield": 0
+    }
+  },
+  "biologyAndTraining": {
+    "color": "black",
+    "shape": "squiggle",
+    "habitat": null,
+    "genderRate": 4,
+    "captureRate": 60,
+    "baseHappiness": 70,
+    "hatchCounter": 15,
+    "hasGenderDifferences": false,
+    "growthRate": "fast",
+    "eggGroups": [
+      "water1"
+    ],
+    "isBaby": false,
+    "isLegendary": false,
+    "isMythical": false
+  },
+  "abilities": [
+    {
+      "slug": "innards-out",
+      "slot": 1,
+      "isHidden": false
+    },
+    {
+      "slug": "unaware",
+      "slot": 3,
+      "isHidden": true
+    }
+  ],
+  "evolution": {
+    "chainId": 398,
+    "evolvesFromSpeciesId": null,
+    "evolvesTo": []
+  },
+  "source": {
+    "retrievedAt": "2026-07-23",
+    "sourceRevision": "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f",
+    "sourceUrls": [
+      "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
+      "https://github.com/PokeAPI/pokeapi/blob/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/LICENSE.md"
+    ],
+    "licenseStatus": "pending",
+    "requiredCredits": [
+      "PokéAPI contributors for the structured API data."
+    ],
+    "notes": [
+      "Structured data is sourced from PokéAPI under its BSD-3-Clause terms.",
+      "Pokémon names and character data remain subject to owner review and applicable trademark or copyright rights.",
+      "English source prose is preserved to avoid inventing translations of gameplay behavior."
+    ]
+  }
+}

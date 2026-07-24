@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 2,
+  "pokemonId": "pokemon:0501-oshawott",
+  "abilities": [
+    {
+      "abilityId": 67,
+      "slot": 1,
+      "isHidden": false,
+      "slug": "torrent",
+      "canonicalName": "Torrent",
+      "shortEffect": "Strengthens Water moves to inflict 1.5× damage at 1/3 max HP or less.",
+      "effect": "When this Pokémon has 1/3 or less of its HP remaining, its Water-type moves inflict 1.5× as much regular damage.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/67/"
+    },
+    {
+      "abilityId": 75,
+      "slot": 3,
+      "isHidden": true,
+      "slug": "shell-armor",
+      "canonicalName": "Shell Armor",
+      "shortEffect": "Protects against critical hits.",
+      "effect": "Moves cannot score critical hits against this Pokémon.\n\nThis ability functions identically to Battle Armor.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/75/"
+    }
+  ],
+  "source": {
+    "retrievedAt": "2026-07-23",
+    "sourceRevision": "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f",
+    "sourceUrls": [
+      "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
+      "https://github.com/PokeAPI/pokeapi/blob/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/LICENSE.md"
+    ],
+    "licenseStatus": "pending",
+    "requiredCredits": [
+      "PokéAPI contributors for the structured API data."
+    ],
+    "notes": [
+      "Structured data is sourced from PokéAPI under its BSD-3-Clause terms.",
+      "Pokémon names and character data remain subject to owner review and applicable trademark or copyright rights.",
+      "English source prose is preserved to avoid inventing translations of gameplay behavior."
+    ]
+  }
+}

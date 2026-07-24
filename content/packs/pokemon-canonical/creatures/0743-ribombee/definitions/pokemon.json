@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 2,
+  "id": "pokemon:0743-ribombee",
+  "nationalDexNumber": 743,
+  "canonicalName": "Ribombee",
+  "slug": "ribombee",
+  "genus": "Bee Fly Pokémon",
+  "generationIntroduced": 7,
+  "generationSource": "generation-vii",
+  "types": [
+    "bug",
+    "fairy"
+  ],
+  "physical": {
+    "heightDecimeters": 2,
+    "weightHectograms": 5
+  },
+  "baseExperience": 162,
+  "baseStats": {
+    "hp": {
+      "value": 60,
+      "effortYield": 0
+    },
+    "attack": {
+      "value": 55,
+      "effortYield": 0
+    },
+    "defense": {
+      "value": 60,
+      "effortYield": 0
+    },
+    "special-attack": {
+      "value": 95,
+      "effortYield": 0
+    },
+    "special-defense": {
+      "value": 70,
+      "effortYield": 0
+    },
+    "speed": {
+      "value": 124,
+      "effortYield": 2
+    }
+  },
+  "biologyAndTraining": {
+    "color": "yellow",
+    "shape": "bug-wings",
+    "habitat": null,
+    "genderRate": 4,
+    "captureRate": 75,
+    "baseHappiness": 70,
+    "hatchCounter": 20,
+    "hasGenderDifferences": false,
+    "growthRate": "medium",
+    "eggGroups": [
+      "bug",
+      "fairy"
+    ],
+    "isBaby": false,
+    "isLegendary": false,
+    "isMythical": false
+  },
+  "abilities": [
+    {
+      "slug": "honey-gather",
+      "slot": 1,
+      "isHidden": false
+    },
+    {
+      "slug": "shield-dust",
+      "slot": 2,
+      "isHidden": false
+    },
+    {
+      "slug": "sweet-veil",
+      "slot": 3,
+      "isHidden": true
+    }
+  ],
+  "evolution": {
+    "chainId": 382,
+    "evolvesFromSpeciesId": 742,
+    "evolvesTo": []
+  },
+  "source": {
+    "retrievedAt": "2026-07-23",
+    "sourceRevision": "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f",
+    "sourceUrls": [
+      "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
+      "https://github.com/PokeAPI/pokeapi/blob/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/LICENSE.md"
+    ],
+    "licenseStatus": "pending",
+    "requiredCredits": [
+      "PokéAPI contributors for the structured API data."
+    ],
+    "notes": [
+      "Structured data is sourced from PokéAPI under its BSD-3-Clause terms.",
+      "Pokémon names and character data remain subject to owner review and applicable trademark or copyright rights.",
+      "English source prose is preserved to avoid inventing translations of gameplay behavior."
+    ]
+  }
+}

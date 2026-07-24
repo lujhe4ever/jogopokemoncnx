@@ -1,0 +1,127 @@
+{
+  "schemaVersion": 2,
+  "id": "pokemon:0654-braixen",
+  "nationalDexNumber": 654,
+  "canonicalName": "Braixen",
+  "slug": "braixen",
+  "genus": "Fox Pokémon",
+  "generationIntroduced": 6,
+  "generationSource": "generation-vi",
+  "types": [
+    "fire"
+  ],
+  "physical": {
+    "heightDecimeters": 10,
+    "weightHectograms": 145
+  },
+  "baseExperience": 143,
+  "baseStats": {
+    "hp": {
+      "value": 59,
+      "effortYield": 0
+    },
+    "attack": {
+      "value": 59,
+      "effortYield": 0
+    },
+    "defense": {
+      "value": 58,
+      "effortYield": 0
+    },
+    "special-attack": {
+      "value": 90,
+      "effortYield": 2
+    },
+    "special-defense": {
+      "value": 70,
+      "effortYield": 0
+    },
+    "speed": {
+      "value": 73,
+      "effortYield": 0
+    }
+  },
+  "biologyAndTraining": {
+    "color": "red",
+    "shape": "upright",
+    "habitat": null,
+    "genderRate": 1,
+    "captureRate": 45,
+    "baseHappiness": 70,
+    "hatchCounter": 20,
+    "hasGenderDifferences": false,
+    "growthRate": "medium-slow",
+    "eggGroups": [
+      "ground"
+    ],
+    "isBaby": false,
+    "isLegendary": false,
+    "isMythical": false
+  },
+  "abilities": [
+    {
+      "slug": "blaze",
+      "slot": 1,
+      "isHidden": false
+    },
+    {
+      "slug": "magician",
+      "slot": 3,
+      "isHidden": true
+    }
+  ],
+  "evolution": {
+    "chainId": 338,
+    "evolvesFromSpeciesId": 653,
+    "evolvesTo": [
+      {
+        "fromSpeciesId": 654,
+        "toSpeciesId": 655,
+        "trigger": "level-up",
+        "versionGroupId": 15,
+        "isDefault": true,
+        "triggerItem": null,
+        "minimumLevel": 36,
+        "genderId": null,
+        "locationId": null,
+        "heldItem": null,
+        "timeOfDay": null,
+        "knownMove": null,
+        "knownMoveType": null,
+        "minimumHappiness": null,
+        "minimumBeauty": null,
+        "minimumAffection": null,
+        "relativePhysicalStats": null,
+        "partySpeciesId": null,
+        "partyType": null,
+        "tradeSpeciesId": null,
+        "needsOverworldRain": false,
+        "turnUpsideDown": false,
+        "needsMultiplayer": false,
+        "nearSpecialRock": false,
+        "regionId": null,
+        "usedMove": null,
+        "minimumMoveCount": null,
+        "minimumSteps": null,
+        "minimumDamageTaken": null
+      }
+    ]
+  },
+  "source": {
+    "retrievedAt": "2026-07-23",
+    "sourceRevision": "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f",
+    "sourceUrls": [
+      "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
+      "https://github.com/PokeAPI/pokeapi/blob/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/LICENSE.md"
+    ],
+    "licenseStatus": "pending",
+    "requiredCredits": [
+      "PokéAPI contributors for the structured API data."
+    ],
+    "notes": [
+      "Structured data is sourced from PokéAPI under its BSD-3-Clause terms.",
+      "Pokémon names and character data remain subject to owner review and applicable trademark or copyright rights.",
+      "English source prose is preserved to avoid inventing translations of gameplay behavior."
+    ]
+  }
+}

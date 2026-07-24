@@ -63,6 +63,7 @@ Ao aceitar ou mudar uma decisão:
 | D-020 | Administração separada, elevada, autorizada e auditada | Aceita |
 | D-021 | Candidato operacional reproduzível sem deploy automático | Aceita |
 | D-022 | Alpha interno com telemetria anônima, consentida e opt-in | Aceita |
+| D-023 | Publicação temporária dos sprites de batalha com direitos duvidosos | Aceita |
 
 ## 3. Registro cronológico
 
@@ -571,6 +572,35 @@ Ao aceitar ou mudar uma decisão:
   na tela e adicionou verificação contra regressão.
 - **Evidência de aprovação:** 69 testes, jornada documentada, inventário de conteúdo,
   gate de readiness e QA visual local.
+
+### D-023 — Publicação temporária dos sprites de batalha com direitos duvidosos
+
+- **Data:** 2026-07-23
+- **Status:** Aceita por instrução explícita do proprietário
+- **Contexto:** o pack possui 4.100 sprites reais obtidos da revisão fixa do
+  repositório `PokeAPI/sprites`. A fonte aplica CC0, mas também atribui os direitos
+  das imagens à The Pokémon Company e não demonstra autoridade clara para
+  relicenciar esse conteúdo.
+- **Decisão:** publicar frente normal, frente shiny, costas normal e costas shiny de
+  cada espécie, mantendo fonte, revisão, créditos, SHA-256, dimensões e estado
+  `doubtful` em cada inventário.
+- **Limite:** a decisão do proprietário autoriza a inclusão temporária no
+  repositório, mas não é tratada como licença dos titulares nem muda qualquer asset
+  para `approved`.
+- **Integração:** os arquivos permanecem desacoplados da engine e não são carregados
+  pelo runtime. Animações, sons e sprites por jogo continuam apenas inventariados.
+- **Reversibilidade:** os binários são selecionados por manifesto e ficam em caminhos
+  previsíveis; uma coleção licenciada pode substituí-los sem alterar IDs ou regras da
+  engine.
+- **Gate:** a exceção de procedência é limitada ao pack `pokemon-canonical`, exige
+  `runtimeEnabled: false`, `replacementRequired: true` e direitos `doubtful`; nenhum
+  outro pack sem licença aprovada é permitido.
+- **Data da autorização:** `2026-07-23`, vinculada à D-023 e independente de datas de
+  coleta, geração ou execução.
+- **Verificação permanente:** a CI audita integralmente os 4.100 arquivos e rejeita
+  referências ao pack em entradas de runtime enquanto os gates acima permanecerem.
+- **Evidência de aprovação:** instruções explícitas do proprietário para publicar a
+  coleção no GitHub como material temporário e substituí-la futuramente.
 
 ## 4. Próximas decisões a revisar
 

@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 2,
+  "pokemonId": "pokemon:0415-combee",
+  "abilities": [
+    {
+      "abilityId": 118,
+      "slot": 1,
+      "isHidden": false,
+      "slug": "honey-gather",
+      "canonicalName": "Honey Gather",
+      "shortEffect": "The Pokémon may pick up Honey after battle.",
+      "effect": "This Pokémon has a chance of picking up Honey after each battle.  This chance starts at 5% and rises another 5% after every tenth level: 5% from level 1–10, 10% from 11–20, and so on, up to 50% from 91–100.\n\nThis ability is checked after the battle ends, at which point any temporary ability changes have worn off.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/118/"
+    },
+    {
+      "abilityId": 55,
+      "slot": 3,
+      "isHidden": true,
+      "slug": "hustle",
+      "canonicalName": "Hustle",
+      "shortEffect": "Strengthens physical moves to inflict 1.5× damage, but decreases their accuracy to 0.8×.",
+      "effect": "This Pokémon's physical moves do 1.5× as much regular damage, but have 0.8× their usual accuracy.\n\nSpecial moves are unaffected.  Moves that do set damage, such as Seismic Toss, have their accuracy affected, but not their damage.\n\nOverworld: If the lead Pokémon has this ability, higher-levelled Pokémon have their encounter rate increased.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/55/"
+    }
+  ],
+  "source": {
+    "retrievedAt": "2026-07-23",
+    "sourceRevision": "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f",
+    "sourceUrls": [
+      "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
+      "https://github.com/PokeAPI/pokeapi/blob/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/LICENSE.md"
+    ],
+    "licenseStatus": "pending",
+    "requiredCredits": [
+      "PokéAPI contributors for the structured API data."
+    ],
+    "notes": [
+      "Structured data is sourced from PokéAPI under its BSD-3-Clause terms.",
+      "Pokémon names and character data remain subject to owner review and applicable trademark or copyright rights.",
+      "English source prose is preserved to avoid inventing translations of gameplay behavior."
+    ]
+  }
+}

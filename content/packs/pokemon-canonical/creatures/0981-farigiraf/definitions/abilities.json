@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 2,
+  "pokemonId": "pokemon:0981-farigiraf",
+  "abilities": [
+    {
+      "abilityId": 291,
+      "slot": 1,
+      "isHidden": false,
+      "slug": "cud-chew",
+      "canonicalName": "Cud Chew",
+      "shortEffect": "Causes the Pokémon to reuse an already consumed Berry at the end of the next turn.",
+      "effect": "When the Pokémon eats a Berry, it will regurgitate that Berry at the end of the next turn and eat it one more time.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/291/"
+    },
+    {
+      "abilityId": 296,
+      "slot": 2,
+      "isHidden": false,
+      "slug": "armor-tail",
+      "canonicalName": "Armor Tail",
+      "shortEffect": "Prevents the opponent from using any moves that have priority, such as Quick Attack.",
+      "effect": "The mysterious tail covering the Pokémon’s head makes opponents unable to use priority moves against the Pokémon or its allies.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/296/"
+    },
+    {
+      "abilityId": 157,
+      "slot": 3,
+      "isHidden": true,
+      "slug": "sap-sipper",
+      "canonicalName": "Sap Sipper",
+      "shortEffect": "Absorbs Grass moves, raising Attack one stage.",
+      "effect": "Whenever a Grass-type move hits this Pokémon, its Attack rises one stage, negating any other effect on it.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/157/"
+    }
+  ],
+  "source": {
+    "retrievedAt": "2026-07-23",
+    "sourceRevision": "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f",
+    "sourceUrls": [
+      "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
+      "https://github.com/PokeAPI/pokeapi/blob/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/LICENSE.md"
+    ],
+    "licenseStatus": "pending",
+    "requiredCredits": [
+      "PokéAPI contributors for the structured API data."
+    ],
+    "notes": [
+      "Structured data is sourced from PokéAPI under its BSD-3-Clause terms.",
+      "Pokémon names and character data remain subject to owner review and applicable trademark or copyright rights.",
+      "English source prose is preserved to avoid inventing translations of gameplay behavior."
+    ]
+  }
+}

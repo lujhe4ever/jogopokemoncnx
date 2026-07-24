@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 2,
+  "id": "pokemon:0899-wyrdeer",
+  "nationalDexNumber": 899,
+  "canonicalName": "Wyrdeer",
+  "slug": "wyrdeer",
+  "genus": "Big Horn Pokémon",
+  "generationIntroduced": 8,
+  "generationSource": "generation-viii",
+  "types": [
+    "normal",
+    "psychic"
+  ],
+  "physical": {
+    "heightDecimeters": 18,
+    "weightHectograms": 951
+  },
+  "baseExperience": 263,
+  "baseStats": {
+    "hp": {
+      "value": 103,
+      "effortYield": 0
+    },
+    "attack": {
+      "value": 105,
+      "effortYield": 1
+    },
+    "defense": {
+      "value": 72,
+      "effortYield": 0
+    },
+    "special-attack": {
+      "value": 105,
+      "effortYield": 1
+    },
+    "special-defense": {
+      "value": 75,
+      "effortYield": 0
+    },
+    "speed": {
+      "value": 65,
+      "effortYield": 0
+    }
+  },
+  "biologyAndTraining": {
+    "color": "gray",
+    "shape": "quadruped",
+    "habitat": null,
+    "genderRate": 4,
+    "captureRate": 135,
+    "baseHappiness": 50,
+    "hatchCounter": 20,
+    "hasGenderDifferences": false,
+    "growthRate": "slow",
+    "eggGroups": [
+      "ground"
+    ],
+    "isBaby": false,
+    "isLegendary": false,
+    "isMythical": false
+  },
+  "abilities": [
+    {
+      "slug": "intimidate",
+      "slot": 1,
+      "isHidden": false
+    },
+    {
+      "slug": "frisk",
+      "slot": 2,
+      "isHidden": false
+    },
+    {
+      "slug": "sap-sipper",
+      "slot": 3,
+      "isHidden": true
+    }
+  ],
+  "evolution": {
+    "chainId": 120,
+    "evolvesFromSpeciesId": 234,
+    "evolvesTo": []
+  },
+  "source": {
+    "retrievedAt": "2026-07-23",
+    "sourceRevision": "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f",
+    "sourceUrls": [
+      "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
+      "https://github.com/PokeAPI/pokeapi/blob/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/LICENSE.md"
+    ],
+    "licenseStatus": "pending",
+    "requiredCredits": [
+      "PokéAPI contributors for the structured API data."
+    ],
+    "notes": [
+      "Structured data is sourced from PokéAPI under its BSD-3-Clause terms.",
+      "Pokémon names and character data remain subject to owner review and applicable trademark or copyright rights.",
+      "English source prose is preserved to avoid inventing translations of gameplay behavior."
+    ]
+  }
+}

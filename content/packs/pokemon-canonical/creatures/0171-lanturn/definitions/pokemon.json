@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 2,
+  "id": "pokemon:0171-lanturn",
+  "nationalDexNumber": 171,
+  "canonicalName": "Lanturn",
+  "slug": "lanturn",
+  "genus": "Light Pokémon",
+  "generationIntroduced": 2,
+  "generationSource": "generation-ii",
+  "types": [
+    "water",
+    "electric"
+  ],
+  "physical": {
+    "heightDecimeters": 12,
+    "weightHectograms": 225
+  },
+  "baseExperience": 161,
+  "baseStats": {
+    "hp": {
+      "value": 125,
+      "effortYield": 2
+    },
+    "attack": {
+      "value": 58,
+      "effortYield": 0
+    },
+    "defense": {
+      "value": 58,
+      "effortYield": 0
+    },
+    "special-attack": {
+      "value": 76,
+      "effortYield": 0
+    },
+    "special-defense": {
+      "value": 76,
+      "effortYield": 0
+    },
+    "speed": {
+      "value": 67,
+      "effortYield": 0
+    }
+  },
+  "biologyAndTraining": {
+    "color": "blue",
+    "shape": "fish",
+    "habitat": "sea",
+    "genderRate": 4,
+    "captureRate": 75,
+    "baseHappiness": 70,
+    "hatchCounter": 20,
+    "hasGenderDifferences": false,
+    "growthRate": "slow",
+    "eggGroups": [
+      "water2"
+    ],
+    "isBaby": false,
+    "isLegendary": false,
+    "isMythical": false
+  },
+  "abilities": [
+    {
+      "slug": "volt-absorb",
+      "slot": 1,
+      "isHidden": false
+    },
+    {
+      "slug": "illuminate",
+      "slot": 2,
+      "isHidden": false
+    },
+    {
+      "slug": "water-absorb",
+      "slot": 3,
+      "isHidden": true
+    }
+  ],
+  "evolution": {
+    "chainId": 86,
+    "evolvesFromSpeciesId": 170,
+    "evolvesTo": []
+  },
+  "source": {
+    "retrievedAt": "2026-07-23",
+    "sourceRevision": "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f",
+    "sourceUrls": [
+      "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
+      "https://github.com/PokeAPI/pokeapi/blob/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/LICENSE.md"
+    ],
+    "licenseStatus": "pending",
+    "requiredCredits": [
+      "PokéAPI contributors for the structured API data."
+    ],
+    "notes": [
+      "Structured data is sourced from PokéAPI under its BSD-3-Clause terms.",
+      "Pokémon names and character data remain subject to owner review and applicable trademark or copyright rights.",
+      "English source prose is preserved to avoid inventing translations of gameplay behavior."
+    ]
+  }
+}

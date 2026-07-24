@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 2,
+  "id": "pokemon:0125-electabuzz",
+  "nationalDexNumber": 125,
+  "canonicalName": "Electabuzz",
+  "slug": "electabuzz",
+  "generationIntroduced": 1,
+  "types": [
+    "electric"
+  ],
+  "assetStatus": "doubtful",
+  "definitionStatus": "approved",
+  "licenseStatus": "doubtful",
+  "sourceUrls": [
+    "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
+    "https://github.com/PokeAPI/pokeapi/blob/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/LICENSE.md"
+  ],
+  "requiredCredits": [
+    "PokéAPI contributors for the structured API data."
+  ],
+  "notes": [
+    "Definitions passed automated schema, coverage, and referential-integrity validation and are not coupled to engine IDs.",
+    "4 compact battle sprites are tracked after explicit repository-owner direction; third-party redistribution rights remain doubtful.",
+    "Every tracked sprite matches its quarantined source by SHA-256."
+  ]
+}

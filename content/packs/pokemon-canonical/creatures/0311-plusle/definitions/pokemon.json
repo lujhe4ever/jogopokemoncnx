@@ -1,0 +1,95 @@
+{
+  "schemaVersion": 2,
+  "id": "pokemon:0311-plusle",
+  "nationalDexNumber": 311,
+  "canonicalName": "Plusle",
+  "slug": "plusle",
+  "genus": "Cheering Pokémon",
+  "generationIntroduced": 3,
+  "generationSource": "generation-iii",
+  "types": [
+    "electric"
+  ],
+  "physical": {
+    "heightDecimeters": 4,
+    "weightHectograms": 42
+  },
+  "baseExperience": 142,
+  "baseStats": {
+    "hp": {
+      "value": 60,
+      "effortYield": 0
+    },
+    "attack": {
+      "value": 50,
+      "effortYield": 0
+    },
+    "defense": {
+      "value": 40,
+      "effortYield": 0
+    },
+    "special-attack": {
+      "value": 85,
+      "effortYield": 0
+    },
+    "special-defense": {
+      "value": 75,
+      "effortYield": 0
+    },
+    "speed": {
+      "value": 95,
+      "effortYield": 1
+    }
+  },
+  "biologyAndTraining": {
+    "color": "yellow",
+    "shape": "upright",
+    "habitat": "grassland",
+    "genderRate": 4,
+    "captureRate": 200,
+    "baseHappiness": 70,
+    "hatchCounter": 20,
+    "hasGenderDifferences": false,
+    "growthRate": "medium",
+    "eggGroups": [
+      "fairy"
+    ],
+    "isBaby": false,
+    "isLegendary": false,
+    "isMythical": false
+  },
+  "abilities": [
+    {
+      "slug": "plus",
+      "slot": 1,
+      "isHidden": false
+    },
+    {
+      "slug": "lightning-rod",
+      "slot": 3,
+      "isHidden": true
+    }
+  ],
+  "evolution": {
+    "chainId": 154,
+    "evolvesFromSpeciesId": null,
+    "evolvesTo": []
+  },
+  "source": {
+    "retrievedAt": "2026-07-23",
+    "sourceRevision": "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f",
+    "sourceUrls": [
+      "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
+      "https://github.com/PokeAPI/pokeapi/blob/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/LICENSE.md"
+    ],
+    "licenseStatus": "pending",
+    "requiredCredits": [
+      "PokéAPI contributors for the structured API data."
+    ],
+    "notes": [
+      "Structured data is sourced from PokéAPI under its BSD-3-Clause terms.",
+      "Pokémon names and character data remain subject to owner review and applicable trademark or copyright rights.",
+      "English source prose is preserved to avoid inventing translations of gameplay behavior."
+    ]
+  }
+}

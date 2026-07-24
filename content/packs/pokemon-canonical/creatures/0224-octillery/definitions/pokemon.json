@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 2,
+  "id": "pokemon:0224-octillery",
+  "nationalDexNumber": 224,
+  "canonicalName": "Octillery",
+  "slug": "octillery",
+  "genus": "Jet Pokémon",
+  "generationIntroduced": 2,
+  "generationSource": "generation-ii",
+  "types": [
+    "water"
+  ],
+  "physical": {
+    "heightDecimeters": 9,
+    "weightHectograms": 285
+  },
+  "baseExperience": 168,
+  "baseStats": {
+    "hp": {
+      "value": 75,
+      "effortYield": 0
+    },
+    "attack": {
+      "value": 105,
+      "effortYield": 1
+    },
+    "defense": {
+      "value": 75,
+      "effortYield": 0
+    },
+    "special-attack": {
+      "value": 105,
+      "effortYield": 1
+    },
+    "special-defense": {
+      "value": 75,
+      "effortYield": 0
+    },
+    "speed": {
+      "value": 45,
+      "effortYield": 0
+    }
+  },
+  "biologyAndTraining": {
+    "color": "red",
+    "shape": "tentacles",
+    "habitat": "sea",
+    "genderRate": 4,
+    "captureRate": 75,
+    "baseHappiness": 70,
+    "hatchCounter": 20,
+    "hasGenderDifferences": true,
+    "growthRate": "medium",
+    "eggGroups": [
+      "water1",
+      "water2"
+    ],
+    "isBaby": false,
+    "isLegendary": false,
+    "isMythical": false
+  },
+  "abilities": [
+    {
+      "slug": "suction-cups",
+      "slot": 1,
+      "isHidden": false
+    },
+    {
+      "slug": "sniper",
+      "slot": 2,
+      "isHidden": false
+    },
+    {
+      "slug": "moody",
+      "slot": 3,
+      "isHidden": true
+    }
+  ],
+  "evolution": {
+    "chainId": 114,
+    "evolvesFromSpeciesId": 223,
+    "evolvesTo": []
+  },
+  "source": {
+    "retrievedAt": "2026-07-23",
+    "sourceRevision": "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f",
+    "sourceUrls": [
+      "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
+      "https://github.com/PokeAPI/pokeapi/blob/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/LICENSE.md"
+    ],
+    "licenseStatus": "pending",
+    "requiredCredits": [
+      "PokéAPI contributors for the structured API data."
+    ],
+    "notes": [
+      "Structured data is sourced from PokéAPI under its BSD-3-Clause terms.",
+      "Pokémon names and character data remain subject to owner review and applicable trademark or copyright rights.",
+      "English source prose is preserved to avoid inventing translations of gameplay behavior."
+    ]
+  }
+}

@@ -1,0 +1,95 @@
+{
+  "schemaVersion": 2,
+  "id": "pokemon:0379-registeel",
+  "nationalDexNumber": 379,
+  "canonicalName": "Registeel",
+  "slug": "registeel",
+  "genus": "Iron Pokémon",
+  "generationIntroduced": 3,
+  "generationSource": "generation-iii",
+  "types": [
+    "steel"
+  ],
+  "physical": {
+    "heightDecimeters": 19,
+    "weightHectograms": 2050
+  },
+  "baseExperience": 261,
+  "baseStats": {
+    "hp": {
+      "value": 80,
+      "effortYield": 0
+    },
+    "attack": {
+      "value": 75,
+      "effortYield": 0
+    },
+    "defense": {
+      "value": 150,
+      "effortYield": 2
+    },
+    "special-attack": {
+      "value": 75,
+      "effortYield": 0
+    },
+    "special-defense": {
+      "value": 150,
+      "effortYield": 1
+    },
+    "speed": {
+      "value": 50,
+      "effortYield": 0
+    }
+  },
+  "biologyAndTraining": {
+    "color": "gray",
+    "shape": "humanoid",
+    "habitat": "cave",
+    "genderRate": -1,
+    "captureRate": 3,
+    "baseHappiness": 35,
+    "hatchCounter": 80,
+    "hasGenderDifferences": false,
+    "growthRate": "slow",
+    "eggGroups": [
+      "no-eggs"
+    ],
+    "isBaby": false,
+    "isLegendary": true,
+    "isMythical": false
+  },
+  "abilities": [
+    {
+      "slug": "clear-body",
+      "slot": 1,
+      "isHidden": false
+    },
+    {
+      "slug": "light-metal",
+      "slot": 3,
+      "isHidden": true
+    }
+  ],
+  "evolution": {
+    "chainId": 195,
+    "evolvesFromSpeciesId": null,
+    "evolvesTo": []
+  },
+  "source": {
+    "retrievedAt": "2026-07-23",
+    "sourceRevision": "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f",
+    "sourceUrls": [
+      "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
+      "https://github.com/PokeAPI/pokeapi/blob/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/LICENSE.md"
+    ],
+    "licenseStatus": "pending",
+    "requiredCredits": [
+      "PokéAPI contributors for the structured API data."
+    ],
+    "notes": [
+      "Structured data is sourced from PokéAPI under its BSD-3-Clause terms.",
+      "Pokémon names and character data remain subject to owner review and applicable trademark or copyright rights.",
+      "English source prose is preserved to avoid inventing translations of gameplay behavior."
+    ]
+  }
+}

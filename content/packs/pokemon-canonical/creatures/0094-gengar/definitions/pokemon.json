@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 2,
+  "id": "pokemon:0094-gengar",
+  "nationalDexNumber": 94,
+  "canonicalName": "Gengar",
+  "slug": "gengar",
+  "genus": "Shadow Pokémon",
+  "generationIntroduced": 1,
+  "generationSource": "generation-i",
+  "types": [
+    "ghost",
+    "poison"
+  ],
+  "physical": {
+    "heightDecimeters": 15,
+    "weightHectograms": 405
+  },
+  "baseExperience": 225,
+  "baseStats": {
+    "hp": {
+      "value": 60,
+      "effortYield": 0
+    },
+    "attack": {
+      "value": 65,
+      "effortYield": 0
+    },
+    "defense": {
+      "value": 60,
+      "effortYield": 0
+    },
+    "special-attack": {
+      "value": 130,
+      "effortYield": 3
+    },
+    "special-defense": {
+      "value": 75,
+      "effortYield": 0
+    },
+    "speed": {
+      "value": 110,
+      "effortYield": 0
+    }
+  },
+  "biologyAndTraining": {
+    "color": "purple",
+    "shape": "upright",
+    "habitat": "cave",
+    "genderRate": 4,
+    "captureRate": 45,
+    "baseHappiness": 70,
+    "hatchCounter": 20,
+    "hasGenderDifferences": false,
+    "growthRate": "medium-slow",
+    "eggGroups": [
+      "indeterminate"
+    ],
+    "isBaby": false,
+    "isLegendary": false,
+    "isMythical": false
+  },
+  "abilities": [
+    {
+      "slug": "cursed-body",
+      "slot": 1,
+      "isHidden": false
+    }
+  ],
+  "evolution": {
+    "chainId": 40,
+    "evolvesFromSpeciesId": 93,
+    "evolvesTo": []
+  },
+  "source": {
+    "retrievedAt": "2026-07-23",
+    "sourceRevision": "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f",
+    "sourceUrls": [
+      "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
+      "https://github.com/PokeAPI/pokeapi/blob/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/LICENSE.md"
+    ],
+    "licenseStatus": "pending",
+    "requiredCredits": [
+      "PokéAPI contributors for the structured API data."
+    ],
+    "notes": [
+      "Structured data is sourced from PokéAPI under its BSD-3-Clause terms.",
+      "Pokémon names and character data remain subject to owner review and applicable trademark or copyright rights.",
+      "English source prose is preserved to avoid inventing translations of gameplay behavior."
+    ]
+  }
+}

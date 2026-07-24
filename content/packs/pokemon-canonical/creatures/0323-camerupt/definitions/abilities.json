@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 2,
+  "pokemonId": "pokemon:0323-camerupt",
+  "abilities": [
+    {
+      "abilityId": 40,
+      "slot": 1,
+      "isHidden": false,
+      "slug": "magma-armor",
+      "canonicalName": "Magma Armor",
+      "shortEffect": "Prevents freezing.",
+      "effect": "This Pokémon cannot be frozen.\n\nIf a Pokémon is frozen and acquires this ability, it will immediately thaw out; this includes when regaining a lost ability upon leaving battle.\n\nOverworld: If any Pokémon in the party has this ability, each egg in the party has its hatch counter decreased by 2 (rather than 1) each step cycle, making eggs hatch roughly twice as quickly.  This effect does not stack if multiple Pokémon have this ability or Flame Body.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/40/"
+    },
+    {
+      "abilityId": 116,
+      "slot": 2,
+      "isHidden": false,
+      "slug": "solid-rock",
+      "canonicalName": "Solid Rock",
+      "shortEffect": "Decreases damage taken from super-effective moves by 1/4.",
+      "effect": "This Pokémon takes 0.75× as much damage from moves that are super effective against it.\n\nThis ability functions identically to Filter.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/116/"
+    },
+    {
+      "abilityId": 83,
+      "slot": 3,
+      "isHidden": true,
+      "slug": "anger-point",
+      "canonicalName": "Anger Point",
+      "shortEffect": "Raises Attack to the maximum of six stages upon receiving a critical hit.",
+      "effect": "Whenever this Pokémon receives a critical hit, its Attack rises to the maximum of 6 stages.\n\nThis ability will still take effect if the critical hit is received by a Substitute.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/83/"
+    }
+  ],
+  "source": {
+    "retrievedAt": "2026-07-23",
+    "sourceRevision": "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f",
+    "sourceUrls": [
+      "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
+      "https://github.com/PokeAPI/pokeapi/blob/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/LICENSE.md"
+    ],
+    "licenseStatus": "pending",
+    "requiredCredits": [
+      "PokéAPI contributors for the structured API data."
+    ],
+    "notes": [
+      "Structured data is sourced from PokéAPI under its BSD-3-Clause terms.",
+      "Pokémon names and character data remain subject to owner review and applicable trademark or copyright rights.",
+      "English source prose is preserved to avoid inventing translations of gameplay behavior."
+    ]
+  }
+}

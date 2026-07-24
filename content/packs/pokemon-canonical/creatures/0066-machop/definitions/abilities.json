@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 2,
+  "pokemonId": "pokemon:0066-machop",
+  "abilities": [
+    {
+      "abilityId": 62,
+      "slot": 1,
+      "isHidden": false,
+      "slug": "guts",
+      "canonicalName": "Guts",
+      "shortEffect": "Increases Attack to 1.5× with a major status ailment.",
+      "effect": "Whenever this Pokémon is asleep, burned, paralyzed, or poisoned, it has 1.5× its Attack.  This Pokémon is not affected by the usual Attack cut from a burn.\n\nThis bonus does not count as a stat modifier.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/62/"
+    },
+    {
+      "abilityId": 99,
+      "slot": 2,
+      "isHidden": false,
+      "slug": "no-guard",
+      "canonicalName": "No Guard",
+      "shortEffect": "Ensures all moves used by and against the Pokémon hit.",
+      "effect": "Moves used by or against this Pokémon never miss.\n\nOne-hit KO moves are unaffected.  Moves affected by this ability can hit Pokémon during the preparation turn of moves like Dig or Fly.\n\nOverworld: If the lead Pokémon has this ability, the wild encounter rate is doubled.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/99/"
+    },
+    {
+      "abilityId": 80,
+      "slot": 3,
+      "isHidden": true,
+      "slug": "steadfast",
+      "canonicalName": "Steadfast",
+      "shortEffect": "Raises Speed one stage upon flinching.",
+      "effect": "Whenever this Pokémon flinches, its Speed rises one stage.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/80/"
+    }
+  ],
+  "source": {
+    "retrievedAt": "2026-07-23",
+    "sourceRevision": "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f",
+    "sourceUrls": [
+      "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
+      "https://github.com/PokeAPI/pokeapi/blob/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/LICENSE.md"
+    ],
+    "licenseStatus": "pending",
+    "requiredCredits": [
+      "PokéAPI contributors for the structured API data."
+    ],
+    "notes": [
+      "Structured data is sourced from PokéAPI under its BSD-3-Clause terms.",
+      "Pokémon names and character data remain subject to owner review and applicable trademark or copyright rights.",
+      "English source prose is preserved to avoid inventing translations of gameplay behavior."
+    ]
+  }
+}

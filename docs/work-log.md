@@ -896,6 +896,46 @@ Publicar o PR de reserva da Fase 10 antes de implementar o domínio.
 Revisar e integrar o PR #11 após a CI aprovada e reservar a Fase 11 sem executar
 deploy público.
 
+## 2026-07-23 - Piloto de catalogo Pokemon canonico
+
+### Contexto
+
+O repositorio foi sincronizado com o GitHub antes da alteracao. Durante a entrega,
+`main` avancou para `d9989374ee667cf2bbaf0f042fdefe56a7492828` com o merge do PR
+#10; a branch do piloto foi rebaseada sobre essa revisao.
+
+### Resultado
+
+- criada a branch `codex/pokemon-canonical-pilot`;
+- criado o pacote `content/packs/pokemon-canonical`;
+- criado o recorte piloto Bulbasaur/Ivysaur/Venusaur;
+- criada a estrutura `sprites`, `animations`, `sounds` e `definitions` por Pokemon;
+- preenchidos `pokemon.json`, `abilities.json` e `moves.json` com dados estruturados;
+- registrados inventarios de midia sem baixar ou publicar assets;
+- adicionado schema JSON inicial para manifests, definicoes e inventarios;
+- adicionado teste automatizado para garantir que as pastas de midia tenham apenas
+  `inventory.json` durante o piloto.
+
+### Testes e verificacoes
+
+- `pnpm check`: aprovado;
+- 12 arquivos de teste e 35 testes aprovados;
+- aviso nao bloqueante: Node local `v24.16.0`, enquanto o repo pede `24.14.0`;
+- aviso nao bloqueante: chunk `game` do Vite acima de 500 kB.
+
+### Riscos e limites
+
+- licenca e autorizacao seguem como `pending`;
+- PokeAPI foi usada como fonte estruturada de metadados, nao como autorizacao sobre
+  marcas, personagens ou conteudo visual;
+- PokemonDB foi registrado somente como referencia visual pendente;
+- sprites, animacoes e sons seguem fora do escopo de importacao.
+
+### Proximo passo
+
+Revisar o piloto e aprovar ou ajustar o schema antes de expandir para a primeira
+geracao inteira ou iniciar a triagem de uma colecao privada de sprites.
+
 ## 2026-07-23 — Integração da Fase 10 e reserva da Fase 11
 
 ### Contexto
@@ -949,6 +989,77 @@ Publicar o PR rascunho da Fase 11 antes de iniciar a implementação.
 
 Revisar e integrar o PR #12 após a CI aprovada e reservar a Fase 12 sem executar
 deploy público.
+
+## 2026-07-23 — Catálogo Pokémon canônico completo
+
+### Objetivo da sessão
+
+Expandir o piloto para todas as espécies canônicas, preencher definições auditáveis
+e preparar sprites reais para uso futuro sem publicar mídia de licença incerta.
+
+### Estado anterior
+
+O pack continha apenas Bulbasaur, Ivysaur e Venusaur. A branch foi sincronizada com
+o `main` após a integração das Fases 10 e 11.
+
+### Alterações realizadas
+
+- 1.025 pastas canônicas, numeradas e nomeadas por slug;
+- catálogos globais de 937 golpes, 373 habilidades, métodos e grupos de versões;
+- definições por espécie com atributos, tipos, habilidades, evolução e learnsets;
+- métodos por nível, máquina, tutor, ovo e equivalentes preservados por jogo/geração;
+- inventário de 43.383 sprites estáticos e 10.421 animações;
+- 1.025 sprites frontais reais em `.private/`, com SHA-256 e dimensões públicas;
+- gerador pinado às revisões das fontes, schema v2 e documentação de direitos;
+- nenhum binário de mídia versionado.
+
+### Arquivos alterados
+
+- `content/packs/pokemon-canonical/`;
+- `scripts/generate-pokemon-canonical.mjs`;
+- `tests/pokemon-canonical-content.test.ts`;
+- `.gitignore`, `.prettierignore` e `package.json`;
+- `docs/current-state.md`, `docs/work-log.md` e
+  `docs/pokemon-content-sources.md`.
+
+### Testes e verificações
+
+- `pnpm install --frozen-lockfile`: aprovado;
+- `pnpm --filter @lt/server prisma:generate`: aprovado;
+- `pnpm check`: aprovado após a sincronização final;
+- 16 arquivos de teste e 47 testes aprovados;
+- build do servidor e cliente aprovado;
+- aviso não bloqueante: chunk `game` do Vite acima de 500 kB;
+- verificação explícita de zero mídia rastreada.
+
+### Decisões tomadas
+
+- dados repetidos de golpes foram normalizados para impedir divergência e reduzir o
+  pack de 354 MB para cerca de 52 MB;
+- imagens com direitos incertos ficam em quarentena privada;
+- a engine não recebe nomes ou caminhos de Pokémon nesta entrega;
+- textos funcionais da fonte permanecem em inglês e traduções serão derivadas.
+
+### Pendências ou riscos
+
+- nenhuma coleção de sprites está juridicamente aprovada;
+- arquivos privados não são recuperados pelo GitHub em outro computador;
+- sons e importação de animações permanecem fora do escopo;
+- formas alternativas ainda não possuem diretórios próprios;
+- Node local `24.16.0` difere do `24.14.0` fixado pelo projeto.
+
+### Próxima tarefa recomendada
+
+Revisar e aprovar uma única política de sprites, preferencialmente uma coleção
+comunitária com autorização e créditos verificáveis, antes de integrar qualquer
+imagem ao runtime.
+
+### Instrução para a próxima IA
+
+Ler primeiro `AGENTS.md`, `architecture.md`, `docs/current-state.md`,
+`docs/pokemon-content-sources.md`, o fim de `docs/work-log.md` e
+`content/packs/pokemon-canonical/README.md`; sincronizar `main` e não publicar a
+pasta `.private/`.
 
 ## 2026-07-23 — Integração da Fase 11 e reserva da Fase 12
 
@@ -1056,6 +1167,106 @@ Publicar o PR rascunho da Fase 13 antes de iniciar a implementação.
 Revisar e integrar o PR #14 após a CI aprovada e reservar a Fase 14 sem executar
 deploy público.
 
+## 2026-07-23 — Sincronização final do catálogo Pokémon
+
+### Contexto
+
+Durante a conclusão do catálogo, o PR #13 foi integrado à `main` no commit
+`87ced88cc2a72505d9eea563214be0cbc059a891` e o PR #14 foi aberto em rascunho.
+
+### Resultado
+
+- branch `codex/pokemon-canonical-full` atualizada por merge, sem force-push;
+- histórico completo das Fases 11 e 12 preservado;
+- documentação do catálogo atualizada para o novo estado compartilhado;
+- validação integral do catálogo repetida sobre a base combinada.
+
+### Testes e verificações
+
+- `pnpm check`: aprovado;
+- 18 arquivos de teste e 53 testes aprovados;
+- lint, TypeScript e builds do servidor/cliente aprovados;
+- aviso não bloqueante: chunk `game` do Vite acima de 500 kB.
+
+### Próximo passo
+
+Revisar o catálogo e decidir uma única política de sprites antes de publicar ou
+ligar qualquer mídia ao runtime.
+
+## 2026-07-23 — Publicação dos 1.025 sprites frontais
+
+### Objetivo da sessão
+
+Publicar no GitHub todos os sprites reais disponíveis na quarentena local, mantendo
+a origem, os hashes, a incerteza de direitos e o isolamento do trabalho paralelo.
+
+### Estado anterior
+
+A branch `codex/pokemon-canonical-full` continha definições e inventários completos,
+mas nenhum binário de mídia. A `main` avançou para
+`5ca0c3a1149884988d10f24e43cf59da700e7f48` com a integração da Fase 13, e a Fase 14
+foi reservada no PR #15.
+
+### Alterações realizadas
+
+- `main` incorporada por merge sem force-push;
+- conflitos exclusivamente documentais resolvidos preservando os dois históricos;
+- 1.025 PNGs frontais copiados para as respectivas pastas `sprites/`;
+- inventários atualizados com caminho público, SHA-256, dimensões, tamanho, data da
+  autorização e estado `doubtful`;
+- manifests por espécie e manifesto do pack atualizados;
+- gerador preparado para reprodução com revisões de fonte explícitas;
+- schema, teste de integridade, fontes, decisão D-020 e documentação atualizados;
+- runtime mantido sem dependência desses assets.
+
+### Arquivos alterados
+
+- `content/packs/pokemon-canonical/`;
+- `scripts/generate-pokemon-canonical.mjs`;
+- `tests/pokemon-canonical-content.test.ts`;
+- `docs/current-state.md`;
+- `docs/work-log.md`;
+- `docs/decisions.md`;
+- `docs/pokemon-content-sources.md`.
+
+### Testes e verificações
+
+- baseline anterior à integração: 18 arquivos e 53 testes aprovados;
+- `pnpm install --frozen-lockfile`: aprovado;
+- `pnpm --filter @lt/server prisma:generate`: aprovado;
+- teste específico do catálogo: 1 arquivo e 4 testes aprovados;
+- auditoria de todos os arquivos: 1.025 conferidos, zero erros, 1.067.409 bytes;
+- `pnpm check`: 20 arquivos e 59 testes aprovados, com lint, TypeScript e builds;
+- aviso não bloqueante: chunk `game` do Vite acima de 500 kB.
+
+### Decisões tomadas
+
+- publicar exatamente um sprite frontal padrão por espécie;
+- preservar a revisão `bf4c47ac82c33b330e33d98b8882d1cedb2f53e7` de
+  `PokeAPI/sprites`;
+- manter direitos e assets como `doubtful`, sem declarar licença inexistente;
+- não publicar animações, sons, shiny, costas ou variantes por jogo nesta etapa;
+- não ligar os sprites ao runtime.
+
+### Pendências ou riscos
+
+- a fonte não demonstra autoridade inequívoca para relicenciar a arte oficial;
+- o repositório é público;
+- qualquer solicitação dos titulares pode exigir remoção dos binários;
+- a Fase 14 continua em branch separada e deve preservar as duas entradas
+  documentais ao integrar.
+
+### Próxima tarefa recomendada
+
+Revisar visualmente uma amostra por geração e, em tarefa separada, definir o contrato
+neutro pelo qual o runtime selecionará sprites sem depender de nomes Pokémon.
+
+### Instrução para a próxima IA
+
+Ler `AGENTS.md`, `architecture.md`, a D-020 em `docs/decisions.md`, esta entrada,
+`docs/pokemon-content-sources.md` e o README do pack; sincronizar `main`, preservar a
+branch da Fase 14 e não alterar o estado jurídico `doubtful` sem nova evidência.
+
 ## 2026-07-23 — Integração da Fase 13 e reserva da Fase 14
 
 ### Contexto
@@ -1109,6 +1320,99 @@ Publicar o PR rascunho da Fase 14 antes de iniciar a implementação.
 
 Revisar e integrar o PR #15 após a CI aprovada e reservar a Fase 15 sem executar
 deploy público.
+
+## 2026-07-23 — Sincronização final dos sprites com a Fase 14
+
+### Contexto
+
+Durante a publicação dos sprites, o PR #15 foi integrado à `main` no commit
+`88420a4481ac1ea04fa3562c0d729c84ba583f34` e o PR #16 foi aberto em rascunho para
+a Fase 15.
+
+### Resultado
+
+- branch `codex/pokemon-canonical-full` atualizada por merge, sem force-push;
+- decisões renumeradas para preservar a D-019 dos telões e registrar sprites na D-020;
+- históricos da Fase 14 e do catálogo preservados integralmente;
+- nenhuma alteração da Fase 15 incorporada ou sobrescrita.
+
+### Testes e verificações
+
+- `pnpm check`: 21 arquivos de teste e 62 testes aprovados;
+- formatação, lint, TypeScript e builds do servidor/cliente aprovados;
+- comparação com o PR #16: dois caminhos em comum, exclusivamente
+  `docs/current-state.md` e `docs/work-log.md`;
+- nenhum caminho de código, pack Pokémon, schema ou teste em comum com a Fase 15.
+
+### Próximo passo
+
+Revisar o commit dos sprites e o PR desta branch sem fazer merge automático.
+
+## 2026-07-23 — Coleção compacta de batalha e status das definições
+
+### Objetivo da sessão
+
+Ampliar a mídia para mais de um sprite por Pokémon e tornar explícito o estado de
+validação das definições de cada espécie.
+
+### Estado anterior
+
+O PR #17 continha um sprite frontal normal por espécie e manifests com
+`definitionStatus: pending`.
+
+### Alterações realizadas
+
+- coleção ampliada para frente normal, frente shiny, costas normal e costas shiny;
+- 4.100 PNGs publicados, quatro por cada uma das 1.025 espécies;
+- gerador atualizado com `--publish-battle-sprites` e alias retrocompatível;
+- `definitions/status.json` criado para todas as espécies;
+- `definitionStatus` alterado para `approved` após validação automatizada;
+- schema, manifesto global, manifests por espécie, relatório e testes atualizados;
+- D-020 e documentação de fontes atualizadas.
+
+### Arquivos alterados
+
+- `content/packs/pokemon-canonical/`;
+- `scripts/generate-pokemon-canonical.mjs`;
+- `tests/pokemon-canonical-content.test.ts`;
+- `docs/current-state.md`;
+- `docs/work-log.md`;
+- `docs/decisions.md`;
+- `docs/pokemon-content-sources.md`.
+
+### Testes e verificações
+
+- revisão de origem: quatro variantes disponíveis para todas as 1.025 espécies;
+- auditoria integral: 4.100 sprites, 4.010.860 bytes e zero erros de hash;
+- 1.025 definições com status e IDs coerentes;
+- teste específico do catálogo: 1 arquivo e 4 testes aprovados;
+- `pnpm check`: 21 arquivos e 62 testes aprovados;
+- formatação, lint, TypeScript e builds aprovados.
+
+### Decisões tomadas
+
+- limitar a coleção a quatro variantes uniformes e úteis para batalha;
+- não incluir sprites por jogo, arte oficial, HOME ou animações neste recorte;
+- usar `approved` somente para validação automatizada das definições;
+- manter sprites e licença visual como `doubtful`;
+- manter a engine desacoplada dos caminhos Pokémon.
+
+### Pendências ou riscos
+
+- definições ainda não receberam revisão manual regra a regra;
+- direitos de redistribuição dos sprites permanecem incertos;
+- o PR #16 continua em trabalho paralelo com sobreposição apenas documental.
+
+### Próxima tarefa recomendada
+
+Definir o contrato neutro de seleção de sprite no runtime, incluindo fallback por
+perspectiva e variação, sem codificar nomes Pokémon na engine.
+
+### Instrução para a próxima IA
+
+Ler a D-023, este registro, o README do pack e uma amostra de `status.json`; preservar
+as quatro variantes, o significado restrito de `approved` e o estado visual
+`doubtful`.
 
 ## 2026-07-23 — Integração da Fase 14 e reserva da Fase 15
 
@@ -1323,3 +1627,135 @@ exposição.
 
 Não há fase seguinte autorizada. Definir um novo ciclo e seus critérios antes de
 alterar produto ou infraestrutura.
+
+## 2026-07-23 — Reconciliação e publicação do catálogo Pokémon completo
+
+### Objetivo da sessão
+
+Revisar todas as atualizações remotas, preservar o trabalho das Fases 15–17 e
+publicar o catálogo, as definições e a coleção temporária de sprites no PR #17.
+
+### Estado anterior
+
+A branch local continha 1.025 espécies, 4.100 sprites e status automatizados das
+definições, mas estava baseada na Fase 14 e ainda não havia publicado o último commit.
+A `main` já havia concluído as Fases 15–17 e o encerramento documental do roadmap.
+
+### Alterações realizadas
+
+- `main` em `6f8929fb` incorporada por merge normal, sem force-push;
+- conflitos em `current-state.md`, `decisions.md` e `work-log.md` resolvidos
+  preservando os dois históricos;
+- decisão dos sprites renumerada para D-023, mantendo D-020 a D-022 da `main`;
+- pack marcado com política temporária, runtime desabilitado e substituição
+  obrigatória;
+- gate de licença preservado para packs normais e aberto somente para a exceção
+  nominal `pokemon-canonical`;
+- branch publicada e PR #17 atualizado no SHA `b26ccd6e`.
+
+### Testes e verificações
+
+- `pnpm install --frozen-lockfile`: aprovado;
+- `pnpm --filter @lt/server prisma:generate`: aprovado;
+- teste do catálogo: 1 arquivo e 4 testes aprovados;
+- auditoria integral: 1.025 espécies, 1.025 status, 4.100 sprites, 4.010.860 bytes e
+  zero erros de hash;
+- `pnpm check`: 25 arquivos e 73 testes aprovados;
+- builds web/admin, budgets, scan de segredos, gate de licença e readiness aprovados;
+- busca em `apps/` e `packages/`: nenhuma referência ao pack ou aos nomes dos PNGs.
+
+### Decisões tomadas
+
+- tratar os sprites como referência temporária e juridicamente `doubtful`;
+- manter `runtimeEnabled: false` e `replacementRequired: true`;
+- usar slots semânticos de inventário para permitir substituição sem mudar IDs ou
+  regras da engine;
+- manter o PR em rascunho e não executar merge na `main`.
+
+### Pendências ou riscos
+
+- a autorização do proprietário não substitui licença dos titulares;
+- o repositório é público e uma solicitação de remoção pode exigir excluir os
+  binários;
+- `definitionStatus: approved` cobre validação automatizada, não revisão manual de
+  todas as regras por geração;
+- a CI do SHA documental final ainda precisa confirmar o estado remoto.
+
+### Próxima tarefa recomendada
+
+Revisar o PR #17 e decidir se a coleção temporária permanece no repositório enquanto
+se pesquisa uma coleção original ou comprovadamente licenciada.
+
+### Instrução para a próxima IA
+
+Ler primeiro D-023, `docs/content-inventory.md`, o README e o manifesto do pack.
+Confirmar o SHA e a CI do PR #17 antes de qualquer mudança; não ligar o pack ao
+runtime e preservar os quatro `variantId` ao substituir os arquivos.
+
+## 2026-07-23 — Hardening integral dos sprites temporários
+
+### Objetivo da sessão
+
+Corrigir os cinco pontos de revisão do PR #17 sem alterar nenhum PNG: cache privado
+por revisão, auditoria integral, validação PNG real, gate permanente de runtime e data
+fixa da autorização D-023.
+
+### Estado anterior
+
+O pack continha 1.025 espécies e 4.100 sprites publicados, mas o cache privado não
+separava revisões, a verificação de hashes era amostral, a inspeção PNG lia apenas o
+cabeçalho, a ausência de uso no runtime não era um gate de CI e
+`ownerAuthorizedAt` derivava da data de coleta.
+
+### Alterações realizadas
+
+- cache movido para
+  `.private/pokemon-canonical/sprite-revisions/<sprites-sha>/<espécie>/sprites/`;
+- gerador impedido de reutilizar bytes de outra revisão e `--refresh` limitado à
+  revisão selecionada;
+- auditoria offline cobrindo manifesto, 1.025 inventários, 4.100 caminhos, hashes,
+  bytes, dimensões, variantes, direitos e metadados;
+- validação PNG com estrutura de chunks, CRC, decode RGBA, transparência e limites de
+  dimensão/pixels;
+- gate estático contra imports, URLs, loaders e caminhos do pack em `apps/` e
+  `packages/`;
+- autorização D-023 fixada em `2026-07-23`, separada de `retrievedAt`;
+- `pngjs` incluído como dependência de desenvolvimento MIT.
+
+### Testes e verificações
+
+- testes focados: 4 arquivos e 33 testes aprovados;
+- auditoria integral: 1.025 espécies, 4.100 hashes e 4.100 PNGs decodificados, zero
+  erros;
+- gate de runtime: 82 arquivos examinados e zero referência proibida;
+- lint e typecheck aprovados;
+- CI #30058365529 aprovada no primeiro attempt para o SHA `98566b21`;
+- casos negativos cobrem cache cruzado, arquivo ausente/extra, hash, bytes, dimensão,
+  variante, data D-023, assinatura, truncamento, CRC, stream comprimido, APNG e
+  referência de runtime.
+
+### Decisões tomadas
+
+- preservar nomes e caminhos públicos dos PNGs para manter a substituição futura
+  simples;
+- tratar `sprites-sha` como parte obrigatória da identidade do cache;
+- manter `doubtful`, `runtimeEnabled: false` e `replacementRequired: true`;
+- não transformar a autorização do proprietário em licença ou aprovação jurídica.
+
+### Pendências ou riscos
+
+- os direitos dos 4.100 sprites continuam duvidosos e a coleção precisa ser
+  substituída por material original ou comprovadamente licenciável;
+- o PR #17 permanece em rascunho e aguarda revisão do proprietário;
+- nenhum deploy ou merge na `main` foi autorizado.
+
+### Próxima tarefa recomendada
+
+Revisar o resultado do hardening no PR #17 e selecionar uma coleção piloto original
+ou com licença comprovada para substituir os quatro slots de uma única espécie.
+
+### Instrução para a próxima IA
+
+Ler D-023, o README do pack, `scripts/lib/audit-pokemon-canonical-assets.mjs` e
+`scripts/lib/runtime-content-boundary.mjs`; confirmar SHA e CI do PR #17 antes de
+qualquer alteração e nunca habilitar o pack temporário no runtime.

@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 2,
+  "pokemonId": "pokemon:0872-snom",
+  "abilities": [
+    {
+      "abilityId": 19,
+      "slot": 1,
+      "isHidden": false,
+      "slug": "shield-dust",
+      "canonicalName": "Shield Dust",
+      "shortEffect": "Protects against incoming moves' extra effects.",
+      "effect": "This Pokémon is immune to the extra effects of moves used against it.\n\nAn extra effect is a move's chance, listed as an \"effect chance\", to inflict a status ailment, cause a stat change, or make the target flinch in addition to the move's main effect.  For example, Thunder Shock's paralysis is an extra effect, but Thunder Wave's is not, nor are Knock Off's item removal and Air Cutter's increased critical hit rate.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/19/"
+    },
+    {
+      "abilityId": 246,
+      "slot": 3,
+      "isHidden": true,
+      "slug": "ice-scales",
+      "canonicalName": "Ice Scales",
+      "shortEffect": "Halves damage from Special moves.",
+      "effect": "The Pokémon is protected by ice scales, which halve the damage taken from special moves.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/246/"
+    }
+  ],
+  "source": {
+    "retrievedAt": "2026-07-23",
+    "sourceRevision": "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f",
+    "sourceUrls": [
+      "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
+      "https://github.com/PokeAPI/pokeapi/blob/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/LICENSE.md"
+    ],
+    "licenseStatus": "pending",
+    "requiredCredits": [
+      "PokéAPI contributors for the structured API data."
+    ],
+    "notes": [
+      "Structured data is sourced from PokéAPI under its BSD-3-Clause terms.",
+      "Pokémon names and character data remain subject to owner review and applicable trademark or copyright rights.",
+      "English source prose is preserved to avoid inventing translations of gameplay behavior."
+    ]
+  }
+}

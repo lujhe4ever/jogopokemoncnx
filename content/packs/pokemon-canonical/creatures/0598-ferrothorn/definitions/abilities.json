@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 2,
+  "pokemonId": "pokemon:0598-ferrothorn",
+  "abilities": [
+    {
+      "abilityId": 160,
+      "slot": 1,
+      "isHidden": false,
+      "slug": "iron-barbs",
+      "canonicalName": "Iron Barbs",
+      "shortEffect": "Damages attacking Pokémon for 1/8 their max HP on contact.",
+      "effect": "Whenever a move makes contact with this Pokémon, the move's user takes 1/8 of its maximum HP in damage.\n\nThis ability functions identically to Rough Skin.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/160/"
+    },
+    {
+      "abilityId": 107,
+      "slot": 3,
+      "isHidden": true,
+      "slug": "anticipation",
+      "canonicalName": "Anticipation",
+      "shortEffect": "Notifies all trainers upon entering battle if an opponent has a super-effective move, Self-Destruct, Explosion, or a one-hit KO move.",
+      "effect": "When this Pokémon enters battle, if one of its opponents has a move that is super effective against it, Self-Destruct, Explosion, or a one-hit knockout move, all participating trainers are notified.\n\nThe move itself is not revealed; only that there is such a move.  Moves that inflict typeless damage, such as Future Sight, and moves of variable type, such as Hidden Power, count as their listed types.  Counter, Metal Burst, Mirror Coat, and one-hit KO moves to which this Pokémon is immune do not trigger this ability.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/107/"
+    }
+  ],
+  "source": {
+    "retrievedAt": "2026-07-23",
+    "sourceRevision": "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f",
+    "sourceUrls": [
+      "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
+      "https://github.com/PokeAPI/pokeapi/blob/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/LICENSE.md"
+    ],
+    "licenseStatus": "pending",
+    "requiredCredits": [
+      "PokéAPI contributors for the structured API data."
+    ],
+    "notes": [
+      "Structured data is sourced from PokéAPI under its BSD-3-Clause terms.",
+      "Pokémon names and character data remain subject to owner review and applicable trademark or copyright rights.",
+      "English source prose is preserved to avoid inventing translations of gameplay behavior."
+    ]
+  }
+}

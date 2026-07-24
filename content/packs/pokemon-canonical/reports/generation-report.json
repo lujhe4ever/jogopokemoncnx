@@ -1,0 +1,42 @@
+{
+  "generatedAt": "2026-07-23T20:40:52.895Z",
+  "pokeapiRevision": "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f",
+  "spritesRevision": "bf4c47ac82c33b330e33d98b8882d1cedb2f53e7",
+  "speciesCount": 1025,
+  "firstSpecies": {
+    "id": "pokemon:0001-bulbasaur",
+    "nationalDexNumber": 1,
+    "canonicalName": "Bulbasaur",
+    "slug": "bulbasaur",
+    "path": "creatures/0001-bulbasaur",
+    "assetStatus": "doubtful",
+    "definitionStatus": "approved",
+    "licenseStatus": "doubtful",
+    "spriteCandidates": 78,
+    "animationCandidates": 11,
+    "localQuarantineVerified": true
+  },
+  "lastSpecies": {
+    "id": "pokemon:1025-pecharunt",
+    "nationalDexNumber": 1025,
+    "canonicalName": "Pecharunt",
+    "slug": "pecharunt",
+    "path": "creatures/1025-pecharunt",
+    "assetStatus": "doubtful",
+    "definitionStatus": "approved",
+    "licenseStatus": "doubtful",
+    "spriteCandidates": 12,
+    "animationCandidates": 0,
+    "localQuarantineVerified": true
+  },
+  "moveCount": 937,
+  "abilityCount": 373,
+  "versionGroupCount": 32,
+  "spriteTreeBlobCount": 60113,
+  "spriteCandidateCount": 43383,
+  "animationCandidateCount": 10421,
+  "privateSpriteCount": 4100,
+  "mediaFilesTracked": 4100,
+  "approvedDefinitionCount": 1025,
+  "definitionsModel": "Per-Pokémon learnsets reference normalized move and ability catalogs."
+}

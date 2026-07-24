@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 2,
+  "id": "pokemon:0212-scizor",
+  "nationalDexNumber": 212,
+  "canonicalName": "Scizor",
+  "slug": "scizor",
+  "genus": "Pincer Pokémon",
+  "generationIntroduced": 2,
+  "generationSource": "generation-ii",
+  "types": [
+    "bug",
+    "steel"
+  ],
+  "physical": {
+    "heightDecimeters": 18,
+    "weightHectograms": 1180
+  },
+  "baseExperience": 175,
+  "baseStats": {
+    "hp": {
+      "value": 70,
+      "effortYield": 0
+    },
+    "attack": {
+      "value": 130,
+      "effortYield": 2
+    },
+    "defense": {
+      "value": 100,
+      "effortYield": 0
+    },
+    "special-attack": {
+      "value": 55,
+      "effortYield": 0
+    },
+    "special-defense": {
+      "value": 80,
+      "effortYield": 0
+    },
+    "speed": {
+      "value": 65,
+      "effortYield": 0
+    }
+  },
+  "biologyAndTraining": {
+    "color": "red",
+    "shape": "bug-wings",
+    "habitat": "grassland",
+    "genderRate": 4,
+    "captureRate": 25,
+    "baseHappiness": 70,
+    "hatchCounter": 25,
+    "hasGenderDifferences": true,
+    "growthRate": "medium",
+    "eggGroups": [
+      "bug"
+    ],
+    "isBaby": false,
+    "isLegendary": false,
+    "isMythical": false
+  },
+  "abilities": [
+    {
+      "slug": "swarm",
+      "slot": 1,
+      "isHidden": false
+    },
+    {
+      "slug": "technician",
+      "slot": 2,
+      "isHidden": false
+    },
+    {
+      "slug": "light-metal",
+      "slot": 3,
+      "isHidden": true
+    }
+  ],
+  "evolution": {
+    "chainId": 58,
+    "evolvesFromSpeciesId": 123,
+    "evolvesTo": []
+  },
+  "source": {
+    "retrievedAt": "2026-07-23",
+    "sourceRevision": "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f",
+    "sourceUrls": [
+      "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
+      "https://github.com/PokeAPI/pokeapi/blob/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/LICENSE.md"
+    ],
+    "licenseStatus": "pending",
+    "requiredCredits": [
+      "PokéAPI contributors for the structured API data."
+    ],
+    "notes": [
+      "Structured data is sourced from PokéAPI under its BSD-3-Clause terms.",
+      "Pokémon names and character data remain subject to owner review and applicable trademark or copyright rights.",
+      "English source prose is preserved to avoid inventing translations of gameplay behavior."
+    ]
+  }
+}

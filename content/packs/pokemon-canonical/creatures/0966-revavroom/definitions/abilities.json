@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 2,
+  "pokemonId": "pokemon:0966-revavroom",
+  "abilities": [
+    {
+      "abilityId": 142,
+      "slot": 1,
+      "isHidden": false,
+      "slug": "overcoat",
+      "canonicalName": "Overcoat",
+      "shortEffect": "Protects against damage from weather.",
+      "effect": "This Pokémon does not take damage from weather.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/142/"
+    },
+    {
+      "abilityId": 111,
+      "slot": 3,
+      "isHidden": true,
+      "slug": "filter",
+      "canonicalName": "Filter",
+      "shortEffect": "Decreases damage taken from super-effective moves by 1/4.",
+      "effect": "This Pokémon takes 0.75× as much damage from moves that are super effective against it.\n\nThis ability functions identically to Solid Rock.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/111/"
+    }
+  ],
+  "source": {
+    "retrievedAt": "2026-07-23",
+    "sourceRevision": "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f",
+    "sourceUrls": [
+      "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
+      "https://github.com/PokeAPI/pokeapi/blob/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/LICENSE.md"
+    ],
+    "licenseStatus": "pending",
+    "requiredCredits": [
+      "PokéAPI contributors for the structured API data."
+    ],
+    "notes": [
+      "Structured data is sourced from PokéAPI under its BSD-3-Clause terms.",
+      "Pokémon names and character data remain subject to owner review and applicable trademark or copyright rights.",
+      "English source prose is preserved to avoid inventing translations of gameplay behavior."
+    ]
+  }
+}

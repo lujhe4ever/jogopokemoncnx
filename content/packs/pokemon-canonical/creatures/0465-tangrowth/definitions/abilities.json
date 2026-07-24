@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 2,
+  "pokemonId": "pokemon:0465-tangrowth",
+  "abilities": [
+    {
+      "abilityId": 34,
+      "slot": 1,
+      "isHidden": false,
+      "slug": "chlorophyll",
+      "canonicalName": "Chlorophyll",
+      "shortEffect": "Doubles Speed during strong sunlight.",
+      "effect": "This Pokémon's Speed is doubled during strong sunlight.\n\nThis bonus does not count as a stat modifier.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/34/"
+    },
+    {
+      "abilityId": 102,
+      "slot": 2,
+      "isHidden": false,
+      "slug": "leaf-guard",
+      "canonicalName": "Leaf Guard",
+      "shortEffect": "Protects against major status ailments during strong sunlight.",
+      "effect": "This Pokémon cannot be given a major status ailment during strong sunlight.\n\nThis ability does not heal prior status ailments.  Rest will fail altogether with this ability in effect.  Yawn will immediately fail if used on this Pokémon during strong sunlight, and an already-used Yawn will fail if the weather turns to strong sunlight in the meantime.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/102/"
+    },
+    {
+      "abilityId": 144,
+      "slot": 3,
+      "isHidden": true,
+      "slug": "regenerator",
+      "canonicalName": "Regenerator",
+      "shortEffect": "Heals for 1/3 max HP upon switching out.",
+      "effect": "This Pokémon regains 1/3 of its maximum HP when it is switched out for another Pokémon under any circumstances other than having fainted.\n\nThis ability does not take effect when a battle ends.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/144/"
+    }
+  ],
+  "source": {
+    "retrievedAt": "2026-07-23",
+    "sourceRevision": "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f",
+    "sourceUrls": [
+      "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
+      "https://github.com/PokeAPI/pokeapi/blob/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/LICENSE.md"
+    ],
+    "licenseStatus": "pending",
+    "requiredCredits": [
+      "PokéAPI contributors for the structured API data."
+    ],
+    "notes": [
+      "Structured data is sourced from PokéAPI under its BSD-3-Clause terms.",
+      "Pokémon names and character data remain subject to owner review and applicable trademark or copyright rights.",
+      "English source prose is preserved to avoid inventing translations of gameplay behavior."
+    ]
+  }
+}

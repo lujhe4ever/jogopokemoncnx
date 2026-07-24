@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 2,
+  "pokemonId": "pokemon:0124-jynx",
+  "abilities": [
+    {
+      "abilityId": 12,
+      "slot": 1,
+      "isHidden": false,
+      "slug": "oblivious",
+      "canonicalName": "Oblivious",
+      "shortEffect": "Prevents infatuation and protects against Captivate.",
+      "effect": "This Pokémon cannot be infatuated and is immune to Captivate.\n\nIf a Pokémon is infatuated and acquires this ability, its infatuation is cleared.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/12/"
+    },
+    {
+      "abilityId": 108,
+      "slot": 2,
+      "isHidden": false,
+      "slug": "forewarn",
+      "canonicalName": "Forewarn",
+      "shortEffect": "Reveals the opponents' strongest move upon entering battle.",
+      "effect": "When this Pokémon enters battle, it reveals the move with the highest base power known by any opposing Pokémon to all participating trainers.\n\nIn the event of a tie, one is chosen at random.\n\nMoves without a listed base power are assigned one as follows:\n\nPower | Moves\n----: | -----\n  160 | One-hit KO moves: Fissure, Guillotine, Horn Drill, and Sheer Cold\n  120 | Counter moves: Counter, Metal Burst, and Mirror Coat\n   80 | Variable power or set damage: Crush Grip, Dragon Rage, Electro Ball, Endeavor, Final Gambit, Flail, Frustration, Grass Knot, Gyro Ball, Heat Crash, Heavy Slam, Hidden Power, Low Kick, Natural Gift, Night Shade, Psywave, Return, Reversal, Seismic Toss, Sonic Boom, Trump Card, and Wring Out\n    0 | Any such move not listed\n",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/108/"
+    },
+    {
+      "abilityId": 87,
+      "slot": 3,
+      "isHidden": true,
+      "slug": "dry-skin",
+      "canonicalName": "Dry Skin",
+      "shortEffect": "Causes 1/8 max HP in damage each turn during strong sunlight, but heals for 1/8 max HP during rain.  Increases damage from Fire moves to 1.25×, but absorbs Water moves, healing for 1/4 max HP.",
+      "effect": "This Pokémon takes 1/8 of its maximum HP in damage after each turn during strong sunlight, but it heals for 1/8 of its HP each turn during rain.  This Pokémon takes 1.25× as much damage from Fire-type moves, but whenever a Water move hits it, it heals for 1/4 its maximum HP instead.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/87/"
+    }
+  ],
+  "source": {
+    "retrievedAt": "2026-07-23",
+    "sourceRevision": "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f",
+    "sourceUrls": [
+      "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
+      "https://github.com/PokeAPI/pokeapi/blob/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/LICENSE.md"
+    ],
+    "licenseStatus": "pending",
+    "requiredCredits": [
+      "PokéAPI contributors for the structured API data."
+    ],
+    "notes": [
+      "Structured data is sourced from PokéAPI under its BSD-3-Clause terms.",
+      "Pokémon names and character data remain subject to owner review and applicable trademark or copyright rights.",
+      "English source prose is preserved to avoid inventing translations of gameplay behavior."
+    ]
+  }
+}

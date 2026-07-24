@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 2,
+  "id": "pokemon:1018-archaludon",
+  "nationalDexNumber": 1018,
+  "canonicalName": "Archaludon",
+  "slug": "archaludon",
+  "genus": "Alloy Pokémon",
+  "generationIntroduced": 9,
+  "generationSource": "generation-ix",
+  "types": [
+    "steel",
+    "dragon"
+  ],
+  "physical": {
+    "heightDecimeters": 20,
+    "weightHectograms": 600
+  },
+  "baseExperience": 300,
+  "baseStats": {
+    "hp": {
+      "value": 90,
+      "effortYield": 0
+    },
+    "attack": {
+      "value": 105,
+      "effortYield": 0
+    },
+    "defense": {
+      "value": 130,
+      "effortYield": 3
+    },
+    "special-attack": {
+      "value": 125,
+      "effortYield": 0
+    },
+    "special-defense": {
+      "value": 65,
+      "effortYield": 0
+    },
+    "speed": {
+      "value": 85,
+      "effortYield": 0
+    }
+  },
+  "biologyAndTraining": {
+    "color": "white",
+    "shape": "upright",
+    "habitat": null,
+    "genderRate": 4,
+    "captureRate": 10,
+    "baseHappiness": 50,
+    "hatchCounter": 30,
+    "hasGenderDifferences": false,
+    "growthRate": "medium",
+    "eggGroups": [
+      "mineral",
+      "dragon"
+    ],
+    "isBaby": false,
+    "isLegendary": false,
+    "isMythical": false
+  },
+  "abilities": [
+    {
+      "slug": "stamina",
+      "slot": 1,
+      "isHidden": false
+    },
+    {
+      "slug": "sturdy",
+      "slot": 2,
+      "isHidden": false
+    },
+    {
+      "slug": "stalwart",
+      "slot": 3,
+      "isHidden": true
+    }
+  ],
+  "evolution": {
+    "chainId": 465,
+    "evolvesFromSpeciesId": 884,
+    "evolvesTo": []
+  },
+  "source": {
+    "retrievedAt": "2026-07-23",
+    "sourceRevision": "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f",
+    "sourceUrls": [
+      "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
+      "https://github.com/PokeAPI/pokeapi/blob/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/LICENSE.md"
+    ],
+    "licenseStatus": "pending",
+    "requiredCredits": [
+      "PokéAPI contributors for the structured API data."
+    ],
+    "notes": [
+      "Structured data is sourced from PokéAPI under its BSD-3-Clause terms.",
+      "Pokémon names and character data remain subject to owner review and applicable trademark or copyright rights.",
+      "English source prose is preserved to avoid inventing translations of gameplay behavior."
+    ]
+  }
+}

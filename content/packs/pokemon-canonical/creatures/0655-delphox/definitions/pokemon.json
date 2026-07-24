@@ -1,0 +1,96 @@
+{
+  "schemaVersion": 2,
+  "id": "pokemon:0655-delphox",
+  "nationalDexNumber": 655,
+  "canonicalName": "Delphox",
+  "slug": "delphox",
+  "genus": "Fox Pokémon",
+  "generationIntroduced": 6,
+  "generationSource": "generation-vi",
+  "types": [
+    "fire",
+    "psychic"
+  ],
+  "physical": {
+    "heightDecimeters": 15,
+    "weightHectograms": 390
+  },
+  "baseExperience": 240,
+  "baseStats": {
+    "hp": {
+      "value": 75,
+      "effortYield": 0
+    },
+    "attack": {
+      "value": 69,
+      "effortYield": 0
+    },
+    "defense": {
+      "value": 72,
+      "effortYield": 0
+    },
+    "special-attack": {
+      "value": 114,
+      "effortYield": 3
+    },
+    "special-defense": {
+      "value": 100,
+      "effortYield": 0
+    },
+    "speed": {
+      "value": 104,
+      "effortYield": 0
+    }
+  },
+  "biologyAndTraining": {
+    "color": "red",
+    "shape": "upright",
+    "habitat": null,
+    "genderRate": 1,
+    "captureRate": 45,
+    "baseHappiness": 70,
+    "hatchCounter": 20,
+    "hasGenderDifferences": false,
+    "growthRate": "medium-slow",
+    "eggGroups": [
+      "ground"
+    ],
+    "isBaby": false,
+    "isLegendary": false,
+    "isMythical": false
+  },
+  "abilities": [
+    {
+      "slug": "blaze",
+      "slot": 1,
+      "isHidden": false
+    },
+    {
+      "slug": "magician",
+      "slot": 3,
+      "isHidden": true
+    }
+  ],
+  "evolution": {
+    "chainId": 338,
+    "evolvesFromSpeciesId": 654,
+    "evolvesTo": []
+  },
+  "source": {
+    "retrievedAt": "2026-07-23",
+    "sourceRevision": "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f",
+    "sourceUrls": [
+      "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
+      "https://github.com/PokeAPI/pokeapi/blob/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/LICENSE.md"
+    ],
+    "licenseStatus": "pending",
+    "requiredCredits": [
+      "PokéAPI contributors for the structured API data."
+    ],
+    "notes": [
+      "Structured data is sourced from PokéAPI under its BSD-3-Clause terms.",
+      "Pokémon names and character data remain subject to owner review and applicable trademark or copyright rights.",
+      "English source prose is preserved to avoid inventing translations of gameplay behavior."
+    ]
+  }
+}

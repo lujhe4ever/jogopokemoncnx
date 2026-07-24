@@ -1,0 +1,133 @@
+{
+  "schemaVersion": 2,
+  "id": "pokemon:0320-wailmer",
+  "nationalDexNumber": 320,
+  "canonicalName": "Wailmer",
+  "slug": "wailmer",
+  "genus": "Ball Whale Pokémon",
+  "generationIntroduced": 3,
+  "generationSource": "generation-iii",
+  "types": [
+    "water"
+  ],
+  "physical": {
+    "heightDecimeters": 20,
+    "weightHectograms": 1300
+  },
+  "baseExperience": 80,
+  "baseStats": {
+    "hp": {
+      "value": 130,
+      "effortYield": 1
+    },
+    "attack": {
+      "value": 70,
+      "effortYield": 0
+    },
+    "defense": {
+      "value": 35,
+      "effortYield": 0
+    },
+    "special-attack": {
+      "value": 70,
+      "effortYield": 0
+    },
+    "special-defense": {
+      "value": 35,
+      "effortYield": 0
+    },
+    "speed": {
+      "value": 60,
+      "effortYield": 0
+    }
+  },
+  "biologyAndTraining": {
+    "color": "blue",
+    "shape": "fish",
+    "habitat": "sea",
+    "genderRate": 4,
+    "captureRate": 125,
+    "baseHappiness": 70,
+    "hatchCounter": 40,
+    "hasGenderDifferences": false,
+    "growthRate": "fast-then-very-slow",
+    "eggGroups": [
+      "ground",
+      "water2"
+    ],
+    "isBaby": false,
+    "isLegendary": false,
+    "isMythical": false
+  },
+  "abilities": [
+    {
+      "slug": "water-veil",
+      "slot": 1,
+      "isHidden": false
+    },
+    {
+      "slug": "oblivious",
+      "slot": 2,
+      "isHidden": false
+    },
+    {
+      "slug": "pressure",
+      "slot": 3,
+      "isHidden": true
+    }
+  ],
+  "evolution": {
+    "chainId": 161,
+    "evolvesFromSpeciesId": null,
+    "evolvesTo": [
+      {
+        "fromSpeciesId": 320,
+        "toSpeciesId": 321,
+        "trigger": "level-up",
+        "versionGroupId": 5,
+        "isDefault": true,
+        "triggerItem": null,
+        "minimumLevel": 40,
+        "genderId": null,
+        "locationId": null,
+        "heldItem": null,
+        "timeOfDay": null,
+        "knownMove": null,
+        "knownMoveType": null,
+        "minimumHappiness": null,
+        "minimumBeauty": null,
+        "minimumAffection": null,
+        "relativePhysicalStats": null,
+        "partySpeciesId": null,
+        "partyType": null,
+        "tradeSpeciesId": null,
+        "needsOverworldRain": false,
+        "turnUpsideDown": false,
+        "needsMultiplayer": false,
+        "nearSpecialRock": false,
+        "regionId": null,
+        "usedMove": null,
+        "minimumMoveCount": null,
+        "minimumSteps": null,
+        "minimumDamageTaken": null
+      }
+    ]
+  },
+  "source": {
+    "retrievedAt": "2026-07-23",
+    "sourceRevision": "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f",
+    "sourceUrls": [
+      "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
+      "https://github.com/PokeAPI/pokeapi/blob/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/LICENSE.md"
+    ],
+    "licenseStatus": "pending",
+    "requiredCredits": [
+      "PokéAPI contributors for the structured API data."
+    ],
+    "notes": [
+      "Structured data is sourced from PokéAPI under its BSD-3-Clause terms.",
+      "Pokémon names and character data remain subject to owner review and applicable trademark or copyright rights.",
+      "English source prose is preserved to avoid inventing translations of gameplay behavior."
+    ]
+  }
+}

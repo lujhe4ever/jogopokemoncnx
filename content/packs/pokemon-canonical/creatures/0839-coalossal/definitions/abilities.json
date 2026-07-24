@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 2,
+  "pokemonId": "pokemon:0839-coalossal",
+  "abilities": [
+    {
+      "abilityId": 243,
+      "slot": 1,
+      "isHidden": false,
+      "slug": "steam-engine",
+      "canonicalName": "Steam Engine",
+      "shortEffect": "Boosts the Speed stat drastically when the Pokémon is hit by a Fire- or Water-type move.",
+      "effect": "Raises the user's Speed by three stages when it is hit by a Fire- or Water-type attack. The attack still deals damage.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/243/"
+    },
+    {
+      "abilityId": 49,
+      "slot": 2,
+      "isHidden": false,
+      "slug": "flame-body",
+      "canonicalName": "Flame Body",
+      "shortEffect": "Has a 30% chance of burning attacking Pokémon on contact.",
+      "effect": "Whenever a move makes contact with this Pokémon, the move's user has a 30% chance of being burned.\n\nOverworld: If any Pokémon in the party has this ability, each egg in the party has its hatch counter decreased by 2 (rather than 1) each step cycle, making eggs hatch roughly twice as quickly.  This effect does not stack if multiple Pokémon have this ability or Magma Armor.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/49/"
+    },
+    {
+      "abilityId": 18,
+      "slot": 3,
+      "isHidden": true,
+      "slug": "flash-fire",
+      "canonicalName": "Flash Fire",
+      "shortEffect": "Protects against Fire moves.  Once one has been blocked, the Pokémon's own Fire moves inflict 1.5× damage until it leaves battle.",
+      "effect": "This Pokémon is immune to Fire-type moves.  Once this Pokémon has been hit by a Fire move, its own Fire moves will inflict 1.5× as much damage until it leaves battle.\n\nThis ability has no effect while the Pokémon is frozen.  The Fire damage bonus is retained even if the Pokémon is frozen and thawed or the ability is lost or disabled.  Fire moves will ignore this Pokémon's Substitute.  This ability takes effect even on non-damaging moves, i.e. Will-O-Wisp.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/18/"
+    }
+  ],
+  "source": {
+    "retrievedAt": "2026-07-23",
+    "sourceRevision": "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f",
+    "sourceUrls": [
+      "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
+      "https://github.com/PokeAPI/pokeapi/blob/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/LICENSE.md"
+    ],
+    "licenseStatus": "pending",
+    "requiredCredits": [
+      "PokéAPI contributors for the structured API data."
+    ],
+    "notes": [
+      "Structured data is sourced from PokéAPI under its BSD-3-Clause terms.",
+      "Pokémon names and character data remain subject to owner review and applicable trademark or copyright rights.",
+      "English source prose is preserved to avoid inventing translations of gameplay behavior."
+    ]
+  }
+}

@@ -1,0 +1,133 @@
+{
+  "schemaVersion": 2,
+  "id": "pokemon:0759-stufful",
+  "nationalDexNumber": 759,
+  "canonicalName": "Stufful",
+  "slug": "stufful",
+  "genus": "Flailing Pokémon",
+  "generationIntroduced": 7,
+  "generationSource": "generation-vii",
+  "types": [
+    "normal",
+    "fighting"
+  ],
+  "physical": {
+    "heightDecimeters": 5,
+    "weightHectograms": 68
+  },
+  "baseExperience": 68,
+  "baseStats": {
+    "hp": {
+      "value": 70,
+      "effortYield": 0
+    },
+    "attack": {
+      "value": 75,
+      "effortYield": 1
+    },
+    "defense": {
+      "value": 50,
+      "effortYield": 0
+    },
+    "special-attack": {
+      "value": 45,
+      "effortYield": 0
+    },
+    "special-defense": {
+      "value": 50,
+      "effortYield": 0
+    },
+    "speed": {
+      "value": 50,
+      "effortYield": 0
+    }
+  },
+  "biologyAndTraining": {
+    "color": "pink",
+    "shape": "quadruped",
+    "habitat": null,
+    "genderRate": 4,
+    "captureRate": 140,
+    "baseHappiness": 70,
+    "hatchCounter": 15,
+    "hasGenderDifferences": false,
+    "growthRate": "medium",
+    "eggGroups": [
+      "ground"
+    ],
+    "isBaby": false,
+    "isLegendary": false,
+    "isMythical": false
+  },
+  "abilities": [
+    {
+      "slug": "fluffy",
+      "slot": 1,
+      "isHidden": false
+    },
+    {
+      "slug": "klutz",
+      "slot": 2,
+      "isHidden": false
+    },
+    {
+      "slug": "cute-charm",
+      "slot": 3,
+      "isHidden": true
+    }
+  ],
+  "evolution": {
+    "chainId": 391,
+    "evolvesFromSpeciesId": null,
+    "evolvesTo": [
+      {
+        "fromSpeciesId": 759,
+        "toSpeciesId": 760,
+        "trigger": "level-up",
+        "versionGroupId": 17,
+        "isDefault": true,
+        "triggerItem": null,
+        "minimumLevel": 27,
+        "genderId": null,
+        "locationId": null,
+        "heldItem": null,
+        "timeOfDay": null,
+        "knownMove": null,
+        "knownMoveType": null,
+        "minimumHappiness": null,
+        "minimumBeauty": null,
+        "minimumAffection": null,
+        "relativePhysicalStats": null,
+        "partySpeciesId": null,
+        "partyType": null,
+        "tradeSpeciesId": null,
+        "needsOverworldRain": false,
+        "turnUpsideDown": false,
+        "needsMultiplayer": false,
+        "nearSpecialRock": false,
+        "regionId": null,
+        "usedMove": null,
+        "minimumMoveCount": null,
+        "minimumSteps": null,
+        "minimumDamageTaken": null
+      }
+    ]
+  },
+  "source": {
+    "retrievedAt": "2026-07-23",
+    "sourceRevision": "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f",
+    "sourceUrls": [
+      "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
+      "https://github.com/PokeAPI/pokeapi/blob/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/LICENSE.md"
+    ],
+    "licenseStatus": "pending",
+    "requiredCredits": [
+      "PokéAPI contributors for the structured API data."
+    ],
+    "notes": [
+      "Structured data is sourced from PokéAPI under its BSD-3-Clause terms.",
+      "Pokémon names and character data remain subject to owner review and applicable trademark or copyright rights.",
+      "English source prose is preserved to avoid inventing translations of gameplay behavior."
+    ]
+  }
+}

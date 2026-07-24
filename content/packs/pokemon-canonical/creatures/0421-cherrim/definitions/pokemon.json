@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 2,
+  "id": "pokemon:0421-cherrim",
+  "nationalDexNumber": 421,
+  "canonicalName": "Cherrim",
+  "slug": "cherrim",
+  "genus": "Blossom Pokémon",
+  "generationIntroduced": 4,
+  "generationSource": "generation-iv",
+  "types": [
+    "grass"
+  ],
+  "physical": {
+    "heightDecimeters": 5,
+    "weightHectograms": 93
+  },
+  "baseExperience": 158,
+  "baseStats": {
+    "hp": {
+      "value": 70,
+      "effortYield": 0
+    },
+    "attack": {
+      "value": 60,
+      "effortYield": 0
+    },
+    "defense": {
+      "value": 70,
+      "effortYield": 0
+    },
+    "special-attack": {
+      "value": 87,
+      "effortYield": 2
+    },
+    "special-defense": {
+      "value": 78,
+      "effortYield": 0
+    },
+    "speed": {
+      "value": 85,
+      "effortYield": 0
+    }
+  },
+  "biologyAndTraining": {
+    "color": "purple",
+    "shape": "legs",
+    "habitat": null,
+    "genderRate": 4,
+    "captureRate": 75,
+    "baseHappiness": 70,
+    "hatchCounter": 20,
+    "hasGenderDifferences": false,
+    "growthRate": "medium",
+    "eggGroups": [
+      "fairy",
+      "plant"
+    ],
+    "isBaby": false,
+    "isLegendary": false,
+    "isMythical": false
+  },
+  "abilities": [
+    {
+      "slug": "flower-gift",
+      "slot": 1,
+      "isHidden": false
+    }
+  ],
+  "evolution": {
+    "chainId": 217,
+    "evolvesFromSpeciesId": 420,
+    "evolvesTo": []
+  },
+  "source": {
+    "retrievedAt": "2026-07-23",
+    "sourceRevision": "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f",
+    "sourceUrls": [
+      "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
+      "https://github.com/PokeAPI/pokeapi/blob/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/LICENSE.md"
+    ],
+    "licenseStatus": "pending",
+    "requiredCredits": [
+      "PokéAPI contributors for the structured API data."
+    ],
+    "notes": [
+      "Structured data is sourced from PokéAPI under its BSD-3-Clause terms.",
+      "Pokémon names and character data remain subject to owner review and applicable trademark or copyright rights.",
+      "English source prose is preserved to avoid inventing translations of gameplay behavior."
+    ]
+  }
+}

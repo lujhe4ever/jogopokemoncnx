@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 2,
+  "pokemonId": "pokemon:0864-cursola",
+  "abilities": [
+    {
+      "abilityId": 133,
+      "slot": 1,
+      "isHidden": false,
+      "slug": "weak-armor",
+      "canonicalName": "Weak Armor",
+      "shortEffect": "Raises Speed and lowers Defense by one stage each upon being hit by a physical move.",
+      "effect": "Whenever a physical move hits this Pokémon, its Speed rises one stage and its Defense falls one stage.\n\nThis ability triggers on every hit of a multiple-hit move.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/133/"
+    },
+    {
+      "abilityId": 253,
+      "slot": 3,
+      "isHidden": true,
+      "slug": "perish-body",
+      "canonicalName": "Perish Body",
+      "shortEffect": "When hit by a move that makes direct contact, the Pokémon and the attacker will faint after three turns unless they switch out of battle.",
+      "effect": "When the Pokémon with Perish Body is hit with a contact move, both the attacker and the Pokémon with Perish Body will faint in three turns.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/253/"
+    }
+  ],
+  "source": {
+    "retrievedAt": "2026-07-23",
+    "sourceRevision": "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f",
+    "sourceUrls": [
+      "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
+      "https://github.com/PokeAPI/pokeapi/blob/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/LICENSE.md"
+    ],
+    "licenseStatus": "pending",
+    "requiredCredits": [
+      "PokéAPI contributors for the structured API data."
+    ],
+    "notes": [
+      "Structured data is sourced from PokéAPI under its BSD-3-Clause terms.",
+      "Pokémon names and character data remain subject to owner review and applicable trademark or copyright rights.",
+      "English source prose is preserved to avoid inventing translations of gameplay behavior."
+    ]
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 2,
+  "pokemonId": "pokemon:0193-yanma",
+  "abilities": [
+    {
+      "abilityId": 3,
+      "slot": 1,
+      "isHidden": false,
+      "slug": "speed-boost",
+      "canonicalName": "Speed Boost",
+      "shortEffect": "Raises Speed one stage after each turn.",
+      "effect": "This Pokémon's Speed rises one stage after each turn.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/3/"
+    },
+    {
+      "abilityId": 14,
+      "slot": 2,
+      "isHidden": false,
+      "slug": "compound-eyes",
+      "canonicalName": "Compound Eyes",
+      "shortEffect": "Increases moves' accuracy to 1.3×.",
+      "effect": "This Pokémon's moves have 1.3× their accuracy.\n\nThis ability has no effect on the one-hit KO moves (Fissure, Guillotine, Horn Drill, and Sheer Cold).\n\nOverworld: If the first Pokémon in the party has this ability, the chance of a wild Pokémon holding a particular item is raised from 50%, 5%, or 1% to 60%, 20%, or 5%, respectively.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/14/"
+    },
+    {
+      "abilityId": 119,
+      "slot": 3,
+      "isHidden": true,
+      "slug": "frisk",
+      "canonicalName": "Frisk",
+      "shortEffect": "Reveals an opponent's held item upon entering battle.",
+      "effect": "When this Pokémon enters battle, it reveals an opposing Pokémon's held item to all participating trainers.\n\nIn a double battle, if one opponent has an item, this Pokémon will Frisk that Pokémon; if both have an item, it will Frisk one at random.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/119/"
+    }
+  ],
+  "source": {
+    "retrievedAt": "2026-07-23",
+    "sourceRevision": "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f",
+    "sourceUrls": [
+      "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
+      "https://github.com/PokeAPI/pokeapi/blob/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/LICENSE.md"
+    ],
+    "licenseStatus": "pending",
+    "requiredCredits": [
+      "PokéAPI contributors for the structured API data."
+    ],
+    "notes": [
+      "Structured data is sourced from PokéAPI under its BSD-3-Clause terms.",
+      "Pokémon names and character data remain subject to owner review and applicable trademark or copyright rights.",
+      "English source prose is preserved to avoid inventing translations of gameplay behavior."
+    ]
+  }
+}

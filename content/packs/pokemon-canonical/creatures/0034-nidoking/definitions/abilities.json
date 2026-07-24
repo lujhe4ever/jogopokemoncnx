@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 2,
+  "pokemonId": "pokemon:0034-nidoking",
+  "abilities": [
+    {
+      "abilityId": 38,
+      "slot": 1,
+      "isHidden": false,
+      "slug": "poison-point",
+      "canonicalName": "Poison Point",
+      "shortEffect": "Has a 30% chance of poisoning attacking Pokémon on contact.",
+      "effect": "Whenever a move makes contact with this Pokémon, the move's user has a 30% chance of being poisoned.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/38/"
+    },
+    {
+      "abilityId": 79,
+      "slot": 2,
+      "isHidden": false,
+      "slug": "rivalry",
+      "canonicalName": "Rivalry",
+      "shortEffect": "Increases damage inflicted to 1.25× against Pokémon of the same gender, but decreases damage to 0.75× against the opposite gender.",
+      "effect": "This Pokémon inflicts 1.25× as much regular damage against Pokémon of the same gender and 0.75× as much regular damage against Pokémon of the opposite gender.\n\nIf either Pokémon is genderless, damage is unaffected.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/79/"
+    },
+    {
+      "abilityId": 125,
+      "slot": 3,
+      "isHidden": true,
+      "slug": "sheer-force",
+      "canonicalName": "Sheer Force",
+      "shortEffect": "Strengthens moves with extra effects to 1.3× their power, but prevents their extra effects.",
+      "effect": "This Pokémon's moves with extra effects have 1.3× their power, but lose their extra effects.\n\nAn effect chance is a move's chance to inflict a status ailment, cause a stat change, or make the target flinch in addition to the move's main effect. For example, Thunder Shock's paralysis is an extra effect, but Thunder Wave's is not, nor are Knock Off's item removal and Air Cutter's increased critical hit rate.\n\nMoves that lower the user's stats are unaffected.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/125/"
+    }
+  ],
+  "source": {
+    "retrievedAt": "2026-07-23",
+    "sourceRevision": "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f",
+    "sourceUrls": [
+      "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
+      "https://github.com/PokeAPI/pokeapi/blob/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/LICENSE.md"
+    ],
+    "licenseStatus": "pending",
+    "requiredCredits": [
+      "PokéAPI contributors for the structured API data."
+    ],
+    "notes": [
+      "Structured data is sourced from PokéAPI under its BSD-3-Clause terms.",
+      "Pokémon names and character data remain subject to owner review and applicable trademark or copyright rights.",
+      "English source prose is preserved to avoid inventing translations of gameplay behavior."
+    ]
+  }
+}

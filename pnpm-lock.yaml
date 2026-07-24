@@ -25,6 +25,9 @@ importers:
       lint-staged:
         specifier: 17.2.0
         version: 17.2.0
+      pngjs:
+        specifier: 7.0.0
+        version: 7.0.0
       prettier:
         specifier: 3.9.6
         version: 3.9.6
@@ -1685,6 +1688,13 @@ packages:
         integrity: sha512-y+ichcgc2LrADuhLNAx8DFjVfgz91pRxfZdI3UDhxHvcVEZsenLO+7XaU5vOp0u/7V/wZ+plyuQxtrDlZJ+yeg==,
       }
 
+  pngjs@7.0.0:
+    resolution:
+      {
+        integrity: sha512-LKWqWJRhstyYo9pGvgor/ivk2w94eSjE3RGVuzLGlr3NmD8bf7RcYGze1mNdEHRP6TRP6rMuDHk5t44hnTRyow==,
+      }
+    engines: { node: ">=14.19.0" }
+
   postcss@8.5.22:
     resolution:
       {
@@ -3071,6 +3081,8 @@ snapshots:
       confbox: 0.2.4
       exsolve: 1.1.0
       pathe: 2.0.3
+
+  pngjs@7.0.0: {}
 
   postcss@8.5.22:
     dependencies:

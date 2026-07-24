@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 2,
+  "pokemonId": "pokemon:0874-stonjourner",
+  "abilities": [
+    {
+      "abilityId": 249,
+      "slot": 1,
+      "isHidden": false,
+      "slug": "power-spot",
+      "canonicalName": "Power Spot",
+      "shortEffect": "Just being next to the Pokémon powers up moves.",
+      "effect": " The power of moves used by the allies of the Pokémon with Power Spot is increased by 30%.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/249/"
+    }
+  ],
+  "source": {
+    "retrievedAt": "2026-07-23",
+    "sourceRevision": "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f",
+    "sourceUrls": [
+      "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
+      "https://github.com/PokeAPI/pokeapi/blob/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/LICENSE.md"
+    ],
+    "licenseStatus": "pending",
+    "requiredCredits": [
+      "PokéAPI contributors for the structured API data."
+    ],
+    "notes": [
+      "Structured data is sourced from PokéAPI under its BSD-3-Clause terms.",
+      "Pokémon names and character data remain subject to owner review and applicable trademark or copyright rights.",
+      "English source prose is preserved to avoid inventing translations of gameplay behavior."
+    ]
+  }
+}

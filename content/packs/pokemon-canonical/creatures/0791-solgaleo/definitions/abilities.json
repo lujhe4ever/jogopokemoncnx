@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 2,
+  "pokemonId": "pokemon:0791-solgaleo",
+  "abilities": [
+    {
+      "abilityId": 230,
+      "slot": 1,
+      "isHidden": false,
+      "slug": "full-metal-body",
+      "canonicalName": "Full Metal Body",
+      "shortEffect": "Other Pokémon cannot lower this Pokémon's stats.",
+      "effect": "This Pokémon's stats cannot be lowered by other Pokémon's moves or abilities.  This effect only applies to normal stat modifications and not more exotic effects such as Topsy-Turvy or Power Swap.\n\nThis Ability is not bypassed by Mold Breaker, Teravolt, or Turboblaze.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/230/"
+    }
+  ],
+  "source": {
+    "retrievedAt": "2026-07-23",
+    "sourceRevision": "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f",
+    "sourceUrls": [
+      "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
+      "https://github.com/PokeAPI/pokeapi/blob/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/LICENSE.md"
+    ],
+    "licenseStatus": "pending",
+    "requiredCredits": [
+      "PokéAPI contributors for the structured API data."
+    ],
+    "notes": [
+      "Structured data is sourced from PokéAPI under its BSD-3-Clause terms.",
+      "Pokémon names and character data remain subject to owner review and applicable trademark or copyright rights.",
+      "English source prose is preserved to avoid inventing translations of gameplay behavior."
+    ]
+  }
+}

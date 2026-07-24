@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 2,
+  "source": {
+    "retrievedAt": "2026-07-23",
+    "sourceRevision": "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f",
+    "sourceUrls": [
+      "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
+      "https://github.com/PokeAPI/pokeapi/blob/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/LICENSE.md"
+    ],
+    "licenseStatus": "pending",
+    "requiredCredits": [
+      "PokéAPI contributors for the structured API data."
+    ],
+    "notes": [
+      "Structured data is sourced from PokéAPI under its BSD-3-Clause terms.",
+      "Pokémon names and character data remain subject to owner review and applicable trademark or copyright rights.",
+      "English source prose is preserved to avoid inventing translations of gameplay behavior."
+    ]
+  },
+  "methods": [
+    {
+      "id": 1,
+      "slug": "level-up"
+    },
+    {
+      "id": 2,
+      "slug": "egg"
+    },
+    {
+      "id": 3,
+      "slug": "tutor"
+    },
+    {
+      "id": 4,
+      "slug": "machine"
+    },
+    {
+      "id": 5,
+      "slug": "stadium-surfing-pikachu"
+    },
+    {
+      "id": 6,
+      "slug": "light-ball-egg"
+    },
+    {
+      "id": 7,
+      "slug": "colosseum-purification"
+    },
+    {
+      "id": 8,
+      "slug": "xd-shadow"
+    },
+    {
+      "id": 9,
+      "slug": "xd-purification"
+    },
+    {
+      "id": 10,
+      "slug": "form-change"
+    },
+    {
+      "id": 11,
+      "slug": "zygarde-cube"
+    },
+    {
+      "id": 12,
+      "slug": "train"
+    }
+  ]
+}

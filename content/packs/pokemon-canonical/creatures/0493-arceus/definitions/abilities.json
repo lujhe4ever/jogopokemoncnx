@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 2,
+  "pokemonId": "pokemon:0493-arceus",
+  "abilities": [
+    {
+      "abilityId": 121,
+      "slot": 1,
+      "isHidden": false,
+      "slug": "multitype",
+      "canonicalName": "Multitype",
+      "shortEffect": "Changes Arceus's type and form to match its held Plate.",
+      "effect": "If this Pokémon is holding an elemental Plate, its type and form change to match the Plate.\n\nThis Pokémon's held item, whether or not it is a Plate, cannot be taken by Covet or Thief, nor removed by Knock Off, nor traded by Switcheroo or Trick.  Covet, Thief, and Knock Off still inflict damage against this Pokémon.  Unlike with Sticky Hold, this Pokémon cannot use Fling, Switcheroo, or Trick to lose its item itself, nor gain an item through Switcheroo or Trick if it does not have one.\n\nThis ability has no effect for any Pokémon other than Arceus.  This ability cannot be traded with Skill Swap, nor copied with Role Play or Trace, nor disabled with Gastro Acid, nor changed with Worry Seed.  This Pokémon cannot use Skill Swap or Role Play to lose its ability itself.  Mold Breaker cannot ignore this ability.\n\nIf a Pokémon Transforms into an Arceus with this ability, it will Transform into Arceus's default, Normal-type form.  If the Transforming Pokémon is holding a Plate, this ability will then activate and change the Pokémon into the corresponding form.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/121/"
+    }
+  ],
+  "source": {
+    "retrievedAt": "2026-07-23",
+    "sourceRevision": "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f",
+    "sourceUrls": [
+      "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
+      "https://github.com/PokeAPI/pokeapi/blob/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/LICENSE.md"
+    ],
+    "licenseStatus": "pending",
+    "requiredCredits": [
+      "PokéAPI contributors for the structured API data."
+    ],
+    "notes": [
+      "Structured data is sourced from PokéAPI under its BSD-3-Clause terms.",
+      "Pokémon names and character data remain subject to owner review and applicable trademark or copyright rights.",
+      "English source prose is preserved to avoid inventing translations of gameplay behavior."
+    ]
+  }
+}

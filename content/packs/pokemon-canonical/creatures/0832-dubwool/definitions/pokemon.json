@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 2,
+  "id": "pokemon:0832-dubwool",
+  "nationalDexNumber": 832,
+  "canonicalName": "Dubwool",
+  "slug": "dubwool",
+  "genus": "Sheep Pokémon",
+  "generationIntroduced": 8,
+  "generationSource": "generation-viii",
+  "types": [
+    "normal"
+  ],
+  "physical": {
+    "heightDecimeters": 13,
+    "weightHectograms": 430
+  },
+  "baseExperience": 172,
+  "baseStats": {
+    "hp": {
+      "value": 72,
+      "effortYield": 0
+    },
+    "attack": {
+      "value": 80,
+      "effortYield": 0
+    },
+    "defense": {
+      "value": 100,
+      "effortYield": 2
+    },
+    "special-attack": {
+      "value": 60,
+      "effortYield": 0
+    },
+    "special-defense": {
+      "value": 90,
+      "effortYield": 0
+    },
+    "speed": {
+      "value": 88,
+      "effortYield": 0
+    }
+  },
+  "biologyAndTraining": {
+    "color": "white",
+    "shape": "quadruped",
+    "habitat": null,
+    "genderRate": 4,
+    "captureRate": 127,
+    "baseHappiness": 50,
+    "hatchCounter": 15,
+    "hasGenderDifferences": false,
+    "growthRate": "medium",
+    "eggGroups": [
+      "ground"
+    ],
+    "isBaby": false,
+    "isLegendary": false,
+    "isMythical": false
+  },
+  "abilities": [
+    {
+      "slug": "fluffy",
+      "slot": 1,
+      "isHidden": false
+    },
+    {
+      "slug": "steadfast",
+      "slot": 2,
+      "isHidden": false
+    },
+    {
+      "slug": "bulletproof",
+      "slot": 3,
+      "isHidden": true
+    }
+  ],
+  "evolution": {
+    "chainId": 438,
+    "evolvesFromSpeciesId": 831,
+    "evolvesTo": []
+  },
+  "source": {
+    "retrievedAt": "2026-07-23",
+    "sourceRevision": "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f",
+    "sourceUrls": [
+      "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
+      "https://github.com/PokeAPI/pokeapi/blob/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/LICENSE.md"
+    ],
+    "licenseStatus": "pending",
+    "requiredCredits": [
+      "PokéAPI contributors for the structured API data."
+    ],
+    "notes": [
+      "Structured data is sourced from PokéAPI under its BSD-3-Clause terms.",
+      "Pokémon names and character data remain subject to owner review and applicable trademark or copyright rights.",
+      "English source prose is preserved to avoid inventing translations of gameplay behavior."
+    ]
+  }
+}

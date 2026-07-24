@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 2,
+  "pokemonId": "pokemon:0173-cleffa",
+  "abilities": [
+    {
+      "abilityId": 56,
+      "slot": 1,
+      "isHidden": false,
+      "slug": "cute-charm",
+      "canonicalName": "Cute Charm",
+      "shortEffect": "Has a 30% chance of infatuating attacking Pokémon on contact.",
+      "effect": "Whenever a move makes contact with this Pokémon, the move's user has a 30% chance of being infatuated.\n\nOverworld: If the first Pokémon in the party has this ability, any wild Pokémon whose species can be either gender has a 2/3 chance of being set to the opposite gender, and a 1/3 chance of having a random gender as usual.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/56/"
+    },
+    {
+      "abilityId": 98,
+      "slot": 2,
+      "isHidden": false,
+      "slug": "magic-guard",
+      "canonicalName": "Magic Guard",
+      "shortEffect": "Protects against damage not directly caused by a move.",
+      "effect": "This Pokémon is immune to damage not directly caused by a move.\n\nFor example, this Pokémon takes no damage from from weather, recoil, status ailments, or Spikes, but it still suffers from the Attack cut when burned, and a Life Orb will still power up this Pokémon's moves without damaging it.  Anything that directly depends on such damage will also not happen; for example, Leech Seed will neither hurt this Pokémon nor heal the opponent, and Pokémon with a Jaboca Berry or Rowap Berry will not consume the berry when hit by this Pokémon.\n\nThe following are unaffected: Struggle, Pain Split (whether used by or against this Pokémon), Belly Drum, Substitute, Curse, moves that knock the user out, and damage from confusion.\n\nThis Pokémon will neither lose nor regain HP if it drains HP from a Pokémon with Liquid Ooze.\n\nIf this Pokémon is badly poisoned, the poison counter is still increased each turn; if the Pokémon loses this ability, it will begin taking as much damage as it would be if it had been taking increasing damage each turn.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/98/"
+    },
+    {
+      "abilityId": 132,
+      "slot": 3,
+      "isHidden": true,
+      "slug": "friend-guard",
+      "canonicalName": "Friend Guard",
+      "shortEffect": "Decreases all direct damage taken by friendly Pokémon to 0.75×.",
+      "effect": "All friendly Pokémon take 0.75× as much direct damage from moves while this Pokémon is in battle.\n\nThis effect stacks if multiple allied Pokémon have it.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/132/"
+    }
+  ],
+  "source": {
+    "retrievedAt": "2026-07-23",
+    "sourceRevision": "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f",
+    "sourceUrls": [
+      "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
+      "https://github.com/PokeAPI/pokeapi/blob/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/LICENSE.md"
+    ],
+    "licenseStatus": "pending",
+    "requiredCredits": [
+      "PokéAPI contributors for the structured API data."
+    ],
+    "notes": [
+      "Structured data is sourced from PokéAPI under its BSD-3-Clause terms.",
+      "Pokémon names and character data remain subject to owner review and applicable trademark or copyright rights.",
+      "English source prose is preserved to avoid inventing translations of gameplay behavior."
+    ]
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 2,
+  "pokemonId": "pokemon:0050-diglett",
+  "abilities": [
+    {
+      "abilityId": 8,
+      "slot": 1,
+      "isHidden": false,
+      "slug": "sand-veil",
+      "canonicalName": "Sand Veil",
+      "shortEffect": "Increases evasion to 1.25× during a sandstorm.  Protects against sandstorm damage.",
+      "effect": "During a sandstorm, this Pokémon has 1.25× its evasion, and it does not take sandstorm damage regardless of type.\n\nThe evasion bonus does not count as a stat modifier.\n\nOverworld: If the lead Pokémon has this ability, the wild encounter rate is halved in a sandstorm.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/8/"
+    },
+    {
+      "abilityId": 71,
+      "slot": 2,
+      "isHidden": false,
+      "slug": "arena-trap",
+      "canonicalName": "Arena Trap",
+      "shortEffect": "Prevents opponents from fleeing or switching out.  Eluded by Flying-types and Pokémon in the air.",
+      "effect": "While this Pokémon is in battle, opposing Pokémon cannot flee or switch out.  Flying-type Pokémon and Pokémon in the air, e.g. due to Levitate or Magnet Rise, are unaffected.\n\nPokémon with Run Away can still flee.  Pokémon can still switch out with the use of a move or item.\n\nOverworld: If the lead Pokémon has this ability, the wild encounter rate is doubled.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/71/"
+    },
+    {
+      "abilityId": 159,
+      "slot": 3,
+      "isHidden": true,
+      "slug": "sand-force",
+      "canonicalName": "Sand Force",
+      "shortEffect": "Strengthens Rock, Ground, and Steel moves to 1.3× their power during a sandstorm.  Protects against sandstorm damage.",
+      "effect": "During a sandstorm, this Pokémon's Rock-, Ground-, and Steel-type moves have 1.3× their base power.  This Pokémon does not take sandstorm damage, regardless of type.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/159/"
+    }
+  ],
+  "source": {
+    "retrievedAt": "2026-07-23",
+    "sourceRevision": "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f",
+    "sourceUrls": [
+      "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
+      "https://github.com/PokeAPI/pokeapi/blob/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/LICENSE.md"
+    ],
+    "licenseStatus": "pending",
+    "requiredCredits": [
+      "PokéAPI contributors for the structured API data."
+    ],
+    "notes": [
+      "Structured data is sourced from PokéAPI under its BSD-3-Clause terms.",
+      "Pokémon names and character data remain subject to owner review and applicable trademark or copyright rights.",
+      "English source prose is preserved to avoid inventing translations of gameplay behavior."
+    ]
+  }
+}

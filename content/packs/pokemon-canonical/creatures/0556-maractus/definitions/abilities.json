@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 2,
+  "pokemonId": "pokemon:0556-maractus",
+  "abilities": [
+    {
+      "abilityId": 11,
+      "slot": 1,
+      "isHidden": false,
+      "slug": "water-absorb",
+      "canonicalName": "Water Absorb",
+      "shortEffect": "Absorbs Water moves, healing for 1/4 max HP.",
+      "effect": "Whenever a Water-type move hits this Pokémon, it heals for 1/4 of its maximum HP, negating any other effect on it.\n\nWater moves will ignore this Pokémon's Substitute.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/11/"
+    },
+    {
+      "abilityId": 34,
+      "slot": 2,
+      "isHidden": false,
+      "slug": "chlorophyll",
+      "canonicalName": "Chlorophyll",
+      "shortEffect": "Doubles Speed during strong sunlight.",
+      "effect": "This Pokémon's Speed is doubled during strong sunlight.\n\nThis bonus does not count as a stat modifier.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/34/"
+    },
+    {
+      "abilityId": 114,
+      "slot": 3,
+      "isHidden": true,
+      "slug": "storm-drain",
+      "canonicalName": "Storm Drain",
+      "shortEffect": "Redirects single-target Water moves to this Pokémon where possible.  Absorbs Water moves, raising Special Attack one stage.",
+      "effect": "All other Pokémon's single-target Water-type moves are redirected to this Pokémon, if it is an eligible target.  Other Pokémon's Water moves raise this Pokémon's Special Attack one stage, negating any other effect on it, and cannot miss it.\n\nIf the move's intended target also has this ability, the move is not redirected.  When multiple Pokémon with this ability are possible targets for redirection, the move is redirected to the one with the highest Speed stat, or, in the case of a tie, to a random tied Pokémon.  Follow Me takes precedence over this ability.",
+      "sourceUrl": "https://pokeapi.co/api/v2/ability/114/"
+    }
+  ],
+  "source": {
+    "retrievedAt": "2026-07-23",
+    "sourceRevision": "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f",
+    "sourceUrls": [
+      "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
+      "https://github.com/PokeAPI/pokeapi/blob/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/LICENSE.md"
+    ],
+    "licenseStatus": "pending",
+    "requiredCredits": [
+      "PokéAPI contributors for the structured API data."
+    ],
+    "notes": [
+      "Structured data is sourced from PokéAPI under its BSD-3-Clause terms.",
+      "Pokémon names and character data remain subject to owner review and applicable trademark or copyright rights.",
+      "English source prose is preserved to avoid inventing translations of gameplay behavior."
+    ]
+  }
+}
