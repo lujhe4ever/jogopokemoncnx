@@ -1924,3 +1924,87 @@ evidência exata de autoria, modificação e redistribuição antes de importá-
 Ler D-023, D-024, `docs/asset-integration-policy.md`, o PR #23 e
 `content/assets/source-registry.json`. Confirmar SHA e CI antes de editar; usar uma
 branch exclusiva e nunca ativar D-023 ou cries candidatos por feature flag.
+
+## 2026-07-24 — Biblioteca CC0 de produção
+
+### Objetivo da sessão
+
+Selecionar, importar, validar e publicar uma biblioteca real de assets reutilizáveis,
+com procedência exata e substituição futura simples, sem habilitar conteúdo no jogo.
+
+### Estado anterior
+
+A branch `codex/pokemon-assets-integration` no SHA `e0f65704` possuía o pipeline
+fail-closed do PR #23. Os 4.100 sprites Pokémon D-023 estavam publicados como
+`doubtful`; nenhuma mídia adicional tinha aprovação exata.
+
+### Alterações realizadas
+
+- criada a branch `codex/production-asset-library` e a reserva issue #24;
+- verificadas oito páginas e licenças oficiais Kenney CC0;
+- fixados versão, URL, tamanho e SHA-256 de cada arquivo-fonte;
+- publicados 15 PNGs e 39 OGGs, totalizando 1.141.825 bytes;
+- preservados oito textos de licença e gerados três atlases determinísticos;
+- rejeitados nove candidatos de áudio por clipping, sem publicar seus bytes;
+- implementados importador reproduzível, inspeção Ogg, schemas e auditorias;
+- gerados catálogos, inventários CSV, cobertura, lacunas e quarentena;
+- registrada a D-025 e criado `THIRD_PARTY_NOTICES.md`;
+- aberto o PR draft #25 contra `codex/pokemon-assets-integration`;
+- nenhum arquivo de `pokemon-canonical` foi alterado;
+- nenhum asset foi habilitado no runtime.
+
+### Arquivos alterados
+
+- `content/packs/production-assets/`;
+- `content/assets/`;
+- `scripts/import-production-assets.mjs`;
+- `scripts/generate-asset-deliverables.mjs`;
+- `scripts/generate-runtime-asset-catalogs.mjs`;
+- `scripts/lib/ogg-inspection.mjs`;
+- contratos em `packages/content-contracts/`;
+- gates e testes em `scripts/` e `tests/`;
+- relatórios em `docs/assets/`;
+- `THIRD_PARTY_NOTICES.md`, arquitetura, decisões, roadmap e políticas.
+
+### Testes e verificações
+
+- `pnpm install --frozen-lockfile`: aprovado na baseline;
+- importação e geração repetidas: 81 arquivos determinísticos;
+- `pnpm check`: aprovado, 34 arquivos de teste e 133 testes;
+- bundles: web 1.257.341/1.400.000 e admin 9.335/100.000 bytes;
+- maior conteúdo: 1.540.587/2.000.000 bytes;
+- 4.100 sprites Pokémon revalidados, zero erro;
+- auditoria unificada: 22 fontes, 4.115 imagens, 2.039 áudios, zero violação;
+- scans de segredo, licença e limite de runtime: aprovados;
+- `pnpm audit --prod --audit-level high`: nenhuma vulnerabilidade conhecida;
+- CI do commit documental final: **não confirmada**.
+
+### Decisões tomadas
+
+- D-025 aprova somente os 54 arquivos exatos do lote Kenney CC0;
+- aprovação para redistribuição não ativa automaticamente o runtime;
+- arquivos-fonte completos permanecem no cache privado ignorado pelo Git;
+- os bytes selecionados são copiados sem recorte, conversão ou reamostragem;
+- áudio com pico decodificado igual ou superior a 1,0 é rejeitado;
+- a biblioteca genérica não altera o status da mídia Pokémon D-023.
+
+### Pendências ou riscos
+
+- 4.100 PNGs Pokémon continuam `doubtful`, temporários e fora do runtime;
+- zero sprite, animação ou cry Pokémon possui licença aprovada;
+- aliases semânticos dos atlases Tiny e UI ainda não foram revisados;
+- nenhum ciclo direcional completo foi aprovado neste lote;
+- performance e memória ainda não foram medidas com os assets carregados;
+- PR #25 permanece draft; merge e deploy não foram realizados.
+
+### Próxima tarefa recomendada
+
+Mapear o tileset Tiny Town em uma única zona piloto e medir carregamento, memória e
+FPS antes de solicitar sua ativação.
+
+### Instrução para a próxima IA
+
+Ler D-025, `docs/asset-integration-policy.md`,
+`content/packs/production-assets/README.md`, `content/assets/coverage.json` e o PR
+#25. Confirmar a CI e a base antes de editar; manter `runtimeEnabled: false` até uma
+autorização explícita e não alterar o pack Pokémon durante o piloto.

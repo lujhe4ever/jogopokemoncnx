@@ -2,13 +2,13 @@
 
 | Campo | Valor |
 | --- | --- |
-| Atualizado em | 2026-07-23 |
+| Atualizado em | 2026-07-24 |
 | Repositório | `lujhe4ever/jogopokemoncnx` |
 | Branch principal | `main` |
-| Branch desta entrega | `codex/pokemon-assets-integration` |
-| Base desta entrega | `codex/pokemon-assets-audit` em `a3b4dc13` |
-| Fase | Roadmap 0B–17 concluído; integração estrutural de assets em revisão |
-| Status | **publicada no PR draft #23, aguardando CI e revisão** |
+| Branch desta entrega | `codex/production-asset-library` |
+| Base desta entrega | `codex/pokemon-assets-integration` em `e0f65704` |
+| Fase | Roadmap 0B–17 concluído; biblioteca CC0 de produção em revisão |
+| Status | **publicada no PR draft #25, sem merge, deploy ou ativação** |
 
 ## 1. Resumo
 
@@ -16,11 +16,11 @@ As Fases 0B a 17 foram integradas à `main`. A Fase 17 passou na CI #54 e foi
 integrada pelo PR #19 no commit `375dca531e1abda09aa50a469a645a861a6485b6`,
 sem deploy ou participantes externos.
 
-Esta branch integra a infraestrutura estrutural resultante da auditoria no PR #21.
-Ela corrige divergências canônicas confirmadas, registra fontes e assets, adiciona
-gates, animações procedurais, suporte estrutural a frames e uma porta central de
-áudio. Nenhuma nova mídia foi baixada, convertida ou habilitada. Os 4.100 sprites
-compactos da D-023 e os 2.000 cries candidatos continuam bloqueados.
+Esta branch adiciona à infraestrutura do PR #23 uma biblioteca curada de 54 arquivos
+Kenney CC0: 15 PNGs e 39 OGGs. O lote é reproduzível por oito arquivos-fonte fixos,
+mantém licenças e hashes, rejeita clipping e permanece integralmente desativado no
+runtime. Os 4.100 sprites compactos da D-023 e os 2.000 cries candidatos continuam
+bloqueados e não foram alterados.
 
 O projeto possui workspace TypeScript, servidor Fastify, cliente Vite/Phaser,
 PostgreSQL, Prisma, WebSocket versionado, autenticação e a primeira fatia jogável da
@@ -150,7 +150,10 @@ completos sejam definidos.
 - `apps/server/prisma`: schema e migrações;
 - `packages/engine-core`: núcleo puro ainda mínimo;
 - `content/packs/pokemon-canonical`: definições e inventários Pokémon desacoplados;
+- `content/packs/production-assets`: 54 assets Kenney CC0 aprovados e desativados;
+- `content/assets`: registros, catálogos, cobertura, lacunas e quarentena;
 - `scripts/generate-pokemon-canonical.mjs`: gerador reproduzível do catálogo;
+- `scripts/import-production-assets.mjs`: importação exata a partir do cache privado;
 - `tests`: testes arquiteturais, de runtime e autenticação;
 - `docker-compose.yml`: PostgreSQL local;
 - `.github/workflows/ci.yml`: instalação, migração e qualidade.
@@ -183,7 +186,8 @@ completos sejam definidos.
 | Hardening e operação | concluído e integrado |
 | Alpha privado e estabilização | concluído e integrado |
 | Arena e presença | concluídas na branch |
-| Catálogo Pokémon e inventário de sprites | pipeline estrutural no PR draft #23; mídia bloqueada |
+| Catálogo Pokémon e inventário de sprites | pipeline estrutural no PR draft #23; mídia Pokémon bloqueada |
+| Biblioteca genérica de produção | 54 assets CC0 no PR draft #25; runtime bloqueado |
 | Chat, emotes e convites | concluídos na branch |
 | Empacotamento de produção | concluído, não implantado |
 
@@ -202,6 +206,9 @@ pnpm content:assets:generate
 pnpm content:assets:audit
 pnpm content:audio:audit
 pnpm content:animations:audit
+pnpm assets:import
+pnpm assets:inventory
+pnpm assets:validate
 pnpm security:runtime-content
 pnpm --filter @lt/admin dev
 pnpm check
@@ -212,10 +219,10 @@ pnpm alpha:readiness
 ## 6. Verificações atuais
 
 - formatação, lint e TypeScript estrito;
-- 33 arquivos de teste e 130 testes automatizados;
+- 34 arquivos de teste e 133 testes automatizados;
 - build do servidor e cliente;
 - builds independentes do jogo e da administração;
-- budgets: web 1.257.242/1.400.000 bytes, admin 9.335/100.000 bytes e maior asset
+- budgets: web 1.257.341/1.400.000 bytes, admin 9.335/100.000 bytes e maior asset
   1.540.587/2.000.000 bytes;
 - auditoria de dependências sem vulnerabilidades conhecidas;
 - scans de segredo e licenças aprovados;
@@ -228,6 +235,9 @@ pnpm alpha:readiness
   dimensões, transparência, unicidade e variantes cobertos;
 - cache privado separado por SHA da revisão e autorização D-023 fixada em
   `2026-07-23`, sem dependência de `retrievedAt` ou relógio do sistema;
+- 54 assets Kenney CC0 auditados: 15 imagens, 39 áudios e 1.141.825 bytes;
+- nove candidatos de áudio rejeitados por clipping e ausentes do pack publicado;
+- regeneração determinística de 81 arquivos e auditoria unificada sem violações;
 - CI do hardening aprovada no run `30058365529` para o SHA `98566b21`;
 - imagens, Compose e restauração serão exercitados pela CI Linux porque Docker não
   está disponível neste computador.
@@ -241,19 +251,20 @@ pnpm alpha:readiness
 - o repositório permanece público;
 - 4.100 sprites de batalha foram publicados no pack e preservados também em
   `.private/`;
-- nenhuma coleção de sprites está aprovada para redistribuição;
+- nenhuma coleção de sprites Pokémon está aprovada para redistribuição;
+- os 54 assets genéricos D-025 estão aprovados para redistribuição, mas desativados;
+- aliases semânticos, caminhada direcional e medição no runtime permanecem pendentes;
 - nenhum deploy foi realizado.
 
 ## 8. Decisões vigentes
 
-D-001 a D-008 e D-011 a D-024 estão aceitas. As demais decisões técnicas
+D-001 a D-008 e D-011 a D-025 estão aceitas. As demais decisões técnicas
 continuam com o status registrado em `docs/decisions.md`.
 
 ## 9. Próxima tarefa recomendada
 
-Escolher um único arquivo ou conjunto piloto original/licenciado, registrar a
-evidência exata de modificação e redistribuição e submetê-lo ao pipeline sem habilitar
-as demais famílias.
+Mapear semanticamente um único tileset Tiny em uma zona piloto, medir carregamento e
+FPS e submeter sua ativação separada à revisão do proprietário.
 
 ## 10. Instruções para reproduzir
 
@@ -431,3 +442,42 @@ Verificações:
 - teste específico do catálogo: 4 testes aprovados;
 - `pnpm check`: 21 arquivos de teste e 62 testes aprovados;
 - formatação, lint, TypeScript e builds aprovados.
+
+## 15. Atualização 2026-07-24 - Biblioteca CC0 de produção
+
+Estado Git/GitHub:
+
+- branch exclusiva `codex/production-asset-library`;
+- base `codex/pokemon-assets-integration` no SHA `e0f65704`;
+- reserva de escrita na issue #24;
+- implementação no commit `5bce3672`;
+- PR draft #25 aberto contra a branch de integração;
+- nenhum merge, deploy ou ativação de runtime.
+
+Entrega:
+
+- oito packs Kenney CC0 fixados por versão, URL, tamanho e SHA-256;
+- 15 PNGs, 39 OGGs, três atlases JSON e oito licenças originais publicados;
+- 54 assets e 1.141.825 bytes de mídia aprovados para redistribuição;
+- nove OGGs rejeitados por clipping, sem bytes publicados;
+- importador por cache privado, inventário, cobertura, lacunas e quarentena;
+- decisão D-025 e `THIRD_PARTY_NOTICES.md`;
+- zero arquivo alterado em `content/packs/pokemon-canonical`;
+- zero asset novo habilitado no runtime.
+
+Verificações locais:
+
+- regeneração determinística de 81 arquivos;
+- `pnpm check`: 34 arquivos e 133 testes aprovados;
+- build, budgets, segredos, licenças e limite de runtime aprovados;
+- auditoria unificada: 22 fontes, 4.115 imagens, 2.039 áudios e zero violação;
+- `pnpm audit --prod --audit-level high`: nenhuma vulnerabilidade conhecida;
+- CI do commit documental final: **não confirmada**.
+
+Riscos:
+
+- os 4.100 PNGs Pokémon D-023 permanecem públicos, `doubtful` e bloqueados;
+- não há sprites, animações ou cries Pokémon licenciados neste lote;
+- os atlases precisam de aliases semânticos antes de uso;
+- nenhum ciclo completo de caminhada em quatro direções foi aprovado;
+- os assets genéricos ainda precisam de medição real no runtime e direção de arte.
