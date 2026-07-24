@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-07-24",
+  "policy": "No restricted binary was added by this task. Existing D-023 files remain public temporary exceptions and are not runtime assets.",
+  "groups": [
+    {
+      "id": "pokemon-d023-temporary-sprites",
+      "status": "doubtful",
+      "count": 4100,
+      "binaryLocation": "content/packs/pokemon-canonical/creatures",
+      "runtimeEnabled": false,
+      "action": "replace with original or demonstrably licensed media"
+    },
+    {
+      "id": "pokemon-cry-references",
+      "status": "doubtful",
+      "count": 2000,
+      "binaryLocation": null,
+      "runtimeEnabled": false,
+      "action": "keep as metadata only; design original cries"
+    },
+    {
+      "id": "kenney-audio-clipping-rejections",
+      "status": "rejected",
+      "count": 9,
+      "binaryLocation": null,
+      "runtimeEnabled": false,
+      "action": "do not publish; choose another source file or normalize only after explicit derivative approval"
+    }
+  ]
+}

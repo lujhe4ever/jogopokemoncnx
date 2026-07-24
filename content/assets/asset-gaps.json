@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-07-24",
+  "pokemon": {
+    "pokemonLicensedReplacement": "all species and forms",
+    "pokemonFrameAnimations": "all species and forms",
+    "pokemonCries": "all species and forms",
+    "characterDirectionalAnimation": "no approved four-direction walk cycle in this batch",
+    "completeMusicLoops": "all requested contexts",
+    "semanticAtlasMapping": "Tiny Dungeon and UI sheets need per-frame semantic aliases before runtime"
+  },
+  "characters": {
+    "approvedStaticCandidates": 18,
+    "directionalWalkCycles": 0,
+    "idleCycles": 0,
+    "runCycles": 0,
+    "portraits": 0,
+    "battlePoses": 0
+  },
+  "world": {
+    "approvedTilesets": 2,
+    "approvedWorldSheets": 2,
+    "semanticallyMappedFrames": 0,
+    "missingContexts": [
+      "beach",
+      "snow",
+      "desert",
+      "farm",
+      "laboratory",
+      "healing-center",
+      "arena"
+    ]
+  },
+  "audio": {
+    "approved": 39,
+    "rejectedForClipping": 9,
+    "pokemonCriesApproved": 0,
+    "completeMusicLoops": 0,
+    "missingCategories": [
+      "creature-cries",
+      "weather-ambience",
+      "water-ambience",
+      "forest-ambience",
+      "cave-ambience",
+      "city-ambience",
+      "full-music-loops"
+    ]
+  },
+  "animation": {
+    "proceduralProfiles": 20,
+    "approvedFrameAnimations": 0,
+    "approvedStaticVfx": 12
+  }
+}

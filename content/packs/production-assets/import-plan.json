@@ -1,0 +1,643 @@
+{
+  "schemaVersion": 1,
+  "retrievedAt": "2026-07-24",
+  "approvedAt": "2026-07-24",
+  "approvedBy": "owner-authorized-task-2026-07-24",
+  "decisionId": "D-025",
+  "sources": [
+    {
+      "sourceId": "kenney-tiny-dungeon-1.0",
+      "pack": "tiny-dungeon",
+      "title": "Tiny Dungeon",
+      "version": "1.0",
+      "pageUrl": "https://kenney.nl/assets/tiny-dungeon",
+      "downloadUrl": "https://kenney.nl/media/pages/assets/tiny-dungeon/f8422efb44-1674742415/kenney_tiny-dungeon.zip",
+      "archivePath": "tiny-dungeon.zip",
+      "archiveSha256": "c109438ab06f65fd80f9b2686a4cf9c7c11dc64444b47333ec71d602f8bb5fc7",
+      "archiveSizeBytes": 98530,
+      "licensePath": "License.txt"
+    },
+    {
+      "sourceId": "kenney-tiny-town-1.1",
+      "pack": "tiny-town",
+      "title": "Tiny Town",
+      "version": "1.1",
+      "pageUrl": "https://kenney.nl/assets/tiny-town",
+      "downloadUrl": "https://kenney.nl/media/pages/assets/tiny-town/a415fbeb49-1735736916/kenney_tiny-town.zip",
+      "archivePath": "tiny-town.zip",
+      "archiveSha256": "9768692dccff1d706408a5aedd6ca4f6cd1409506cbc84cb2f862919764be977",
+      "archiveSizeBytes": 182243,
+      "licensePath": "License.txt"
+    },
+    {
+      "sourceId": "kenney-ui-pixel-adventure-1.0",
+      "pack": "ui-pack-pixel-adventure",
+      "title": "UI Pack - Pixel Adventure",
+      "version": "1.0",
+      "pageUrl": "https://kenney.nl/assets/ui-pack-pixel-adventure",
+      "downloadUrl": "https://kenney.nl/media/pages/assets/ui-pack-pixel-adventure/405ba5278a-1729196257/kenney_ui-pack-pixel-adventure.zip",
+      "archivePath": "ui-pack-pixel-adventure.zip",
+      "archiveSha256": "0b0ed4802ebcfff5e44e370f394baa1d751862a5a4a7612ac4ce84e85faa0627",
+      "archiveSizeBytes": 317032,
+      "licensePath": "License.txt"
+    },
+    {
+      "sourceId": "kenney-particle-pack-1.0",
+      "pack": "particle-pack",
+      "title": "Particle Pack",
+      "version": "1.0",
+      "pageUrl": "https://kenney.nl/assets/particle-pack",
+      "downloadUrl": "https://kenney.nl/media/pages/assets/particle-pack/f8fe0f8cb8-1677578741/kenney_particle-pack.zip",
+      "archivePath": "particle-pack.zip",
+      "archiveSha256": "b631d4b07f7002549fdcf155f01141ad482f79f3440e4e301eed49ce5f1d8958",
+      "archiveSizeBytes": 15001764,
+      "licensePath": "License.txt"
+    },
+    {
+      "sourceId": "kenney-interface-sounds-1.0",
+      "pack": "interface-sounds",
+      "title": "Interface Sounds",
+      "version": "1.0",
+      "pageUrl": "https://kenney.nl/assets/interface-sounds",
+      "downloadUrl": "https://kenney.nl/media/pages/assets/interface-sounds/fa43c1dd4d-1677589452/kenney_interface-sounds.zip",
+      "archivePath": "interface-sounds.zip",
+      "archiveSha256": "f2193d072726d6758a5f7871b2dcc54dcce0d5c35c6f0a62f92549b327c81232",
+      "archiveSizeBytes": 834536,
+      "licensePath": "License.txt"
+    },
+    {
+      "sourceId": "kenney-impact-sounds-1.0",
+      "pack": "impact-sounds",
+      "title": "Impact Sounds",
+      "version": "1.0",
+      "pageUrl": "https://kenney.nl/assets/impact-sounds",
+      "downloadUrl": "https://kenney.nl/media/pages/assets/impact-sounds/87b4ddecda-1677589768/kenney_impact-sounds.zip",
+      "archivePath": "impact-sounds.zip",
+      "archiveSha256": "029d734af1582474edf3a694d1b0cebc97c1c152f2f39fa34d4c2bafc5de77f8",
+      "archiveSizeBytes": 800850,
+      "licensePath": "License.txt"
+    },
+    {
+      "sourceId": "kenney-rpg-audio-1.0",
+      "pack": "rpg-audio",
+      "title": "RPG Audio",
+      "version": "1.0",
+      "pageUrl": "https://kenney.nl/assets/rpg-audio",
+      "downloadUrl": "https://kenney.nl/media/pages/assets/rpg-audio/8e99002d76-1677590336/kenney_rpg-audio.zip",
+      "archivePath": "rpg-audio.zip",
+      "archiveSha256": "6dbeaf8544da958d8f2adcb4a4a4b76c1ade34a05f8ab9edccd327da7375f38b",
+      "archiveSizeBytes": 964837,
+      "licensePath": "License.txt"
+    },
+    {
+      "sourceId": "kenney-music-jingles-1.0",
+      "pack": "music-jingles",
+      "title": "Music Jingles",
+      "version": "1.0",
+      "pageUrl": "https://kenney.nl/assets/music-jingles",
+      "downloadUrl": "https://kenney.nl/media/pages/assets/music-jingles/f37e530b9e-1677590399/kenney_music-jingles.zip",
+      "archivePath": "music-jingles.zip",
+      "archiveSha256": "b729ba57959bd58793d2c5cafa348aaf2655d354f3da35ec4729e03ec77197b8",
+      "archiveSizeBytes": 1239525,
+      "licensePath": "License.txt"
+    }
+  ],
+  "visualAssets": [
+    {
+      "assetId": "licensed:kenney:tiny-dungeon:tileset",
+      "sourceId": "kenney-tiny-dungeon-1.0",
+      "sourcePath": "Tilemap/tilemap_packed.png",
+      "localPath": "visual/world/tiny-dungeon/tiny-dungeon-tileset-16.png",
+      "assetType": "tileset",
+      "category": "world-dungeon",
+      "variantId": "packed-16px",
+      "frameCount": 132,
+      "grid": {
+        "frameWidth": 16,
+        "frameHeight": 16,
+        "columns": 12,
+        "rows": 11
+      },
+      "atlasGroups": {
+        "characterCandidates": [
+          72, 73, 74, 75, 76, 77, 84, 85, 86, 87, 88, 89, 96, 97, 98, 99, 100,
+          101
+        ],
+        "creatureCandidates": [
+          108, 109, 110, 111, 112, 113, 120, 121, 122, 123, 124, 125
+        ]
+      },
+      "compatibilityScore": 82,
+      "compatibilityClass": "compatible-after-normalization",
+      "notes": "Dungeon, characters, creatures and props in one 16 px grid; semantic frame naming remains pending."
+    },
+    {
+      "assetId": "licensed:kenney:tiny-town:tileset",
+      "sourceId": "kenney-tiny-town-1.1",
+      "sourcePath": "Tilemap/tilemap_packed.png",
+      "localPath": "visual/world/tiny-town/tiny-town-tileset-16.png",
+      "assetType": "tileset",
+      "category": "world-town",
+      "variantId": "packed-16px",
+      "frameCount": 132,
+      "grid": {
+        "frameWidth": 16,
+        "frameHeight": 16,
+        "columns": 12,
+        "rows": 11
+      },
+      "compatibilityScore": 86,
+      "compatibilityClass": "compatible-after-normalization",
+      "notes": "Town, vegetation, buildings, interiors and props in one 16 px grid."
+    },
+    {
+      "assetId": "licensed:kenney:ui-pixel-adventure:small-thin",
+      "sourceId": "kenney-ui-pixel-adventure-1.0",
+      "sourcePath": "Tilesheets/Small tiles/Thin outline/tilemap_packed.png",
+      "localPath": "visual/interface/ui-pixel-adventure/ui-pixel-adventure-small-thin-16.png",
+      "assetType": "ui-element",
+      "category": "interface",
+      "variantId": "small-thin-outline",
+      "frameCount": 161,
+      "grid": { "frameWidth": 16, "frameHeight": 16, "columns": 23, "rows": 7 },
+      "compatibilityScore": 84,
+      "compatibilityClass": "compatible-after-normalization",
+      "notes": "Buttons, panels, indicators and controls in a compact pixel-art sheet."
+    },
+    {
+      "assetId": "licensed:kenney:particle:circle-03",
+      "sourceId": "kenney-particle-pack-1.0",
+      "sourcePath": "PNG (Transparent)/circle_03.png",
+      "localPath": "visual/effects/circle/circle-ring-01.png",
+      "assetType": "visual-effect",
+      "category": "vfx-circle",
+      "variantId": "circle-ring-01",
+      "compatibilityScore": 62,
+      "compatibilityClass": "compatible-only-isolated",
+      "notes": "High-resolution antialiased particle intended for isolated battle effects."
+    },
+    {
+      "assetId": "licensed:kenney:particle:dirt-01",
+      "sourceId": "kenney-particle-pack-1.0",
+      "sourcePath": "PNG (Transparent)/dirt_01.png",
+      "localPath": "visual/effects/earth/earth-dirt-01.png",
+      "assetType": "visual-effect",
+      "category": "vfx-earth",
+      "variantId": "earth-dirt-01",
+      "compatibilityScore": 62,
+      "compatibilityClass": "compatible-only-isolated",
+      "notes": "High-resolution antialiased particle intended for isolated battle effects."
+    },
+    {
+      "assetId": "licensed:kenney:particle:fire-01",
+      "sourceId": "kenney-particle-pack-1.0",
+      "sourcePath": "PNG (Transparent)/fire_01.png",
+      "localPath": "visual/effects/fire/fire-burst-01.png",
+      "assetType": "visual-effect",
+      "category": "vfx-fire",
+      "variantId": "fire-burst-01",
+      "compatibilityScore": 62,
+      "compatibilityClass": "compatible-only-isolated",
+      "notes": "High-resolution antialiased particle intended for isolated battle effects."
+    },
+    {
+      "assetId": "licensed:kenney:particle:flame-01",
+      "sourceId": "kenney-particle-pack-1.0",
+      "sourcePath": "PNG (Transparent)/flame_01.png",
+      "localPath": "visual/effects/fire/fire-flame-01.png",
+      "assetType": "visual-effect",
+      "category": "vfx-fire",
+      "variantId": "fire-flame-01",
+      "compatibilityScore": 62,
+      "compatibilityClass": "compatible-only-isolated",
+      "notes": "High-resolution antialiased particle intended for isolated battle effects."
+    },
+    {
+      "assetId": "licensed:kenney:particle:light-03",
+      "sourceId": "kenney-particle-pack-1.0",
+      "sourcePath": "PNG (Transparent)/light_03.png",
+      "localPath": "visual/effects/light/light-glow-01.png",
+      "assetType": "visual-effect",
+      "category": "vfx-light",
+      "variantId": "light-glow-01",
+      "compatibilityScore": 62,
+      "compatibilityClass": "compatible-only-isolated",
+      "notes": "High-resolution antialiased particle intended for isolated battle effects."
+    },
+    {
+      "assetId": "licensed:kenney:particle:magic-02",
+      "sourceId": "kenney-particle-pack-1.0",
+      "sourcePath": "PNG (Transparent)/magic_02.png",
+      "localPath": "visual/effects/magic/magic-orb-01.png",
+      "assetType": "visual-effect",
+      "category": "vfx-magic",
+      "variantId": "magic-orb-01",
+      "compatibilityScore": 62,
+      "compatibilityClass": "compatible-only-isolated",
+      "notes": "High-resolution antialiased particle intended for isolated battle effects."
+    },
+    {
+      "assetId": "licensed:kenney:particle:slash-01",
+      "sourceId": "kenney-particle-pack-1.0",
+      "sourcePath": "PNG (Transparent)/slash_01.png",
+      "localPath": "visual/effects/slash/slash-arc-01.png",
+      "assetType": "visual-effect",
+      "category": "vfx-slash",
+      "variantId": "slash-arc-01",
+      "compatibilityScore": 66,
+      "compatibilityClass": "compatible-only-isolated",
+      "notes": "High-resolution antialiased particle intended for isolated battle effects."
+    },
+    {
+      "assetId": "licensed:kenney:particle:smoke-03",
+      "sourceId": "kenney-particle-pack-1.0",
+      "sourcePath": "PNG (Transparent)/smoke_03.png",
+      "localPath": "visual/effects/smoke/smoke-cloud-01.png",
+      "assetType": "visual-effect",
+      "category": "vfx-smoke",
+      "variantId": "smoke-cloud-01",
+      "compatibilityScore": 62,
+      "compatibilityClass": "compatible-only-isolated",
+      "notes": "High-resolution antialiased particle intended for isolated battle effects."
+    },
+    {
+      "assetId": "licensed:kenney:particle:spark-05",
+      "sourceId": "kenney-particle-pack-1.0",
+      "sourcePath": "PNG (Transparent)/spark_05.png",
+      "localPath": "visual/effects/electric/electric-spark-01.png",
+      "assetType": "visual-effect",
+      "category": "vfx-electric",
+      "variantId": "electric-spark-01",
+      "compatibilityScore": 64,
+      "compatibilityClass": "compatible-only-isolated",
+      "notes": "High-resolution antialiased particle intended for isolated battle effects."
+    },
+    {
+      "assetId": "licensed:kenney:particle:star-05",
+      "sourceId": "kenney-particle-pack-1.0",
+      "sourcePath": "PNG (Transparent)/star_05.png",
+      "localPath": "visual/effects/reward/reward-star-01.png",
+      "assetType": "visual-effect",
+      "category": "vfx-reward",
+      "variantId": "reward-star-01",
+      "compatibilityScore": 64,
+      "compatibilityClass": "compatible-only-isolated",
+      "notes": "High-resolution antialiased particle intended for isolated battle effects."
+    },
+    {
+      "assetId": "licensed:kenney:particle:symbol-01",
+      "sourceId": "kenney-particle-pack-1.0",
+      "sourcePath": "PNG (Transparent)/symbol_01.png",
+      "localPath": "visual/effects/status/status-symbol-01.png",
+      "assetType": "visual-effect",
+      "category": "vfx-status",
+      "variantId": "status-symbol-01",
+      "compatibilityScore": 60,
+      "compatibilityClass": "compatible-only-isolated",
+      "notes": "High-resolution antialiased particle intended for isolated battle effects."
+    },
+    {
+      "assetId": "licensed:kenney:particle:twirl-01",
+      "sourceId": "kenney-particle-pack-1.0",
+      "sourcePath": "PNG (Transparent)/twirl_01.png",
+      "localPath": "visual/effects/wind/wind-twirl-01.png",
+      "assetType": "visual-effect",
+      "category": "vfx-wind",
+      "variantId": "wind-twirl-01",
+      "compatibilityScore": 62,
+      "compatibilityClass": "compatible-only-isolated",
+      "notes": "High-resolution antialiased particle intended for isolated battle effects."
+    }
+  ],
+  "audioAssets": [
+    [
+      "ui-confirm-01",
+      "kenney-interface-sounds-1.0",
+      "Audio/confirmation_001.ogg",
+      "audio/interface/ui-confirm-01.ogg",
+      "interface"
+    ],
+    [
+      "ui-cancel-01",
+      "kenney-interface-sounds-1.0",
+      "Audio/back_001.ogg",
+      "audio/interface/ui-cancel-01.ogg",
+      "interface"
+    ],
+    [
+      "ui-cursor-01",
+      "kenney-interface-sounds-1.0",
+      "Audio/select_001.ogg",
+      "audio/interface/ui-cursor-01.ogg",
+      "interface"
+    ],
+    [
+      "ui-open-menu-01",
+      "kenney-interface-sounds-1.0",
+      "Audio/open_001.ogg",
+      "audio/interface/ui-open-menu-01.ogg",
+      "interface"
+    ],
+    [
+      "ui-close-menu-01",
+      "kenney-interface-sounds-1.0",
+      "Audio/close_001.ogg",
+      "audio/interface/ui-close-menu-01.ogg",
+      "interface"
+    ],
+    [
+      "ui-error-01",
+      "kenney-interface-sounds-1.0",
+      "Audio/error_001.ogg",
+      "audio/interface/ui-error-01.ogg",
+      "interface"
+    ],
+    [
+      "ui-notification-01",
+      "kenney-interface-sounds-1.0",
+      "Audio/question_001.ogg",
+      "audio/interface/ui-notification-01.ogg",
+      "interface"
+    ],
+    [
+      "ui-toggle-01",
+      "kenney-interface-sounds-1.0",
+      "Audio/toggle_001.ogg",
+      "audio/interface/ui-toggle-01.ogg",
+      "interface"
+    ],
+    [
+      "ui-scroll-01",
+      "kenney-interface-sounds-1.0",
+      "Audio/scroll_001.ogg",
+      "audio/interface/ui-scroll-01.ogg",
+      "interface"
+    ],
+    [
+      "ui-click-01",
+      "kenney-interface-sounds-1.0",
+      "Audio/click_001.ogg",
+      "audio/interface/ui-click-01.ogg",
+      "interface"
+    ],
+    [
+      "ui-maximize-01",
+      "kenney-interface-sounds-1.0",
+      "Audio/maximize_001.ogg",
+      "audio/interface/ui-maximize-01.ogg",
+      "interface"
+    ],
+    [
+      "ui-minimize-01",
+      "kenney-interface-sounds-1.0",
+      "Audio/minimize_001.ogg",
+      "audio/interface/ui-minimize-01.ogg",
+      "interface"
+    ],
+    [
+      "battle-impact-heavy-01",
+      "kenney-impact-sounds-1.0",
+      "Audio/impactPunch_heavy_000.ogg",
+      "audio/battle/battle-impact-heavy-01.ogg",
+      "battle"
+    ],
+    [
+      "battle-impact-medium-01",
+      "kenney-impact-sounds-1.0",
+      "Audio/impactPunch_medium_000.ogg",
+      "audio/battle/battle-impact-medium-01.ogg",
+      "battle"
+    ],
+    [
+      "battle-metal-heavy-01",
+      "kenney-impact-sounds-1.0",
+      "Audio/impactMetal_heavy_000.ogg",
+      "audio/battle/battle-metal-heavy-01.ogg",
+      "battle"
+    ],
+    [
+      "battle-metal-light-01",
+      "kenney-impact-sounds-1.0",
+      "Audio/impactMetal_light_000.ogg",
+      "audio/battle/battle-metal-light-01.ogg",
+      "battle"
+    ],
+    [
+      "battle-wood-heavy-01",
+      "kenney-impact-sounds-1.0",
+      "Audio/impactWood_heavy_000.ogg",
+      "audio/battle/battle-wood-heavy-01.ogg",
+      "battle"
+    ],
+    [
+      "battle-glass-heavy-01",
+      "kenney-impact-sounds-1.0",
+      "Audio/impactGlass_heavy_000.ogg",
+      "audio/battle/battle-glass-heavy-01.ogg",
+      "battle"
+    ],
+    [
+      "battle-generic-light-01",
+      "kenney-impact-sounds-1.0",
+      "Audio/impactGeneric_light_000.ogg",
+      "audio/battle/battle-generic-light-01.ogg",
+      "battle"
+    ],
+    [
+      "battle-soft-heavy-01",
+      "kenney-impact-sounds-1.0",
+      "Audio/impactSoft_heavy_000.ogg",
+      "audio/battle/battle-soft-heavy-01.ogg",
+      "battle"
+    ],
+    [
+      "world-footstep-grass-01",
+      "kenney-impact-sounds-1.0",
+      "Audio/footstep_grass_000.ogg",
+      "audio/world/world-footstep-grass-01.ogg",
+      "world"
+    ],
+    [
+      "world-footstep-wood-01",
+      "kenney-impact-sounds-1.0",
+      "Audio/footstep_wood_000.ogg",
+      "audio/world/world-footstep-wood-01.ogg",
+      "world"
+    ],
+    [
+      "world-footstep-stone-01",
+      "kenney-impact-sounds-1.0",
+      "Audio/footstep_concrete_000.ogg",
+      "audio/world/world-footstep-stone-01.ogg",
+      "world"
+    ],
+    [
+      "world-footstep-snow-01",
+      "kenney-impact-sounds-1.0",
+      "Audio/footstep_snow_000.ogg",
+      "audio/world/world-footstep-snow-01.ogg",
+      "world"
+    ],
+    [
+      "world-footstep-interior-01",
+      "kenney-impact-sounds-1.0",
+      "Audio/footstep_carpet_000.ogg",
+      "audio/world/world-footstep-interior-01.ogg",
+      "world"
+    ],
+    [
+      "world-mining-01",
+      "kenney-impact-sounds-1.0",
+      "Audio/impactMining_000.ogg",
+      "audio/world/world-mining-01.ogg",
+      "world"
+    ],
+    [
+      "world-bell-01",
+      "kenney-impact-sounds-1.0",
+      "Audio/impactBell_heavy_000.ogg",
+      "audio/world/world-bell-01.ogg",
+      "world"
+    ],
+    [
+      "battle-slash-01",
+      "kenney-rpg-audio-1.0",
+      "Audio/knifeSlice.ogg",
+      "audio/battle/battle-slash-01.ogg",
+      "battle"
+    ],
+    [
+      "ui-book-open-01",
+      "kenney-rpg-audio-1.0",
+      "Audio/bookOpen.ogg",
+      "audio/interface/ui-book-open-01.ogg",
+      "interface"
+    ],
+    [
+      "world-cloth-01",
+      "kenney-rpg-audio-1.0",
+      "Audio/cloth1.ogg",
+      "audio/world/world-cloth-01.ogg",
+      "world"
+    ],
+    [
+      "world-metal-click-01",
+      "kenney-rpg-audio-1.0",
+      "Audio/metalClick.ogg",
+      "audio/world/world-metal-click-01.ogg",
+      "world"
+    ],
+    [
+      "world-creak-01",
+      "kenney-rpg-audio-1.0",
+      "Audio/creak1.ogg",
+      "audio/world/world-creak-01.ogg",
+      "world"
+    ],
+    [
+      "world-footstep-rpg-03",
+      "kenney-rpg-audio-1.0",
+      "Audio/footstep02.ogg",
+      "audio/world/world-footstep-rpg-03.ogg",
+      "world"
+    ],
+    [
+      "music-jingle-8bit-win-01",
+      "kenney-music-jingles-1.0",
+      "Audio/8-Bit jingles/jingles_NES00.ogg",
+      "audio/music/music-jingle-8bit-win-01.ogg",
+      "music"
+    ],
+    [
+      "music-jingle-8bit-level-01",
+      "kenney-music-jingles-1.0",
+      "Audio/8-Bit jingles/jingles_NES01.ogg",
+      "audio/music/music-jingle-8bit-level-01.ogg",
+      "music"
+    ],
+    [
+      "music-jingle-hit-01",
+      "kenney-music-jingles-1.0",
+      "Audio/Hit jingles/jingles_HIT00.ogg",
+      "audio/music/music-jingle-hit-01.ogg",
+      "music"
+    ],
+    [
+      "music-jingle-pizzicato-01",
+      "kenney-music-jingles-1.0",
+      "Audio/Pizzicato jingles/jingles_PIZZI00.ogg",
+      "audio/music/music-jingle-pizzicato-01.ogg",
+      "music"
+    ],
+    [
+      "music-jingle-sax-01",
+      "kenney-music-jingles-1.0",
+      "Audio/Sax jingles/jingles_SAX00.ogg",
+      "audio/music/music-jingle-sax-01.ogg",
+      "music"
+    ],
+    [
+      "music-jingle-steel-01",
+      "kenney-music-jingles-1.0",
+      "Audio/Steel jingles/jingles_STEEL00.ogg",
+      "audio/music/music-jingle-steel-01.ogg",
+      "music"
+    ]
+  ],
+  "rejectedAudioAssets": [
+    [
+      "battle-cut-01",
+      "kenney-rpg-audio-1.0",
+      "Audio/chop.ogg",
+      "decoded-peak-above-1.0"
+    ],
+    [
+      "ui-book-close-01",
+      "kenney-rpg-audio-1.0",
+      "Audio/bookClose.ogg",
+      "decoded-peak-above-1.0"
+    ],
+    [
+      "ui-coins-01",
+      "kenney-rpg-audio-1.0",
+      "Audio/handleCoins.ogg",
+      "decoded-peak-above-1.0"
+    ],
+    [
+      "world-door-close-01",
+      "kenney-rpg-audio-1.0",
+      "Audio/doorClose_1.ogg",
+      "decoded-peak-above-1.0"
+    ],
+    [
+      "world-door-open-01",
+      "kenney-rpg-audio-1.0",
+      "Audio/doorOpen_1.ogg",
+      "decoded-peak-above-1.0"
+    ],
+    [
+      "world-footstep-rpg-01",
+      "kenney-rpg-audio-1.0",
+      "Audio/footstep00.ogg",
+      "decoded-peak-above-1.0"
+    ],
+    [
+      "world-footstep-rpg-02",
+      "kenney-rpg-audio-1.0",
+      "Audio/footstep01.ogg",
+      "decoded-peak-above-1.0"
+    ],
+    [
+      "world-footstep-rpg-04",
+      "kenney-rpg-audio-1.0",
+      "Audio/footstep03.ogg",
+      "decoded-peak-above-1.0"
+    ],
+    [
+      "world-metal-latch-01",
+      "kenney-rpg-audio-1.0",
+      "Audio/metalLatch.ogg",
+      "decoded-peak-above-1.0"
+    ]
+  ]
+}

@@ -423,7 +423,9 @@ Somente conteúdo original, CC0 ou comprovadamente licenciado poderá ser public
 - `content/assets/source-registry.json`: registro central de fontes, sem transformar
   pesquisa em aprovação;
 - `content/assets/catalogs/`: sprites temporários, cries candidatos, perfis,
-  apresentações e espaço vazio para frame animations aprovadas;
+  apresentações e biblioteca CC0 aprovada;
+- `content/packs/production-assets`: lote D-025 com 15 PNGs, 39 OGGs, três atlases
+  determinísticos, licenças originais e importação por arquivos-fonte fixos;
 - `scripts/lib/asset-catalog-audit.mjs`: integridade, metadados, licenças e política
   de runtime;
 - `scripts/lib/runtime-content-boundary.mjs`: bloqueio em `apps/**` e `packages/**`
@@ -433,6 +435,12 @@ Os defaults mantêm toda mídia Pokémon desativada. O laboratório visual é ca
 somente em desenvolvimento com `?asset-lab=1` e usa uma forma geométrica, porque não
 há mídia Pokémon aprovada para runtime. Os catálogos estáticos são divididos em três
 shards e não entram no bundle do navegador.
+
+Aprovação de redistribuição e ativação no runtime são gates distintos. O lote D-025
+é CC0 e pode permanecer no repositório, mas continua desativado até receber aliases
+semânticos, revisão de direção de arte e estratégia de carregamento. Arquivos de
+origem completos ficam em cache privado; somente a seleção registrada por hash entra
+no pack.
 
 ## 14. Preparação operacional
 

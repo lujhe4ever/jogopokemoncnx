@@ -16,6 +16,19 @@ for (const directory of readdirSync(packs, { withFileTypes: true })) {
   const approvedProvenance =
     manifest.author === "Projeto LT" &&
     ["Original project content", "CC0"].includes(manifest.license);
+  const approvedProductionAssets =
+    directory.name === "production-assets" &&
+    manifest.id === "production-assets" &&
+    manifest.author === "Kenney" &&
+    manifest.license === "CC0-1.0" &&
+    manifest.licenseStatus === "approved" &&
+    manifest.publicationPolicy === "approved-third-party-assets" &&
+    manifest.runtimeEnabled === false &&
+    manifest.decisionId === "D-025" &&
+    manifest.sourceCount === 8 &&
+    manifest.assetCount > 0 &&
+    manifest.provenanceFile === "sources.json" &&
+    manifest.catalogFile === "catalogs/assets.json";
   const temporaryReference =
     directory.name === "pokemon-canonical" &&
     manifest.id === "pokemon-canonical" &&
@@ -27,7 +40,7 @@ for (const directory of readdirSync(packs, { withFileTypes: true })) {
     manifest.ownerAuthorization?.decisionId === D023_DECISION_ID &&
     manifest.ownerAuthorization?.authorizedAt === D023_OWNER_AUTHORIZED_AT;
 
-  if (approvedProvenance) continue;
+  if (approvedProvenance || approvedProductionAssets) continue;
   if (temporaryReference) {
     temporaryExceptions.push(directory.name);
     continue;

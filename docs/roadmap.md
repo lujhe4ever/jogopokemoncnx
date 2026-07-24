@@ -758,14 +758,15 @@ deploy, convidados ou coleta real.
 
 ## 4. Gate para a próxima tarefa
 
-A integração estrutural de assets autorizada está no PR draft #23. Ela não altera o
-status das Fases 0B–17 e não autoriza deploy. O próximo gate de conteúdo exige:
+A biblioteca D-025 seleciona e valida 54 arquivos CC0 exatos sem alterar o status das
+Fases 0B–17 e sem autorizar deploy. O próximo gate de conteúdo exige:
 
-- selecionar um piloto exato, não apenas um site ou coleção;
-- demonstrar autoria, licença, modificação e redistribuição;
-- registrar revisão, arquivo, hash, crédito e decisão;
-- validar o piloto sem liberar os demais assets;
-- obter revisão do proprietário antes de ativar a feature flag correspondente.
+- revisar os aliases semânticos candidatos dos atlases Tiny Dungeon e UI;
+- escolher uma única integração de runtime, preferencialmente um tileset de zona;
+- medir memória, decode, carregamento e FPS em desktop e mobile;
+- ativar somente os IDs necessários pela feature flag correspondente;
+- manter fallback e rollback para o conteúdo original atual;
+- obter revisão do proprietário antes de habilitar qualquer mídia.
 
-Sons, cries e frame animations permanecem sem mídia aprovada. Deploy, merge e uma
-importação em massa continuam desautorizados.
+Sprites, animações e cries Pokémon continuam sem mídia licenciada aprovada. Merge,
+deploy e ativação em massa continuam desautorizados.

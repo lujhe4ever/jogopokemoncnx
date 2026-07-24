@@ -528,11 +528,17 @@ visual, e um repositório público pode caracterizar distribuição. Portanto:
 - conversão, recorte ou animação não altera titularidade e exige permissão de
   modificação quando produzir derivado;
 - material sem origem comprovada ficará em quarentena e fora do repositório;
-- `THIRD_PARTY_NOTICES` e inventário de licenças serão criados quando houver a
-  primeira dependência ou asset de terceiros;
+- `THIRD_PARTY_NOTICES.md` e o inventário de licenças registram cada lote de
+  terceiros publicado;
 - branding, nomes de domínio e identidade visual deverão ser originais.
 
 Desacoplamento técnico facilita substituição, mas não corrige uso indevido.
+
+O primeiro lote de mídia aprovado, D-025, fixa oito arquivos-fonte Kenney CC0 por
+versão, URL, tamanho e SHA-256. Somente 54 arquivos selecionados são publicados, sem
+transformação dos bytes. A licença permite redistribuição, mas a ativação no runtime
+continua separada e exige revisão visual, mapeamento semântico, orçamento e feature
+flag. Essa aprovação não alcança a mídia Pokémon temporária da D-023.
 
 ## 15. Performance e experiência mobile
 

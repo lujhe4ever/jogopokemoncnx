@@ -1,0 +1,205 @@
+{
+  "schemaVersion": 1,
+  "sources": [
+    {
+      "sourceId": "kenney-tiny-dungeon-1.0",
+      "url": "https://kenney.nl/assets/tiny-dungeon",
+      "downloadUrl": "https://kenney.nl/media/pages/assets/tiny-dungeon/f8422efb44-1674742415/kenney_tiny-dungeon.zip",
+      "repository": null,
+      "commitSha": null,
+      "version": "1.0",
+      "archiveSha256": "c109438ab06f65fd80f9b2686a4cf9c7c11dc64444b47333ec71d602f8bb5fc7",
+      "archiveSizeBytes": 98530,
+      "retrievedAt": "2026-07-24",
+      "license": "CC0-1.0",
+      "ownership": "Created and distributed by Kenney; exact pack: Tiny Dungeon.",
+      "attribution": [
+        "Attribution is not mandatory under CC0; credit Kenney (kenney.nl) when practical."
+      ],
+      "modificationAllowed": true,
+      "redistributionAllowed": true,
+      "status": "approved",
+      "evidence": [
+        "https://kenney.nl/assets/tiny-dungeon",
+        "https://creativecommons.org/publicdomain/zero/1.0/"
+      ],
+      "licenseFile": "content/packs/production-assets/licenses/kenney-tiny-dungeon-1.0.txt",
+      "decisionId": "D-025"
+    },
+    {
+      "sourceId": "kenney-tiny-town-1.1",
+      "url": "https://kenney.nl/assets/tiny-town",
+      "downloadUrl": "https://kenney.nl/media/pages/assets/tiny-town/a415fbeb49-1735736916/kenney_tiny-town.zip",
+      "repository": null,
+      "commitSha": null,
+      "version": "1.1",
+      "archiveSha256": "9768692dccff1d706408a5aedd6ca4f6cd1409506cbc84cb2f862919764be977",
+      "archiveSizeBytes": 182243,
+      "retrievedAt": "2026-07-24",
+      "license": "CC0-1.0",
+      "ownership": "Created and distributed by Kenney; exact pack: Tiny Town.",
+      "attribution": [
+        "Attribution is not mandatory under CC0; credit Kenney (kenney.nl) when practical."
+      ],
+      "modificationAllowed": true,
+      "redistributionAllowed": true,
+      "status": "approved",
+      "evidence": [
+        "https://kenney.nl/assets/tiny-town",
+        "https://creativecommons.org/publicdomain/zero/1.0/"
+      ],
+      "licenseFile": "content/packs/production-assets/licenses/kenney-tiny-town-1.1.txt",
+      "decisionId": "D-025"
+    },
+    {
+      "sourceId": "kenney-ui-pixel-adventure-1.0",
+      "url": "https://kenney.nl/assets/ui-pack-pixel-adventure",
+      "downloadUrl": "https://kenney.nl/media/pages/assets/ui-pack-pixel-adventure/405ba5278a-1729196257/kenney_ui-pack-pixel-adventure.zip",
+      "repository": null,
+      "commitSha": null,
+      "version": "1.0",
+      "archiveSha256": "0b0ed4802ebcfff5e44e370f394baa1d751862a5a4a7612ac4ce84e85faa0627",
+      "archiveSizeBytes": 317032,
+      "retrievedAt": "2026-07-24",
+      "license": "CC0-1.0",
+      "ownership": "Created and distributed by Kenney; exact pack: UI Pack - Pixel Adventure.",
+      "attribution": [
+        "Attribution is not mandatory under CC0; credit Kenney (kenney.nl) when practical."
+      ],
+      "modificationAllowed": true,
+      "redistributionAllowed": true,
+      "status": "approved",
+      "evidence": [
+        "https://kenney.nl/assets/ui-pack-pixel-adventure",
+        "https://creativecommons.org/publicdomain/zero/1.0/"
+      ],
+      "licenseFile": "content/packs/production-assets/licenses/kenney-ui-pixel-adventure-1.0.txt",
+      "decisionId": "D-025"
+    },
+    {
+      "sourceId": "kenney-particle-pack-1.0",
+      "url": "https://kenney.nl/assets/particle-pack",
+      "downloadUrl": "https://kenney.nl/media/pages/assets/particle-pack/f8fe0f8cb8-1677578741/kenney_particle-pack.zip",
+      "repository": null,
+      "commitSha": null,
+      "version": "1.0",
+      "archiveSha256": "b631d4b07f7002549fdcf155f01141ad482f79f3440e4e301eed49ce5f1d8958",
+      "archiveSizeBytes": 15001764,
+      "retrievedAt": "2026-07-24",
+      "license": "CC0-1.0",
+      "ownership": "Created and distributed by Kenney; exact pack: Particle Pack.",
+      "attribution": [
+        "Attribution is not mandatory under CC0; credit Kenney (kenney.nl) when practical."
+      ],
+      "modificationAllowed": true,
+      "redistributionAllowed": true,
+      "status": "approved",
+      "evidence": [
+        "https://kenney.nl/assets/particle-pack",
+        "https://creativecommons.org/publicdomain/zero/1.0/"
+      ],
+      "licenseFile": "content/packs/production-assets/licenses/kenney-particle-pack-1.0.txt",
+      "decisionId": "D-025"
+    },
+    {
+      "sourceId": "kenney-interface-sounds-1.0",
+      "url": "https://kenney.nl/assets/interface-sounds",
+      "downloadUrl": "https://kenney.nl/media/pages/assets/interface-sounds/fa43c1dd4d-1677589452/kenney_interface-sounds.zip",
+      "repository": null,
+      "commitSha": null,
+      "version": "1.0",
+      "archiveSha256": "f2193d072726d6758a5f7871b2dcc54dcce0d5c35c6f0a62f92549b327c81232",
+      "archiveSizeBytes": 834536,
+      "retrievedAt": "2026-07-24",
+      "license": "CC0-1.0",
+      "ownership": "Created and distributed by Kenney; exact pack: Interface Sounds.",
+      "attribution": [
+        "Attribution is not mandatory under CC0; credit Kenney (kenney.nl) when practical."
+      ],
+      "modificationAllowed": true,
+      "redistributionAllowed": true,
+      "status": "approved",
+      "evidence": [
+        "https://kenney.nl/assets/interface-sounds",
+        "https://creativecommons.org/publicdomain/zero/1.0/"
+      ],
+      "licenseFile": "content/packs/production-assets/licenses/kenney-interface-sounds-1.0.txt",
+      "decisionId": "D-025"
+    },
+    {
+      "sourceId": "kenney-impact-sounds-1.0",
+      "url": "https://kenney.nl/assets/impact-sounds",
+      "downloadUrl": "https://kenney.nl/media/pages/assets/impact-sounds/87b4ddecda-1677589768/kenney_impact-sounds.zip",
+      "repository": null,
+      "commitSha": null,
+      "version": "1.0",
+      "archiveSha256": "029d734af1582474edf3a694d1b0cebc97c1c152f2f39fa34d4c2bafc5de77f8",
+      "archiveSizeBytes": 800850,
+      "retrievedAt": "2026-07-24",
+      "license": "CC0-1.0",
+      "ownership": "Created and distributed by Kenney; exact pack: Impact Sounds.",
+      "attribution": [
+        "Attribution is not mandatory under CC0; credit Kenney (kenney.nl) when practical."
+      ],
+      "modificationAllowed": true,
+      "redistributionAllowed": true,
+      "status": "approved",
+      "evidence": [
+        "https://kenney.nl/assets/impact-sounds",
+        "https://creativecommons.org/publicdomain/zero/1.0/"
+      ],
+      "licenseFile": "content/packs/production-assets/licenses/kenney-impact-sounds-1.0.txt",
+      "decisionId": "D-025"
+    },
+    {
+      "sourceId": "kenney-rpg-audio-1.0",
+      "url": "https://kenney.nl/assets/rpg-audio",
+      "downloadUrl": "https://kenney.nl/media/pages/assets/rpg-audio/8e99002d76-1677590336/kenney_rpg-audio.zip",
+      "repository": null,
+      "commitSha": null,
+      "version": "1.0",
+      "archiveSha256": "6dbeaf8544da958d8f2adcb4a4a4b76c1ade34a05f8ab9edccd327da7375f38b",
+      "archiveSizeBytes": 964837,
+      "retrievedAt": "2026-07-24",
+      "license": "CC0-1.0",
+      "ownership": "Created and distributed by Kenney; exact pack: RPG Audio.",
+      "attribution": [
+        "Attribution is not mandatory under CC0; credit Kenney (kenney.nl) when practical."
+      ],
+      "modificationAllowed": true,
+      "redistributionAllowed": true,
+      "status": "approved",
+      "evidence": [
+        "https://kenney.nl/assets/rpg-audio",
+        "https://creativecommons.org/publicdomain/zero/1.0/"
+      ],
+      "licenseFile": "content/packs/production-assets/licenses/kenney-rpg-audio-1.0.txt",
+      "decisionId": "D-025"
+    },
+    {
+      "sourceId": "kenney-music-jingles-1.0",
+      "url": "https://kenney.nl/assets/music-jingles",
+      "downloadUrl": "https://kenney.nl/media/pages/assets/music-jingles/f37e530b9e-1677590399/kenney_music-jingles.zip",
+      "repository": null,
+      "commitSha": null,
+      "version": "1.0",
+      "archiveSha256": "b729ba57959bd58793d2c5cafa348aaf2655d354f3da35ec4729e03ec77197b8",
+      "archiveSizeBytes": 1239525,
+      "retrievedAt": "2026-07-24",
+      "license": "CC0-1.0",
+      "ownership": "Created and distributed by Kenney; exact pack: Music Jingles.",
+      "attribution": [
+        "Attribution is not mandatory under CC0; credit Kenney (kenney.nl) when practical."
+      ],
+      "modificationAllowed": true,
+      "redistributionAllowed": true,
+      "status": "approved",
+      "evidence": [
+        "https://kenney.nl/assets/music-jingles",
+        "https://creativecommons.org/publicdomain/zero/1.0/"
+      ],
+      "licenseFile": "content/packs/production-assets/licenses/kenney-music-jingles-1.0.txt",
+      "decisionId": "D-025"
+    }
+  ]
+}

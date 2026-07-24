@@ -1,6 +1,7 @@
 import { mkdir, readFile, readdir, rm, writeFile } from "node:fs/promises";
 import path from "node:path";
 import process from "node:process";
+import { format as formatWithPrettier } from "prettier";
 import {
   PROCEDURAL_ANIMATION_PROFILES,
   mapMovePresentation,
@@ -10,6 +11,12 @@ const ROOT = process.cwd();
 const CONTENT_ROOT = path.join(ROOT, "content", "assets");
 const CATALOG_ROOT = path.join(CONTENT_ROOT, "catalogs");
 const PACK_ROOT = path.join(ROOT, "content", "packs", "pokemon-canonical");
+const PRODUCTION_PACK_ROOT = path.join(
+  ROOT,
+  "content",
+  "packs",
+  "production-assets",
+);
 const AUDIT_ROOT = path.join(ROOT, "docs", "assets");
 const STATIC_SHARD_SIZE = 1_370;
 
@@ -73,38 +80,122 @@ async function readJson(filePath) {
 }
 
 async function writeJson(filePath, value, pretty = false) {
-  await writeFile(
-    filePath,
-    `${JSON.stringify(value, null, pretty ? 2 : undefined)}\n`,
-    "utf8",
-  );
+  const content = pretty
+    ? await formatWithPrettier(JSON.stringify(value), { parser: "json" })
+    : `${JSON.stringify(value)}\n`;
+  await writeFile(filePath, content, "utf8");
 }
 
 async function buildSourceRegistry() {
   const audit = await readJson(path.join(AUDIT_ROOT, "source-register.json"));
+  const production = await readJson(
+    path.join(PRODUCTION_PACK_ROOT, "sources.json"),
+  );
   return {
     schemaVersion: 1,
     policy:
       "A registered source is not runtime-approved. Every exact asset must also satisfy the unified runtime policy.",
-    sources: audit.sources.map((source) => ({
-      sourceId: source.sourceId,
-      url: source.url,
-      repository: repositoryFromUrl(source.url),
-      commitSha: source.commitSha,
-      version: source.revision && !source.commitSha ? source.revision : null,
-      license: source.declaredLicense,
-      ownership: source.declaredOwnership,
-      attribution:
-        source.attributionRequired &&
-        source.attributionRequired !== "not required"
-          ? [source.attributionRequired]
-          : [],
-      modificationAllowed: permission(source.modificationAllowed),
-      redistributionAllowed: permission(source.redistributionAllowed),
-      status: source.legalStatus,
-      evidence: source.evidence,
-      decisionId: source.relatedDecision,
-    })),
+    sources: [
+      ...audit.sources.map((source) => ({
+        sourceId: source.sourceId,
+        url: source.url,
+        repository: repositoryFromUrl(source.url),
+        commitSha: source.commitSha,
+        version: source.revision && !source.commitSha ? source.revision : null,
+        license: source.declaredLicense,
+        ownership: source.declaredOwnership,
+        attribution:
+          source.attributionRequired &&
+          source.attributionRequired !== "not required"
+            ? [source.attributionRequired]
+            : [],
+        modificationAllowed: permission(source.modificationAllowed),
+        redistributionAllowed: permission(source.redistributionAllowed),
+        status: source.legalStatus,
+        evidence: source.evidence,
+        decisionId: source.relatedDecision,
+      })),
+      ...production.sources,
+    ],
+  };
+}
+
+async function buildApprovedLibrary() {
+  return readJson(path.join(PRODUCTION_PACK_ROOT, "catalogs", "assets.json"));
+}
+
+async function buildCoverage(staticSprites, approvedLibrary) {
+  const forms = await readJson(path.join(PACK_ROOT, "catalogs", "forms.json"));
+  const staticByVariant = Object.fromEntries(
+    ["front-normal", "front-shiny", "back-normal", "back-shiny"].map(
+      (variantId) => [
+        variantId,
+        staticSprites.assets.filter((asset) => asset.variantId === variantId)
+          .length,
+      ],
+    ),
+  );
+  const approvedByCategory = Object.fromEntries(
+    [...new Set(approvedLibrary.assets.map((asset) => asset.category))]
+      .sort()
+      .map((category) => [
+        category,
+        approvedLibrary.assets.filter((asset) => asset.category === category)
+          .length,
+      ]),
+  );
+  const characterCandidateFrames = approvedLibrary.assets.flatMap(
+    (asset) => asset.atlasGroups?.characterCandidates ?? [],
+  ).length;
+  const creatureCandidateFrames = approvedLibrary.assets.flatMap(
+    (asset) => asset.atlasGroups?.creatureCandidates ?? [],
+  ).length;
+  return {
+    schemaVersion: 1,
+    generatedAt: "2026-07-24",
+    pokemon: {
+      species: new Set(staticSprites.assets.map((asset) => asset.speciesId))
+        .size,
+      formsCataloged: forms.forms.length,
+      temporaryBattleSprites: staticSprites.assets.length,
+      variants: staticByVariant,
+      approvedPokemonImages: 0,
+      approvedPokemonAnimations: 0,
+      approvedPokemonCries: 0,
+      runtimeEnabledPokemonAssets: 0,
+      legalStatus: "doubtful",
+    },
+    approvedLibrary: {
+      sources: new Set(approvedLibrary.assets.map((asset) => asset.sourceId))
+        .size,
+      assets: approvedLibrary.assets.length,
+      images: approvedLibrary.assets.filter((asset) =>
+        asset.mimeType.startsWith("image/"),
+      ).length,
+      audio: approvedLibrary.assets.filter((asset) =>
+        asset.mimeType.startsWith("audio/"),
+      ).length,
+      atlasFiles: approvedLibrary.supportingFiles.filter(
+        (file) => file.role === "atlas",
+      ).length,
+      characterCandidateFrames,
+      creatureCandidateFrames,
+      categories: approvedByCategory,
+      rejected: approvedLibrary.rejectedAssets.length,
+      runtimeEnabledAssets: approvedLibrary.assets.filter(
+        (asset) => asset.runtimeEnabled,
+      ).length,
+    },
+    gaps: {
+      pokemonLicensedReplacement: "all species and forms",
+      pokemonFrameAnimations: "all species and forms",
+      pokemonCries: "all species and forms",
+      characterDirectionalAnimation:
+        "no approved four-direction walk cycle in this batch",
+      completeMusicLoops: "all requested contexts",
+      semanticAtlasMapping:
+        "Tiny Dungeon and UI sheets need per-frame semantic aliases before runtime",
+    },
   };
 }
 
@@ -251,13 +342,20 @@ async function buildMovePresentations() {
 
 async function main() {
   await mkdir(CATALOG_ROOT, { recursive: true });
-  const [sourceRegistry, staticSprites, audio, movePresentations] =
-    await Promise.all([
-      buildSourceRegistry(),
-      buildStaticSpriteCatalog(),
-      buildAudioCatalog(),
-      buildMovePresentations(),
-    ]);
+  const [
+    sourceRegistry,
+    staticSprites,
+    audio,
+    movePresentations,
+    approvedLibrary,
+  ] = await Promise.all([
+    buildSourceRegistry(),
+    buildStaticSpriteCatalog(),
+    buildAudioCatalog(),
+    buildMovePresentations(),
+    buildApprovedLibrary(),
+  ]);
+  const coverage = await buildCoverage(staticSprites, approvedLibrary);
   const animations = {
     schemaVersion: 1,
     catalogId: "procedural-and-approved-frame-animations",
@@ -331,11 +429,17 @@ async function main() {
       ),
     ),
     writeJson(path.join(CATALOG_ROOT, "audio.json"), audio),
+    writeJson(
+      path.join(CATALOG_ROOT, "approved-library.json"),
+      approvedLibrary,
+      true,
+    ),
     writeJson(path.join(CATALOG_ROOT, "animations.json"), animations, true),
     writeJson(
       path.join(CATALOG_ROOT, "move-presentations.json"),
       movePresentations,
     ),
+    writeJson(path.join(CONTENT_ROOT, "coverage.json"), coverage, true),
     writeJson(
       path.join(CONTENT_ROOT, "manifest.json"),
       {
@@ -350,7 +454,13 @@ async function main() {
         proceduralProfileCount: animations.proceduralProfiles.length,
         frameAnimationCount: animations.frameAnimations.length,
         movePresentationCount: movePresentations.moves.length,
+        approvedAssetCount: approvedLibrary.assets.length,
+        approvedImageCount: coverage.approvedLibrary.images,
+        approvedAudioCount: coverage.approvedLibrary.audio,
+        rejectedAssetCount: approvedLibrary.rejectedAssets.length,
         runtimeEnabledPokemonAssetCount: 0,
+        runtimeEnabledApprovedAssetCount:
+          coverage.approvedLibrary.runtimeEnabledAssets,
       },
       true,
     ),
@@ -364,7 +474,13 @@ async function main() {
         proceduralProfiles: animations.proceduralProfiles.length,
         frameAnimations: animations.frameAnimations.length,
         movePresentations: movePresentations.moves.length,
+        approvedAssets: approvedLibrary.assets.length,
+        approvedImages: coverage.approvedLibrary.images,
+        approvedAudio: coverage.approvedLibrary.audio,
+        rejectedAssets: approvedLibrary.rejectedAssets.length,
         runtimeEnabledPokemonAssets: 0,
+        runtimeEnabledApprovedAssets:
+          coverage.approvedLibrary.runtimeEnabledAssets,
       },
       null,
       2,
