@@ -8,7 +8,7 @@
 | Branch desta entrega | `codex/pokemon-assets-audit` |
 | Base desta entrega | `codex/pokemon-canonical-full` em `9192f727` |
 | Fase | Roadmap 0B–17 concluído; auditoria de assets Pokémon em revisão |
-| Status | **auditoria completa preparada; publicação em PR separado pendente** |
+| Status | **publicada no PR draft #21 — aguardando revisão e CI** |
 
 ## 1. Resumo
 
