@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "measuredAt": "2026-07-23",
+  "measuredAt": "2026-07-24",
   "environment": {
     "os": "Windows",
     "node": "24.16.0",
@@ -8,7 +8,7 @@
     "buildMode": "production"
   },
   "bundle": {
-    "webBytes": 1257242,
+    "webBytes": 1257341,
     "webBudgetBytes": 1400000,
     "adminBytes": 9335,
     "adminBudgetBytes": 100000,
@@ -16,10 +16,16 @@
     "largestGameChunkBytes": 1207166
   },
   "catalogs": {
-    "staticAssetCount": 4100,
+    "staticAssetCount": 4115,
     "staticShardCount": 3,
     "largestStaticShardBytes": 1333568,
     "audioCandidateCount": 2000,
+    "approvedAudioCount": 39,
+    "approvedImageCount": 15,
+    "approvedAssetCount": 54,
+    "approvedMediaBytes": 1141825,
+    "largestApprovedMediaBytes": 100114,
+    "rejectedAssetCount": 9,
     "audioCatalogBytes": 1540587,
     "proceduralProfileCount": 20,
     "frameAnimationCount": 0,
@@ -28,7 +34,8 @@
     "largestContentAssetBudgetBytes": 2000000
   },
   "auditDurationMs": {
-    "staticAssets": 4963,
+    "staticAssets": 3804,
+    "allAssets": 4869,
     "audio": 762,
     "animations": 737
   },
@@ -37,6 +44,8 @@
     "pokemonTexturesLoaded": 0,
     "pokemonSoundsLoaded": 0,
     "approvedPokemonMedia": 0,
+    "approvedGenericMedia": 54,
+    "enabledGenericMedia": 0,
     "policy": "Catalogs are build-time data. Runtime loading is explicit, scoped, and disabled until an exact asset passes approval."
   },
   "notMeasured": [

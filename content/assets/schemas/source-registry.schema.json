@@ -35,6 +35,13 @@
             "pattern": "^[0-9a-f]{40}$"
           },
           "version": { "type": ["string", "null"] },
+          "downloadUrl": { "type": "string", "format": "uri" },
+          "archiveSha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "archiveSizeBytes": { "type": "integer", "minimum": 1 },
+          "retrievedAt": { "type": "string", "format": "date" },
           "license": { "type": "string" },
           "ownership": { "type": "string" },
           "attribution": {
@@ -56,6 +63,7 @@
             "type": "array",
             "items": { "type": "string", "format": "uri" }
           },
+          "licenseFile": { "type": "string", "minLength": 1 },
           "decisionId": { "type": ["string", "null"] }
         },
         "additionalProperties": false

@@ -4,11 +4,16 @@
     "pokemonPack": "content/packs/pokemon-canonical",
     "audit": "docs/assets"
   },
-  "sourceCount": 14,
+  "sourceCount": 22,
   "staticAssetCount": 4100,
   "audioCandidateCount": 2000,
   "proceduralProfileCount": 20,
   "frameAnimationCount": 0,
   "movePresentationCount": 937,
-  "runtimeEnabledPokemonAssetCount": 0
+  "approvedAssetCount": 54,
+  "approvedImageCount": 15,
+  "approvedAudioCount": 39,
+  "rejectedAssetCount": 9,
+  "runtimeEnabledPokemonAssetCount": 0,
+  "runtimeEnabledApprovedAssetCount": 0
 }

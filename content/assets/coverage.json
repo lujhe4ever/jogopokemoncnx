@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-07-24",
+  "pokemon": {
+    "species": 1025,
+    "formsCataloged": 1579,
+    "temporaryBattleSprites": 4100,
+    "variants": {
+      "front-normal": 1025,
+      "front-shiny": 1025,
+      "back-normal": 1025,
+      "back-shiny": 1025
+    },
+    "approvedPokemonImages": 0,
+    "approvedPokemonAnimations": 0,
+    "approvedPokemonCries": 0,
+    "runtimeEnabledPokemonAssets": 0,
+    "legalStatus": "doubtful"
+  },
+  "approvedLibrary": {
+    "sources": 8,
+    "assets": 54,
+    "images": 15,
+    "audio": 39,
+    "atlasFiles": 3,
+    "characterCandidateFrames": 18,
+    "creatureCandidateFrames": 12,
+    "categories": {
+      "battle": 9,
+      "interface": 14,
+      "music": 6,
+      "vfx-circle": 1,
+      "vfx-earth": 1,
+      "vfx-electric": 1,
+      "vfx-fire": 2,
+      "vfx-light": 1,
+      "vfx-magic": 1,
+      "vfx-reward": 1,
+      "vfx-slash": 1,
+      "vfx-smoke": 1,
+      "vfx-status": 1,
+      "vfx-wind": 1,
+      "world": 11,
+      "world-dungeon": 1,
+      "world-town": 1
+    },
+    "rejected": 9,
+    "runtimeEnabledAssets": 0
+  },
+  "gaps": {
+    "pokemonLicensedReplacement": "all species and forms",
+    "pokemonFrameAnimations": "all species and forms",
+    "pokemonCries": "all species and forms",
+    "characterDirectionalAnimation": "no approved four-direction walk cycle in this batch",
+    "completeMusicLoops": "all requested contexts",
+    "semanticAtlasMapping": "Tiny Dungeon and UI sheets need per-frame semantic aliases before runtime"
+  }
+}

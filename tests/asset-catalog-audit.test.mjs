@@ -23,6 +23,7 @@ async function minimalFixture(mutator) {
   const root = await mkdtemp(path.join(os.tmpdir(), "asset-catalog-"));
   temporaryRoots.push(root);
   const registry = await readJson("content/assets/source-registry.json");
+  registry.sources = registry.sources.filter((source) => !source.licenseFile);
   const staticCatalog = await readJson(
     "content/assets/catalogs/static-sprites.json",
   );
@@ -38,6 +39,12 @@ async function minimalFixture(mutator) {
     schemaVersion: 1,
     assets: [],
   });
+  await writeJson(root, "content/assets/catalogs/approved-library.json", {
+    schemaVersion: 1,
+    assets: [],
+    supportingFiles: [],
+    rejectedAssets: [],
+  });
   await writeJson(root, "content/assets/catalogs/animations.json", {
     schemaVersion: 1,
     proceduralProfiles: [],
@@ -47,6 +54,22 @@ async function minimalFixture(mutator) {
     schemaVersion: 1,
     moves: [],
   });
+  await writeJson(root, "content/packs/production-assets/import-plan.json", {});
+  await writeJson(root, "content/packs/production-assets/manifest.json", {});
+  await writeJson(root, "content/packs/production-assets/sources.json", {});
+  await writeJson(
+    root,
+    "content/packs/production-assets/catalogs/assets.json",
+    {},
+  );
+  const readmePath = path.join(
+    root,
+    "content",
+    "packs",
+    "production-assets",
+    "README.md",
+  );
+  await writeFile(readmePath, "# Fixture\n");
   if (first.localPath) {
     const target = path.join(root, first.localPath);
     await mkdir(path.dirname(target), { recursive: true });
@@ -66,9 +89,9 @@ afterEach(async () => {
 describe("asset catalog audit", () => {
   it("validates the complete generated catalogs", async () => {
     await expect(auditAssetCatalogs()).resolves.toMatchObject({
-      sources: 14,
-      staticAssets: 4_100,
-      audioAssets: 2_000,
+      sources: 22,
+      staticAssets: 4_115,
+      audioAssets: 2_039,
       proceduralProfiles: 20,
       frameAnimations: 0,
       movePresentations: 937,

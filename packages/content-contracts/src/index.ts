@@ -4,8 +4,13 @@ export type AssetLicenseStatus =
 export type AssetType =
   | "battle-sprite"
   | "overworld-sprite"
+  | "character-sprite"
   | "portrait"
   | "icon"
+  | "tileset"
+  | "world-object"
+  | "visual-effect"
+  | "ui-element"
   | "animation"
   | "cry"
   | "sound-effect"
@@ -19,6 +24,10 @@ export interface AssetSourceRecord {
   repository: string | null;
   commitSha: string | null;
   version: string | null;
+  downloadUrl?: string;
+  archiveSha256?: string;
+  archiveSizeBytes?: number;
+  retrievedAt?: string;
   license: string;
   ownership: string;
   attribution: readonly string[];
@@ -26,6 +35,7 @@ export interface AssetSourceRecord {
   redistributionAllowed: boolean | null;
   status: AssetLicenseStatus;
   evidence: readonly string[];
+  licenseFile?: string;
   decisionId: string | null;
 }
 
@@ -46,6 +56,7 @@ export interface UnifiedAssetRecord {
   sourceRevision: string | null;
   sourcePath: string | null;
   localPath: string | null;
+  originalName?: string;
   format: AssetFormat;
   mimeType: string;
   width: number | null;
@@ -66,6 +77,27 @@ export interface UnifiedAssetRecord {
   approvedAt: string | null;
   decisionId: string | null;
   retrievedAt: string;
+  category?: string;
+  atlasFrameCount?: number | null;
+  atlasGroups?: Readonly<Record<string, readonly number[]>>;
+  hasTransparency?: boolean;
+  peakAmplitude?: number;
+  clippingDetected?: boolean;
+  analysisTool?: string;
+  compatibilityScore?: number;
+  compatibilityClass?:
+    | "compatible"
+    | "compatible-after-normalization"
+    | "compatible-only-isolated"
+    | "incompatible"
+    | "reference-only";
+  requiredCredits?: readonly string[];
+  recommendedCredits?: readonly string[];
+  notes?: string;
+  transformation?: {
+    operation: string;
+    pixelOrSampleDataChanged: boolean;
+  };
 }
 
 export interface AssetFeatureFlags {
@@ -147,6 +179,12 @@ export function runtimeAssetViolations(
     source?.commitSha &&
     asset.sourceRevision &&
     source.commitSha !== asset.sourceRevision
+  )
+    add("asset-source-mismatch");
+  if (
+    source?.archiveSha256 &&
+    asset.sourceRevision &&
+    source.archiveSha256 !== asset.sourceRevision
   )
     add("asset-source-mismatch");
   return violations;

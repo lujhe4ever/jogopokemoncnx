@@ -2,7 +2,7 @@
 
 | Campo | Valor |
 | --- | --- |
-| Atualizado em | 2026-07-23 |
+| Atualizado em | 2026-07-24 |
 | Implementação existente | Fases 1–15 |
 | Referência de IDs técnicos | [`../architecture.md`](../architecture.md) |
 
@@ -65,6 +65,7 @@ Ao aceitar ou mudar uma decisão:
 | D-022 | Alpha interno com telemetria anônima, consentida e opt-in | Aceita |
 | D-023 | Publicação temporária dos sprites de batalha com direitos duvidosos | Aceita |
 | D-024 | Pipeline de assets fail-closed sem aprovação implícita de mídia | Aceita |
+| D-025 | Biblioteca CC0 curada, reproduzível e desativada no runtime | Aceita |
 
 ## 3. Registro cronológico
 
@@ -628,6 +629,34 @@ Ao aceitar ou mudar uma decisão:
   escolhida silenciosamente.
 - **Evidência:** PR draft #23, testes de contratos/gates e catálogos gerados com zero
   mídia Pokémon habilitada.
+
+### D-025 — Biblioteca CC0 curada, reproduzível e desativada no runtime
+
+- **Data:** 2026-07-24
+- **Status:** Aceita para o lote exato desta entrega
+- **Contexto:** o projeto precisa de arte e áudio reais, redistribuíveis e
+  substituíveis para evoluir sem depender dos sprites Pokémon temporários da D-023.
+- **Escopo aprovado:** 54 arquivos selecionados de oito packs Kenney em versões
+  fixas: 15 PNGs, 39 OGGs e três atlases JSON derivados apenas de metadados. Os
+  textos de licença originais também são preservados no pack.
+- **Licença:** todos os oito packs declaram CC0 1.0 nas páginas oficiais e nos
+  arquivos de licença dos ZIPs. Crédito não é obrigatório, mas permanece registrado
+  em `THIRD_PARTY_NOTICES.md`.
+- **Reprodutibilidade:** cada arquivo de origem possui URL, versão, tamanho e SHA-256
+  do arquivo ZIP. O importador exige o cache privado exato, verifica a licença e
+  copia os bytes selecionados sem recortar, converter ou reamostrar.
+- **Qualidade:** PNGs são decodificados estruturalmente; OGGs têm duração, sample
+  rate, canais e pico decodificado medidos. Nove candidatos com pico igual ou
+  superior a 1,0 foram rejeitados e não são publicados como mídia local.
+- **Runtime:** `runtimeEnabled: false` para todo o lote. Aprovação de licença e
+  integridade não substitui revisão de direção de arte, mapeamento semântico,
+  orçamento de carregamento ou ativação da feature flag específica.
+- **Separação:** o lote genérico não aprova, substitui silenciosamente nem altera o
+  status dos 4.100 PNGs Pokémon D-023. IDs lógicos e catálogos permitem substituição
+  futura sem acoplar engine, saves ou regras aos caminhos.
+- **Evidência:** autorização explícita do proprietário, páginas e licenças oficiais,
+  hashes dos arquivos-fonte, manifesto, catálogo, relatório de cobertura e testes
+  automatizados desta entrega.
 
 ## 4. Próximas decisões a revisar
 

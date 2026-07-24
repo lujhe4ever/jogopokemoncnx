@@ -8,9 +8,20 @@ const repositoryRoot = path.resolve(import.meta.dirname, "..");
 const assetsDirectory = path.join(repositoryRoot, "docs", "assets");
 
 const requiredArtifacts = [
+  "animation-source-report.md",
   "asset-gap-matrix.json",
+  "asset-coverage-report.md",
+  "asset-quarantine-report.md",
+  "asset-replacement-plan.md",
   "audio-availability.csv",
+  "audio-source-report.md",
   "canonical-data-findings.json",
+  "character-sprite-research.md",
+  "final-animations.csv",
+  "final-asset-inventory.md",
+  "final-audio.csv",
+  "final-characters.csv",
+  "final-sprites.csv",
   "pokemon-animation-inventory.md",
   "pokemon-assets-audit.md",
   "pokemon-assets-roadmap.md",
@@ -20,6 +31,8 @@ const requiredArtifacts = [
   "proposed-asset-schema.json",
   "source-register.json",
   "sprite-availability.csv",
+  "visual-compatibility-report.md",
+  "world-asset-research.md",
 ].sort();
 
 function parseCsvLine(line) {
@@ -83,7 +96,7 @@ async function readJson(fileName) {
 }
 
 describe("pokemon asset audit documentation", () => {
-  it("contains exactly the twelve contracted artifacts", async () => {
+  it("contains the original audit and production-library artifacts", async () => {
     await Promise.all(
       requiredArtifacts.map((fileName) =>
         access(path.join(assetsDirectory, fileName)),

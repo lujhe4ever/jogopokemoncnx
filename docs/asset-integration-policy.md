@@ -2,14 +2,18 @@
 
 ## Estado
 
-Esta política implementa a D-024 sobre os resultados da auditoria do PR #21.
+Esta política implementa a D-024 sobre os resultados da auditoria do PR #21 e a
+D-025 para o primeiro lote exato CC0.
 Disponibilidade não significa aprovação. No estado atual:
 
 - 4.100 PNGs temporários D-023 estão no repositório, com direitos `doubtful`;
 - 2.000 cries estão apenas catalogados, sem download ou hash local;
 - 20 perfis procedurais e 937 mapeamentos de apresentação são metadados;
 - zero mídia Pokémon está habilitada no runtime;
-- zero frame animation e zero efeito sonoro novo foram importados.
+- 54 arquivos Kenney CC0 foram aprovados para redistribuição, mas não para runtime;
+- 15 PNGs e 39 OGGs estão no pack `production-assets`;
+- nove candidatos de áudio foram rejeitados por clipping;
+- zero frame animation Pokémon foi importada.
 
 ## Contratos
 
@@ -32,11 +36,14 @@ Uma fonte aprovada não aprova automaticamente um arquivo. Para runtime, o asset
 
 ## Catálogos
 
-- `source-registry.json`: 14 fontes auditadas;
+- `source-registry.json`: 22 fontes auditadas, incluindo oito fontes exatas CC0;
+- `approved-library.json`: índice dos 54 assets redistribuíveis da D-025;
 - `static-sprites.json`: índice de três shards para 4.100 slots temporários;
 - `audio.json`: 2.000 cries candidatos e lista vazia de efeitos originais;
 - `animations.json`: 20 perfis procedurais e lista vazia de frames;
 - `move-presentations.json`: apresentação para 937 movimentos, sem regra mecânica;
+- `coverage.json`, `asset-gaps.json` e `quarantine-report.json`: cobertura, lacunas
+  e rejeições geradas;
 - `performance-baseline.json`: medições reais e itens ainda não mensuráveis.
 
 Os IDs lógicos são estáveis. Substituir bytes licenciados não exige alterar a engine,
@@ -59,6 +66,18 @@ Os defaults seguros ficam em `@lt/content-contracts`:
 
 Uma flag não supera licença, revisão, hash ou decisão. Não existe liberação global da
 quarentena.
+
+## Importação reproduzível
+
+O lote D-025 é descrito por
+`content/packs/production-assets/import-plan.json`. `pnpm assets:import` exige os
+oito ZIPs exatos no cache privado ignorado pelo Git, valida tamanho, SHA-256 e texto
+CC0 e então copia somente a seleção aprovada. Os bytes publicados não são convertidos,
+recortados ou reamostrados.
+
+`pnpm assets:inventory` regenera catálogos, cobertura e relatórios. O comando não
+baixa arquivos. Arquivos de origem continuam fora do Git para evitar publicar
+material não selecionado.
 
 ## Importação futura
 
@@ -100,6 +119,11 @@ promovidos antes dessas medições e da aprovação jurídica.
 ## Comandos
 
 ```text
+pnpm assets:import
+pnpm assets:inventory
+pnpm assets:validate
+pnpm assets:coverage
+pnpm assets:audit
 pnpm content:assets:generate
 pnpm content:assets:audit
 pnpm content:audio:audit
@@ -112,7 +136,9 @@ pnpm check
 
 - a D-023 autoriza publicação temporária, não concede licença dos titulares;
 - dados canônicos da PokéAPI continuam `pending` quanto a marcas e textos;
-- nenhum piloto de mídia possui aprovação exata;
+- os 54 assets D-025 possuem aprovação exata, mas continuam desativados no runtime;
+- os atlases Tiny Dungeon e UI ainda precisam de aliases semânticos revisados;
+- não há ciclo aprovado de caminhada em quatro direções neste lote;
 - memória, decode, FPS mobile e preload de mídia Pokémon não podem ser medidos sem
   carregar conteúdo que hoje está bloqueado;
 - o PR #23 não autoriza merge nem deploy.

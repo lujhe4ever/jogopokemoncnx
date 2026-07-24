@@ -5,7 +5,9 @@ e arena social. O roadmap 0B–17 está concluído e integrado à `main`.
 
 ## Estado
 
-- 24 arquivos de teste e 69 testes automatizados;
+- catálogo canônico com 1.025 espécies e definições normalizadas;
+- 4.100 sprites Pokémon temporários, auditados e bloqueados no runtime;
+- biblioteca genérica CC0 com 15 PNGs e 39 OGGs, também desativada no runtime;
 - jogo, servidor e painel administrativo construídos separadamente;
 - PostgreSQL/Prisma, HTTP e WebSocket autoritativos;
 - jornada de exploração, captura, missões, arena, chat, PvP e telões;
@@ -30,6 +32,13 @@ pnpm check
 pnpm audit --prod --audit-level high
 ```
 
+Inventário e validação de assets:
+
+```sh
+pnpm assets:inventory
+pnpm assets:validate
+```
+
 ## Documentação
 
 - [estado atual](docs/current-state.md);
@@ -40,6 +49,8 @@ pnpm audit --prod --audit-level high
 - [runbook operacional](docs/runbooks/operations.md);
 - [modelo de ameaças](docs/threat-model.md);
 - [inventário de conteúdo](docs/content-inventory.md).
+- [política de integração de assets](docs/asset-integration-policy.md);
+- [inventário final de assets](docs/assets/final-asset-inventory.md).
 
 O conteúdo é original e substituível. Credenciais, certificados e assets sem
 procedência não pertencem ao repositório. Qualquer deploy futuro exige novo gate,

@@ -1,5 +1,5 @@
 import { createHash } from "node:crypto";
-import { readFile, stat } from "node:fs/promises";
+import { readFile, readdir, stat } from "node:fs/promises";
 import path from "node:path";
 import process from "node:process";
 import {
@@ -7,11 +7,13 @@ import {
   runtimeAssetViolations,
 } from "../../packages/content-contracts/src/index.ts";
 import { inspectPng } from "./png-inspection.mjs";
+import { inspectOggVorbis } from "./ogg-inspection.mjs";
 
 const CATALOG_FILES = {
   sources: "content/assets/source-registry.json",
   static: "content/assets/catalogs/static-sprites.json",
   audio: "content/assets/catalogs/audio.json",
+  approved: "content/assets/catalogs/approved-library.json",
   animations: "content/assets/catalogs/animations.json",
   moves: "content/assets/catalogs/move-presentations.json",
 };
@@ -58,7 +60,11 @@ function structuralFailures(asset) {
     )
   )
     failures.push("invalid_license_status");
-  if (asset.approvedAt && asset.approvedAt === asset.retrievedAt)
+  if (
+    asset.approvedAt &&
+    asset.approvedAt === asset.retrievedAt &&
+    (!asset.decisionId || !asset.approvedBy)
+  )
     failures.push("approval_date_must_not_derive_from_retrieval");
   return failures;
 }
@@ -87,18 +93,90 @@ function addViolation(violations, file, asset, policy) {
   });
 }
 
+async function validateLocalAsset({
+  root,
+  file,
+  asset,
+  violations,
+  expectedApproved = false,
+}) {
+  if (!asset.localPath) {
+    addViolation(violations, file, asset, "approved_asset_missing_local_path");
+    return;
+  }
+  const absolutePath = path.join(root, asset.localPath);
+  const buffer = await readFile(absolutePath);
+  const fileStat = await stat(absolutePath);
+  const digest = createHash("sha256").update(buffer).digest("hex");
+  if (fileStat.size !== asset.sizeBytes)
+    addViolation(violations, file, asset, "size_mismatch");
+  if (digest !== asset.sha256)
+    addViolation(violations, file, asset, "hash_mismatch");
+  if (asset.format === "png") {
+    const inspection = inspectPng(buffer, asset.assetId);
+    if (
+      inspection.width !== asset.width ||
+      inspection.height !== asset.height ||
+      inspection.frameCount !== asset.frameCount ||
+      (typeof asset.hasTransparency === "boolean" &&
+        inspection.hasTransparency !== asset.hasTransparency)
+    )
+      addViolation(violations, file, asset, "png_metadata_mismatch");
+  } else if (asset.format === "ogg") {
+    const inspection = inspectOggVorbis(buffer, asset.assetId);
+    if (
+      inspection.durationMs !== asset.durationMs ||
+      inspection.sampleRate !== asset.sampleRate ||
+      inspection.channels !== asset.channels
+    )
+      addViolation(violations, file, asset, "ogg_metadata_mismatch");
+    if (asset.clippingDetected !== false)
+      addViolation(violations, file, asset, "clipped_audio_not_approved");
+  }
+  if (expectedApproved) {
+    if (
+      asset.licenseStatus !== "approved" ||
+      !asset.approvedBy ||
+      !asset.approvedAt ||
+      !asset.decisionId
+    )
+      addViolation(violations, file, asset, "approval_evidence_missing");
+    if (asset.runtimeEnabled)
+      addViolation(
+        violations,
+        file,
+        asset,
+        "new_asset_runtime_requires_separate_review",
+      );
+    if (asset.transformation?.pixelOrSampleDataChanged !== false)
+      addViolation(
+        violations,
+        file,
+        asset,
+        "byte_identity_transformation_mismatch",
+      );
+  }
+}
+
 export async function auditAssetCatalogs({
   root = process.cwd(),
   scope = "all",
 } = {}) {
-  const [registry, staticCatalog, audioCatalog, animations, moves] =
-    await Promise.all([
-      readJson(root, CATALOG_FILES.sources),
-      readJson(root, CATALOG_FILES.static),
-      readJson(root, CATALOG_FILES.audio),
-      readJson(root, CATALOG_FILES.animations),
-      readJson(root, CATALOG_FILES.moves),
-    ]);
+  const [
+    registry,
+    staticCatalog,
+    audioCatalog,
+    approvedCatalog,
+    animations,
+    moves,
+  ] = await Promise.all([
+    readJson(root, CATALOG_FILES.sources),
+    readJson(root, CATALOG_FILES.static),
+    readJson(root, CATALOG_FILES.audio),
+    readJson(root, CATALOG_FILES.approved),
+    readJson(root, CATALOG_FILES.animations),
+    readJson(root, CATALOG_FILES.moves),
+  ]);
   const sources = new Map(
     registry.sources.map((source) => [source.sourceId, source]),
   );
@@ -137,28 +215,74 @@ export async function auditAssetCatalogs({
         );
         continue;
       }
-      const absolutePath = path.join(root, asset.localPath);
+      await validateLocalAsset({
+        root,
+        file: CATALOG_FILES.static,
+        asset,
+        violations,
+      });
+    }
+
+    const approvedIds = new Set();
+    for (const asset of approvedCatalog.assets) {
+      for (const failure of structuralFailures(asset))
+        addViolation(violations, CATALOG_FILES.approved, asset, failure);
+      if (approvedIds.has(asset.assetId))
+        addViolation(
+          violations,
+          CATALOG_FILES.approved,
+          asset,
+          "duplicate_asset_id",
+        );
+      approvedIds.add(asset.assetId);
+      const source = sources.get(asset.sourceId);
+      if (
+        !source ||
+        source.status !== "approved" ||
+        source.redistributionAllowed !== true ||
+        source.modificationAllowed !== true ||
+        source.archiveSha256 !== asset.sourceRevision
+      )
+        addViolation(
+          violations,
+          CATALOG_FILES.approved,
+          asset,
+          "approved_source_evidence_mismatch",
+        );
+      await validateLocalAsset({
+        root,
+        file: CATALOG_FILES.approved,
+        asset,
+        violations,
+        expectedApproved: true,
+      });
+    }
+    for (const rejected of approvedCatalog.rejectedAssets) {
+      if (
+        rejected.status !== "rejected" ||
+        rejected.runtimeEnabled !== false ||
+        rejected.localPath !== null
+      )
+        addViolation(
+          violations,
+          CATALOG_FILES.approved,
+          rejected,
+          "rejected_asset_policy_mismatch",
+        );
+    }
+    for (const supporting of approvedCatalog.supportingFiles) {
+      const absolutePath = path.join(root, supporting.path);
       const buffer = await readFile(absolutePath);
-      const fileStat = await stat(absolutePath);
-      const digest = createHash("sha256").update(buffer).digest("hex");
-      if (fileStat.size !== asset.sizeBytes)
-        addViolation(violations, CATALOG_FILES.static, asset, "size_mismatch");
-      if (digest !== asset.sha256)
-        addViolation(violations, CATALOG_FILES.static, asset, "hash_mismatch");
-      if (asset.format === "png") {
-        const inspection = inspectPng(buffer, asset.assetId);
-        if (
-          inspection.width !== asset.width ||
-          inspection.height !== asset.height ||
-          inspection.frameCount !== asset.frameCount
-        )
-          addViolation(
-            violations,
-            CATALOG_FILES.static,
-            asset,
-            "png_metadata_mismatch",
-          );
-      }
+      if (
+        buffer.length !== supporting.sizeBytes ||
+        createHash("sha256").update(buffer).digest("hex") !== supporting.sha256
+      )
+        addViolation(
+          violations,
+          CATALOG_FILES.approved,
+          { assetId: supporting.path, licenseStatus: "approved" },
+          "supporting_file_integrity_mismatch",
+        );
     }
   }
 
@@ -186,6 +310,17 @@ export async function auditAssetCatalogs({
           asset,
           "unretrieved_audio_must_not_claim_sha256",
         );
+    }
+    for (const asset of approvedCatalog.assets.filter((candidate) =>
+      candidate.mimeType.startsWith("audio/"),
+    )) {
+      await validateLocalAsset({
+        root,
+        file: CATALOG_FILES.approved,
+        asset,
+        violations,
+        expectedApproved: true,
+      });
     }
   }
 
@@ -234,12 +369,79 @@ export async function auditAssetCatalogs({
     }
   }
 
+  const productionPackRoot = path.join(
+    root,
+    "content",
+    "packs",
+    "production-assets",
+  );
+  const committedFiles = (
+    await readdir(productionPackRoot, {
+      recursive: true,
+      withFileTypes: true,
+    })
+  )
+    .filter((entry) => entry.isFile())
+    .map((entry) =>
+      path
+        .relative(productionPackRoot, path.join(entry.parentPath, entry.name))
+        .replaceAll("\\", "/"),
+    );
+  const expectedFiles = new Set([
+    "import-plan.json",
+    "manifest.json",
+    "README.md",
+    "sources.json",
+    "catalogs/assets.json",
+    ...approvedCatalog.assets.map((asset) =>
+      asset.localPath.replace("content/packs/production-assets/", ""),
+    ),
+    ...approvedCatalog.supportingFiles.map((file) =>
+      file.path.replace("content/packs/production-assets/", ""),
+    ),
+    ...registry.sources
+      .filter(
+        (source) => source.sourceId.startsWith("kenney-") && source.licenseFile,
+      )
+      .map((source) =>
+        source.licenseFile.replace("content/packs/production-assets/", ""),
+      ),
+  ]);
+  for (const file of committedFiles) {
+    if (!expectedFiles.has(file))
+      addViolation(
+        violations,
+        CATALOG_FILES.approved,
+        { assetId: file, licenseStatus: "unknown" },
+        "unregistered_production_asset_file",
+      );
+  }
+  for (const file of expectedFiles) {
+    if (!committedFiles.includes(file))
+      addViolation(
+        violations,
+        CATALOG_FILES.approved,
+        { assetId: file, licenseStatus: "approved" },
+        "registered_production_asset_file_missing",
+      );
+  }
+
   if (violations.length > 0) throw new AssetCatalogAuditError(violations);
   return {
     scope,
     sources: registry.sources.length,
-    staticAssets: shouldAuditAssets ? staticAssets.length : 0,
-    audioAssets: shouldAuditAudio ? audioCatalog.assets.length : 0,
+    staticAssets: shouldAuditAssets
+      ? staticAssets.length +
+        approvedCatalog.assets.filter((asset) =>
+          asset.mimeType.startsWith("image/"),
+        ).length
+      : 0,
+    audioAssets: shouldAuditAudio
+      ? audioCatalog.assets.length +
+        approvedCatalog.assets.filter((asset) =>
+          asset.mimeType.startsWith("audio/"),
+        ).length
+      : 0,
     proceduralProfiles: shouldAuditAnimations
       ? animations.proceduralProfiles.length
       : 0,

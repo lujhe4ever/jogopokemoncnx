@@ -48,8 +48,13 @@
       "enum": [
         "battle-sprite",
         "overworld-sprite",
+        "character-sprite",
         "portrait",
         "icon",
+        "tileset",
+        "world-object",
+        "visual-effect",
+        "ui-element",
         "animation",
         "cry",
         "sound-effect",
@@ -72,10 +77,11 @@
     "sourceId": { "type": "string", "minLength": 1 },
     "sourceRevision": {
       "type": ["string", "null"],
-      "pattern": "^[0-9a-f]{40}$"
+      "pattern": "^[0-9a-f]{40}$|^[0-9a-f]{64}$"
     },
     "sourcePath": { "type": ["string", "null"] },
     "localPath": { "type": ["string", "null"] },
+    "originalName": { "type": "string", "minLength": 1 },
     "format": {
       "enum": ["png", "webp", "atlas-json", "ogg", "mp3", "wav"]
     },
@@ -105,7 +111,48 @@
     "approvedBy": { "type": ["string", "null"] },
     "approvedAt": { "type": ["string", "null"], "format": "date" },
     "decisionId": { "type": ["string", "null"] },
-    "retrievedAt": { "type": "string", "format": "date" }
+    "retrievedAt": { "type": "string", "format": "date" },
+    "category": { "type": "string", "minLength": 1 },
+    "atlasFrameCount": { "type": ["integer", "null"], "minimum": 1 },
+    "atlasGroups": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "array",
+        "items": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "hasTransparency": { "type": "boolean" },
+    "peakAmplitude": { "type": "number", "minimum": 0 },
+    "clippingDetected": { "type": "boolean" },
+    "analysisTool": { "type": "string", "minLength": 1 },
+    "compatibilityScore": { "type": "integer", "minimum": 0, "maximum": 100 },
+    "compatibilityClass": {
+      "enum": [
+        "compatible",
+        "compatible-after-normalization",
+        "compatible-only-isolated",
+        "incompatible",
+        "reference-only"
+      ]
+    },
+    "requiredCredits": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "recommendedCredits": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "notes": { "type": "string" },
+    "transformation": {
+      "type": "object",
+      "required": ["operation", "pixelOrSampleDataChanged"],
+      "properties": {
+        "operation": { "type": "string", "minLength": 1 },
+        "pixelOrSampleDataChanged": { "type": "boolean" }
+      },
+      "additionalProperties": false
+    }
   },
   "additionalProperties": false
 }
