@@ -1,0 +1,306 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/lujhe4ever/jogopokemoncnx/docs/assets/proposed-asset-schema.json",
+  "title": "Proposed replaceable creature asset manifest",
+  "description": "Proposal only. Logical asset IDs remain stable while source files and rights records can be replaced.",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "creatureId",
+    "assetSetId",
+    "runtimeEnabled",
+    "assets"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "creatureId": {
+      "type": "string",
+      "pattern": "^creature:[a-z0-9-]+$"
+    },
+    "canonicalReference": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "nationalDexNumber": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "pokemonId": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "formSlug": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "nationalDexNumber",
+        "pokemonId",
+        "formSlug"
+      ],
+      "additionalProperties": false
+    },
+    "assetSetId": {
+      "type": "string",
+      "pattern": "^[a-z0-9-]+:[a-z0-9-]+$"
+    },
+    "runtimeEnabled": {
+      "type": "boolean"
+    },
+    "assets": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/asset"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "status": {
+      "enum": [
+        "approved",
+        "pending",
+        "doubtful",
+        "rejected",
+        "quarantined"
+      ]
+    },
+    "asset": {
+      "type": "object",
+      "required": [
+        "logicalId",
+        "kind",
+        "variant",
+        "files",
+        "provenance",
+        "approval"
+      ],
+      "properties": {
+        "logicalId": {
+          "type": "string",
+          "pattern": "^[a-z0-9-]+:[a-z0-9-]+(?:[.:][a-z0-9-]+)*$"
+        },
+        "kind": {
+          "enum": [
+            "battle-sprite",
+            "overworld-sprite",
+            "portrait",
+            "icon",
+            "animation",
+            "cry",
+            "sound-effect"
+          ]
+        },
+        "variant": {
+          "type": "object",
+          "required": [
+            "perspective",
+            "palette",
+            "animation"
+          ],
+          "properties": {
+            "perspective": {
+              "enum": [
+                "front",
+                "back",
+                "side",
+                "overworld",
+                "not-applicable"
+              ]
+            },
+            "palette": {
+              "enum": [
+                "normal",
+                "shiny",
+                "project-original"
+              ]
+            },
+            "form": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "gender": {
+              "enum": [
+                "male",
+                "female",
+                "neutral",
+                "not-applicable"
+              ]
+            },
+            "animation": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "additionalProperties": false
+        },
+        "files": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": [
+              "path",
+              "format",
+              "sha256",
+              "bytes"
+            ],
+            "properties": {
+              "path": {
+                "type": "string",
+                "pattern": "^[a-zA-Z0-9_./-]+\\.(png|webp|ogg|mp3)$"
+              },
+              "format": {
+                "enum": [
+                  "png",
+                  "webp",
+                  "ogg",
+                  "mp3"
+                ]
+              },
+              "role": {
+                "enum": [
+                  "primary",
+                  "fallback"
+                ]
+              },
+              "sha256": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              },
+              "bytes": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "width": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "height": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "frameCount": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "durationMs": {
+                "type": "integer",
+                "minimum": 1
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "provenance": {
+          "type": "object",
+          "required": [
+            "sourceUrl",
+            "sourceRevision",
+            "creator",
+            "licenseSpdx",
+            "licenseEvidenceUrl",
+            "requiredCredit"
+          ],
+          "properties": {
+            "sourceUrl": {
+              "type": "string",
+              "format": "uri"
+            },
+            "sourceRevision": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "creator": {
+              "type": "string",
+              "minLength": 1
+            },
+            "licenseSpdx": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "licenseEvidenceUrl": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "format": "uri"
+            },
+            "requiredCredit": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "derivativeOf": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "additionalProperties": false
+        },
+        "approval": {
+          "type": "object",
+          "required": [
+            "status",
+            "reviewedAt",
+            "reviewedBy",
+            "runtimeAllowed"
+          ],
+          "properties": {
+            "status": {
+              "$ref": "#/$defs/status"
+            },
+            "reviewedAt": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "format": "date"
+            },
+            "reviewedBy": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "runtimeAllowed": {
+              "type": "boolean"
+            },
+            "decisionId": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "replacementForLogicalId": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

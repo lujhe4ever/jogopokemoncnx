@@ -1,0 +1,417 @@
+{
+  "schemaVersion": 1,
+  "auditedAt": "2026-07-23",
+  "policy": "Registration is not approval. A source is usable only when the exact asset has proven provenance and redistribution rights.",
+  "sources": [
+    {
+      "sourceId": "pokeapi-data",
+      "name": "PokéAPI",
+      "url": "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
+      "owner": "Paul Hallett and PokéAPI contributors",
+      "maintainer": "Paul Hallett and PokéAPI contributors",
+      "type": "structured CSV data and English prose",
+      "scope": [
+        "canonical-metadata",
+        "moves",
+        "abilities",
+        "learnsets"
+      ],
+      "generationsOrGames": "Generations 1-9 plus source-defined version groups",
+      "revision": "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f",
+      "commitSha": "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f",
+      "consultedAt": "2026-07-23",
+      "declaredLicense": "BSD-3-Clause for the repository",
+      "declaredOwnership": "Retain the BSD-3-Clause notice and credit PokéAPI contributors.",
+      "knownConflict": "Trademark, character-name, and underlying franchise rights are not granted by the software license.",
+      "attributionRequired": "Retain the BSD-3-Clause notice and credit PokéAPI contributors.",
+      "modificationAllowed": "unconfirmed",
+      "redistributionAllowed": "unconfirmed",
+      "commercialUseAllowed": "software-license-allows; underlying-IP-unresolved",
+      "legalStatus": "pending",
+      "evidence": [
+        "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv"
+      ],
+      "recommendation": "audit and canonical reference; runtime adoption needs an explicit baseline decision",
+      "relatedDecision": null
+    },
+    {
+      "sourceId": "pokeapi-sprites",
+      "name": "PokéAPI Sprites",
+      "url": "https://github.com/PokeAPI/sprites/tree/bf4c47ac82c33b330e33d98b8882d1cedb2f53e7",
+      "owner": "PokéAPI contributors, official-image rippers, Smogon community, and named fan artists by collection",
+      "maintainer": "PokéAPI contributors, official-image rippers, Smogon community, and named fan artists by collection",
+      "type": "PNG, SVG, and GIF",
+      "scope": [
+        "battle-sprites",
+        "icons",
+        "artwork",
+        "animations"
+      ],
+      "generationsOrGames": "Multiple official generations and community continuations",
+      "revision": "bf4c47ac82c33b330e33d98b8882d1cedb2f53e7",
+      "commitSha": "bf4c47ac82c33b330e33d98b8882d1cedb2f53e7",
+      "consultedAt": "2026-07-23",
+      "declaredLicense": "Repository states CC0 while also stating that image contents are Copyright The Pokémon Company.",
+      "declaredOwnership": "The source names The Pokémon Company and collection-specific community artists.",
+      "knownConflict": "The apparent licensor may not control all underlying image rights; no hotlinking or runtime use is approved.",
+      "attributionRequired": "The source names The Pokémon Company and collection-specific community artists.",
+      "modificationAllowed": "unconfirmed",
+      "redistributionAllowed": "unconfirmed",
+      "commercialUseAllowed": "unconfirmed",
+      "legalStatus": "doubtful",
+      "evidence": [
+        "https://github.com/PokeAPI/sprites/tree/bf4c47ac82c33b330e33d98b8882d1cedb2f53e7"
+      ],
+      "recommendation": "metadata inventory only; four temporary sprites per species remain isolated under D-023",
+      "relatedDecision": "D-023"
+    },
+    {
+      "sourceId": "pokeapi-cries",
+      "name": "PokéAPI Cries",
+      "url": "https://github.com/PokeAPI/cries/tree/7ba07038103b3482973fa781e25c09debbaaedd8",
+      "owner": "PokéAPI maintainers; files sourced from Pokémon Showdown and Veekun",
+      "maintainer": "PokéAPI maintainers; files sourced from Pokémon Showdown and Veekun",
+      "type": "OGG",
+      "scope": [
+        "cries",
+        "audio"
+      ],
+      "generationsOrGames": "Generations 1-9; latest and legacy sets",
+      "revision": "7ba07038103b3482973fa781e25c09debbaaedd8",
+      "commitSha": "7ba07038103b3482973fa781e25c09debbaaedd8",
+      "consultedAt": "2026-07-23",
+      "declaredLicense": "Repository states CC0 while also stating that audio contents are Copyright The Pokémon Company.",
+      "declaredOwnership": "The repository names The Pokémon Company as copyright owner.",
+      "knownConflict": "The apparent licensor may not control the underlying audio rights; binaries are not approved for import.",
+      "attributionRequired": "The repository names The Pokémon Company as copyright owner.",
+      "modificationAllowed": "unconfirmed",
+      "redistributionAllowed": "unconfirmed",
+      "commercialUseAllowed": "unconfirmed",
+      "legalStatus": "doubtful",
+      "evidence": [
+        "https://github.com/PokeAPI/cries/tree/7ba07038103b3482973fa781e25c09debbaaedd8"
+      ],
+      "recommendation": "availability inventory only",
+      "relatedDecision": null
+    },
+    {
+      "sourceId": "pokemon-official-pokedex",
+      "name": "The Pokémon Company",
+      "url": "https://www.pokemon.com/us/pokedex",
+      "owner": "The Pokémon Company",
+      "maintainer": "The Pokémon Company",
+      "type": "official names, descriptions, images, and franchise presentation",
+      "scope": [
+        "manual-reference"
+      ],
+      "generationsOrGames": "Current official Pokédex",
+      "revision": null,
+      "commitSha": null,
+      "consultedAt": "2026-07-23",
+      "declaredLicense": "No reusable asset license identified.",
+      "declaredOwnership": "No redistribution permission identified.",
+      "knownConflict": "Manual comparison only; do not copy images, audio, or prose.",
+      "attributionRequired": "No redistribution permission identified.",
+      "modificationAllowed": "unconfirmed",
+      "redistributionAllowed": "unconfirmed",
+      "commercialUseAllowed": "unconfirmed",
+      "legalStatus": "pending",
+      "evidence": [
+        "https://www.pokemon.com/us/pokedex"
+      ],
+      "recommendation": "manual reference",
+      "relatedDecision": null
+    },
+    {
+      "sourceId": "bulbapedia",
+      "name": "Bulbapedia",
+      "url": "https://bulbapedia.bulbagarden.net/",
+      "owner": "Bulbagarden community",
+      "maintainer": "Bulbagarden community",
+      "type": "community encyclopedia",
+      "scope": [
+        "manual-secondary-reference"
+      ],
+      "generationsOrGames": "Multiple games and media",
+      "revision": null,
+      "commitSha": null,
+      "consultedAt": "2026-07-23",
+      "declaredLicense": "Not evaluated for bulk reuse in this audit.",
+      "declaredOwnership": "Site- and page-specific; no asset reuse assumed.",
+      "knownConflict": "Manual divergence checks only; never a media import source and no bulk scraping.",
+      "attributionRequired": "Site- and page-specific; no asset reuse assumed.",
+      "modificationAllowed": "unconfirmed",
+      "redistributionAllowed": "unconfirmed",
+      "commercialUseAllowed": "unconfirmed",
+      "legalStatus": "pending",
+      "evidence": [
+        "https://bulbapedia.bulbagarden.net/"
+      ],
+      "recommendation": "manual cross-check with recorded divergence",
+      "relatedDecision": null
+    },
+    {
+      "sourceId": "serebii",
+      "name": "Serebii",
+      "url": "https://www.serebii.net/",
+      "owner": "Serebii.net",
+      "maintainer": "Serebii.net",
+      "type": "reference website",
+      "scope": [
+        "manual-secondary-reference"
+      ],
+      "generationsOrGames": "Multiple games",
+      "revision": null,
+      "commitSha": null,
+      "consultedAt": "2026-07-23",
+      "declaredLicense": "No reusable asset license identified.",
+      "declaredOwnership": "No redistribution permission identified.",
+      "knownConflict": "Manual divergence checks only; never a media import source and no bulk scraping.",
+      "attributionRequired": "No redistribution permission identified.",
+      "modificationAllowed": "unconfirmed",
+      "redistributionAllowed": "unconfirmed",
+      "commercialUseAllowed": "unconfirmed",
+      "legalStatus": "pending",
+      "evidence": [
+        "https://www.serebii.net/"
+      ],
+      "recommendation": "manual cross-check with recorded divergence",
+      "relatedDecision": null
+    },
+    {
+      "sourceId": "pokemondb",
+      "name": "Pokémon Database",
+      "url": "https://pokemondb.net/",
+      "owner": "Pokémon Database",
+      "maintainer": "Pokémon Database",
+      "type": "reference website",
+      "scope": [
+        "manual-secondary-reference",
+        "visual-reference"
+      ],
+      "generationsOrGames": "Multiple games",
+      "revision": null,
+      "commitSha": null,
+      "consultedAt": "2026-07-23",
+      "declaredLicense": "No reusable asset license identified.",
+      "declaredOwnership": "The site attributes Pokémon names and images to Nintendo/Game Freak.",
+      "knownConflict": "Manual reference only; no hotlink, bulk scraping, or media import.",
+      "attributionRequired": "The site attributes Pokémon names and images to Nintendo/Game Freak.",
+      "modificationAllowed": "unconfirmed",
+      "redistributionAllowed": "unconfirmed",
+      "commercialUseAllowed": "unconfirmed",
+      "legalStatus": "doubtful",
+      "evidence": [
+        "https://pokemondb.net/"
+      ],
+      "recommendation": "manual cross-check only",
+      "relatedDecision": null
+    },
+    {
+      "sourceId": "pokemon-showdown-server",
+      "name": "Pokémon Showdown",
+      "url": "https://github.com/smogon/pokemon-showdown/tree/20ad99ffc9a5a4a4e8fb56ab04ad8e4255b3f2b4",
+      "owner": "Smogon and Pokémon Showdown contributors",
+      "maintainer": "Smogon and Pokémon Showdown contributors",
+      "type": "TypeScript source and structured mechanics data",
+      "scope": [
+        "mechanics-reference",
+        "battle-simulator"
+      ],
+      "generationsOrGames": "Generations 1-9",
+      "revision": "20ad99ffc9a5a4a4e8fb56ab04ad8e4255b3f2b4",
+      "commitSha": "20ad99ffc9a5a4a4e8fb56ab04ad8e4255b3f2b4",
+      "consultedAt": "2026-07-23",
+      "declaredLicense": "MIT for the server repository",
+      "declaredOwnership": "MIT notice for server/simulator code.",
+      "knownConflict": "The server code license does not grant rights to Pokémon artwork, cries, names, or separately hosted resources.",
+      "attributionRequired": "MIT notice for server/simulator code.",
+      "modificationAllowed": "unconfirmed",
+      "redistributionAllowed": "unconfirmed",
+      "commercialUseAllowed": "unconfirmed",
+      "legalStatus": "pending",
+      "evidence": [
+        "https://github.com/smogon/pokemon-showdown/tree/20ad99ffc9a5a4a4e8fb56ab04ad8e4255b3f2b4"
+      ],
+      "recommendation": "independent mechanics cross-check only; no code copied in this audit",
+      "relatedDecision": null
+    },
+    {
+      "sourceId": "pokemon-showdown-client-resources",
+      "name": "Pokémon Showdown Client",
+      "url": "https://github.com/smogon/pokemon-showdown-client/tree/2a5133088021c1fe2711a096802896b2055744a3",
+      "owner": "Pokémon Showdown contributors and individual sprite artists",
+      "maintainer": "Pokémon Showdown contributors and individual sprite artists",
+      "type": "separately hosted GIF/PNG/audio resources",
+      "scope": [
+        "animations",
+        "sprites",
+        "cries"
+      ],
+      "generationsOrGames": "Multiple generations and fan continuations",
+      "revision": "2a5133088021c1fe2711a096802896b2055744a3",
+      "commitSha": "2a5133088021c1fe2711a096802896b2055744a3",
+      "consultedAt": "2026-07-23",
+      "declaredLicense": "AGPL-3.0 covers client code; the repository expressly excludes /audio and /sprites resources.",
+      "declaredOwnership": "Collection- and artist-specific; permission must be proven.",
+      "knownConflict": "Do not infer an asset license from the client or server code license.",
+      "attributionRequired": "Collection- and artist-specific; permission must be proven.",
+      "modificationAllowed": "unconfirmed",
+      "redistributionAllowed": "unconfirmed",
+      "commercialUseAllowed": "unconfirmed",
+      "legalStatus": "pending",
+      "evidence": [
+        "https://github.com/smogon/pokemon-showdown-client/tree/2a5133088021c1fe2711a096802896b2055744a3"
+      ],
+      "recommendation": "metadata and provenance investigation only",
+      "relatedDecision": null
+    },
+    {
+      "sourceId": "kenney",
+      "name": "Kenney",
+      "url": "https://kenney.nl/assets",
+      "owner": "Kenney",
+      "maintainer": "Kenney",
+      "type": "game assets with per-pack license files",
+      "scope": [
+        "replacement-ui",
+        "generic-effects",
+        "generic-audio"
+      ],
+      "generationsOrGames": "Not Pokémon-specific",
+      "revision": null,
+      "commitSha": null,
+      "consultedAt": "2026-07-23",
+      "declaredLicense": "Kenney states asset-page packs are CC0.",
+      "declaredOwnership": "Not required for CC0 packs; attribution is recommended.",
+      "knownConflict": "Suitable for generic replacements only; verify each downloaded pack's bundled license.",
+      "attributionRequired": "Not required for CC0 packs; attribution is recommended.",
+      "modificationAllowed": "yes-with-exact-license",
+      "redistributionAllowed": "yes-with-exact-license",
+      "commercialUseAllowed": "yes-for-verified-CC0-packs",
+      "legalStatus": "approved",
+      "evidence": [
+        "https://kenney.nl/assets"
+      ],
+      "recommendation": "future original-content replacement candidates",
+      "relatedDecision": null
+    },
+    {
+      "sourceId": "opengameart",
+      "name": "OpenGameArt",
+      "url": "https://opengameart.org/content/faq",
+      "owner": "Individual uploaders",
+      "maintainer": "Individual uploaders",
+      "type": "per-submission assets",
+      "scope": [
+        "replacement-sprites",
+        "effects",
+        "audio"
+      ],
+      "generationsOrGames": "Not Pokémon-specific",
+      "revision": null,
+      "commitSha": null,
+      "consultedAt": "2026-07-23",
+      "declaredLicense": "Per submission; no site-wide approval.",
+      "declaredOwnership": "Varies by CC0, CC-BY, CC-BY-SA, OGA-BY, or GPL.",
+      "knownConflict": "Verify exact uploader, provenance, license version, attribution, share-alike, and DRM implications.",
+      "attributionRequired": "Varies by CC0, CC-BY, CC-BY-SA, OGA-BY, or GPL.",
+      "modificationAllowed": "unconfirmed",
+      "redistributionAllowed": "unconfirmed",
+      "commercialUseAllowed": "unconfirmed",
+      "legalStatus": "pending",
+      "evidence": [
+        "https://opengameart.org/content/faq"
+      ],
+      "recommendation": "discovery only until each asset is reviewed",
+      "relatedDecision": null
+    },
+    {
+      "sourceId": "freesound",
+      "name": "Freesound",
+      "url": "https://freesound.org/help/faq/#licenses",
+      "owner": "Individual uploaders",
+      "maintainer": "Individual uploaders",
+      "type": "audio under per-file Creative Commons terms",
+      "scope": [
+        "replacement-audio"
+      ],
+      "generationsOrGames": "Not Pokémon-specific",
+      "revision": null,
+      "commitSha": null,
+      "consultedAt": "2026-07-23",
+      "declaredLicense": "Per file; CC0 and CC-BY are potential candidates.",
+      "declaredOwnership": "Varies: CC0, CC-BY, or CC-BY-NC.",
+      "knownConflict": "Avoid NC for a durable commercial-capable project; verify that the uploader created or lawfully recorded the sound.",
+      "attributionRequired": "Varies: CC0, CC-BY, or CC-BY-NC.",
+      "modificationAllowed": "unconfirmed",
+      "redistributionAllowed": "unconfirmed",
+      "commercialUseAllowed": "unconfirmed",
+      "legalStatus": "pending",
+      "evidence": [
+        "https://freesound.org/help/faq/#licenses"
+      ],
+      "recommendation": "discovery only until each sound is reviewed",
+      "relatedDecision": null
+    },
+    {
+      "sourceId": "itch-game-assets",
+      "name": "itch.io Game Assets",
+      "url": "https://itch.io/game-assets",
+      "owner": "Individual publishers",
+      "maintainer": "Individual publishers",
+      "type": "per-package game assets",
+      "scope": [
+        "replacement-sprites",
+        "effects",
+        "audio",
+        "ui"
+      ],
+      "generationsOrGames": "Not Pokémon-specific",
+      "revision": null,
+      "commitSha": null,
+      "consultedAt": "2026-07-23",
+      "declaredLicense": "No platform-wide asset license.",
+      "declaredOwnership": "Defined by each package and purchase receipt.",
+      "knownConflict": "Record package page, author, exact license, receipt, modification, redistribution, and attribution terms.",
+      "attributionRequired": "Defined by each package and purchase receipt.",
+      "modificationAllowed": "unconfirmed",
+      "redistributionAllowed": "unconfirmed",
+      "commercialUseAllowed": "unconfirmed",
+      "legalStatus": "pending",
+      "evidence": [
+        "https://itch.io/game-assets"
+      ],
+      "recommendation": "discovery only until each package is reviewed",
+      "relatedDecision": null
+    },
+    {
+      "sourceId": "phaser-audio-docs",
+      "name": "Phaser",
+      "url": "https://docs.phaser.io/phaser/concepts/audio",
+      "owner": "Phaser",
+      "maintainer": "Phaser",
+      "type": "audio loader and Sound Manager documentation",
+      "scope": [
+        "technical-compatibility"
+      ],
+      "generationsOrGames": "Browser runtime",
+      "revision": "3.90.0 project baseline",
+      "commitSha": null,
+      "consultedAt": "2026-07-23",
+      "declaredLicense": "Not an asset source.",
+      "declaredOwnership": "Documentation reference only.",
+      "knownConflict": "Does not supply media rights.",
+      "attributionRequired": "Documentation reference only.",
+      "modificationAllowed": "yes-with-exact-license",
+      "redistributionAllowed": "yes-with-exact-license",
+      "commercialUseAllowed": "unconfirmed",
+      "legalStatus": "approved",
+      "evidence": [
+        "https://docs.phaser.io/phaser/concepts/audio"
+      ],
+      "recommendation": "technical planning",
+      "relatedDecision": null
+    }
+  ]
+}

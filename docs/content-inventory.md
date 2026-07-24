@@ -19,3 +19,8 @@ hashes e direitos `doubtful`. A exceção não representa licença dos titulares
 Qualquer novo asset deve registrar origem e licença antes de entrar no repositório.
 Fora da exceção nominal D-023, material sem comprovação fica em quarentena fora do
 pack e não pode ser publicado.
+
+A auditoria ampla em `docs/assets/` registra 60.065 candidatos visuais e 2.000
+candidatos de áudio apenas como disponibilidade. Nenhum desses candidatos adicionais
+foi importado ou aprovado para o runtime. Os 4.100 PNGs temporários já publicados
+continuam sendo a única mídia Pokémon presente no pack.

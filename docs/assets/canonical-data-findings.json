@@ -1,0 +1,644 @@
+{
+  "schemaVersion": 1,
+  "auditedAt": "2026-07-23",
+  "source": {
+    "repository": "PokeAPI/pokeapi",
+    "revision": "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f",
+    "sourceUrl": "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv"
+  },
+  "scope": {
+    "speciesRows": 1025,
+    "pokemonRows": 1351,
+    "defaultPokemonRows": 1025,
+    "alternatePokemonRows": 326,
+    "pokemonFormRows": 1579,
+    "battleOnlyFormRows": 162,
+    "packCreatureFolders": 1025,
+    "standaloneAlternateFormFolders": 0
+  },
+  "automatedAudit": {
+    "metrics": {
+      "speciesDefinitions": 1025,
+      "approvedStatusFiles": 1025,
+      "sourceRevisionMatches": 1025,
+      "sixStatDefinitions": 1025,
+      "definitionsWithUnknownType": 0,
+      "abilityAssignments": 2411,
+      "hiddenAbilityAssignments": 856,
+      "learnsetMoveReferences": 79120,
+      "learnMethodTuples": 580682,
+      "machineTuples": 327255,
+      "machineMethodsWithoutMachineRecord": 13064,
+      "invalidMoveReferences": 0,
+      "invalidAbilityReferences": 0,
+      "invalidVersionGroupReferences": 0,
+      "invalidMethodReferences": 0,
+      "duplicateMoveReferencesWithinDefinition": 0,
+      "definitionsWithoutMoves": 0,
+      "evolutionEdges": 550,
+      "invalidEvolutionSpeciesReferences": 0
+    },
+    "methodFrequency": {
+      "1": 148372,
+      "2": 33305,
+      "3": 45601,
+      "4": 340319,
+      "5": 4,
+      "6": 10,
+      "9": 332,
+      "10": 9,
+      "11": 10,
+      "12": 12720
+    },
+    "generationFrequency": {
+      "1": 151,
+      "2": 100,
+      "3": 135,
+      "4": 107,
+      "5": 156,
+      "6": 72,
+      "7": 88,
+      "8": 96,
+      "9": 120
+    },
+    "catalogs": {
+      "moveCount": 937,
+      "abilityCount": 373,
+      "versionGroupCount": 32,
+      "moveMethodCount": 12,
+      "moveIdsUnique": true,
+      "abilityIdsUnique": true,
+      "movesWithUnknownType": 0,
+      "movesWithUnknownCategory": 0,
+      "movesWithoutEnglishEffect": 111,
+      "abilitiesWithoutEnglishEffect": 62,
+      "movesWithNullPower": 338,
+      "movesWithNullAccuracy": 288,
+      "movesWithNullPp": 18,
+      "moveNameMismatchCount": 64,
+      "abilityNameMismatchCount": 15
+    },
+    "moveNameMismatches": [
+      {
+        "id": 11,
+        "slug": "vice-grip",
+        "generatedName": "Vice Grip",
+        "sourceEnglishName": "Vise Grip"
+      },
+      {
+        "id": 38,
+        "slug": "double-edge",
+        "generatedName": "Double Edge",
+        "sourceEnglishName": "Double-Edge"
+      },
+      {
+        "id": 120,
+        "slug": "self-destruct",
+        "generatedName": "Self Destruct",
+        "sourceEnglishName": "Self-Destruct"
+      },
+      {
+        "id": 135,
+        "slug": "soft-boiled",
+        "generatedName": "Soft Boiled",
+        "sourceEnglishName": "Soft-Boiled"
+      },
+      {
+        "id": 189,
+        "slug": "mud-slap",
+        "generatedName": "Mud Slap",
+        "sourceEnglishName": "Mud-Slap"
+      },
+      {
+        "id": 199,
+        "slug": "lock-on",
+        "generatedName": "Lock On",
+        "sourceEnglishName": "Lock-On"
+      },
+      {
+        "id": 261,
+        "slug": "will-o-wisp",
+        "generatedName": "Will O Wisp",
+        "sourceEnglishName": "Will-O-Wisp"
+      },
+      {
+        "id": 358,
+        "slug": "wake-up-slap",
+        "generatedName": "Wake Up Slap",
+        "sourceEnglishName": "Wake-Up Slap"
+      },
+      {
+        "id": 369,
+        "slug": "u-turn",
+        "generatedName": "U Turn",
+        "sourceEnglishName": "U-turn"
+      },
+      {
+        "id": 404,
+        "slug": "x-scissor",
+        "generatedName": "X Scissor",
+        "sourceEnglishName": "X-Scissor"
+      },
+      {
+        "id": 459,
+        "slug": "roar-of-time",
+        "generatedName": "Roar Of Time",
+        "sourceEnglishName": "Roar of Time"
+      },
+      {
+        "id": 557,
+        "slug": "v-create",
+        "generatedName": "V Create",
+        "sourceEnglishName": "V-create"
+      },
+      {
+        "id": 567,
+        "slug": "trick-or-treat",
+        "generatedName": "Trick Or Treat",
+        "sourceEnglishName": "Trick-or-Treat"
+      },
+      {
+        "id": 571,
+        "slug": "forests-curse",
+        "generatedName": "Forests Curse",
+        "sourceEnglishName": "Forest’s Curse"
+      },
+      {
+        "id": 573,
+        "slug": "freeze-dry",
+        "generatedName": "Freeze Dry",
+        "sourceEnglishName": "Freeze-Dry"
+      },
+      {
+        "id": 576,
+        "slug": "topsy-turvy",
+        "generatedName": "Topsy Turvy",
+        "sourceEnglishName": "Topsy-Turvy"
+      },
+      {
+        "id": 588,
+        "slug": "kings-shield",
+        "generatedName": "Kings Shield",
+        "sourceEnglishName": "King’s Shield"
+      },
+      {
+        "id": 608,
+        "slug": "baby-doll-eyes",
+        "generatedName": "Baby Doll Eyes",
+        "sourceEnglishName": "Baby-Doll Eyes"
+      },
+      {
+        "id": 612,
+        "slug": "power-up-punch",
+        "generatedName": "Power Up Punch",
+        "sourceEnglishName": "Power-Up Punch"
+      },
+      {
+        "id": 616,
+        "slug": "lands-wrath",
+        "generatedName": "Lands Wrath",
+        "sourceEnglishName": "Land’s Wrath"
+      },
+      {
+        "id": 617,
+        "slug": "light-of-ruin",
+        "generatedName": "Light Of Ruin",
+        "sourceEnglishName": "Light of Ruin"
+      },
+      {
+        "id": 622,
+        "slug": "breakneck-blitz--physical",
+        "generatedName": "Breakneck Blitz  Physical",
+        "sourceEnglishName": "Breakneck Blitz"
+      },
+      {
+        "id": 623,
+        "slug": "breakneck-blitz--special",
+        "generatedName": "Breakneck Blitz  Special",
+        "sourceEnglishName": "Breakneck Blitz"
+      },
+      {
+        "id": 624,
+        "slug": "all-out-pummeling--physical",
+        "generatedName": "All Out Pummeling  Physical",
+        "sourceEnglishName": "All-Out Pummeling"
+      },
+      {
+        "id": 625,
+        "slug": "all-out-pummeling--special",
+        "generatedName": "All Out Pummeling  Special",
+        "sourceEnglishName": "All-Out Pummeling"
+      },
+      {
+        "id": 626,
+        "slug": "supersonic-skystrike--physical",
+        "generatedName": "Supersonic Skystrike  Physical",
+        "sourceEnglishName": "Supersonic Skystrike"
+      },
+      {
+        "id": 627,
+        "slug": "supersonic-skystrike--special",
+        "generatedName": "Supersonic Skystrike  Special",
+        "sourceEnglishName": "Supersonic Skystrike"
+      },
+      {
+        "id": 628,
+        "slug": "acid-downpour--physical",
+        "generatedName": "Acid Downpour  Physical",
+        "sourceEnglishName": "Acid Downpour"
+      },
+      {
+        "id": 629,
+        "slug": "acid-downpour--special",
+        "generatedName": "Acid Downpour  Special",
+        "sourceEnglishName": "Acid Downpour"
+      },
+      {
+        "id": 630,
+        "slug": "tectonic-rage--physical",
+        "generatedName": "Tectonic Rage  Physical",
+        "sourceEnglishName": "Tectonic Rage"
+      },
+      {
+        "id": 631,
+        "slug": "tectonic-rage--special",
+        "generatedName": "Tectonic Rage  Special",
+        "sourceEnglishName": "Tectonic Rage"
+      },
+      {
+        "id": 632,
+        "slug": "continental-crush--physical",
+        "generatedName": "Continental Crush  Physical",
+        "sourceEnglishName": "Continental Crush"
+      },
+      {
+        "id": 633,
+        "slug": "continental-crush--special",
+        "generatedName": "Continental Crush  Special",
+        "sourceEnglishName": "Continental Crush"
+      },
+      {
+        "id": 634,
+        "slug": "savage-spin-out--physical",
+        "generatedName": "Savage Spin Out  Physical",
+        "sourceEnglishName": "Savage Spin-Out"
+      },
+      {
+        "id": 635,
+        "slug": "savage-spin-out--special",
+        "generatedName": "Savage Spin Out  Special",
+        "sourceEnglishName": "Savage Spin-Out"
+      },
+      {
+        "id": 636,
+        "slug": "never-ending-nightmare--physical",
+        "generatedName": "Never Ending Nightmare  Physical",
+        "sourceEnglishName": "Never-Ending Nightmare"
+      },
+      {
+        "id": 637,
+        "slug": "never-ending-nightmare--special",
+        "generatedName": "Never Ending Nightmare  Special",
+        "sourceEnglishName": "Never-Ending Nightmare"
+      },
+      {
+        "id": 638,
+        "slug": "corkscrew-crash--physical",
+        "generatedName": "Corkscrew Crash  Physical",
+        "sourceEnglishName": "Corkscrew Crash"
+      },
+      {
+        "id": 639,
+        "slug": "corkscrew-crash--special",
+        "generatedName": "Corkscrew Crash  Special",
+        "sourceEnglishName": "Corkscrew Crash"
+      },
+      {
+        "id": 640,
+        "slug": "inferno-overdrive--physical",
+        "generatedName": "Inferno Overdrive  Physical",
+        "sourceEnglishName": "Inferno Overdrive"
+      },
+      {
+        "id": 641,
+        "slug": "inferno-overdrive--special",
+        "generatedName": "Inferno Overdrive  Special",
+        "sourceEnglishName": "Inferno Overdrive"
+      },
+      {
+        "id": 642,
+        "slug": "hydro-vortex--physical",
+        "generatedName": "Hydro Vortex  Physical",
+        "sourceEnglishName": "Hydro Vortex"
+      },
+      {
+        "id": 643,
+        "slug": "hydro-vortex--special",
+        "generatedName": "Hydro Vortex  Special",
+        "sourceEnglishName": "Hydro Vortex"
+      },
+      {
+        "id": 644,
+        "slug": "bloom-doom--physical",
+        "generatedName": "Bloom Doom  Physical",
+        "sourceEnglishName": "Bloom Doom"
+      },
+      {
+        "id": 645,
+        "slug": "bloom-doom--special",
+        "generatedName": "Bloom Doom  Special",
+        "sourceEnglishName": "Bloom Doom"
+      },
+      {
+        "id": 646,
+        "slug": "gigavolt-havoc--physical",
+        "generatedName": "Gigavolt Havoc  Physical",
+        "sourceEnglishName": "Gigavolt Havoc"
+      },
+      {
+        "id": 647,
+        "slug": "gigavolt-havoc--special",
+        "generatedName": "Gigavolt Havoc  Special",
+        "sourceEnglishName": "Gigavolt Havoc"
+      },
+      {
+        "id": 648,
+        "slug": "shattered-psyche--physical",
+        "generatedName": "Shattered Psyche  Physical",
+        "sourceEnglishName": "Shattered Psyche"
+      },
+      {
+        "id": 649,
+        "slug": "shattered-psyche--special",
+        "generatedName": "Shattered Psyche  Special",
+        "sourceEnglishName": "Shattered Psyche"
+      },
+      {
+        "id": 650,
+        "slug": "subzero-slammer--physical",
+        "generatedName": "Subzero Slammer  Physical",
+        "sourceEnglishName": "Subzero Slammer"
+      },
+      {
+        "id": 651,
+        "slug": "subzero-slammer--special",
+        "generatedName": "Subzero Slammer  Special",
+        "sourceEnglishName": "Subzero Slammer"
+      },
+      {
+        "id": 652,
+        "slug": "devastating-drake--physical",
+        "generatedName": "Devastating Drake  Physical",
+        "sourceEnglishName": "Devastating Drake"
+      },
+      {
+        "id": 653,
+        "slug": "devastating-drake--special",
+        "generatedName": "Devastating Drake  Special",
+        "sourceEnglishName": "Devastating Drake"
+      },
+      {
+        "id": 654,
+        "slug": "black-hole-eclipse--physical",
+        "generatedName": "Black Hole Eclipse  Physical",
+        "sourceEnglishName": "Black Hole Eclipse"
+      },
+      {
+        "id": 655,
+        "slug": "black-hole-eclipse--special",
+        "generatedName": "Black Hole Eclipse  Special",
+        "sourceEnglishName": "Black Hole Eclipse"
+      },
+      {
+        "id": 656,
+        "slug": "twinkle-tackle--physical",
+        "generatedName": "Twinkle Tackle  Physical",
+        "sourceEnglishName": "Twinkle Tackle"
+      },
+      {
+        "id": 657,
+        "slug": "twinkle-tackle--special",
+        "generatedName": "Twinkle Tackle  Special",
+        "sourceEnglishName": "Twinkle Tackle"
+      },
+      {
+        "id": 698,
+        "slug": "guardian-of-alola",
+        "generatedName": "Guardian Of Alola",
+        "sourceEnglishName": "Guardian of Alola"
+      },
+      {
+        "id": 699,
+        "slug": "soul-stealing-7-star-strike",
+        "generatedName": "Soul Stealing 7 Star Strike",
+        "sourceEnglishName": "Soul-Stealing 7-Star Strike"
+      },
+      {
+        "id": 717,
+        "slug": "natures-madness",
+        "generatedName": "Natures Madness",
+        "sourceEnglishName": "Nature’s Madness"
+      },
+      {
+        "id": 718,
+        "slug": "multi-attack",
+        "generatedName": "Multi Attack",
+        "sourceEnglishName": "Multi-Attack"
+      },
+      {
+        "id": 719,
+        "slug": "10-000-000-volt-thunderbolt",
+        "generatedName": "10 000 000 Volt Thunderbolt",
+        "sourceEnglishName": "10,000,000 Volt Thunderbolt"
+      },
+      {
+        "id": 723,
+        "slug": "light-that-burns-the-sky",
+        "generatedName": "Light That Burns The Sky",
+        "sourceEnglishName": "Light That Burns the Sky"
+      },
+      {
+        "id": 726,
+        "slug": "lets-snuggle-forever",
+        "generatedName": "Lets Snuggle Forever",
+        "sourceEnglishName": "Let’s Snuggle Forever"
+      }
+    ],
+    "abilityNameMismatches": [
+      {
+        "id": 220,
+        "slug": "soul-heart",
+        "generatedName": "Soul Heart",
+        "sourceEnglishName": "Soul-Heart"
+      },
+      {
+        "id": 223,
+        "slug": "power-of-alchemy",
+        "generatedName": "Power Of Alchemy",
+        "sourceEnglishName": "Power of Alchemy"
+      },
+      {
+        "id": 225,
+        "slug": "rks-system",
+        "generatedName": "Rks System",
+        "sourceEnglishName": "RKS System"
+      },
+      {
+        "id": 263,
+        "slug": "dragons-maw",
+        "generatedName": "Dragons Maw",
+        "sourceEnglishName": "Dragon’s Maw"
+      },
+      {
+        "id": 266,
+        "slug": "as-one-glastrier",
+        "generatedName": "As One Glastrier",
+        "sourceEnglishName": "As One"
+      },
+      {
+        "id": 267,
+        "slug": "as-one-spectrier",
+        "generatedName": "As One Spectrier",
+        "sourceEnglishName": "As One"
+      },
+      {
+        "id": 273,
+        "slug": "well-baked-body",
+        "generatedName": "Well Baked Body",
+        "sourceEnglishName": "Well-Baked Body"
+      },
+      {
+        "id": 278,
+        "slug": "zero-to-hero",
+        "generatedName": "Zero To Hero",
+        "sourceEnglishName": "Zero to Hero"
+      },
+      {
+        "id": 283,
+        "slug": "good-as-gold",
+        "generatedName": "Good As Gold",
+        "sourceEnglishName": "Good as Gold"
+      },
+      {
+        "id": 284,
+        "slug": "vessel-of-ruin",
+        "generatedName": "Vessel Of Ruin",
+        "sourceEnglishName": "Vessel of Ruin"
+      },
+      {
+        "id": 285,
+        "slug": "sword-of-ruin",
+        "generatedName": "Sword Of Ruin",
+        "sourceEnglishName": "Sword of Ruin"
+      },
+      {
+        "id": 286,
+        "slug": "tablets-of-ruin",
+        "generatedName": "Tablets Of Ruin",
+        "sourceEnglishName": "Tablets of Ruin"
+      },
+      {
+        "id": 287,
+        "slug": "beads-of-ruin",
+        "generatedName": "Beads Of Ruin",
+        "sourceEnglishName": "Beads of Ruin"
+      },
+      {
+        "id": 299,
+        "slug": "minds-eye",
+        "generatedName": "Minds Eye",
+        "sourceEnglishName": "Mind’s Eye"
+      },
+      {
+        "id": 10052,
+        "slug": "high-rise",
+        "generatedName": "High Rise",
+        "sourceEnglishName": "High-rise"
+      }
+    ]
+  },
+  "classifications": {
+    "confirmed": "All 1,025 default-species folders pass source-revision, six-stat, type, ability, move, method, and version-group referential checks.",
+    "sourceFaithfulButNotIndependentlyConfirmed": "Move effects, ability effects, learnsets, machines, evolutions, and biological fields are generated from the same pinned PokéAPI CSV snapshot and have not been manually cross-checked one by one.",
+    "projectOriginal": "Runtime actions strike/guard and creatures emberbud/nightleaf are original project abstractions, not canonical Pokémon moves or definitions.",
+    "absent": "The pack has no standalone definitions for 326 alternate Pokémon rows or the complete 1,579 pokemon_form rows.",
+    "approvalMeaning": "definitionStatus=approved means automated schema/coverage/referential validation only."
+  },
+  "findings": [
+    {
+      "id": "DATA-001",
+      "severity": "high",
+      "status": "confirmed-gap",
+      "subject": "alternate forms",
+      "evidence": {
+        "alternatePokemonRows": 326,
+        "pokemonFormRows": 1579,
+        "standaloneAlternateFormFolders": 0
+      },
+      "conclusion": "Species coverage is complete, but form coverage is not complete and must not be described as all forms."
+    },
+    {
+      "id": "DATA-002",
+      "severity": "medium",
+      "status": "confirmed-gap",
+      "subject": "canonical display names",
+      "evidence": {
+        "moveNameMismatches": 64,
+        "abilityNameMismatches": 15
+      },
+      "conclusion": "Move and ability display names are title-cased from slugs instead of using the source English name tables."
+    },
+    {
+      "id": "DATA-003",
+      "severity": "high",
+      "status": "decision-required",
+      "subject": "game baseline",
+      "evidence": {
+        "versionGroups": 32
+      },
+      "conclusion": "Learnsets combine every source version group; runtime use requires an explicit game/version baseline and deterministic fallback rules."
+    },
+    {
+      "id": "DATA-004",
+      "severity": "medium",
+      "status": "validation-limitation",
+      "subject": "independent canonical verification",
+      "evidence": {
+        "manuallyVerifiedSpecies": 0,
+        "manuallyVerifiedMoves": 0
+      },
+      "conclusion": "The current validation proves internal consistency with PokéAPI, not independent correctness against a second authoritative source."
+    },
+    {
+      "id": "DATA-005",
+      "severity": "low",
+      "status": "correct-separation",
+      "subject": "invented moves",
+      "evidence": {
+        "canonicalCatalogUnknownReferences": 0,
+        "projectBattleActions": [
+          "strike",
+          "guard"
+        ]
+      },
+      "conclusion": "No invented move is present in the canonical catalog; original runtime actions remain in the generic battle domain."
+    },
+    {
+      "id": "DATA-006",
+      "severity": "medium",
+      "status": "confirmed-gap",
+      "subject": "move flags and exact mechanics",
+      "evidence": {
+        "moveFlagsModeled": false,
+        "examplesAbsent": [
+          "contact",
+          "sound",
+          "punch",
+          "bite",
+          "protect"
+        ]
+      },
+      "conclusion": "The move catalog records core stats and meta fields but omits move flags needed for exact battle mechanics."
+    }
+  ]
+}

@@ -41,8 +41,12 @@ camada derivada e revisada.
 ## Resultado do inventário
 
 - 60.113 arquivos de imagem encontrados na árvore de origem;
-- 43.383 candidatos estáticos associados às espécies canônicas;
-- 10.421 candidatos animados associados às espécies canônicas;
+- 43.383 candidatos estáticos e 10.421 animados no inventário original limitado às
+  1.025 espécies padrão;
+- 48.210 candidatos estáticos e 11.855 animados na auditoria ampliada de 1.351
+  entidades, incluindo formas alternativas;
+- 60.065 mídias mapeadas e 48 arquivos auxiliares não associados a uma entidade;
+- 51.081 candidatos com estado jurídico `doubtful` e 8.984 com estado `pending`;
 - 4.100 sprites compactos de batalha baixados e inspecionados;
 - quatro variantes por espécie: frente normal, frente shiny, costas normal e costas
   shiny;
@@ -55,6 +59,11 @@ camada derivada e revisada.
 Os candidatos incluem materiais oficiais extraídos e materiais feitos por fãs. Essa
 classificação é registrada em `catalogs/asset-rights.json`; nenhum candidato possui
 estado `approved`.
+
+O inventário completo por arquivo, a matriz de lacunas e o método de compatibilidade
+estão em `docs/assets/sprite-availability.csv`,
+`docs/assets/asset-gap-matrix.json` e
+`docs/assets/pokemon-visual-compatibility.md`.
 
 ## Convenção de nomes
 
