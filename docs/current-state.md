@@ -5,10 +5,10 @@
 | Atualizado em | 2026-07-23 |
 | Repositório | `lujhe4ever/jogopokemoncnx` |
 | Branch principal | `main` |
-| Branch desta entrega | `codex/pokemon-assets-audit` |
-| Base desta entrega | `codex/pokemon-canonical-full` em `9192f727` |
-| Fase | Roadmap 0B–17 concluído; auditoria de assets Pokémon em revisão |
-| Status | **publicada no PR draft #21 — CI aprovada, aguardando revisão** |
+| Branch desta entrega | `codex/pokemon-assets-integration` |
+| Base desta entrega | `codex/pokemon-assets-audit` em `a3b4dc13` |
+| Fase | Roadmap 0B–17 concluído; integração estrutural de assets em revisão |
+| Status | **publicada no PR draft #23, aguardando CI e revisão** |
 
 ## 1. Resumo
 
@@ -16,11 +16,11 @@ As Fases 0B a 17 foram integradas à `main`. A Fase 17 passou na CI #54 e foi
 integrada pelo PR #19 no commit `375dca531e1abda09aa50a469a645a861a6485b6`,
 sem deploy ou participantes externos.
 
-Esta branch audita o catálogo separado de metadados canônicos de Pokémon e seu
-inventário de assets. O proprietário autorizou expressamente a publicação anterior
-de 4.100 sprites compactos como conteúdo temporário; a incerteza sobre os direitos de
-redistribuição permanece registrada e impede seu uso pelo runtime. Esta auditoria
-não adiciona, baixa, converte nem habilita nova mídia.
+Esta branch integra a infraestrutura estrutural resultante da auditoria no PR #21.
+Ela corrige divergências canônicas confirmadas, registra fontes e assets, adiciona
+gates, animações procedurais, suporte estrutural a frames e uma porta central de
+áudio. Nenhuma nova mídia foi baixada, convertida ou habilitada. Os 4.100 sprites
+compactos da D-023 e os 2.000 cries candidatos continuam bloqueados.
 
 O projeto possui workspace TypeScript, servidor Fastify, cliente Vite/Phaser,
 PostgreSQL, Prisma, WebSocket versionado, autenticação e a primeira fatia jogável da
@@ -183,7 +183,7 @@ completos sejam definidos.
 | Hardening e operação | concluído e integrado |
 | Alpha privado e estabilização | concluído e integrado |
 | Arena e presença | concluídas na branch |
-| Catálogo Pokémon e inventário de sprites | concluído na branch; aprovação pendente |
+| Catálogo Pokémon e inventário de sprites | pipeline estrutural no PR draft #23; mídia bloqueada |
 | Chat, emotes e convites | concluídos na branch |
 | Empacotamento de produção | concluído, não implantado |
 
@@ -198,6 +198,10 @@ pnpm dev
 pnpm content:pokemon -- --with-private-sprites
 pnpm content:pokemon:audit
 pnpm content:pokemon:assets-audit
+pnpm content:assets:generate
+pnpm content:assets:audit
+pnpm content:audio:audit
+pnpm content:animations:audit
 pnpm security:runtime-content
 pnpm --filter @lt/admin dev
 pnpm check
@@ -208,11 +212,11 @@ pnpm alpha:readiness
 ## 6. Verificações atuais
 
 - formatação, lint e TypeScript estrito;
-- 30 arquivos de teste e 112 testes automatizados;
+- 33 arquivos de teste e 130 testes automatizados;
 - build do servidor e cliente;
 - builds independentes do jogo e da administração;
-- budgets: web 1.248.145/1.400.000 bytes, admin 9.335/100.000 bytes e maior asset
-  913.555/2.000.000 bytes;
+- budgets: web 1.257.242/1.400.000 bytes, admin 9.335/100.000 bytes e maior asset
+  1.540.587/2.000.000 bytes;
 - auditoria de dependências sem vulnerabilidades conhecidas;
 - scans de segredo e licenças aprovados;
 - validação do schema Prisma;
@@ -242,14 +246,14 @@ pnpm alpha:readiness
 
 ## 8. Decisões vigentes
 
-D-001 a D-008 e D-011 a D-023 estão aceitas. As demais decisões técnicas
+D-001 a D-008 e D-011 a D-024 estão aceitas. As demais decisões técnicas
 continuam com o status registrado em `docs/decisions.md`.
 
 ## 9. Próxima tarefa recomendada
 
-Revisar os 12 artefatos em `docs/assets/`, escolher uma única família visual piloto e
-obter comprovação de direitos antes de qualquer download, substituição ou ligação ao
-runtime.
+Escolher um único arquivo ou conjunto piloto original/licenciado, registrar a
+evidência exata de modificação e redistribuição e submetê-lo ao pipeline sem habilitar
+as demais famílias.
 
 ## 10. Instruções para reproduzir
 
@@ -326,6 +330,52 @@ Estado do GitHub verificado antes da alteração:
 - sobreposição com o trabalho paralelo limitada a `docs/current-state.md` e
   `docs/work-log.md`;
 - nenhum conflito em código, schemas, conteúdo Pokémon ou testes.
+
+## 13. Atualização 2026-07-23 - Pipeline seguro de assets
+
+Estado Git/GitHub:
+
+- branch `codex/pokemon-assets-integration`;
+- base `codex/pokemon-assets-audit` no SHA `a3b4dc13`;
+- reserva de escrita na issue #22;
+- PR draft #23 aberto contra a branch da auditoria;
+- nenhum merge e nenhum deploy.
+
+Dados:
+
+- 1.025 espécies preservadas;
+- 1.579 formas catalogadas explicitamente;
+- 937 movimentos e 373 habilidades verificados;
+- 64 nomes de movimentos e 15 nomes de habilidades corrigidos a partir dos CSVs
+  ingleses da revisão PokéAPI fixa;
+- 32 version groups preservados sem escolher uma geração de gameplay silenciosamente.
+
+Assets:
+
+- registro central com 14 fontes;
+- 4.100 sprites D-023 catalogados em três shards, todos bloqueados;
+- 2.000 cries catalogados sem download, hash local ou runtime;
+- 20 perfis procedurais e 937 mapeamentos de apresentação;
+- zero frame animation, zero efeito sonoro novo e zero mídia Pokémon aprovada;
+- nenhum arquivo de imagem ou áudio adicionado, removido ou modificado.
+
+Runtime:
+
+- flags separadas e seguras por padrão;
+- política exige aprovação do asset e da fonte, redistribuição, revisão, hash,
+  decisão e flag específica;
+- Phaser configurado para pixel art e laboratório de desenvolvimento sem mídia
+  Pokémon;
+- gerenciador de áudio central com fallback e controles, mas categorias bloqueadas.
+
+Medições locais:
+
+- 33 arquivos e 130 testes aprovados;
+- bundle web 1.257.242/1.400.000 bytes;
+- admin 9.335/100.000 bytes;
+- maior asset 1.540.587/2.000.000 bytes;
+- auditorias: 4.100 sprites, 2.000 cries, 20 perfis, 937 apresentações e zero
+  violação.
 
 Escopo concluído:
 

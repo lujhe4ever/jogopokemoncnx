@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "measuredAt": "2026-07-23",
+  "environment": {
+    "os": "Windows",
+    "node": "24.16.0",
+    "pnpm": "11.9.0",
+    "buildMode": "production"
+  },
+  "bundle": {
+    "webBytes": 1257242,
+    "webBudgetBytes": 1400000,
+    "adminBytes": 9335,
+    "adminBudgetBytes": 100000,
+    "runtimeAudioChunkBytes": 8734,
+    "largestGameChunkBytes": 1207166
+  },
+  "catalogs": {
+    "staticAssetCount": 4100,
+    "staticShardCount": 3,
+    "largestStaticShardBytes": 1333568,
+    "audioCandidateCount": 2000,
+    "audioCatalogBytes": 1540587,
+    "proceduralProfileCount": 20,
+    "frameAnimationCount": 0,
+    "movePresentationCount": 937,
+    "largestContentAssetBytes": 1540587,
+    "largestContentAssetBudgetBytes": 2000000
+  },
+  "auditDurationMs": {
+    "staticAssets": 4963,
+    "audio": 762,
+    "animations": 737
+  },
+  "runtime": {
+    "pokemonMediaPreloadedAtStartup": 0,
+    "pokemonTexturesLoaded": 0,
+    "pokemonSoundsLoaded": 0,
+    "approvedPokemonMedia": 0,
+    "policy": "Catalogs are build-time data. Runtime loading is explicit, scoped, and disabled until an exact asset passes approval."
+  },
+  "notMeasured": [
+    "Media decode cost because no exact Pokemon media is approved for runtime.",
+    "Texture memory and mobile FPS because no Pokemon media may be loaded.",
+    "Audio playback memory because no cry or sound effect is approved."
+  ]
+}

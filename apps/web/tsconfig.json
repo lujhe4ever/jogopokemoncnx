@@ -5,5 +5,11 @@
     "outDir": "dist",
     "rootDir": "src"
   },
-  "include": ["src/**/*.ts"]
+  "include": ["src/**/*.ts"],
+  "references": [
+    { "path": "../../packages/audio-domain" },
+    { "path": "../../packages/content-contracts" },
+    { "path": "../../packages/engine-core" },
+    { "path": "../../packages/game-simulation" }
+  ]
 }

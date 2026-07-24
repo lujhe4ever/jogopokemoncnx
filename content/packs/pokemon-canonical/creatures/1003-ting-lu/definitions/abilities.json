@@ -7,7 +7,7 @@
       "slot": 1,
       "isHidden": false,
       "slug": "vessel-of-ruin",
-      "canonicalName": "Vessel Of Ruin",
+      "canonicalName": "Vessel of Ruin",
       "shortEffect": "Lowers Special Attack of all Pokémon except itself.",
       "effect": "The power of the Pokémon’s ruinous vessel lowers the Sp. Atk stats of all Pokémon except itself.",
       "sourceUrl": "https://pokeapi.co/api/v2/ability/284/"

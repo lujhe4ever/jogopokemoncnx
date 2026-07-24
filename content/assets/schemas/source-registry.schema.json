@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/lujhe4ever/jogopokemoncnx/content/assets/schemas/source-registry.schema.json",
+  "title": "Versioned asset source registry",
+  "type": "object",
+  "required": ["schemaVersion", "policy", "sources"],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "policy": { "type": "string", "minLength": 1 },
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "sourceId",
+          "url",
+          "repository",
+          "commitSha",
+          "version",
+          "license",
+          "ownership",
+          "attribution",
+          "modificationAllowed",
+          "redistributionAllowed",
+          "status",
+          "evidence",
+          "decisionId"
+        ],
+        "properties": {
+          "sourceId": { "type": "string", "minLength": 1 },
+          "url": { "type": "string", "format": "uri" },
+          "repository": { "type": ["string", "null"] },
+          "commitSha": {
+            "type": ["string", "null"],
+            "pattern": "^[0-9a-f]{40}$"
+          },
+          "version": { "type": ["string", "null"] },
+          "license": { "type": "string" },
+          "ownership": { "type": "string" },
+          "attribution": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "modificationAllowed": { "type": ["boolean", "null"] },
+          "redistributionAllowed": { "type": ["boolean", "null"] },
+          "status": {
+            "enum": [
+              "approved",
+              "pending",
+              "doubtful",
+              "rejected",
+              "quarantined"
+            ]
+          },
+          "evidence": {
+            "type": "array",
+            "items": { "type": "string", "format": "uri" }
+          },
+          "decisionId": { "type": ["string", "null"] }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

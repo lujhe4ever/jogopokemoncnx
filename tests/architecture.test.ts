@@ -34,6 +34,8 @@ describe("architecture boundaries", () => {
           "pvp-domain",
           "broadcast-domain",
           "admin-domain",
+          "content-contracts",
+          "audio-domain",
         ].map((name) => sourceFiles(`packages/${name}/src`)),
       )
     ).flat();

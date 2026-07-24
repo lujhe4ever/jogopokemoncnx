@@ -113,6 +113,12 @@ importers:
 
   apps/web:
     dependencies:
+      "@lt/audio-domain":
+        specifier: workspace:*
+        version: link:../../packages/audio-domain
+      "@lt/content-contracts":
+        specifier: workspace:*
+        version: link:../../packages/content-contracts
       "@lt/engine-core":
         specifier: workspace:*
         version: link:../../packages/engine-core
@@ -131,9 +137,17 @@ importers:
 
   packages/arena-domain: {}
 
+  packages/audio-domain:
+    dependencies:
+      "@lt/content-contracts":
+        specifier: workspace:*
+        version: link:../content-contracts
+
   packages/battle-domain: {}
 
   packages/broadcast-domain: {}
+
+  packages/content-contracts: {}
 
   packages/creature-domain: {}
 

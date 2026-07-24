@@ -7,7 +7,7 @@
       "slot": 1,
       "isHidden": false,
       "slug": "rks-system",
-      "canonicalName": "Rks System",
+      "canonicalName": "RKS System",
       "shortEffect": "Changes this Pokémon's type to match its held Memory.",
       "effect": "Changes this Pokémon's type to match its held Memory.\n\nThis ability cannot be copied, replaced, or nullified.  This ability only takes effect for Silvally.",
       "sourceUrl": "https://pokeapi.co/api/v2/ability/225/"

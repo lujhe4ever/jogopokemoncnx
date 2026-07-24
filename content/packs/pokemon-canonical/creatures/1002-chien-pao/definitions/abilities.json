@@ -7,7 +7,7 @@
       "slot": 1,
       "isHidden": false,
       "slug": "sword-of-ruin",
-      "canonicalName": "Sword Of Ruin",
+      "canonicalName": "Sword of Ruin",
       "shortEffect": "Lowers Defense of all Pokémon except itself.",
       "effect": "The power of the Pokémon’s ruinous sword lowers the Defense stats of all Pokémon except itself.",
       "sourceUrl": "https://pokeapi.co/api/v2/ability/285/"

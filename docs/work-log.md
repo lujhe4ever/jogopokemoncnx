@@ -1842,3 +1842,85 @@ Ler primeiro `docs/assets/pokemon-assets-audit.md`,
 README do pack. Confirmar o SHA e a CI do PR desta auditoria; não baixar nem ativar
 mídia enquanto o proprietário não aprovar uma fonte específica com direitos
 verificáveis.
+
+## 2026-07-23 — Integração estrutural segura de assets
+
+### Objetivo da sessão
+
+Implementar a segunda etapa do pipeline de sprites, animações, áudio e validação
+canônica sem importar ou habilitar mídia cuja licença exata não foi aprovada.
+
+### Estado anterior
+
+A branch `codex/pokemon-assets-audit` no SHA `a3b4dc13` tinha CI verde, 12 artefatos
+de auditoria e nenhum asset adicional aprovado. Os 4.100 PNGs D-023 estavam
+publicados, mas bloqueados; 2.000 cries e 11.855 candidatos animados eram somente
+inventário.
+
+### Alterações realizadas
+
+- criada a branch `codex/pokemon-assets-integration` e a reserva issue #22;
+- corrigidos 64 nomes de movimentos e 15 nomes de habilidades a partir dos CSVs
+  ingleses da revisão fixa;
+- adicionado catálogo explícito de 1.579 formas;
+- criados schema unificado, registro de 14 fontes e catálogos versionados;
+- catalogados 4.100 sprites em três shards e 2.000 cries sem baixar áudio;
+- implementados 20 perfis procedurais e 937 mapeamentos de apresentação;
+- criado suporte estrutural fail-closed para frame animation;
+- criado gerenciador central de áudio e adaptador de navegador;
+- adicionadas flags específicas, gate de redistribuição e bloqueio por ID/URL/caminho;
+- integrado laboratório Phaser apenas de desenvolvimento, sem mídia Pokémon;
+- criado PR draft #23 contra a branch da auditoria;
+- nenhuma imagem ou mídia de áudio foi modificada, adicionada ou removida.
+
+### Arquivos alterados
+
+- `packages/content-contracts/`;
+- `packages/audio-domain/`;
+- `content/assets/`;
+- `content/packs/pokemon-canonical/catalogs/`;
+- `apps/web/src/assets/` e `apps/web/src/audio/`;
+- scripts de geração, auditoria e gate em `scripts/`;
+- testes em `tests/`;
+- arquitetura, decisões, estado, roadmap e política de integração em `docs/`.
+
+### Testes e verificações
+
+- baseline anterior: `pnpm check`, 30 arquivos e 112 testes;
+- `pnpm install --frozen-lockfile`: aprovado antes da implementação;
+- `pnpm check`: aprovado após a implementação, 33 arquivos e 130 testes;
+- auditoria do pack: 1.025 espécies, 4.100 hashes/PNGs e 4.010.860 bytes;
+- catálogos: 4.100 sprites, 2.000 cries, 20 perfis e 937 apresentações, zero violação;
+- gate de runtime: 94 arquivos, zero referência proibida;
+- budgets: web 1.257.242/1.400.000, admin 9.335/100.000 e maior asset
+  1.540.587/2.000.000 bytes;
+- readiness: seis checkpoints, zero P0/P1 e nenhum deploy.
+
+### Decisões tomadas
+
+- D-024 aceita pipeline fail-closed sem aprovar mídia por associação;
+- fonte registrada não equivale a asset aprovado;
+- redistribuição explícita é requisito separado da licença declarada;
+- feature flag não supera status, revisão, hash ou decisão;
+- nenhum version group foi escolhido como baseline de gameplay;
+- transformação de formato exige permissão e não muda titularidade.
+
+### Pendências ou riscos
+
+- 4.100 PNGs D-023 continuam públicos, `doubtful` e fora do runtime;
+- nenhum sprite, cry, frame animation ou SFX Pokémon possui aprovação exata;
+- 2.000 cries não têm decode, duração, canais, sample rate, loudness ou hash medidos;
+- seleção por espécie/forma/shiny e teste visual com mídia continuam bloqueados;
+- CI do commit documental final ainda precisa ser observada;
+- merge e deploy não foram realizados.
+
+### Próxima tarefa recomendada
+
+Selecionar um único asset piloto original ou comprovadamente licenciado e registrar
+evidência exata de autoria, modificação e redistribuição antes de importá-lo.
+
+### Instrução para a próxima IA
+
+Ler D-023, D-024, `docs/asset-integration-policy.md`, o PR #23 e
+`content/assets/source-registry.json`. Confirmar SHA e CI antes de editar; usar uma
+branch exclusiva e nunca ativar D-023 ou cries candidatos por feature flag.

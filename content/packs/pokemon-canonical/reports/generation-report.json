@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-23T20:40:52.895Z",
+  "generatedAt": "2026-07-23",
   "pokeapiRevision": "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f",
   "spritesRevision": "bf4c47ac82c33b330e33d98b8882d1cedb2f53e7",
   "speciesCount": 1025,
@@ -32,6 +32,7 @@
   "moveCount": 937,
   "abilityCount": 373,
   "versionGroupCount": 32,
+  "formCount": 1579,
   "spriteTreeBlobCount": 60113,
   "spriteCandidateCount": 43383,
   "animationCandidateCount": 10421,

@@ -77,6 +77,14 @@ describe("runtime pokemon content boundary", () => {
       "physical sprite path",
       `const sprite = "0001-bulbasaur--pokeapi-default--front--normal.png";`,
     ],
+    [
+      "raw cry URL",
+      `const cry = "https://raw.githubusercontent.com/PokeAPI/cries/main/cries/pokemon/latest/1.ogg";`,
+    ],
+    [
+      "remote GIF",
+      `const animation = "https://example.test/animations/attack.gif";`,
+    ],
   ])("rejects %s and reports file and line", async (_label, source) => {
     const { root, manifestPath } = await fixture();
     await runtimeFile(
@@ -139,5 +147,40 @@ describe("runtime pokemon content boundary", () => {
     await expect(
       checkRuntimeContentBoundaries({ root, manifestPath }),
     ).rejects.toBeInstanceOf(RuntimeContentBoundaryError);
+  });
+
+  it("reports a blocked catalog asset with its exact status and policy", async () => {
+    const { root, manifestPath } = await fixture();
+    await runtimeFile(
+      root,
+      "content/assets/catalogs/static-sprites.json",
+      JSON.stringify({
+        assets: [
+          {
+            assetId: "pokemon:0001:temporary",
+            localPath: "content/temporary/0001.png",
+            licenseStatus: "doubtful",
+            runtimeEnabled: false,
+          },
+        ],
+      }),
+    );
+    await runtimeFile(
+      root,
+      "apps/web/src/main.ts",
+      `export const asset = "pokemon:0001:temporary";`,
+    );
+
+    await expect(
+      checkRuntimeContentBoundaries({ root, manifestPath }),
+    ).rejects.toMatchObject({
+      violations: [
+        expect.objectContaining({
+          asset: "pokemon:0001:temporary",
+          status: "doubtful",
+          policy: "asset-runtime-disabled",
+        }),
+      ],
+    });
   });
 });

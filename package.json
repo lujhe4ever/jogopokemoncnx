@@ -13,6 +13,10 @@
     "content:pokemon": "node scripts/generate-pokemon-canonical.mjs",
     "content:pokemon:audit": "node scripts/audit-pokemon-canonical-assets.mjs",
     "content:pokemon:assets-audit": "node scripts/generate-pokemon-assets-audit.mjs",
+    "content:assets:generate": "node --experimental-strip-types scripts/generate-runtime-asset-catalogs.mjs",
+    "content:assets:audit": "node --experimental-strip-types scripts/check-asset-catalogs.mjs --scope=assets",
+    "content:audio:audit": "node --experimental-strip-types scripts/check-asset-catalogs.mjs --scope=audio",
+    "content:animations:audit": "node --experimental-strip-types scripts/check-asset-catalogs.mjs --scope=animations",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "lint": "eslint .",
@@ -24,7 +28,7 @@
     "security:runtime-content": "node scripts/check-runtime-content-boundaries.mjs",
     "alpha:readiness": "node scripts/check-alpha-readiness.mjs",
     "budget": "node scripts/check-budgets.mjs",
-    "check": "pnpm format:check && pnpm lint && pnpm typecheck && pnpm test && pnpm build && pnpm budget && pnpm security:secrets && pnpm security:licenses && pnpm security:runtime-content && pnpm content:pokemon:audit && pnpm alpha:readiness"
+    "check": "pnpm format:check && pnpm lint && pnpm typecheck && pnpm test && pnpm build && pnpm budget && pnpm security:secrets && pnpm security:licenses && pnpm security:runtime-content && pnpm content:pokemon:audit && pnpm content:assets:audit && pnpm content:audio:audit && pnpm content:animations:audit && pnpm alpha:readiness"
   },
   "devDependencies": {
     "@eslint/js": "10.0.1",

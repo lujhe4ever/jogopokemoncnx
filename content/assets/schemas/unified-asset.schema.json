@@ -1,0 +1,111 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/lujhe4ever/jogopokemoncnx/content/assets/schemas/unified-asset.schema.json",
+  "title": "Unified runtime asset record",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "assetId",
+    "assetType",
+    "speciesId",
+    "pokemonId",
+    "formId",
+    "variantId",
+    "gender",
+    "orientation",
+    "shiny",
+    "animated",
+    "animationType",
+    "sourceId",
+    "sourceRevision",
+    "sourcePath",
+    "localPath",
+    "format",
+    "mimeType",
+    "width",
+    "height",
+    "frameCount",
+    "durationMs",
+    "frameDurations",
+    "loop",
+    "sampleRate",
+    "channels",
+    "loudness",
+    "sizeBytes",
+    "sha256",
+    "licenseStatus",
+    "runtimeEnabled",
+    "replacementRequired",
+    "approvedBy",
+    "approvedAt",
+    "decisionId",
+    "retrievedAt"
+  ],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "assetId": { "type": "string", "minLength": 1 },
+    "assetType": {
+      "enum": [
+        "battle-sprite",
+        "overworld-sprite",
+        "portrait",
+        "icon",
+        "animation",
+        "cry",
+        "sound-effect",
+        "music"
+      ]
+    },
+    "speciesId": { "type": ["integer", "null"], "minimum": 1 },
+    "pokemonId": { "type": ["integer", "null"], "minimum": 1 },
+    "formId": { "type": ["integer", "null"], "minimum": 1 },
+    "variantId": { "type": "string", "minLength": 1 },
+    "gender": {
+      "enum": ["male", "female", "neutral", "unspecified"]
+    },
+    "orientation": {
+      "enum": ["front", "back", "side", "overworld", "not-applicable"]
+    },
+    "shiny": { "type": "boolean" },
+    "animated": { "type": "boolean" },
+    "animationType": { "enum": ["procedural", "frame", "none"] },
+    "sourceId": { "type": "string", "minLength": 1 },
+    "sourceRevision": {
+      "type": ["string", "null"],
+      "pattern": "^[0-9a-f]{40}$"
+    },
+    "sourcePath": { "type": ["string", "null"] },
+    "localPath": { "type": ["string", "null"] },
+    "format": {
+      "enum": ["png", "webp", "atlas-json", "ogg", "mp3", "wav"]
+    },
+    "mimeType": { "type": "string", "minLength": 1 },
+    "width": { "type": ["integer", "null"], "minimum": 1 },
+    "height": { "type": ["integer", "null"], "minimum": 1 },
+    "frameCount": { "type": ["integer", "null"], "minimum": 1 },
+    "durationMs": { "type": ["integer", "null"], "minimum": 1 },
+    "frameDurations": {
+      "type": "array",
+      "items": { "type": "integer", "minimum": 1 }
+    },
+    "loop": { "type": "boolean" },
+    "sampleRate": { "type": ["integer", "null"], "minimum": 1 },
+    "channels": { "type": ["integer", "null"], "minimum": 1 },
+    "loudness": { "type": ["number", "null"] },
+    "sizeBytes": { "type": "integer", "minimum": 1 },
+    "sha256": {
+      "type": ["string", "null"],
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "licenseStatus": {
+      "enum": ["approved", "pending", "doubtful", "rejected", "quarantined"]
+    },
+    "runtimeEnabled": { "type": "boolean" },
+    "replacementRequired": { "type": "boolean" },
+    "approvedBy": { "type": ["string", "null"] },
+    "approvedAt": { "type": ["string", "null"], "format": "date" },
+    "decisionId": { "type": ["string", "null"] },
+    "retrievedAt": { "type": "string", "format": "date" }
+  },
+  "additionalProperties": false
+}

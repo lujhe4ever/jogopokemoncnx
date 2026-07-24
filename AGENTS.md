@@ -191,8 +191,12 @@ verificações inexistentes.
 | Verificação de tipos | `pnpm typecheck` |
 | Testes unitários e de integração | `pnpm test` |
 | Gate da jornada alpha | `pnpm alpha:readiness` |
-| Auditoria integral dos sprites Pokémon | `pnpm content:pokemon:audit` |
-| Gate de isolamento de conteúdo temporário | `pnpm security:runtime-content` |
+  | Auditoria integral dos sprites Pokémon | `pnpm content:pokemon:audit` |
+  | Gerar catálogos centrais de assets | `pnpm content:assets:generate` |
+  | Auditar catálogo de sprites | `pnpm content:assets:audit` |
+  | Auditar catálogo de áudio | `pnpm content:audio:audit` |
+  | Auditar catálogo de animações | `pnpm content:animations:audit` |
+  | Gate de isolamento de conteúdo temporário | `pnpm security:runtime-content` |
 | Testes E2E no navegador | roteiro assistido em `docs/alpha-test-plan.md` |
 | Build de servidor, jogo e admin | `pnpm build` |
 | Docker | `docker compose up -d postgres` / `docker compose down` |

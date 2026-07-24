@@ -7,7 +7,7 @@
       "slot": 1,
       "isHidden": false,
       "slug": "well-baked-body",
-      "canonicalName": "Well Baked Body",
+      "canonicalName": "Well-Baked Body",
       "shortEffect": "Immune to Fire-type moves, and Defense is sharply boosted.",
       "effect": "The Pokémon takes no damage when hit by Fire-type moves. Instead, its Defense stat is sharply boosted.",
       "sourceUrl": "https://pokeapi.co/api/v2/ability/273/"

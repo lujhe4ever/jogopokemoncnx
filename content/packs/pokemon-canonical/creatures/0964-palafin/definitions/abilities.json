@@ -7,7 +7,7 @@
       "slot": 1,
       "isHidden": false,
       "slug": "zero-to-hero",
-      "canonicalName": "Zero To Hero",
+      "canonicalName": "Zero to Hero",
       "shortEffect": "Transforms into its Hero Form when switching out.",
       "effect": "The Pokémon transforms into its Hero Form when it switches out.",
       "sourceUrl": "https://pokeapi.co/api/v2/ability/278/"

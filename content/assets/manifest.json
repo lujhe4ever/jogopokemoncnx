@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "generatedFrom": {
+    "pokemonPack": "content/packs/pokemon-canonical",
+    "audit": "docs/assets"
+  },
+  "sourceCount": 14,
+  "staticAssetCount": 4100,
+  "audioCandidateCount": 2000,
+  "proceduralProfileCount": 20,
+  "frameAnimationCount": 0,
+  "movePresentationCount": 937,
+  "runtimeEnabledPokemonAssetCount": 0
+}

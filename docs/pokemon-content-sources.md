@@ -22,6 +22,13 @@ projeto. Textos funcionais de golpes e habilidades são mantidos em inglês para
 preservar a redação auditável da fonte. Traduções deverão ser adicionadas como
 camada derivada e revisada.
 
+A segunda etapa fixou explicitamente a revisão
+`091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f`, passou a ler `move_names.csv` e
+`ability_names.csv` e corrigiu 64 nomes de movimentos e 15 nomes de habilidades que
+antes eram derivados do slug. Também publicou o catálogo de 1.579 registros de forma.
+Os 32 version groups permanecem no catálogo; nenhum deles foi escolhido como baseline
+de gameplay sem decisão do proprietário.
+
 ## Sprites dos Pokémon
 
 | Fonte | Tipo | Autor/ripper | Condição encontrada | Limitação | Estado |

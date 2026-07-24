@@ -367,13 +367,33 @@ class HouseScene extends Phaser.Scene {
   }
 }
 
-export function startGame(ticket: string, accountId: string) {
+export async function startGame(ticket: string, accountId: string) {
+  const assetLab =
+    import.meta.env.DEV &&
+    new URLSearchParams(location.search).get("asset-lab") === "1";
+  const scene = assetLab
+    ? new (await import("./assets/asset-lab-scene.js")).AssetLabScene()
+    : new HouseScene(ticket, accountId);
   return new Phaser.Game({
     type: Phaser.AUTO,
     parent: "game",
     width: 640,
     height: 400,
     pixelArt: true,
-    scene: new HouseScene(ticket, accountId),
+    antialias: false,
+    roundPixels: true,
+    render: {
+      antialias: false,
+      antialiasGL: false,
+      pixelArt: true,
+      roundPixels: true,
+    },
+    scale: {
+      mode: Phaser.Scale.FIT,
+      autoCenter: Phaser.Scale.CENTER_BOTH,
+      width: 640,
+      height: 400,
+    },
+    scene,
   });
 }

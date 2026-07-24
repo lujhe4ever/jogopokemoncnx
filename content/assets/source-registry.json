@@ -1,0 +1,238 @@
+{
+  "schemaVersion": 1,
+  "policy": "A registered source is not runtime-approved. Every exact asset must also satisfy the unified runtime policy.",
+  "sources": [
+    {
+      "sourceId": "pokeapi-data",
+      "url": "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv",
+      "repository": "PokeAPI/pokeapi",
+      "commitSha": "091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f",
+      "version": null,
+      "license": "BSD-3-Clause for the repository",
+      "ownership": "Retain the BSD-3-Clause notice and credit PokéAPI contributors.",
+      "attribution": [
+        "Retain the BSD-3-Clause notice and credit PokéAPI contributors."
+      ],
+      "modificationAllowed": null,
+      "redistributionAllowed": null,
+      "status": "pending",
+      "evidence": [
+        "https://github.com/PokeAPI/pokeapi/tree/091f3a0599b1efb01f6b502232eeb7d8cbbb3e8f/data/v2/csv"
+      ],
+      "decisionId": null
+    },
+    {
+      "sourceId": "pokeapi-sprites",
+      "url": "https://github.com/PokeAPI/sprites/tree/bf4c47ac82c33b330e33d98b8882d1cedb2f53e7",
+      "repository": "PokeAPI/sprites",
+      "commitSha": "bf4c47ac82c33b330e33d98b8882d1cedb2f53e7",
+      "version": null,
+      "license": "Repository states CC0 while also stating that image contents are Copyright The Pokémon Company.",
+      "ownership": "The source names The Pokémon Company and collection-specific community artists.",
+      "attribution": [
+        "The source names The Pokémon Company and collection-specific community artists."
+      ],
+      "modificationAllowed": null,
+      "redistributionAllowed": null,
+      "status": "doubtful",
+      "evidence": [
+        "https://github.com/PokeAPI/sprites/tree/bf4c47ac82c33b330e33d98b8882d1cedb2f53e7"
+      ],
+      "decisionId": "D-023"
+    },
+    {
+      "sourceId": "pokeapi-cries",
+      "url": "https://github.com/PokeAPI/cries/tree/7ba07038103b3482973fa781e25c09debbaaedd8",
+      "repository": "PokeAPI/cries",
+      "commitSha": "7ba07038103b3482973fa781e25c09debbaaedd8",
+      "version": null,
+      "license": "Repository states CC0 while also stating that audio contents are Copyright The Pokémon Company.",
+      "ownership": "The repository names The Pokémon Company as copyright owner.",
+      "attribution": [
+        "The repository names The Pokémon Company as copyright owner."
+      ],
+      "modificationAllowed": null,
+      "redistributionAllowed": null,
+      "status": "doubtful",
+      "evidence": [
+        "https://github.com/PokeAPI/cries/tree/7ba07038103b3482973fa781e25c09debbaaedd8"
+      ],
+      "decisionId": null
+    },
+    {
+      "sourceId": "pokemon-official-pokedex",
+      "url": "https://www.pokemon.com/us/pokedex",
+      "repository": null,
+      "commitSha": null,
+      "version": null,
+      "license": "No reusable asset license identified.",
+      "ownership": "No redistribution permission identified.",
+      "attribution": ["No redistribution permission identified."],
+      "modificationAllowed": null,
+      "redistributionAllowed": null,
+      "status": "pending",
+      "evidence": ["https://www.pokemon.com/us/pokedex"],
+      "decisionId": null
+    },
+    {
+      "sourceId": "bulbapedia",
+      "url": "https://bulbapedia.bulbagarden.net/",
+      "repository": null,
+      "commitSha": null,
+      "version": null,
+      "license": "Not evaluated for bulk reuse in this audit.",
+      "ownership": "Site- and page-specific; no asset reuse assumed.",
+      "attribution": ["Site- and page-specific; no asset reuse assumed."],
+      "modificationAllowed": null,
+      "redistributionAllowed": null,
+      "status": "pending",
+      "evidence": ["https://bulbapedia.bulbagarden.net/"],
+      "decisionId": null
+    },
+    {
+      "sourceId": "serebii",
+      "url": "https://www.serebii.net/",
+      "repository": null,
+      "commitSha": null,
+      "version": null,
+      "license": "No reusable asset license identified.",
+      "ownership": "No redistribution permission identified.",
+      "attribution": ["No redistribution permission identified."],
+      "modificationAllowed": null,
+      "redistributionAllowed": null,
+      "status": "pending",
+      "evidence": ["https://www.serebii.net/"],
+      "decisionId": null
+    },
+    {
+      "sourceId": "pokemondb",
+      "url": "https://pokemondb.net/",
+      "repository": null,
+      "commitSha": null,
+      "version": null,
+      "license": "No reusable asset license identified.",
+      "ownership": "The site attributes Pokémon names and images to Nintendo/Game Freak.",
+      "attribution": [
+        "The site attributes Pokémon names and images to Nintendo/Game Freak."
+      ],
+      "modificationAllowed": null,
+      "redistributionAllowed": null,
+      "status": "doubtful",
+      "evidence": ["https://pokemondb.net/"],
+      "decisionId": null
+    },
+    {
+      "sourceId": "pokemon-showdown-server",
+      "url": "https://github.com/smogon/pokemon-showdown/tree/20ad99ffc9a5a4a4e8fb56ab04ad8e4255b3f2b4",
+      "repository": "smogon/pokemon-showdown",
+      "commitSha": "20ad99ffc9a5a4a4e8fb56ab04ad8e4255b3f2b4",
+      "version": null,
+      "license": "MIT for the server repository",
+      "ownership": "MIT notice for server/simulator code.",
+      "attribution": ["MIT notice for server/simulator code."],
+      "modificationAllowed": null,
+      "redistributionAllowed": null,
+      "status": "pending",
+      "evidence": [
+        "https://github.com/smogon/pokemon-showdown/tree/20ad99ffc9a5a4a4e8fb56ab04ad8e4255b3f2b4"
+      ],
+      "decisionId": null
+    },
+    {
+      "sourceId": "pokemon-showdown-client-resources",
+      "url": "https://github.com/smogon/pokemon-showdown-client/tree/2a5133088021c1fe2711a096802896b2055744a3",
+      "repository": "smogon/pokemon-showdown-client",
+      "commitSha": "2a5133088021c1fe2711a096802896b2055744a3",
+      "version": null,
+      "license": "AGPL-3.0 covers client code; the repository expressly excludes /audio and /sprites resources.",
+      "ownership": "Collection- and artist-specific; permission must be proven.",
+      "attribution": [
+        "Collection- and artist-specific; permission must be proven."
+      ],
+      "modificationAllowed": null,
+      "redistributionAllowed": null,
+      "status": "pending",
+      "evidence": [
+        "https://github.com/smogon/pokemon-showdown-client/tree/2a5133088021c1fe2711a096802896b2055744a3"
+      ],
+      "decisionId": null
+    },
+    {
+      "sourceId": "kenney",
+      "url": "https://kenney.nl/assets",
+      "repository": null,
+      "commitSha": null,
+      "version": null,
+      "license": "Kenney states asset-page packs are CC0.",
+      "ownership": "Not required for CC0 packs; attribution is recommended.",
+      "attribution": [
+        "Not required for CC0 packs; attribution is recommended."
+      ],
+      "modificationAllowed": null,
+      "redistributionAllowed": null,
+      "status": "approved",
+      "evidence": ["https://kenney.nl/assets"],
+      "decisionId": null
+    },
+    {
+      "sourceId": "opengameart",
+      "url": "https://opengameart.org/content/faq",
+      "repository": null,
+      "commitSha": null,
+      "version": null,
+      "license": "Per submission; no site-wide approval.",
+      "ownership": "Varies by CC0, CC-BY, CC-BY-SA, OGA-BY, or GPL.",
+      "attribution": ["Varies by CC0, CC-BY, CC-BY-SA, OGA-BY, or GPL."],
+      "modificationAllowed": null,
+      "redistributionAllowed": null,
+      "status": "pending",
+      "evidence": ["https://opengameart.org/content/faq"],
+      "decisionId": null
+    },
+    {
+      "sourceId": "freesound",
+      "url": "https://freesound.org/help/faq/#licenses",
+      "repository": null,
+      "commitSha": null,
+      "version": null,
+      "license": "Per file; CC0 and CC-BY are potential candidates.",
+      "ownership": "Varies: CC0, CC-BY, or CC-BY-NC.",
+      "attribution": ["Varies: CC0, CC-BY, or CC-BY-NC."],
+      "modificationAllowed": null,
+      "redistributionAllowed": null,
+      "status": "pending",
+      "evidence": ["https://freesound.org/help/faq/#licenses"],
+      "decisionId": null
+    },
+    {
+      "sourceId": "itch-game-assets",
+      "url": "https://itch.io/game-assets",
+      "repository": null,
+      "commitSha": null,
+      "version": null,
+      "license": "No platform-wide asset license.",
+      "ownership": "Defined by each package and purchase receipt.",
+      "attribution": ["Defined by each package and purchase receipt."],
+      "modificationAllowed": null,
+      "redistributionAllowed": null,
+      "status": "pending",
+      "evidence": ["https://itch.io/game-assets"],
+      "decisionId": null
+    },
+    {
+      "sourceId": "phaser-audio-docs",
+      "url": "https://docs.phaser.io/phaser/concepts/audio",
+      "repository": null,
+      "commitSha": null,
+      "version": "3.90.0 project baseline",
+      "license": "Not an asset source.",
+      "ownership": "Documentation reference only.",
+      "attribution": ["Documentation reference only."],
+      "modificationAllowed": null,
+      "redistributionAllowed": null,
+      "status": "approved",
+      "evidence": ["https://docs.phaser.io/phaser/concepts/audio"],
+      "decisionId": null
+    }
+  ]
+}

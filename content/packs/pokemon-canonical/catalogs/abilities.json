@@ -2213,7 +2213,7 @@
     {
       "id": 220,
       "slug": "soul-heart",
-      "canonicalName": "Soul Heart",
+      "canonicalName": "Soul-Heart",
       "generationIntroduced": 7,
       "isMainSeries": true,
       "shortEffect": "This Pokémon's Special Attack rises by one stage every time any Pokémon faints.",
@@ -2243,7 +2243,7 @@
     {
       "id": 223,
       "slug": "power-of-alchemy",
-      "canonicalName": "Power Of Alchemy",
+      "canonicalName": "Power of Alchemy",
       "generationIntroduced": 7,
       "isMainSeries": true,
       "shortEffect": "When an ally faints, this Pokémon gains its Ability.",
@@ -2263,7 +2263,7 @@
     {
       "id": 225,
       "slug": "rks-system",
-      "canonicalName": "Rks System",
+      "canonicalName": "RKS System",
       "generationIntroduced": 7,
       "isMainSeries": true,
       "shortEffect": "Changes this Pokémon's type to match its held Memory.",
@@ -2643,7 +2643,7 @@
     {
       "id": 263,
       "slug": "dragons-maw",
-      "canonicalName": "Dragons Maw",
+      "canonicalName": "Dragon’s Maw",
       "generationIntroduced": 8,
       "isMainSeries": true,
       "shortEffect": "Powers up Dragon-type moves.",
@@ -2673,7 +2673,7 @@
     {
       "id": 266,
       "slug": "as-one-glastrier",
-      "canonicalName": "As One Glastrier",
+      "canonicalName": "As One",
       "generationIntroduced": 8,
       "isMainSeries": true,
       "shortEffect": "No English effect text available.",
@@ -2683,7 +2683,7 @@
     {
       "id": 267,
       "slug": "as-one-spectrier",
-      "canonicalName": "As One Spectrier",
+      "canonicalName": "As One",
       "generationIntroduced": 8,
       "isMainSeries": true,
       "shortEffect": "No English effect text available.",
@@ -2743,7 +2743,7 @@
     {
       "id": 273,
       "slug": "well-baked-body",
-      "canonicalName": "Well Baked Body",
+      "canonicalName": "Well-Baked Body",
       "generationIntroduced": 9,
       "isMainSeries": true,
       "shortEffect": "Immune to Fire-type moves, and Defense is sharply boosted.",
@@ -2793,7 +2793,7 @@
     {
       "id": 278,
       "slug": "zero-to-hero",
-      "canonicalName": "Zero To Hero",
+      "canonicalName": "Zero to Hero",
       "generationIntroduced": 9,
       "isMainSeries": true,
       "shortEffect": "Transforms into its Hero Form when switching out.",
@@ -2843,7 +2843,7 @@
     {
       "id": 283,
       "slug": "good-as-gold",
-      "canonicalName": "Good As Gold",
+      "canonicalName": "Good as Gold",
       "generationIntroduced": 9,
       "isMainSeries": true,
       "shortEffect": "Gives immunity to status moves.",
@@ -2853,7 +2853,7 @@
     {
       "id": 284,
       "slug": "vessel-of-ruin",
-      "canonicalName": "Vessel Of Ruin",
+      "canonicalName": "Vessel of Ruin",
       "generationIntroduced": 9,
       "isMainSeries": true,
       "shortEffect": "Lowers Special Attack of all Pokémon except itself.",
@@ -2863,7 +2863,7 @@
     {
       "id": 285,
       "slug": "sword-of-ruin",
-      "canonicalName": "Sword Of Ruin",
+      "canonicalName": "Sword of Ruin",
       "generationIntroduced": 9,
       "isMainSeries": true,
       "shortEffect": "Lowers Defense of all Pokémon except itself.",
@@ -2873,7 +2873,7 @@
     {
       "id": 286,
       "slug": "tablets-of-ruin",
-      "canonicalName": "Tablets Of Ruin",
+      "canonicalName": "Tablets of Ruin",
       "generationIntroduced": 9,
       "isMainSeries": true,
       "shortEffect": "Lowers Attack of all Pokémon except itself.",
@@ -2883,7 +2883,7 @@
     {
       "id": 287,
       "slug": "beads-of-ruin",
-      "canonicalName": "Beads Of Ruin",
+      "canonicalName": "Beads of Ruin",
       "generationIntroduced": 9,
       "isMainSeries": true,
       "shortEffect": "Lowers Special Defense of all Pokémon except itself.",
@@ -3003,7 +3003,7 @@
     {
       "id": 299,
       "slug": "minds-eye",
-      "canonicalName": "Minds Eye",
+      "canonicalName": "Mind’s Eye",
       "generationIntroduced": 9,
       "isMainSeries": true,
       "shortEffect": "The Pokémon ignores changes to opponents' evasiveness, its accuracy can't be lowered, and it can hit Ghost types with Normal- and Fighting-type moves.",
@@ -3663,7 +3663,7 @@
     {
       "id": 10052,
       "slug": "high-rise",
-      "canonicalName": "High Rise",
+      "canonicalName": "High-rise",
       "generationIntroduced": 5,
       "isMainSeries": false,
       "shortEffect": "No English effect text available.",

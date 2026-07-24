@@ -343,7 +343,7 @@
     {
       "id": 11,
       "slug": "vice-grip",
-      "canonicalName": "Vice Grip",
+      "canonicalName": "Vise Grip",
       "generationIntroduced": 1,
       "type": "normal",
       "category": "physical",
@@ -1217,7 +1217,7 @@
     {
       "id": 38,
       "slug": "double-edge",
-      "canonicalName": "Double Edge",
+      "canonicalName": "Double-Edge",
       "generationIntroduced": 1,
       "type": "normal",
       "category": "physical",
@@ -3940,7 +3940,7 @@
     {
       "id": 120,
       "slug": "self-destruct",
-      "canonicalName": "Self Destruct",
+      "canonicalName": "Self-Destruct",
       "generationIntroduced": 1,
       "type": "normal",
       "category": "physical",
@@ -4435,7 +4435,7 @@
     {
       "id": 135,
       "slug": "soft-boiled",
-      "canonicalName": "Soft Boiled",
+      "canonicalName": "Soft-Boiled",
       "generationIntroduced": 1,
       "type": "normal",
       "category": "status",
@@ -6193,7 +6193,7 @@
     {
       "id": 189,
       "slug": "mud-slap",
-      "canonicalName": "Mud Slap",
+      "canonicalName": "Mud-Slap",
       "generationIntroduced": 2,
       "type": "ground",
       "category": "special",
@@ -6528,7 +6528,7 @@
     {
       "id": 199,
       "slug": "lock-on",
-      "canonicalName": "Lock On",
+      "canonicalName": "Lock-On",
       "generationIntroduced": 2,
       "type": "normal",
       "category": "status",
@@ -8597,7 +8597,7 @@
     {
       "id": 261,
       "slug": "will-o-wisp",
-      "canonicalName": "Will O Wisp",
+      "canonicalName": "Will-O-Wisp",
       "generationIntroduced": 3,
       "type": "fire",
       "category": "status",
@@ -11865,7 +11865,7 @@
     {
       "id": 358,
       "slug": "wake-up-slap",
-      "canonicalName": "Wake Up Slap",
+      "canonicalName": "Wake-Up Slap",
       "generationIntroduced": 4,
       "type": "fighting",
       "category": "physical",
@@ -12222,7 +12222,7 @@
     {
       "id": 369,
       "slug": "u-turn",
-      "canonicalName": "U Turn",
+      "canonicalName": "U-turn",
       "generationIntroduced": 4,
       "type": "bug",
       "category": "physical",
@@ -13356,7 +13356,7 @@
     {
       "id": 404,
       "slug": "x-scissor",
-      "canonicalName": "X Scissor",
+      "canonicalName": "X-Scissor",
       "generationIntroduced": 4,
       "type": "bug",
       "category": "physical",
@@ -15190,7 +15190,7 @@
     {
       "id": 459,
       "slug": "roar-of-time",
-      "canonicalName": "Roar Of Time",
+      "canonicalName": "Roar of Time",
       "generationIntroduced": 4,
       "type": "dragon",
       "category": "special",
@@ -18496,7 +18496,7 @@
     {
       "id": 557,
       "slug": "v-create",
-      "canonicalName": "V Create",
+      "canonicalName": "V-create",
       "generationIntroduced": 5,
       "type": "fire",
       "category": "physical",
@@ -18838,7 +18838,7 @@
     {
       "id": 567,
       "slug": "trick-or-treat",
-      "canonicalName": "Trick Or Treat",
+      "canonicalName": "Trick-or-Treat",
       "generationIntroduced": 6,
       "type": "ghost",
       "category": "status",
@@ -18975,7 +18975,7 @@
     {
       "id": 571,
       "slug": "forests-curse",
-      "canonicalName": "Forests Curse",
+      "canonicalName": "Forest’s Curse",
       "generationIntroduced": 6,
       "type": "grass",
       "category": "status",
@@ -19039,7 +19039,7 @@
     {
       "id": 573,
       "slug": "freeze-dry",
-      "canonicalName": "Freeze Dry",
+      "canonicalName": "Freeze-Dry",
       "generationIntroduced": 6,
       "type": "ice",
       "category": "special",
@@ -19144,7 +19144,7 @@
     {
       "id": 576,
       "slug": "topsy-turvy",
-      "canonicalName": "Topsy Turvy",
+      "canonicalName": "Topsy-Turvy",
       "generationIntroduced": 6,
       "type": "dark",
       "category": "status",
@@ -19543,7 +19543,7 @@
     {
       "id": 588,
       "slug": "kings-shield",
-      "canonicalName": "Kings Shield",
+      "canonicalName": "King’s Shield",
       "generationIntroduced": 6,
       "type": "steel",
       "category": "status",
@@ -20248,7 +20248,7 @@
     {
       "id": 608,
       "slug": "baby-doll-eyes",
-      "canonicalName": "Baby Doll Eyes",
+      "canonicalName": "Baby-Doll Eyes",
       "generationIntroduced": 6,
       "type": "fairy",
       "category": "status",
@@ -20381,7 +20381,7 @@
     {
       "id": 612,
       "slug": "power-up-punch",
-      "canonicalName": "Power Up Punch",
+      "canonicalName": "Power-Up Punch",
       "generationIntroduced": 6,
       "type": "fighting",
       "category": "physical",
@@ -20514,7 +20514,7 @@
     {
       "id": 616,
       "slug": "lands-wrath",
-      "canonicalName": "Lands Wrath",
+      "canonicalName": "Land’s Wrath",
       "generationIntroduced": 6,
       "type": "ground",
       "category": "physical",
@@ -20546,7 +20546,7 @@
     {
       "id": 617,
       "slug": "light-of-ruin",
-      "canonicalName": "Light Of Ruin",
+      "canonicalName": "Light of Ruin",
       "generationIntroduced": 6,
       "type": "fairy",
       "category": "special",
@@ -20720,7 +20720,7 @@
     {
       "id": 622,
       "slug": "breakneck-blitz--physical",
-      "canonicalName": "Breakneck Blitz  Physical",
+      "canonicalName": "Breakneck Blitz",
       "generationIntroduced": 7,
       "type": "normal",
       "category": "physical",
@@ -20752,7 +20752,7 @@
     {
       "id": 623,
       "slug": "breakneck-blitz--special",
-      "canonicalName": "Breakneck Blitz  Special",
+      "canonicalName": "Breakneck Blitz",
       "generationIntroduced": 7,
       "type": "normal",
       "category": "special",
@@ -20784,7 +20784,7 @@
     {
       "id": 624,
       "slug": "all-out-pummeling--physical",
-      "canonicalName": "All Out Pummeling  Physical",
+      "canonicalName": "All-Out Pummeling",
       "generationIntroduced": 7,
       "type": "fighting",
       "category": "physical",
@@ -20816,7 +20816,7 @@
     {
       "id": 625,
       "slug": "all-out-pummeling--special",
-      "canonicalName": "All Out Pummeling  Special",
+      "canonicalName": "All-Out Pummeling",
       "generationIntroduced": 7,
       "type": "fighting",
       "category": "special",
@@ -20848,7 +20848,7 @@
     {
       "id": 626,
       "slug": "supersonic-skystrike--physical",
-      "canonicalName": "Supersonic Skystrike  Physical",
+      "canonicalName": "Supersonic Skystrike",
       "generationIntroduced": 7,
       "type": "flying",
       "category": "physical",
@@ -20880,7 +20880,7 @@
     {
       "id": 627,
       "slug": "supersonic-skystrike--special",
-      "canonicalName": "Supersonic Skystrike  Special",
+      "canonicalName": "Supersonic Skystrike",
       "generationIntroduced": 7,
       "type": "flying",
       "category": "special",
@@ -20912,7 +20912,7 @@
     {
       "id": 628,
       "slug": "acid-downpour--physical",
-      "canonicalName": "Acid Downpour  Physical",
+      "canonicalName": "Acid Downpour",
       "generationIntroduced": 7,
       "type": "poison",
       "category": "physical",
@@ -20944,7 +20944,7 @@
     {
       "id": 629,
       "slug": "acid-downpour--special",
-      "canonicalName": "Acid Downpour  Special",
+      "canonicalName": "Acid Downpour",
       "generationIntroduced": 7,
       "type": "poison",
       "category": "special",
@@ -20976,7 +20976,7 @@
     {
       "id": 630,
       "slug": "tectonic-rage--physical",
-      "canonicalName": "Tectonic Rage  Physical",
+      "canonicalName": "Tectonic Rage",
       "generationIntroduced": 7,
       "type": "ground",
       "category": "physical",
@@ -21008,7 +21008,7 @@
     {
       "id": 631,
       "slug": "tectonic-rage--special",
-      "canonicalName": "Tectonic Rage  Special",
+      "canonicalName": "Tectonic Rage",
       "generationIntroduced": 7,
       "type": "ground",
       "category": "special",
@@ -21040,7 +21040,7 @@
     {
       "id": 632,
       "slug": "continental-crush--physical",
-      "canonicalName": "Continental Crush  Physical",
+      "canonicalName": "Continental Crush",
       "generationIntroduced": 7,
       "type": "rock",
       "category": "physical",
@@ -21072,7 +21072,7 @@
     {
       "id": 633,
       "slug": "continental-crush--special",
-      "canonicalName": "Continental Crush  Special",
+      "canonicalName": "Continental Crush",
       "generationIntroduced": 7,
       "type": "rock",
       "category": "special",
@@ -21104,7 +21104,7 @@
     {
       "id": 634,
       "slug": "savage-spin-out--physical",
-      "canonicalName": "Savage Spin Out  Physical",
+      "canonicalName": "Savage Spin-Out",
       "generationIntroduced": 7,
       "type": "bug",
       "category": "physical",
@@ -21136,7 +21136,7 @@
     {
       "id": 635,
       "slug": "savage-spin-out--special",
-      "canonicalName": "Savage Spin Out  Special",
+      "canonicalName": "Savage Spin-Out",
       "generationIntroduced": 7,
       "type": "bug",
       "category": "special",
@@ -21168,7 +21168,7 @@
     {
       "id": 636,
       "slug": "never-ending-nightmare--physical",
-      "canonicalName": "Never Ending Nightmare  Physical",
+      "canonicalName": "Never-Ending Nightmare",
       "generationIntroduced": 7,
       "type": "ghost",
       "category": "physical",
@@ -21200,7 +21200,7 @@
     {
       "id": 637,
       "slug": "never-ending-nightmare--special",
-      "canonicalName": "Never Ending Nightmare  Special",
+      "canonicalName": "Never-Ending Nightmare",
       "generationIntroduced": 7,
       "type": "ghost",
       "category": "special",
@@ -21232,7 +21232,7 @@
     {
       "id": 638,
       "slug": "corkscrew-crash--physical",
-      "canonicalName": "Corkscrew Crash  Physical",
+      "canonicalName": "Corkscrew Crash",
       "generationIntroduced": 7,
       "type": "steel",
       "category": "physical",
@@ -21264,7 +21264,7 @@
     {
       "id": 639,
       "slug": "corkscrew-crash--special",
-      "canonicalName": "Corkscrew Crash  Special",
+      "canonicalName": "Corkscrew Crash",
       "generationIntroduced": 7,
       "type": "steel",
       "category": "special",
@@ -21296,7 +21296,7 @@
     {
       "id": 640,
       "slug": "inferno-overdrive--physical",
-      "canonicalName": "Inferno Overdrive  Physical",
+      "canonicalName": "Inferno Overdrive",
       "generationIntroduced": 7,
       "type": "fire",
       "category": "physical",
@@ -21328,7 +21328,7 @@
     {
       "id": 641,
       "slug": "inferno-overdrive--special",
-      "canonicalName": "Inferno Overdrive  Special",
+      "canonicalName": "Inferno Overdrive",
       "generationIntroduced": 7,
       "type": "fire",
       "category": "special",
@@ -21360,7 +21360,7 @@
     {
       "id": 642,
       "slug": "hydro-vortex--physical",
-      "canonicalName": "Hydro Vortex  Physical",
+      "canonicalName": "Hydro Vortex",
       "generationIntroduced": 7,
       "type": "water",
       "category": "physical",
@@ -21392,7 +21392,7 @@
     {
       "id": 643,
       "slug": "hydro-vortex--special",
-      "canonicalName": "Hydro Vortex  Special",
+      "canonicalName": "Hydro Vortex",
       "generationIntroduced": 7,
       "type": "water",
       "category": "special",
@@ -21424,7 +21424,7 @@
     {
       "id": 644,
       "slug": "bloom-doom--physical",
-      "canonicalName": "Bloom Doom  Physical",
+      "canonicalName": "Bloom Doom",
       "generationIntroduced": 7,
       "type": "grass",
       "category": "physical",
@@ -21456,7 +21456,7 @@
     {
       "id": 645,
       "slug": "bloom-doom--special",
-      "canonicalName": "Bloom Doom  Special",
+      "canonicalName": "Bloom Doom",
       "generationIntroduced": 7,
       "type": "grass",
       "category": "special",
@@ -21488,7 +21488,7 @@
     {
       "id": 646,
       "slug": "gigavolt-havoc--physical",
-      "canonicalName": "Gigavolt Havoc  Physical",
+      "canonicalName": "Gigavolt Havoc",
       "generationIntroduced": 7,
       "type": "electric",
       "category": "physical",
@@ -21520,7 +21520,7 @@
     {
       "id": 647,
       "slug": "gigavolt-havoc--special",
-      "canonicalName": "Gigavolt Havoc  Special",
+      "canonicalName": "Gigavolt Havoc",
       "generationIntroduced": 7,
       "type": "electric",
       "category": "special",
@@ -21552,7 +21552,7 @@
     {
       "id": 648,
       "slug": "shattered-psyche--physical",
-      "canonicalName": "Shattered Psyche  Physical",
+      "canonicalName": "Shattered Psyche",
       "generationIntroduced": 7,
       "type": "psychic",
       "category": "physical",
@@ -21584,7 +21584,7 @@
     {
       "id": 649,
       "slug": "shattered-psyche--special",
-      "canonicalName": "Shattered Psyche  Special",
+      "canonicalName": "Shattered Psyche",
       "generationIntroduced": 7,
       "type": "psychic",
       "category": "special",
@@ -21616,7 +21616,7 @@
     {
       "id": 650,
       "slug": "subzero-slammer--physical",
-      "canonicalName": "Subzero Slammer  Physical",
+      "canonicalName": "Subzero Slammer",
       "generationIntroduced": 7,
       "type": "ice",
       "category": "physical",
@@ -21648,7 +21648,7 @@
     {
       "id": 651,
       "slug": "subzero-slammer--special",
-      "canonicalName": "Subzero Slammer  Special",
+      "canonicalName": "Subzero Slammer",
       "generationIntroduced": 7,
       "type": "ice",
       "category": "special",
@@ -21680,7 +21680,7 @@
     {
       "id": 652,
       "slug": "devastating-drake--physical",
-      "canonicalName": "Devastating Drake  Physical",
+      "canonicalName": "Devastating Drake",
       "generationIntroduced": 7,
       "type": "dragon",
       "category": "physical",
@@ -21712,7 +21712,7 @@
     {
       "id": 653,
       "slug": "devastating-drake--special",
-      "canonicalName": "Devastating Drake  Special",
+      "canonicalName": "Devastating Drake",
       "generationIntroduced": 7,
       "type": "dragon",
       "category": "special",
@@ -21744,7 +21744,7 @@
     {
       "id": 654,
       "slug": "black-hole-eclipse--physical",
-      "canonicalName": "Black Hole Eclipse  Physical",
+      "canonicalName": "Black Hole Eclipse",
       "generationIntroduced": 7,
       "type": "dark",
       "category": "physical",
@@ -21776,7 +21776,7 @@
     {
       "id": 655,
       "slug": "black-hole-eclipse--special",
-      "canonicalName": "Black Hole Eclipse  Special",
+      "canonicalName": "Black Hole Eclipse",
       "generationIntroduced": 7,
       "type": "dark",
       "category": "special",
@@ -21808,7 +21808,7 @@
     {
       "id": 656,
       "slug": "twinkle-tackle--physical",
-      "canonicalName": "Twinkle Tackle  Physical",
+      "canonicalName": "Twinkle Tackle",
       "generationIntroduced": 7,
       "type": "fairy",
       "category": "physical",
@@ -21840,7 +21840,7 @@
     {
       "id": 657,
       "slug": "twinkle-tackle--special",
-      "canonicalName": "Twinkle Tackle  Special",
+      "canonicalName": "Twinkle Tackle",
       "generationIntroduced": 7,
       "type": "fairy",
       "category": "special",
@@ -23196,7 +23196,7 @@
     {
       "id": 698,
       "slug": "guardian-of-alola",
-      "canonicalName": "Guardian Of Alola",
+      "canonicalName": "Guardian of Alola",
       "generationIntroduced": 7,
       "type": "fairy",
       "category": "special",
@@ -23228,7 +23228,7 @@
     {
       "id": 699,
       "slug": "soul-stealing-7-star-strike",
-      "canonicalName": "Soul Stealing 7 Star Strike",
+      "canonicalName": "Soul-Stealing 7-Star Strike",
       "generationIntroduced": 7,
       "type": "ghost",
       "category": "physical",
@@ -23849,7 +23849,7 @@
     {
       "id": 717,
       "slug": "natures-madness",
-      "canonicalName": "Natures Madness",
+      "canonicalName": "Nature’s Madness",
       "generationIntroduced": 7,
       "type": "fairy",
       "category": "special",
@@ -23881,7 +23881,7 @@
     {
       "id": 718,
       "slug": "multi-attack",
-      "canonicalName": "Multi Attack",
+      "canonicalName": "Multi-Attack",
       "generationIntroduced": 7,
       "type": "normal",
       "category": "physical",
@@ -23913,7 +23913,7 @@
     {
       "id": 719,
       "slug": "10-000-000-volt-thunderbolt",
-      "canonicalName": "10 000 000 Volt Thunderbolt",
+      "canonicalName": "10,000,000 Volt Thunderbolt",
       "generationIntroduced": 7,
       "type": "electric",
       "category": "special",
@@ -24041,7 +24041,7 @@
     {
       "id": 723,
       "slug": "light-that-burns-the-sky",
-      "canonicalName": "Light That Burns The Sky",
+      "canonicalName": "Light That Burns the Sky",
       "generationIntroduced": 7,
       "type": "psychic",
       "category": "special",
@@ -24137,7 +24137,7 @@
     {
       "id": 726,
       "slug": "lets-snuggle-forever",
-      "canonicalName": "Lets Snuggle Forever",
+      "canonicalName": "Let’s Snuggle Forever",
       "generationIntroduced": 7,
       "type": "fairy",
       "category": "physical",

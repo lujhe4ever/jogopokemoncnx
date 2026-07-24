@@ -4,6 +4,10 @@ interface Profile {
   displayName: string;
 }
 
+void import("./audio/runtime-audio.js").then(({ installAudioUnlock }) => {
+  installAudioUnlock();
+});
+
 const form = document.querySelector<HTMLFormElement>("#auth-form");
 const registerButton = document.querySelector<HTMLButtonElement>("#register");
 const status = document.querySelector<HTMLParagraphElement>("#status");
@@ -58,7 +62,7 @@ async function enterGame(profile: Profile) {
   if (authPanel) authPanel.hidden = true;
   if (gamePanel) gamePanel.hidden = false;
   const { startGame } = await import("./game.js");
-  startGame(payload.ticket, profile.id);
+  await startGame(payload.ticket, profile.id);
 }
 
 async function login() {

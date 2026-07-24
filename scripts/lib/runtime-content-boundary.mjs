@@ -30,6 +30,8 @@ const FORBIDDEN_REFERENCES = [
   /pokemon-canonical/i,
   /content[\\/]+packs[\\/]+pokemon-canonical/i,
   /--pokeapi-default--/i,
+  /raw\.githubusercontent\.com[\\/]PokeAPI[\\/](sprites|cries)/i,
+  /https?:\/\/[^\s"'`]+\.gif(?:[?#][^\s"'`]*)?/i,
 ];
 
 function runtimeApproved(manifest) {
@@ -77,7 +79,7 @@ export class RuntimeContentBoundaryError extends Error {
       `doubtful pokemon content is referenced by runtime:\n${violations
         .map(
           (violation) =>
-            `${violation.file}:${violation.line}: ${violation.snippet}`,
+            `${violation.file}:${violation.line}: ${violation.asset}: ${violation.status}: ${violation.policy}: ${violation.snippet}`,
         )
         .join("\n")}`,
     );
@@ -106,15 +108,55 @@ export async function checkRuntimeContentBoundaries({
     files.push(...(await collectRuntimeFiles(path.join(root, runtimeRoot))));
   }
   files.sort();
+  const blockedTokens = new Map();
+  for (const relativePath of [
+    "content/assets/catalogs/static-sprites.json",
+    "content/assets/catalogs/audio.json",
+  ]) {
+    try {
+      const catalog = JSON.parse(
+        await readFile(path.join(root, relativePath), "utf8"),
+      );
+      const shards = await Promise.all(
+        (catalog.shards ?? []).map(async (shard) =>
+          JSON.parse(await readFile(path.join(root, shard.path), "utf8")),
+        ),
+      );
+      const assets = [
+        ...(catalog.assets ?? []),
+        ...shards.flatMap((shard) => shard.assets ?? []),
+      ];
+      for (const asset of assets) {
+        if (asset.runtimeEnabled === true) continue;
+        for (const token of [asset.assetId, asset.localPath].filter(Boolean)) {
+          blockedTokens.set(token, asset);
+        }
+      }
+    } catch (error) {
+      if (error?.code !== "ENOENT") throw error;
+    }
+  }
   const violations = [];
   for (const file of files) {
     const lines = (await readFile(file, "utf8")).split(/\r?\n/);
     for (let index = 0; index < lines.length; index += 1) {
-      if (FORBIDDEN_REFERENCES.some((pattern) => pattern.test(lines[index]))) {
+      const genericViolation = FORBIDDEN_REFERENCES.some((pattern) =>
+        pattern.test(lines[index]),
+      );
+      const blockedReference = [...blockedTokens.entries()].find(([token]) =>
+        lines[index].includes(token),
+      );
+      if (genericViolation || blockedReference) {
+        const blockedAsset = blockedReference?.[1];
         violations.push({
           file: path.relative(root, file).replaceAll("\\", "/"),
           line: index + 1,
           snippet: lines[index].trim().slice(0, 240),
+          asset: blockedAsset?.assetId ?? "pokemon-content-reference",
+          status: blockedAsset?.licenseStatus ?? manifest.licenseStatus,
+          policy: blockedAsset
+            ? "asset-runtime-disabled"
+            : "blocked-content-reference",
         });
       }
     }
