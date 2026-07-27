@@ -552,6 +552,14 @@ class HouseScene extends Phaser.Scene {
   }
 
   private renderAvatar(id: string, target: PlayerState, self: boolean) {
+    if (self) {
+      const game = document.querySelector<HTMLElement>("#game");
+      if (game) {
+        game.dataset.playerX = target.x.toFixed(1);
+        game.dataset.playerY = target.y.toFixed(1);
+        game.dataset.zoneId = this.zoneId;
+      }
+    }
     let avatar = this.avatars.get(id);
     if (!avatar) {
       const body = self ? 0xd9684b : 0x6957b8;

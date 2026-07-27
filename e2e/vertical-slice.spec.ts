@@ -10,6 +10,44 @@ async function move(
   await page.keyboard.up(key);
 }
 
+async function moveTo(
+  page: Page,
+  key: "ArrowLeft" | "ArrowRight" | "ArrowUp" | "ArrowDown",
+  axis: "x" | "y",
+  target: number,
+  direction: "at-most" | "at-least",
+) {
+  const game = page.locator("#game");
+  await expect(game).toHaveAttribute(`data-player-${axis}`, /\d/);
+  for (let attempt = 0; attempt < 30; attempt += 1) {
+    const position = Number(await game.getAttribute(`data-player-${axis}`));
+    if (
+      (direction === "at-most" && position <= target) ||
+      (direction === "at-least" && position >= target)
+    )
+      return;
+    await move(page, key, 180);
+    await page.waitForTimeout(70);
+  }
+  throw new Error(
+    `player did not reach ${axis} ${direction} ${String(target)}`,
+  );
+}
+
+async function moveUntilZone(
+  page: Page,
+  key: "ArrowLeft" | "ArrowRight" | "ArrowUp" | "ArrowDown",
+  title: string,
+) {
+  const zoneTitle = page.locator("#zone-title");
+  for (let attempt = 0; attempt < 20; attempt += 1) {
+    if ((await zoneTitle.textContent()) === title) return;
+    await move(page, key, 180);
+    await page.waitForTimeout(70);
+  }
+  await expect(zoneTitle).toHaveText(title);
+}
+
 test("completes and persists the first expedition", async ({
   page,
 }, testInfo) => {
@@ -38,29 +76,29 @@ test("completes and persists the first expedition", async ({
     fullPage: true,
   });
 
-  await move(page, "ArrowLeft", 520);
+  await moveTo(page, "ArrowLeft", "x", 270, "at-most");
   await page.keyboard.press("e");
   await expect(page.locator("#interaction-feedback")).toContainText(
     "Cuidadora:",
   );
 
-  await move(page, "ArrowLeft", 320);
-  await move(page, "ArrowDown", 1_450);
-  await move(page, "ArrowRight", 900);
+  await moveTo(page, "ArrowLeft", "x", 230, "at-most");
+  await moveTo(page, "ArrowDown", "y", 352, "at-least");
+  await moveUntilZone(page, "ArrowRight", "Campina do Luar");
   await expect(page.locator("#zone-title")).toHaveText("Campina do Luar");
   await page.screenshot({
     path: testInfo.outputPath("02-campina-do-luar.png"),
     fullPage: true,
   });
 
-  await move(page, "ArrowDown", 1_120);
+  await moveTo(page, "ArrowDown", "y", 200, "at-least");
   await page.keyboard.press("e");
   await expect(page.locator("#interaction-feedback")).toContainText(
     "Orbe de captura",
   );
 
-  await move(page, "ArrowRight", 1_850);
-  await move(page, "ArrowUp", 650);
+  await moveTo(page, "ArrowRight", "x", 530, "at-least");
+  await moveTo(page, "ArrowUp", "y", 140, "at-most");
   await page.keyboard.press("e");
   await expect(page.locator("#battle-panel")).toBeVisible();
   await page.screenshot({
