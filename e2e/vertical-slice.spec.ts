@@ -48,6 +48,13 @@ async function moveUntilZone(
   await expect(zoneTitle).toHaveText(title);
 }
 
+async function interact(page: Page) {
+  await page.keyboard.down("e");
+  await page.waitForTimeout(120);
+  await page.keyboard.up("e");
+  await page.waitForTimeout(70);
+}
+
 test("completes and persists the first expedition", async ({
   page,
 }, testInfo) => {
@@ -77,7 +84,7 @@ test("completes and persists the first expedition", async ({
   });
 
   await moveTo(page, "ArrowLeft", "x", 270, "at-most");
-  await page.keyboard.press("e");
+  await interact(page);
   await expect(page.locator("#interaction-feedback")).toContainText(
     "Cuidadora:",
   );
@@ -92,14 +99,14 @@ test("completes and persists the first expedition", async ({
   });
 
   await moveTo(page, "ArrowDown", "y", 200, "at-least");
-  await page.keyboard.press("e");
+  await interact(page);
   await expect(page.locator("#interaction-feedback")).toContainText(
     "Orbe de captura",
   );
 
   await moveTo(page, "ArrowRight", "x", 530, "at-least");
   await moveTo(page, "ArrowUp", "y", 140, "at-most");
-  await page.keyboard.press("e");
+  await interact(page);
   await expect(page.locator("#battle-panel")).toBeVisible();
   await page.screenshot({
     path: testInfo.outputPath("03-encontro-selvagem.png"),
