@@ -1,3 +1,5 @@
+import { playSound } from "./audio.js";
+
 type BattleAction = "strike" | "guard";
 
 export interface BattleState {
@@ -7,21 +9,46 @@ export interface BattleState {
   phase: "awaiting_player" | "finished";
   outcome?: "player_win" | "npc_win" | "draw" | "abandoned";
   player: {
+    id: string;
     name: string;
+    level?: number;
     health: number;
     maxHealth: number;
   };
   npc: {
+    id: string;
     name: string;
+    level?: number;
     health: number;
     maxHealth: number;
   };
+}
+
+interface TurnResolvedEvent {
+  type: "turn_resolved";
+  playerAction: BattleAction;
+  npcAction: BattleAction;
+  playerDamage: number;
+  npcDamage: number;
+}
+
+interface BattleProgression {
+  definitionId: string;
+  experienceGained: number;
+  experience: number;
+  level: number;
+  leveledUp: boolean;
+  evolved: boolean;
 }
 
 interface CommandResponse {
   accepted: boolean;
   state: BattleState;
   error?: string;
+  events?: Array<
+    TurnResolvedEvent | { type: "battle_finished"; outcome: string }
+  >;
+  progression?: BattleProgression;
 }
 
 const gamePanel = document.querySelector<HTMLElement>("#game-panel");
@@ -33,7 +60,8 @@ const actionButtons = [
 ];
 let active: BattleState | undefined;
 let timeout: number | undefined;
-let onFinished: ((state: BattleState) => void) | undefined;
+let onFinished:
+  ((state: BattleState, progression?: BattleProgression) => void) | undefined;
 let finishedNotified = false;
 
 async function post(path: string, body?: object) {
@@ -74,7 +102,11 @@ function stateFrom(value: unknown): BattleState {
   return candidate as BattleState;
 }
 
-function render(state: BattleState, message?: string) {
+function render(
+  state: BattleState,
+  message?: string,
+  progression?: BattleProgression,
+) {
   active = state;
   const set = (selector: string, value: string) => {
     const element = document.querySelector<HTMLElement>(selector);
@@ -93,6 +125,20 @@ function render(state: BattleState, message?: string) {
   };
   set("#battle-player-name", state.player.name);
   set("#battle-npc-name", state.npc.name);
+  set(
+    "#battle-player-level",
+    `Nível ${String(state.player.level ?? progression?.level ?? 1)}`,
+  );
+  set("#battle-npc-level", `Nível ${String(state.npc.level ?? 1)}`);
+  const playerSprite = document.querySelector<HTMLElement>(
+    "#battle-player-sprite",
+  );
+  const npcSprite = document.querySelector<HTMLElement>("#battle-npc-sprite");
+  if (playerSprite)
+    playerSprite.dataset.creature =
+      state.player.id.split(":").at(-1) ?? "emberbud";
+  if (npcSprite)
+    npcSprite.dataset.creature = state.npc.id.split(":").at(-1) ?? "nightleaf";
   health("#battle-player-health", state.player);
   health("#battle-npc-health", state.npc);
   const finished = state.phase === "finished";
@@ -115,21 +161,71 @@ function render(state: BattleState, message?: string) {
     }, 30_100);
   else if (!finishedNotified) {
     finishedNotified = true;
-    onFinished?.(state);
+    playSound(state.outcome === "player_win" ? "victory" : "guard");
+    window.dispatchEvent(new Event("lt:state-changed"));
+    onFinished?.(state, progression);
   }
+}
+
+function resultMessage(
+  response: CommandResponse,
+  action: BattleAction,
+): string | undefined {
+  if (response.progression) {
+    const level = response.progression.leveledUp
+      ? ` Subiu para o nível ${String(response.progression.level)}.`
+      : "";
+    const evolution = response.progression.evolved
+      ? " Uma evolução foi aplicada."
+      : "";
+    return `Vitória! +${String(response.progression.experienceGained)} XP.${level}${evolution}`;
+  }
+  const turn = response.events?.find(
+    (event): event is TurnResolvedEvent => event.type === "turn_resolved",
+  );
+  if (!turn) return undefined;
+  return action === "guard"
+    ? `Postura firme: ${String(turn.playerDamage)} de dano recebido; ${String(turn.npcDamage)} causado.`
+    : `Golpe de campo: ${String(turn.npcDamage)} de dano causado; ${String(turn.playerDamage)} recebido.`;
 }
 
 async function choose(action: BattleAction) {
   if (!active || active.phase === "finished") return;
+  const previous = active;
   for (const button of actionButtons) button.disabled = true;
+  playSound(action === "strike" ? "strike" : "guard");
+  const playerSprite = document.querySelector<HTMLElement>(
+    "#battle-player-sprite",
+  );
+  playerSprite?.classList.add(
+    action === "strike" ? "is-attacking" : "is-guarding",
+  );
   const value = await post(`/battles/${active.id}/commands`, {
     sequence: active.expectedSequence,
     action,
   });
   const response = value as CommandResponse;
+  const next = stateFrom(response);
+  if (next.player.health < previous.player.health)
+    document
+      .querySelector<HTMLElement>("#battle-player-sprite")
+      ?.classList.add("is-hit");
+  if (next.npc.health < previous.npc.health)
+    document
+      .querySelector<HTMLElement>("#battle-npc-sprite")
+      ?.classList.add("is-hit");
+  window.setTimeout(() => {
+    for (const sprite of document.querySelectorAll<HTMLElement>(
+      ".battle-creature",
+    ))
+      sprite.classList.remove("is-attacking", "is-guarding", "is-hit");
+  }, 420);
   render(
-    stateFrom(response),
-    response.accepted ? undefined : "Comando rejeitado; estado atualizado.",
+    next,
+    response.accepted
+      ? resultMessage(response, action)
+      : "Comando rejeitado; estado atualizado.",
+    response.progression,
   );
 }
 
@@ -141,7 +237,7 @@ async function abandon() {
 
 export async function startBattle(
   battleId?: string,
-  finished?: (state: BattleState) => void,
+  finished?: (state: BattleState, progression?: BattleProgression) => void,
 ) {
   onFinished = finished;
   finishedNotified = false;
@@ -153,6 +249,8 @@ export async function startBattle(
   );
   if (gamePanel) gamePanel.hidden = true;
   if (battlePanel) battlePanel.hidden = false;
+  window.dispatchEvent(new Event("lt:battle-open"));
+  playSound("battle");
   render(state);
 }
 
@@ -167,6 +265,8 @@ document.querySelector("#abandon-battle")?.addEventListener("click", () => {
 returnButton?.addEventListener("click", () => {
   if (battlePanel) battlePanel.hidden = true;
   if (gamePanel) gamePanel.hidden = false;
+  window.dispatchEvent(new Event("lt:battle-close"));
+  window.dispatchEvent(new Event("lt:state-changed"));
 });
 window.addEventListener("pagehide", () => {
   if (active?.phase === "awaiting_player")

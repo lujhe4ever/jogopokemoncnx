@@ -1,3 +1,11 @@
+import { soundEnabled, toggleSound } from "./audio.js";
+import {
+  chooseStarter,
+  fetchGameState,
+  renderStarterOptions,
+  type GameState,
+} from "./player-state.js";
+
 interface Profile {
   id: string;
   email: string;
@@ -8,14 +16,16 @@ const form = document.querySelector<HTMLFormElement>("#auth-form");
 const registerButton = document.querySelector<HTMLButtonElement>("#register");
 const status = document.querySelector<HTMLParagraphElement>("#status");
 const authPanel = document.querySelector<HTMLElement>("#auth-panel");
+const starterPanel = document.querySelector<HTMLElement>("#starter-panel");
 const gamePanel = document.querySelector<HTMLElement>("#game-panel");
-const startBattleButton =
-  document.querySelector<HTMLButtonElement>("#start-battle");
-const questJournalButton = document.querySelector<HTMLButtonElement>(
-  "#quest-journal-button",
-);
 const enterArenaButton =
   document.querySelector<HTMLButtonElement>("#enter-arena");
+const soundButton = document.querySelector<HTMLButtonElement>("#sound-toggle");
+let gameStarted = false;
+
+function setStatus(message: string): void {
+  if (status) status.textContent = message;
+}
 
 function values() {
   if (!form) throw new Error("Formulário indisponível");
@@ -25,8 +35,8 @@ function values() {
     return typeof value === "string" ? value : "";
   };
   return {
-    displayName: text("displayName"),
-    email: text("email"),
+    displayName: text("displayName").trim(),
+    email: text("email").trim(),
     password: text("password"),
   };
 }
@@ -40,71 +50,107 @@ async function request(path: string, body?: object) {
     init.headers = { "content-type": "application/json" };
     init.body = JSON.stringify(body);
   }
-  return fetch(path, init);
+  return fetch(`/api${path}`, init);
 }
 
-async function enterGame(profile: Profile) {
-  const response = await request("/api/auth/ws-ticket", {});
-  if (!response.ok) throw new Error("Não foi possível abrir a sessão do jogo");
-  const payload = (await response.json()) as unknown;
-  if (
-    typeof payload !== "object" ||
-    payload === null ||
-    !("ticket" in payload) ||
-    typeof payload.ticket !== "string"
-  ) {
-    throw new Error("Resposta de ticket inválida");
+function showOnly(panel: "auth" | "starter" | "game"): void {
+  if (authPanel) authPanel.hidden = panel !== "auth";
+  if (starterPanel) starterPanel.hidden = panel !== "starter";
+  if (gamePanel) gamePanel.hidden = panel !== "game";
+}
+
+async function launchWorld(profile: Profile): Promise<void> {
+  if (gameStarted) {
+    showOnly("game");
+    return;
   }
-  if (authPanel) authPanel.hidden = true;
-  if (gamePanel) gamePanel.hidden = false;
+  const response = await request("/auth/ws-ticket", {});
+  if (!response.ok) throw new Error("Não foi possível abrir o mundo.");
+  const payload = (await response.json()) as { ticket?: unknown };
+  if (typeof payload.ticket !== "string")
+    throw new Error("O servidor retornou um ticket inválido.");
+  showOnly("game");
   const { startGame } = await import("./game.js");
   startGame(payload.ticket, profile.id);
+  gameStarted = true;
 }
 
-async function login() {
+async function continueJourney(
+  profile: Profile,
+  state?: GameState,
+): Promise<void> {
+  const journey = state ?? (await fetchGameState());
+  if (!journey.profile.starterDefinitionId) {
+    showOnly("starter");
+    renderStarterOptions(journey.starterOptions, async (definitionId) => {
+      await chooseStarter(definitionId);
+      const updated = await fetchGameState();
+      await launchWorld(profile);
+      window.dispatchEvent(
+        new CustomEvent("lt:starter-selected", { detail: updated }),
+      );
+    });
+    return;
+  }
+  await launchWorld(profile);
+}
+
+async function login(): Promise<void> {
   const input = values();
-  const response = await request("/api/auth/login", {
+  setStatus("Entrando...");
+  const response = await request("/auth/login", {
     email: input.email,
     password: input.password,
   });
-  if (!response.ok) throw new Error("E-mail ou senha inválidos");
+  if (!response.ok) throw new Error("E-mail ou senha inválidos.");
   const payload = (await response.json()) as { profile: Profile };
-  await enterGame(payload.profile);
+  await continueJourney(payload.profile);
 }
 
 form?.addEventListener("submit", (event) => {
   event.preventDefault();
   void login().catch((error: unknown) => {
-    if (status)
-      status.textContent =
-        error instanceof Error ? error.message : "Falha ao entrar";
+    setStatus(error instanceof Error ? error.message : "Falha ao entrar.");
   });
 });
 
 registerButton?.addEventListener("click", () => {
   void (async () => {
     const input = values();
-    const response = await request("/api/auth/register", input);
+    if (input.displayName.length < 2)
+      throw new Error("Informe um nome público para criar a conta.");
+    setStatus("Criando sua conta...");
+    const response = await request("/auth/register", input);
     if (!response.ok && response.status !== 409)
-      throw new Error("Não foi possível criar a conta");
+      throw new Error("Não foi possível criar a conta.");
     await login();
   })().catch((error: unknown) => {
-    if (status)
-      status.textContent =
-        error instanceof Error ? error.message : "Falha no cadastro";
+    setStatus(error instanceof Error ? error.message : "Falha no cadastro.");
   });
 });
 
-startBattleButton?.addEventListener("click", () => {
-  void import("./battle-ui.js").then(({ startBattle }) => {
-    return startBattle();
-  });
+document.querySelector("#logout")?.addEventListener("click", () => {
+  void (async () => {
+    await request("/auth/logout", {});
+    if (gameStarted) {
+      const { stopGame } = await import("./game.js");
+      stopGame();
+    }
+    gameStarted = false;
+    for (const panel of document.querySelectorAll<HTMLElement>(
+      "#starter-panel, #player-panel, #battle-panel, #arena-panel, #pvp-panel",
+    ))
+      panel.hidden = true;
+    showOnly("auth");
+    form?.reset();
+    setStatus("Sessão encerrada com segurança.");
+  })();
 });
 
-questJournalButton?.addEventListener("click", () => {
-  void import("./quest-ui.js").then(({ openQuestJournal }) =>
-    openQuestJournal(),
-  );
+soundButton?.addEventListener("click", () => {
+  void toggleSound().then((enabled) => {
+    soundButton.textContent = `Som: ${enabled ? "ligado" : "desligado"}`;
+  });
 });
 
 enterArenaButton?.addEventListener("click", () => {
@@ -126,3 +172,35 @@ window.addEventListener("lt:encounter", (event) => {
     startEncounter(authorization),
   );
 });
+
+window.addEventListener("lt:zone-changed", (event) => {
+  const zoneId =
+    event instanceof CustomEvent && typeof event.detail === "string"
+      ? event.detail
+      : "house";
+  const title = document.querySelector<HTMLElement>("#zone-title");
+  if (title)
+    title.textContent =
+      zoneId === "meadow" ? "Campina do Luar" : "Casa do Explorador";
+});
+
+void (async () => {
+  const response = await request("/auth/session");
+  if (!response.ok) {
+    setStatus("Entre ou crie uma conta para começar.");
+    return;
+  }
+  const payload = (await response.json()) as { profile: Profile };
+  setStatus("Sessão encontrada. Retomando a jornada...");
+  await continueJourney(payload.profile);
+})().catch((error: unknown) => {
+  showOnly("auth");
+  setStatus(
+    error instanceof Error
+      ? error.message
+      : "Não foi possível retomar a sessão.",
+  );
+});
+
+if (soundButton)
+  soundButton.textContent = `Som: ${soundEnabled() ? "ligado" : "desligado"}`;

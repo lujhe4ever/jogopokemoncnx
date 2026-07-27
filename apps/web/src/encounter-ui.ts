@@ -1,4 +1,5 @@
 import { startBattle, type BattleState } from "./battle-ui.js";
+import { playSound } from "./audio.js";
 
 interface Encounter {
   id: string;
@@ -38,13 +39,22 @@ function parseEncounter(value: unknown): Encounter {
   return value as Encounter;
 }
 
-async function finishBattle(state: BattleState) {
+async function finishBattle(
+  state: BattleState,
+  progression?: {
+    experienceGained: number;
+    level: number;
+    leveledUp: boolean;
+    evolved: boolean;
+  },
+) {
   if (!encounter) return;
   if (state.outcome === "player_win") {
     if (captureButton) captureButton.hidden = false;
     if (status)
-      status.textContent =
-        "Alvo elegível. Use um Orbe de captura ou retorne ao mundo.";
+      status.textContent = `Vitória: +${String(progression?.experienceGained ?? 0)} XP${
+        progression?.leveledUp ? ` e nível ${String(progression.level)}` : ""
+      }${progression?.evolved ? " com evolução" : ""}. Use um Orbe de captura ou retorne ao mundo.`;
   } else {
     await post(`/encounters/${encounter.id}/return`);
     if (status)
@@ -82,6 +92,10 @@ captureButton?.addEventListener("click", () => {
             : result.result === "item_required"
               ? "Você precisa coletar um Orbe de captura."
               : "A criatura escapou. Retorno seguro liberado.";
+      if (result.result === "captured") {
+        playSound("capture");
+        window.dispatchEvent(new Event("lt:state-changed"));
+      }
       captureButton.hidden = result.result !== "item_required";
       captureButton.disabled = false;
     })
