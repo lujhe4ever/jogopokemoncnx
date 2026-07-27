@@ -181,7 +181,9 @@ export class HouseRoom {
         };
       }
     }
-    for (const accountId of this.players.keys()) this.sendSnapshot(accountId);
+    const serverTime = Date.now();
+    for (const accountId of this.players.keys())
+      this.sendSnapshot(accountId, false, serverTime);
   }
 
   snapshot(zoneId?: string): Record<string, ZonePlayerState> {
@@ -231,12 +233,13 @@ export class HouseRoom {
       lastProcessedSequence: player.state.lastProcessedSequence,
     };
     player.inputs.length = 0;
+    const serverTime = Date.now();
     for (const [id, connected] of this.players) {
       if (
         connected.state.zoneId === previousZoneId ||
         connected.state.zoneId === player.state.zoneId
       ) {
-        this.sendSnapshot(id, id === accountId);
+        this.sendSnapshot(id, id === accountId, serverTime);
       }
     }
     await this.checkpoints.save(accountId, player.state);
@@ -248,7 +251,11 @@ export class HouseRoom {
     );
   }
 
-  private sendSnapshot(accountId: string, transitioned = false): void {
+  private sendSnapshot(
+    accountId: string,
+    transitioned = false,
+    serverTime = Date.now(),
+  ): void {
     const player = this.players.get(accountId);
     if (!player || player.socket.readyState !== 1) return;
     const zone = getZone(player.state.zoneId);
@@ -257,7 +264,7 @@ export class HouseRoom {
       JSON.stringify({
         protocolVersion: 1,
         type: "world_snapshot",
-        serverTime: Date.now(),
+        serverTime,
         zoneId: zone.id,
         packId: zone.packId,
         transitioned,
