@@ -55,8 +55,8 @@ describe("authoritative zone transitions", () => {
   it("applies queued movement before validating a portal request", async () => {
     const checkpoints = new MemoryCheckpoints();
     checkpoints.saved.set("player", {
-      x: 320,
-      y: 336,
+      x: 218,
+      y: 352,
       zoneId: "house",
       lastProcessedSequence: 0,
     });
@@ -64,7 +64,8 @@ describe("authoritative zone transitions", () => {
     const socket = new FakeSocket();
     await room.connect(socket, "player");
 
-    socket.input({ type: "input", sequence: 1, x: 0, y: 1 });
+    for (let sequence = 1; sequence <= 12; sequence += 1)
+      socket.input({ type: "input", sequence, x: 1, y: 0 });
     socket.input({ type: "transition", portalId: "front-door" });
 
     expect(room.snapshot().player).toMatchObject({

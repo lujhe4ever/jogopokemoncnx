@@ -212,7 +212,7 @@ export class HouseRoom {
   private async transition(accountId: string, portalId: string): Promise<void> {
     const player = this.players.get(accountId);
     if (!player) return;
-    this.applyInputs(player);
+    this.applyInputs(player, player.inputs.length);
     const previousZoneId = player.state.zoneId;
     const portal = findAvailablePortal(player.state.zoneId, player.state);
     if (!portal || portal.id !== portalId) return;
@@ -240,8 +240,8 @@ export class HouseRoom {
     );
   }
 
-  private applyInputs(player: ConnectedPlayer): void {
-    for (const input of player.inputs.splice(0, 10)) {
+  private applyInputs(player: ConnectedPlayer, limit = 10): void {
+    for (const input of player.inputs.splice(0, limit)) {
       player.state = {
         ...simulateZoneMovement(player.state.zoneId, player.state, input, 0.05),
         zoneId: player.state.zoneId,

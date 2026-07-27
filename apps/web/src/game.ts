@@ -74,6 +74,7 @@ class HouseScene extends Phaser.Scene {
   private local: PlayerState = { ...SAFE_SPAWN };
   private zoneId = "house";
   private requestedPortal: string | undefined;
+  private nextPortalAttemptAt = 0;
   private sequence = 0;
   private accumulator = 0;
   private cursors: Phaser.Types.Input.Keyboard.CursorKeys | undefined;
@@ -131,12 +132,20 @@ class HouseScene extends Phaser.Scene {
       if (this.socket?.readyState === WebSocket.OPEN)
         this.socket.send(JSON.stringify({ type: "input", ...input }));
       const portal = findAvailablePortal(this.zoneId, this.local);
-      if (portal && portal.id !== this.requestedPortal) {
+      if (
+        portal &&
+        (portal.id !== this.requestedPortal ||
+          this.time.now >= this.nextPortalAttemptAt)
+      ) {
         this.requestedPortal = portal.id;
+        this.nextPortalAttemptAt = this.time.now + 200;
         this.socket?.send(
           JSON.stringify({ type: "transition", portalId: portal.id }),
         );
-      } else if (!portal) this.requestedPortal = undefined;
+      } else if (!portal) {
+        this.requestedPortal = undefined;
+        this.nextPortalAttemptAt = 0;
+      }
     }
     this.renderAvatar(this.accountId, this.local, true);
     if (
@@ -208,6 +217,7 @@ class HouseScene extends Phaser.Scene {
         this.zoneId = value.zoneId;
         this.pending.length = 0;
         this.requestedPortal = undefined;
+        this.nextPortalAttemptAt = 0;
         this.renderZone();
         playSound("open");
         window.dispatchEvent(
