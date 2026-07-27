@@ -2,9 +2,9 @@
 
 | Campo | Valor |
 | --- | --- |
-| Status do projeto | **Roadmap 0B–17 concluído** |
-| Atualizado em | 2026-07-23 |
-| Implementação existente | Fases 1–17 integradas à `main` |
+| Status do projeto | **Fase 18 implementada em branch e sob revisão** |
+| Atualizado em | 2026-07-27 |
+| Implementação existente | Fases 1–17 na `main`; Fase 18 em PR rascunho |
 
 ## 1. Regras do roadmap
 
@@ -48,6 +48,7 @@ Status permitidos:
 | 15 | Painel administrativo | concluído |
 | 16 | Segurança, performance, testes e deploy | concluído |
 | 17 | Alpha privado e estabilização | concluído |
+| 18 | Vertical slice visual e jogável | em andamento — implementação concluída, revisão pendente |
 
 ## 3. Fases
 
@@ -756,9 +757,38 @@ Validar o ciclo completo com usuários autorizados e conteúdo permitido.
 `375dca531e1abda09aa50a469a645a861a6485b6`. O ensaio permaneceu interno, sem
 deploy, convidados ou coleta real.
 
+### Fase 18 — Vertical slice visual e jogável
+
+**Objetivo**
+
+Transformar a fundação integrada em uma demonstração local, visual e reproduzível da
+primeira expedição, sem importar conteúdo protegido.
+
+**Entregáveis**
+
+- preparação local autocontida, proxy `/api` consistente e sessão retomável;
+- identidade visual procedural original para login, escolha, casa, campina e batalha;
+- três companheiros originais com escolha única e persistente;
+- inventário, coleção/equipe e missões integrados;
+- batalha com criatura ativa, progresso e encontro orientado pelo conteúdo;
+- captura e persistência da jornada;
+- Playwright E2E, screenshots e documentação de uso.
+
+**Critérios de aceite**
+
+- jornada do cadastro à captura pode ser executada no navegador;
+- estado essencial permanece após recarregar;
+- instalação limpa executa `pnpm check`;
+- proxy local e de produção mantêm os contratos públicos;
+- nenhuma mídia Pokémon entra no runtime;
+- migrations, testes, builds, budgets e scans passam.
+
+**Status:** implementação concluída na branch
+`feat/fase-18-vertical-slice-jogavel`; issue #26 e PR rascunho aguardam revisão. O
+resultado ainda não está integrado à `main`.
+
 ## 4. Gate para a próxima tarefa
 
-Não existe fase seguinte autorizada. A próxima decisão deve escolher entre ampliar o
-produto, preparar infraestrutura privada real ou manter o projeto somente local.
-Qualquer opção exige novo escopo, revisão dos riscos residuais e autorização
-específica; deploy continua desautorizado.
+Revisar a Fase 18, sua CI e as evidências de navegador. Merge e deploy continuam
+desautorizados nesta entrega. Uma eventual Fase 19 exige novo escopo, riscos, critérios
+de aceite e autorização explícita.

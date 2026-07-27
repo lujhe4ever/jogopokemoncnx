@@ -2,9 +2,9 @@
 
 | Campo | Valor |
 | --- | --- |
-| Status | **Proposta funcional para revisão** |
-| Atualizado em | 2026-07-23 |
-| Implementação existente | Nenhuma |
+| Status | **Visão vigente; primeira jornada implementada** |
+| Atualizado em | 2026-07-27 |
+| Implementação existente | Fases 1–17 e vertical slice da Fase 18 |
 
 ## 1. Como interpretar este documento
 
@@ -66,8 +66,8 @@ Controles, legibilidade e feedback devem funcionar por toque.
 
 ```mermaid
 flowchart TD
-    LOGIN["Login"] --> PROFILE["Perfil"]
-    PROFILE --> HOME["Casa do jogador"]
+    LOGIN["Login ou cadastro"] --> STARTER["Escolha permanente do companheiro"]
+    STARTER --> HOME["Casa do jogador"]
     HOME --> TUTORIAL["Movimento e primeira interação"]
     TUTORIAL --> WORLD["Exploração do mundo"]
     WORLD --> NPC["NPC, diálogo ou missão"]
@@ -85,8 +85,8 @@ flowchart TD
 Requisitos da jornada:
 
 1. **[R]** autenticar por e-mail e senha;
-2. **[R]** entrar na casa do jogador;
-3. **[P]** receber orientação curta de movimento e interação;
+2. **[R]** escolher um dos três companheiros originais;
+3. **[R]** entrar na casa e receber orientação curta de movimento e interação;
 4. **[R]** sair para explorar;
 5. **[R]** encontrar NPCs, itens e baús;
 6. **[R]** encontrar, capturar e treinar criaturas;
@@ -94,6 +94,11 @@ Requisitos da jornada:
 8. **[R]** entrar opcionalmente na arena;
 9. **[R]** conversar, usar emotes, convidar e desafiar;
 10. **[R]** assistir a batalhas nos telões.
+
+A vertical slice implementada usa Broto Âmbar, Musgote e Maréu como opções iniciais.
+A “Primeira expedição” conduz conversa com a Cuidadora, visita à Campina do Luar,
+batalha e captura da Folha Noturna. Inventário, equipe e missão ficam disponíveis no
+HUD, e a arena permanece opcional.
 
 ## 5. Loops
 

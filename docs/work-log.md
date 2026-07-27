@@ -1323,3 +1323,41 @@ exposição.
 
 Não há fase seguinte autorizada. Definir um novo ciclo e seus critérios antes de
 alterar produto ou infraestrutura.
+
+## 2026-07-27 — Implementação local da Fase 18
+
+### Contexto
+
+A issue #26 reservou a branch `feat/fase-18-vertical-slice-jogavel` a partir de
+`6f8929fb6b2587418ab8e06be9ec0e38fe301dd5`. As PRs empilhadas #17, #21, #23 e #25
+foram somente inspecionadas e permaneceram fora da base. Nenhum conteúdo Pokémon foi
+copiado ou ativado.
+
+### Alterações
+
+- `pnpm check` passou a gerar o Prisma Client em instalação limpa;
+- Nginx passou a reproduzir o rewrite `/api` do Vite sem quebrar admin/alpha;
+- sessão retoma automaticamente e pode ser revogada pelo botão Sair;
+- três criaturas originais ganharam escolha única, persistente e idempotente;
+- estado minimizado de inventário, coleção/equipe, checkpoint e missão foi exposto;
+- batalha passou a usar a primeira criatura da equipe e aplicar XP idempotente;
+- autorizações de encontro passaram a transportar zona e definição da criatura;
+- casa, campina, personagens, NPC, itens e batalha receberam apresentação procedural;
+- passos direcionais, efeitos de batalha/captura e áudio opt-in foram adicionados;
+- Playwright cobre a primeira expedição até captura, equipe, reload e logout;
+- screenshots desktop/mobile foram registradas em `docs/screenshots`.
+
+### Verificações
+
+- baseline anterior: 24 arquivos e 69 testes aprovados;
+- suíte da fase ampliada para 27 arquivos e 77 testes;
+- QA visual em navegador real confirmou escolha, casa, batalha e breakpoint mobile,
+  sem erro de console no fluxo validado;
+- PostgreSQL/Docker não estavam disponíveis neste computador; migration desde banco
+  vazio e o E2E persistente foram delegados à CI Linux;
+- nenhuma infraestrutura real, telemetria real, merge ou deploy foi executado.
+
+### Próximo passo
+
+Revisar a PR rascunho e sua CI. Corrigir somente defeitos da Fase 18 na mesma branch;
+merge e qualquer fase posterior exigem autorizações separadas.

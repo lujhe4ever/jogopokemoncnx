@@ -2,8 +2,8 @@
 
 | Campo | Valor |
 | --- | --- |
-| Atualizado em | 2026-07-23 |
-| Implementação existente | Fases 1–15 |
+| Atualizado em | 2026-07-27 |
+| Implementação existente | Fases 1–17 e Fase 18 em revisão |
 | Referência de IDs técnicos | [`../architecture.md`](../architecture.md) |
 
 ## 1. Regras
@@ -63,6 +63,7 @@ Ao aceitar ou mudar uma decisão:
 | D-020 | Administração separada, elevada, autorizada e auditada | Aceita |
 | D-021 | Candidato operacional reproduzível sem deploy automático | Aceita |
 | D-022 | Alpha interno com telemetria anônima, consentida e opt-in | Aceita |
+| D-026 | Vertical slice original com projeção de estado e visuais procedurais | Aceita |
 
 ## 3. Registro cronológico
 
@@ -572,14 +573,28 @@ Ao aceitar ou mudar uma decisão:
 - **Evidência de aprovação:** 69 testes, jornada documentada, inventário de conteúdo,
   gate de readiness e QA visual local.
 
+### D-026 — Vertical slice original com projeção de estado e visuais procedurais
+
+- **Data:** 2026-07-27
+- **Status:** Aceita para a Fase 18
+- **Contexto:** a fundação possuía os domínios da jornada, mas o cliente ainda não
+  conectava escolha inicial, inventário/equipe, criatura ativa e encontro orientado
+  pelo conteúdo em uma apresentação avaliável.
+- **Decisão:** expor uma projeção autenticada e minimizada em `/game/state`, manter
+  comandos permanentes no servidor e usar Phaser/HTML/CSS/WebAudio procedural original
+  como baseline visual substituível.
+- **Integridade:** a escolha inicial e o XP são idempotentes; equipe valida ownership;
+  a autorização do encontro transporta zona e definição; captura permanece
+  transacional.
+- **Conteúdo:** nenhum asset de franquia externa é ativado. Arte e som procedurais são
+  registrados no pack `original-vertical-slice`.
+- **Consequências:** a demonstração fica jogável sem criar dependência de um catálogo
+  específico. Assets futuros podem substituir a camada visual sem alterar os
+  contratos de domínio.
+- **Evidência de aprovação:** prompt da Fase 18, testes automatizados, E2E Chromium,
+  budgets, scans de procedência e screenshots desktop/mobile.
+
 ## 4. Próximas decisões a revisar
 
-A Fase 1 depende primeiro de D-001 e D-002. A revisão deve:
-
-1. confirmar `pnpm`;
-2. decidir se Turborepo entra imediatamente;
-3. confirmar Fastify em vez de Nest;
-4. fixar versão LTS do Node após verificar suporte;
-5. definir comandos e gates mínimos.
-
-As demais decisões devem ser aceitas somente na fase que realmente as consome.
+Merge da Fase 18, infraestrutura real, MFA e qualquer expansão do produto continuam
+como gates separados. Nenhum deles é inferido pela D-026.

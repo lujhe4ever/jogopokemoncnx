@@ -2,215 +2,95 @@
 
 | Campo | Valor |
 | --- | --- |
-| Atualizado em | 2026-07-23 |
+| Atualizado em | 2026-07-27 |
 | Repositório | `lujhe4ever/jogopokemoncnx` |
-| Branch principal | `main` |
-| Branch desta entrega | `main` |
-| Fase | Roadmap 0B–17 |
-| Status | **concluído e integrado** |
+| Fonte oficial | GitHub |
+| SHA-base | `6f8929fb6b2587418ab8e06be9ec0e38fe301dd5` |
+| Branch desta entrega | `feat/fase-18-vertical-slice-jogavel` |
+| Issue de reserva | #26 |
+| Fase | 18 — Vertical slice visual e jogável |
+| Status | **implementada localmente; aguardando revisão da PR rascunho** |
+| Deploy | não autorizado e não realizado |
 
-## 1. Resumo
+## 1. Resultado desta fase
 
-As Fases 0B a 17 foram integradas à `main`. A Fase 17 passou na CI #54 e foi
-integrada pelo PR #19 no commit `375dca531e1abda09aa50a469a645a861a6485b6`,
-sem deploy ou participantes externos.
+A fundação das Fases 0B–17 foi preservada e conectada a uma jornada visual completa:
 
-O projeto possui workspace TypeScript, servidor Fastify, cliente Vite/Phaser,
-PostgreSQL, Prisma, WebSocket versionado, autenticação e a primeira fatia jogável da
-casa, clareira original, transições autoritativas e o primeiro ciclo de interação.
+- cadastro, login, retomada de sessão e logout;
+- escolha permanente entre Broto Âmbar, Musgote e Maréu;
+- companheiro persistido no primeiro slot da equipe;
+- casa e Campina do Luar renderizadas em Phaser com pixel art procedural original;
+- personagem com orientação e passo animado nas quatro direções;
+- Cuidadora, baú, Erva luminosa, Orbe de captura e encontro visíveis;
+- HUD da missão, inventário, coleção/equipe e missões;
+- encontro orientado pela definição autorizada no conteúdo da zona;
+- batalha usando a primeira criatura da equipe;
+- dano, defesa, XP, nível e evolução projetados pela resposta do servidor;
+- captura transacional, atualização da coleção e retomada após recarregar;
+- efeitos sonoros procedurais opt-in e controles mobile;
+- E2E Playwright da primeira expedição com evidências automáticas.
 
-## 2. Entrega atual
+## 2. Contratos adicionados
 
-- cadastro com e-mail normalizado, nome público e senha Argon2id;
-- login com resposta genérica para credenciais inválidas;
-- sessão opaca armazenada somente por hash, com expiração e revogação;
-- cookie `HttpOnly`, `SameSite=Strict` e `Secure` em produção;
-- perfil mínimo persistido;
-- ticket WebSocket com validade de 30 segundos e uso único;
-- rate limiting para cadastro e login;
-- auditoria de sucesso/falha sem registrar credenciais;
-- testes de sessão, falha de login, Argon2id e ticket descartável.
-- contrato declarativo para zonas, colisões, spawns e portais;
-- checkpoint persistente com `zoneId`;
-- transição validada por proximidade e ID no servidor;
-- snapshots restritos à área de interesse da zona atual;
-- manifests versionados e seleção do pack autorizado por snapshot.
-- NPC declarativo com capacidade de diálogo;
-- pickup e baú originais com validação de proximidade;
-- inventário de 20 slots, stacks de 99 e recompensa transacional idempotente;
-- feedback visual e `aria-live`, com ação por teclado ou toque.
-- domínio puro separando definição e instância de criatura;
-- catálogo original versionado com evolução declarativa;
-- coleção e equipe de até seis criaturas com ownership;
-- experiência/evolução idempotentes em transação serializável;
-- saves com IDs e versões estáveis de definição e catálogo.
-- máquina pura de batalha por turno com RNG por seed;
-- comandos sequenciados, política NPC e replay determinístico;
-- timeout, abandono e desconexão com resultado explícito;
-- resultado persistente aplicado uma única vez;
-- UI acessível de batalha carregada sob demanda e retorno ao mundo.
-- encontro selvagem original gerado por interação e proximidade;
-- autorização efêmera descartável para iniciar o encontro;
-- captura pós-vitória com RNG por seed e chance controlável;
-- consumo do Orbe e criação da criatura na mesma transação;
-- retry idempotente e retorno seguro em todos os encerramentos.
-- domínio puro de missões com definições, estados e versões explícitas;
-- progresso por eventos públicos de zona, interação, batalha e captura;
-- recibos persistentes que deduplicam eventos por conta e ID;
-- recompensa aplicada uma vez na mesma transação serializável do progresso;
-- diário de missões acessível e carregado sob demanda;
-- política explícita que rejeita version drift sem migração declarada.
-- arena social separada da exploração por endpoint e ciclo de conexão próprios;
-- registro em memória com múltiplas salas isoladas e limite de 20 presenças cada;
-- movimento autoritativo a 20 Hz, snapshots de entrada e deltas de posição;
-- reconexão por 30 segundos, substituição de sessão e remoção explícita de presença;
-- backpressure limita sockets lentos e métricas agregam tick, salas e descartes;
-- IDs públicos efêmeros impedem exposição de IDs internos de conta;
-- UI social acessível com palco visual, lista de presenças e controles por teclado/toque.
-- chat efêmero com autoria, timestamp e ID gerados pelo servidor;
-- mensagens normalizadas, limitadas a 160 caracteres, sem URL/controle e com rate limit;
-- requisições deduplicadas e histórico apenas em memória/DOM limitado a 50 itens;
-- emotes `wave`, `cheer` e `surprised` validados por catálogo;
-- mute local remove fala do painel e do balão sem expor ação ao remetente;
-- convites direcionados expiram em 30 segundos, são únicos e revalidam presenças;
-- aceite confirma o desafio social para os dois participantes e autoriza o início PvP.
-- desafio social aceito inicia uma instância PvP somente para os dois participantes;
-- ownership das criaturas é validado no servidor antes da criação da batalha;
-- escolhas `strike` e `guard` permanecem privadas até ambos enviarem o turno;
-- comandos usam sequência, batalha e identidade autenticada para impedir controle do
-  oponente;
-- timeout de 30 segundos, abandono e desconexão produzem derrota explícita;
-- resultado e vencedor são persistidos uma única vez por atualização condicional;
-- projeção do duelo omite escolhas e IDs internos, e a UI retorna com segurança à arena.
-- `@lt/broadcast-domain` constrói a projeção de telão por allowlist explícita;
-- cada sala mantém revisão, histórico limitado a 64 deltas e até 20 batalhas visíveis;
-- lacuna recuperável recebe replay; lacuna antiga ou reconexão recebe snapshot atual;
-- início, turno resolvido e fim confirmado são distribuídos aos presentes na arena;
-- vencedor só é publicado depois da persistência idempotente do resultado PvP;
-- comandos de batalha enviados por espectador recebem `spectator_read_only`;
-- backpressure isola socket lento e métricas contam atualizações e entregas do fan-out;
-- telões acessíveis exibem competidores, criaturas, vida, turno e vencedor sem ações.
-- aplicação `apps/admin` é construída separadamente e não possui link no cliente do jogo;
-- rotas administrativas não são registradas sem `ADMIN_STEP_UP_SECRET` de 32 caracteres;
-- sessão normal e segredo de elevação em memória são exigidos em cada requisição;
-- RBAC separa suporte, edição de conteúdo e proprietário, sempre validado no servidor;
-- consultas de suporte omitem e-mail/ID interno e retornam referência assinada;
-- revogação de sessões é recuperável por novo login e exige frase mais motivo;
-- manifesto original/CC0 valida namespace, versão, checksum, paths, duplicatas e quantidade;
-- publicação é versionada, idempotente para mesmo checksum e rejeita conflito;
-- sucesso, negação e bootstrap de papel são auditados sem segredo ou PII direta.
-- headers defensivos, limite HTTP de 64 KiB e allowlist de origem protegem HTTP e
-  WebSocket;
-- configuração aceita segredos por arquivo e métricas exigem bearer token não
-  publicado na borda;
-- budgets verificam bundles, assets e a baseline de 20 presenças da arena;
-- scans automatizados cobrem credenciais, procedência de conteúdo e vulnerabilidades
-  conhecidas;
-- imagens separadas, proxy TLS e redes internas preparam operação sem expor o banco;
-- backup com checksum, restauração isolada e rollback exigem confirmação explícita;
-- dashboard, alertas, modelo de ameaças e runbook registram a operação prevista;
-- workflow manual valida um candidato e constrói imagens sem publicar ou implantar.
-- telemetria do alpha fica desabilitada por padrão, exige sessão/consentimento e
-  agrega somente eventos allowlist em memória;
-- readiness executável liga seis checkpoints da jornada às evidências automatizadas;
-- roteiro de teste, matriz de severidade e inventário de conteúdo fecham o gate;
-- ALPHA-001 removeu e bloqueou a regressão de credenciais de demonstração preenchidas.
-
-Verificação e recuperação de e-mail permanecem fora do escopo até que seus fluxos
-completos sejam definidos.
-
-## 3. Estrutura relevante
-
-- `apps/web`: cliente placeholder Vite;
-- `apps/server`: servidor, configuração, autenticação e adaptadores Prisma;
-- `apps/server/prisma`: schema e migrações;
-- `packages/engine-core`: núcleo puro ainda mínimo;
-- `tests`: testes arquiteturais, de runtime e autenticação;
-- `docker-compose.yml`: PostgreSQL local;
-- `.github/workflows/ci.yml`: instalação, migração e qualidade.
-- `.github/workflows/release-candidate.yml`: candidato manual sem push ou deploy;
-- `ops`: imagens, proxy, budgets, observabilidade e scripts operacionais;
-- `docs/runbooks/operations.md`: preparação, backup, restauração e rollback.
-- `ops/alpha/readiness.json`: checkpoints, defeitos e autorizações negativas;
-- `docs/alpha-test-plan.md`: jornada, privacidade, triagem e gate de saída;
-- `docs/content-inventory.md`: procedência do conteúdo permitido.
-
-## 4. Estado por área
-
-| Área | Estado |
+| Rota | Finalidade |
 | --- | --- |
-| Fundação TypeScript e CI | concluída |
-| Runtime HTTP/WebSocket | concluído |
-| PostgreSQL/Prisma | concluído para a fundação |
-| Autenticação, perfil e sessão | concluído na branch |
-| Recuperação/verificação de e-mail | não iniciado |
-| Casa, movimento e colisão | concluído na branch |
-| Mapas e transições | concluído na branch |
-| NPCs, diálogos, itens e baús | concluído na branch |
-| Missões | concluídas na branch |
-| Fundação de criaturas e progressão | concluída na branch |
-| Batalha contra NPCs | concluída na branch |
-| Encontros e captura | concluídos na branch |
-| Batalhas PvP | concluídas |
-| Telões e espectadores | concluídos |
-| Administração | concluída |
-| Hardening e operação | concluído e integrado |
-| Alpha privado e estabilização | concluído e integrado |
-| Arena e presença | concluídas na branch |
-| Chat, emotes e convites | concluídos na branch |
-| Empacotamento de produção | concluído, não implantado |
+| `GET /game/state` | projeção minimizada de perfil, checkpoint, inventário, criaturas e missões |
+| `POST /game/starter` | escolha idempotente e única do companheiro |
+| `POST /game/team` | valida ownership, ordem e limite da equipe |
 
-## 5. Comandos
+As rotas continuam registradas sem `/api`. Vite e Nginx removem o prefixo público
+`/api` para o jogo; `/api/admin` e `/api/alpha` permanecem preservados.
+
+## 3. Conteúdo e procedência
+
+O runtime usa apenas conteúdo original do Projeto LT:
+
+- criaturas e textos do pack `original-creatures`;
+- composição visual Phaser/HTML/CSS criada nesta fase;
+- efeitos WebAudio gerados em tempo de execução;
+- pack de procedência `original-vertical-slice`.
+
+Nenhum sprite, nome, áudio ou mídia Pokémon foi ativado. As PRs #17, #21, #23 e #25
+permanecem fora da base e não foram mescladas.
+
+## 4. Execução
 
 ```text
 pnpm install --frozen-lockfile
+Copy-Item .env.example .env
 docker compose up -d postgres
-pnpm --filter @lt/server prisma:generate
-pnpm --filter @lt/server db:migrate
+pnpm setup:local
 pnpm dev
-pnpm --filter @lt/admin dev
-pnpm check
-pnpm audit --prod --audit-level high
-pnpm alpha:readiness
 ```
 
-## 6. Verificações atuais
+URL do jogo: `http://localhost:5173`.
 
-- formatação, lint e TypeScript estrito;
-- 24 arquivos de teste e 69 testes automatizados;
-- build do servidor e cliente;
-- builds independentes do jogo e da administração;
-- budgets: web 1.248.145/1.400.000 bytes, admin 9.335/100.000 bytes e maior asset
-  1.022/2.000.000 bytes;
-- auditoria de dependências sem vulnerabilidades conhecidas;
-- scans de segredo e licenças aprovados;
-- validação do schema Prisma;
-- migrações aplicadas em PostgreSQL vazio pela CI;
-- nenhum segredo ou asset de terceiros incluído;
-- imagens, Compose e restauração serão exercitados pela CI Linux porque Docker não
-  está disponível neste computador.
+## 5. Verificação
 
-## 7. Limitações e riscos
+A instalação, geração Prisma, formatação, lint, typecheck, testes, builds, budgets,
+scans de segredos/licenças, readiness e auditoria são executados pelo workspace. A CI
+também inicia PostgreSQL vazio, aplica todas as migrations e executa o E2E Chromium.
 
-- Docker não está disponível no computador atual; a integração com PostgreSQL é
-  validada na CI;
-- parâmetros Argon2id precisam ser reavaliados em hardware de produção;
-- não existe envio de e-mail, recuperação de senha ou MFA;
-- o repositório permanece público;
-- nenhum deploy foi realizado.
+Evidências manuais versionadas:
 
-## 8. Decisões vigentes
+- `docs/screenshots/fase-18-onboarding.png`;
+- `docs/screenshots/fase-18-casa.png`;
+- `docs/screenshots/fase-18-batalha.png`;
+- `docs/screenshots/fase-18-mobile.png`.
 
-D-001 a D-008 e D-011 a D-022 estão aceitas. As demais decisões técnicas
-continuam com o status registrado em `docs/decisions.md`.
+## 6. Limitações reais
 
-## 9. Próxima tarefa recomendada
+- Docker não está instalado no computador desta execução; banco vazio, migrations e
+  E2E com persistência real dependem da CI Linux;
+- os efeitos visuais e de áudio são procedurais e deliberadamente pequenos, ainda sem
+  spritesheets ou trilha musical externa;
+- recuperação/verificação de e-mail e MFA continuam fora do escopo;
+- infraestrutura real, participantes externos e telemetria real permanecem
+  desautorizados;
+- o repositório continua público apesar do uso pretendido ser privado/educacional.
 
-Definir separadamente se haverá novo ciclo de produto ou preparação de infraestrutura.
-Nenhuma implementação adicional ou deploy está autorizado pelo roadmap concluído.
+## 7. Próximo gate
 
-## 10. Instruções para reproduzir
-
-Sincronizar a branch, copiar `.env.example` para `.env`, iniciar PostgreSQL, aplicar
-as migrações e executar `pnpm dev`. Para revisão sem Docker, executar `pnpm check`;
-a CI cobre PostgreSQL e migrações.
+Revisar a PR rascunho da Fase 18 e sua CI. Ajustes pertencentes a esta vertical slice
+podem ser feitos na mesma branch após autorização/revisão. Merge, deploy e uma Fase 19
+exigem decisões separadas.
