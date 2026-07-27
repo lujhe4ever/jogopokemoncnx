@@ -85,7 +85,13 @@ export async function registerAuthRoutes(
     if (!token) return reply.code(401).send({ error: "unauthorized" });
     const session = await auth.getSession(token);
     return session
-      ? { profile: session }
+      ? {
+          profile: {
+            id: session.accountId,
+            email: session.email,
+            displayName: session.displayName,
+          },
+        }
       : reply.code(401).send({ error: "unauthorized" });
   });
 

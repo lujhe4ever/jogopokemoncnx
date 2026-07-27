@@ -2,21 +2,21 @@
 
 | Campo | Valor |
 | --- | --- |
-| Status | **Proposta para revisão** |
-| Atualizado em | 2026-07-23 |
-| Implementação existente | Nenhuma |
+| Status | **Implementada incrementalmente** |
+| Atualizado em | 2026-07-27 |
+| Implementação existente | Fases 1–17 na `main`; Fase 18 em branch de revisão |
 | Baseline normativa | [`../architecture.md`](../architecture.md) |
-| Decisões D-001 a D-010 | **Proposta** |
+| Decisões D-001 a D-010 | D-001–D-008 aceitas; D-009–D-010 com status no registro |
 
 ## 1. Propósito e relação com a baseline
 
 O arquivo raiz `architecture.md` é a referência normativa para princípios, limites,
-qualidades e decisões sistêmicas. Este documento descreve como esses limites deverão
-aparecer na organização e nos fluxos do sistema à medida que forem implementados.
+qualidades e decisões sistêmicas. Este documento descreve como esses limites aparecem
+na organização e nos fluxos do sistema, além da direção para extensões futuras.
 
 Se houver divergência, a baseline raiz prevalece até que a divergência seja discutida
-e ambos os arquivos sejam atualizados no mesmo conjunto de mudanças. Nenhuma seção
-abaixo afirma que o componente já existe.
+e ambos os arquivos sejam atualizados no mesmo conjunto de mudanças. Estados concretos
+de entrega ficam em `current-state.md`.
 
 ## 2. Visão geral
 
@@ -49,21 +49,40 @@ flowchart LR
 
 | Camada | Tecnologia | Estado |
 | --- | --- | --- |
-| Linguagem | TypeScript estrito | Proposta |
-| Workspace | `pnpm` workspaces | Proposta |
-| Orquestração | Turborepo | Proposta, precisa de confirmação |
-| Web | Vite + Phaser 3 | Proposta |
-| UI fora do canvas | HTML/CSS | Proposta |
-| Servidor | Node.js LTS + Fastify | Proposta |
-| Tempo real | WebSocket atrás de uma porta | Proposta |
-| Persistência | PostgreSQL + Prisma | Proposta |
-| Validação | Schemas compartilhados em runtime | Proposta |
-| Logs | Pino em JSON | Proposta |
-| Infraestrutura | Docker Compose em VPS Linux | Proposta |
+| Linguagem | TypeScript estrito | Implementada |
+| Workspace | `pnpm` workspaces | Implementada |
+| Orquestração | scripts `pnpm`; sem Turborepo | Implementada |
+| Web | Vite + Phaser 3 | Implementada |
+| UI fora do canvas | HTML/CSS | Implementada |
+| Servidor | Node.js 24 + Fastify | Implementada |
+| Tempo real | WebSocket atrás de uma porta | Implementada |
+| Persistência | PostgreSQL + Prisma | Implementada |
+| Validação | Zod e contratos TypeScript | Implementada |
+| Logs | Pino/Fastify em JSON | Implementada |
+| Infraestrutura | Docker Compose preparado; sem deploy | Implementada localmente |
 
-Versões, bibliotecas concretas de schema e implementação WebSocket serão escolhidas na
-Fase 1 ou em spikes autorizados. A arquitetura não depende da biblioteca de
-transporte.
+Versões estão fixadas no lockfile. A arquitetura continua sem depender da biblioteca
+de transporte nas regras de domínio.
+
+### 3.1 Vertical slice da Fase 18
+
+O cliente consome uma projeção autenticada em `GET /game/state`; escolhas permanentes
+e equipe usam comandos HTTP. Movimento, transição e interação continuam no WebSocket
+autoritativo. A autorização efêmera de encontro carrega zona e definição da criatura,
+e a batalha resolve o primeiro slot válido da equipe no servidor.
+
+```mermaid
+flowchart LR
+    AUTH["Sessão"] --> STATE["Projeção /game/state"]
+    STATE --> STARTER["Escolha única"]
+    STARTER --> WORLD["Casa e campina via WebSocket"]
+    WORLD --> TOKEN["Autorização: zona + criatura"]
+    TOKEN --> BATTLE["Batalha com slot 1"]
+    BATTLE --> XP["XP idempotente"]
+    BATTLE --> CAPTURE["Captura transacional"]
+    XP --> STATE
+    CAPTURE --> STATE
+```
 
 ## 4. Camadas e responsabilidades
 

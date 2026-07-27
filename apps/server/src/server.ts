@@ -5,6 +5,7 @@ import { AuthService } from "./auth/service.js";
 import { loadConfig } from "./config.js";
 import {
   BattleService,
+  PrismaBattleRoster,
   PrismaBattleResultStore,
 } from "./battles/battle-service.js";
 import { createDatabaseProbe } from "./database.js";
@@ -18,6 +19,8 @@ import { PvpService } from "./battles/pvp-service.js";
 import { AdminService } from "./admin/service.js";
 import { PrismaAdminRepository } from "./admin/prisma-repository.js";
 import { AlphaTelemetry } from "./alpha/telemetry.js";
+import { GameService } from "./game/game-service.js";
+import { PrismaGameRepository } from "./game/prisma-repository.js";
 
 const config = loadConfig(process.env);
 const prisma = new PrismaClient();
@@ -36,7 +39,14 @@ const world = new HouseRoom(
   new PrismaInteractionStore(prisma),
   quests,
 );
-const battles = new BattleService(new PrismaBattleResultStore(prisma, quests));
+const battles = new BattleService(
+  new PrismaBattleResultStore(prisma, quests),
+  Date.now,
+  undefined,
+  undefined,
+  new PrismaBattleRoster(prisma),
+);
+const game = new GameService(new PrismaGameRepository(prisma), quests);
 const app = await buildApp({
   database: createDatabaseProbe(prisma),
   auth: new AuthService(new PrismaAuthRepository(prisma)),
@@ -51,6 +61,7 @@ const app = await buildApp({
     quests,
   ),
   quests,
+  game,
   arena,
   arenaProfiles: new PrismaArenaProfileStore(prisma),
   ...(admin ? { admin } : {}),

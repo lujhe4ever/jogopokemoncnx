@@ -4,9 +4,9 @@
 
 | Campo | Valor |
 | --- | --- |
-| Status | **Proposta v0.1 para revisão** |
-| Última atualização | 2026-07-23 |
-| Escopo desta versão | Baseline arquitetural; nenhum código funcional |
+| Status | **Baseline vigente com implementação incremental** |
+| Última atualização | 2026-07-27 |
+| Escopo desta versão | Limites normativos aplicados às Fases 1–18 |
 | Repositório | `lujhe4ever/jogopokemoncnx` |
 | Responsáveis | Proprietário do projeto e arquitetura técnica |
 

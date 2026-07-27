@@ -3,222 +3,411 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#16231c" />
-    <title>Projeto LT — Casa</title>
+    <meta name="theme-color" content="#151b2f" />
+    <meta
+      name="description"
+      content="Projeto LT, uma aventura online original de criaturas."
+    />
+    <title>Projeto LT — Primeira expedição</title>
     <link rel="stylesheet" href="/src/styles.css" />
   </head>
   <body>
+    <div class="page-noise" aria-hidden="true"></div>
     <main>
-      <section id="auth-panel">
-        <p class="eyebrow">PROJETO LT</p>
-        <h1>Entre na sua casa</h1>
-        <p>Protótipo original de movimento e colisão.</p>
-        <form id="auth-form">
-          <label
-            >Nome público
-            <input
-              name="displayName"
-              autocomplete="nickname"
-              minlength="2"
-              maxlength="40"
-              placeholder="Explorador"
-          /></label>
-          <label
-            >E-mail
-            <input
-              name="email"
-              type="email"
-              autocomplete="email"
-              required
-              placeholder="voce@exemplo.com"
-          /></label>
-          <label
-            >Senha
-            <input
-              name="password"
-              type="password"
-              autocomplete="current-password"
-              minlength="12"
-              required
-              placeholder="Use pelo menos 12 caracteres"
-          /></label>
-          <div class="actions">
-            <button type="button" id="register">Criar conta</button>
-            <button type="submit">Entrar</button>
+      <section id="auth-panel" class="auth-screen">
+        <div class="auth-art" aria-hidden="true">
+          <p class="brand-mark">LT</p>
+          <div class="auth-landscape">
+            <span class="pixel-sun"></span>
+            <span class="pixel-hill hill-one"></span>
+            <span class="pixel-hill hill-two"></span>
+            <span class="pixel-tree tree-one"></span>
+            <span class="pixel-tree tree-two"></span>
           </div>
-        </form>
-        <p id="status" role="status"></p>
-      </section>
-      <section id="game-panel" hidden>
-        <header>
-          <strong>Casa do Explorador</strong
-          ><span id="connection">conectando...</span>
-        </header>
-        <div id="game"></div>
-        <p id="interaction-feedback" role="status" aria-live="polite">
-          Aproxime-se de uma pessoa ou objeto e use E ou Interagir.
-        </p>
-        <button type="button" id="start-battle">Batalhar com treinador</button>
-        <button type="button" id="quest-journal-button">
-          Diário de missões
-        </button>
-        <button type="button" id="enter-arena">Entrar na arena social</button>
-        <div id="touch-pad" aria-label="Controles de movimento">
-          <button data-direction="up">▲</button>
           <div>
-            <button data-direction="left">◀</button
-            ><button data-direction="down">▼</button
-            ><button data-direction="right">▶</button>
-          </div>
-          <button type="button" id="interact">Interagir</button>
-        </div>
-      </section>
-      <section id="arena-panel" hidden aria-labelledby="arena-title">
-        <div class="panel-heading">
-          <div>
-            <p class="eyebrow">ENCONTRO SOCIAL</p>
-            <h2 id="arena-title">Arena da comunidade</h2>
-          </div>
-          <button type="button" id="leave-arena">Voltar à exploração</button>
-        </div>
-        <p id="arena-status" role="status" aria-live="polite">Conectando...</p>
-        <div
-          id="arena-stage"
-          role="img"
-          aria-label="Arena com posições dos jogadores"
-        ></div>
-        <div class="arena-footer">
-          <div>
-            <h3>Presenças</h3>
-            <ul id="arena-presence-list" aria-live="polite"></ul>
-          </div>
-          <div id="arena-touch-pad" aria-label="Controles da arena">
-            <button data-arena-direction="up">▲</button>
-            <div>
-              <button data-arena-direction="left">◀</button>
-              <button data-arena-direction="down">▼</button>
-              <button data-arena-direction="right">▶</button>
-            </div>
-          </div>
-        </div>
-        <section class="arena-broadcasts" aria-labelledby="arena-screen-title">
-          <div class="arena-screen-heading">
-            <div>
-              <p class="eyebrow">TRANSMISSÃO SOMENTE LEITURA</p>
-              <h3 id="arena-screen-title">Telões da arena</h3>
-            </div>
-            <p id="arena-screen-status" role="status" aria-live="polite">
-              Aguardando batalhas...
+            <p class="eyebrow">UMA AVENTURA ORIGINAL</p>
+            <h1>O mundo desperta<br />com você.</h1>
+            <p>
+              Escolha um companheiro, atravesse a campina e conclua sua primeira
+              expedição.
             </p>
           </div>
-          <ol id="arena-broadcast-list" aria-live="polite"></ol>
-        </section>
-        <section class="arena-social" aria-labelledby="arena-chat-title">
-          <div>
-            <h3 id="arena-chat-title">Conversa</h3>
-            <ol id="arena-chat-log" aria-live="polite"></ol>
-            <form id="arena-chat-form">
-              <label for="arena-chat-input">Mensagem</label>
-              <div class="arena-chat-compose">
-                <input
-                  id="arena-chat-input"
-                  name="message"
-                  maxlength="160"
-                  autocomplete="off"
-                />
-                <button type="submit">Enviar</button>
+        </div>
+        <div class="auth-card">
+          <p class="eyebrow">PROJETO LT</p>
+          <h2>Comece sua jornada</h2>
+          <p class="muted">
+            Sua conta mantém o companheiro, os itens e o progresso entre
+            sessões.
+          </p>
+          <form id="auth-form">
+            <label>
+              <span>Nome público <small>apenas para cadastro</small></span>
+              <input
+                name="displayName"
+                autocomplete="nickname"
+                minlength="2"
+                maxlength="40"
+                placeholder="Explorador"
+              />
+            </label>
+            <label>
+              <span>E-mail</span>
+              <input
+                name="email"
+                type="email"
+                autocomplete="email"
+                required
+                placeholder="voce@exemplo.com"
+              />
+            </label>
+            <label>
+              <span>Senha <small>mínimo de 12 caracteres</small></span>
+              <input
+                name="password"
+                type="password"
+                autocomplete="current-password"
+                minlength="12"
+                required
+                placeholder="••••••••••••"
+              />
+            </label>
+            <div class="auth-actions">
+              <button type="submit" class="primary-button">Entrar</button>
+              <button type="button" id="register" class="ghost-button">
+                Criar nova conta
+              </button>
+            </div>
+          </form>
+          <p id="status" class="form-status" role="status" aria-live="polite">
+            Carregando sua sessão...
+          </p>
+        </div>
+      </section>
+
+      <section id="starter-panel" class="starter-screen" hidden>
+        <div class="starter-heading">
+          <p class="eyebrow">PRIMEIRO VÍNCULO</p>
+          <h2>Quem caminhará ao seu lado?</h2>
+          <p>
+            A escolha é permanente para esta conta. Todos são originais do
+            Projeto LT e podem completar a expedição.
+          </p>
+        </div>
+        <div id="starter-options" class="starter-grid"></div>
+        <p id="starter-status" role="status" aria-live="polite"></p>
+      </section>
+
+      <section id="game-panel" class="game-shell" hidden>
+        <header class="game-header">
+          <a class="compact-brand" href="#" aria-label="Projeto LT">LT</a>
+          <div class="player-identity">
+            <span class="online-dot" aria-hidden="true"></span>
+            <div>
+              <strong id="profile-name">Explorador</strong>
+              <small id="connection">conectando...</small>
+            </div>
+          </div>
+          <div class="header-actions">
+            <button type="button" id="sound-toggle" class="icon-button">
+              Som: desligado
+            </button>
+            <button type="button" id="logout" class="icon-button">Sair</button>
+          </div>
+        </header>
+
+        <div class="game-layout">
+          <section class="world-card" aria-labelledby="zone-title">
+            <div class="world-heading">
+              <div>
+                <p class="eyebrow">ÁREA ATUAL</p>
+                <h2 id="zone-title">Casa do Explorador</h2>
               </div>
-            </form>
-          </div>
-          <div>
-            <h3>Emotes</h3>
-            <div class="arena-emotes" aria-label="Emotes disponíveis">
-              <button type="button" data-social-emote="wave">Acenar</button>
-              <button type="button" data-social-emote="cheer">Comemorar</button>
-              <button type="button" data-social-emote="surprised">
-                Surpresa
-              </button>
+              <span id="world-objective" class="objective-chip">
+                Converse com a Cuidadora
+              </span>
             </div>
-            <h3>Convidar</h3>
-            <div class="arena-invite-compose">
-              <label for="arena-invite-target">Jogador</label>
-              <select id="arena-invite-target"></select>
-              <button type="button" id="send-arena-invite">
-                Enviar desafio
-              </button>
+            <div id="game" aria-label="Mundo explorável"></div>
+            <div class="world-message">
+              <span class="key-hint">E</span>
+              <p id="interaction-feedback" role="status" aria-live="polite">
+                Aproxime-se de algo e pressione E para interagir.
+              </p>
             </div>
-            <div id="arena-invitations" aria-live="assertive"></div>
-          </div>
-        </section>
+            <div id="touch-pad" aria-label="Controles de movimento">
+              <button data-direction="up" aria-label="Mover para cima">
+                ▲
+              </button>
+              <div>
+                <button data-direction="left" aria-label="Mover para esquerda">
+                  ◀
+                </button>
+                <button data-direction="down" aria-label="Mover para baixo">
+                  ▼
+                </button>
+                <button data-direction="right" aria-label="Mover para direita">
+                  ▶
+                </button>
+              </div>
+              <button type="button" id="interact">Interagir</button>
+            </div>
+          </section>
+
+          <aside class="journey-rail" aria-label="Resumo da jornada">
+            <section class="companion-card">
+              <div
+                id="hud-creature-sprite"
+                class="creature-pixel"
+                data-creature="emberbud"
+                aria-hidden="true"
+              >
+                <span></span><i></i>
+              </div>
+              <div>
+                <p class="eyebrow">COMPANHEIRO</p>
+                <strong id="hud-creature-name">—</strong>
+                <small id="hud-creature-level">Nível 1</small>
+              </div>
+            </section>
+
+            <section class="quest-summary">
+              <div class="section-title-row">
+                <h3>Primeira expedição</h3>
+                <span id="quest-progress-count">0/4</span>
+              </div>
+              <ol id="journey-steps"></ol>
+            </section>
+
+            <nav class="quick-actions" aria-label="Painéis do jogador">
+              <button type="button" data-open-player-view="inventory">
+                <span aria-hidden="true">▣</span>
+                <span
+                  >Inventário<small id="inventory-count">0 itens</small></span
+                >
+              </button>
+              <button type="button" data-open-player-view="team">
+                <span aria-hidden="true">◆</span>
+                <span>Equipe<small id="team-count">0/6</small></span>
+              </button>
+              <button type="button" data-open-player-view="quests">
+                <span aria-hidden="true">✓</span>
+                <span>Missões<small>Ver detalhes</small></span>
+              </button>
+            </nav>
+
+            <button type="button" id="enter-arena" class="subtle-button">
+              Visitar arena social
+            </button>
+            <p class="controls-note">
+              Mova com <kbd>WASD</kbd> ou setas. Interaja com <kbd>E</kbd>.
+            </p>
+          </aside>
+        </div>
       </section>
-      <section id="pvp-panel" hidden aria-labelledby="pvp-title">
-        <div class="panel-heading">
-          <div>
-            <p class="eyebrow">DUELO AUTORIZADO</p>
-            <h2 id="pvp-title">Batalha entre jogadores</h2>
-          </div>
-          <button type="button" id="return-arena" hidden>
-            Retornar à arena
-          </button>
-        </div>
-        <p id="pvp-status" role="status" aria-live="assertive"></p>
-        <div class="battle-combatants">
-          <div>
-            <strong id="pvp-self-name">Jogador</strong>
-            <progress id="pvp-self-health" max="1" value="1"></progress>
-          </div>
-          <div>
-            <strong id="pvp-opponent-name">Oponente</strong>
-            <progress id="pvp-opponent-health" max="1" value="1"></progress>
-          </div>
-        </div>
-        <div class="battle-actions" aria-label="Ações do duelo">
-          <button type="button" data-pvp-action="strike">Atacar</button>
-          <button type="button" data-pvp-action="guard">Defender</button>
-          <button type="button" id="abandon-pvp">Abandonar</button>
-        </div>
-      </section>
+
       <section
-        id="quest-panel"
+        id="player-panel"
+        class="overlay-panel"
         hidden
-        aria-labelledby="quest-journal-title"
-        aria-busy="false"
+        aria-labelledby="player-panel-title"
       >
-        <div class="panel-heading">
-          <div>
-            <p class="eyebrow">JORNADA</p>
-            <h2 id="quest-journal-title">Diário de missões</h2>
+        <div class="overlay-card">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">MOCHILA DE CAMPO</p>
+              <h2 id="player-panel-title">Inventário</h2>
+            </div>
+            <button type="button" id="close-player-panel">
+              Voltar ao mundo
+            </button>
           </div>
-          <button type="button" id="close-quest-journal">
-            Voltar ao mundo
-          </button>
+          <nav class="panel-tabs" aria-label="Seções do jogador">
+            <button type="button" data-player-tab="inventory">
+              Inventário
+            </button>
+            <button type="button" data-player-tab="team">Equipe</button>
+            <button type="button" data-player-tab="quests">Missões</button>
+          </nav>
+          <div id="player-panel-content"></div>
+          <p id="player-panel-status" role="status" aria-live="polite"></p>
         </div>
-        <p id="quest-status" role="status" aria-live="polite"></p>
-        <div id="quest-list"></div>
       </section>
-      <section id="battle-panel" hidden aria-labelledby="battle-title">
-        <h2 id="battle-title">Batalha de treinamento</h2>
-        <p id="battle-status" role="status" aria-live="assertive"></p>
-        <div class="battle-combatants">
-          <div>
-            <strong id="battle-player-name">Jogador</strong>
-            <progress id="battle-player-health" max="1" value="1"></progress>
+
+      <section id="battle-panel" class="battle-screen" hidden>
+        <div class="battle-scene" aria-hidden="true">
+          <span class="battle-cloud cloud-one"></span>
+          <span class="battle-cloud cloud-two"></span>
+          <div class="battle-platform opponent-platform">
+            <div
+              id="battle-npc-sprite"
+              class="creature-pixel battle-creature"
+              data-creature="nightleaf"
+            >
+              <span></span><i></i>
+            </div>
           </div>
-          <div>
-            <strong id="battle-npc-name">Adversário</strong>
-            <progress id="battle-npc-health" max="1" value="1"></progress>
+          <div class="battle-platform player-platform">
+            <div
+              id="battle-player-sprite"
+              class="creature-pixel battle-creature"
+              data-creature="emberbud"
+            >
+              <span></span><i></i>
+            </div>
           </div>
         </div>
-        <div class="battle-actions" aria-label="Ações de batalha">
-          <button type="button" data-battle-action="strike">Atacar</button>
-          <button type="button" data-battle-action="guard">Defender</button>
-          <button type="button" id="abandon-battle">Abandonar</button>
-          <button type="button" id="capture-creature" hidden>
-            Usar Orbe de captura
-          </button>
-          <button type="button" id="return-world" hidden>
-            Retornar ao mundo
-          </button>
+        <div class="battle-interface">
+          <div class="battle-heading">
+            <div>
+              <p class="eyebrow">ENCONTRO SELVAGEM</p>
+              <h2 id="battle-title">Folha Noturna apareceu!</h2>
+            </div>
+            <span class="turn-badge">Batalha por turnos</span>
+          </div>
+          <div class="battle-combatants">
+            <div class="health-card">
+              <span>SEU COMPANHEIRO</span>
+              <strong id="battle-player-name">Companheiro</strong>
+              <small id="battle-player-level">Nível 1</small>
+              <progress id="battle-player-health" max="1" value="1"></progress>
+            </div>
+            <div class="health-card">
+              <span>CRIATURA SELVAGEM</span>
+              <strong id="battle-npc-name">Adversário</strong>
+              <small id="battle-npc-level">Nível 1</small>
+              <progress id="battle-npc-health" max="1" value="1"></progress>
+            </div>
+          </div>
+          <p id="battle-status" role="status" aria-live="assertive"></p>
+          <div class="battle-actions" aria-label="Ações de batalha">
+            <button type="button" data-battle-action="strike" class="attack">
+              <strong>Golpe de campo</strong><small>Ataque direto</small>
+            </button>
+            <button type="button" data-battle-action="guard" class="guard">
+              <strong>Postura firme</strong><small>Reduz o dano</small>
+            </button>
+            <button type="button" id="capture-creature" class="capture" hidden>
+              <strong>Usar Orbe de captura</strong>
+              <small>Concluir o encontro</small>
+            </button>
+            <button type="button" id="abandon-battle" class="ghost-button">
+              Recuar
+            </button>
+            <button
+              type="button"
+              id="return-world"
+              class="primary-button"
+              hidden
+            >
+              Retornar à campina
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section id="arena-panel" class="overlay-panel" hidden>
+        <div class="overlay-card arena-card">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">ENCONTRO SOCIAL</p>
+              <h2 id="arena-title">Arena da comunidade</h2>
+            </div>
+            <button type="button" id="leave-arena">Voltar à exploração</button>
+          </div>
+          <p id="arena-status" role="status" aria-live="polite">
+            Conectando...
+          </p>
+          <div id="arena-stage" aria-label="Posições dos jogadores"></div>
+          <div class="arena-footer">
+            <div>
+              <h3>Presenças</h3>
+              <ul id="arena-presence-list"></ul>
+            </div>
+            <div id="arena-touch-pad" aria-label="Controles da arena">
+              <button data-arena-direction="up">▲</button>
+              <div>
+                <button data-arena-direction="left">◀</button>
+                <button data-arena-direction="down">▼</button>
+                <button data-arena-direction="right">▶</button>
+              </div>
+            </div>
+          </div>
+          <section class="arena-broadcasts">
+            <div class="arena-screen-heading">
+              <h3 id="arena-screen-title">Telões da arena</h3>
+              <p id="arena-screen-status">Aguardando batalhas...</p>
+            </div>
+            <ol id="arena-broadcast-list"></ol>
+          </section>
+          <section class="arena-social">
+            <div>
+              <h3 id="arena-chat-title">Conversa</h3>
+              <ol id="arena-chat-log"></ol>
+              <form id="arena-chat-form">
+                <label for="arena-chat-input">Mensagem</label>
+                <div class="arena-chat-compose">
+                  <input
+                    id="arena-chat-input"
+                    name="message"
+                    maxlength="160"
+                    autocomplete="off"
+                  />
+                  <button type="submit">Enviar</button>
+                </div>
+              </form>
+            </div>
+            <div>
+              <h3>Emotes</h3>
+              <div class="arena-emotes">
+                <button type="button" data-social-emote="wave">Acenar</button>
+                <button type="button" data-social-emote="cheer">
+                  Comemorar
+                </button>
+                <button type="button" data-social-emote="surprised">
+                  Surpresa
+                </button>
+              </div>
+              <h3>Convidar</h3>
+              <div class="arena-invite-compose">
+                <label for="arena-invite-target">Jogador</label>
+                <select id="arena-invite-target"></select>
+                <button type="button" id="send-arena-invite">
+                  Enviar desafio
+                </button>
+              </div>
+              <div id="arena-invitations"></div>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <section id="pvp-panel" class="overlay-panel" hidden>
+        <div class="overlay-card">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">DUELO AUTORIZADO</p>
+              <h2 id="pvp-title">Batalha entre jogadores</h2>
+            </div>
+            <button type="button" id="return-arena" hidden>
+              Retornar à arena
+            </button>
+          </div>
+          <p id="pvp-status" role="status" aria-live="assertive"></p>
+          <div class="battle-combatants">
+            <div class="health-card">
+              <strong id="pvp-self-name">Jogador</strong>
+              <progress id="pvp-self-health" max="1" value="1"></progress>
+            </div>
+            <div class="health-card">
+              <strong id="pvp-opponent-name">Oponente</strong>
+              <progress id="pvp-opponent-health" max="1" value="1"></progress>
+            </div>
+          </div>
+          <div class="battle-actions">
+            <button type="button" data-pvp-action="strike">Atacar</button>
+            <button type="button" data-pvp-action="guard">Defender</button>
+            <button type="button" id="abandon-pvp">Abandonar</button>
+          </div>
         </div>
       </section>
     </main>

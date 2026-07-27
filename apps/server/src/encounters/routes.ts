@@ -30,12 +30,16 @@ export function registerEncounterRoutes(
     const body = z.object({ authorization: z.uuid() }).safeParse(request.body);
     if (!body.success)
       return reply.code(400).send({ error: "invalid_request" });
-    const zoneId = world.consumeEncounterAuthorization(
+    const authorization = world.consumeEncounterAuthorization(
       ownerId,
       body.data.authorization,
     );
-    return zoneId
-      ? encounters.start(ownerId, zoneId)
+    return authorization
+      ? encounters.start(
+          ownerId,
+          authorization.zoneId,
+          authorization.definitionId,
+        )
       : reply.code(403).send({ error: "encounter_not_authorized" });
   });
 

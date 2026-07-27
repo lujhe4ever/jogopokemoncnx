@@ -2,16 +2,34 @@ import {
   applyBattleCommand,
   createBattle,
   type BattleAction,
+  type BattleEvent,
   type BattleOutcome,
   type BattleState,
   type Combatant,
 } from "@lt/battle-domain";
+import { applyExperience } from "@lt/creature-domain";
 import type { PrismaClient } from "@prisma/client";
 import { randomInt, randomUUID } from "node:crypto";
 import {
   noopGameplayEvents,
   type GameplayEventSink,
 } from "../events/gameplay-events.js";
+import { ORIGINAL_CREATURE_CATALOG } from "../game/catalog.js";
+
+export interface BattleProgression {
+  creatureId: string;
+  definitionId: string;
+  experienceGained: number;
+  experience: number;
+  level: number;
+  leveledUp: boolean;
+  evolved: boolean;
+}
+
+export interface BattleFinishResult {
+  applied: boolean;
+  progression?: BattleProgression;
+}
 
 export interface BattleResultStore {
   start(ownerId: string, battleId: string, seed: number): Promise<void>;
@@ -20,7 +38,87 @@ export interface BattleResultStore {
     battleId: string,
     outcome: BattleOutcome,
     winner?: "player" | "npc",
-  ): Promise<boolean>;
+    participantCreatureId?: string,
+  ): Promise<boolean | BattleFinishResult>;
+}
+
+export interface BattleRosterEntry {
+  creatureId: string;
+  combatant: Combatant;
+}
+
+export interface BattleRoster {
+  playerCombatant(ownerId: string): Promise<BattleRosterEntry | null>;
+}
+
+const CREATURE_COMBATANTS: Readonly<Record<string, Omit<Combatant, "health">>> =
+  {
+    "creature:emberbud": {
+      id: "creature:emberbud",
+      name: "Broto Âmbar",
+      maxHealth: 48,
+      strength: 15,
+      guard: 10,
+      agility: 12,
+    },
+    "creature:mosscalf": {
+      id: "creature:mosscalf",
+      name: "Musgote",
+      maxHealth: 54,
+      strength: 12,
+      guard: 14,
+      agility: 8,
+    },
+    "creature:tidefin": {
+      id: "creature:tidefin",
+      name: "Maréu",
+      maxHealth: 44,
+      strength: 13,
+      guard: 9,
+      agility: 15,
+    },
+    "creature:nightleaf": {
+      id: "creature:nightleaf",
+      name: "Folha Noturna",
+      maxHealth: 42,
+      strength: 13,
+      guard: 9,
+      agility: 9,
+    },
+  };
+
+export function playerCombatant(definitionId: string, level = 1): Combatant {
+  const base = CREATURE_COMBATANTS[definitionId];
+  if (!base) throw new Error("unknown_combatant_definition");
+  const growth = Math.max(0, Math.min(20, level - 1));
+  const maxHealth = base.maxHealth + growth;
+  return {
+    ...base,
+    level,
+    maxHealth,
+    health: maxHealth,
+    strength: base.strength + Math.floor(growth / 3),
+    guard: base.guard + Math.floor(growth / 4),
+    agility: base.agility + Math.floor(growth / 5),
+  };
+}
+
+export class PrismaBattleRoster implements BattleRoster {
+  constructor(private readonly prisma: PrismaClient) {}
+
+  async playerCombatant(ownerId: string): Promise<BattleRosterEntry | null> {
+    const creature = await this.prisma.creature.findFirst({
+      where: { ownerId, teamSlot: { not: null } },
+      orderBy: [{ teamSlot: "asc" }, { createdAt: "asc" }],
+      select: { id: true, definitionId: true, level: true },
+    });
+    return creature
+      ? {
+          creatureId: creature.id,
+          combatant: playerCombatant(creature.definitionId, creature.level),
+        }
+      : null;
+  }
 }
 
 export class PrismaBattleResultStore implements BattleResultStore {
@@ -40,8 +138,9 @@ export class PrismaBattleResultStore implements BattleResultStore {
     battleId: string,
     outcome: BattleOutcome,
     winner?: "player" | "npc",
-  ): Promise<boolean> {
-    const applied = await this.prisma.$transaction(async (transaction) => {
+    participantCreatureId?: string,
+  ): Promise<BattleFinishResult> {
+    const result = await this.prisma.$transaction(async (transaction) => {
       const updated = await transaction.battleRecord.updateMany({
         where: { id: battleId, ownerId, finishedAt: null },
         data: {
@@ -51,7 +150,58 @@ export class PrismaBattleResultStore implements BattleResultStore {
           finishedAt: new Date(),
         },
       });
-      return updated.count === 1;
+      if (updated.count !== 1) return { applied: false };
+      if (outcome !== "player_win") return { applied: true };
+      const creature = await transaction.creature.findFirst({
+        where: participantCreatureId
+          ? { id: participantCreatureId, ownerId }
+          : { ownerId, teamSlot: { not: null } },
+        orderBy: [{ teamSlot: "asc" }, { createdAt: "asc" }],
+      });
+      if (!creature) return { applied: true };
+      const progression = applyExperience(
+        {
+          id: creature.id,
+          ownerId: creature.ownerId,
+          definitionId: creature.definitionId,
+          definitionVersion: creature.definitionVersion,
+          catalogVersion: creature.catalogVersion,
+          experience: creature.experience,
+          level: creature.level,
+        },
+        100,
+        ORIGINAL_CREATURE_CATALOG,
+      );
+      await transaction.creature.update({
+        where: { id: creature.id },
+        data: {
+          definitionId: progression.instance.definitionId,
+          definitionVersion: progression.instance.definitionVersion,
+          catalogVersion: progression.instance.catalogVersion,
+          experience: progression.instance.experience,
+          level: progression.instance.level,
+        },
+      });
+      await transaction.creatureProgressionEvent.create({
+        data: {
+          ownerId,
+          creatureId: creature.id,
+          requestId: `battle:${battleId}`,
+          amount: 100,
+        },
+      });
+      return {
+        applied: true,
+        progression: {
+          creatureId: creature.id,
+          definitionId: progression.instance.definitionId,
+          experienceGained: 100,
+          experience: progression.instance.experience,
+          level: progression.instance.level,
+          leveledUp: progression.instance.level > creature.level,
+          evolved: progression.evolved,
+        },
+      };
     });
     await this.events.publish(ownerId, {
       id: `battle-finished:${battleId}`,
@@ -59,7 +209,7 @@ export class PrismaBattleResultStore implements BattleResultStore {
       occurredAt: new Date().toISOString(),
       attributes: { outcome },
     });
-    return applied;
+    return result;
   }
 }
 
@@ -67,6 +217,7 @@ interface ActiveBattle {
   ownerId: string;
   state: BattleState;
   deadline: number;
+  participantCreatureId?: string;
 }
 
 export interface BattleCommandResponse {
@@ -74,27 +225,12 @@ export interface BattleCommandResponse {
   state: BattleState;
   error?: "battle_finished" | "sequence_mismatch";
   resultApplied?: boolean;
+  events?: readonly BattleEvent[];
+  progression?: BattleProgression;
 }
 
 const TURN_TIMEOUT_MS = 30_000;
-const PLAYER: Combatant = {
-  id: "creature:emberbud",
-  name: "Broto Âmbar",
-  maxHealth: 48,
-  health: 48,
-  strength: 15,
-  guard: 10,
-  agility: 12,
-};
-const NPC: Combatant = {
-  id: "creature:nightleaf",
-  name: "Folha Noturna",
-  maxHealth: 42,
-  health: 42,
-  strength: 13,
-  guard: 9,
-  agility: 9,
-};
+const PLAYER = playerCombatant("creature:emberbud");
 
 export class BattleService {
   private readonly active = new Map<string, ActiveBattle>();
@@ -104,19 +240,32 @@ export class BattleService {
     private readonly clock: () => number = Date.now,
     private readonly id: () => string = randomUUID,
     private readonly seed: () => number = () => randomInt(1, 2_147_483_647),
+    private readonly roster?: BattleRoster,
   ) {}
 
-  async start(ownerId: string): Promise<BattleState> {
+  async start(
+    ownerId: string,
+    npcDefinitionId = "creature:nightleaf",
+  ): Promise<BattleState> {
     const existing = this.active.get(ownerId);
     if (existing && existing.state.phase !== "finished") return existing.state;
     const id = this.id();
     const seed = this.seed();
-    const state = createBattle(id, seed, PLAYER, NPC);
+    const rosterEntry = await this.roster?.playerCombatant(ownerId);
+    if (this.roster && !rosterEntry) throw new Error("creature_required");
+    const combatant = rosterEntry?.combatant ?? PLAYER;
+    const state = createBattle(
+      id,
+      seed,
+      combatant,
+      playerCombatant(npcDefinitionId),
+    );
     await this.results.start(ownerId, id, seed);
     this.active.set(ownerId, {
       ownerId,
       state,
       deadline: this.clock() + TURN_TIMEOUT_MS,
+      ...(rosterEntry ? { participantCreatureId: rosterEntry.creatureId } : {}),
     });
     return state;
   }
@@ -172,6 +321,7 @@ export class BattleService {
           battle.state.id,
           battle.state.outcome,
           battle.state.winner,
+          battle.participantCreatureId,
         );
       return {
         accepted: false,
@@ -182,13 +332,24 @@ export class BattleService {
     battle.state = result.state;
     battle.deadline = this.clock() + TURN_TIMEOUT_MS;
     if (result.state.phase !== "finished")
-      return { accepted: true, state: result.state };
-    const resultApplied = await this.results.finish(
+      return { accepted: true, state: result.state, events: result.events };
+    const finishResult = await this.results.finish(
       battle.ownerId,
       battle.state.id,
       result.state.outcome ?? "draw",
       result.state.winner,
+      battle.participantCreatureId,
     );
-    return { accepted: true, state: result.state, resultApplied };
+    const resultApplied =
+      typeof finishResult === "boolean" ? finishResult : finishResult.applied;
+    const progression =
+      typeof finishResult === "boolean" ? undefined : finishResult.progression;
+    return {
+      accepted: true,
+      state: result.state,
+      events: result.events,
+      resultApplied,
+      ...(progression ? { progression } : {}),
+    };
   }
 }

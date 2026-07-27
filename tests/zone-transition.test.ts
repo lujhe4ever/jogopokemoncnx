@@ -52,6 +52,30 @@ describe("authoritative zone transitions", () => {
     await room.close();
   });
 
+  it("applies queued movement before validating a portal request", async () => {
+    const checkpoints = new MemoryCheckpoints();
+    checkpoints.saved.set("player", {
+      x: 218,
+      y: 352,
+      zoneId: "house",
+      lastProcessedSequence: 0,
+    });
+    const room = new HouseRoom(checkpoints, false);
+    const socket = new FakeSocket();
+    await room.connect(socket, "player");
+
+    for (let sequence = 1; sequence <= 12; sequence += 1)
+      socket.input({ type: "input", sequence, x: 1, y: 0 });
+    socket.input({ type: "transition", portalId: "front-door" });
+
+    expect(room.snapshot().player).toMatchObject({
+      zoneId: "meadow",
+      x: 320,
+      y: 96,
+    });
+    await room.close();
+  });
+
   it("moves once, persists the zone and isolates area-of-interest snapshots", async () => {
     const checkpoints = new MemoryCheckpoints();
     checkpoints.saved.set("traveler", {
@@ -70,14 +94,14 @@ describe("authoritative zone transitions", () => {
     expect(room.snapshot().traveler).toMatchObject({
       zoneId: "meadow",
       x: 320,
-      y: 72,
+      y: 96,
     });
     expect(traveler.latest().players.resident).toBeUndefined();
     expect(resident.latest().players.traveler).toBeUndefined();
     await new Promise((resolve) => setImmediate(resolve));
     expect(checkpoints.saved.get("traveler")?.zoneId).toBe("meadow");
 
-    traveler.input({ type: "transition", portalId: "front-door" });
+    traveler.input({ type: "transition", portalId: "house-door" });
     expect(room.snapshot().traveler?.zoneId).toBe("meadow");
     await room.close();
   });

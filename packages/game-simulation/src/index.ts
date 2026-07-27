@@ -86,7 +86,7 @@ export const ZONES: Readonly<Record<string, ZoneDefinition>> = {
       {
         id: "front-door",
         targetZoneId: "meadow",
-        targetSpawn: { x: 320, y: 72, lastProcessedSequence: 0 },
+        targetSpawn: { x: 320, y: 96, lastProcessedSequence: 0 },
         trigger: { x: 290, y: 342, width: 60, height: 34 },
       },
     ],
@@ -110,7 +110,7 @@ export const ZONES: Readonly<Record<string, ZoneDefinition>> = {
     id: "meadow",
     packId: "original-meadow",
     collision: MEADOW_COLLISION,
-    spawn: { x: 320, y: 72, lastProcessedSequence: 0 },
+    spawn: { x: 320, y: 96, lastProcessedSequence: 0 },
     portals: [
       {
         id: "house-door",

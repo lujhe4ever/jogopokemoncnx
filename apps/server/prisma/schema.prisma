@@ -244,10 +244,11 @@ model PlayerCheckpoint {
 }
 
 model Profile {
-  id          String  @id @default(cuid())
-  displayName String
-  accountId   String  @unique
-  account     Account @relation(fields: [accountId], references: [id], onDelete: Cascade)
+  id                  String  @id @default(cuid())
+  displayName         String
+  starterDefinitionId String?
+  accountId           String  @unique
+  account             Account @relation(fields: [accountId], references: [id], onDelete: Cascade)
 }
 
 model Session {

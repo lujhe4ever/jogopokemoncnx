@@ -50,23 +50,19 @@ funcionalidade por iniciativa própria.
 
 ## Estado da stack
 
-As escolhas abaixo são a baseline **proposta** em `architecture.md`. Elas não devem ser
-tratadas como instaladas ou aceitas enquanto a documentação e a fase correspondente
-não forem aprovadas.
+As escolhas abaixo estão implementadas. Versões concretas são fixadas em
+`package.json` e no lockfile; `architecture.md` continua sendo a baseline normativa.
 
-| Área | Direção proposta |
+| Área | Estado atual |
 | --- | --- |
 | Linguagem | TypeScript estrito |
-| Monorepo | `pnpm` workspaces; Turborepo sob revisão |
+| Monorepo | `pnpm` workspaces; sem Turborepo |
 | Frontend | Phaser 3 + Vite; HTML/CSS para interface quando apropriado |
 | Backend | Node.js + Fastify |
 | Tempo real | WebSocket com contrato validado e versionado |
 | Dados | PostgreSQL + Prisma restrito à infraestrutura |
 | Infraestrutura | Docker Compose e VPS Linux inicialmente |
 | Qualidade | ESLint, Prettier, testes, Husky e GitHub Actions |
-
-Versões concretas serão fixadas somente na Fase 1, após verificação do ambiente e
-aprovação.
 
 ## Requisitos arquiteturais confirmados
 
@@ -179,25 +175,23 @@ reformatação ampla junto de uma funcionalidade não relacionada.
 
 ## Comandos do projeto
 
-Não existe aplicação ou toolchain na Fase 0B. Não inventar comandos nem declarar
-verificações inexistentes.
-
 | Finalidade | Comando atual |
 | --- | --- |
 | Instalação | `pnpm install --frozen-lockfile` |
-| Desenvolvimento | `docker compose up -d postgres`, `pnpm --filter @lt/server db:migrate`, `pnpm dev` |
+| Preparação local | copiar `.env.example` para `.env`, `docker compose up -d postgres`, `pnpm setup:local` |
+| Desenvolvimento | `pnpm dev` |
 | Formatação | `pnpm format` / `pnpm format:check` |
 | Lint | `pnpm lint` |
 | Verificação de tipos | `pnpm typecheck` |
 | Testes unitários e de integração | `pnpm test` |
 | Gate da jornada alpha | `pnpm alpha:readiness` |
-| Testes E2E no navegador | roteiro assistido em `docs/alpha-test-plan.md` |
+| Testes E2E no navegador | `pnpm e2e:install`, `pnpm test:e2e` |
 | Build de servidor, jogo e admin | `pnpm build` |
 | Docker | `docker compose up -d postgres` / `docker compose down` |
-| Migrações | `pnpm --filter @lt/server db:migrate` |
+| Migrações | incluídas em `pnpm setup:local`; comando direto `pnpm --filter @lt/server db:migrate` |
 | Candidato operacional | workflow manual `Build release candidate (no deploy)` |
 
-Quando a Fase 1 definir comandos, atualizar esta tabela no mesmo PR que os introduzir.
+Quando comandos mudarem, atualizar esta tabela no mesmo PR que os introduzir.
 
 ## Procedimento obrigatório antes de iniciar uma tarefa
 

@@ -18,6 +18,8 @@ import type { AdminService } from "./admin/service.js";
 import { createHash, timingSafeEqual } from "node:crypto";
 import { registerAlphaRoutes } from "./alpha/routes.js";
 import type { AlphaTelemetry } from "./alpha/telemetry.js";
+import type { GameService } from "./game/game-service.js";
+import { registerGameRoutes } from "./game/routes.js";
 
 export interface AppDependencies {
   database: DatabaseProbe;
@@ -34,6 +36,7 @@ export interface AppDependencies {
   allowedOrigin?: string;
   metricsToken?: string;
   alphaTelemetry?: AlphaTelemetry;
+  game?: GameService;
 }
 
 export async function buildApp({
@@ -51,6 +54,7 @@ export async function buildApp({
   allowedOrigin,
   metricsToken,
   alphaTelemetry,
+  game,
 }: AppDependencies) {
   const app = Fastify({
     logger,
@@ -98,6 +102,7 @@ export async function buildApp({
   if (auth && encounters && world)
     registerEncounterRoutes(app, auth, encounters, world);
   if (auth && quests) registerQuestRoutes(app, auth, quests);
+  if (auth && game) registerGameRoutes(app, auth, game);
   if (auth && admin) registerAdminRoutes(app, auth, admin);
 
   app.get("/health", (request) => ({

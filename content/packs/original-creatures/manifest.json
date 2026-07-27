@@ -31,6 +31,28 @@
       }
     },
     {
+      "id": "creature:mosscalf",
+      "version": 1,
+      "name": "Musgote",
+      "baseAttributes": {
+        "vitality": 22,
+        "strength": 10,
+        "guard": 16,
+        "agility": 8
+      }
+    },
+    {
+      "id": "creature:tidefin",
+      "version": 1,
+      "name": "Maréu",
+      "baseAttributes": {
+        "vitality": 17,
+        "strength": 11,
+        "guard": 9,
+        "agility": 16
+      }
+    },
+    {
       "id": "creature:nightleaf",
       "version": 1,
       "name": "Folha Noturna",

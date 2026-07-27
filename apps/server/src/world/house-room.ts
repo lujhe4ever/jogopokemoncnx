@@ -86,7 +86,12 @@ export class HouseRoom {
   private readonly players = new Map<string, ConnectedPlayer>();
   private readonly encounterAuthorizations = new Map<
     string,
-    { token: string; zoneId: string; expiresAt: number }
+    {
+      token: string;
+      zoneId: string;
+      definitionId: string;
+      expiresAt: number;
+    }
   >();
   private readonly timer: NodeJS.Timeout;
 
@@ -163,20 +168,10 @@ export class HouseRoom {
   }
 
   step(): void {
-    for (const player of this.players.values()) {
-      for (const input of player.inputs.splice(0, 10)) {
-        player.state = {
-          ...simulateZoneMovement(
-            player.state.zoneId,
-            player.state,
-            input,
-            0.05,
-          ),
-          zoneId: player.state.zoneId,
-        };
-      }
-    }
-    for (const accountId of this.players.keys()) this.sendSnapshot(accountId);
+    for (const player of this.players.values()) this.applyInputs(player);
+    const serverTime = Date.now();
+    for (const accountId of this.players.keys())
+      this.sendSnapshot(accountId, false, serverTime);
   }
 
   snapshot(zoneId?: string): Record<string, ZonePlayerState> {
@@ -201,19 +196,23 @@ export class HouseRoom {
   consumeEncounterAuthorization(
     accountId: string,
     token: string,
-  ): string | null {
+  ): { zoneId: string; definitionId: string } | null {
     const authorization = this.encounterAuthorizations.get(accountId);
     this.encounterAuthorizations.delete(accountId);
     return authorization &&
       authorization.token === token &&
       authorization.expiresAt >= Date.now()
-      ? authorization.zoneId
+      ? {
+          zoneId: authorization.zoneId,
+          definitionId: authorization.definitionId,
+        }
       : null;
   }
 
   private async transition(accountId: string, portalId: string): Promise<void> {
     const player = this.players.get(accountId);
     if (!player) return;
+    this.applyInputs(player, player.inputs.length);
     const previousZoneId = player.state.zoneId;
     const portal = findAvailablePortal(player.state.zoneId, player.state);
     if (!portal || portal.id !== portalId) return;
@@ -223,12 +222,13 @@ export class HouseRoom {
       lastProcessedSequence: player.state.lastProcessedSequence,
     };
     player.inputs.length = 0;
+    const serverTime = Date.now();
     for (const [id, connected] of this.players) {
       if (
         connected.state.zoneId === previousZoneId ||
         connected.state.zoneId === player.state.zoneId
       ) {
-        this.sendSnapshot(id, id === accountId);
+        this.sendSnapshot(id, id === accountId, serverTime);
       }
     }
     await this.checkpoints.save(accountId, player.state);
@@ -240,7 +240,20 @@ export class HouseRoom {
     );
   }
 
-  private sendSnapshot(accountId: string, transitioned = false): void {
+  private applyInputs(player: ConnectedPlayer, limit = 10): void {
+    for (const input of player.inputs.splice(0, limit)) {
+      player.state = {
+        ...simulateZoneMovement(player.state.zoneId, player.state, input, 0.05),
+        zoneId: player.state.zoneId,
+      };
+    }
+  }
+
+  private sendSnapshot(
+    accountId: string,
+    transitioned = false,
+    serverTime = Date.now(),
+  ): void {
     const player = this.players.get(accountId);
     if (!player || player.socket.readyState !== 1) return;
     const zone = getZone(player.state.zoneId);
@@ -249,7 +262,7 @@ export class HouseRoom {
       JSON.stringify({
         protocolVersion: 1,
         type: "world_snapshot",
-        serverTime: Date.now(),
+        serverTime,
         zoneId: zone.id,
         packId: zone.packId,
         transitioned,
@@ -300,6 +313,7 @@ export class HouseRoom {
       this.encounterAuthorizations.set(accountId, {
         token: authorization,
         zoneId: player.state.zoneId,
+        definitionId: interaction.definitionId,
         expiresAt: Date.now() + 15_000,
       });
       player.socket.send(
