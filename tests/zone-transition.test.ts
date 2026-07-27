@@ -52,6 +52,29 @@ describe("authoritative zone transitions", () => {
     await room.close();
   });
 
+  it("applies queued movement before validating a portal request", async () => {
+    const checkpoints = new MemoryCheckpoints();
+    checkpoints.saved.set("player", {
+      x: 320,
+      y: 336,
+      zoneId: "house",
+      lastProcessedSequence: 0,
+    });
+    const room = new HouseRoom(checkpoints, false);
+    const socket = new FakeSocket();
+    await room.connect(socket, "player");
+
+    socket.input({ type: "input", sequence: 1, x: 0, y: 1 });
+    socket.input({ type: "transition", portalId: "front-door" });
+
+    expect(room.snapshot().player).toMatchObject({
+      zoneId: "meadow",
+      x: 320,
+      y: 72,
+    });
+    await room.close();
+  });
+
   it("moves once, persists the zone and isolates area-of-interest snapshots", async () => {
     const checkpoints = new MemoryCheckpoints();
     checkpoints.saved.set("traveler", {

@@ -168,19 +168,7 @@ export class HouseRoom {
   }
 
   step(): void {
-    for (const player of this.players.values()) {
-      for (const input of player.inputs.splice(0, 10)) {
-        player.state = {
-          ...simulateZoneMovement(
-            player.state.zoneId,
-            player.state,
-            input,
-            0.05,
-          ),
-          zoneId: player.state.zoneId,
-        };
-      }
-    }
+    for (const player of this.players.values()) this.applyInputs(player);
     const serverTime = Date.now();
     for (const accountId of this.players.keys())
       this.sendSnapshot(accountId, false, serverTime);
@@ -224,6 +212,7 @@ export class HouseRoom {
   private async transition(accountId: string, portalId: string): Promise<void> {
     const player = this.players.get(accountId);
     if (!player) return;
+    this.applyInputs(player);
     const previousZoneId = player.state.zoneId;
     const portal = findAvailablePortal(player.state.zoneId, player.state);
     if (!portal || portal.id !== portalId) return;
@@ -249,6 +238,15 @@ export class HouseRoom {
       "world.zone_entered",
       { zoneId: player.state.zoneId },
     );
+  }
+
+  private applyInputs(player: ConnectedPlayer): void {
+    for (const input of player.inputs.splice(0, 10)) {
+      player.state = {
+        ...simulateZoneMovement(player.state.zoneId, player.state, input, 0.05),
+        zoneId: player.state.zoneId,
+      };
+    }
   }
 
   private sendSnapshot(
