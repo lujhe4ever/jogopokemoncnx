@@ -1,7 +1,7 @@
 import { defineConfig, devices } from "@playwright/test";
 
 export default defineConfig({
-  testDir: "./e2e",
+  testDir: ".",
   fullyParallel: false,
   timeout: 90_000,
   expect: { timeout: 10_000 },
@@ -25,12 +25,14 @@ export default defineConfig({
   webServer: [
     {
       command: "pnpm --filter @lt/server dev",
+      cwd: "..",
       url: "http://127.0.0.1:3000/ready",
       reuseExistingServer: !process.env.CI,
       timeout: 120_000,
     },
     {
       command: "pnpm --filter @lt/web dev --host 127.0.0.1 --port 5173",
+      cwd: "..",
       url: "http://127.0.0.1:5173",
       reuseExistingServer: !process.env.CI,
       timeout: 120_000,
