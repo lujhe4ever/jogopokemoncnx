@@ -31,8 +31,13 @@ export type CaptureResult =
       replayed: false;
     };
 
-const DEFINITION_ID = "creature:nightleaf";
 const CAPTURE_ITEM_ID = "item:capture-orb";
+const FIRST_EXPEDITION_CAPTURE_RULE = {
+  itemId: CAPTURE_ITEM_ID,
+  baseChance: 1,
+  weakenedBonus: 0,
+  maximumChance: 1,
+} as const;
 
 export class EncounterService {
   constructor(
@@ -43,19 +48,23 @@ export class EncounterService {
     private readonly events: GameplayEventSink = noopGameplayEvents,
   ) {}
 
-  async start(ownerId: string, zoneId: string): Promise<EncounterView> {
+  async start(
+    ownerId: string,
+    zoneId: string,
+    definitionId: string,
+  ): Promise<EncounterView> {
     const existing = await this.prisma.encounterRecord.findFirst({
       where: { ownerId, status: "battling" },
       orderBy: { createdAt: "desc" },
     });
     if (existing) return this.view(existing);
-    const battle = await this.battles.start(ownerId);
+    const battle = await this.battles.start(ownerId, definitionId);
     const encounter = await this.prisma.encounterRecord.create({
       data: {
         id: this.id(),
         ownerId,
         zoneId,
-        definitionId: DEFINITION_ID,
+        definitionId,
         definitionVersion: 1,
         catalogVersion: 1,
         seed: this.seed(),
@@ -101,12 +110,15 @@ export class EncounterService {
               },
             },
           });
-          const evaluation = evaluateCapture({
-            battleOutcome: encounter.battle.outcome,
-            targetHealth: 0,
-            targetMaxHealth: 42,
-            captureItemId: CAPTURE_ITEM_ID,
-          });
+          const evaluation = evaluateCapture(
+            {
+              battleOutcome: encounter.battle.outcome,
+              targetHealth: 0,
+              targetMaxHealth: 42,
+              captureItemId: CAPTURE_ITEM_ID,
+            },
+            FIRST_EXPEDITION_CAPTURE_RULE,
+          );
           const attempt = planCaptureAttempt(
             {
               status: "pending",

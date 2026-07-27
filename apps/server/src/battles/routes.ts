@@ -24,7 +24,14 @@ export function registerBattleRoutes(
 ): void {
   app.post("/battles", async (request, reply) => {
     const ownerId = await accountId(request, reply, auth);
-    return ownerId ? battles.start(ownerId) : reply;
+    if (!ownerId) return reply;
+    try {
+      return await battles.start(ownerId);
+    } catch (error) {
+      if (error instanceof Error && error.message === "creature_required")
+        return reply.code(409).send({ error: "creature_required" });
+      throw error;
+    }
   });
 
   app.get("/battles/:id", async (request, reply) => {

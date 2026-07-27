@@ -167,7 +167,10 @@ describe("contextual interactions", () => {
     );
     expect(
       room.consumeEncounterAuthorization("player", result.authorization ?? ""),
-    ).toBe("meadow");
+    ).toEqual({
+      zoneId: "meadow",
+      definitionId: "creature:nightleaf",
+    });
     expect(
       room.consumeEncounterAuthorization("player", result.authorization ?? ""),
     ).toBeNull();

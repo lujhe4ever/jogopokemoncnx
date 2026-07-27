@@ -6,6 +6,7 @@ export type BattleFinishReason =
 export interface Combatant {
   id: string;
   name: string;
+  level?: number;
   maxHealth: number;
   health: number;
   strength: number;

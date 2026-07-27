@@ -86,7 +86,12 @@ export class HouseRoom {
   private readonly players = new Map<string, ConnectedPlayer>();
   private readonly encounterAuthorizations = new Map<
     string,
-    { token: string; zoneId: string; expiresAt: number }
+    {
+      token: string;
+      zoneId: string;
+      definitionId: string;
+      expiresAt: number;
+    }
   >();
   private readonly timer: NodeJS.Timeout;
 
@@ -201,13 +206,16 @@ export class HouseRoom {
   consumeEncounterAuthorization(
     accountId: string,
     token: string,
-  ): string | null {
+  ): { zoneId: string; definitionId: string } | null {
     const authorization = this.encounterAuthorizations.get(accountId);
     this.encounterAuthorizations.delete(accountId);
     return authorization &&
       authorization.token === token &&
       authorization.expiresAt >= Date.now()
-      ? authorization.zoneId
+      ? {
+          zoneId: authorization.zoneId,
+          definitionId: authorization.definitionId,
+        }
       : null;
   }
 
@@ -300,6 +308,7 @@ export class HouseRoom {
       this.encounterAuthorizations.set(accountId, {
         token: authorization,
         zoneId: player.state.zoneId,
+        definitionId: interaction.definitionId,
         expiresAt: Date.now() + 15_000,
       });
       player.socket.send(

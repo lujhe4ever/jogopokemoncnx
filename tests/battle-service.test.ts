@@ -1,6 +1,8 @@
 import type { BattleOutcome } from "../packages/battle-domain/src/index.js";
 import {
   BattleService,
+  type BattleCommandResponse,
+  type BattleRoster,
   type BattleResultStore,
 } from "../apps/server/src/battles/battle-service.js";
 import { describe, expect, it } from "vitest";
@@ -119,5 +121,129 @@ describe("battle session service", () => {
         outcome: "abandoned",
       },
     ]);
+  });
+
+  it("uses the persisted active companion as the player combatant", async () => {
+    const roster: BattleRoster = {
+      playerCombatant: () =>
+        Promise.resolve({
+          creatureId: "tidefin-1",
+          combatant: {
+            id: "creature:tidefin",
+            name: "Maréu",
+            maxHealth: 44,
+            health: 44,
+            strength: 13,
+            guard: 9,
+            agility: 15,
+          },
+        }),
+    };
+    const battles = new BattleService(
+      new MemoryResults(),
+      () => 1_000,
+      () => "starter-battle",
+      () => 42,
+      roster,
+    );
+    await expect(battles.start("owner")).resolves.toMatchObject({
+      player: {
+        id: "creature:tidefin",
+        name: "Maréu",
+        maxHealth: 44,
+      },
+    });
+  });
+
+  it("rejects a persisted roster without an active companion", async () => {
+    const roster: BattleRoster = {
+      playerCombatant: () => Promise.resolve(null),
+    };
+    const battles = new BattleService(
+      new MemoryResults(),
+      () => 1_000,
+      () => "missing-roster-battle",
+      () => 42,
+      roster,
+    );
+    await expect(battles.start("owner")).rejects.toThrow("creature_required");
+  });
+
+  it("uses the authorized wild definition and returns applied progression", async () => {
+    let rewardedCreatureId: string | undefined;
+    const results: BattleResultStore = {
+      start: () => Promise.resolve(),
+      finish: (
+        _ownerId,
+        _battleId,
+        _outcome,
+        _winner,
+        participantCreatureId,
+      ) => {
+        rewardedCreatureId = participantCreatureId;
+        return Promise.resolve({
+          applied: true,
+          progression: {
+            creatureId: "starter-1",
+            definitionId: "creature:mosscalf",
+            experienceGained: 100,
+            experience: 100,
+            level: 2,
+            leveledUp: true,
+            evolved: false,
+          },
+        });
+      },
+    };
+    const roster: BattleRoster = {
+      playerCombatant: () =>
+        Promise.resolve({
+          creatureId: "starter-1",
+          combatant: {
+            id: "creature:mosscalf",
+            name: "Musgote",
+            level: 1,
+            maxHealth: 100,
+            health: 100,
+            strength: 100,
+            guard: 100,
+            agility: 100,
+          },
+        }),
+    };
+    const battles = new BattleService(
+      results,
+      () => 1_000,
+      () => "progression-battle",
+      () => 42,
+      roster,
+    );
+    let state = await battles.start("owner", "creature:tidefin");
+    expect(state.npc.id).toBe("creature:tidefin");
+    let finalResponse: BattleCommandResponse | undefined;
+    while (state.phase !== "finished") {
+      finalResponse = await battles.choose(
+        "owner",
+        state.id,
+        state.expectedSequence,
+        "strike",
+      );
+      if (!finalResponse) throw new Error("missing battle");
+      state = finalResponse.state;
+    }
+    expect(finalResponse).toMatchObject({
+      resultApplied: true,
+      progression: {
+        experienceGained: 100,
+        level: 2,
+        leveledUp: true,
+      },
+    });
+    expect(finalResponse?.events).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({ type: "turn_resolved", turn: 1 }),
+      ]),
+    );
+    expect(rewardedCreatureId).toBe("starter-1");
   });
 });
