@@ -104,6 +104,7 @@ test("completes and persists the first expedition", async ({
     "Orbe de captura",
   );
 
+  await moveTo(page, "ArrowUp", "y", 190, "at-most");
   await moveTo(page, "ArrowRight", "x", 530, "at-least");
   await moveTo(page, "ArrowUp", "y", 140, "at-most");
   await interact(page);
@@ -115,8 +116,17 @@ test("completes and persists the first expedition", async ({
 
   const attack = page.getByRole("button", { name: /Golpe de campo/ });
   const capture = page.getByRole("button", { name: /Usar Orbe de captura/ });
-  for (let turn = 0; turn < 12 && !(await capture.isVisible()); turn += 1) {
-    await expect(attack).toBeEnabled();
+  for (let turn = 0; turn < 12; turn += 1) {
+    await expect
+      .poll(async () =>
+        (await capture.isVisible())
+          ? "capture"
+          : (await attack.isEnabled())
+            ? "attack"
+            : "waiting",
+      )
+      .not.toBe("waiting");
+    if (await capture.isVisible()) break;
     await attack.click();
   }
   await expect(capture).toBeVisible();
