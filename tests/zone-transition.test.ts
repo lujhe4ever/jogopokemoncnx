@@ -71,7 +71,7 @@ describe("authoritative zone transitions", () => {
     expect(room.snapshot().player).toMatchObject({
       zoneId: "meadow",
       x: 320,
-      y: 72,
+      y: 96,
     });
     await room.close();
   });
@@ -94,14 +94,14 @@ describe("authoritative zone transitions", () => {
     expect(room.snapshot().traveler).toMatchObject({
       zoneId: "meadow",
       x: 320,
-      y: 72,
+      y: 96,
     });
     expect(traveler.latest().players.resident).toBeUndefined();
     expect(resident.latest().players.traveler).toBeUndefined();
     await new Promise((resolve) => setImmediate(resolve));
     expect(checkpoints.saved.get("traveler")?.zoneId).toBe("meadow");
 
-    traveler.input({ type: "transition", portalId: "front-door" });
+    traveler.input({ type: "transition", portalId: "house-door" });
     expect(room.snapshot().traveler?.zoneId).toBe("meadow");
     await room.close();
   });
