@@ -24,7 +24,7 @@ export default defineConfig({
   ],
   webServer: [
     {
-      command: "pnpm --filter @lt/server dev",
+      command: "pnpm --filter @lt/server start:e2e",
       cwd: "..",
       url: "http://127.0.0.1:3000/ready",
       reuseExistingServer: !process.env.CI,
